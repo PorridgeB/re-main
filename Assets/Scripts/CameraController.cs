@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        size = Mathf.Clamp(size + -10 * Input.GetAxisRaw("Mouse ScrollWheel"), 2, 15);
+        //size = Mathf.Clamp(size + -10 * Input.GetAxisRaw("Mouse ScrollWheel"), 2, 15);
         targetCamera.orthographicSize = size;
         cameraExtent = new Vector2(size * Screen.width / Screen.height, size);
 

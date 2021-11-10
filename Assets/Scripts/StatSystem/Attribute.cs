@@ -11,6 +11,8 @@ public enum DisplayType
 
 public class Attribute : BaseAttribute
 {
+    public string name;
+
     private float minValue;
     private float maxValue;
     private DisplayType type;

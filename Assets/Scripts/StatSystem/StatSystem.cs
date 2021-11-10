@@ -26,10 +26,33 @@ public class StatSystem
 
     public StatSystem(List<List<float>> stat_block)
     {
+		attributes = new Dictionary<string, Attribute>();
 		for (int i = 0; i < attributeNames.Count; i++)
 		{
-			Debug.Log(i);
-			attributes.Add(attributeNames[i], new Attribute(stat_block[0][0], (DisplayType)stat_block[0][1], stat_block[0][2], stat_block[0][3]));
+			AddAttribute(attributeNames[i], stat_block[i]);
 		}
+	}
+
+	public void AddAttribute(string name, List<float> statValues)
+	{
+		attributes[name] = new Attribute(statValues[0], (DisplayType)statValues[1], statValues[0], statValues[0]);
+		attributes[name].name = name;
+	}
+
+	public void AddFinalBonus(string name, FinalBonus bonus)
+	{
+		attributes[name].AddFinalBonus(bonus);
+	}
+
+	public int Count()
+	{
+		return attributes.Count;
+	}
+
+	public Attribute[] GetAttributeAsArray()
+	{
+		Attribute[] a = new Attribute[attributes.Count];
+		attributes.Values.CopyTo(a, 0);
+		return a;
 	}
 }
