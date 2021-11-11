@@ -91,7 +91,7 @@ public class ScrollMenu : MonoBehaviour
                 bonuses += b.attributeName + " - " + b.value + "\n";
             }
 
-            SpawnedItem.GetComponent<ModuleScrollMenuItem>().SetInformation(modules[i].name, bonuses);
+            SpawnedItem.GetComponent<ModuleScrollMenuItem>().SetInformation(modules[i].name, bonuses, modules[i].sprite);
         }
     }
 }

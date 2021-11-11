@@ -901,15 +901,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207f1105c3b50024782707b4d711d36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moduleName: Thingo
   module:
-    name: 
-    description: 
-    bonuses: []
-  bonuses:
-  - attributeName: Health
-    value: 10
-    multiplier: 0
+    name: Thingo
+    description: its a thing
+    sprite: {fileID: 21300000, guid: 168b5fe89da961c449fe1064c1b0cf22, type: 3}
+    bonuses:
+    - attributeName: Crit Chance
+      value: 0.2
+      multiplier: 0
 --- !u!58 &522337304
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -971,7 +970,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1420,12 +1419,14 @@ MonoBehaviour:
   modules:
   - name: healy wheely
     description: does heal
+    sprite: {fileID: 0}
     bonuses:
     - attributeName: Health
       value: 1
       multiplier: 0
   - name: stabby wabby
     description: does hurt
+    sprite: {fileID: 0}
     bonuses:
     - attributeName: Melee Attack Speed
       value: 0.1

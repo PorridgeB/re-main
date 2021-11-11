@@ -13,8 +13,9 @@ public class ModuleScrollMenuItem : MonoBehaviour
     [SerializeField]
     private TMP_Text bonuses;
 
-    public void SetInformation(string _name, string _bonuses)
+    public void SetInformation(string _name, string _bonuses, Sprite sprite)
     {
+        image.sprite = sprite;
         name.text = _name;
         bonuses.text = _bonuses;
     }

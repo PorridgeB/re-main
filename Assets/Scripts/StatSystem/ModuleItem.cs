@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ModuleItem : MonoBehaviour
 {
-    public string moduleName;
-    public Module module;
-
-    public List<Bonus> bonuses;
+    [SerializeField]
+    private Module module;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<SpriteRenderer>().sprite = module.sprite;
     }
 
     // Update is called once per frame
@@ -24,5 +22,6 @@ public class ModuleItem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.GetComponent<ModuleInventory>().AddModule(module);
+        Destroy(gameObject);
     }
 }
