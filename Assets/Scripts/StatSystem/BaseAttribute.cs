@@ -10,7 +10,7 @@ public class BaseAttribute
     public BaseAttribute(float value, float multiplier)
     {
         baseValue = value;
-        baseMultiplier = value;
+        baseMultiplier = multiplier;
     }
 
     public float BaseValue => baseValue;

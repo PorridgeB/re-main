@@ -8,6 +8,10 @@ public class ModuleInventory : MonoBehaviour
     [SerializeField]
     private List<Module> modules;
 
+    private void Start()
+    {
+        AddAttributes();
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,6 +21,7 @@ public class ModuleInventory : MonoBehaviour
 
     public void AddAttributes()
     {
+        stats.ClearFinalBonuses();
         foreach (Module m in modules) {
             foreach (Bonus b in m.bonuses)
             {
@@ -28,6 +33,12 @@ public class ModuleInventory : MonoBehaviour
     public void AddModule(Module m)
     {
         modules.Add(m);
+        AddAttributes();
     }
     
+    public List<Module> GetModules()
+    {
+        return modules;
+    }
+
 }

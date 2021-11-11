@@ -21,14 +21,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
-        //At least one parameter will be above 0, giving the idle animation a direction to face that the player was last moving
-        if (input.x < -0.05 || input.x > 0.05 || input.y < -0.05 || input.y > 0.05)
-        {
-            anim.SetFloat("Horizontal", input.x);
-            anim.SetFloat("Vertical", input.y);
-        }
+        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        anim.SetFloat("Horizontal", input.x);
+        anim.SetFloat("Vertical", input.y);
     }
 
     private void FixedUpdate()

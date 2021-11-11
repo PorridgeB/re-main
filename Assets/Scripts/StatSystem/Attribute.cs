@@ -17,8 +17,8 @@ public class Attribute : BaseAttribute
     private float maxValue;
     private DisplayType type;
 
-    private List<RawBonus> rawBonuses;
-    private List<FinalBonus> finalBonuses;
+    private List<RawBonus> rawBonuses = new List<RawBonus>();
+    private List<FinalBonus> finalBonuses = new List<FinalBonus>();
 
     private float finalValue;
 
@@ -33,11 +33,17 @@ public class Attribute : BaseAttribute
     public void AddRawBonus(RawBonus bonus)
     {
         rawBonuses.Add(bonus);
+        
     }
 
     public void RemoveRawBonus(RawBonus bonus)
     {
         rawBonuses.Remove(bonus);
+    }
+
+    public void ClearFinalBonuses()
+    {
+        finalBonuses.Clear();
     }
 
     public void AddFinalBonus(FinalBonus bonus)
@@ -59,12 +65,13 @@ public class Attribute : BaseAttribute
 
         foreach (RawBonus b in rawBonuses)
         {
+           
             rawBonusValue += b.BaseValue;
             rawBonusMultiplier += b.BaseMuliplier;
         }
 
         finalValue += rawBonusValue;
-        finalValue *= rawBonusMultiplier;
+        finalValue *= 1 + rawBonusMultiplier;
 
         finalValue = BaseValue;
 
@@ -78,22 +85,22 @@ public class Attribute : BaseAttribute
         }
 
         finalValue += finalBonusValue;
-        finalValue *= finalBonusMultiplier;
+        finalValue *= 1 + finalBonusMultiplier;
 
         return finalValue;
     }
 
     public string DisplayFinalValue()
     {
-        float value = Value();
+        Value();
         switch(type)
         {
             case DisplayType.Int:
-                return Mathf.Floor(value).ToString();
+                return Mathf.Floor(finalValue).ToString();
             case DisplayType.Percentage:
-                return (value * 100) + "%";
+                return (finalValue * 100) + "%";
             default:
-                return value.ToString();
+                return finalValue.ToString();
         }
     }
 }

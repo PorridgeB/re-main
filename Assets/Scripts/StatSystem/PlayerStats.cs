@@ -54,6 +54,10 @@ public class PlayerStats : MonoBehaviour
 		statCount = stats.Count();
 	}
 
+    public void ClearFinalBonuses()
+    {
+        stats.ClearFinalBonuses();
+    }
     public int Count()
     {
         return stats.Count();

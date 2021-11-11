@@ -19,13 +19,22 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        modulesMenu.GenerateListFromList();
-        statsMenu.GenerateStats(playerStats);
+        GenerateLists();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            statMenu.SetActive(!statMenu.activeInHierarchy);
+        }
+    }
+
+    public void GenerateLists()
+    {
+        Debug.Log("generating lists");
+        modulesMenu.GenerateModules(moduleInventory);
+        statsMenu.GenerateStats(playerStats);
     }
 }

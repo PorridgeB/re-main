@@ -49,6 +49,14 @@ public class StatSystem
 		return attributes.Count;
 	}
 
+	public void ClearFinalBonuses()
+	{
+		foreach (KeyValuePair<string, Attribute> a in attributes)
+		{
+			a.Value.ClearFinalBonuses();
+		}
+	}
+
 	public Attribute[] GetAttributeAsArray()
 	{
 		Attribute[] a = new Attribute[attributes.Count];
