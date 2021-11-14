@@ -44,6 +44,11 @@ public class StatSystem
 		attributes[name].AddFinalBonus(bonus);
 	}
 
+	public float ReadAttribute(string name)
+    {
+		return attributes[name].Value();
+    }
+
 	public int Count()
 	{
 		return attributes.Count;
