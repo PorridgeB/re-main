@@ -13,7 +13,7 @@ public class PlayerSneak : State
 
     public override void Process()
     {
-        movement.SetVelocity(moveAction.ReadValue<Vector2>() * stats.ReadAttribute("Walk Speed"));
+        movement.SetVelocity(moveAction.ReadValue<Vector2>().normalized * stats.ReadAttribute("Walk Speed"));
         if (moveAction.ReadValue<Vector2>() == Vector2.zero)
         {
             stateMachine.ChangeTo("Idle", null);

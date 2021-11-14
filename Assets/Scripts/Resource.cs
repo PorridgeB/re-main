@@ -10,13 +10,15 @@ public class Resource : MonoBehaviour
     private string attributeName;
 
     private bool invunerable;
+    [SerializeField]
     private float maxValue;
     private float currentValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        maxValue = GetComponent<PlayerStats>().ReadAttribute(attributeName);
+        //this need to be updated by an event, not just once on start.
+        maxValue = GetComponentInParent<PlayerStats>().ReadAttribute(attributeName);
         currentValue = maxValue;
     }
 
