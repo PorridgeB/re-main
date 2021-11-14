@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     //private Sword sword;
     //private Trail trail;
 
+    public Vector2 GetFacing()
+    {
+        return facing;
+    }
 
 
 
@@ -34,7 +38,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        facing = crosshair.transform.position - transform.position;
+        facing = (crosshair.transform.position - transform.position).normalized;
         anim.SetFloat("Horizontal", facing.x);
         anim.SetFloat("Vertical", facing.y);
     }

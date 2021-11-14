@@ -49,6 +49,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""9da343ab-20e8-4718-8a2a-217afa7638ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -150,6 +158,17 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""Overlay"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b64ddf8b-43bd-4dca-b040-79f966100f51"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -162,6 +181,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_CharacterControl_Walk = m_CharacterControl.FindAction("Walk", throwIfNotFound: true);
         m_CharacterControl_Aim = m_CharacterControl.FindAction("Aim", throwIfNotFound: true);
         m_CharacterControl_Overlay = m_CharacterControl.FindAction("Overlay", throwIfNotFound: true);
+        m_CharacterControl_Dash = m_CharacterControl.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -215,6 +235,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Walk;
     private readonly InputAction m_CharacterControl_Aim;
     private readonly InputAction m_CharacterControl_Overlay;
+    private readonly InputAction m_CharacterControl_Dash;
     public struct CharacterControlActions
     {
         private @PlayerControlls m_Wrapper;
@@ -223,6 +244,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Walk => m_Wrapper.m_CharacterControl_Walk;
         public InputAction @Aim => m_Wrapper.m_CharacterControl_Aim;
         public InputAction @Overlay => m_Wrapper.m_CharacterControl_Overlay;
+        public InputAction @Dash => m_Wrapper.m_CharacterControl_Dash;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -244,6 +266,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Overlay.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnOverlay;
                 @Overlay.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnOverlay;
                 @Overlay.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnOverlay;
+                @Dash.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -260,6 +285,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Overlay.started += instance.OnOverlay;
                 @Overlay.performed += instance.OnOverlay;
                 @Overlay.canceled += instance.OnOverlay;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -270,5 +298,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnOverlay(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

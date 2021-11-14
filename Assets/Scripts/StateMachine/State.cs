@@ -11,19 +11,22 @@ public class State : MonoBehaviour
     protected PlayerInput inputs;
     protected PlayerMovement movement;
     protected PlayerStats stats;
+    protected PlayerController controller;
 
     protected InputAction moveAction;
     protected InputAction walkAction;
+    protected InputAction dashAction;
 
     private void Start()
     {
-
         movement = GetComponentInParent<PlayerMovement>();
         inputs = GetComponentInParent<PlayerInput>();
         stats = GetComponentInParent<PlayerStats>();
+        controller = GetComponentInParent<PlayerController>();
 
         moveAction = inputs.actions["move"];
         walkAction = inputs.actions["walk"];
+        dashAction = inputs.actions["Dash"];
     }
     public void SetStateMachine(StateMachine machine)
     {
