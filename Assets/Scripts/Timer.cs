@@ -18,6 +18,11 @@ public class Timer : MonoBehaviour
         
     }
 
+    public void Reset()
+    {
+        current = max;
+    }
+
     public Timer(float _max)
     {
         max = _max;

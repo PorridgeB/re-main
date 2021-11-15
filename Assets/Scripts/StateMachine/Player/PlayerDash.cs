@@ -8,7 +8,6 @@ public class PlayerDash : State
     [SerializeField]
     private float dashSpeed;
     [SerializeField]
-    private float duration;
     private Timer durationTimer;
     private float dashSoundRange;
     private Vector2 dashDirection;
@@ -16,7 +15,6 @@ public class PlayerDash : State
     public override void Enter(List<string> message)
     {
         dashDirection = movement.GetVelocity().normalized;
-        durationTimer = new Timer(duration);
     }
 
     public override void PhysicsProcess()

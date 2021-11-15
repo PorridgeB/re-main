@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &165438737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165438738}
+  - component: {fileID: 165438739}
+  m_Layer: 0
+  m_Name: ShootCooldown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &165438738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165438737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 868174091}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &165438739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165438737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799eec147baa8844da3a56babe4e8bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 2
+  current: 0
 --- !u!1 &182625942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1455,8 @@ Transform:
   - {fileID: 1904533347}
   - {fileID: 468363958}
   - {fileID: 1066563885}
+  - {fileID: 1908330555}
+  - {fileID: 165438738}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4382,7 +4429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Dash
   dashSpeed: 10
-  dashDuration: 0.08
+  durationTimer: {fileID: 1908330556}
 --- !u!114 &1904533354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4395,9 +4442,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4e5a82805d2cd4fb466e91d5d82786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  projectile: {fileID: 0}
-  cooldown: {fileID: 0}
+  name: Shoot
+  projectile: {fileID: 7363838502537981531, guid: 3e8425feeeb46c840833f51ecd07d7dc, type: 3}
+  speed: 0.3
+  cooldownTimer: {fileID: 165438739}
+--- !u!1 &1908330554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908330555}
+  - component: {fileID: 1908330556}
+  m_Layer: 0
+  m_Name: DashTimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1908330555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908330554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 868174091}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1908330556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908330554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799eec147baa8844da3a56babe4e8bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max: 0.8
+  current: 0
 --- !u!1 &1970710373
 GameObject:
   m_ObjectHideFlags: 0

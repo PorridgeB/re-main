@@ -7,12 +7,19 @@ public class PlayerShoot : State
     [SerializeField]
     private GameObject projectile;
     [SerializeField]
-    private Timer cooldown;
+    private float speed;
+    [SerializeField]
+    private Timer cooldownTimer;
 
-    public override void PhysicsProcess()
+    public override void Process()
     {
-
-        Projectile p = Instantiate(projectile).GetComponent<Projectile>();
+        if (cooldownTimer.Finished)
+        {
+            Projectile p = Instantiate(projectile).GetComponent<Projectile>();
+            p.Shoot(transform.position, controller.GetFacing(), speed);
+            cooldownTimer.Reset();
+        }
+        
         stateMachine.ChangeTo("Idle", null);
     }
 }
