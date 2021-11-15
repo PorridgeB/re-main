@@ -16,6 +16,9 @@ public class State : MonoBehaviour
     protected InputAction moveAction;
     protected InputAction walkAction;
     protected InputAction dashAction;
+    protected InputAction rangedAction;
+    protected InputAction meleeAction;
+
 
     private void Start()
     {
@@ -27,6 +30,8 @@ public class State : MonoBehaviour
         moveAction = inputs.actions["move"];
         walkAction = inputs.actions["walk"];
         dashAction = inputs.actions["Dash"];
+        rangedAction = inputs.actions["RangedAttack"];
+        meleeAction = inputs.actions["MeleeAttack"];
     }
     public void SetStateMachine(StateMachine machine)
     {

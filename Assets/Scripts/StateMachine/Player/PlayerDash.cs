@@ -8,21 +8,20 @@ public class PlayerDash : State
     [SerializeField]
     private float dashSpeed;
     [SerializeField]
-    private float dashDuration;
-    private float dashTimer;
+    private float duration;
+    private Timer durationTimer;
     private float dashSoundRange;
     private Vector2 dashDirection;
 
     public override void Enter(List<string> message)
     {
         dashDirection = movement.GetVelocity().normalized;
-        dashTimer = dashDuration;
+        durationTimer = new Timer(duration);
     }
 
     public override void PhysicsProcess()
     {
-        dashTimer -= Time.fixedDeltaTime;
-        if (dashTimer < 0)
+        if (durationTimer.Finished)
         {
             stateMachine.ChangeTo("Idle", null);
         }
