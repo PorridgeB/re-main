@@ -12,6 +12,11 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Vector2 velocity;
 
+    public Vector2 GetVelocity()
+    {
+        return velocity;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +37,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetVelocity(Vector2 vector)
     {
-        velocity = vector;    }
+        velocity = vector;    
+    }
 }

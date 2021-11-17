@@ -23,5 +23,13 @@ public class PlayerRunning : State
         {
             stateMachine.ChangeTo("Sneak", null);
         }
+        if (dashAction.triggered)
+        {
+            stateMachine.ChangeTo("Dash", null);
+        }
+        if (rangedAction.triggered)
+        {
+            stateMachine.ChangeTo("Shoot", null);
+        }
     }
 }

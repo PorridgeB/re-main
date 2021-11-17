@@ -49,6 +49,30 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""9da343ab-20e8-4718-8a2a-217afa7638ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RangedAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""975e0ad3-4bf9-4da3-9d5c-49d9a4cf0838"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MeleeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""b7fd527a-652d-4386-90dc-46b8766e6d59"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -150,6 +174,39 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""Overlay"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b64ddf8b-43bd-4dca-b040-79f966100f51"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9cecdaac-4ecc-4040-a465-e4eb2ee6c3f1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangedAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da456867-81e8-4b49-aef5-2ab49b965be5"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -162,6 +219,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_CharacterControl_Walk = m_CharacterControl.FindAction("Walk", throwIfNotFound: true);
         m_CharacterControl_Aim = m_CharacterControl.FindAction("Aim", throwIfNotFound: true);
         m_CharacterControl_Overlay = m_CharacterControl.FindAction("Overlay", throwIfNotFound: true);
+        m_CharacterControl_Dash = m_CharacterControl.FindAction("Dash", throwIfNotFound: true);
+        m_CharacterControl_RangedAttack = m_CharacterControl.FindAction("RangedAttack", throwIfNotFound: true);
+        m_CharacterControl_MeleeAttack = m_CharacterControl.FindAction("MeleeAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -215,6 +275,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Walk;
     private readonly InputAction m_CharacterControl_Aim;
     private readonly InputAction m_CharacterControl_Overlay;
+    private readonly InputAction m_CharacterControl_Dash;
+    private readonly InputAction m_CharacterControl_RangedAttack;
+    private readonly InputAction m_CharacterControl_MeleeAttack;
     public struct CharacterControlActions
     {
         private @PlayerControlls m_Wrapper;
@@ -223,6 +286,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Walk => m_Wrapper.m_CharacterControl_Walk;
         public InputAction @Aim => m_Wrapper.m_CharacterControl_Aim;
         public InputAction @Overlay => m_Wrapper.m_CharacterControl_Overlay;
+        public InputAction @Dash => m_Wrapper.m_CharacterControl_Dash;
+        public InputAction @RangedAttack => m_Wrapper.m_CharacterControl_RangedAttack;
+        public InputAction @MeleeAttack => m_Wrapper.m_CharacterControl_MeleeAttack;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -244,6 +310,15 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Overlay.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnOverlay;
                 @Overlay.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnOverlay;
                 @Overlay.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnOverlay;
+                @Dash.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDash;
+                @RangedAttack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedAttack;
+                @RangedAttack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedAttack;
+                @RangedAttack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedAttack;
+                @MeleeAttack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
+                @MeleeAttack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
+                @MeleeAttack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -260,6 +335,15 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Overlay.started += instance.OnOverlay;
                 @Overlay.performed += instance.OnOverlay;
                 @Overlay.canceled += instance.OnOverlay;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @RangedAttack.started += instance.OnRangedAttack;
+                @RangedAttack.performed += instance.OnRangedAttack;
+                @RangedAttack.canceled += instance.OnRangedAttack;
+                @MeleeAttack.started += instance.OnMeleeAttack;
+                @MeleeAttack.performed += instance.OnMeleeAttack;
+                @MeleeAttack.canceled += instance.OnMeleeAttack;
             }
         }
     }
@@ -270,5 +354,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnOverlay(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnRangedAttack(InputAction.CallbackContext context);
+        void OnMeleeAttack(InputAction.CallbackContext context);
     }
 }
