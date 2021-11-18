@@ -26,7 +26,7 @@ public class SceneController : MonoBehaviour
     public delegate void SceneChange(Scene current);
     public static event SceneChange SceneUpdate;
 
-    private static bool spawned = false;
+    public static SceneController instance;
 
     public static Scene currentScene;
     public static ScenePhase phase;
@@ -46,11 +46,10 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        if (!spawned)
+        if (instance == null)
         {
-            spawned = true;
             DontDestroyOnLoad(gameObject);
-
+            instance = this;
         }
         else
         {
@@ -132,7 +131,7 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadScene(int scene, float delay)
+    public IEnumerator LoadScene(string scene, float delay)
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(scene);
@@ -141,6 +140,12 @@ public class SceneController : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ChangeScene(string name)
+    {
+        ChangeScenePhase(ScenePhase.Close);
+        StartCoroutine(LoadScene(name, 0));
     }
 
     public static void ChangeScenePhase(ScenePhase scenePhase)
