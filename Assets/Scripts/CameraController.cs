@@ -72,7 +72,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         xSpeed = ySpeed = speed.x;
-        Screen.SetResolution(45, 56, true);
+        //Screen.SetResolution(456, 256, true);
     }
 
     // Update is called once per frame

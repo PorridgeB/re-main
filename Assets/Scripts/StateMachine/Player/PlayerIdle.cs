@@ -23,11 +23,14 @@ public class PlayerIdle : State
             {
                 stateMachine.ChangeTo("Running", null);
             }
-            if (rangedAction.triggered)
-            {
-                stateMachine.ChangeTo("Shoot", null);
-            }
-            
+        }
+        if (meleeAction.triggered)
+        {
+            stateMachine.ChangeTo("Melee", null);
+        }
+        if (rangedAction.triggered)
+        {
+            stateMachine.ChangeTo("Shoot", null);
         }
     }
 }

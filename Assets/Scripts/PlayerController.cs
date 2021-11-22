@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public delegate void Player();
     public static event Player Died;
     public static event Player PowerDepleted;
@@ -33,6 +35,16 @@ public class PlayerController : MonoBehaviour
         health = GetComponentInChildren<Resource>();
         crosshair = GetComponentInChildren<Crosshair>();
         anim = GetComponent<Animator>();
+
+        if (instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+        }
     }
 
     // Update is called once per frame

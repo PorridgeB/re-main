@@ -27,6 +27,10 @@ public class PlayerRunning : State
         {
             stateMachine.ChangeTo("Dash", null);
         }
+        if (meleeAction.triggered)
+        {
+            stateMachine.ChangeTo("Melee", null);
+        }
         if (rangedAction.triggered)
         {
             stateMachine.ChangeTo("Shoot", null);
