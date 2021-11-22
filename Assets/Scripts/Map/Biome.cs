@@ -9,7 +9,7 @@ public class Biome
         new Biome{ Name = "Wreakage" },
         new Biome{ Name = "Gardens" },
         new Biome{ Name = "Stasis" },
-        new Biome{ Name = "Robots" },
+        new Biome{ Name = "First Class" },
     };
 
     public string Name;
