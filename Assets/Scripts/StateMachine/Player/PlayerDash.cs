@@ -14,15 +14,25 @@ public class PlayerDash : State
 
     public override void Enter(List<string> message)
     {
+        Debug.Log("Dashing");
+        durationTimer.Reset();
         dashDirection = movement.GetVelocity().normalized;
     }
 
-    public override void PhysicsProcess()
+    public override void Process()
     {
         if (durationTimer.Finished)
         {
             stateMachine.ChangeTo("Idle", null);
         }
+        if (meleeAction.triggered)
+        {
+            stateMachine.ChangeTo("DashAttack", null);
+        }
+    }
+
+    public override void PhysicsProcess()
+    {
         movement.SetVelocity(dashDirection* dashSpeed);
     }
 }
