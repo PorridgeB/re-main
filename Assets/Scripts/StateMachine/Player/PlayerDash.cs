@@ -3,36 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerDash : State
+public class PlayerDash : StateMachineBehaviour
 {
     [SerializeField]
-    private float dashSpeed;
+    private AnimationCurve speedCurve;
     [SerializeField]
-    private Timer durationTimer;
+    private float dashSpeed;
+    private float dashTimer;
     private float dashSoundRange;
     private Vector2 dashDirection;
 
-    public override void Enter(List<string> message)
-    {
-        Debug.Log("Dashing");
-        durationTimer.Reset();
-        dashDirection = movement.GetVelocity().normalized;
-    }
 
-    public override void Process()
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (durationTimer.Finished)
+        dashTimer = 0;
+        dashDirection = new Vector2(animator.GetFloat("VelX"), animator.GetFloat("VelY"));
+        if (dashDirection == Vector2.zero)
         {
-            stateMachine.ChangeTo("Idle", null);
-        }
-        if (meleeAction.triggered)
-        {
-            stateMachine.ChangeTo("DashAttack", null);
+            dashDirection = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical")).normalized;
         }
     }
 
-    public override void PhysicsProcess()
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        movement.SetVelocity(dashDirection* dashSpeed);
+        dashTimer += Time.deltaTime;
+        PlayerController.instance.Dash(dashDirection * dashSpeed * speedCurve.Evaluate(dashTimer));
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        PlayerController.instance.Stop();
     }
 }

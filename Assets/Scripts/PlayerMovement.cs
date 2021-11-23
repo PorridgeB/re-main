@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 GetVelocity()
     {
+        Debug.Log(velocity);
         return velocity;
     }
 

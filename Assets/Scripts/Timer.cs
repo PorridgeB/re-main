@@ -18,14 +18,19 @@ public class Timer : MonoBehaviour
         
     }
 
+    void Start()
+    {
+        Reset();
+    }
+
     public void Reset()
     {
         current = max;
     }
 
-    public Timer(float _max)
+    public float GetTime()
     {
-        max = _max;
+        return current;
     }
 
     // Update is called once per frame

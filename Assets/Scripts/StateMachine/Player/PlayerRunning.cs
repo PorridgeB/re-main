@@ -3,37 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerRunning : State
+public class PlayerRunning : StateMachineBehaviour
 {
+    [SerializeField]
     private float runSoundRange;
+    [SerializeField]
     private float runSoundPeriod;
 
-    public override void Enter(List<string> message)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
     }
 
-    public override void Process()
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        movement.SetVelocity(moveAction.ReadValue<Vector2>().normalized * stats.ReadAttribute("Run Speed"));
-        if (moveAction.ReadValue<Vector2>() == Vector2.zero)
-        {
-            stateMachine.ChangeTo("Idle", null);
-        }
-        else if (walkAction.triggered)
-        {
-            stateMachine.ChangeTo("Sneak", null);
-        }
-        if (dashAction.triggered)
-        {
-            stateMachine.ChangeTo("Dash", null);
-        }
-        if (meleeAction.triggered)
-        {
-            stateMachine.ChangeTo("Melee", null);
-        }
-        if (rangedAction.triggered)
-        {
-            stateMachine.ChangeTo("Shoot", null);
-        }
+        PlayerController.instance.Run();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        PlayerController.instance.Stop();
     }
 }

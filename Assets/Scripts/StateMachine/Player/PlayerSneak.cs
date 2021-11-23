@@ -3,36 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerSneak : State
+public class PlayerSneak : StateMachineBehaviour
 {
-    
 
-    public override void Enter(List<string> message)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
     }
 
-    public override void Process()
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        movement.SetVelocity(moveAction.ReadValue<Vector2>().normalized * stats.ReadAttribute("Walk Speed"));
-        if (moveAction.ReadValue<Vector2>() == Vector2.zero)
-        {
-            stateMachine.ChangeTo("Idle", null);
-        }
-        if (walkAction.phase == InputActionPhase.Waiting)
-        {
-            stateMachine.ChangeTo("Running", null);
-        }
-        if (dashAction.triggered)
-        {
-            stateMachine.ChangeTo("Dash", null);
-        }
-        if (meleeAction.triggered)
-        {
-            stateMachine.ChangeTo("Melee", null);
-        }
-        if (rangedAction.triggered)
-        {
-            stateMachine.ChangeTo("Shoot", null);
-        }
+        PlayerController.instance.Sneak();
+    }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        PlayerController.instance.Stop();
     }
 }

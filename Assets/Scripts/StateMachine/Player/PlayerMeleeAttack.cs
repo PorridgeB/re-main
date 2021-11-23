@@ -2,41 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMeleeAttack : State
+public class PlayerMeleeAttack : StateMachineBehaviour
 {
     [SerializeField]
     private GameObject attackField;
     [SerializeField]
-    private Timer durationTimer;
-
+    private float dashSpeed;
+    [SerializeField]
+    private AnimationCurve speedCurve;
+    private float dashTimer;
+    private Vector2 direction;
     private GameObject attackFieldInstance;
 
-    public override void Enter(List<string> message)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        durationTimer.Reset();
+        dashTimer = 0;
+        direction = PlayerController.instance.GetFacing();
         attackFieldInstance = Instantiate(attackField);
-        attackFieldInstance.transform.position = new Vector3(transform.position.x + (controller.GetFacing().x*5), transform.position.y + (controller.GetFacing().y*5), 0);
-        attackFieldInstance.transform.LookAt(transform);
+        attackFieldInstance.transform.SetParent(PlayerController.instance.transform);
+        attackFieldInstance.transform.position = new Vector3(direction.x*5, direction.y*5, 0);
+        attackFieldInstance.transform.LookAt(animator.transform);
+        Debug.Log(attackFieldInstance.transform.position);
     }
 
 
-    public override void Process()
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        attackFieldInstance.transform.position = new Vector3(transform.position.x + (controller.GetFacing().x * 5), transform.position.y + (controller.GetFacing().y * 5), 0);
-
-        if (durationTimer.Finished)
-        {
-            stateMachine.ChangeTo("Idle", null);
-        }
-        if (dashAction.triggered)
-        {
-            stateMachine.ChangeTo("DashAttack", null);
-        }
+        dashTimer += Time.deltaTime;
+        PlayerController.instance.Dash(direction * dashSpeed * speedCurve.Evaluate(dashTimer));
     }
 
-    public override void Exit()
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Destroy(attackFieldInstance);
         attackFieldInstance = null;
+        PlayerController.instance.Stop();
     }
 }
