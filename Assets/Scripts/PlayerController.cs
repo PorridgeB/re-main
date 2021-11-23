@@ -33,13 +33,13 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement movement;
     private PlayerStats stats;
 
-    public InputAction moveAction;
-    public InputAction walkAction;
-    public InputAction dashAction;
-    public InputAction rangedAction;
-    public InputAction meleeAction;
-
-
+    private InputAction moveAction;
+    private InputAction walkAction;
+    private InputAction dashAction;
+    private InputAction rangedAction;
+    private InputAction meleeAction;
+    private InputAction interactAction;
+    private InputAction overlayAction;
 
     public Vector2 GetFacing()
     {
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
 
@@ -57,22 +57,6 @@ public class PlayerController : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             instance = this;
-
-            health = GetComponentInChildren<Resource>();
-            crosshair = GetComponentInChildren<Crosshair>();
-            anim = GetComponent<Animator>();
-
-            inputs = GetComponent<PlayerInput>();
-            movement = GetComponent<PlayerMovement>();
-            stats = GetComponent<PlayerStats>();
-
-
-            moveAction = inputs.actions["move"];
-            walkAction = inputs.actions["walk"];
-            dashAction = inputs.actions["Dash"];
-            rangedAction = inputs.actions["RangedAttack"];
-            meleeAction = inputs.actions["MeleeAttack"];
-
         }
         else
         {
@@ -80,9 +64,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        health = GetComponentInChildren<Resource>();
+        crosshair = GetComponentInChildren<Crosshair>();
+        anim = GetComponent<Animator>();
+
+        inputs = GetComponent<PlayerInput>();
+        movement = GetComponent<PlayerMovement>();
+        stats = GetComponent<PlayerStats>();
+
+
+        moveAction = inputs.actions["move"];
+        walkAction = inputs.actions["walk"];
+        dashAction = inputs.actions["Dash"];
+        rangedAction = inputs.actions["RangedAttack"];
+        meleeAction = inputs.actions["MeleeAttack"];
+        interactAction = inputs.actions["Interact"];
+        overlayAction = inputs.actions["Overlay"];
+
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+        if (interactAction.phase == InputActionPhase.Started)
+        {
+            inputs.SwitchCurrentActionMap("DialogueControl");
+        }
+        if (overlayAction.triggered)
+        {
+            inputs.SwitchCurrentActionMap("OverlayControl");
+        }
         facing = (crosshair.transform.position - transform.position).normalized;
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {

@@ -73,6 +73,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2d3f063-ce3c-4189-bfa7-0e9d97889d3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -273,6 +281,177 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""MeleeAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14abaeb0-9d91-4488-b80d-a6979f0022a5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3c15838-d667-44e9-916b-4e1c3f7d6f40"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""DialogueControl"",
+            ""id"": ""d5344e22-e5b5-4592-88a5-98c2d9c7312b"",
+            ""actions"": [
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""4613fbdd-4113-4d30-a667-4deeb9825feb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1038a93-fae7-4d85-9faa-ea27693c6823"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChoiceA"",
+                    ""type"": ""Button"",
+                    ""id"": ""8216d786-73e0-4017-bdbd-7de15d33c044"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChoiceB"",
+                    ""type"": ""Button"",
+                    ""id"": ""c266c97b-4b7e-436c-8afd-d8b64f174995"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChoiceC"",
+                    ""type"": ""Button"",
+                    ""id"": ""7562e5f4-223f-4efc-95c5-d7eb1e0f1524"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChoiceD"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4a9ef79-cd96-430b-b5b3-471af067effb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""602b7717-0f25-4126-8d37-c64fa92c95cf"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bd9cdd4-e033-4ce3-9381-7f65eae74e7a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f31f4a5-2ac0-4dff-9749-d3def9276995"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""772378c3-5d06-4b71-b25b-01fa2c8702a8"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0080599e-c08e-4b61-9a82-c3ec9b8e3b8d"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2827260b-2d2b-4de6-8bbf-5a2360aec172"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""OverlayControl"",
+            ""id"": ""a34c2ef1-74fd-42ac-9dd0-85fe8ff5ad5d"",
+            ""actions"": [
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""6153356f-3752-4ce1-829a-aaaccefac05c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""72cc7df0-3bfd-4e48-8905-7026fb0b029e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -288,6 +467,18 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_CharacterControl_Dash = m_CharacterControl.FindAction("Dash", throwIfNotFound: true);
         m_CharacterControl_RangedAttack = m_CharacterControl.FindAction("RangedAttack", throwIfNotFound: true);
         m_CharacterControl_MeleeAttack = m_CharacterControl.FindAction("MeleeAttack", throwIfNotFound: true);
+        m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
+        // DialogueControl
+        m_DialogueControl = asset.FindActionMap("DialogueControl", throwIfNotFound: true);
+        m_DialogueControl_Continue = m_DialogueControl.FindAction("Continue", throwIfNotFound: true);
+        m_DialogueControl_Back = m_DialogueControl.FindAction("Back", throwIfNotFound: true);
+        m_DialogueControl_ChoiceA = m_DialogueControl.FindAction("ChoiceA", throwIfNotFound: true);
+        m_DialogueControl_ChoiceB = m_DialogueControl.FindAction("ChoiceB", throwIfNotFound: true);
+        m_DialogueControl_ChoiceC = m_DialogueControl.FindAction("ChoiceC", throwIfNotFound: true);
+        m_DialogueControl_ChoiceD = m_DialogueControl.FindAction("ChoiceD", throwIfNotFound: true);
+        // OverlayControl
+        m_OverlayControl = asset.FindActionMap("OverlayControl", throwIfNotFound: true);
+        m_OverlayControl_Return = m_OverlayControl.FindAction("Return", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -344,6 +535,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Dash;
     private readonly InputAction m_CharacterControl_RangedAttack;
     private readonly InputAction m_CharacterControl_MeleeAttack;
+    private readonly InputAction m_CharacterControl_Interact;
     public struct CharacterControlActions
     {
         private @PlayerControlls m_Wrapper;
@@ -355,6 +547,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Dash => m_Wrapper.m_CharacterControl_Dash;
         public InputAction @RangedAttack => m_Wrapper.m_CharacterControl_RangedAttack;
         public InputAction @MeleeAttack => m_Wrapper.m_CharacterControl_MeleeAttack;
+        public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -385,6 +578,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @MeleeAttack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
                 @MeleeAttack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
                 @MeleeAttack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
+                @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -410,10 +606,119 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @MeleeAttack.started += instance.OnMeleeAttack;
                 @MeleeAttack.performed += instance.OnMeleeAttack;
                 @MeleeAttack.canceled += instance.OnMeleeAttack;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
     public CharacterControlActions @CharacterControl => new CharacterControlActions(this);
+
+    // DialogueControl
+    private readonly InputActionMap m_DialogueControl;
+    private IDialogueControlActions m_DialogueControlActionsCallbackInterface;
+    private readonly InputAction m_DialogueControl_Continue;
+    private readonly InputAction m_DialogueControl_Back;
+    private readonly InputAction m_DialogueControl_ChoiceA;
+    private readonly InputAction m_DialogueControl_ChoiceB;
+    private readonly InputAction m_DialogueControl_ChoiceC;
+    private readonly InputAction m_DialogueControl_ChoiceD;
+    public struct DialogueControlActions
+    {
+        private @PlayerControlls m_Wrapper;
+        public DialogueControlActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Continue => m_Wrapper.m_DialogueControl_Continue;
+        public InputAction @Back => m_Wrapper.m_DialogueControl_Back;
+        public InputAction @ChoiceA => m_Wrapper.m_DialogueControl_ChoiceA;
+        public InputAction @ChoiceB => m_Wrapper.m_DialogueControl_ChoiceB;
+        public InputAction @ChoiceC => m_Wrapper.m_DialogueControl_ChoiceC;
+        public InputAction @ChoiceD => m_Wrapper.m_DialogueControl_ChoiceD;
+        public InputActionMap Get() { return m_Wrapper.m_DialogueControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueControlActions set) { return set.Get(); }
+        public void SetCallbacks(IDialogueControlActions instance)
+        {
+            if (m_Wrapper.m_DialogueControlActionsCallbackInterface != null)
+            {
+                @Continue.started -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnContinue;
+                @Back.started -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnBack;
+                @ChoiceA.started -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceA;
+                @ChoiceA.performed -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceA;
+                @ChoiceA.canceled -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceA;
+                @ChoiceB.started -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceB;
+                @ChoiceB.performed -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceB;
+                @ChoiceB.canceled -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceB;
+                @ChoiceC.started -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceC;
+                @ChoiceC.performed -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceC;
+                @ChoiceC.canceled -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceC;
+                @ChoiceD.started -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceD;
+                @ChoiceD.performed -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceD;
+                @ChoiceD.canceled -= m_Wrapper.m_DialogueControlActionsCallbackInterface.OnChoiceD;
+            }
+            m_Wrapper.m_DialogueControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @ChoiceA.started += instance.OnChoiceA;
+                @ChoiceA.performed += instance.OnChoiceA;
+                @ChoiceA.canceled += instance.OnChoiceA;
+                @ChoiceB.started += instance.OnChoiceB;
+                @ChoiceB.performed += instance.OnChoiceB;
+                @ChoiceB.canceled += instance.OnChoiceB;
+                @ChoiceC.started += instance.OnChoiceC;
+                @ChoiceC.performed += instance.OnChoiceC;
+                @ChoiceC.canceled += instance.OnChoiceC;
+                @ChoiceD.started += instance.OnChoiceD;
+                @ChoiceD.performed += instance.OnChoiceD;
+                @ChoiceD.canceled += instance.OnChoiceD;
+            }
+        }
+    }
+    public DialogueControlActions @DialogueControl => new DialogueControlActions(this);
+
+    // OverlayControl
+    private readonly InputActionMap m_OverlayControl;
+    private IOverlayControlActions m_OverlayControlActionsCallbackInterface;
+    private readonly InputAction m_OverlayControl_Return;
+    public struct OverlayControlActions
+    {
+        private @PlayerControlls m_Wrapper;
+        public OverlayControlActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Return => m_Wrapper.m_OverlayControl_Return;
+        public InputActionMap Get() { return m_Wrapper.m_OverlayControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OverlayControlActions set) { return set.Get(); }
+        public void SetCallbacks(IOverlayControlActions instance)
+        {
+            if (m_Wrapper.m_OverlayControlActionsCallbackInterface != null)
+            {
+                @Return.started -= m_Wrapper.m_OverlayControlActionsCallbackInterface.OnReturn;
+                @Return.performed -= m_Wrapper.m_OverlayControlActionsCallbackInterface.OnReturn;
+                @Return.canceled -= m_Wrapper.m_OverlayControlActionsCallbackInterface.OnReturn;
+            }
+            m_Wrapper.m_OverlayControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Return.started += instance.OnReturn;
+                @Return.performed += instance.OnReturn;
+                @Return.canceled += instance.OnReturn;
+            }
+        }
+    }
+    public OverlayControlActions @OverlayControl => new OverlayControlActions(this);
     public interface ICharacterControlActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -423,5 +728,19 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnRangedAttack(InputAction.CallbackContext context);
         void OnMeleeAttack(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IDialogueControlActions
+    {
+        void OnContinue(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnChoiceA(InputAction.CallbackContext context);
+        void OnChoiceB(InputAction.CallbackContext context);
+        void OnChoiceC(InputAction.CallbackContext context);
+        void OnChoiceD(InputAction.CallbackContext context);
+    }
+    public interface IOverlayControlActions
+    {
+        void OnReturn(InputAction.CallbackContext context);
     }
 }

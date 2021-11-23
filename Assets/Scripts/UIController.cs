@@ -16,24 +16,30 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private ScrollMenu statsMenu;
     [SerializeField]
-    private PlayerInput input;
-    private InputAction overlayAction;
+    private PlayerInput inputs;
+    private InputAction returnAction;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        overlayAction = input.actions["Overlay"];
+        inputs = PlayerController.instance.GetComponent<PlayerInput>();
+        returnAction = inputs.actions["Return"];
+
         GenerateLists();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (overlayAction.triggered)
+        statMenu.SetActive(inputs.currentActionMap.name == "OverlayControl");
+        if (statMenu.activeInHierarchy)
         {
-            statMenu.SetActive(!statMenu.activeInHierarchy);
             GenerateLists();
+        }
+        if (returnAction.triggered)
+        {
+            inputs.SwitchCurrentActionMap("CharacterControl");
         }
     }
 

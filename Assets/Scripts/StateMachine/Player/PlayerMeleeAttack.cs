@@ -22,7 +22,6 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         attackFieldInstance.transform.SetParent(PlayerController.instance.transform);
         attackFieldInstance.transform.position = new Vector3(direction.x*5, direction.y*5, 0);
         attackFieldInstance.transform.LookAt(animator.transform);
-        Debug.Log(attackFieldInstance.transform.position);
     }
 
 
