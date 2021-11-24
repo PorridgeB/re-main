@@ -48,6 +48,7 @@ public class DialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(inputs.currentActionMap.name);
         dialogueUI.SetActive(inputs.currentActionMap.name == "DialogueControl");
         response.text = "";
         dialogue.text = story.currentText;

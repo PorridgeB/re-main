@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (interactAction.triggered)
         {
-            selectedInteraction.Interact();
+            selectedInteraction?.Interact();
         }
         if (overlayAction.triggered)
         {

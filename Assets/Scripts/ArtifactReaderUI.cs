@@ -38,21 +38,25 @@ public class ArtifactReaderUI : MonoBehaviour
         artifactUI.SetActive(inputs.currentActionMap.name == "ArtifactControl");
         title.text = story.state.currentPathString;
         content.text = text;
-        if (continueAction.triggered)
+        if (inputs.currentActionMap.name == "ArtifactControl")
         {
-            if (story.canContinue)
+            if (continueAction.triggered)
             {
-                story.Continue();
-            }
-            else
-            {
-                inputs.SwitchCurrentActionMap("CharacterControl");
-            }
-            if (backAction.triggered)
-            {
-                inputs.SwitchCurrentActionMap("CharacterControl");
+                if (story.canContinue)
+                {
+                    story.Continue();
+                }
+                else
+                {
+                    inputs.SwitchCurrentActionMap("CharacterControl");
+                }
+                if (backAction.triggered)
+                {
+                    inputs.SwitchCurrentActionMap("CharacterControl");
+                }
             }
         }
+        
         
     }
     public void LoadNewInk(TextAsset newFile)
