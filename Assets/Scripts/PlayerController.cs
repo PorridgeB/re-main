@@ -20,14 +20,17 @@ public class PlayerController : MonoBehaviour
     private Resource health;
     private ModuleInventory inventory;
     private Crosshair crosshair;
-    //private Sword sword;
-    //private Trail trail;
+
     [SerializeField]
     private Timer dashCooldown;
     [SerializeField]
     private Timer rangedCooldown;
     [SerializeField]
     private Timer meleeCooldown;
+
+    [SerializeField]
+    private List<Interaction> interactions;
+    private Interaction selectedInteraction;
 
     private PlayerInput inputs;
     private PlayerMovement movement;
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
         health = GetComponentInChildren<Resource>();
         crosshair = GetComponentInChildren<Crosshair>();
         anim = GetComponent<Animator>();
+        inventory = GetComponent<ModuleInventory>();
 
         inputs = GetComponent<PlayerInput>();
         movement = GetComponent<PlayerMovement>();
@@ -89,9 +93,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (interactAction.phase == InputActionPhase.Started)
+        if (interactAction.triggered)
         {
-            inputs.SwitchCurrentActionMap("DialogueControl");
+            selectedInteraction.Interact();
         }
         if (overlayAction.triggered)
         {
@@ -133,7 +137,31 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-            
+        if (interactions.Count == 1)
+        {
+            selectedInteraction = interactions[0];
+        }
+        else
+        {
+            foreach (Interaction i in interactions)
+            {
+                i.ChangeVisibility(false);
+                if (selectedInteraction == null)
+                {
+                    selectedInteraction = i;
+                }
+                else if (Vector2.Distance(transform.position, i.transform.position) < Vector2.Distance(transform.position, selectedInteraction.transform.position))
+                {
+                    selectedInteraction = i;
+                }
+            }
+        }
+        
+        if (selectedInteraction != null)
+        {
+            selectedInteraction.ChangeVisibility(true);
+        }
+        
     }
 
     public void Run()
@@ -159,5 +187,43 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetVelocity()
     {
         return movement.GetVelocity();
+    }
+
+    public void AddModule(Module module)
+    {
+        inventory.AddModule(module);
+    }
+
+    public void StartDialogue()
+    {
+        inputs.SwitchCurrentActionMap("DialogueControl");
+    }
+
+    public void OpenArtifact()
+    {
+        inputs.SwitchCurrentActionMap("ArtifactControl");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            interactions.Add(collision.GetComponent<Interaction>());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            Interaction i = collision.GetComponent<Interaction>();
+            i.ChangeVisibility(false);
+            
+            interactions.Remove(collision.GetComponent<Interaction>());
+            if (selectedInteraction == i)
+            {
+                selectedInteraction = null;
+            }
+        }
     }
 }

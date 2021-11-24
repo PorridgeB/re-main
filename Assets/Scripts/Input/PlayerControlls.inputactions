@@ -441,6 +441,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ArtifactControl",
+            "id": "e262cf76-9971-4506-84aa-34797e11af16",
+            "actions": [
+                {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "c8f59fab-6795-4469-bb94-469ac12c0814",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "1abfa750-2e8f-46a1-866c-b02bbbacaf5b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c9dc8403-4373-4678-9993-e465e462d58e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca581f40-ed90-4863-a904-6978392e0d49",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

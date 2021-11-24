@@ -13,15 +13,17 @@ public class ModuleItem : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = module.sprite;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.GetComponent<ModuleInventory>().AddModule(module);
         Destroy(gameObject);
+    }
+
+    public Module Module
+    {
+        get
+        {
+            return module;
+        }
     }
 }

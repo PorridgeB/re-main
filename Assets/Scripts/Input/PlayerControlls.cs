@@ -454,6 +454,52 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ArtifactControl"",
+            ""id"": ""e262cf76-9971-4506-84aa-34797e11af16"",
+            ""actions"": [
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""c8f59fab-6795-4469-bb94-469ac12c0814"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""1abfa750-2e8f-46a1-866c-b02bbbacaf5b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c9dc8403-4373-4678-9993-e465e462d58e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca581f40-ed90-4863-a904-6978392e0d49"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -479,6 +525,10 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         // OverlayControl
         m_OverlayControl = asset.FindActionMap("OverlayControl", throwIfNotFound: true);
         m_OverlayControl_Return = m_OverlayControl.FindAction("Return", throwIfNotFound: true);
+        // ArtifactControl
+        m_ArtifactControl = asset.FindActionMap("ArtifactControl", throwIfNotFound: true);
+        m_ArtifactControl_Continue = m_ArtifactControl.FindAction("Continue", throwIfNotFound: true);
+        m_ArtifactControl_Back = m_ArtifactControl.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -719,6 +769,47 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         }
     }
     public OverlayControlActions @OverlayControl => new OverlayControlActions(this);
+
+    // ArtifactControl
+    private readonly InputActionMap m_ArtifactControl;
+    private IArtifactControlActions m_ArtifactControlActionsCallbackInterface;
+    private readonly InputAction m_ArtifactControl_Continue;
+    private readonly InputAction m_ArtifactControl_Back;
+    public struct ArtifactControlActions
+    {
+        private @PlayerControlls m_Wrapper;
+        public ArtifactControlActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Continue => m_Wrapper.m_ArtifactControl_Continue;
+        public InputAction @Back => m_Wrapper.m_ArtifactControl_Back;
+        public InputActionMap Get() { return m_Wrapper.m_ArtifactControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ArtifactControlActions set) { return set.Get(); }
+        public void SetCallbacks(IArtifactControlActions instance)
+        {
+            if (m_Wrapper.m_ArtifactControlActionsCallbackInterface != null)
+            {
+                @Continue.started -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnContinue;
+                @Back.started -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnBack;
+            }
+            m_Wrapper.m_ArtifactControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+            }
+        }
+    }
+    public ArtifactControlActions @ArtifactControl => new ArtifactControlActions(this);
     public interface ICharacterControlActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -742,5 +833,10 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     public interface IOverlayControlActions
     {
         void OnReturn(InputAction.CallbackContext context);
+    }
+    public interface IArtifactControlActions
+    {
+        void OnContinue(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
     }
 }
