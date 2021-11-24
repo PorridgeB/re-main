@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3298188469097433946}
   - component: {fileID: 3298188469097433945}
   - component: {fileID: 1857083164213958222}
+  - component: {fileID: 8931407540934725286}
   m_Layer: 0
   m_Name: AttackField
-  m_TagString: Untagged
+  m_TagString: DamageSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3298188469097433944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.613873, y: -4.2935166, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8931407540934725286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298188469097433944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86c5526b00b1b243b8885eacb9c9451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
