@@ -1,6 +1,7 @@
--->Diary
+-> Main
 
-== Diary ==
+== Main == 
+#archives
 Day 1 
 Found a new notebook. Will try to keep diary entries consistent. I have no idea what the actual date is so I’m just going to keep count from now on. 
 I found a security station today, managed to break in pretty easily. Its food stores should last me a good while. Will probably stay here. There are some monitors around that I’m pretty sure used to show the security’s cameras’ feed. Haven’t had time to figure those out yet. 

@@ -36,12 +36,13 @@ public class ArtifactReaderUI : MonoBehaviour
     void Update()
     {
         artifactUI.SetActive(inputs.currentActionMap.name == "ArtifactControl");
-        title.text = story.state.currentPathString;
+        title.text = story.TagsForContentAtPath("Main")[0];
         content.text = text;
         if (inputs.currentActionMap.name == "ArtifactControl")
         {
             if (continueAction.triggered)
             {
+                Debug.Log("action triggered");
                 if (story.canContinue)
                 {
                     story.Continue();
