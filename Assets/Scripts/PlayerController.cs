@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public struct DamageInstance
+{
+    public float value;
+    public bool crit;
+    public DamageType type;
+}
+
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
@@ -202,6 +209,46 @@ public class PlayerController : MonoBehaviour
     public void OpenArtifact()
     {
         inputs.SwitchCurrentActionMap("ArtifactControl");
+    }
+
+    public bool CheckCrit()
+    {
+        if (Random.value < PlayerController.instance.GetComponent<PlayerStats>().ReadAttribute("Crit Chance"))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public DamageInstance GetRangedDamage()
+    {
+        DamageInstance d = new DamageInstance();
+        d.value = stats.ReadAttribute("Ranged Attack Damage");
+        d.crit = CheckCrit();
+        if (d.crit)
+        {
+            d.value = GetCrit(d.value);
+        }
+        d.type = DamageType.Physical;
+        return d;
+    }
+
+    public DamageInstance GetMeleeDamage()
+    {
+        DamageInstance d = new DamageInstance();
+        d.value = stats.ReadAttribute("Melee Attack Damage");
+        d.crit = CheckCrit();
+        if (d.crit)
+        {
+            d.value = GetCrit(d.value);
+        }
+        d.type = DamageType.Physical;
+        return d;
+    }
+
+    public float GetCrit(float value)
+    {
+        return value * stats.ReadAttribute("Crit Damage");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

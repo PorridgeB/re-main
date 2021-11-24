@@ -25,10 +25,10 @@ public class TargetDummy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageSource"))
         {
-            int damage = collision.gameObject.GetComponent<DamageSource>().Value;
-            damageTotal += damage;
+            DamageInstance source = collision.gameObject.GetComponent<DamageSource>().Damage;
+            damageTotal += source.value;
             GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
-            g.GetComponent<DamageToken>().SetValue(damage);
+            g.GetComponent<DamageToken>().SetValue(source);
             Destroy(collision.gameObject.GetComponent<Projectile>()?.gameObject);
         }
     }

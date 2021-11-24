@@ -29,7 +29,7 @@ public class PlayerStats : MonoBehaviour
         baseStats.Add(new List<float>() { 1, 0, 0, 3 });        //ranged speed
         baseStats.Add(new List<float>() { 2, 0, 1, 20 });       //run speed
         baseStats.Add(new List<float>() { 1, 0, 0.5f, 20 });    //walk speed
-        baseStats.Add(new List<float>() { 0.05f, 2, 0, -1 });   //crit chance
+        baseStats.Add(new List<float>() { 0.5f, 2, 0, -1 });   //crit chance
         baseStats.Add(new List<float>() { 1.5f, 2, 1, -1 });    //crit damage
         baseStats.Add(new List<float>() { 140, 1, 0, -1 });     //health
         baseStats.Add(new List<float>() { 2, 0, 0, -1 });       //health regen

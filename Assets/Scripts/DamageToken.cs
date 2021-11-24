@@ -5,16 +5,19 @@ using TMPro;
 
 public class DamageToken : MonoBehaviour
 {
-    private int value;
+    [SerializeField]
+    private List<Color> colors;
+
+    private DamageInstance damage;
     private Vector3 dir;
     [SerializeField]
     private TMP_Text text;
 
-    public int Value
+    public DamageInstance Damage
     {
         get
         {
-            return value;
+            return damage;
         }
     }
     // Start is called before the first frame update
@@ -32,10 +35,15 @@ public class DamageToken : MonoBehaviour
         dir += new Vector3(0, -0.0001f, 0);
     }
 
-    public void SetValue(int damage)
+    public void SetValue(DamageInstance instance)
     {
-        value = damage;
-        text.text = value.ToString();
+        damage = instance;
+        text.text = damage.value.ToString();
+        if (damage.crit)
+        {
+            text.color = colors[1];
+            text.fontSize += 10;
+        }
     }
 
     public void Finish()

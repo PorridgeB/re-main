@@ -12,7 +12,8 @@ public class PlayerShoot : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Projectile p = Instantiate(projectile).GetComponent<Projectile>();
-        p.GetComponent<DamageSource>().SetValue(PlayerController.instance.GetComponent<PlayerStats>().ReadAttribute("Ranged Attack Damage"));
+        DamageInstance d = PlayerController.instance.GetRangedDamage();
+        p.GetComponent<DamageSource>().SetValue(d);
         p.Shoot(animator.transform.position, PlayerController.instance.GetFacing(), speed);
     }
 }

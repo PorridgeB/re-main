@@ -2,21 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DamageType
+{
+    Physical,
+    Energy,
+    Elemental
+}
+
 public class DamageSource : MonoBehaviour
 {
-    private int value;
+    private DamageInstance damageInstance;
 
-    public int Value
+    public DamageInstance Damage
     {
         get
         {
-            return value;
+            return damageInstance;
         }
     }
 
-    public void SetValue(float damage) 
+    public void SetValue(DamageInstance instance)
     {
-        value = Mathf.RoundToInt(damage);
+        damageInstance = instance;
     }
 
     // Start is called before the first frame update
