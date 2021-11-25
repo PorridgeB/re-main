@@ -131,7 +131,8 @@ public class PlayerController : MonoBehaviour
         {
             if (meleeCooldown.Finished)
             {
-                meleeCooldown.Reset();
+                //Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+                meleeCooldown.Reset(1/stats.ReadAttribute("Melee Attack Speed"));
                 anim.SetTrigger("Melee");
             }
         }
@@ -139,7 +140,8 @@ public class PlayerController : MonoBehaviour
         {
             if (rangedCooldown.Finished)
             {
-                rangedCooldown.Reset();
+                //Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+                rangedCooldown.Reset(1/stats.ReadAttribute("Ranged Attack Speed"));
                 anim.SetTrigger("Ranged");
 
             }

@@ -1948,8 +1948,8 @@ MonoBehaviour:
     description: its a thing
     sprite: {fileID: 21300000, guid: 168b5fe89da961c449fe1064c1b0cf22, type: 3}
     bonuses:
-    - attributeName: Ranged Attack Damage
-      value: 10
+    - attributeName: Melee Attack Speed
+      value: 0.2
       multiplier: 0
 --- !u!212 &522337305
 SpriteRenderer:

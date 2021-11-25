@@ -28,6 +28,12 @@ public class Timer : MonoBehaviour
         current = max;
     }
 
+    public void Reset(float value)
+    {
+        max = value;
+        Reset();
+    }
+
     public float GetTime()
     {
         return current;
