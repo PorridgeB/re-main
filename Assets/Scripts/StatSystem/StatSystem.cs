@@ -35,7 +35,7 @@ public class StatSystem
 
 	public void AddAttribute(string name, List<float> statValues)
 	{
-		attributes[name] = new Attribute(statValues[0], (DisplayType)statValues[1], statValues[0], statValues[0]);
+		attributes[name] = new Attribute(statValues[0], (DisplayType)statValues[1], statValues[2], statValues[3]);
 		attributes[name].name = name;
 	}
 

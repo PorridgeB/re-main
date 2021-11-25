@@ -86,7 +86,6 @@ public class Attribute : BaseAttribute
 
         finalValue += finalBonusValue;
         finalValue *= 1 + finalBonusMultiplier;
-
         return Mathf.Clamp(finalValue, minValue, maxValue);
     }
 
