@@ -24,7 +24,7 @@ public class Interaction : MonoBehaviour
         {
             ModuleItem m = transform.parent.GetComponent<ModuleItem>();
             PlayerController.instance.AddModule(m.Module);
-            Destroy(m.gameObject);
+            //Destroy(m.gameObject);
         }
         else if (transform.parent.CompareTag("Character"))
         {

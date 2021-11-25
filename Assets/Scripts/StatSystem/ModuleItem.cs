@@ -13,12 +13,6 @@ public class ModuleItem : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = module.sprite;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        collision.GetComponent<ModuleInventory>().AddModule(module);
-        Destroy(gameObject);
-    }
-
     public Module Module
     {
         get

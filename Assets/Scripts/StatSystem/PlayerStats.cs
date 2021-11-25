@@ -39,8 +39,8 @@ public class PlayerStats : MonoBehaviour
         baseStats.Add(new List<float>() { 0.1f, 2, 0, 1 });     //resistance element
         playerStats.Add(new List<float>() { 100, 1, 0, Mathf.Infinity });   //power
         playerStats.Add(new List<float>() { 1.5f, 0, 0, Mathf.Infinity });  //power regen
-        playerStats.Add(new List<float>() { 1, 1, 1, Mathf.Infinity });     //dash charges
-        playerStats.Add(new List<float>() { 5, 0, 0, Mathf.Infinity });     //dash recharge rate
+        playerStats.Add(new List<float>() { 2, 1, 1, Mathf.Infinity });     //dash charges
+        playerStats.Add(new List<float>() { 0.5f, 0, 0, Mathf.Infinity });     //dash recharge rate
         Initialize(playerStats, baseStats);
     }
 

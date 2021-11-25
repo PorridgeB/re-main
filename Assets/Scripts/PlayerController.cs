@@ -29,11 +29,15 @@ public class PlayerController : MonoBehaviour
     private Crosshair crosshair;
 
     [SerializeField]
-    private Timer dashCooldown;
+    private List<Dash> dashes;
+    [SerializeField]
+    private GameObject dash;
     [SerializeField]
     private Timer rangedCooldown;
     [SerializeField]
     private Timer meleeCooldown;
+    [SerializeField]
+    private Timer healthRegenTimer;
 
     [SerializeField]
     private List<Interaction> interactions;
@@ -94,6 +98,12 @@ public class PlayerController : MonoBehaviour
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
 
+        for (int i = 0; i < stats.ReadAttribute("Dash Charges"); i++)
+        {
+            GameObject g = Instantiate(dash);
+            g.transform.SetParent(transform);
+            dashes.Add(g.GetComponent<Dash>());
+        }
     }
 
     // Update is called once per frame
@@ -119,13 +129,13 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("VelX", Mathf.Abs(moveAction.ReadValue<Vector2>().x) > 0.2 ? moveAction.ReadValue<Vector2>().x : 0);
         anim.SetFloat("VelY", Mathf.Abs(moveAction.ReadValue<Vector2>().y) > 0.2 ? moveAction.ReadValue<Vector2>().y : 0);
         anim.SetBool("Sneak", walkAction.phase == InputActionPhase.Started);
-        if (dashAction.phase == InputActionPhase.Started)
+        if (dashAction.triggered)
         {
-            if (dashCooldown.Finished)
+            if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
             {
-                dashCooldown.Reset();
-                anim.SetTrigger("Dash");
+                ActivateDash();
             }
+            
         }
         if (meleeAction.phase == InputActionPhase.Started)
         {
@@ -170,7 +180,25 @@ public class PlayerController : MonoBehaviour
         {
             selectedInteraction.ChangeVisibility(true);
         }
-        
+
+        if (healthRegenTimer.Finished)
+        {
+            health.ChangeValue(1);
+            healthRegenTimer.Reset(1 / stats.ReadAttribute("Health Regen"));
+        }
+    }
+
+    public void ActivateDash()
+    {
+        foreach (Dash d in dashes)
+        {
+            if (d.Ready)
+            {
+                d.Activate(1 / stats.ReadAttribute("Dash Recharge Rate"));
+                anim.SetTrigger("Dash");
+                return;
+            }
+        }
     }
 
     public void Run()
@@ -213,9 +241,44 @@ public class PlayerController : MonoBehaviour
         inputs.SwitchCurrentActionMap("ArtifactControl");
     }
 
-    public bool CheckCrit()
+    public void ReceiveDamage(DamageInstance damage)
     {
-        if (Random.value < PlayerController.instance.GetComponent<PlayerStats>().ReadAttribute("Crit Chance"))
+        if (CheckDodge())
+        {
+            Debug.Log("Dodged");
+
+            //Do dodge logic here
+            return;
+        }
+
+        float finalDamageValue = 0;
+        switch (damage.type)
+        {
+            case DamageType.Elemental:
+                finalDamageValue = damage.value *1-stats.ReadAttribute("Resistance Elemental");
+                break;
+            case DamageType.Energy:
+                finalDamageValue = damage.value * 1 - stats.ReadAttribute("Resistance Energy");
+                break;
+            case DamageType.Physical:
+                finalDamageValue = damage.value * 1 - stats.ReadAttribute("Resistance Physical");
+                break;
+        }
+        Debug.Log(finalDamageValue);
+    }
+
+    private bool CheckDodge()
+    {
+        if (Random.value < stats.ReadAttribute("Dodge Chance"))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private bool CheckCrit()
+    {
+        if (Random.value < stats.ReadAttribute("Crit Chance"))
         {
             return true;
         }
