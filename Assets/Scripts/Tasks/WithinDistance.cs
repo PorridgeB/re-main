@@ -5,5 +5,8 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class WithinDistance : Conditional
 {
-
+    public override TaskStatus OnUpdate()
+    {
+        return TaskStatus.Failure;
+    }
 }

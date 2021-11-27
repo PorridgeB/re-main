@@ -5,5 +5,8 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class HearSound : Conditional
 {
-
+    public override TaskStatus OnUpdate()
+    {
+        return TaskStatus.Failure;
+    }
 }
