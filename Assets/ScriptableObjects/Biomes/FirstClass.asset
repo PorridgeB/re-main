@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc9f26424bb6c44a0102028b26237b, type: 3}
+  m_Name: FirstClass
+  m_EditorClassIdentifier: 
+  Name: First Class
+  Description: 
+  BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  MinLayers: 5
+  MaxLayers: 7
+  StageTypes:
+  - {fileID: 11400000, guid: 3486eabbb627f5c45b08df71fc07dadf, type: 2}
+  - {fileID: 11400000, guid: 0da10148b43d0bf429f444fa9b4f805a, type: 2}
+  - {fileID: 11400000, guid: 04404bc242d57104d9f67fce78ccf31d, type: 2}
+  - {fileID: 11400000, guid: 888a39a59306eeb40bd90b51ba8ed505, type: 2}
+  - {fileID: 11400000, guid: e75ba173e8c40a84abb7569923e835ad, type: 2}
+  - {fileID: 11400000, guid: 58510fb9d9f611b43b2982057ad53c7d, type: 2}

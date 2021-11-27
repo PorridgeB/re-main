@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Biome
+[CreateAssetMenu(fileName = "New Biome", menuName = "Biome")]
+public class Biome : ScriptableObject
 {
-    public static readonly Biome[] Biomes =
-    {
-        new Biome{ Name = "Wreakage" },
-        new Biome{ Name = "Gardens" },
-        new Biome{ Name = "Stasis" },
-        new Biome{ Name = "First Class" },
-    };
-
     public string Name;
-
     public string Description;
-
     public Color BackgroundColor;
+    public int MinLayers = 5;
+    public int MaxLayers = 7;
+    public int MinStagesPerLayer = 1;
+    public int MaxStagesPerLayer = 4;
+    public List<StageType> StageTypes;
 
     // TODO: Modifiers
     // TODO: Each biome has its own quadrant and stage generator?
