@@ -24,6 +24,10 @@ public class LevelMeshBuilder : MonoBehaviour
             {
                 var floorSprite = FloorsTilemap.GetSprite(cell);
 
+                // Stupid hack to set the render the mesh with the
+                // same texture as the tilemap.
+                GetComponent<MeshRenderer>().material.mainTexture = floorSprite.texture;
+
                 uvs.AddRange(floorSprite.uv);
 
                 var firstVertexIndex = vertices.Count;
@@ -50,8 +54,8 @@ public class LevelMeshBuilder : MonoBehaviour
 
                 var firstVertexIndex = vertices.Count;
 
-                vertices.Add(new Vector3(cell.x + 1, 2, cell.y + 1));
-                vertices.Add(new Vector3(cell.x, 2, cell.y + 1));
+                vertices.Add(new Vector3(cell.x + 1, 1, cell.y + 1));
+                vertices.Add(new Vector3(cell.x, 1, cell.y + 1));
                 vertices.Add(new Vector3(cell.x, 0, cell.y + 1));
                 vertices.Add(new Vector3(cell.x + 1, 0, cell.y + 1));
 
