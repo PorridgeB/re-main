@@ -9,6 +9,10 @@ public class LevelMeshBuilder : MonoBehaviour
     public Tilemap WallTrimmingsTilemap;
     public Tilemap WallsTilemap;
     public Tilemap FloorsTilemap;
+
+    // TODO: Collision on walls and wall trimmings only
+    // TODO: Clean up
+    // TODO: Make more robust
     
     void Start()
     {
