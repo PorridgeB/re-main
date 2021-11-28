@@ -6,6 +6,7 @@ using Unity.AI.Navigation;
 
 public class LevelMeshBuilder : MonoBehaviour
 {
+    public Tilemap WallTrimmingsTilemap;
     public Tilemap WallsTilemap;
     public Tilemap FloorsTilemap;
     
@@ -54,7 +55,18 @@ public class LevelMeshBuilder : MonoBehaviour
                 // same texture as the tilemap.
                 GetComponent<MeshRenderer>().material.mainTexture = floorSprite.texture;
 
-                uvs.AddRange(floorSprite.uv);
+                // Have to reorder the floor texture UVs for some reason
+                var uv1 = floorSprite.uv[0];
+                var uv2 = floorSprite.uv[1];
+                var uv3 = floorSprite.uv[2];
+                var uv4 = floorSprite.uv[3];
+
+                uvs.Add(uv3);
+                uvs.Add(uv4);
+                uvs.Add(uv2);
+                uvs.Add(uv1);
+
+                //uvs.AddRange(floorSprite.uv);
 
                 var firstVertexIndex = vertices.Count;
 
@@ -99,47 +111,33 @@ public class LevelMeshBuilder : MonoBehaviour
         }
 
         // Generate wall trimmings mesh
-        foreach (var cell in FloorsTilemap.cellBounds.allPositionsWithin)
+        foreach (var cell in WallTrimmingsTilemap.cellBounds.allPositionsWithin)
         {
-            var tile = FloorsTilemap.GetTile(cell);
+            var tile = WallTrimmingsTilemap.GetTile(cell);
 
-            if (tile == null)
+            if (tile != null)
             {
-                var edge = false;
+                var wallTrimmingsSprite = WallTrimmingsTilemap.GetSprite(cell);
 
-                for (int x = -1; x <= 1; x++)
-                {
-                    for (int y = -1; y <= 1; y++)
-                    {
-                        if (x != 0 || y != 0)
-                        {
-                            if (FloorsTilemap.HasTile(cell + new Vector3Int(x, y, 0)))
-                            {
-                                edge = true;
-                                break;
-                            }
-                        }
-                    }
-                }
+                // Have to reorder the floor texture UVs for some reason
+                var uv1 = wallTrimmingsSprite.uv[0];
+                var uv2 = wallTrimmingsSprite.uv[1];
+                var uv3 = wallTrimmingsSprite.uv[2];
+                var uv4 = wallTrimmingsSprite.uv[3];
 
-                if (!edge)
-                {
-                    continue;
-                }
+                uvs.Add(uv3);
+                uvs.Add(uv4);
+                uvs.Add(uv2);
+                uvs.Add(uv1);
 
                 var firstVertexIndex = vertices.Count;
 
-                //uvs.Add(new Vector2());
-                //uvs.Add(new Vector2());
-                //uvs.Add(new Vector2());
-                //uvs.Add(new Vector2());
+                vertices.Add(new Vector3(cell.x, 1, cell.y - 1));
+                vertices.Add(new Vector3(cell.x + 1, 1, cell.y - 1));
+                vertices.Add(new Vector3(cell.x + 1, 1, cell.y + 1 - 1));
+                vertices.Add(new Vector3(cell.x, 1, cell.y + 1 - 1));
 
-                //vertices.Add(new Vector3(cell.x, 1, cell.y));
-                //vertices.Add(new Vector3(cell.x + 1, 1, cell.y));
-                //vertices.Add(new Vector3(cell.x + 1, 1, cell.y + 1));
-                //vertices.Add(new Vector3(cell.x, 1, cell.y + 1));
-
-                //AddQuad(firstVertexIndex, triangles);
+                AddQuad(firstVertexIndex, triangles);
             }
         }
 
