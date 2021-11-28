@@ -113,17 +113,17 @@ public class LevelMeshBuilder : MonoBehaviour
 
                 var firstVertexIndex = vertices.Count;
 
-                uvs.Add(new Vector2());
-                uvs.Add(new Vector2());
-                uvs.Add(new Vector2());
-                uvs.Add(new Vector2());
+                //uvs.Add(new Vector2());
+                //uvs.Add(new Vector2());
+                //uvs.Add(new Vector2());
+                //uvs.Add(new Vector2());
 
-                vertices.Add(new Vector3(cell.x, 1, cell.y));
-                vertices.Add(new Vector3(cell.x + 1, 1, cell.y));
-                vertices.Add(new Vector3(cell.x + 1, 1, cell.y + 1));
-                vertices.Add(new Vector3(cell.x, 1, cell.y + 1));
+                //vertices.Add(new Vector3(cell.x, 1, cell.y));
+                //vertices.Add(new Vector3(cell.x + 1, 1, cell.y));
+                //vertices.Add(new Vector3(cell.x + 1, 1, cell.y + 1));
+                //vertices.Add(new Vector3(cell.x, 1, cell.y + 1));
 
-                AddQuad(firstVertexIndex, triangles);
+                //AddQuad(firstVertexIndex, triangles);
             }
         }
 
