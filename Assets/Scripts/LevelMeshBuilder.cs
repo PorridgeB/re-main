@@ -69,7 +69,16 @@ public class LevelMeshBuilder : MonoBehaviour
             {
                 var wallSprite = WallsTilemap.GetSprite(cell);
 
-                uvs.AddRange(wallSprite.uv);
+                // Have to reorder the wall texture UVs for some reason
+                var uv1 = wallSprite.uv[0];
+                var uv2 = wallSprite.uv[1];
+                var uv3 = wallSprite.uv[2];
+                var uv4 = wallSprite.uv[3];
+
+                uvs.Add(uv2);
+                uvs.Add(uv1);
+                uvs.Add(uv3);
+                uvs.Add(uv4);
 
                 var firstVertexIndex = vertices.Count;
 
