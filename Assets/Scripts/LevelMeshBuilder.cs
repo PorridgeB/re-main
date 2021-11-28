@@ -11,12 +11,15 @@ public class LevelMeshBuilder : MonoBehaviour
     
     void Start()
     {
+        // Generate the visual mesh
         var meshFilter = GetComponent<MeshFilter>();
         meshFilter.sharedMesh = GenerateMesh();
 
+        // Generate the collision mesh
         var meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = GenerateCollisionMesh();
 
+        // Bake the navmesh
         var navMeshSurface = GetComponent<NavMeshSurface>();
         navMeshSurface.BuildNavMesh();
     }
@@ -47,7 +50,7 @@ public class LevelMeshBuilder : MonoBehaviour
             {
                 var floorSprite = FloorsTilemap.GetSprite(cell);
 
-                // Stupid hack to set the render the mesh with the
+                // Stupid hack to set the material with the
                 // same texture as the tilemap.
                 GetComponent<MeshRenderer>().material.mainTexture = floorSprite.texture;
 
