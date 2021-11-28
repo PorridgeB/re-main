@@ -15,6 +15,7 @@ public class LevelMeshBuilder : MonoBehaviour
         List<Vector2> uvs = new List<Vector2>();
         List<int> triangles = new List<int>();
 
+        // Generate floor mesh
         foreach (var cell in FloorsTilemap.cellBounds.allPositionsWithin)
         {
             var tile = FloorsTilemap.GetTile(cell);
@@ -24,8 +25,6 @@ public class LevelMeshBuilder : MonoBehaviour
                 var floorSprite = FloorsTilemap.GetSprite(cell);
 
                 uvs.AddRange(floorSprite.uv);
-
-                Debug.Log(floorSprite.uv[0]);
 
                 var firstVertexIndex = vertices.Count;
 
@@ -38,28 +37,27 @@ public class LevelMeshBuilder : MonoBehaviour
             }
         }
 
-        //foreach (var cell in WallsTilemap.cellBounds.allPositionsWithin)
-        //{
-        //    var tile = FloorsTilemap.GetTile(cell);
+        // Generate wall mesh
+        foreach (var cell in WallsTilemap.cellBounds.allPositionsWithin)
+        {
+            var tile = WallsTilemap.GetTile(cell);
 
-        //    if (tile != null)
-        //    {
-        //        var floorSprite = FloorsTilemap.GetSprite(cell);
+            if (tile != null)
+            {
+                var wallSprite = WallsTilemap.GetSprite(cell);
 
-        //        uvs.AddRange(floorSprite.uv);
+                uvs.AddRange(wallSprite.uv);
 
-        //        Debug.Log(floorSprite.uv[0]);
+                var firstVertexIndex = vertices.Count;
 
-        //        var firstVertexIndex = vertices.Count;
+                vertices.Add(new Vector3(cell.x + 1, 2, cell.y + 1));
+                vertices.Add(new Vector3(cell.x, 2, cell.y + 1));
+                vertices.Add(new Vector3(cell.x, 0, cell.y + 1));
+                vertices.Add(new Vector3(cell.x + 1, 0, cell.y + 1));
 
-        //        vertices.Add(new Vector3(cell.x, 0, cell.y));
-        //        vertices.Add(new Vector3(cell.x + 1, 0, cell.y));
-        //        vertices.Add(new Vector3(cell.x + 1, 0, cell.y + 1));
-        //        vertices.Add(new Vector3(cell.x, 0, cell.y + 1));
-
-        //        AddQuad(firstVertexIndex, triangles);
-        //    }
-        //}
+                AddQuad(firstVertexIndex, triangles);
+            }
+        }
 
         Mesh mesh = new Mesh();
         mesh.vertices = vertices.ToArray();
