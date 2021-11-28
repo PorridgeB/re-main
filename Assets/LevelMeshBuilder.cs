@@ -8,6 +8,9 @@ public class LevelMeshBuilder : MonoBehaviour
     public Tilemap WallsTilemap;
     public Tilemap FloorsTilemap;
 
+    // TODO: Generate collision mesh
+    // TODO: Generate navmesh
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +73,28 @@ public class LevelMeshBuilder : MonoBehaviour
 
             if (tile == null)
             {
+                var edge = false;
+
+                for (int x = -1; x <= 1; x++)
+                {
+                    for (int y = -1; y <= 1; y++)
+                    {
+                        if (x != 0 || y != 0)
+                        {
+                            if (FloorsTilemap.HasTile(cell + new Vector3Int(x, y, 0)))
+                            {
+                                edge = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (!edge)
+                {
+                    continue;
+                }
+
                 var firstVertexIndex = vertices.Count;
 
                 uvs.Add(new Vector2());
