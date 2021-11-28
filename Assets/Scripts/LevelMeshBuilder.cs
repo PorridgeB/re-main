@@ -73,10 +73,10 @@ public class LevelMeshBuilder : MonoBehaviour
 
                 var firstVertexIndex = vertices.Count;
 
-                vertices.Add(new Vector3(cell.x + 1, 1, cell.y + 1));
-                vertices.Add(new Vector3(cell.x, 1, cell.y + 1));
-                vertices.Add(new Vector3(cell.x, 0, cell.y + 1));
-                vertices.Add(new Vector3(cell.x + 1, 0, cell.y + 1));
+                vertices.Add(new Vector3(cell.x + 1, 1, cell.y));
+                vertices.Add(new Vector3(cell.x, 1, cell.y));
+                vertices.Add(new Vector3(cell.x, 0, cell.y));
+                vertices.Add(new Vector3(cell.x + 1, 0, cell.y));
 
                 AddQuad(firstVertexIndex, triangles);
             }
