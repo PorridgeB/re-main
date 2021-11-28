@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Unity.AI.Navigation;
 
 public class LevelMeshBuilder : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class LevelMeshBuilder : MonoBehaviour
 
         var meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = GenerateCollisionMesh();
+
+        var navMeshSurface = GetComponent<NavMeshSurface>();
+        navMeshSurface.BuildNavMesh();
     }
 
     void AddQuad(int firstVertexIndex, List<int> triangles)
