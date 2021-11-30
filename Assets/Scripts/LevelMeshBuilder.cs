@@ -13,7 +13,10 @@ public class LevelMeshBuilder : MonoBehaviour
     // TODO: Collision on walls and wall trimmings only
     // TODO: Clean up
     // TODO: Make more robust
-    
+    // TODO: Tiles with different sizes
+    // TODO: Pixelated lighting
+    // TODO: AO
+
     void Start()
     {
         // Generate the visual mesh
@@ -161,7 +164,6 @@ public class LevelMeshBuilder : MonoBehaviour
     Mesh GenerateCollisionMesh()
     {
         List<Vector3> vertices = new List<Vector3>();
-        List<Vector2> uvs = new List<Vector2>();
         List<int> triangles = new List<int>();
 
         foreach (var cell in FloorsTilemap.cellBounds.allPositionsWithin)
@@ -213,7 +215,6 @@ public class LevelMeshBuilder : MonoBehaviour
 
         Mesh mesh = new Mesh();
         mesh.vertices = vertices.ToArray();
-        mesh.uv = uvs.ToArray();
         mesh.triangles = triangles.ToArray();
 
         mesh.RecalculateNormals();
