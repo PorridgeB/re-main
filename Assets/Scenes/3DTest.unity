@@ -709,6 +709,7 @@ MonoBehaviour:
   WallTrimmingsTilemap: {fileID: 3542891387854973066}
   WallsTilemap: {fileID: 3542891387854973067}
   FloorsTilemap: {fileID: 3542891387854973068}
+  StackedWalls: 1
 --- !u!23 &1994554835
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -10,11 +10,6 @@ public class LevelMeshBuilder : MonoBehaviour
     public Tilemap WallsTilemap;
     public Tilemap FloorsTilemap;
 
-    // TODO: Collision on walls and wall trimmings only
-    // TODO: Tiles with different sizes
-    // TODO: Pixelated lighting
-    // TODO: AO
-
     void Start()
     {
         // Generate the visual mesh
