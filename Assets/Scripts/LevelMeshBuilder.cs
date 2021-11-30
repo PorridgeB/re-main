@@ -10,17 +10,20 @@ public class LevelMeshBuilder : MonoBehaviour
     public Tilemap WallsTilemap;
     public Tilemap FloorsTilemap;
 
+    // TODO: AO
+    // TODO: Pixelate lighting
+
     void Start()
     {
-        // Generate the visual mesh
+        // Generate the visual mesh.
         var meshFilter = GetComponent<MeshFilter>();
         meshFilter.sharedMesh = GenerateMesh();
 
-        // Generate the collision mesh
+        // Generate the collision mesh.
         var meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = GenerateCollisionMesh();
 
-        // Bake the navmesh
+        // Bake the navmesh.
         var navMeshSurface = GetComponent<NavMeshSurface>();
         navMeshSurface.BuildNavMesh();
     }
@@ -220,6 +223,5 @@ public class LevelMeshBuilder : MonoBehaviour
 
     void Update()
     {
-        
     }
 }
