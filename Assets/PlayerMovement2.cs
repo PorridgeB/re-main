@@ -29,5 +29,10 @@ public class PlayerMovement2 : MonoBehaviour
     {
         animator.SetBool("Moving", Velocity != Vector2.zero);
         characterController.Move(new Vector3(Velocity.x, 0, Velocity.y) * Time.deltaTime);
+
+        // Snap the player to the ground at all times.
+        var playerPosition = characterController.transform.position;
+        playerPosition.y = 1;
+        characterController.transform.position = playerPosition;
     }
 }
