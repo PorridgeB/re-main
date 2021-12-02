@@ -548,7 +548,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 228982330}
-  - component: {fileID: 228982331}
   - component: {fileID: 228982334}
   - component: {fileID: 228982333}
   - component: {fileID: 228982332}
@@ -556,6 +555,7 @@ GameObject:
   - component: {fileID: 228982335}
   - component: {fileID: 228982338}
   - component: {fileID: 228982337}
+  - component: {fileID: 228982331}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -592,10 +592,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 228982329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0bbcdc41f47b6f46aaa456875575374, type: 3}
+  m_Script: {fileID: 11500000, guid: 669d7ef367e84e6479bf51f0e5f18bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: {x: 0, y: 0}
+  speed: 1
 --- !u!143 &228982332
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2540,7 +2540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31369f922afe2d4499b2c5c94ab13c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 228982330}
 --- !u!1 &817853237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,9 +4973,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.16470589, g: 0.7411765, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.47427553, b: 0.16470587, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 12
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -5032,7 +5032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942779565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 0.7, z: -2.2}
+  m_LocalPosition: {x: 8.5, y: 0.7, z: -4.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
