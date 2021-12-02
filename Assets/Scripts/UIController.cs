@@ -33,6 +33,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         statMenu.SetActive(inputs.currentActionMap.name == "OverlayControl");
+
         if (statMenu.activeInHierarchy)
         {
             GenerateLists();
