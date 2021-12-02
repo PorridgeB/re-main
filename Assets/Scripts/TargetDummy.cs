@@ -32,4 +32,18 @@ public class TargetDummy : MonoBehaviour
             Destroy(collision.gameObject.GetComponent<Projectile>()?.gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("hello");
+
+        if (collision.gameObject.CompareTag("DamageSource"))
+        {
+            DamageInstance source = collision.gameObject.GetComponent<DamageSource>().Damage;
+            damageTotal += source.value;
+            GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
+            g.GetComponent<DamageToken>().SetValue(source);
+            Destroy(collision.gameObject.GetComponent<Projectile>()?.gameObject);
+        }
+    }
 }

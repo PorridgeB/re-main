@@ -341,4 +341,27 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            interactions.Add(collision.GetComponent<Interaction>());
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            Interaction i = collision.GetComponent<Interaction>();
+            i.ChangeVisibility(false);
+
+            interactions.Remove(collision.GetComponent<Interaction>());
+            if (selectedInteraction == i)
+            {
+                selectedInteraction = null;
+            }
+        }
+    }
 }
