@@ -19,7 +19,6 @@ public class Projectile : MonoBehaviour
     {
         Vector3 move = new Vector3(speed * dir.x, 0, speed * dir.y);
         transform.position += move;
-        
     }
 
     private void Update()
