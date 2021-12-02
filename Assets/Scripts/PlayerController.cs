@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private Interaction selectedInteraction;
 
     private PlayerInput inputs;
-    private PlayerMovement movement;
+    private PlayerMovement2 movement;
     private PlayerStats stats;
 
     private InputAction moveAction;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         inventory = GetComponent<ModuleInventory>();
 
         inputs = GetComponent<PlayerInput>();
-        movement = GetComponent<PlayerMovement>();
+        movement = GetComponent<PlayerMovement2>();
         stats = GetComponent<PlayerStats>();
 
 
@@ -118,7 +118,10 @@ public class PlayerController : MonoBehaviour
         {
             inputs.SwitchCurrentActionMap("OverlayControl");
         }
-        facing = (crosshair.transform.position - transform.position).normalized;
+
+        //facing = (crosshair.transform.position - transform.position).normalized;
+        facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
+
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {
             anim.SetFloat("Horizontal", facing.x);
