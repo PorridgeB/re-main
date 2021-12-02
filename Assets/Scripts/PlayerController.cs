@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private Interaction selectedInteraction;
 
     private PlayerInput inputs;
-    private PlayerMovement2 movement;
+    private PlayerMovement movement;
     private PlayerStats stats;
 
     private InputAction moveAction;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         inventory = GetComponent<ModuleInventory>();
 
         inputs = GetComponent<PlayerInput>();
-        movement = GetComponent<PlayerMovement2>();
+        movement = GetComponent<PlayerMovement>();
         stats = GetComponent<PlayerStats>();
 
 
