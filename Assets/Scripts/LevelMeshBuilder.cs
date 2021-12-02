@@ -10,24 +10,20 @@ public class LevelMeshBuilder : MonoBehaviour
     public Tilemap WallsTilemap;
     public Tilemap FloorsTilemap;
 
-    // TODO: Collision on walls and wall trimmings only
-    // TODO: Clean up
-    // TODO: Make more robust
-    // TODO: Tiles with different sizes
-    // TODO: Pixelated lighting
     // TODO: AO
+    // TODO: Pixelate lighting
 
     void Start()
     {
-        // Generate the visual mesh
+        // Generate the visual mesh.
         var meshFilter = GetComponent<MeshFilter>();
         meshFilter.sharedMesh = GenerateMesh();
 
-        // Generate the collision mesh
+        // Generate the collision mesh.
         var meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = GenerateCollisionMesh();
 
-        // Bake the navmesh
+        // Bake the navmesh.
         var navMeshSurface = GetComponent<NavMeshSurface>();
         navMeshSurface.BuildNavMesh();
     }
@@ -182,7 +178,7 @@ public class LevelMeshBuilder : MonoBehaviour
                 AddQuad(firstVertexIndex, triangles);
 
                 // Generate collision mesh for adjacent walls
-                Vector3[][] wallVertexOffsets = new Vector3[][]
+                Vector3[][] wallVertices = new Vector3[][]
                 {
                     new Vector3[] { new Vector3(0, 1, 0), new Vector3(1, 1, 0), new Vector3(1, 0, 0), new Vector3(0, 0, 0) },
                     new Vector3[] { new Vector3(1, 1, 0), new Vector3(1, 1, 1), new Vector3(1, 0, 1), new Vector3(1, 0, 0) },
@@ -196,15 +192,15 @@ public class LevelMeshBuilder : MonoBehaviour
                 {
                     Vector3Int wallOffset = wallOffsets[i];
 
-                    if (!FloorsTilemap.HasTile(cell + wallOffset))
+                    if (WallsTilemap.HasTile(cell + wallOffset) || WallTrimmingsTilemap.HasTile(cell + wallOffset))
                     {
                         firstVertexIndex = vertices.Count;
 
                         Vector3 worldPosition = new Vector3(cell.x, 0, cell.y);
 
-                        foreach (Vector3 wallVertexOffset in wallVertexOffsets[i])
+                        foreach (Vector3 wallVertex in wallVertices[i])
                         {
-                            vertices.Add(worldPosition + wallVertexOffset);
+                            vertices.Add(worldPosition + wallVertex);
                         }
 
                         AddQuad(firstVertexIndex, triangles);
@@ -227,6 +223,5 @@ public class LevelMeshBuilder : MonoBehaviour
 
     void Update()
     {
-        
     }
 }
