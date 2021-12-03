@@ -9,14 +9,13 @@ public class LevelMeshBuilder : MonoBehaviour
     public Tilemap WallTrimmingsTilemap;
     public Tilemap WallsTilemap;
     public Tilemap FloorsTilemap;
+    public float WallTrimmingsHeight = 1f;
+    // Generate the side and back walls that are hidden from view.
+    public bool GenerateHiddenWalls = true;
+    public bool GenerateStackedWalls = false;
 
     // TODO: AO
     // TODO: Pixelate lighting
-    // TODO: Crosshair, camera
-    // TODO: Hidden faces for shadows
-    // TODO: Stacked walls
-    // TODO: Multiple rooms
-    // TODO: Spawn points, triggers, lighting, etc
 
     void Start()
     {
@@ -140,12 +139,53 @@ public class LevelMeshBuilder : MonoBehaviour
 
                 var firstVertexIndex = vertices.Count;
 
-                vertices.Add(new Vector3(cell.x, 1, cell.y - 1));
-                vertices.Add(new Vector3(cell.x + 1, 1, cell.y - 1));
-                vertices.Add(new Vector3(cell.x + 1, 1, cell.y + 1 - 1));
-                vertices.Add(new Vector3(cell.x, 1, cell.y + 1 - 1));
+                vertices.Add(new Vector3(cell.x, WallTrimmingsHeight, cell.y - 1));
+                vertices.Add(new Vector3(cell.x + 1, WallTrimmingsHeight, cell.y - 1));
+                vertices.Add(new Vector3(cell.x + 1, WallTrimmingsHeight, cell.y + 1 - 1));
+                vertices.Add(new Vector3(cell.x, WallTrimmingsHeight, cell.y + 1 - 1));
 
                 AddQuad(firstVertexIndex, triangles);
+            }
+        }
+
+        if (GenerateHiddenWalls)
+        {
+            foreach (var cell in FloorsTilemap.cellBounds.allPositionsWithin)
+            {
+                Vector3[][] wallVertices = new Vector3[][]
+                {
+                    new Vector3[] { new Vector3(1, 1, 0), new Vector3(1, 1, 1), new Vector3(1, 0, 1), new Vector3(1, 0, 0) },
+                    //new Vector3[] { new Vector3(1, 1, 1), new Vector3(0, 1, 1), new Vector3(0, 0, 1), new Vector3(1, 0, 1) },
+                    new Vector3[] { new Vector3(0, 1, 1), new Vector3(0, 1, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 1) }
+                };
+
+                //Vector3Int[] wallOffsets = new Vector3Int[] { new Vector3Int(1, 0, 0), new Vector3Int(0, 1, 0), new Vector3Int(-1, 0, 0) };
+                Vector3Int[] wallOffsets = new Vector3Int[] { new Vector3Int(1, 0, 0), new Vector3Int(-1, 0, 0) };
+
+                for (int i = 0; i < wallOffsets.Length; i++)
+                {
+                    Vector3Int wallOffset = wallOffsets[i];
+
+                    //if (WallsTilemap.HasTile(cell + wallOffset) || WallTrimmingsTilemap.HasTile(cell + wallOffset))
+                    if (WallTrimmingsTilemap.HasTile(cell + wallOffset))
+                    {
+                        int firstVertexIndex = vertices.Count;
+
+                        Vector3 worldPosition = new Vector3(cell.x, 0, cell.y);
+
+                        uvs.Add(new Vector2());
+                        uvs.Add(new Vector2());
+                        uvs.Add(new Vector2());
+                        uvs.Add(new Vector2());
+
+                        foreach (Vector3 wallVertex in wallVertices[i])
+                        {
+                            vertices.Add(worldPosition + wallVertex);
+                        }
+
+                        AddQuad(firstVertexIndex, triangles);
+                    }
+                }
             }
         }
 
@@ -224,9 +264,5 @@ public class LevelMeshBuilder : MonoBehaviour
         mesh.Optimize();
 
         return mesh;
-    }
-
-    void Update()
-    {
     }
 }
