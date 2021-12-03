@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 facing;
     private Resource health;
     private ModuleInventory inventory;
-    private Crosshair crosshair;
+    //private Crosshair crosshair;
 
     [SerializeField]
     private List<Dash> dashes;
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         health = GetComponentInChildren<Resource>();
-        crosshair = GetComponentInChildren<Crosshair>();
+        //crosshair = GetComponentInChildren<Crosshair>();
         anim = GetComponent<Animator>();
         inventory = GetComponent<ModuleInventory>();
 

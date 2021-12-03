@@ -23,8 +23,7 @@ public class Crosshair : MonoBehaviour
         if (aim.activeControl?.name == "position")
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(aim.ReadValue<Vector2>());
-            //gameObject.transform.position = new Vector3(pos.x, pos.y, 0);
-            gameObject.transform.position = new Vector3(pos.x, 0, pos.y);
+            gameObject.transform.position = new Vector3(pos.x, pos.y, 0);
         }
         else
         {

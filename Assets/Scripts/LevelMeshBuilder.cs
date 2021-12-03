@@ -12,6 +12,11 @@ public class LevelMeshBuilder : MonoBehaviour
 
     // TODO: AO
     // TODO: Pixelate lighting
+    // TODO: Crosshair, camera
+    // TODO: Hidden faces for shadows
+    // TODO: Stacked walls
+    // TODO: Multiple rooms
+    // TODO: Spawn points, triggers, lighting, etc
 
     void Start()
     {
