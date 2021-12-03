@@ -97,7 +97,6 @@ public class DialogueController : MonoBehaviour
         characterPortrait.SetActive(story.canContinue);
     }
 
-
     public void MakeChoice(int index)
     {
         story.ChooseChoiceIndex(index);
