@@ -6,11 +6,11 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class RandomPosition : Action
 {
-    public SharedVector2 Position;
+    public SharedVector3 Position;
 
     public override void OnStart()
     {
-        Position = new Vector2(10, 0);
+        Position = new Vector3(10, 0, 10);
     }
 
     public override TaskStatus OnUpdate()

@@ -272,11 +272,7 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckDodge()
     {
-        if (Random.value < stats.ReadAttribute("Dodge Chance"))
-        {
-            return true;
-        }
-        return false;
+        return Random.value < stats.ReadAttribute("Dodge Chance");
     }
 
     private bool CheckCrit()

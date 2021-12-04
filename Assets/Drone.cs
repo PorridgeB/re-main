@@ -1,24 +1,20 @@
+using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetDummy : MonoBehaviour
+public class Drone : MonoBehaviour
 {
-    [SerializeField]
-    private float damageTotal;
-    [SerializeField]
-    private GameObject damageToken;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -26,10 +22,15 @@ public class TargetDummy : MonoBehaviour
         if (collision.gameObject.CompareTag("DamageSource"))
         {
             DamageInstance source = collision.gameObject.GetComponent<DamageSource>().Damage;
-            damageTotal += source.value;
-            GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
-            g.GetComponent<DamageToken>().SetValue(source);
-            //Destroy(collision.gameObject.GetComponent<Projectile>()?.gameObject);
+            var bd = GetComponent<BehaviorTree>();
+            var health = bd.GetVariable("Health");
+            bd.SetVariableValue("Health", (float)health.GetValue() - source.value);
+
+
+            if ((float)bd.GetVariable("Health").GetValue() < 0f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 move = new Vector3(speed * dir.x, 0, speed * dir.y);
-        transform.position += move;
+        transform.position += move * Time.fixedDeltaTime;
     }
 
     private void Update()
@@ -34,5 +34,10 @@ public class Projectile : MonoBehaviour
         transform.position = position;
         dir = direction;
         speed = velocity;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
     }
 }
