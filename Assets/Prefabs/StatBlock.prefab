@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7533795305800191131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3448426192868776626}
+  - component: {fileID: 1450448935862623977}
+  m_Layer: 0
+  m_Name: StatBlock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3448426192868776626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533795305800191131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450448935862623977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533795305800191131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4794d5e63c3221479ce852137238389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeleeAttackDamage: {fileID: 11400000, guid: 67762c6972e7c8547b34c8005318f841, type: 2}
+  MeleeAttackSpeed: {fileID: 11400000, guid: cb3612f5fbb5df74f862a2a698d06064, type: 2}
+  RangedAttackDamage: {fileID: 11400000, guid: 5c57c358cb8c295489dee926263610a8, type: 2}
+  RangedAttackSpeed: {fileID: 11400000, guid: ed78b968d0b6f9a448b9d39da5d6e450, type: 2}
+  CritChance: {fileID: 11400000, guid: 28b198edeb7eae44ba56e285fcb4e018, type: 2}
+  CritDamage: {fileID: 11400000, guid: 7103fb180d526e74dba49abe2aec03e0, type: 2}
+  Health: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
+  HealthRegen: {fileID: 11400000, guid: b6595f5455caabb4abac0f1b28a405dc, type: 2}
+  RunSpeed: {fileID: 11400000, guid: ce4f011195d4b3a45aad24644d70e3da, type: 2}
+  WalkSpeed: {fileID: 11400000, guid: b76c544252b5edc4f99b615415ad8a72, type: 2}
+  DashCharges: {fileID: 11400000, guid: a2e0ffe76b39f234a8ce92ddc2eb31fd, type: 2}
+  DashRechargeRate: {fileID: 11400000, guid: 3f5197eee9d2d124abfada1e0827b7fc, type: 2}
+  DodgeChance: {fileID: 11400000, guid: a7467cc4d0272f646aa671af54e74cb2, type: 2}
+  ResistancePhysical: {fileID: 11400000, guid: 23639c9218fddc8488f5a183a19adca4, type: 2}
+  ResistanceEnergy: {fileID: 11400000, guid: 765a4d21d93c4214f8cbce4ccd0a60d4, type: 2}
+  ResistanceElemental: {fileID: 11400000, guid: 26c367aed8248b749ac343fe494f7608, type: 2}

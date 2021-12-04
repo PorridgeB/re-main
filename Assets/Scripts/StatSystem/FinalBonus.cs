@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class FinalBonus : BaseAttribute
 {
-    public FinalBonus(float value, float multiplier) : base (value, multiplier)
+    public Module source;
+    public FinalBonus(Module module, float value, float multiplier)
     {
-
+        source = module;
+        baseValue = value;
+        baseMultiplier = multiplier;
     }
 }

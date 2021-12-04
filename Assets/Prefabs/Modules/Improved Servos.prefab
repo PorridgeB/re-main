@@ -96,14 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207f1105c3b50024782707b4d711d36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  module:
-    name: Improved Servos
-    description: module
-    sprite: {fileID: 8132948862792318974, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
-    bonuses:
-    - attributeName: Run Speed
-      value: 0.1
-      multiplier: 0
+  module: {fileID: 11400000, guid: a029dd08eacc2284f973ff9dc2f18e27, type: 2}
 --- !u!1001 &880492962508957250
 PrefabInstance:
   m_ObjectHideFlags: 0
