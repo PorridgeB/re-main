@@ -5200,6 +5200,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4505106389434108996, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: max
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
 --- !u!1001 &5460170945705821914

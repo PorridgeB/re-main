@@ -22,15 +22,22 @@ public class Drone : MonoBehaviour
         if (collision.gameObject.CompareTag("DamageSource"))
         {
             DamageInstance source = collision.gameObject.GetComponent<DamageSource>().Damage;
-            var bd = GetComponent<BehaviorTree>();
-            var health = bd.GetVariable("Health");
-            bd.SetVariableValue("Health", (float)health.GetValue() - source.value);
 
-
-            if ((float)bd.GetVariable("Health").GetValue() < 0f)
+            // Stop it from hurting itself
+            if (source.source != gameObject)
             {
-                Destroy(gameObject);
+                var bd = GetComponent<BehaviorTree>();
+                var health = bd.GetVariable("Health");
+                bd.SetVariableValue("Health", (float)health.GetValue() - source.value);
+
+
+                if ((float)bd.GetVariable("Health").GetValue() < 0f)
+                {
+                    Destroy(gameObject);
+                }
             }
+
+            
         }
     }
 }

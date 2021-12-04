@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6986639329401620346}
   - component: {fileID: 3494242126262408623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3298188469097433946}
   - component: {fileID: 8931407540934725286}
   - component: {fileID: 6044106991545393679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackField
   m_TagString: DamageSource
   m_Icon: {fileID: 0}

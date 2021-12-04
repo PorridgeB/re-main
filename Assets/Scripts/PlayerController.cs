@@ -8,6 +8,7 @@ public struct DamageInstance
     public float value;
     public bool crit;
     public DamageType type;
+    public GameObject source;
 }
 
 public class PlayerController : MonoBehaviour
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool dashBlocked = true;
     private float viewDistance;
     private Vector2 facing;
-    private Resource health;
+    private float health = 100f;
     private ModuleInventory inventory;
     //private Crosshair crosshair;
 
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        health = GetComponentInChildren<Resource>();
+        //health = GetComponentInChildren<Resource>();
         //crosshair = GetComponentInChildren<Crosshair>();
         anim = GetComponent<Animator>();
         inventory = GetComponent<ModuleInventory>();
@@ -186,7 +187,7 @@ public class PlayerController : MonoBehaviour
 
         if (healthRegenTimer.Finished)
         {
-            health.ChangeValue(1);
+            health += 1;
             healthRegenTimer.Reset(1 / stats.ReadAttribute("Health Regen"));
         }
     }
@@ -277,11 +278,7 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckCrit()
     {
-        if (Random.value < stats.ReadAttribute("Crit Chance"))
-        {
-            return true;
-        }
-        return false;
+        return Random.value < stats.ReadAttribute("Crit Chance");
     }
 
     public DamageInstance GetRangedDamage()
@@ -294,6 +291,7 @@ public class PlayerController : MonoBehaviour
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
+        d.source = gameObject;
         return d;
     }
 
@@ -307,6 +305,7 @@ public class PlayerController : MonoBehaviour
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
+        d.source = gameObject;
         return d;
     }
 
@@ -315,34 +314,22 @@ public class PlayerController : MonoBehaviour
         return value * stats.ReadAttribute("Crit Damage");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Interaction"))
-        {
-            interactions.Add(collision.GetComponent<Interaction>());
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Interaction"))
-        {
-            Interaction i = collision.GetComponent<Interaction>();
-            i.ChangeVisibility(false);
-            
-            interactions.Remove(collision.GetComponent<Interaction>());
-            if (selectedInteraction == i)
-            {
-                selectedInteraction = null;
-            }
-        }
-    }
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Interaction"))
         {
             interactions.Add(collision.GetComponent<Interaction>());
+        }
+        else if (collision.CompareTag("DamageSource"))
+        {
+            // Stop the player from hurting itself
+            if (collision.gameObject.GetComponent<DamageSource>().Damage.source != gameObject)
+            {
+                var damage = collision.gameObject.GetComponent<DamageSource>().Damage.value;
+                health -= damage;
+
+                Debug.Log(health);
+            }
         }
     }
 

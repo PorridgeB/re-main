@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour
     void Awake()
     {
         baseStats.Add(new List<float>() { 16, 0, 0, Mathf.Infinity });        //melee damage 
-        baseStats.Add(new List<float>() { 0.5f, 0, 0, 3 });     //melee speed
+        baseStats.Add(new List<float>() { 1.75f, 0, 0, 3 });     //melee speed
         baseStats.Add(new List<float>() { 25, 0, 0, Mathf.Infinity });      //ranged damage
         baseStats.Add(new List<float>() { 1, 0, 0, 3 });        //ranged speed
         baseStats.Add(new List<float>() { 7, 0, 1, 40 });       //run speed
