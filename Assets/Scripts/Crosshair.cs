@@ -24,7 +24,6 @@ public class Crosshair : MonoBehaviour
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(aim.ReadValue<Vector2>());
             gameObject.transform.position = new Vector3(pos.x, pos.y, 0);
-
         }
         else
         {

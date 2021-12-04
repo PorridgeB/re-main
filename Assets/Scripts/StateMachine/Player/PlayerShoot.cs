@@ -14,6 +14,6 @@ public class PlayerShoot : StateMachineBehaviour
         Projectile p = Instantiate(projectile).GetComponent<Projectile>();
         DamageInstance d = PlayerController.instance.GetRangedDamage();
         p.GetComponent<DamageSource>().SetValue(d);
-        p.Shoot(animator.transform.position, PlayerController.instance.GetFacing(), speed);
+        p.Shoot(new Vector3(animator.transform.position.x, 0.5f, animator.transform.position.z), PlayerController.instance.GetFacing(), speed);
     }
 }

@@ -8,20 +8,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    private Rigidbody2D rb;
+    private CharacterController characterController;
     private Animator anim;
     private Vector2 velocity;
 
     public Vector2 GetVelocity()
     {
-        Debug.Log(velocity);
         return velocity;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
 
@@ -29,11 +28,19 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         anim.SetBool("Moving", velocity != Vector2.zero);
+
+        //rb.MovePosition(rb.position + velocity * speed * Time.fixedDeltaTime);
+
+        characterController.Move(new Vector3(velocity.x, 0, velocity.y) * speed * Time.deltaTime);
+
+        // Snap the player to the ground at all times.
+        var playerPosition = characterController.transform.position;
+        playerPosition.y = 1;
+        characterController.transform.position = playerPosition;
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + velocity * speed * Time.fixedDeltaTime);
     }
 
     public void SetVelocity(Vector2 vector)

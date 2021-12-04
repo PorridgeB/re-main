@@ -22,17 +22,24 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         DamageInstance d = PlayerController.instance.GetMeleeDamage();
         attackFieldInstance.GetComponent<DamageSource>().SetValue(d);
         attackFieldInstance.transform.SetParent(PlayerController.instance.transform);
-        attackFieldInstance.transform.localPosition = new Vector3(direction.x/2, direction.y/2, 0);
 
-        Vector3 targ = animator.transform.position;
-        targ.z = 0f;
+        float distance = 0.5f;
+        Vector3 forwardDirection = new Vector3(direction.x, 0, direction.y);
 
-        Vector3 objectPos = attackFieldInstance.transform.position;
-        targ.x = targ.x - objectPos.x;
-        targ.y = targ.y - objectPos.y;
+        attackFieldInstance.transform.localPosition = forwardDirection * distance;
+        attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
-        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
-        attackFieldInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        //Vector3 targ = animator.transform.position;
+        //targ.z = 0f;
+
+        //Vector3 objectPos = attackFieldInstance.transform.position;
+        //targ.x = targ.x - objectPos.x;
+        //targ.y = targ.y - objectPos.y;
+
+        //float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+        //attackFieldInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+
         //attackFieldInstance.transform.LookAt(animator.transform);
     }
 

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 facing;
     private Resource health;
     private ModuleInventory inventory;
-    private Crosshair crosshair;
+    //private Crosshair crosshair;
 
     [SerializeField]
     private List<Dash> dashes;
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         health = GetComponentInChildren<Resource>();
-        crosshair = GetComponentInChildren<Crosshair>();
+        //crosshair = GetComponentInChildren<Crosshair>();
         anim = GetComponent<Animator>();
         inventory = GetComponent<ModuleInventory>();
 
@@ -118,7 +118,10 @@ public class PlayerController : MonoBehaviour
         {
             inputs.SwitchCurrentActionMap("OverlayControl");
         }
-        facing = (crosshair.transform.position - transform.position).normalized;
+
+        //facing = (crosshair.transform.position - transform.position).normalized;
+        facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
+
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {
             anim.SetFloat("Horizontal", facing.x);
@@ -331,6 +334,29 @@ public class PlayerController : MonoBehaviour
             Interaction i = collision.GetComponent<Interaction>();
             i.ChangeVisibility(false);
             
+            interactions.Remove(collision.GetComponent<Interaction>());
+            if (selectedInteraction == i)
+            {
+                selectedInteraction = null;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            interactions.Add(collision.GetComponent<Interaction>());
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.CompareTag("Interaction"))
+        {
+            Interaction i = collision.GetComponent<Interaction>();
+            i.ChangeVisibility(false);
+
             interactions.Remove(collision.GetComponent<Interaction>());
             if (selectedInteraction == i)
             {

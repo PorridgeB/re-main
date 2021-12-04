@@ -17,9 +17,8 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 move = new Vector3(speed * dir.x, speed * dir.y);
+        Vector3 move = new Vector3(speed * dir.x, 0, speed * dir.y);
         transform.position += move;
-        
     }
 
     private void Update()
@@ -30,7 +29,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector2 position, Vector2 direction, float velocity)
+    public void Shoot(Vector3 position, Vector2 direction, float velocity)
     {
         transform.position = position;
         dir = direction;
