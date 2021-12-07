@@ -10,7 +10,6 @@ public struct Bonus
     public Module module;
     public float value;
     public float multiplier;
-    
 }
 
 [System.Serializable]

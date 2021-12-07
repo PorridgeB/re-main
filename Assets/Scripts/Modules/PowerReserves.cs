@@ -26,15 +26,19 @@ public class PowerReserves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > idleDuration && !damageInstanceAdded)
+        if (module.count > 0)
         {
-            damageInstanceAdded = true;
-            DamageInstance d = new DamageInstance();
-            d.value = baseDamage+stackingDamage*module.count;
-            d.source = PlayerController.instance.gameObject;
-            nextAttack.damageInstances.Add(d);
+            timer += Time.deltaTime;
+            if (timer > idleDuration && !damageInstanceAdded)
+            {
+                damageInstanceAdded = true;
+                DamageInstance d = new DamageInstance();
+                d.value = baseDamage + stackingDamage * module.count - 1;
+                d.source = PlayerController.instance.gameObject;
+                nextAttack.damageInstances.Add(d);
+            }
         }
+        
     }
 
     public void Effect()

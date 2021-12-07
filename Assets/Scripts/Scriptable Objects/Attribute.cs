@@ -18,29 +18,17 @@ public class Attribute : BaseAttribute
     [SerializeField]
     private DisplayType type;
     [SerializeField]
-    private List<RawBonus> rawBonuses = new List<RawBonus>();
-    [SerializeField]
     private List<Bonus> moduleBonuses = new List<Bonus>();
+    [SerializeField]
+    private List<Bonus> temporaryBonuses = new List<Bonus>();
     [Space]
     [SerializeField]
     private float finalValue;
 
     private void Awake()
     {
-        rawBonuses.Clear();
         moduleBonuses.Clear();
         finalValue = baseValue;
-    }
-
-    public void AddRawBonus(RawBonus bonus)
-    {
-        rawBonuses.Add(bonus);
-        
-    }
-
-    public void RemoveRawBonus(RawBonus bonus)
-    {
-        rawBonuses.Remove(bonus);
     }
 
     public void ClearmoduleBonuses()
@@ -58,36 +46,42 @@ public class Attribute : BaseAttribute
         moduleBonuses.Remove(bonus);
     }
 
+    public void AddTemporaryBonus(Bonus bonus)
+    {
+        temporaryBonuses.Add(bonus);
+    }
+
+    public bool HasTemporaryBonus(Bonus bonus)
+    {
+        return temporaryBonuses.Contains(bonus);
+    }
+
+    public void RemoveTemporaryBonus(Bonus bonus)
+    {
+        temporaryBonuses.Remove(bonus);
+    }
+
     public float Value()
     {
         finalValue = BaseValue;
 
-        float rawBonusValue = 0;
-        float rawBonusMultiplier = 0;
-
-        foreach (RawBonus b in rawBonuses)
-        {
-           
-            rawBonusValue += b.BaseValue;
-            rawBonusMultiplier += b.BaseMuliplier;
-        }
-
-        finalValue += rawBonusValue;
-        finalValue *= 1 + rawBonusMultiplier;
-
-        finalValue = BaseValue;
-
-        float moduleBonusValue = 0;
-        float moduleBonusMultiplier = 0;
+        float linerValues = 0;
+        float exponentialValues = 0;
 
         foreach (Bonus b in moduleBonuses)
         {
-            moduleBonusValue += b.value;
-            moduleBonusMultiplier += b.multiplier;
+            linerValues += b.value;
+            exponentialValues += b.multiplier;
         }
 
-        finalValue += moduleBonusValue;
-        finalValue *= 1 + moduleBonusMultiplier;
+        foreach (Bonus b in temporaryBonuses)
+        {
+            linerValues += b.value;
+            exponentialValues += b.multiplier;
+        }
+
+        finalValue += linerValues;
+        finalValue *= 1 + exponentialValues;
         return Mathf.Clamp(finalValue, minValue, maxValue);
     }
 

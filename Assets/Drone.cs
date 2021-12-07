@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Drone : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameEvent OnDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,7 @@ public class Drone : MonoBehaviour
 
                     if ((float)bd.GetVariable("Health").GetValue() < 0f)
                     {
+                        OnDeath.Raise();
                         Destroy(gameObject);
                     }
                 }
