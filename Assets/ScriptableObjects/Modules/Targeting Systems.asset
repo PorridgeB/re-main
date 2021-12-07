@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
   m_Name: Targeting Systems
   m_EditorClassIdentifier: 
+  count: 0
   description: 
   sprite: {fileID: -7583409310137716746, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses:
-  - attributeName: Crit Chance
+  - attribute: {fileID: 11400000, guid: 28b198edeb7eae44ba56e285fcb4e018, type: 2}
+    module: {fileID: 11400000}
     value: 0.2
     multiplier: 0
-  eventHandlers: []

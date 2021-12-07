@@ -9,14 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bcad920490134e46958ced13e2a5b4a, type: 3}
-  m_Name: Melee Attack Speed
+  m_Script: {fileID: 11500000, guid: 1306146482790ee47b763f269fc8e32c, type: 3}
+  m_Name: PlayerHurt
   m_EditorClassIdentifier: 
-  baseValue: 1.5
-  baseMultiplier: 0
-  minValue: 0
-  maxValue: 3
-  type: 0
-  rawBonuses: []
-  moduleBonuses: []
-  finalValue: 0.5

@@ -25,11 +25,15 @@ public class TargetDummy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageSource"))
         {
-            DamageInstance source = collision.gameObject.GetComponent<DamageSource>().Damage;
-            damageTotal += source.value;
-            GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
-            g.GetComponent<DamageToken>().SetValue(source);
-            Destroy(collision.gameObject.GetComponent<Projectile>()?.gameObject);
+            List<DamageInstance> sources = collision.gameObject.GetComponent<DamageSource>().Damages;
+            foreach (DamageInstance d in sources)
+            {
+                damageTotal += d.value;
+                GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
+                g.GetComponent<DamageToken>().SetValue(d);
+                Destroy(collision.gameObject.GetComponent<Projectile>()?.gameObject);
+            }
+            
         }
     }
 }

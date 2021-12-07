@@ -15,7 +15,8 @@ MonoBehaviour:
   description: 
   sprite: {fileID: 5860025163644826426, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses:
-  - attributeName: Melee Attack Damage
+  - attribute: {fileID: 11400000, guid: 67762c6972e7c8547b34c8005318f841, type: 2}
+    module: {fileID: 11400000}
     value: 10
     multiplier: 0
   eventHandlers: []

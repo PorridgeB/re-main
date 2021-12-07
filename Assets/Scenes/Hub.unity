@@ -2499,6 +2499,112 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!1 &843247191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 843247193}
+  - component: {fileID: 843247192}
+  - component: {fileID: 843247195}
+  - component: {fileID: 843247194}
+  m_Layer: 0
+  m_Name: Power Reserves
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &843247192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843247191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a38ad2515b31d4b887695b9adf0cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextAttack: {fileID: 11400000, guid: b9e105216e42e4d4fad26a1e671d8889, type: 2}
+  idleDuration: 5
+  baseDamage: 20
+  stackingDamage: 10
+  module: {fileID: 11400000, guid: 68698ef88d440d14690e4a5c2ff82aae, type: 2}
+--- !u!4 &843247193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843247191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9876833, y: -4.4436817, z: -6.1950912}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &843247194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843247191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 932cfa0eec0d09c49a9f52c460cbe1f0, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843247192}
+        m_TargetAssemblyTypeName: PowerReserves, Assembly-CSharp
+        m_MethodName: Effect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &843247195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843247191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 14df389c6df53ac48b4004fabf722e7d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843247192}
+        m_TargetAssemblyTypeName: PowerReserves, Assembly-CSharp
+        m_MethodName: Effect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &848183371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,8 +2831,9 @@ GameObject:
   - component: {fileID: 868174095}
   - component: {fileID: 868174093}
   - component: {fileID: 868174094}
-  - component: {fileID: 868174096}
   - component: {fileID: 868174098}
+  - component: {fileID: 868174097}
+  - component: {fileID: 868174096}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2882,11 +2989,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 868174089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcdbbcadf993a8a4f82b04c9322431dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  modules: []
+  Event: {fileID: 11400000, guid: 932cfa0eec0d09c49a9f52c460cbe1f0, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 868174099}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: AddRangedDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &868174097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868174089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 14df389c6df53ac48b4004fabf722e7d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 868174099}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: AddMeleeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &868174098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2933,6 +3082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaac95e8c96a9d4fa2fb53612413ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextAttack: {fileID: 11400000, guid: b9e105216e42e4d4fad26a1e671d8889, type: 2}
   health:
     HealthDepleted: {fileID: 11400000, guid: b4a0d08297a6cab4a9140c4448d76ba0, type: 2}
     max: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
@@ -4596,8 +4746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statMenu: {fileID: 1543803669}
-  playerStats: {fileID: 0}
-  moduleInventory: {fileID: 868174096}
   modulesMenu: {fileID: 480020710}
   statsMenu: {fileID: 1356134253}
   inputs: {fileID: 868174098}
@@ -5759,6 +5907,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5324993381317255254, guid: 4ee6a4501a9d8f643a4eb9c2bc23085b, type: 3}
   m_PrefabInstance: {fileID: 1500869584}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1523227804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1523227805}
+  m_Layer: 0
+  m_Name: Frenzy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1523227805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523227804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9876833, y: -4.4436817, z: -6.1950912}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1543686254
 GameObject:
   m_ObjectHideFlags: 0

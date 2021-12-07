@@ -17,8 +17,9 @@ public struct Bonus
 [CreateAssetMenu]
 public class Module : ScriptableObject
 {
+    public int count;
+    [Space]
     public string description;
     public Sprite sprite;
     public List<Bonus> bonuses;
-    public List<GameEventListener> eventHandlers = new List<GameEventListener>(); 
 }

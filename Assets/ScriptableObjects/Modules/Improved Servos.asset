@@ -15,7 +15,8 @@ MonoBehaviour:
   description: 
   sprite: {fileID: 8132948862792318974, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses:
-  - attributeName: Run Speed
+  - attribute: {fileID: 11400000, guid: ce4f011195d4b3a45aad24644d70e3da, type: 2}
+    module: {fileID: 11400000}
     value: 0.1
     multiplier: 0
   eventHandlers: []

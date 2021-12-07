@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     private Vector2 dir;
     private float speed;
     private Vector3 startPosition;
+    private List<DamageInstance> damageInstances;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,9 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector2 position, Vector2 direction, float velocity)
+    public void Shoot(Vector2 position, Vector2 direction, float velocity, List<DamageInstance> damages)
     {
+        damageInstances = damages;
         transform.position = position;
         dir = direction;
         speed = velocity;

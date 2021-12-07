@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ba7ad5ec7959c438d1697ea4b4b87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextAttack: {fileID: 11400000, guid: b9e105216e42e4d4fad26a1e671d8889, type: 2}
   attackField: {fileID: 3298188469097433944, guid: d03355a6e044760448deb0c982da0b8d, type: 3}
   dashSpeed: 5
   speedCurve:
@@ -38,6 +39,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnPlayerMeleeAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 14df389c6df53ac48b4004fabf722e7d, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-9060638023421651299
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -486,6 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4e5a82805d2cd4fb466e91d5d82786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextAttack: {fileID: 11400000, guid: b9e105216e42e4d4fad26a1e671d8889, type: 2}
   projectile: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
   speed: 1
 --- !u!1101 &-279900010296653382

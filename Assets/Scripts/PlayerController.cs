@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public struct DamageInstance
-{
-    public float value;
-    public bool crit;
-    public DamageType type;
-}
-
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    [SerializeField]
+    private Attack nextAttack;
     private Animator anim;
 
     private float scrap = 0;
@@ -265,7 +260,7 @@ public class PlayerController : MonoBehaviour
         return Random.value < stats.CritChance.Value();
     }
 
-    public DamageInstance GetRangedDamage()
+    public void AddRangedDamage()
     {
         DamageInstance d = new DamageInstance();
         d.value = stats.RangedAttackDamage.Value();
@@ -275,10 +270,10 @@ public class PlayerController : MonoBehaviour
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
-        return d;
+        nextAttack.damageInstances.Add(d);
     }
 
-    public DamageInstance GetMeleeDamage()
+    public void AddMeleeDamage()
     {
         DamageInstance d = new DamageInstance();
         d.value = stats.MeleeAttackDamage.Value();
@@ -288,7 +283,7 @@ public class PlayerController : MonoBehaviour
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
-        return d;
+        nextAttack.damageInstances.Add(d);
     }
 
     public float GetCrit(float value)
