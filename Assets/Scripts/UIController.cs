@@ -8,10 +8,6 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject statMenu;
     [SerializeField]
-    private PlayerStats playerStats;
-    [SerializeField]
-    private ModuleInventory moduleInventory;
-    [SerializeField]
     private ScrollMenu modulesMenu;
     [SerializeField]
     private ScrollMenu statsMenu;
@@ -26,7 +22,6 @@ public class UIController : MonoBehaviour
         inputs = PlayerController.instance.GetComponent<PlayerInput>();
         returnAction = inputs.actions["Return"];
 
-        GenerateLists();
     }
 
     // Update is called once per frame
@@ -36,17 +31,10 @@ public class UIController : MonoBehaviour
 
         if (statMenu.activeInHierarchy)
         {
-            GenerateLists();
         }
         if (returnAction.triggered)
         {
             inputs.SwitchCurrentActionMap("CharacterControl");
         }
-    }
-
-    public void GenerateLists()
-    {
-        modulesMenu.GenerateModules(moduleInventory);
-        statsMenu.GenerateStats(playerStats);
     }
 }

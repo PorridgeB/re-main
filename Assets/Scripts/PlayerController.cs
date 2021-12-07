@@ -3,22 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public struct DamageInstance
-{
-    public float value;
-    public bool crit;
-    public DamageType type;
-    public GameObject source;
-}
-
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-    public delegate void Player();
-    public static event Player Died;
-    public static event Player PowerDepleted;
-
+    [SerializeField]
+    private Attack nextAttack;
     private Animator anim;
 
     private float scrap = 0;
@@ -46,7 +36,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput inputs;
     private PlayerMovement movement;
-    private PlayerStats stats;
+    [SerializeField]
+    private StatBlock stats;
 
     private InputAction moveAction;
     private InputAction walkAction;
@@ -84,11 +75,9 @@ public class PlayerController : MonoBehaviour
         //health = GetComponentInChildren<Resource>();
         //crosshair = GetComponentInChildren<Crosshair>();
         anim = GetComponent<Animator>();
-        inventory = GetComponent<ModuleInventory>();
 
         inputs = GetComponent<PlayerInput>();
         movement = GetComponent<PlayerMovement>();
-        stats = GetComponent<PlayerStats>();
 
 
         moveAction = inputs.actions["move"];
@@ -99,7 +88,7 @@ public class PlayerController : MonoBehaviour
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
 
-        for (int i = 0; i < stats.ReadAttribute("Dash Charges"); i++)
+        for (int i = 0; i < stats.DashCharges.Value(); i++)
         {
             GameObject g = Instantiate(dash);
             g.transform.SetParent(transform);
@@ -146,7 +135,7 @@ public class PlayerController : MonoBehaviour
             if (meleeCooldown.Finished)
             {
                 //Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
-                meleeCooldown.Reset(1/stats.ReadAttribute("Melee Attack Speed"));
+                meleeCooldown.Reset(1 / stats.MeleeAttackSpeed.Value());
                 anim.SetTrigger("Melee");
             }
         }
@@ -155,7 +144,7 @@ public class PlayerController : MonoBehaviour
             if (rangedCooldown.Finished)
             {
                 //Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
-                rangedCooldown.Reset(1/stats.ReadAttribute("Ranged Attack Speed"));
+                rangedCooldown.Reset(1/stats.RangedAttackSpeed.Value());
                 anim.SetTrigger("Ranged");
 
             }
@@ -184,7 +173,6 @@ public class PlayerController : MonoBehaviour
         {
             selectedInteraction.ChangeVisibility(true);
         }
-
         if (healthRegenTimer.Finished)
         {
             health += 1;
@@ -198,7 +186,7 @@ public class PlayerController : MonoBehaviour
         {
             if (d.Ready)
             {
-                d.Activate(1 / stats.ReadAttribute("Dash Recharge Rate"));
+                d.Activate(1 / stats.DashRechargeRate.Value());
                 anim.SetTrigger("Dash");
                 return;
             }
@@ -207,12 +195,12 @@ public class PlayerController : MonoBehaviour
 
     public void Run()
     {
-        movement.SetVelocity(moveAction.ReadValue<Vector2>().normalized * stats.ReadAttribute("Run Speed"));
+        movement.SetVelocity(moveAction.ReadValue<Vector2>().normalized * stats.RunSpeed.Value());
     }
 
     public void Sneak()
     {
-        movement.SetVelocity(moveAction.ReadValue<Vector2>().normalized * stats.ReadAttribute("Walk Speed"));
+        movement.SetVelocity(moveAction.ReadValue<Vector2>().normalized * stats.WalkSpeed.Value());
     }
 
     public void Dash(Vector2 velocity)
@@ -228,11 +216,6 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetVelocity()
     {
         return movement.GetVelocity();
-    }
-
-    public void AddModule(Module module)
-    {
-        inventory.AddModule(module);
     }
 
     public void StartDialogue()
@@ -259,13 +242,13 @@ public class PlayerController : MonoBehaviour
         switch (damage.type)
         {
             case DamageType.Elemental:
-                finalDamageValue = damage.value *1-stats.ReadAttribute("Resistance Elemental");
+                finalDamageValue = damage.value *1-stats.ResistanceElemental.Value();
                 break;
             case DamageType.Energy:
-                finalDamageValue = damage.value * 1 - stats.ReadAttribute("Resistance Energy");
+                finalDamageValue = damage.value * 1 - stats.ResistanceEnergy.Value();
                 break;
             case DamageType.Physical:
-                finalDamageValue = damage.value * 1 - stats.ReadAttribute("Resistance Physical");
+                finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
         Debug.Log(finalDamageValue);
@@ -273,45 +256,43 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckDodge()
     {
-        return Random.value < stats.ReadAttribute("Dodge Chance");
+        return Random.value < stats.DodgeChance.Value();
     }
 
     private bool CheckCrit()
     {
-        return Random.value < stats.ReadAttribute("Crit Chance");
+        return Random.value < stats.CritChance.Value();
     }
 
-    public DamageInstance GetRangedDamage()
+    public void AddRangedDamage()
     {
         DamageInstance d = new DamageInstance();
-        d.value = stats.ReadAttribute("Ranged Attack Damage");
+        d.value = stats.RangedAttackDamage.Value();
         d.crit = CheckCrit();
         if (d.crit)
         {
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
-        d.source = gameObject;
-        return d;
+        nextAttack.damageInstances.Add(d);
     }
 
-    public DamageInstance GetMeleeDamage()
+    public void AddMeleeDamage()
     {
         DamageInstance d = new DamageInstance();
-        d.value = stats.ReadAttribute("Melee Attack Damage");
+        d.value = stats.MeleeAttackDamage.Value();
         d.crit = CheckCrit();
         if (d.crit)
         {
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
-        d.source = gameObject;
-        return d;
+        nextAttack.damageInstances.Add(d);
     }
 
     public float GetCrit(float value)
     {
-        return value * stats.ReadAttribute("Crit Damage");
+        return value * stats.CritDamage.Value();
     }
 
     private void OnTriggerEnter(Collider collision)

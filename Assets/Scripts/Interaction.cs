@@ -23,7 +23,10 @@ public class Interaction : MonoBehaviour
         if (transform.parent.CompareTag("Module"))
         {
             ModuleItem m = transform.parent.GetComponent<ModuleItem>();
-            PlayerController.instance.AddModule(m.Module);
+            foreach (Bonus b in m.Module.bonuses)
+            {
+                b.attribute.AddModuleBonus(b);
+            }
             //Destroy(m.gameObject);
         }
         else if (transform.parent.CompareTag("Character"))

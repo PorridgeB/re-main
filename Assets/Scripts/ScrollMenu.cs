@@ -44,54 +44,54 @@ public class ScrollMenu : MonoBehaviour
         }
     }
 
-    public void GenerateStats(PlayerStats stats)
+    public void GenerateStats()
     {
-        Clear();
-        height = listItemPrefab.GetComponent<RectTransform>().sizeDelta.y;
-        Attribute[] attributes = stats.GetAttributesAsArray();
+        //Clear();
+        //height = listItemPrefab.GetComponent<RectTransform>().sizeDelta.y;
+        //Attribute[] attributes = stats.GetAttributesAsArray();
 
-        content.sizeDelta = new Vector2(content.sizeDelta.x, attributes.Length * (height + padding) + padding * 2);
+        //content.sizeDelta = new Vector2(content.sizeDelta.x, attributes.Length * (height + padding) + padding * 2);
 
-        for (int i = 0; i < attributes.Length; i++)
-        {
-            float spawnY = i * (height + padding);
-            //newSpawn Position
-            Vector3 pos = new Vector3(0, -spawnY, spawn.position.z);
-            //instantiate item
-            GameObject SpawnedItem = Instantiate(listItemPrefab, pos, spawn.rotation);
-            //setParent
-            SpawnedItem.transform.SetParent(spawn, false);
+        //for (int i = 0; i < attributes.Length; i++)
+        //{
+        //    float spawnY = i * (height + padding);
+        //    //newSpawn Position
+        //    Vector3 pos = new Vector3(0, -spawnY, spawn.position.z);
+        //    //instantiate item
+        //    GameObject SpawnedItem = Instantiate(listItemPrefab, pos, spawn.rotation);
+        //    //setParent
+        //    SpawnedItem.transform.SetParent(spawn, false);
 
-            SpawnedItem.GetComponent<StatScrollMenuItem>().SetInformation(attributes[i].name, attributes[i].DisplayFinalValue());
+        //    SpawnedItem.GetComponent<StatScrollMenuItem>().SetInformation(attributes[i].name, attributes[i].DisplayFinalValue());
 
-        }
+        //}
     }
 
-    public void GenerateModules(ModuleInventory module)
+    public void GenerateModules()
     {
-        Clear();
-        height = listItemPrefab.GetComponent<RectTransform>().sizeDelta.y;
-        List<Module> modules = module.GetModules();
+        //Clear();
+        //height = listItemPrefab.GetComponent<RectTransform>().sizeDelta.y;
+        //List<Module> modules = module.GetModules();
 
-        content.sizeDelta = new Vector2(content.sizeDelta.x, modules.Count * (height + padding) + padding * 2);
+        //content.sizeDelta = new Vector2(content.sizeDelta.x, modules.Count * (height + padding) + padding * 2);
 
-        for (int i = 0; i < modules.Count; i++)
-        {
-            float spawnY = i * (height + padding);
-            //newSpawn Position
-            Vector3 pos = new Vector3(0, -spawnY, spawn.position.z);
-            //instantiate item
-            GameObject SpawnedItem = Instantiate(listItemPrefab, pos, spawn.rotation);
-            //setParent
-            SpawnedItem.transform.SetParent(spawn, false);
+        //for (int i = 0; i < modules.Count; i++)
+        //{
+        //    float spawnY = i * (height + padding);
+        //    //newSpawn Position
+        //    Vector3 pos = new Vector3(0, -spawnY, spawn.position.z);
+        //    //instantiate item
+        //    GameObject SpawnedItem = Instantiate(listItemPrefab, pos, spawn.rotation);
+        //    //setParent
+        //    SpawnedItem.transform.SetParent(spawn, false);
 
-            string bonuses = "";
-            foreach (Bonus b in modules[i].bonuses)
-            {
-                bonuses += b.attributeName + " - " + b.value + "\n";
-            }
+        //    string bonuses = "";
+        //    foreach (Bonus b in modules[i].bonuses)
+        //    {
+        //        bonuses += b.attributeName + " - " + b.value + "\n";
+        //    }
 
-            SpawnedItem.GetComponent<ModuleScrollMenuItem>().SetInformation(modules[i].name, bonuses, modules[i].sprite);
-        }
+        //    SpawnedItem.GetComponent<ModuleScrollMenuItem>().SetInformation(modules[i].name, bonuses, modules[i].sprite);
+        //}
     }
 }

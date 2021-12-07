@@ -11,18 +11,18 @@ public enum DamageType
 
 public class DamageSource : MonoBehaviour
 {
-    private DamageInstance damageInstance;
+    private List<DamageInstance> damageInstances = new List<DamageInstance>();
 
-    public DamageInstance Damage
+    public List<DamageInstance> Damages
     {
         get
         {
-            return damageInstance;
+            return damageInstances;
         }
     }
 
-    public void SetValue(DamageInstance instance)
+    public void AddInstance(DamageInstance instance)
     {
-        damageInstance = instance;
+        damageInstances.Add(instance);
     }
 }
