@@ -32,6 +32,7 @@ public class PowerReserves : MonoBehaviour
             damageInstanceAdded = true;
             DamageInstance d = new DamageInstance();
             d.value = baseDamage+stackingDamage*module.count;
+            d.source = PlayerController.instance.gameObject;
             nextAttack.damageInstances.Add(d);
         }
     }

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[SerializeField]
-public class DamageInstance : MonoBehaviour
+[System.Serializable]
+public class DamageInstance
 {
     public GameObject source;
     public float value;

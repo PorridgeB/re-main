@@ -267,6 +267,7 @@ public class PlayerController : MonoBehaviour
     {
         DamageInstance d = new DamageInstance();
         d.value = stats.RangedAttackDamage.Value();
+        d.source = gameObject;
         d.crit = CheckCrit();
         if (d.crit)
         {
@@ -280,6 +281,8 @@ public class PlayerController : MonoBehaviour
     {
         DamageInstance d = new DamageInstance();
         d.value = stats.MeleeAttackDamage.Value();
+        Debug.Log(d.value);
+        d.source = gameObject;
         d.crit = CheckCrit();
         if (d.crit)
         {
@@ -311,7 +314,7 @@ public class PlayerController : MonoBehaviour
                     
                     health -= damage.value;
 
-                    Debug.Log(health);
+                    //Debug.Log(health);
                 }
             }
             

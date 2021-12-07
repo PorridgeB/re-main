@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58026ea634c33c45a913d8cbf485a67, type: 3}
   m_Name: Next Attack
   m_EditorClassIdentifier: 
-  damageInstances:
-  - {fileID: 0}
+  damageInstances: []
