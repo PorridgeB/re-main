@@ -154,7 +154,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashSpeed: 40
+  dashSpeed: 10
 --- !u!1101 &-7878284832692316474
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
