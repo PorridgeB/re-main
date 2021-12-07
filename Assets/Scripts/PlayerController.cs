@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     [SerializeField]
-    private Attack nextAttack;
+    private AttackEvent nextAttack;
     private Animator anim;
 
     private float scrap = 0;
@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private float viewDistance;
     private Vector2 facing;
     private float health = 100f;
-    private ModuleInventory inventory;
     //private Crosshair crosshair;
 
     [SerializeField]
@@ -176,7 +175,7 @@ public class PlayerController : MonoBehaviour
         if (healthRegenTimer.Finished)
         {
             health += 1;
-            healthRegenTimer.Reset(1 / stats.ReadAttribute("Health Regen"));
+            healthRegenTimer.Reset(1/stats.HealthRegen.Value());
         }
     }
 
@@ -303,14 +302,19 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.CompareTag("DamageSource"))
         {
-            // Stop the player from hurting itself
-            if (collision.gameObject.GetComponent<DamageSource>().Damage.source != gameObject)
+            DamageSource d = collision.gameObject.GetComponent<DamageSource>();
+            foreach (DamageInstance damage in d.Damages)
             {
-                var damage = collision.gameObject.GetComponent<DamageSource>().Damage.value;
-                health -= damage;
+                // Stop the player from hurting itself
+                if (damage.source != gameObject)
+                {
+                    
+                    health -= damage.value;
 
-                Debug.Log(health);
+                    Debug.Log(health);
+                }
             }
+            
         }
     }
 

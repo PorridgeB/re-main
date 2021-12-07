@@ -22,7 +22,7 @@ public class Attack : Action
         d.source = gameObject;
         d.value = Damage;
 
-        attackFieldInstance.GetComponent<DamageSource>().SetValue(d);
+        attackFieldInstance.GetComponent<DamageSource>().AddInstance(d);
         attackFieldInstance.transform.SetParent(transform);
 
         float distance = 0.5f;

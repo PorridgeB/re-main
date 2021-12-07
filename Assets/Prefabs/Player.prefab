@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 4505106388035379477}
   - component: {fileID: 4505106388035379561}
   - component: {fileID: 4505106388035379478}
-  - component: {fileID: 4505106388035379563}
-  - component: {fileID: 4505106388035379560}
   - component: {fileID: 4505106388035379474}
   m_Layer: 0
   m_Name: Player
@@ -40,6 +38,7 @@ Transform:
   - {fileID: 4505106388187775773}
   - {fileID: 4505106389434108997}
   - {fileID: 4505106388328366135}
+  - {fileID: 391824669696522478}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,12 +84,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaac95e8c96a9d4fa2fb53612413ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextAttack: {fileID: 0}
   dashes: []
   dash: {fileID: 5909654488428309732, guid: 254e14969a4bfec47add5561f4da5a4d, type: 3}
   rangedCooldown: {fileID: 4505106388187775772}
   meleeCooldown: {fileID: 4505106389434108996}
   healthRegenTimer: {fileID: 4505106388328366134}
   interactions: []
+  stats: {fileID: 6292936344987751588}
 --- !u!143 &4505106388035379477
 CharacterController:
   m_ObjectHideFlags: 0
@@ -179,33 +180,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4505106388035379563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505106388035379472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76243c45fb6e92149af487eb3b6381af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statCount: 0
---- !u!114 &4505106388035379560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505106388035379472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcdbbcadf993a8a4f82b04c9322431dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 4505106388035379563}
-  modules: []
 --- !u!114 &4505106388035379474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +292,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4505106389126235115}
-  - component: {fileID: 4505106389126235114}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -340,20 +313,6 @@ Transform:
   m_Father: {fileID: 4505106388035379475}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4505106389126235114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505106389126235112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dae3846313b4e44e8cd8b5e6ed86ae2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributeName: Health
-  maxValue: 0
 --- !u!1 &4505106389434108994
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,3 +451,62 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &8288292699696441951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391824669696522478}
+  - component: {fileID: 6292936344987751588}
+  m_Layer: 0
+  m_Name: Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &391824669696522478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288292699696441951}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4505106388035379475}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6292936344987751588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288292699696441951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4794d5e63c3221479ce852137238389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeleeAttackDamage: {fileID: 11400000, guid: 67762c6972e7c8547b34c8005318f841, type: 2}
+  MeleeAttackSpeed: {fileID: 11400000, guid: cb3612f5fbb5df74f862a2a698d06064, type: 2}
+  RangedAttackDamage: {fileID: 11400000, guid: 5c57c358cb8c295489dee926263610a8, type: 2}
+  RangedAttackSpeed: {fileID: 11400000, guid: ed78b968d0b6f9a448b9d39da5d6e450, type: 2}
+  CritChance: {fileID: 11400000, guid: 28b198edeb7eae44ba56e285fcb4e018, type: 2}
+  CritDamage: {fileID: 11400000, guid: 7103fb180d526e74dba49abe2aec03e0, type: 2}
+  Health: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
+  HealthRegen: {fileID: 11400000, guid: b6595f5455caabb4abac0f1b28a405dc, type: 2}
+  RunSpeed: {fileID: 11400000, guid: ce4f011195d4b3a45aad24644d70e3da, type: 2}
+  WalkSpeed: {fileID: 11400000, guid: b76c544252b5edc4f99b615415ad8a72, type: 2}
+  DashCharges: {fileID: 11400000, guid: a2e0ffe76b39f234a8ce92ddc2eb31fd, type: 2}
+  DashRechargeRate: {fileID: 11400000, guid: 3f5197eee9d2d124abfada1e0827b7fc, type: 2}
+  DodgeChance: {fileID: 11400000, guid: a7467cc4d0272f646aa671af54e74cb2, type: 2}
+  ResistancePhysical: {fileID: 11400000, guid: 23639c9218fddc8488f5a183a19adca4, type: 2}
+  ResistanceEnergy: {fileID: 11400000, guid: 765a4d21d93c4214f8cbce4ccd0a60d4, type: 2}
+  ResistanceElemental: {fileID: 11400000, guid: 26c367aed8248b749ac343fe494f7608, type: 2}

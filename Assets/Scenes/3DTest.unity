@@ -555,28 +555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &228982337 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4505106388035379560, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
-  m_PrefabInstance: {fileID: 4505106387857366825}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcdbbcadf993a8a4f82b04c9322431dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &228982338 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4505106388035379563, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
-  m_PrefabInstance: {fileID: 4505106387857366825}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76243c45fb6e92149af487eb3b6381af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &269295185
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,8 +4052,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statMenu: {fileID: 566616665}
-  playerStats: {fileID: 228982338}
-  moduleInventory: {fileID: 228982337}
   modulesMenu: {fileID: 1753063004}
   statsMenu: {fileID: 269295187}
   inputs: {fileID: 228982334}

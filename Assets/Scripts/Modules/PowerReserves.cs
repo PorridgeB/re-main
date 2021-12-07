@@ -6,7 +6,7 @@ public class PowerReserves : MonoBehaviour
 {
     private float timer;
     [SerializeField]
-    private Attack nextAttack;
+    private AttackEvent nextAttack;
     [SerializeField]
     private float idleDuration;
     [SerializeField]

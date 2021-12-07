@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerMeleeAttack : StateMachineBehaviour
 {
     [SerializeField]
-    private Attack nextAttack;
+    private AttackEvent nextAttack;
     [SerializeField]
     private GameObject attackField;
     [SerializeField]

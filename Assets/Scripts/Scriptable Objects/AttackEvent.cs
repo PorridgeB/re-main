@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class Attack : ScriptableObject
+public class AttackEvent : ScriptableObject
 {
     public List<DamageInstance> damageInstances = new List<DamageInstance>();
 }
