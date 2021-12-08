@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
   m_Name: Frenzy
   m_EditorClassIdentifier: 
-  count: 1
+  count: 0
   description: 
   sprite: {fileID: -6338023803479276477, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses: []

@@ -16,6 +16,11 @@ public struct Bonus
 [CreateAssetMenu]
 public class Module : ScriptableObject
 {
+    public void Awake()
+    {
+        count = 0;
+    }
+
     public int count;
     [Space]
     public string description;

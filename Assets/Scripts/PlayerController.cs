@@ -156,15 +156,19 @@ public class PlayerController : MonoBehaviour
         {
             foreach (Interaction i in interactions)
             {
-                i.ChangeVisibility(false);
-                if (selectedInteraction == null)
+                if (i != null)
                 {
-                    selectedInteraction = i;
+                    i.ChangeVisibility(false);
+                    if (selectedInteraction == null)
+                    {
+                        selectedInteraction = i;
+                    }
+                    else if (Vector2.Distance(transform.position, i.transform.position) < Vector2.Distance(transform.position, selectedInteraction.transform.position))
+                    {
+                        selectedInteraction = i;
+                    }
                 }
-                else if (Vector2.Distance(transform.position, i.transform.position) < Vector2.Distance(transform.position, selectedInteraction.transform.position))
-                {
-                    selectedInteraction = i;
-                }
+                
             }
         }
         

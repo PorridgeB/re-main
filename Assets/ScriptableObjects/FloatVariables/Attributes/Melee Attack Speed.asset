@@ -17,6 +17,6 @@ MonoBehaviour:
   minValue: 0
   maxValue: 3
   type: 0
-  rawBonuses: []
   moduleBonuses: []
-  finalValue: 0.5
+  temporaryBonuses: []
+  finalValue: 1.5
