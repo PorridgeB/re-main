@@ -6,37 +6,23 @@ using UnityEngine.Events;
 public class PlayerMeleeAttack : StateMachineBehaviour
 {
     [SerializeField]
-    private AttackEvent nextAttack;
-    [SerializeField]
     private GameObject attackField;
     [SerializeField]
     private float dashSpeed;
     [SerializeField]
     private AnimationCurve speedCurve;
-
-    [SerializeField]
-    private UnityEvent OnPlayerMeleeAttack;
     private float dashTimer;
     private Vector2 direction;
     private GameObject attackFieldInstance;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        OnPlayerMeleeAttack.Invoke();
 
         dashTimer = 0;
         direction = PlayerController.instance.GetFacing();
         
         
-        attackFieldInstance = Instantiate(attackField);
-        DamageSource script = attackFieldInstance.GetComponent<DamageSource>();
-        foreach (DamageInstance d in nextAttack.damageInstances)
-        {
-            script.AddInstance(d);
-            
-        }
-        nextAttack.damageInstances.Clear();
-        attackFieldInstance.transform.SetParent(PlayerController.instance.transform);
+        attackFieldInstance = Instantiate(attackField, PlayerController.instance.transform);
 
         float distance = 0.5f;
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.y);

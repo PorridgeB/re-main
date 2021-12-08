@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PowerReserves : MonoBehaviour
 {
-    private float timer;
     [SerializeField]
-    private AttackEvent nextAttack;
+    private float timer;
     [SerializeField]
     private float idleDuration;
     [SerializeField]
@@ -15,7 +14,6 @@ public class PowerReserves : MonoBehaviour
     private float stackingDamage;
     [SerializeField]
     private Module module;
-    private bool damageInstanceAdded;
 
     // Start is called before the first frame update
     void Start()
@@ -29,21 +27,24 @@ public class PowerReserves : MonoBehaviour
         if (module.count > 0)
         {
             timer += Time.deltaTime;
-            if (timer > idleDuration && !damageInstanceAdded)
-            {
-                damageInstanceAdded = true;
-                DamageInstance d = new DamageInstance();
-                d.value = baseDamage + stackingDamage * module.count - 1;
-                d.source = PlayerController.instance.gameObject;
-                nextAttack.damageInstances.Add(d);
-            }
         }
         
     }
 
-    public void Effect()
+    public void Effect(DamageSource source)
     {
-        timer = 0;
-        damageInstanceAdded = false;
+        
+        if (source.source == PlayerController.instance.gameObject)
+        {
+            if (timer > idleDuration)
+            {
+                Debug.Log("triggered power reserves");
+                DamageInstance d = new DamageInstance();
+                d.source = gameObject;
+                d.value = baseDamage + (stackingDamage * (module.count - 1));
+                source.AddInstance(d);
+                timer = 0;
+            }
+        }
     }
 }

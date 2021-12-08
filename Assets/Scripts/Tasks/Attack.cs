@@ -6,8 +6,9 @@ using BehaviorDesigner.Runtime.Tasks;
 public class Attack : Action
 {
     public float Damage = 10f;
-	public GameObject AttackField;
-
+    [SerializeField]
+    public GameObject AttackField;
+    
     private GameObject attackFieldInstance;
     private float timer = 0f;
 
@@ -15,23 +16,22 @@ public class Attack : Action
     {
         var direction = (PlayerController.instance.transform.position - transform.position).normalized;
 
-        attackFieldInstance = Object.Instantiate(AttackField);
+        //attackFieldInstance = Object.Instantiate(AttackField, transform);
 
         DamageInstance d = new DamageInstance();
         d.type = DamageType.Physical;
         d.source = gameObject;
         d.value = Damage;
 
-        attackFieldInstance.GetComponent<DamageSource>().AddInstance(d);
-        attackFieldInstance.transform.SetParent(transform);
+        //attackFieldInstance.GetComponent<DamageSource>().AddInstance(d);
 
         float distance = 0.5f;
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.y);
 
-        attackFieldInstance.transform.localPosition = forwardDirection * distance;
-        attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
+        //attackFieldInstance.transform.localPosition = forwardDirection * distance;
+        //attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
-        timer = 0.2f;
+        timer = 2f;
     }
 
 	public override TaskStatus OnUpdate()

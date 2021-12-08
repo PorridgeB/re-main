@@ -8,15 +8,16 @@ public class GameEventListener : MonoBehaviour
     public GameEvent Event;
     public UnityEvent Response;
     public UnityEvent<GameObject> ResponseGO;
+    public UnityEvent<DamageSource> ResponseDS;
 
     public void OnEnable()
     {
-        Event.RegisterListener(this);
+        Event?.RegisterListener(this);
     }
 
     public void OnDisable()
     {
-        Event.UnRegisterListener(this);
+        Event?.UnRegisterListener(this);
     }
 
     public void OnEventRaised()
@@ -27,5 +28,10 @@ public class GameEventListener : MonoBehaviour
     public void OnEventRaised(GameObject gameObject)
     {
         ResponseGO.Invoke(gameObject);
+    }
+
+    public void OnEventRaised(DamageSource source)
+    {
+        ResponseDS.Invoke(source);
     }
 }

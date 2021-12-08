@@ -30,9 +30,8 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector2 position, Vector2 direction, float velocity, List<DamageInstance> damages)
+    public void Shoot(Vector2 position, Vector2 direction, float velocity)
     {
-        damageInstances = damages;
         transform.position = position;
         dir = direction;
         speed = velocity;

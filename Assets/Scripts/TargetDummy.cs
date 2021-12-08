@@ -31,7 +31,6 @@ public class TargetDummy : MonoBehaviour
                 damageTotal += d.value;
                 GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
                 g.GetComponent<DamageToken>().SetValue(d);
-                Destroy(collision.gameObject.GetComponent<Projectile>()?.gameObject);
             }
             
         }

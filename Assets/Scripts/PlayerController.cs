@@ -246,7 +246,7 @@ public class PlayerController : MonoBehaviour
         }
 
         damageTaken.Insert(0, damage);
-        playerHit.Raise();
+        //playerHit.Raise();
 
         float finalDamageValue = 0;
         switch (damage.type)
@@ -274,7 +274,19 @@ public class PlayerController : MonoBehaviour
         return Random.value < stats.CritChance.Value();
     }
 
-    public void AddRangedDamage()
+    public void AddDamage(DamageSource source)
+    {
+        if (source.name == "Projectile")
+        {
+            source.AddInstance(GetRangedDamage());
+        }
+        else
+        {
+            source.AddInstance(GetMeleeDamage());
+        }
+    }
+    
+    private DamageInstance GetRangedDamage()
     {
         DamageInstance d = new DamageInstance();
         d.value = stats.RangedAttackDamage.Value();
@@ -285,10 +297,10 @@ public class PlayerController : MonoBehaviour
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
-        nextAttack.damageInstances.Add(d);
+        return d;
     }
 
-    public void AddMeleeDamage()
+    private DamageInstance GetMeleeDamage()
     {
         DamageInstance d = new DamageInstance();
         d.value = stats.MeleeAttackDamage.Value();
@@ -299,7 +311,7 @@ public class PlayerController : MonoBehaviour
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
-        nextAttack.damageInstances.Add(d);
+        return d;
     }
 
     public float GetCrit(float value)

@@ -25,16 +25,11 @@ public class CripplingBlows : MonoBehaviour
         
     }
 
-    public void Effect(GameObject gameObject)
+    public void Effect(DamageSource source)
     {
         if (module.count > 0)
         {
-            Debug.Log(baseChance + stackingChance * (module.count - 1) + " : " + Random.value);
-            if (Random.value < baseChance + (stackingChance * (module.count - 1)))
-            {
-                gameObject.GetComponent<Drone>().Slow();
-            }
-            
+            source.AddEffect(new Slow(baseChance + (stackingChance * (module.count - 1)), duration));
         }
     }
 }

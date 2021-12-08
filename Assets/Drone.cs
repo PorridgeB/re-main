@@ -10,6 +10,9 @@ public class Drone : MonoBehaviour
     private GameEvent OnDeath;
     [SerializeField]
     private GameEvent OnHurt;
+    [SerializeField]
+    private GameObject damageToken;
+
 
     private float slowAmount;
     // Start is called before the first frame update
@@ -27,11 +30,13 @@ public class Drone : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageSource"))
         {
-            List<DamageInstance> source = collision.gameObject.GetComponent<DamageSource>().Damages;
-
-            foreach (DamageInstance d in source)
+            DamageSource source = collision.gameObject.GetComponent<DamageSource>();
+            foreach (Effect e in source.Effects)
             {
-                Debug.Log("hurting for " + d.value);
+                e.Resolve(gameObject);
+            }
+            foreach (DamageInstance d in source.Damages)
+            {
                 Hurt(d);
             }
             
@@ -40,7 +45,7 @@ public class Drone : MonoBehaviour
         }
     }
 
-    public void Slow()
+    public void Slow(float duration)
     {
         if (slowAmount != 0) return;
         Debug.Log("Slowed");
@@ -48,12 +53,12 @@ public class Drone : MonoBehaviour
         float currentSpeed = (float)bd.GetVariable("Speed").GetValue();
         slowAmount = currentSpeed * 0.2f;
         bd.SetVariableValue("Speed", currentSpeed - slowAmount);
-        StartCoroutine(StopSlow());
+        StartCoroutine(StopSlow(duration));
     }
 
-    private IEnumerator StopSlow()
+    private IEnumerator StopSlow(float duration)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(duration);
         var bd = GetComponent<BehaviorTree>();
         bd.SetVariableValue("Speed", (float)bd.GetVariable("Speed").GetValue() + slowAmount);
         slowAmount = 0;
@@ -64,7 +69,11 @@ public class Drone : MonoBehaviour
         // Stop it from hurting itself
         if (d.source != gameObject)
         {
-            Debug.Log(d.value);
+            Debug.Log(d.source);
+
+            GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
+            g.GetComponent<DamageToken>().SetValue(d);
+
             var bd = GetComponent<BehaviorTree>();
             var health = bd.GetVariable("Health");
             bd.SetVariableValue("Health", (float)health.GetValue() - d.value);
@@ -73,7 +82,7 @@ public class Drone : MonoBehaviour
 
             if ((float)bd.GetVariable("Health").GetValue() < 0f)
             {
-                OnDeath.Raise();
+                //OnDeath.Raise();
                 Destroy(gameObject);
             }
         }

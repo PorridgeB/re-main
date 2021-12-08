@@ -10,7 +10,6 @@ public class GameEvent : ScriptableObject
 
     public void Raise()
     {
-        Debug.Log("Raised event: " + name);
         for (int i = listeners.Count -1; i >= 0; i--)
         {
             listeners[i].OnEventRaised();
@@ -19,10 +18,17 @@ public class GameEvent : ScriptableObject
 
     public void Raise(GameObject gameobject)
     {
-        Debug.Log("Raised event: " + name + " by --> " + gameobject.name);
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
             listeners[i].OnEventRaised(gameobject);
+        }
+    }
+
+    public void Raise(DamageSource source) {
+        Debug.Log("Raised " + source.source);
+        for (int i = listeners.Count - 1; i >= 0; i--)
+        {
+            listeners[i].OnEventRaised(source);
         }
     }
 

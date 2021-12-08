@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcad920490134e46958ced13e2a5b4a, type: 3}
   m_Name: Melee Attack Damage
   m_EditorClassIdentifier: 
-  baseValue: 1
+  baseValue: 16
   baseMultiplier: 0
   minValue: 0
   maxValue: 10000
