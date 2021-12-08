@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drone : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     [SerializeField]
@@ -15,10 +15,12 @@ public class Drone : MonoBehaviour
 
 
     private float slowAmount;
+    private BehaviorTree behaviorTree;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        behaviorTree = GetComponent<BehaviorTree>();
     }
 
     // Update is called once per frame
@@ -38,10 +40,9 @@ public class Drone : MonoBehaviour
             foreach (DamageInstance d in source.Damages)
             {
                 Hurt(d);
+                // Stop it from hurting itself
+               
             }
-            
-
-            
         }
     }
 
@@ -66,24 +67,26 @@ public class Drone : MonoBehaviour
 
     public void Hurt(DamageInstance d)
     {
-        // Stop it from hurting itself
+
         if (d.source != gameObject)
         {
-            Debug.Log(d.source);
-
             GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
             g.GetComponent<DamageToken>().SetValue(d);
 
-            var bd = GetComponent<BehaviorTree>();
-            var health = bd.GetVariable("Health");
-            bd.SetVariableValue("Health", (float)health.GetValue() - d.value);
+            var health = behaviorTree.GetVariable("Health");
+            behaviorTree.SetVariableValue("Health", (float)health.GetValue() - d.value);
 
             OnHurt.Raise(gameObject);
 
-            if ((float)bd.GetVariable("Health").GetValue() < 0f)
+            if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
             {
-                //OnDeath.Raise();
                 Destroy(gameObject);
+
+                behaviorTree.SendEvent("Died");
+            }
+            else
+            {
+                behaviorTree.SendEvent("Hit");
             }
         }
     }

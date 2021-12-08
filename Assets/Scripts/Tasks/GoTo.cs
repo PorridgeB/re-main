@@ -9,7 +9,7 @@ public class GoTo : Action
 {
     public SharedVector3 TargetPosition;
     public SharedFloat Speed;
-    public float TargetReachedRadius = 2f;
+    public float TargetReachedRadius = 1f;
 
     public override TaskStatus OnUpdate()
     {
@@ -21,8 +21,6 @@ public class GoTo : Action
         {
             return TaskStatus.Success;
         }
-
-        //transform.position = Vector3.MoveTowards(transform.position, TargetPosition.Value, Speed.Value * Time.deltaTime);
 
         return TaskStatus.Running;
     }
