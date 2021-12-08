@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour
             foreach (DamageInstance d in source.Damages)
             {
                 Hurt(d);
-                // Stop it from hurting itself
                
             }
         }

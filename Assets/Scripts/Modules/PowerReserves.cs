@@ -43,8 +43,9 @@ public class PowerReserves : MonoBehaviour
                 d.source = gameObject;
                 d.value = baseDamage + (stackingDamage * (module.count - 1));
                 source.AddInstance(d);
-                timer = 0;
+                
             }
+            timer = 0;
         }
     }
 }
