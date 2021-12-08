@@ -11,6 +11,6 @@ public class Slow : Effect
     }
     public override void Resolve(GameObject target)
     {
-        if (Random.value < chance) target.GetComponent<Drone>().Slow(duration);
+        if (Random.value < chance) target.GetComponent<Enemy>().Slow(duration);
     }
 }

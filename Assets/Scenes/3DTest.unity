@@ -1705,34 +1705,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4505106388035379472, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
   m_PrefabInstance: {fileID: 4505106387857366825}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &656775630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656775629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 932cfa0eec0d09c49a9f52c460cbe1f0, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 656775634}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: AddRangedDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &656775631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1745,14 +1717,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 14df389c6df53ac48b4004fabf722e7d, type: 2}
+  Event: {fileID: 11400000, guid: 1567043b70feefa4595e41253b417743, type: 2}
   Response:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseGO:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseDS:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 656775634}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: AddMeleeDamage
-        m_Mode: 1
+        m_MethodName: AddDamage
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2265,20 +2243,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 490558456128397107, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
   m_PrefabInstance: {fileID: 1564589651}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &830969392
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830969391}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &830969393
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3560,7 +3524,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1470193282}
   - component: {fileID: 1470193281}
-  - component: {fileID: 1470193284}
   - component: {fileID: 1470193283}
   m_Layer: 0
   m_Name: PowerReserves
@@ -3581,7 +3544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a38ad2515b31d4b887695b9adf0cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextAttack: {fileID: 11400000, guid: b9e105216e42e4d4fad26a1e671d8889, type: 2}
+  timer: 0
   idleDuration: 4
   baseDamage: 20
   stackingDamage: 10
@@ -3612,42 +3575,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 932cfa0eec0d09c49a9f52c460cbe1f0, type: 2}
+  Event: {fileID: 11400000, guid: 1567043b70feefa4595e41253b417743, type: 2}
   Response:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseGO:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseDS:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1470193281}
         m_TargetAssemblyTypeName: PowerReserves, Assembly-CSharp
         m_MethodName: Effect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1470193284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470193280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 14df389c6df53ac48b4004fabf722e7d, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1470193281}
-        m_TargetAssemblyTypeName: PowerReserves, Assembly-CSharp
-        m_MethodName: Effect
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -205,3 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a72207fd1c557642850c58e36d5b2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath: {fileID: 11400000, guid: a16be0633d61f1f478249c43808276c6, type: 2}
+  OnHurt: {fileID: 11400000, guid: 91c5fcb9faf3baa469a98116fa80942d, type: 2}
+  damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
