@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bcad920490134e46958ced13e2a5b4a, type: 3}
-  m_Name: Melee Attack Damage
+  m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
+  m_Name: Thorns
   m_EditorClassIdentifier: 
-  baseValue: 1
-  baseMultiplier: 0
-  minValue: 0
-  maxValue: 10000
-  type: 0
-  moduleBonuses: []
-  temporaryBonuses: []
-  finalValue: 16
+  count: 0
+  description: 
+  sprite: {fileID: 4533227004153260592, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
+  bonuses: []

@@ -7,9 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    public GameEvent playerHit;
+
     [SerializeField]
     private AttackEvent nextAttack;
     private Animator anim;
+
+    public readonly List<DamageInstance> damageTaken = new List<DamageInstance>();
 
     private float scrap = 0;
     private bool dashBlocked = true;
@@ -241,6 +245,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        damageTaken.Insert(0, damage);
+        playerHit.Raise();
+
         float finalDamageValue = 0;
         switch (damage.type)
         {
@@ -254,7 +261,7 @@ public class PlayerController : MonoBehaviour
                 finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
-        Debug.Log(finalDamageValue);
+        health -= finalDamageValue;
     }
 
     private bool CheckDodge()
@@ -285,7 +292,6 @@ public class PlayerController : MonoBehaviour
     {
         DamageInstance d = new DamageInstance();
         d.value = stats.MeleeAttackDamage.Value();
-        Debug.Log(d.value);
         d.source = gameObject;
         d.crit = CheckCrit();
         if (d.crit)
@@ -315,9 +321,7 @@ public class PlayerController : MonoBehaviour
                 // Stop the player from hurting itself
                 if (damage.source != gameObject)
                 {
-                    
-                    health -= damage.value;
-
+                    ReceiveDamage(damage);
                     //Debug.Log(health);
                 }
             }
