@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drone : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+    private BehaviorTree behaviorTree;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        behaviorTree = GetComponent<BehaviorTree>();
     }
 
     // Update is called once per frame
@@ -28,20 +30,21 @@ public class Drone : MonoBehaviour
                 // Stop it from hurting itself
                 if (d.source != gameObject)
                 {
-                    var bd = GetComponent<BehaviorTree>();
-                    var health = bd.GetVariable("Health");
-                    bd.SetVariableValue("Health", (float)health.GetValue() - d.value);
+                    var health = behaviorTree.GetVariable("Health");
+                    behaviorTree.SetVariableValue("Health", (float)health.GetValue() - d.value);
 
-
-                    if ((float)bd.GetVariable("Health").GetValue() < 0f)
+                    if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
                     {
                         Destroy(gameObject);
+
+                        behaviorTree.SendEvent("Died");
+                    }
+                    else
+                    {
+                        behaviorTree.SendEvent("Hit");
                     }
                 }
             }
-            
-
-            
         }
     }
 }
