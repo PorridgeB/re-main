@@ -23,7 +23,7 @@ public class Frenzy : MonoBehaviour
         {
             attackSpeed.AddTemporaryBonus(bonusSpeed);
         }
-        timer = (module.count > 0 ? baseDuration : 0) + stackingDuration * module.count-1;
+        timer = (module.count > 0 ? baseDuration : 0) + (stackingDuration * (module.count-1));
         active = true;
     }
 

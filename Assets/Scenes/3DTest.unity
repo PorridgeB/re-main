@@ -5430,8 +5430,8 @@ MonoBehaviour:
   bonusSpeed:
     attribute: {fileID: 0}
     module: {fileID: 11400000, guid: 1e29e69ea6baa30418325d1ff549fdef, type: 2}
-    value: 1
-    multiplier: 0
+    value: 0
+    multiplier: 0.5
   module: {fileID: 11400000, guid: 1e29e69ea6baa30418325d1ff549fdef, type: 2}
 --- !u!1 &2039975613
 GameObject:
