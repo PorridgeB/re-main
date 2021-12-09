@@ -1,7 +1,7 @@
-#SCRAP
+#LOCKED: MODULE
 
 ->main
 
 ==main==
-Hey, it looks like you've got some scrap there, now i should be able to fix my workshop
+oh look you found a module, now im going to let you know because you picked one up. sick.
 ->END

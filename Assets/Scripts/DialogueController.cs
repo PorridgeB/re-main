@@ -59,14 +59,6 @@ public class DialogueController : MonoBehaviour
                 if (continueAction.triggered)
                 {
                     story.Continue();
-                    foreach (string s in story.currentTags)
-                    {
-                        Debug.Log(s);
-                    }
-                    foreach (string s in story.variablesState)
-                    {
-                        Debug.Log(s);
-                    }
                 }
             }
             else
@@ -119,6 +111,10 @@ public class DialogueController : MonoBehaviour
     public void SetStory(Story s)
     {
         story = s;
-        story.Continue();
+        if (story.canContinue)
+        {
+            story.Continue();
+        }
+        
     }
 }

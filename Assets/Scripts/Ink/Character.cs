@@ -16,12 +16,30 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
-        foreach (Thread t in GetComponents<Thread>())
+        foreach (Thread t in GetComponentsInChildren<Thread>())
         {
             threads.Add(t);
             if (t.GetThreadTags()[0] == "FIRST")
             {
                 available.Add(t);
+            }
+        }
+    }
+
+    public void Update()
+    {
+        foreach (Thread t in threads)
+        {
+            if (!t.locked)
+            {
+                if (!threadQueue.Contains(t))
+                {
+                    if (t.GetCurrentStory().canContinue)
+                    {
+                        threadQueue.Enqueue(t);
+                    }
+                    
+                }
             }
         }
     }
@@ -34,10 +52,6 @@ public class Character : MonoBehaviour
         }
         else
         {
-            if (available[0].EndOfThread())
-            {
-                available.RemoveAt(0);
-            }
             dialogueController.SetStory(available[0].GetCurrentStory());
         }
     }

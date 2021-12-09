@@ -1,1 +1,1 @@
-﻿{"inkVersion":20,"root":[[{"#":"SCRAP"},{"->":"main"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"main":["^Hey, it looks like you've got some scrap there, now i should be able to fix my workshop","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}
+﻿{"inkVersion":20,"root":[[{"#":"LOCKED: MODULE"},{"->":"main"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"main":["^oh look you found a module, now im going to let you know because you picked one up. sick.","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}

@@ -6,33 +6,36 @@ using Ink.Runtime;
 public class Thread : MonoBehaviour
 {
     [SerializeField]
-    private List<TextAsset> assets;
-    private List<Story> stories = new List<Story>();
-    private List<List<GameEventListener>> events = new List<List<GameEventListener>>();
+    private TextAsset asset;
+    private Story story;
+    private string currentKnot = "main";
+
+    public bool locked;
 
     private int progress = -1;
 
     private void Awake()
     {
-        InitializeStories();
+        InitializeStory();
     }
 
-    private void InitializeStories()
+    private void InitializeStory()
     {
-        foreach (TextAsset t in assets)
+        LoadNewInk(asset);
+        if (story.globalTags[0].Contains("LOCKED:"))
         {
-            LoadNewInk(t);
+            locked = true;
         }
     }
 
     private void LoadNewInk(TextAsset newFile)
     {
-        stories.Add(new Story(newFile.text));
+        story = new Story(newFile.text);
     }
 
-    public bool EndOfThread()
+    public void Unlock()
     {
-        return progress >= stories.Count -1;
+        locked = false;
     }
 
     public void WriteVariables()
@@ -41,7 +44,7 @@ public class Thread : MonoBehaviour
 
     public List<string> GetThreadTags()
     {
-        return stories[0].globalTags;
+        return story.globalTags;
     }
 
     public void Progress()
@@ -51,6 +54,18 @@ public class Thread : MonoBehaviour
 
     public Story GetCurrentStory()
     {
-        return stories[progress];
+        if (!story.canContinue)
+        {
+            foreach(string s in story.currentTags)
+            {
+                if (s.Contains("RESUME"))
+                {
+
+                    var name  = s.Replace("RESUME:", "").Trim();
+                    story.ChoosePathString(currentKnot + "." + name);
+                }
+            }
+        }
+        return story;
     }
 }

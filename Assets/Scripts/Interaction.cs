@@ -5,6 +5,8 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     private SpriteRenderer render;
+    [SerializeField]
+    private GameEvent modulePickup;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,9 @@ public class Interaction : MonoBehaviour
             {
                 b.attribute.AddModuleBonus(b);
             }
+            
             Destroy(m.gameObject);
+            modulePickup.Raise();
         }
         else if (transform.parent.CompareTag("Character"))
         {
