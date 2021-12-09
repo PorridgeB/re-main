@@ -2,9 +2,12 @@ using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    private const float SpriteFlipDeadzone = 0.2f;
+
 
     [SerializeField]
     private GameEvent OnDeath;
@@ -13,17 +16,29 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject damageToken;
 
+    private Animator animator;
+    private NavMeshAgent agent;
+    private SpriteRenderer spriteRenderer;
+
 
     private float slowAmount;
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("Moving", agent.velocity.magnitude > 0.1f);
+
+        if (Mathf.Abs(agent.velocity.x) > SpriteFlipDeadzone)
+        {
+            spriteRenderer.flipX = agent.velocity.x > 0;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)

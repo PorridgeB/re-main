@@ -8,6 +8,8 @@ public class Attack : Action
     public float Damage = 10f;
     [SerializeField]
     public GameObject AttackField;
+
+    public string Trigger;
     
     private GameObject attackFieldInstance;
     private float timer = 0f;
@@ -32,6 +34,9 @@ public class Attack : Action
         //attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
         timer = 2f;
+
+        var animator = GetComponent<Animator>();
+        animator.SetTrigger(Trigger);
     }
 
 	public override TaskStatus OnUpdate()

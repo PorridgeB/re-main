@@ -2328,9 +2328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a72207fd1c557642850c58e36d5b2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDeath: {fileID: 11400000, guid: a16be0633d61f1f478249c43808276c6, type: 2}
-  OnHurt: {fileID: 11400000, guid: 91c5fcb9faf3baa469a98116fa80942d, type: 2}
-  damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
+  OnDeath: {fileID: 0}
+  OnHurt: {fileID: 0}
+  damageToken: {fileID: 0}
 --- !u!1 &881843646
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,6 +4110,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 490558456128397106, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 490558456128397106, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
