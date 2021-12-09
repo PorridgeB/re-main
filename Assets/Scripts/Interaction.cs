@@ -32,6 +32,8 @@ public class Interaction : MonoBehaviour
         }
         else if (transform.parent.CompareTag("Character"))
         {
+            Character c = transform.parent.GetComponent<Character>();
+            c.GetStory();
             PlayerController.instance.StartDialogue();
         }
         else if (transform.parent.CompareTag("Artifact"))

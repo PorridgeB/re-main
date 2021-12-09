@@ -33,7 +33,6 @@ public class DialogueController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadNewInk(file);
         inputs = PlayerController.instance.GetComponent<PlayerInput>();
         continueAction = inputs.actions["Continue"];
         backAction = inputs.actions["Back"];
@@ -45,56 +44,70 @@ public class DialogueController : MonoBehaviour
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-        dialogueUI.SetActive(inputs.currentActionMap.name == "DialogueControl");
-        response.text = "";
-        dialogue.text = story.currentText;
-        if (story.canContinue)
+        if (story != null)
         {
-            if (continueAction.triggered)
-            {
-                story.Continue();
-            }
-        }
-        else
-        {
-            if (story.currentChoices.Count <= 0)
+            dialogueUI.SetActive(inputs.currentActionMap.name == "DialogueControl");
+            response.text = "";
+            dialogue.text = story.currentText;
+            if (story.canContinue)
             {
                 if (continueAction.triggered)
                 {
-                    //end dialogue.
-                    inputs.SwitchCurrentActionMap("CharacterControl");
+                    story.Continue();
+                    foreach (string s in story.currentTags)
+                    {
+                        Debug.Log(s);
+                    }
+                    foreach (string s in story.variablesState)
+                    {
+                        Debug.Log(s);
+                    }
                 }
             }
-            int index = 0;
-            foreach (Choice choice in story.currentChoices)
+            else
             {
-                index++;
-                response.text += index + ". " + choice.text + "\n";
+                if (story.currentChoices.Count <= 0)
+                {
+                    if (continueAction.triggered)
+                    {
+                        //end dialogue.
+                        inputs.SwitchCurrentActionMap("CharacterControl");
+                    }
+                }
+                int index = 0;
+                foreach (Choice choice in story.currentChoices)
+                {
+                    index++;
+                    response.text += index + ". " + choice.text + "\n";
+                }
+                if (choiceA.triggered)
+                {
+                    MakeChoice(0);
+                }
+                else if (choiceB.triggered)
+                {
+                    MakeChoice(1);
+                }
+                else if (choiceC.triggered)
+                {
+                    MakeChoice(2);
+                }
+                else if (choiceD.triggered)
+                {
+                    MakeChoice(3);
+                }
             }
-            if (choiceA.triggered)
-            {
-                MakeChoice(0);
-            }
-            else if (choiceB.triggered)
-            {
-                MakeChoice(1);
-            }
-            else if (choiceC.triggered)
-            {
-                MakeChoice(2);
-            }
-            else if (choiceD.triggered)
-            {
-                MakeChoice(3);
-            }
-        }
 
+
+            playerPortrait.SetActive(!story.canContinue);
+            characterPortrait.SetActive(story.canContinue);
+        }
         
-        playerPortrait.SetActive(!story.canContinue);
-        characterPortrait.SetActive(story.canContinue);
     }
 
     public void MakeChoice(int index)
@@ -103,9 +116,9 @@ public class DialogueController : MonoBehaviour
         story.Continue();
     }
 
-    public void LoadNewInk(TextAsset newFile)
+    public void SetStory(Story s)
     {
-        story = new Story(newFile.text);
+        story = s;
         story.Continue();
     }
 }

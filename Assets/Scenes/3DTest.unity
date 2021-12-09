@@ -168,6 +168,9 @@ GameObject:
   m_Component:
   - component: {fileID: 91341087}
   - component: {fileID: 91341086}
+  - component: {fileID: 91341088}
+  - component: {fileID: 91341090}
+  - component: {fileID: 91341089}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character
@@ -241,6 +244,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &91341088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91341085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cf32f451f4d59438df5cfb6e9e6c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 1690754482}
+  threads: []
+--- !u!114 &91341089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91341085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6a523c55962474d9bc038c23ebb286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 4900000, guid: 89d03e0e890a63f4abf8b4c90fc61ec6, type: 3}
+--- !u!114 &91341090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91341085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6a523c55962474d9bc038c23ebb286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assets:
+  - {fileID: 4900000, guid: 5b360a602a1a92548a46564c4335b237, type: 3}
+  - {fileID: 4900000, guid: 7c44944f7a857e0439c3a579b649f0ed, type: 3}
 --- !u!1 &146486323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,6 +4010,10 @@ PrefabInstance:
     - target: {fileID: 490558456128397107, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
       propertyPath: m_Name
       value: Drone
+      objectReference: {fileID: 0}
+    - target: {fileID: 490558456128397107, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 490558456128397261, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
       propertyPath: m_RootOrder
