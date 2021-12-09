@@ -15,6 +15,7 @@ public class GoTo : Action
     {
         var agent = GetComponent<NavMeshAgent>();
 
+        agent.speed = Speed.Value;
         agent.destination = TargetPosition.Value;
 
         if (Vector3.Distance(transform.position, TargetPosition.Value) < TargetReachedRadius)

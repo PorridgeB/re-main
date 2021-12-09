@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("Moving", agent.velocity.magnitude > 0.1f);
+        animator.SetBool("Moving", agent.velocity.magnitude > 0.8f);
 
         if (Mathf.Abs(agent.velocity.x) > SpriteFlipDeadzone)
         {
