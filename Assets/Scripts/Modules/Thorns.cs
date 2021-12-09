@@ -30,7 +30,7 @@ public class Thorns : MonoBehaviour
             DamageInstance d = new DamageInstance();
             d.source = PlayerController.instance.gameObject;
             d.value = baseDamage + (stackingDamage * (module.count - 1));
-            PlayerController.instance.damageTaken[0].source.GetComponent<Drone>().Hurt(d);
+            PlayerController.instance.damageTaken[0].source.GetComponent<Enemy>().Hurt(d);
         }
         
     }
