@@ -11,8 +11,10 @@ public class Character : MonoBehaviour
     private List<Thread> threads = new List<Thread>();
     [SerializeField]
     private List<Thread> available = new List<Thread>();
-
-    private Queue<Thread> threadQueue = new Queue<Thread>();
+    [SerializeField]
+    private List<Thread> priority = new List<Thread>();
+    [SerializeField]
+    private Thread currentThread;
 
     private void Start()
     {
@@ -21,38 +23,45 @@ public class Character : MonoBehaviour
             threads.Add(t);
             if (t.GetThreadTags()[0] == "FIRST")
             {
+                priority.Add(t);
+                currentThread = t;
+            }
+            if (!t.locked)
+            {
                 available.Add(t);
             }
         }
     }
-
-    public void Update()
+    public void AddToPriority(Thread t)
     {
-        foreach (Thread t in threads)
-        {
-            if (!t.locked)
-            {
-                if (!threadQueue.Contains(t))
-                {
-                    if (t.GetCurrentStory().canContinue)
-                    {
-                        threadQueue.Enqueue(t);
-                    }
-                    
-                }
-            }
-        }
+        priority.Add(t);
     }
 
     public void GetStory()
     {
-        if (threadQueue.Count > 0)
+        available.Remove(currentThread);
+        if (!currentThread.Complete)
         {
-            dialogueController.SetStory(threadQueue.Dequeue().GetCurrentStory());
+            available.Insert(available.Count, currentThread);
+        }
+        
+        if (priority.Count > 0)
+        {
+            currentThread = priority[0];
+            priority.RemoveAt(0);
         }
         else
         {
-            dialogueController.SetStory(available[0].GetCurrentStory());
+            currentThread = available[0];
+            foreach (Thread t in available)
+            {
+                if (t.priority > currentThread.priority)
+                {
+                    currentThread = t;
+                }
+            }
+            
         }
+        dialogueController.SetStory(currentThread.GetCurrentStory());
     }
 }
