@@ -7,14 +7,16 @@ public class Seek : Action
 {
 	public SharedFloat Speed;
 
-	private float oldSpeed;
+	//private float oldSpeed;
 	private NavMeshAgent agent;
+
+	// TODO: Knockback, dive, wind up and down attacks, charge, better pursing
 
 	public override void OnStart()
 	{
 		agent = GetComponent<NavMeshAgent>();
 
-		oldSpeed = agent.speed;
+		//oldSpeed = agent.speed;
 	}
 
 	public override TaskStatus OnUpdate()
@@ -27,6 +29,6 @@ public class Seek : Action
 
     public override void OnEnd()
     {
-		agent.speed = oldSpeed;
+		//agent.speed = oldSpeed;
 	}
 }
