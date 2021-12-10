@@ -34,6 +34,7 @@ public class Character : MonoBehaviour
     }
     public void AddToPriority(Thread t)
     {
+        if (priority.Contains(t)) return;
         priority.Add(t);
     }
 

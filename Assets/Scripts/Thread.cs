@@ -42,7 +42,6 @@ public class Thread : MonoBehaviour
 
             }
         }
-        Debug.Log((int)story.variablesState["priority"]);
         priority = (ThreadPriority)(int)story.variablesState["priority"];
         story.ObserveVariable("priority", (string str, object newValue) => { UpdatePriority((int)newValue); });
     }
@@ -59,8 +58,11 @@ public class Thread : MonoBehaviour
 
     public void UnlockThread()
     {
-        locked = false;
-        GetComponentInParent<Character>().AddToPriority(this);
+        if (!Complete)
+        {
+            locked = false;
+            GetComponentInParent<Character>().AddToPriority(this);
+        }
     }
 
     public void Progress()
