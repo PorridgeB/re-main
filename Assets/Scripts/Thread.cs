@@ -89,6 +89,14 @@ public class Thread : MonoBehaviour
         
     }
 
+    public string Name
+    {
+        get
+        {
+            return asset.name;
+        }
+    }
+
     public bool Waiting
     {
         get

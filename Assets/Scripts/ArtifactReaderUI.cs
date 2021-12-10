@@ -40,7 +40,6 @@ public class ArtifactReaderUI : MonoBehaviour
         content.text = text;
         if (inputs.currentActionMap.name == "ArtifactControl")
         {
-            Debug.Log("correct actionmap");
             if (continueAction.triggered)
             {
                 inputs.SwitchCurrentActionMap("CharacterControl");
