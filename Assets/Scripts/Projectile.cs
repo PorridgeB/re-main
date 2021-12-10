@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector2 position, Vector2 direction, float velocity)
+    public void Shoot(Vector3 position, Vector2 direction, float velocity)
     {
         transform.position = position;
         dir = direction;
