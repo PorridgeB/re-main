@@ -3,23 +3,26 @@ guid: 263a28fa639be2541bfd2fcff6854c45
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2887184577470883374
-    second: Explode_0
+      213: 5986030973748356752
+    second: Explosion_0
   - first:
-      213: 8288982013464879355
-    second: Explode_1
+      213: -5600206312213581617
+    second: Explosion_1
   - first:
-      213: -4085701817799866075
-    second: Explode_2
+      213: 3815954189206336483
+    second: Explosion_2
   - first:
-      213: -5964474748036044434
-    second: Explode_3
+      213: -3690502768834906923
+    second: Explosion_3
   - first:
-      213: 1990628112201042793
-    second: Explode_4
+      213: -49130668184793455
+    second: Explosion_4
   - first:
-      213: -3628878560167924253
-    second: Explode_5
+      213: -2330519403281856691
+    second: Explosion_5
+  - first:
+      213: -4796932125324312052
+    second: Explosion_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Explode_0
+      name: Explosion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,20 +126,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d99cda7ce8aee7d0800000000000000
-      internalID: -2887184577470883374
+      spriteID: 096a1cc8477a21350800000000000000
+      internalID: 5986030973748356752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explode_1
+      name: Explosion_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0fb9bb7021842b0800000000000000
+      internalID: -5600206312213581617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +168,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf02d2e6931680370800000000000000
-      internalID: 8288982013464879355
+      spriteID: 3e3bec60e1ef4f430800000000000000
+      internalID: 3815954189206336483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explode_2
+      name: Explosion_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4fffce843b8ccc0800000000000000
+      internalID: -3690502768834906923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +210,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5290fdbf7dbac47c0800000000000000
-      internalID: -4085701817799866075
+      spriteID: 19e8447eae3715ff0800000000000000
+      internalID: -49130668184793455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explode_3
+      name: Explosion_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d47ca3943f458afd0800000000000000
+      internalID: -2330519403281856691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_6
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,50 +252,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e69268b51dde93da0800000000000000
-      internalID: -5964474748036044434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Explode_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96b46a3a8b120ab10800000000000000
-      internalID: 1990628112201042793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Explode_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ede8281d22a3adc0800000000000000
-      internalID: -3628878560167924253
+      spriteID: c028262b5afdd6db0800000000000000
+      internalID: -4796932125324312052
       vertices: []
       indices: 
       edges: []
