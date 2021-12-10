@@ -28,8 +28,8 @@ public class ArtifactReaderUI : MonoBehaviour
     {
         LoadNewInk(ink);
         inputs = PlayerController.instance.GetComponent<PlayerInput>();
-        continueAction = inputs.actions["Continue"];
-        backAction = inputs.actions["Back"];
+        continueAction = inputs.actions["ArtContinue"];
+        backAction = inputs.actions["ArtBack"];
     }
 
     // Update is called once per frame
@@ -40,21 +40,14 @@ public class ArtifactReaderUI : MonoBehaviour
         content.text = text;
         if (inputs.currentActionMap.name == "ArtifactControl")
         {
+            Debug.Log("correct actionmap");
             if (continueAction.triggered)
             {
-                Debug.Log("action triggered");
-                if (story.canContinue)
-                {
-                    story.Continue();
-                }
-                else
-                {
-                    inputs.SwitchCurrentActionMap("CharacterControl");
-                }
-                if (backAction.triggered)
-                {
-                    inputs.SwitchCurrentActionMap("CharacterControl");
-                }
+                inputs.SwitchCurrentActionMap("CharacterControl");
+            }
+            if (backAction.triggered)
+            {
+                inputs.SwitchCurrentActionMap("CharacterControl");
             }
         }
         
@@ -63,10 +56,9 @@ public class ArtifactReaderUI : MonoBehaviour
     public void LoadNewInk(TextAsset newFile)
     {
         story = new Story(newFile.text);
-        while (story.canContinue)
-        {
-            text += story.currentText;
-            story.Continue();
-        }
+        story.Continue();
+        text += story.currentText;
+        story.Continue();
+        text += story.currentText;
     }
 }

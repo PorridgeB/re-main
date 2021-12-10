@@ -447,7 +447,7 @@
             "id": "e262cf76-9971-4506-84aa-34797e11af16",
             "actions": [
                 {
-                    "name": "Continue",
+                    "name": "ArtContinue",
                     "type": "Button",
                     "id": "c8f59fab-6795-4469-bb94-469ac12c0814",
                     "expectedControlType": "Button",
@@ -455,7 +455,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Back",
+                    "name": "ArtBack",
                     "type": "Button",
                     "id": "1abfa750-2e8f-46a1-866c-b02bbbacaf5b",
                     "expectedControlType": "Button",
@@ -471,7 +471,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Continue",
+                    "action": "ArtContinue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -482,7 +482,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Back",
+                    "action": "ArtBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de7e11fd-6a5c-4e0c-88ae-f88de559e421",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArtBack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
