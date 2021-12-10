@@ -225,9 +225,7 @@ public class LevelMeshBuilder : MonoBehaviour
                 // Generate collision mesh for adjacent walls
                 Vector3[][] wallVertices = new Vector3[][]
                 {
-                    //new Vector3[] { new Vector3(0, 1, 0), new Vector3(1, 1, 0), new Vector3(1, 0, 0), new Vector3(0, 0, 0) },
-                    new Vector3[] { new Vector3(0, 1, -1), new Vector3(1, 1, -1), new Vector3(1, 0, -1), new Vector3(0, 0, -1) },
-
+                    new Vector3[] { new Vector3(0, 1, 0), new Vector3(1, 1, 0), new Vector3(1, 0, 0), new Vector3(0, 0, 0) },
                     new Vector3[] { new Vector3(1, 1, 0), new Vector3(1, 1, 1), new Vector3(1, 0, 1), new Vector3(1, 0, 0) },
                     new Vector3[] { new Vector3(1, 1, 1), new Vector3(0, 1, 1), new Vector3(0, 0, 1), new Vector3(1, 0, 1) },
                     new Vector3[] { new Vector3(0, 1, 1), new Vector3(0, 1, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 1) }
