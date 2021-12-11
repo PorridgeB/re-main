@@ -8,6 +8,7 @@ public class WithinSight : Conditional
 {
     public SharedFloat SightDistance;
     public LayerMask IgnoreMask;
+    public SharedGameObject Target;
 
     public override TaskStatus OnUpdate()
     {
