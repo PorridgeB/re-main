@@ -11,6 +11,8 @@ public class Attack : Action
 
     public float Duration = 2f;
 
+    public float Distance = 0.5f;
+
     public string Trigger;
     
     private GameObject attackFieldInstance;
@@ -22,17 +24,19 @@ public class Attack : Action
 
         attackFieldInstance = Object.Instantiate(AttackField, transform);
 
-        DamageInstance d = new DamageInstance();
-        d.type = DamageType.Physical;
-        d.source = gameObject;
-        d.value = Damage;
+        DamageInstance damageInstance = new DamageInstance();
+        damageInstance.type = DamageType.Physical;
+        damageInstance.source = gameObject;
+        damageInstance.value = Damage;
 
-        attackFieldInstance.GetComponent<DamageSource>().AddInstance(d);
+        var damageSource = attackFieldInstance.GetComponent<DamageSource>();
 
-        float distance = 0.5f;
+        damageSource.AddInstance(damageInstance);
+        damageSource.source = gameObject;
+
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.z).normalized;
 
-        attackFieldInstance.transform.localPosition = forwardDirection * distance;
+        attackFieldInstance.transform.localPosition = forwardDirection * Distance;
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
         timer = Duration;

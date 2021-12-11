@@ -47,6 +47,12 @@ public class DamageSource : MonoBehaviour
 
     public void AddInstance(DamageInstance instance)
     {
+        // Ignore damage instances from a different source
+        if (instance.source != source)
+        {
+            return;
+        }
+
         damageInstances.Add(instance);
     }
 }

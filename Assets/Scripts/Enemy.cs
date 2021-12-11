@@ -6,8 +6,10 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    private const float SpriteFlipDeadzone = 0.2f;
+    // Used by the Knockback action to know the direction of the hit
+    public Vector3 hitDirection;
 
+    private const float SpriteFlipDeadzone = 0.2f;
 
     [SerializeField]
     private GameEvent OnDeath;
@@ -19,15 +21,17 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
-
+    private BehaviorTree behaviorTree;
 
     private float slowAmount;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        behaviorTree = GetComponent<BehaviorTree>();
     }
 
     // Update is called once per frame
@@ -50,13 +54,13 @@ public class Enemy : MonoBehaviour
             {
                 e.Resolve(gameObject);
             }
+
             foreach (DamageInstance d in source.Damages)
             {
                 Hurt(d);
             }
             
-
-            
+            hitDirection = (collision.gameObject.transform.position - transform.position).normalized;
         }
     }
 
@@ -82,24 +86,28 @@ public class Enemy : MonoBehaviour
     public void Hurt(DamageInstance d)
     {
         // Stop it from hurting itself
-        if (d.source != gameObject)
+        if (CompareTag(d.source.tag))
         {
-            Debug.Log(d.source);
+            return;
+        }
 
-            GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
-            g.GetComponent<DamageToken>().SetValue(d);
+        GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
+        g.GetComponent<DamageToken>().SetValue(d);
 
-            var bd = GetComponent<BehaviorTree>();
-            var health = bd.GetVariable("Health");
-            bd.SetVariableValue("Health", (float)health.GetValue() - d.value);
+        var health = behaviorTree.GetVariable("Health");
+        behaviorTree.SetVariableValue("Health", (float)health.GetValue() - d.value);
 
-            OnHurt.Raise(gameObject);
+        //OnHurt.Raise(gameObject);
 
-            if ((float)bd.GetVariable("Health").GetValue() < 0f)
-            {
-                //OnDeath.Raise();
-                Destroy(gameObject);
-            }
+        // Tell the behaviour tree that the enemy has been hurt
+        behaviorTree.SendEvent("Hit");
+
+        if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
+        {
+            //OnDeath.Raise();
+            Destroy(gameObject);
+
+            behaviorTree.SendEvent("Die");
         }
     }
 }
