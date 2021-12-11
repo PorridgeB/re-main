@@ -29,6 +29,7 @@ public class Seek : Action
 
     public override void OnEnd()
     {
+		agent.speed = 0;
 		//agent.speed = oldSpeed;
 	}
 }
