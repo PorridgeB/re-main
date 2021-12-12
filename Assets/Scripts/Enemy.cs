@@ -1,4 +1,5 @@
 using BehaviorDesigner.Runtime;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -105,9 +106,19 @@ public class Enemy : MonoBehaviour
         if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
         {
             //OnDeath.Raise();
-            Destroy(gameObject);
+            
+            if (animator.parameters.First(x => x.name == "Died") == null)
+            {
+                Destroy(gameObject);
+            }
 
             behaviorTree.SendEvent("Die");
         }
+    }
+
+    // Called by Death animation event to destroy the enemy
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
