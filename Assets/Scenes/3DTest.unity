@@ -5286,7 +5286,7 @@ GameObject:
   - component: {fileID: 1994554835}
   - component: {fileID: 1994554834}
   - component: {fileID: 1994554839}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Level Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
