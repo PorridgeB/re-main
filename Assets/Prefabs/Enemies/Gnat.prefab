@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -4033336676510260358}
   - component: {fileID: 4733807210179663341}
   - component: {fileID: 8546047742661155376}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Gnat
   m_TagString: Enemy
   m_Icon: {fileID: 0}

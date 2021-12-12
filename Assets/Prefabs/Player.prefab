@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4505106388035379561}
   - component: {fileID: 4505106388035379478}
   - component: {fileID: 4505106388035379474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4505106388187775773}
   - component: {fileID: 4505106388187775772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RangedCooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4505106388328366135}
   - component: {fileID: 4505106388328366134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthRegenTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4505106389126235115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4505106389434108997}
   - component: {fileID: 4505106389434108996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MeleeCooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4505106389620208019}
   - component: {fileID: 4505106389620208018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 391824669696522478}
   - component: {fileID: 6292936344987751588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
