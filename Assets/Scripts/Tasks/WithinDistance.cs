@@ -8,6 +8,8 @@ public class WithinDistance : Conditional
 {
     public SharedFloat Distance;
 
+    public SharedTransform Target;
+
     public override TaskStatus OnUpdate()
     {
         var distance = (PlayerController.instance.transform.position - transform.position).sqrMagnitude;
