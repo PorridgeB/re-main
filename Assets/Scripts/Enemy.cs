@@ -50,7 +50,18 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageSource"))
         {
+            hitDirection = (transform.position - collision.gameObject.transform.position).normalized;
+
             DamageSource source = collision.gameObject.GetComponent<DamageSource>();
+
+            // TODO: Clean up
+            // Using the player's facing direction if the damage source was from the player
+            if (source.source.CompareTag("Player"))
+            {
+                var facing = PlayerController.instance.GetFacing();
+                hitDirection = new Vector3(facing.x, 0, facing.y);
+            }
+
             foreach (Effect e in source.Effects)
             {
                 e.Resolve(gameObject);
@@ -60,8 +71,6 @@ public class Enemy : MonoBehaviour
             {
                 Hurt(d);
             }
-            
-            hitDirection = (collision.gameObject.transform.position - transform.position).normalized;
         }
     }
 

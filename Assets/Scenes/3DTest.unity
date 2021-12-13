@@ -3617,6 +3617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ooze
       objectReference: {fileID: 0}
+    - target: {fileID: 5687205683365402985, guid: 22e8965c052515040b7844a053bca54f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22e8965c052515040b7844a053bca54f, type: 3}
 --- !u!1 &1365043089
@@ -4430,7 +4434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490558456128397107, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 490558456128397261, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
       propertyPath: m_RootOrder
