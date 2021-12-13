@@ -334,7 +334,7 @@ public class PlayerController : MonoBehaviour
                 if (damage.source != gameObject)
                 {
                     ReceiveDamage(damage);
-                    //Debug.Log(health);
+                    Debug.Log(health);
                 }
             }
             

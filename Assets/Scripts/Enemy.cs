@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageSource"))
         {
-            hitDirection = (transform.position - collision.gameObject.transform.position).normalized;
+            //hitDirection = (transform.position - collision.gameObject.transform.position).normalized;
 
             DamageSource source = collision.gameObject.GetComponent<DamageSource>();
 
@@ -60,6 +60,9 @@ public class Enemy : MonoBehaviour
             {
                 var facing = PlayerController.instance.GetFacing();
                 hitDirection = new Vector3(facing.x, 0, facing.y);
+
+                // Tell the behaviour tree that the enemy has been hurt by the player
+                behaviorTree.SendEvent("Hit");
             }
 
             foreach (Effect e in source.Effects)
@@ -109,8 +112,7 @@ public class Enemy : MonoBehaviour
 
         //OnHurt.Raise(gameObject);
 
-        // Tell the behaviour tree that the enemy has been hurt
-        behaviorTree.SendEvent("Hit");
+        
 
         if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
         {

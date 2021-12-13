@@ -19,7 +19,7 @@ public class WithinSight : Conditional
         var playerMask = LayerMask.GetMask("Player");
         var levelMask = LayerMask.GetMask("Level");
 
-        if (Physics.Raycast(transform.position, direction, out raycastHit, 30f, playerMask | levelMask))
+        if (Physics.Raycast(transform.position, direction, out raycastHit, SightDistance.Value, playerMask | levelMask))
         {
             if (raycastHit.collider.CompareTag("Player"))
             {
