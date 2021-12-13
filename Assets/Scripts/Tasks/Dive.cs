@@ -11,6 +11,7 @@ public class Dive : Action
 	public SharedTransform Target;
 	public GameObject AttackField;
 	public float Speed = 6f;
+	public AnimationCurve SpeedCurve;
 
 	private Vector3 direction;
 	private float timer;
@@ -53,7 +54,9 @@ public class Dive : Action
 
 		var agent = GetComponent<NavMeshAgent>();
 
-		agent.Move(direction * Speed * Time.deltaTime);
+		var time = 1 - timer / Duration;
+
+		agent.Move(direction * Speed * SpeedCurve.Evaluate(time) * Time.deltaTime);
 
 		return TaskStatus.Running;
 	}
