@@ -10,7 +10,11 @@ public class Enemy : MonoBehaviour
     // Used by the Knockback action to know the direction of the hit
     public Vector3 hitDirection;
 
+    public GameObject AttackField;
+    public float AttackDamage = 10f;
+
     private const float SpriteFlipDeadzone = 0.2f;
+    private const float AttackFieldDistance = 0.5f;
 
     [SerializeField]
     private GameEvent OnDeath;
@@ -131,5 +135,33 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+    }
+
+    public IEnumerator Attack()
+    {
+        var direction = (PlayerController.instance.transform.position - transform.position).normalized;
+
+        var attackFieldInstance = Instantiate(AttackField, transform);
+
+        DamageInstance damageInstance = new DamageInstance();
+        damageInstance.type = DamageType.Physical;
+        damageInstance.source = gameObject;
+        damageInstance.value = AttackDamage;
+
+        var damageSource = attackFieldInstance.GetComponent<DamageSource>();
+
+        damageSource.source = gameObject;
+        damageSource.AddInstance(damageInstance);
+
+        Vector3 forwardDirection = new Vector3(direction.x, 0, direction.z).normalized;
+
+        attackFieldInstance.transform.localPosition = forwardDirection * AttackFieldDistance;
+        attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
+
+        // Wait for a few frames
+        yield return null;
+        yield return null;
+
+        Destroy(attackFieldInstance);
     }
 }
