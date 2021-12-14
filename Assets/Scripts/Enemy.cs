@@ -67,6 +67,8 @@ public class Enemy : MonoBehaviour
 
                 // Tell the behaviour tree that the enemy has been hurt by the player
                 behaviorTree.SendEvent("Hit");
+
+                animator.SetTrigger("Hit");
             }
 
             foreach (Effect e in source.Effects)
