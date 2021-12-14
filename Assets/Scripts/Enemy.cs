@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour
         {
             //OnDeath.Raise();
             
-            if (animator.parameters.First(x => x.name == "Died") == null)
+            if (!animator.parameters.Any(x => x.name == "Died"))
             {
                 Destroy(gameObject);
             }

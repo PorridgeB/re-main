@@ -2489,7 +2489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 228982330}
   Speed: 20
-  PixelUnitScale: 16
+  PixelsPerUnit: 16
   Smooth: 0
   SnapToNearestPixel: 1
 --- !u!1001 &802767472
