@@ -321,14 +321,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+
         if (collision.CompareTag("Interaction"))
         {
             interactions.Add(collision.GetComponent<Interaction>());
         }
         else if (collision.CompareTag("DamageSource"))
         {
-            DamageSource d = collision.gameObject.GetComponent<DamageSource>();
-            foreach (DamageInstance damage in d.Damages)
+            var damageSource = collision.gameObject.GetComponent<DamageSource>();
+
+            foreach (var damage in damageSource.Damages)
             {
                 // Stop the player from hurting itself
                 if (damage.source != gameObject)

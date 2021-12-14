@@ -13,15 +13,15 @@ public class Gnat : MonoBehaviour
 
         DamageInstance damageInstance = new DamageInstance();
         damageInstance.type = DamageType.Physical;
-        //damageInstance.source = gameObjectk;
+        //damageInstance.source = gameObject;
         damageInstance.source = explosion;
         damageInstance.value = ExplosionDamage;
 
         var damageSource = explosion.GetComponent<DamageSource>();
 
-        damageSource.AddInstance(damageInstance);
         //damageSource.source = gameObject;
         damageSource.source = explosion;
+        damageSource.AddInstance(damageInstance);
 
         Destroy(gameObject);
     }

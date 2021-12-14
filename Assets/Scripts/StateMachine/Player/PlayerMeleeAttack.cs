@@ -39,6 +39,9 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         
         attackFieldInstance = Instantiate(attackField, PlayerController.instance.transform);
 
+        var damageSource = attackFieldInstance.GetComponent<DamageSource>();
+        damageSource.source = animator.gameObject;
+
         float distance = 0.5f;
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.y);
 

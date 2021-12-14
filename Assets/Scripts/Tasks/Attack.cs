@@ -31,8 +31,8 @@ public class Attack : Action
 
         var damageSource = attackFieldInstance.GetComponent<DamageSource>();
 
-        damageSource.AddInstance(damageInstance);
         damageSource.source = gameObject;
+        damageSource.AddInstance(damageInstance);
 
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.z).normalized;
 
