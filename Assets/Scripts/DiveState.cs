@@ -16,7 +16,7 @@ public class DiveState : StateMachineBehaviour
 
     private GameObject attackFieldInstance;
     private Vector3 direction;
-    private float timer = 0f;
+    private float startTime;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -40,22 +40,19 @@ public class DiveState : StateMachineBehaviour
         attackFieldInstance.transform.localPosition = forwardDirection * AttackFieldDistance;
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
-        timer = Duration;
+        startTime = Time.time;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer -= Time.deltaTime;
-
-        if (timer < 0)
+        if (Time.time - startTime > Duration)
         {
             animator.SetTrigger("Land");
-            return;
         }
 
         var agent = animator.GetComponent<NavMeshAgent>();
-        var time = 1 - timer / Duration;
+        var time = (Time.time - startTime) / Duration;
         agent.Move(direction * Speed * SpeedCurve.Evaluate(time) * Time.deltaTime);
     }
 
