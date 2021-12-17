@@ -6,11 +6,12 @@ public class LastActivated : Conditional
 {
 	public float Duration = 1f;
 
-    private float lastTimeActivated = 0f;
+    private float lastTimeActivated = -1f;
 
     public override TaskStatus OnUpdate()
 	{
-        if (Time.time - lastTimeActivated > Duration)
+        // Always activate on the first call
+        if (lastTimeActivated < -1f || Time.time - lastTimeActivated > Duration)
         {
             lastTimeActivated = Time.time;
             return TaskStatus.Success;
