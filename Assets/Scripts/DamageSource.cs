@@ -20,7 +20,7 @@ public class DamageSource : MonoBehaviour
 
     private void Awake()
     {
-        //source = transform.parent.gameObject;
+        source = transform.parent.gameObject;
         damageSourceCreated.Raise(this);
     }
 
