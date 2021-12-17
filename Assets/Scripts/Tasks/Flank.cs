@@ -14,14 +14,18 @@ public class Flank : Action
     public SharedTransform Target;
 
     private NavMeshAgent agent;
+    private ParticleSystem ghostTrail;
     // Orbit in a clockwise rotation
     private bool clockwise = false;
 
     public override void OnStart()
     {
         agent = GetComponent<NavMeshAgent>();
+        ghostTrail = GetComponent<ParticleSystem>();
 
         clockwise = Random.value > 0.5f;
+
+        ghostTrail.Play();
     }
 
     public override TaskStatus OnUpdate()
@@ -38,5 +42,10 @@ public class Flank : Action
         agent.Move(new Vector3(velocity2D.x, 0, velocity2D.y) * Time.deltaTime);
 
         return TaskStatus.Running;
+    }
+
+    public override void OnEnd()
+    {
+        ghostTrail.Stop();
     }
 }
