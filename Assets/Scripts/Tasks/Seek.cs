@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class Seek : Action
 {
 	public SharedFloat Speed;
+	public SharedTransform Target;
+	
 	private NavMeshAgent agent;
 
 
@@ -17,7 +19,7 @@ public class Seek : Action
 	public override TaskStatus OnUpdate()
 	{
 		agent.speed = Speed.Value;
-		agent.destination = PlayerController.instance.transform.position;
+		agent.destination = Target.Value.position;
 
 		return TaskStatus.Running;
 	}

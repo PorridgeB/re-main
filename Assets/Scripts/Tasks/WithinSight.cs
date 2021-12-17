@@ -7,21 +7,16 @@ using BehaviorDesigner.Runtime;
 public class WithinSight : Conditional
 {
     public SharedFloat SightDistance;
-    //public LayerMask IgnoreMask;
     public SharedGameObject Target;
+    public SharedLayerMask Mask = new LayerMask { value = LayerMask.GetMask("Player") | LayerMask.GetMask("Level") };
 
     public override TaskStatus OnUpdate()
     {
-        RaycastHit raycastHit;
+        var direction = (Target.Value.transform.position - transform.position).normalized;
 
-        var direction = (PlayerController.instance.transform.position - transform.position).normalized;
-
-        var playerMask = LayerMask.GetMask("Player");
-        var levelMask = LayerMask.GetMask("Level");
-
-        if (Physics.Raycast(transform.position, direction, out raycastHit, SightDistance.Value, playerMask | levelMask))
+        if (Physics.Raycast(transform.position, direction, out RaycastHit raycastHit, SightDistance.Value, Mask.Value))
         {
-            if (raycastHit.collider.CompareTag("Player"))
+            if (raycastHit.collider.gameObject == Target.Value)
             {
                 return TaskStatus.Success;
             }

@@ -11,6 +11,7 @@ public class DiveState : StateMachineBehaviour
     public float Speed = 12f;
     public AnimationCurve SpeedCurve;
     public GameObject AttackField;
+    public Transform Target;
 
     private const float AttackFieldDistance = 0.5f;
 
@@ -21,7 +22,7 @@ public class DiveState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        direction = (PlayerController.instance.transform.position - animator.transform.position).normalized;
+        direction = (Target.position - animator.transform.position).normalized;
 
         attackFieldInstance = Instantiate(AttackField, animator.transform);
 

@@ -22,7 +22,7 @@ public class Charge : Action
 	public override TaskStatus OnUpdate()
 	{
 		agent.speed = Speed.Value;
-		agent.destination = PlayerController.instance.transform.position;
+		agent.destination = Target.Value.position;
 
 		return Time.time - startTime > Duration.Value ? TaskStatus.Success : TaskStatus.Running;
 	}

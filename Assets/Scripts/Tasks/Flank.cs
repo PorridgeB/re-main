@@ -25,8 +25,7 @@ public class Flank : Action
 
     public override TaskStatus OnUpdate()
     {
-        // TODO: Change to Target
-        var targetDirection = (PlayerController.instance.transform.position - transform.position).normalized;
+        var targetDirection = (Target.Value.position - transform.position).normalized;
         var targetDirection2D = new Vector2(targetDirection.x, targetDirection.z).normalized;
 
         var orbitDirection2D = Vector2.Perpendicular(targetDirection2D) * (clockwise ? -1 : 1);

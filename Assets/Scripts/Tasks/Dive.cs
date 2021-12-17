@@ -10,6 +10,7 @@ public class Dive : Action
 	public float Speed = 12f;
 	public AnimationCurve SpeedCurve;
 	public GameObject AttackField;
+	public SharedTransform Target;
 
 	private Animator animator;
 
@@ -24,6 +25,7 @@ public class Dive : Action
 		diveState.Speed = Speed;
 		diveState.SpeedCurve = SpeedCurve;
 		diveState.AttackField = AttackField;
+		diveState.Target = Target.Value;
 	}
 
 	public override TaskStatus OnUpdate()
