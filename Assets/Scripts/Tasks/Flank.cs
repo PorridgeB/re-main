@@ -31,7 +31,7 @@ public class Flank : Action
 
         var orbitDirection2D = Vector2.Perpendicular(targetDirection2D) * (clockwise ? -1 : 1);
 
-        var direction2D = Vector2.Lerp(targetDirection2D, orbitDirection2D, Orbit.Value);
+        var direction2D = Vector2.Lerp(targetDirection2D, orbitDirection2D, Orbit.Value).normalized;
 
         var velocity2D = direction2D * Speed.Value;
 
