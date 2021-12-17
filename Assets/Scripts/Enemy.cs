@@ -54,22 +54,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageSource"))
         {
-            //hitDirection = (transform.position - collision.gameObject.transform.position).normalized;
-
             DamageSource source = collision.gameObject.GetComponent<DamageSource>();
-
-            // TODO: Clean up
-            // Using the player's facing direction if the damage source was from the player
-            if (source.source.CompareTag("Player"))
-            {
-                var facing = PlayerController.instance.GetFacing();
-                hitDirection = new Vector3(facing.x, 0, facing.y);
-
-                // Tell the behaviour tree that the enemy has been hurt by the player
-                behaviorTree.SendEvent("Hit");
-
-                animator.SetTrigger("Hit");
-            }
 
             foreach (Effect e in source.Effects)
             {
@@ -79,6 +64,20 @@ public class Enemy : MonoBehaviour
             foreach (DamageInstance d in source.Damages)
             {
                 Hurt(d);
+            }
+
+
+            if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
+            {
+                // Using the player's facing direction if the damage source was from the player
+                if (source.source.CompareTag("Player"))
+                {
+                    var facing = PlayerController.instance.GetFacing();
+                    hitDirection = new Vector3(facing.x, 0, facing.y);
+
+                    // Tell the behaviour tree that the enemy has been hurt by the player
+                    behaviorTree.SendEvent("Hit");
+                }
             }
         }
     }
@@ -117,8 +116,6 @@ public class Enemy : MonoBehaviour
         behaviorTree.SetVariableValue("Health", (float)health.GetValue() - d.value);
 
         //OnHurt.Raise(gameObject);
-
-        
 
         if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
         {
