@@ -3,6 +3,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
+[TaskCategory("Common")]
 public class Seek : Action
 {
 	public SharedFloat Speed;

@@ -5,6 +5,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
+[TaskCategory("Common")]
 public class RandomPosition : Action
 {
     public SharedVector3 Position;

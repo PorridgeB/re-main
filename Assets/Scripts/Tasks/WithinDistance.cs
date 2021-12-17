@@ -4,6 +4,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
 
+[TaskCategory("Common")]
 public class WithinDistance : Conditional
 {
     public SharedFloat Distance;

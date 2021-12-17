@@ -3,6 +3,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
+[TaskCategory("Enemies")]
 public class Knockback : Action
 {
 	public SharedFloat Duration = 0.8f;

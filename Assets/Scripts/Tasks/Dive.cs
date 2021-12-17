@@ -3,6 +3,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
+[TaskCategory("Enemies/Drone")]
 public class Dive : Action
 {
 	public SharedFloat Damage = 10f;

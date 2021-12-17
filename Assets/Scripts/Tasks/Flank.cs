@@ -5,6 +5,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
+[TaskCategory("Enemies/Gnat")]
 public class Flank : Action
 {
     public SharedFloat Speed;
