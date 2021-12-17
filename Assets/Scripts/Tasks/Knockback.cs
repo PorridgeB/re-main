@@ -5,9 +5,9 @@ using UnityEngine.AI;
 
 public class Knockback : Action
 {
-	public float Duration = 0.8f;
-	public float Speed = 8f;
-	public AnimationCurve SpeedCurve;
+	public SharedFloat Duration = 0.8f;
+	public SharedFloat Speed = 8f;
+	public SharedAnimationCurve SpeedCurve;
 
 	private float timer = 0f;
 
@@ -25,35 +25,28 @@ public class Knockback : Action
 	{
 		timer += Time.deltaTime;
 
-		var t = 1 - timer / Duration;
+		var t = 1 - timer / Duration.Value;
 
 		var hitDirection = GetComponent<Enemy>().hitDirection;
 
 		var hitDirection2 = hitDirection;
 		hitDirection2.y = 0;
 
-		//var rigidbody = GetComponent<Rigidbody>();
-		//rigidbody.MovePosition(transform.position + hitDirection2.normalized * 20f * Time.deltaTime);
-		//rigidbody.MovePosition(transform.position + hitDirection2 * 30f * Time.deltaTime);
-
 		var agent = GetComponent<NavMeshAgent>();
-		//agent.speed = 1;
-		//agent.Move(-hitDirection);
 
-		var speed = Speed * t * t;
+		var speed = Speed.Value * t * t;
 
 		if (SpeedCurve != null)
         {
-			speed = Speed * SpeedCurve.Evaluate(1 - t);
+			speed = Speed.Value * SpeedCurve.Value.Evaluate(1 - t);
         }
 
 		agent.Move(hitDirection2.normalized * speed * Time.deltaTime);
 
-		return timer > Duration ? TaskStatus.Success : TaskStatus.Running;
+		return timer > Duration.Value ? TaskStatus.Success : TaskStatus.Running;
 	}
 
     public override void OnEnd()
     {
-		//agent.updatePosition = true;
 	}
 }
