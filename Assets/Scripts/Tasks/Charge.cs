@@ -11,13 +11,17 @@ public class Charge : Action
 	public SharedTransform Target;
 
 	private NavMeshAgent agent;
+	private ParticleSystem ghostTrail;
 	private float startTime;
 
 	public override void OnStart()
 	{
 		agent = GetComponent<NavMeshAgent>();
+		ghostTrail = GetComponent<ParticleSystem>();
 
 		startTime = Time.time;
+
+		ghostTrail.Play();
 	}
 
 	public override TaskStatus OnUpdate()
@@ -31,5 +35,7 @@ public class Charge : Action
 	public override void OnEnd()
 	{
 		agent.speed = 0;
+
+		ghostTrail.Stop();
 	}
 }
