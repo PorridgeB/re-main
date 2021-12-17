@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class Dive : Action
 {
-	public float Damage = 10f;
-	public float Duration = 1f;
-	public float Speed = 12f;
-	public AnimationCurve SpeedCurve;
-	public GameObject AttackField;
+	public SharedFloat Damage = 10f;
+	public SharedFloat Duration = 1f;
+	public SharedFloat Speed = 12f;
+	public SharedAnimationCurve SpeedCurve;
+	public SharedGameObject AttackField;
 	public SharedTransform Target;
 
 	private Animator animator;
@@ -20,11 +20,11 @@ public class Dive : Action
 		animator.SetTrigger("Dive");
 
 		var diveState = animator.GetBehaviour<DiveState>();
-		diveState.Damage = Damage;
-		diveState.Duration = Duration;
-		diveState.Speed = Speed;
-		diveState.SpeedCurve = SpeedCurve;
-		diveState.AttackField = AttackField;
+		diveState.Damage = Damage.Value;
+		diveState.Duration = Duration.Value;
+		diveState.Speed = Speed.Value;
+		diveState.SpeedCurve = SpeedCurve.Value;
+		diveState.AttackField = AttackField.Value;
 		diveState.Target = Target.Value;
 	}
 
