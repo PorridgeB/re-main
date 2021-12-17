@@ -6,17 +6,12 @@ using UnityEngine.AI;
 public class Seek : Action
 {
 	public SharedFloat Speed;
-
-	//private float oldSpeed;
 	private NavMeshAgent agent;
 
-	// TODO: Knockback, dive, wind up and down attacks, charge, better pursing
 
 	public override void OnStart()
 	{
 		agent = GetComponent<NavMeshAgent>();
-
-		//oldSpeed = agent.speed;
 	}
 
 	public override TaskStatus OnUpdate()
@@ -30,6 +25,5 @@ public class Seek : Action
     public override void OnEnd()
     {
 		agent.speed = 0;
-		//agent.speed = oldSpeed;
 	}
 }
