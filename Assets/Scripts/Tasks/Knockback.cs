@@ -9,44 +9,31 @@ public class Knockback : Action
 	public SharedFloat Speed = 8f;
 	public SharedAnimationCurve SpeedCurve;
 
-	private float timer = 0f;
-
 	private NavMeshAgent agent;
+	private Vector3 hitDirection;
+	private float startTime;
 
 	public override void OnStart()
 	{
 		agent = GetComponent<NavMeshAgent>();
-		//agent.updatePosition = false;
-
-		timer = 0f;
+		hitDirection = GetComponent<Enemy>().hitDirection;
+		startTime = Time.time;
 	}
 
 	public override TaskStatus OnUpdate()
 	{
-		timer += Time.deltaTime;
+		var timePercentage = (Time.time - startTime) / Duration.Value;
 
-		var t = 1 - timer / Duration.Value;
-
-		var hitDirection = GetComponent<Enemy>().hitDirection;
-
-		var hitDirection2 = hitDirection;
-		hitDirection2.y = 0;
-
-		var agent = GetComponent<NavMeshAgent>();
-
-		var speed = Speed.Value * t * t;
+		// Use a quadratic speed factor curve if none is provided
+		var speedFactor = Mathf.Pow(1 - timePercentage, 2);
 
 		if (SpeedCurve != null)
         {
-			speed = Speed.Value * SpeedCurve.Value.Evaluate(1 - t);
+			speedFactor = SpeedCurve.Value.Evaluate(timePercentage);
         }
 
-		agent.Move(hitDirection2.normalized * speed * Time.deltaTime);
+		agent.Move(hitDirection * speedFactor * Speed.Value * Time.deltaTime);
 
-		return timer > Duration.Value ? TaskStatus.Success : TaskStatus.Running;
-	}
-
-    public override void OnEnd()
-    {
+		return Time.time - startTime > Duration.Value ? TaskStatus.Success : TaskStatus.Running;
 	}
 }
