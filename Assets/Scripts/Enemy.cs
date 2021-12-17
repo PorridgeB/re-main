@@ -37,6 +37,10 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         behaviorTree = GetComponent<BehaviorTree>();
+
+        // Set the Player and PlayerTransform behaviour tree global variables
+        GlobalVariables.Instance.SetVariableValue("Player", PlayerController.instance.gameObject);
+        GlobalVariables.Instance.SetVariableValue("PlayerTransform", PlayerController.instance.transform);
     }
 
     // Update is called once per frame
