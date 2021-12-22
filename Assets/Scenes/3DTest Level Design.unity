@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7015f040cc47d6d4281e52f3adc8d22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCount: 10
+  roomCount: 40
   essentialRooms: 
   deadEnds: 74006e0061006200
   commonRooms: 6f0065006800

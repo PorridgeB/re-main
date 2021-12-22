@@ -45,7 +45,7 @@ public class LevelGrammarGenerator : MonoBehaviour
 
     void Awake()
     {
-        levelDepth = 5;
+        levelDepth = roomCount/4;
         maxBranchDepth = 3;
         branchCount = Random.Range(3, roomCount - levelDepth-1);
     }

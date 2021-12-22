@@ -24,8 +24,6 @@ public class LevelGenerator : MonoBehaviour
     {
         grammarGenerator = GetComponent<LevelGrammarGenerator>();
         generationTemplate = grammarGenerator.GetGenerationTemplate();
-        
-        CreateLevel(index);
     }
 
     private void CreateLevel(int i)
