@@ -7,7 +7,8 @@ public class Projectile : MonoBehaviour
     private Vector2 dir;
     private float speed;
     private Vector3 startPosition;
-    private List<DamageInstance> damageInstances;
+
+    private bool shot;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,6 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 move = new Vector3(speed * dir.x, 0, speed * dir.y);
-        transform.position += move * Time.fixedDeltaTime;
     }
 
     private void Update()
@@ -32,13 +31,18 @@ public class Projectile : MonoBehaviour
 
     public void Shoot(Vector3 position, Vector2 direction, float velocity)
     {
+        shot = true;
         transform.position = position;
         dir = direction;
         speed = velocity;
+        GetComponent<Rigidbody>().velocity = velocity * new Vector3(direction.x, 0, direction.y);
     }
 
-    public void OnTriggerEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (!GetComponent<DamageSource>().source.CompareTag(other.gameObject.tag))
+        {
+            Destroy(gameObject);
+        }
     }
 }
