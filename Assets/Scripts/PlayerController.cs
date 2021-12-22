@@ -102,17 +102,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
         }
+
         if (overlayAction.triggered)
         {
             inputs.SwitchCurrentActionMap("OverlayControl");
         }
 
-        //facing = (crosshair.transform.position - transform.position).normalized;
         facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
 
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
@@ -121,37 +120,11 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Vertical", facing.y);
         }
         
-        //As deadzones don't seem to work, I have added a manual deadzone so it will ignore input that is too small to be deliberate
+        // As deadzones don't seem to work, I have added a manual deadzone so it will ignore input that is too small to be deliberate
         anim.SetFloat("VelX", Mathf.Abs(moveAction.ReadValue<Vector2>().x) > 0.2 ? moveAction.ReadValue<Vector2>().x : 0);
         anim.SetFloat("VelY", Mathf.Abs(moveAction.ReadValue<Vector2>().y) > 0.2 ? moveAction.ReadValue<Vector2>().y : 0);
         anim.SetBool("Sneak", walkAction.phase == InputActionPhase.Started);
-        if (dashAction.triggered)
-        {
-            if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
-            {
-                ActivateDash();
-            }
-            
-        }
-        if (meleeAction.phase == InputActionPhase.Started)
-        {
-            if (meleeCooldown.Finished)
-            {
-                //Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
-                meleeCooldown.Reset(1 / stats.MeleeAttackSpeed.Value());
-                anim.SetTrigger("Melee");
-            }
-        }
-        if (rangedAction.phase == InputActionPhase.Started)
-        {
-            if (rangedCooldown.Finished)
-            {
-                //Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
-                rangedCooldown.Reset(1/stats.RangedAttackSpeed.Value());
-                anim.SetTrigger("Ranged");
 
-            }
-        }
         if (interactions.Count == 1)
         {
             selectedInteraction = interactions[0];
@@ -172,7 +145,6 @@ public class PlayerController : MonoBehaviour
                         selectedInteraction = i;
                     }
                 }
-                
             }
         }
         
@@ -180,6 +152,7 @@ public class PlayerController : MonoBehaviour
         {
             selectedInteraction.ChangeVisibility(true);
         }
+
         if (healthRegenTimer.Finished)
         {
             health += 1;
@@ -355,6 +328,44 @@ public class PlayerController : MonoBehaviour
             {
                 selectedInteraction = null;
             }
+        }
+    }
+
+    public void OnRangedAttack()
+    {
+        if (rangedCooldown.Finished)
+        {
+            // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+            rangedCooldown.Reset(1 / stats.RangedAttackSpeed.Value());
+            anim.SetTrigger("Ranged");
+        }
+    }
+
+    public void OnRangedSpecialAttack()
+    {
+
+    }
+
+    public void OnMeleeAttack()
+    {
+        if (meleeCooldown.Finished)
+        {
+            // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+            meleeCooldown.Reset(1 / stats.MeleeAttackSpeed.Value());
+            anim.SetTrigger("Melee");
+        }
+    }
+
+    public void OnMeleeSpecialAttack()
+    {
+         
+    }
+
+    public void OnDash()
+    {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+        {
+            ActivateDash();
         }
     }
 }
