@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 
+[System.Serializable]
+public struct EventConnectors
+{
+    public Thread thread;
+    public GameEvent gameEvent;
+}
+
 public class Character : MonoBehaviour
 {
     [SerializeField]
@@ -36,6 +43,18 @@ public class Character : MonoBehaviour
     {
         if (priority.Contains(t)) return;
         priority.Add(t);
+    }
+
+    public Thread GetThreadByName(string name)
+    {
+        foreach (Thread t in threads)
+        {
+            if (t.name == name)
+            {
+                return t;
+            }
+        }
+        return null;
     }
 
     public void GetStory()

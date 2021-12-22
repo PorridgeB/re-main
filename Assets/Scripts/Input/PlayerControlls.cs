@@ -498,7 +498,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
             ""id"": ""e262cf76-9971-4506-84aa-34797e11af16"",
             ""actions"": [
                 {
-                    ""name"": ""Continue"",
+                    ""name"": ""ArtContinue"",
                     ""type"": ""Button"",
                     ""id"": ""c8f59fab-6795-4469-bb94-469ac12c0814"",
                     ""expectedControlType"": ""Button"",
@@ -506,7 +506,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Back"",
+                    ""name"": ""ArtBack"",
                     ""type"": ""Button"",
                     ""id"": ""1abfa750-2e8f-46a1-866c-b02bbbacaf5b"",
                     ""expectedControlType"": ""Button"",
@@ -522,7 +522,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Continue"",
+                    ""action"": ""ArtContinue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -533,7 +533,18 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Back"",
+                    ""action"": ""ArtBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de7e11fd-6a5c-4e0c-88ae-f88de559e421"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArtBack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -567,8 +578,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_OverlayControl_Return = m_OverlayControl.FindAction("Return", throwIfNotFound: true);
         // ArtifactControl
         m_ArtifactControl = asset.FindActionMap("ArtifactControl", throwIfNotFound: true);
-        m_ArtifactControl_Continue = m_ArtifactControl.FindAction("Continue", throwIfNotFound: true);
-        m_ArtifactControl_Back = m_ArtifactControl.FindAction("Back", throwIfNotFound: true);
+        m_ArtifactControl_ArtContinue = m_ArtifactControl.FindAction("ArtContinue", throwIfNotFound: true);
+        m_ArtifactControl_ArtBack = m_ArtifactControl.FindAction("ArtBack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -829,14 +840,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     // ArtifactControl
     private readonly InputActionMap m_ArtifactControl;
     private IArtifactControlActions m_ArtifactControlActionsCallbackInterface;
-    private readonly InputAction m_ArtifactControl_Continue;
-    private readonly InputAction m_ArtifactControl_Back;
+    private readonly InputAction m_ArtifactControl_ArtContinue;
+    private readonly InputAction m_ArtifactControl_ArtBack;
     public struct ArtifactControlActions
     {
         private @PlayerControlls m_Wrapper;
         public ArtifactControlActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Continue => m_Wrapper.m_ArtifactControl_Continue;
-        public InputAction @Back => m_Wrapper.m_ArtifactControl_Back;
+        public InputAction @ArtContinue => m_Wrapper.m_ArtifactControl_ArtContinue;
+        public InputAction @ArtBack => m_Wrapper.m_ArtifactControl_ArtBack;
         public InputActionMap Get() { return m_Wrapper.m_ArtifactControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -846,22 +857,22 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_ArtifactControlActionsCallbackInterface != null)
             {
-                @Continue.started -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnContinue;
-                @Continue.performed -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnContinue;
-                @Continue.canceled -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnContinue;
-                @Back.started -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnBack;
-                @Back.performed -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnBack;
-                @Back.canceled -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnBack;
+                @ArtContinue.started -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnArtContinue;
+                @ArtContinue.performed -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnArtContinue;
+                @ArtContinue.canceled -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnArtContinue;
+                @ArtBack.started -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnArtBack;
+                @ArtBack.performed -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnArtBack;
+                @ArtBack.canceled -= m_Wrapper.m_ArtifactControlActionsCallbackInterface.OnArtBack;
             }
             m_Wrapper.m_ArtifactControlActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Continue.started += instance.OnContinue;
-                @Continue.performed += instance.OnContinue;
-                @Continue.canceled += instance.OnContinue;
-                @Back.started += instance.OnBack;
-                @Back.performed += instance.OnBack;
-                @Back.canceled += instance.OnBack;
+                @ArtContinue.started += instance.OnArtContinue;
+                @ArtContinue.performed += instance.OnArtContinue;
+                @ArtContinue.canceled += instance.OnArtContinue;
+                @ArtBack.started += instance.OnArtBack;
+                @ArtBack.performed += instance.OnArtBack;
+                @ArtBack.canceled += instance.OnArtBack;
             }
         }
     }
@@ -894,7 +905,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     }
     public interface IArtifactControlActions
     {
-        void OnContinue(InputAction.CallbackContext context);
-        void OnBack(InputAction.CallbackContext context);
+        void OnArtContinue(InputAction.CallbackContext context);
+        void OnArtBack(InputAction.CallbackContext context);
     }
 }
