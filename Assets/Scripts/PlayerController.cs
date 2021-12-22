@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddDamage(DamageSource source)
     {
-        if (source.name == "Projectile")
+        if (source.name == "Projectile(Clone)")
         {
             source.AddInstance(GetRangedDamage());
         }
