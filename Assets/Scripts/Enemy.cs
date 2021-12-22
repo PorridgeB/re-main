@@ -7,6 +7,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [HideInInspector]
+    public bool unstoppable = false;
+
     // Used by the Knockback action to know the direction of the hit
     public Vector3 hitDirection;
 
@@ -29,6 +32,7 @@ public class Enemy : MonoBehaviour
     private BehaviorTree behaviorTree;
 
     private float slowAmount;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +74,6 @@ public class Enemy : MonoBehaviour
                 Hurt(d);
             }
 
-
             if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
             {
                 // Using the player's facing direction if the damage source was from the player
@@ -80,7 +83,7 @@ public class Enemy : MonoBehaviour
                     hitDirection = new Vector3(facing.x, 0, facing.y);
 
                     // Tell the behaviour tree that the enemy has been hurt by the player
-                    behaviorTree.SendEvent("Hit");
+                    if (!unstoppable) behaviorTree.SendEvent("Hit");
                 }
             }
         }

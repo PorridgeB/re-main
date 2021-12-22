@@ -14,6 +14,7 @@ public class Dive : Action
 	public SharedTransform Target;
 
 	private Animator animator;
+	private Enemy enemy;
 
 	public override void OnStart()
 	{
@@ -27,10 +28,18 @@ public class Dive : Action
 		diveState.SpeedCurve = SpeedCurve.Value;
 		diveState.AttackField = AttackField.Value;
 		diveState.Target = Target.Value;
+
+		enemy = GetComponent<Enemy>();
+		enemy.unstoppable = true;
 	}
 
 	public override TaskStatus OnUpdate()
 	{
 		return animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") ? TaskStatus.Success : TaskStatus.Running;
+	}
+
+    public override void OnEnd()
+    {
+		enemy.unstoppable = false;
 	}
 }

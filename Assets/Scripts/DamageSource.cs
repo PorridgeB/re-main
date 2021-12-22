@@ -18,9 +18,9 @@ public class DamageSource : MonoBehaviour
     [SerializeField]
     private GameEvent damageSourceCreated;
 
-    private void Awake()
+    private void Start()
     {
-        source = transform.parent.gameObject;
+        //source = transform?.parent?.gameObject;
         damageSourceCreated.Raise(this);
     }
 

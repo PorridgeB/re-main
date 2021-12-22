@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
         speed = velocity;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collision collision)
     {
         Destroy(gameObject);
     }
