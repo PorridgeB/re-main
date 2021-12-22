@@ -47,8 +47,7 @@ public class LevelGrammarGenerator : MonoBehaviour
     {
         levelDepth = 5;
         maxBranchDepth = 3;
-        branchCount = Random.Range(1, roomCount - levelDepth-1);
-        Debug.Log(branchCount);
+        branchCount = Random.Range(3, roomCount - levelDepth-1);
     }
 
 
@@ -68,7 +67,6 @@ public class LevelGrammarGenerator : MonoBehaviour
             {
                 branchMin = roomsRemaining;
             }
-            Debug.Log(roomsRemaining - branchCount + 1);
             string branch = CreateBranch(Random.Range(branchMin, roomsRemaining - branchCount + 1));
             roomsRemaining -= branch.Length - 2;
             int pos = Random.Range(1, levelTemplate.Length - 1);

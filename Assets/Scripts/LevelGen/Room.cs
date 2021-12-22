@@ -24,7 +24,7 @@ public class Room : MonoBehaviour
 
     private int GetRoomSide(Vector3 dir)
     {
-        if (dir.z == -1)
+        if (dir.z == 1)
         {
             return 0;
         }
@@ -32,7 +32,7 @@ public class Room : MonoBehaviour
         {
             return 1;
         }
-        else if (dir.z == 1)
+        else if (dir.z == -1)
         {
             return 2;
         }
