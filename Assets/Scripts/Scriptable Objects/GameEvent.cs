@@ -25,7 +25,7 @@ public class GameEvent : ScriptableObject
     }
 
     public void Raise(DamageSource source) {
-        Debug.Log("Raised " + source.source);
+        //Debug.Log("Raised " + source.source);
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
             listeners[i].OnEventRaised(source);

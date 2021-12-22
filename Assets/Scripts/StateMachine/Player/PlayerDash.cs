@@ -13,10 +13,19 @@ public class PlayerDash : StateMachineBehaviour
     private float dashSoundRange;
     private Vector2 dashDirection;
 
+    private void SetCollisionWithEnemies(bool enabled)
+    {
+        var enemiesLayer = LayerMask.NameToLayer("Enemies");
+        var playerLayer = LayerMask.NameToLayer("Player");
 
+        Physics.IgnoreLayerCollision(playerLayer, enemiesLayer, !enabled);
+    }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Ignore collision with Enemies
+        SetCollisionWithEnemies(false);
+
         dashTimer = 0;
         dashDirection = new Vector2(animator.GetFloat("VelX"), animator.GetFloat("VelY"));
         if (dashDirection == Vector2.zero)
@@ -33,6 +42,9 @@ public class PlayerDash : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Enable collision with Enemies
+        SetCollisionWithEnemies(true);
+
         PlayerController.instance.Stop();
     }
 }

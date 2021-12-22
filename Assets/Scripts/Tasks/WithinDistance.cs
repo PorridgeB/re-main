@@ -4,14 +4,17 @@ using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
 
+[TaskCategory("Common")]
 public class WithinDistance : Conditional
 {
     public SharedFloat Distance;
 
+    public SharedTransform Target;
+
     public override TaskStatus OnUpdate()
     {
-        var distance = (PlayerController.instance.transform.position - transform.position).sqrMagnitude;
+        var distanceToTarget = (Target.Value.position - transform.position).magnitude;
 
-        return distance < Distance.Value * Distance.Value ? TaskStatus.Success : TaskStatus.Failure;
+        return distanceToTarget < Distance.Value ? TaskStatus.Success : TaskStatus.Failure;
     }
 }

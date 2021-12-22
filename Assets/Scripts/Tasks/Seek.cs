@@ -3,31 +3,30 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
+[TaskCategory("Common")]
 public class Seek : Action
 {
 	public SharedFloat Speed;
-
-	private float oldSpeed;
+	public SharedTransform Target;
+	
 	private NavMeshAgent agent;
+
 
 	public override void OnStart()
 	{
 		agent = GetComponent<NavMeshAgent>();
-
-		oldSpeed = agent.speed;
 	}
 
 	public override TaskStatus OnUpdate()
 	{
 		agent.speed = Speed.Value;
-		agent.destination = PlayerController.instance.transform.position;
+		agent.destination = Target.Value.position;
 
 		return TaskStatus.Running;
 	}
 
     public override void OnEnd()
     {
-		agent.speed = oldSpeed;
-
+		agent.speed = 0;
 	}
 }

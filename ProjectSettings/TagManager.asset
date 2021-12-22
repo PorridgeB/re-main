@@ -9,6 +9,7 @@ TagManager:
   - Character
   - Artifact
   - DamageSource
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,10 +19,10 @@ TagManager:
   - UI
   - Enemies
   - 
+  - Player
+  - Flying Enemies
   - 
-  - 
-  - 
-  - 
+  - Level
   - 
   - 
   - 

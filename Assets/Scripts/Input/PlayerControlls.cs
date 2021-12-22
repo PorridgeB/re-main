@@ -67,9 +67,25 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""RangedSpecialAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""92603a6c-9afd-4383-bb8f-271ab5818c60"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""MeleeAttack"",
                     ""type"": ""Button"",
                     ""id"": ""b7fd527a-652d-4386-90dc-46b8766e6d59"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MeleeSpecialAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""fdecc092-d354-4961-8770-34f98a0f40fe"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -303,6 +319,28 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c82fe1e-2117-4c52-91c5-368978daa630"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangedSpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e0f8912-2fd9-4d81-a67d-0b0295252c72"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeSpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -512,7 +550,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_CharacterControl_Overlay = m_CharacterControl.FindAction("Overlay", throwIfNotFound: true);
         m_CharacterControl_Dash = m_CharacterControl.FindAction("Dash", throwIfNotFound: true);
         m_CharacterControl_RangedAttack = m_CharacterControl.FindAction("RangedAttack", throwIfNotFound: true);
+        m_CharacterControl_RangedSpecialAttack = m_CharacterControl.FindAction("RangedSpecialAttack", throwIfNotFound: true);
         m_CharacterControl_MeleeAttack = m_CharacterControl.FindAction("MeleeAttack", throwIfNotFound: true);
+        m_CharacterControl_MeleeSpecialAttack = m_CharacterControl.FindAction("MeleeSpecialAttack", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         // DialogueControl
         m_DialogueControl = asset.FindActionMap("DialogueControl", throwIfNotFound: true);
@@ -584,7 +624,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Overlay;
     private readonly InputAction m_CharacterControl_Dash;
     private readonly InputAction m_CharacterControl_RangedAttack;
+    private readonly InputAction m_CharacterControl_RangedSpecialAttack;
     private readonly InputAction m_CharacterControl_MeleeAttack;
+    private readonly InputAction m_CharacterControl_MeleeSpecialAttack;
     private readonly InputAction m_CharacterControl_Interact;
     public struct CharacterControlActions
     {
@@ -596,7 +638,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Overlay => m_Wrapper.m_CharacterControl_Overlay;
         public InputAction @Dash => m_Wrapper.m_CharacterControl_Dash;
         public InputAction @RangedAttack => m_Wrapper.m_CharacterControl_RangedAttack;
+        public InputAction @RangedSpecialAttack => m_Wrapper.m_CharacterControl_RangedSpecialAttack;
         public InputAction @MeleeAttack => m_Wrapper.m_CharacterControl_MeleeAttack;
+        public InputAction @MeleeSpecialAttack => m_Wrapper.m_CharacterControl_MeleeSpecialAttack;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
@@ -625,9 +669,15 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @RangedAttack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedAttack;
                 @RangedAttack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedAttack;
                 @RangedAttack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedAttack;
+                @RangedSpecialAttack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedSpecialAttack;
+                @RangedSpecialAttack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedSpecialAttack;
+                @RangedSpecialAttack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRangedSpecialAttack;
                 @MeleeAttack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
                 @MeleeAttack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
                 @MeleeAttack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeAttack;
+                @MeleeSpecialAttack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeSpecialAttack;
+                @MeleeSpecialAttack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeSpecialAttack;
+                @MeleeSpecialAttack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMeleeSpecialAttack;
                 @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
@@ -653,9 +703,15 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @RangedAttack.started += instance.OnRangedAttack;
                 @RangedAttack.performed += instance.OnRangedAttack;
                 @RangedAttack.canceled += instance.OnRangedAttack;
+                @RangedSpecialAttack.started += instance.OnRangedSpecialAttack;
+                @RangedSpecialAttack.performed += instance.OnRangedSpecialAttack;
+                @RangedSpecialAttack.canceled += instance.OnRangedSpecialAttack;
                 @MeleeAttack.started += instance.OnMeleeAttack;
                 @MeleeAttack.performed += instance.OnMeleeAttack;
                 @MeleeAttack.canceled += instance.OnMeleeAttack;
+                @MeleeSpecialAttack.started += instance.OnMeleeSpecialAttack;
+                @MeleeSpecialAttack.performed += instance.OnMeleeSpecialAttack;
+                @MeleeSpecialAttack.canceled += instance.OnMeleeSpecialAttack;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -818,7 +874,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnOverlay(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnRangedAttack(InputAction.CallbackContext context);
+        void OnRangedSpecialAttack(InputAction.CallbackContext context);
         void OnMeleeAttack(InputAction.CallbackContext context);
+        void OnMeleeSpecialAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
     public interface IDialogueControlActions

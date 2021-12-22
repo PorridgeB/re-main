@@ -18,9 +18,9 @@ public class DamageSource : MonoBehaviour
     [SerializeField]
     private GameEvent damageSourceCreated;
 
-    private void Awake()
+    private void Start()
     {
-        source = transform.parent.gameObject;
+        //source = transform?.parent?.gameObject;
         damageSourceCreated.Raise(this);
     }
 
@@ -47,6 +47,12 @@ public class DamageSource : MonoBehaviour
 
     public void AddInstance(DamageInstance instance)
     {
+        // Ignore damage instances from a different source
+        if (instance.source != source)
+        {
+            return;
+        }
+
         damageInstances.Add(instance);
     }
 }

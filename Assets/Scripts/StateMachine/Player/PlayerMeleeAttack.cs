@@ -10,45 +10,53 @@ public class PlayerMeleeAttack : StateMachineBehaviour
     [SerializeField]
     private float dashSpeed;
     [SerializeField]
+    private float comboDashSpeed;
+    [SerializeField]
     private AnimationCurve speedCurve;
     private float dashTimer;
     private Vector2 direction;
     private GameObject attackFieldInstance;
+    private float lastMeleeTime = 0f;
+    private float comboTime = 0.8f;
+    private int comboCounter = 0;
+    private const int maximumCombo = 3;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // If the time since the last melee attack is within the combo time,
+        // then increment the combo counter. Otherwise, reset it
+        if (Time.time - lastMeleeTime < comboTime)
+        {
+            comboCounter++;
+        }
+        else
+        {
+            comboCounter = 0;
+        }
 
         dashTimer = 0;
         direction = PlayerController.instance.GetFacing();
         
-        
         attackFieldInstance = Instantiate(attackField, PlayerController.instance.transform);
+
+        var damageSource = attackFieldInstance.GetComponent<DamageSource>();
+        damageSource.source = animator.gameObject;
 
         float distance = 0.5f;
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.y);
 
         attackFieldInstance.transform.localPosition = forwardDirection * distance;
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
-
-        //Vector3 targ = animator.transform.position;
-        //targ.z = 0f;
-
-        //Vector3 objectPos = attackFieldInstance.transform.position;
-        //targ.x = targ.x - objectPos.x;
-        //targ.y = targ.y - objectPos.y;
-
-        //float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
-        //attackFieldInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-
-        //attackFieldInstance.transform.LookAt(animator.transform);
     }
 
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         dashTimer += Time.deltaTime;
-        PlayerController.instance.Dash(direction * dashSpeed * speedCurve.Evaluate(dashTimer));
+
+        var speed = comboCounter == maximumCombo ? comboDashSpeed : dashSpeed;
+
+        PlayerController.instance.Dash(direction * speed * speedCurve.Evaluate(dashTimer));
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -56,5 +64,13 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         Destroy(attackFieldInstance);
         attackFieldInstance = null;
         PlayerController.instance.Stop();
+
+        lastMeleeTime = Time.time;
+
+        // Reset the combo counter if it has reached the maximum combo count
+        if (comboCounter == maximumCombo)
+        {
+            comboCounter = 0;
+        }
     }
 }

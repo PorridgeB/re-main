@@ -54,9 +54,25 @@
                     "interactions": ""
                 },
                 {
+                    "name": "RangedSpecialAttack",
+                    "type": "Button",
+                    "id": "92603a6c-9afd-4383-bb8f-271ab5818c60",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "MeleeAttack",
                     "type": "Button",
                     "id": "b7fd527a-652d-4386-90dc-46b8766e6d59",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MeleeSpecialAttack",
+                    "type": "Button",
+                    "id": "fdecc092-d354-4961-8770-34f98a0f40fe",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -288,6 +304,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c82fe1e-2117-4c52-91c5-368978daa630",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RangedSpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e0f8912-2fd9-4d81-a67d-0b0295252c72",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MeleeSpecialAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
