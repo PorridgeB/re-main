@@ -6,13 +6,13 @@ using UnityEngine.EventSystems;
 [CreateAssetMenu]
 public class GameEvent : ScriptableObject
 {
-    private List<GameEventListener> listeners = new List<GameEventListener>();
+    private List<IListenGameEvent> listeners = new List<IListenGameEvent>();
 
     public void Raise()
     {
         for (int i = listeners.Count -1; i >= 0; i--)
         {
-            listeners[i].OnEventRaised();
+            listeners[i].OnEventRaised(this);
         }
     }
 
@@ -20,7 +20,7 @@ public class GameEvent : ScriptableObject
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].OnEventRaised(gameobject);
+            listeners[i].OnEventRaised(this, gameobject);
         }
     }
 
@@ -28,16 +28,16 @@ public class GameEvent : ScriptableObject
         Debug.Log("Raised " + source.source);
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].OnEventRaised(source);
+            listeners[i].OnEventRaised(this, source);
         }
     }
 
-    public void RegisterListener(GameEventListener listener)
+    public void RegisterListener(IListenGameEvent listener)
     {
         listeners.Add(listener);
     }
 
-    public void UnRegisterListener(GameEventListener listener)
+    public void UnRegisterListener(IListenGameEvent listener)
     {
         listeners.Add(listener);
     }

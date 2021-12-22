@@ -23,9 +23,6 @@ public class Character : MonoBehaviour
     [SerializeField]
     private Thread currentThread;
 
-    [SerializeField]
-    private List<EventConnectors> connectors = new List<EventConnectors>();
-
     private void Start()
     {
         foreach (Thread t in GetComponentsInChildren<Thread>())

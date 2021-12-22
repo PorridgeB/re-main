@@ -11,8 +11,9 @@ public enum ThreadPriority
     ESSENTIAL 
 }
 [System.Serializable]
-public class Thread : MonoBehaviour
+public class Thread : MonoBehaviour, IListenGameEvent
 {
+
     [SerializeField]
     private TextAsset asset;
     private Story story;
@@ -21,11 +22,30 @@ public class Thread : MonoBehaviour
 
     public bool locked;
 
-    private int progress = -1;
+    private int progress = 0;
+
+    [SerializeField]
+    private List<GameEvent> gameEvents = new List<GameEvent>();
 
     private void Awake()
     {
         InitializeStory();
+    }
+
+    public void OnEventRaised(GameEvent gameEvent)
+    {
+        if (gameEvent == gameEvents[progress])
+        {
+            Progress();
+        }
+    }
+    public void OnEventRaised(GameEvent gameEvent, GameObject gameObject)
+    {
+        OnEventRaised(gameEvent);
+    }
+    public void OnEventRaised(GameEvent gameEvent, DamageSource damageSource)
+    {
+        OnEventRaised(gameEvent);
     }
 
     private void InitializeStory()
@@ -44,6 +64,23 @@ public class Thread : MonoBehaviour
         }
         priority = (ThreadPriority)(int)story.variablesState["priority"];
         story.ObserveVariable("priority", (string str, object newValue) => { UpdatePriority((int)newValue); });
+        
+    }
+
+    private void OnEnable()
+    {
+        foreach (GameEvent g in gameEvents)
+        {
+            g.RegisterListener(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (GameEvent g in gameEvents)
+        {
+            g.UnRegisterListener(this);
+        }
     }
 
     private void UpdatePriority(int newValue)
@@ -67,11 +104,13 @@ public class Thread : MonoBehaviour
 
     public void Progress()
     {
+        
         if (!story.canContinue)
         {
             if (story.TagsForContentAtPath(currentKnot).Count > 0)
             {
                 currentKnot = story.TagsForContentAtPath(currentKnot)[0].Split(':')[1].Trim();
+                progress++;
             }
         }
     }
