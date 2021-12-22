@@ -32,6 +32,14 @@ public class DamageSource : MonoBehaviour
         }
     }
 
+    public int Count
+    {
+        get
+        {
+            return damageInstances.Count;
+        }
+    }
+
     public List<Effect> Effects
     {
         get
