@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private AttackEvent nextAttack;
-    private Animator anim;
+    private Animator animator;
 
     public readonly List<DamageInstance> damageTaken = new List<DamageInstance>();
 
-    private float scrap = 0;
-    private bool dashBlocked = true;
-    private float viewDistance;
+    //private float scrap = 0;
+    //private bool dashBlocked = true;
+    //private float viewDistance;
     private Vector2 facing;
     private float health = 100f;
     //private Crosshair crosshair;
@@ -44,9 +44,9 @@ public class PlayerController : MonoBehaviour
 
     private InputAction moveAction;
     private InputAction walkAction;
-    private InputAction dashAction;
-    private InputAction rangedAction;
-    private InputAction meleeAction;
+    //private InputAction dashAction;
+    //private InputAction rangedAction;
+    //private InputAction meleeAction;
     private InputAction interactAction;
     private InputAction overlayAction;
 
@@ -77,17 +77,16 @@ public class PlayerController : MonoBehaviour
     {
         //health = GetComponentInChildren<Resource>();
         //crosshair = GetComponentInChildren<Crosshair>();
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         inputs = GetComponent<PlayerInput>();
         movement = GetComponent<PlayerMovement>();
 
-
         moveAction = inputs.actions["move"];
         walkAction = inputs.actions["walk"];
-        dashAction = inputs.actions["Dash"];
-        rangedAction = inputs.actions["RangedAttack"];
-        meleeAction = inputs.actions["MeleeAttack"];
+        //dashAction = inputs.actions["Dash"];
+        //rangedAction = inputs.actions["RangedAttack"];
+        //meleeAction = inputs.actions["MeleeAttack"];
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
 
@@ -114,16 +113,16 @@ public class PlayerController : MonoBehaviour
 
         facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
 
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {
-            anim.SetFloat("Horizontal", facing.x);
-            anim.SetFloat("Vertical", facing.y);
+            animator.SetFloat("Horizontal", facing.x);
+            animator.SetFloat("Vertical", facing.y);
         }
         
         // As deadzones don't seem to work, I have added a manual deadzone so it will ignore input that is too small to be deliberate
-        anim.SetFloat("VelX", Mathf.Abs(moveAction.ReadValue<Vector2>().x) > 0.2 ? moveAction.ReadValue<Vector2>().x : 0);
-        anim.SetFloat("VelY", Mathf.Abs(moveAction.ReadValue<Vector2>().y) > 0.2 ? moveAction.ReadValue<Vector2>().y : 0);
-        anim.SetBool("Sneak", walkAction.phase == InputActionPhase.Started);
+        animator.SetFloat("VelX", Mathf.Abs(moveAction.ReadValue<Vector2>().x) > 0.2 ? moveAction.ReadValue<Vector2>().x : 0);
+        animator.SetFloat("VelY", Mathf.Abs(moveAction.ReadValue<Vector2>().y) > 0.2 ? moveAction.ReadValue<Vector2>().y : 0);
+        animator.SetBool("Sneak", walkAction.phase == InputActionPhase.Started);
 
         if (interactions.Count == 1)
         {
@@ -167,7 +166,7 @@ public class PlayerController : MonoBehaviour
             if (d.Ready)
             {
                 d.Activate(1 / stats.DashRechargeRate.Value());
-                anim.SetTrigger("Dash");
+                animator.SetTrigger("Dash");
                 return;
             }
         }
@@ -234,6 +233,7 @@ public class PlayerController : MonoBehaviour
                 finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
+
         health -= finalDamageValue;
     }
 
@@ -337,13 +337,13 @@ public class PlayerController : MonoBehaviour
         {
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             rangedCooldown.Reset(1 / stats.RangedAttackSpeed.Value());
-            anim.SetTrigger("Ranged");
+            animator.SetTrigger("Ranged");
         }
     }
 
     public void OnRangedSpecialAttack()
     {
-
+        animator.SetTrigger("RangedSpecial");
     }
 
     public void OnMeleeAttack()
@@ -352,7 +352,7 @@ public class PlayerController : MonoBehaviour
         {
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             meleeCooldown.Reset(1 / stats.MeleeAttackSpeed.Value());
-            anim.SetTrigger("Melee");
+            animator.SetTrigger("Melee");
         }
     }
 
@@ -363,7 +363,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
         {
             ActivateDash();
         }
