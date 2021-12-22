@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Unity.AI.Navigation;
 
+[ExecuteAlways]
 public class LevelMeshBuilder : MonoBehaviour
 {
     public Tilemap WallTrimmingsTilemap;
