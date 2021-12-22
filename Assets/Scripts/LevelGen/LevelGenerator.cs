@@ -16,6 +16,7 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 currentDir;
     private Stack<Room> roomPath = new Stack<Room>();
     private LevelGrammarGenerator grammarGenerator;
+    private int index = 0;
 
 
     // Start is called before the first frame update
@@ -23,37 +24,41 @@ public class LevelGenerator : MonoBehaviour
     {
         grammarGenerator = GetComponent<LevelGrammarGenerator>();
         generationTemplate = grammarGenerator.GetGenerationTemplate();
-        int i = 0;
-        while (start == null)
-        {
-            i++;
-            if (i > 10)
-            {
-                Debug.LogError("that didn't work");
-                break;
-            }
-            CreateLevel();
-        }
-        Debug.Log("Success");
+        
+        CreateLevel(index);
     }
 
-    private void CreateLevel()
+    private void CreateLevel(int i)
     {
-        roomPath.Push(Instantiate(room).GetComponent<Room>());
-        start = roomPath.Peek();
-        roomPath.Peek().SetText("Start");
-        Turn();
-        foreach (char c in generationTemplate.ToCharArray())
+        if (i == 0)
         {
-            if (!Step(c))
-            {
-                Debug.Log("Generation Failed");
-                Destroy(start.gameObject);
-                start = null;
-                return;
-            }
-
+            roomPath.Push(Instantiate(room).GetComponent<Room>());
+            start = roomPath.Peek();
+            roomPath.Peek().SetText("Start");
+            Turn();
         }
+        index++;
+        if (!Step(generationTemplate.ToCharArray()[i]))
+        {
+            Debug.Log("Generation Failed");
+            Destroy(start.gameObject);
+            start = null;
+            index = 0;
+            return;
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (index < generationTemplate.Length - 1)
+        {
+            CreateLevel(index);
+        }
+        else
+        {
+            Debug.Log("Success!");
+        }
+        
     }
 
     public bool Step(char c)
@@ -86,17 +91,19 @@ public class LevelGenerator : MonoBehaviour
 
     private bool FindEmptyCell()
     {
+        List<Vector3> possibleDirections = new List<Vector3>();
         RaycastHit hit;
         foreach (Vector3 v in directions)
         {
             Physics.Raycast(roomPath.Peek().transform.position + roomPath.Peek().Offset(v) + Vector3.up / 2 + (Vector3.right * 8), Vector3.down, out hit);
-            Debug.Log(roomPath.Peek().transform.position + roomPath.Peek().Offset(v) + Vector3.up / 2 + (Vector3.right * 8));
             if (hit.collider == null)
             {
-                Debug.Log("found a way to go");
-                currentDir = v;
-                return true;
+                possibleDirections.Add(v);
             }
+        }
+        if (possibleDirections.Count > 0){
+            currentDir = possibleDirections[Random.Range(0, possibleDirections.Count - 1)];
+            return true;
         }
         return false;
 
@@ -105,6 +112,11 @@ public class LevelGenerator : MonoBehaviour
     private void Turn()
     {
         currentDir = directions[Random.Range(0, directions.Count - 1)];
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(start.transform.position+Vector3.right*8, start.transform.position + Vector3.right * 8 + Vector3.down * 10);
     }
 }
 
