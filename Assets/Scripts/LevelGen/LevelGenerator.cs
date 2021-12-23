@@ -10,6 +10,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private GameObject room;
     [SerializeField]
+    private GameObject hall;
+    [SerializeField]
     private List<Vector3> directions = new List<Vector3>();
     [SerializeField]
     private string generationTemplate;
@@ -17,13 +19,17 @@ public class LevelGenerator : MonoBehaviour
     private Stack<Room> roomPath = new Stack<Room>();
     private LevelGrammarGenerator grammarGenerator;
     private int index = 0;
-
+    private int roomsSinceTurn = 0;
+    private int maxRoomsSinceTurn;
+    private int generationAttempts = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         grammarGenerator = GetComponent<LevelGrammarGenerator>();
         generationTemplate = grammarGenerator.GetGenerationTemplate();
+        generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
+        maxRoomsSinceTurn = 4;
     }
 
     private void CreateLevel(int i)
@@ -39,6 +45,13 @@ public class LevelGenerator : MonoBehaviour
         if (!Step(generationTemplate.ToCharArray()[i]))
         {
             Debug.Log("Generation Failed");
+            generationAttempts++;
+            if (generationAttempts > 5)
+            {
+                generationAttempts = 0;
+                generationTemplate = grammarGenerator.GetGenerationTemplate();
+                generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
+            }
             Destroy(start.gameObject);
             start = null;
             index = 0;
@@ -48,13 +61,12 @@ public class LevelGenerator : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (index < generationTemplate.Length - 1)
+        if (index < generationTemplate.Length)
         {
             CreateLevel(index);
         }
         else
         {
-            Debug.Log("Success!");
         }
         
     }
@@ -73,10 +85,17 @@ public class LevelGenerator : MonoBehaviour
         {
             if (!FindEmptyCell()) return false;
             Room previousRoom = roomPath.Pop();
-
-
+            Room currentRoom;
+            if (c == 'h')
+            {
+                currentRoom = Instantiate(hall, previousRoom.transform).GetComponent<Room>();
+            }
+            else
+            {
+                currentRoom = Instantiate(room, previousRoom.transform).GetComponent<Room>();
+            }
             
-            Room currentRoom = Instantiate(room, previousRoom.transform).GetComponent<Room>();
+            
             currentRoom.transform.position += currentRoom.Offset(currentDir);
             currentRoom.SetText(c.ToString());
             currentRoom.OpenPassage(-currentDir);
@@ -99,7 +118,13 @@ public class LevelGenerator : MonoBehaviour
                 possibleDirections.Add(v);
             }
         }
-        if (possibleDirections.Count > 0){
+        if (possibleDirections.Count > 0) {
+            if (possibleDirections.Contains(currentDir) && roomsSinceTurn >= maxRoomsSinceTurn)
+            {
+                roomsSinceTurn++;
+                return true;
+            }
+            roomsSinceTurn = 0;
             currentDir = possibleDirections[Random.Range(0, possibleDirections.Count - 1)];
             return true;
         }

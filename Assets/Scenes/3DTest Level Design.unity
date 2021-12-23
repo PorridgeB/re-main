@@ -1024,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 0}
   room: {fileID: 3542891387217972496, guid: 0948639c3f710a44292a1b7906c7f7ed, type: 3}
+  hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
   directions:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
@@ -1056,10 +1057,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7015f040cc47d6d4281e52f3adc8d22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCount: 40
-  essentialRooms: 
-  deadEnds: 74006e0061006200
-  commonRooms: 6f0065006800
+  roomCount: 20
+  deadEnds: 74006e0062006100
+  commonRooms: 6f0068006500
+  buildingBlocks: 2d002a0021002300
+  difficulty: 0
 --- !u!1 &566616665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,8 +1991,8 @@ Camera:
   m_GameObject: {fileID: 787356960}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.30980393, g: 0.11764707, b: 0.27058825, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2007,7 +2009,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 60
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4788,6 +4790,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505106388035379475, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505106388035379477, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505106388035379477, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
