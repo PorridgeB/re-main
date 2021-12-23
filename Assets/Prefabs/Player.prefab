@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4505106388035379477}
   - component: {fileID: 4505106388035379561}
   - component: {fileID: 4505106388035379478}
+  - component: {fileID: 7334924618695186192}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -195,6 +196,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7334924618695186192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505106388035379472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 1567043b70feefa4595e41253b417743, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseGO:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseDS:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4505106388035379476}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: AddDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4505106388187775770
 GameObject:
   m_ObjectHideFlags: 0
