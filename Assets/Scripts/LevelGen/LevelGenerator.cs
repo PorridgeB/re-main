@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Unity.AI.Navigation;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -23,10 +23,12 @@ public class LevelGenerator : MonoBehaviour
     private int maxRoomsSinceTurn;
     [SerializeField]
     private int generationAttempts = 0;
+    private bool roomsGenerated;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         grammarGenerator = GetComponent<LevelGrammarGenerator>();
         generationTemplate = grammarGenerator.GetGenerationTemplate();
         generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
@@ -37,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (i == 0)
         {
-            roomPath.Push(Instantiate(room).GetComponent<Room>());
+            roomPath.Push(Instantiate(room, transform).GetComponent<Room>());
             start = roomPath.Peek();
             roomPath.Peek().SetText("Start");
             Turn();
@@ -66,8 +68,14 @@ public class LevelGenerator : MonoBehaviour
         {
             CreateLevel(index);
         }
-        else
+        else if (!roomsGenerated)
         {
+            GetComponent<NavMeshSurface>().BuildNavMesh();
+            foreach (Room r in start.GetComponentsInChildren<Room>())
+            {
+                r.Generate();
+            }
+            roomsGenerated = true;
         }
         
     }

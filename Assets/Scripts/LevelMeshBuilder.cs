@@ -27,10 +27,6 @@ public class LevelMeshBuilder : MonoBehaviour
         // Generate the collision mesh.
         var meshCollider = GetComponent<MeshCollider>();
         meshCollider.sharedMesh = GenerateCollisionMesh();
-
-        // Bake the navmesh.
-        var navMeshSurface = GetComponent<NavMeshSurface>();
-        navMeshSurface.BuildNavMesh();
     }
 
     void AddQuad(int firstVertexIndex, List<int> triangles)

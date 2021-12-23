@@ -24,6 +24,12 @@ public class Room : MonoBehaviour
     private GameObject dummy;
     [SerializeField]
     private GameObject artifact;
+    [SerializeField]
+    private GameObject ooze;
+    [SerializeField]
+    private GameObject drone;
+    [SerializeField]
+    private GameObject gnat;
 
 
     public Vector3 Offset(Vector3 dir)
@@ -62,13 +68,9 @@ public class Room : MonoBehaviour
         name = text;
     }
 
-    public void Start()
-    {
-        Generate();
-    }
-
     public void Generate()
     {
+        Debug.Log("generating");
         switch (name)
         {
             
@@ -91,8 +93,11 @@ public class Room : MonoBehaviour
                 go.transform.localPosition = Vector3.right * 8 + Vector3.up;
                 break;
             case "e":
-                go = Instantiate(dummy, transform);
-                go.transform.localPosition = Vector3.right * 8 + Vector3.up;
+                for (int i = 0; i < Random.Range(2,10); i++)
+                {
+                    go = Instantiate(drone, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);
+                    Debug.Log(transform.position + Vector3.right * 8 + Vector3.up);
+                }
                 break;
             case "a":
                 go = Instantiate(artifact, transform);
