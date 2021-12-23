@@ -1,118 +1,149 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.AI.Navigation;
 
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> rooms;
+    private Room start;
     [SerializeField]
     private GameObject room;
     [SerializeField]
-    private GameObject connector;
+    private GameObject hall;
     [SerializeField]
-    private List<Vector3> directons = new List<Vector3>();
+    private List<Vector3> directions = new List<Vector3>();
     [SerializeField]
     private string generationTemplate;
     private Vector3 currentDir;
-    [SerializeField]
-    private Stack<Room> currentRoom = new Stack<Room>();
-    private Room branchBase;
-    private Vector3 branchDir;
+    private Stack<Room> roomPath = new Stack<Room>();
     private LevelGrammarGenerator grammarGenerator;
-    
+    private int index = 0;
+    private int roomsSinceTurn = 0;
+    private int maxRoomsSinceTurn;
+    [SerializeField]
+    private int generationAttempts = 0;
+    private bool roomsGenerated;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         grammarGenerator = GetComponent<LevelGrammarGenerator>();
         generationTemplate = grammarGenerator.GetGenerationTemplate();
-        currentRoom.Push(Instantiate(room).GetComponent<Room>());
-        currentRoom.Peek().SetText("Start");
-        Turn();
-        int i = 1;
-        foreach (char c in generationTemplate.ToCharArray())
+        generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
+        maxRoomsSinceTurn = 4;
+    }
+
+    private void CreateLevel(int i)
+    {
+        if (i == 0)
         {
-            StartCoroutine(Step(c, i * 0.4f));
-            i++;
+            roomPath.Push(Instantiate(room, transform).GetComponent<Room>());
+            start = roomPath.Peek();
+            roomPath.Peek().SetText("Start");
+            Turn();
+        }
+        index++;
+        if (!Step(generationTemplate.ToCharArray()[i]))
+        {
+            Debug.Log("Generation Failed");
+            generationAttempts++;
+            if (generationAttempts > 5)
+            {
+                generationAttempts = 0;
+                generationTemplate = grammarGenerator.GetGenerationTemplate();
+                generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
+            }
+            Destroy(start.gameObject);
+            start = null;
+            index = 0;
+            return;
         }
     }
 
-    public IEnumerator Step(char c, float delay)
+    public void FixedUpdate()
     {
-        yield return new WaitForSeconds(delay);
-        if (c == '(')
+        if (index < generationTemplate.Length)
         {
-            currentRoom.Push(currentRoom.Peek());
-            branchDir = currentDir;
-            FindTurn(currentRoom.Peek(), ParentRoomDir(currentRoom.Peek(), currentRoom.Peek().transform.parent));
+            CreateLevel(index);
         }
-        else if (c == ')')
+        else if (!roomsGenerated)
         {
-            currentRoom.Pop();
-            FindTurn(currentRoom.Peek(), ParentRoomDir(currentRoom.Peek(), currentRoom.Peek().transform.parent));
-        }
-        else
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(currentRoom.Peek().transform.position + currentRoom.Peek().Offset(currentDir) + Vector3.up + (Vector3.right * 8), Vector3.down, out hit))
+            GetComponent<NavMeshSurface>().BuildNavMesh();
+            foreach (Room r in start.GetComponentsInChildren<Room>())
             {
-                Debug.Log("blocked. Changing direction");
-                FindTurn(currentRoom.Peek(), ParentRoomDir(currentRoom.Peek(), currentRoom.Peek().transform.parent));
+                r.Generate();
             }
-            Room previousRoom = currentRoom.Pop();
-            previousRoom.OpenPassage(currentDir);
-
-            currentRoom.Push(Instantiate(room, previousRoom.transform).GetComponent<Room>());
-            currentRoom.Peek().transform.position += currentRoom.Peek().Offset(currentDir);
-            currentRoom.Peek().SetText(c.ToString());
-            currentRoom.Peek().OpenPassage(-currentDir);
+            roomsGenerated = true;
         }
         
     }
 
-    
-    private Vector3 ParentRoomDir(Room room, Transform parentRoom)
+    public bool Step(char c)
     {
-        if (parentRoom == null) return Vector3.zero;
-        return (parentRoom.position - room.transform.position).normalized;
+        if (c == '(')
+        {
+            roomPath.Push(roomPath.Peek());
+        }
+        else if (c == ')')
+        {
+            roomPath.Pop();
+        }
+        else
+        {
+            if (!FindEmptyCell()) return false;
+            Room previousRoom = roomPath.Pop();
+            Room currentRoom;
+            if (c == 'h')
+            {
+                currentRoom = Instantiate(hall, previousRoom.transform).GetComponent<Room>();
+            }
+            else
+            {
+                currentRoom = Instantiate(room, previousRoom.transform).GetComponent<Room>();
+            }
+            
+            
+            currentRoom.transform.position += currentRoom.Offset(currentDir);
+            currentRoom.SetText(c.ToString());
+            currentRoom.OpenPassage(-currentDir);
+            previousRoom.OpenPassage(currentDir);
+
+            roomPath.Push(currentRoom);
+        }
+        return true;
     }
 
-    public void FindTurn(Room startingRoom, Vector3 parentRoomDir)
+    private bool FindEmptyCell()
     {
-        List<Vector3> availableDirections = new List<Vector3>();
-        foreach (Vector3 dir in directons)
+        List<Vector3> possibleDirections = new List<Vector3>();
+        RaycastHit hit;
+        foreach (Vector3 v in directions)
         {
-            availableDirections.Add(dir);
-        }
-        availableDirections.Remove(parentRoomDir);
-        for (int i = 0; i < availableDirections.Count; i++){
-            if (Physics.Raycast(startingRoom.transform.position + startingRoom.Offset(availableDirections[i])+Vector3.up + (Vector3.right * 8), Vector3.down))
+            Physics.Raycast(roomPath.Peek().transform.position + roomPath.Peek().Offset(v) + Vector3.up / 2 + (Vector3.right * 8), Vector3.down, out hit);
+            if (hit.collider == null)
             {
-                availableDirections.Remove(availableDirections[i]);
+                possibleDirections.Add(v);
             }
         }
-        int r = Random.Range(0, availableDirections.Count - 1);
-        currentDir = availableDirections[r];
+        if (possibleDirections.Count > 0) {
+            if (possibleDirections.Contains(currentDir) && roomsSinceTurn >= maxRoomsSinceTurn)
+            {
+                roomsSinceTurn++;
+                return true;
+            }
+            roomsSinceTurn = 0;
+            currentDir = possibleDirections[Random.Range(0, possibleDirections.Count - 1)];
+            return true;
+        }
+        return false;
+
     }
 
     private void Turn()
     {
-        if (Mathf.Abs(currentDir.x) == 1)
-        {
-            currentDir.x = 0;
-            currentDir.y = Random.value > 0.5 ? -1 : 1;
-        }
-        else
-        {
-            currentDir.y = 0;
-            currentDir.x = Random.value > 0.5 ? -1 : 1;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentDir = directions[Random.Range(0, directions.Count - 1)];
     }
 }
+

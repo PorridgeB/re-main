@@ -23,11 +23,14 @@ public class TargetDummy : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        
         if (collision.gameObject.CompareTag("DamageSource"))
         {
+            
             List<DamageInstance> sources = collision.gameObject.GetComponent<DamageSource>().Damages;
             foreach (DamageInstance d in sources)
             {
+                Debug.Log("hit");
                 damageTotal += d.value;
                 GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
                 g.GetComponent<DamageToken>().SetValue(d);

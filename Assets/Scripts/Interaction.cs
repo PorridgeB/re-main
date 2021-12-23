@@ -44,5 +44,9 @@ public class Interaction : MonoBehaviour
         {
             PlayerController.instance.OpenArtifact();
         }
+        else if (transform.parent.CompareTag("End"))
+        {
+            transform.parent.GetComponent<LevelEnd>().EndLevel();
+        }
     }
 }

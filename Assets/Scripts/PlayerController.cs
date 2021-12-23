@@ -64,17 +64,16 @@ public class PlayerController : MonoBehaviour
 
         if (instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             instance = this;
         }
         else
         {
-            DestroyImmediate(gameObject);
         }
     }
 
     private void Start()
     {
+
         //health = GetComponentInChildren<Resource>();
         //crosshair = GetComponentInChildren<Crosshair>();
         anim = GetComponent<Animator>();

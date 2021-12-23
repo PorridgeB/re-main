@@ -37,57 +37,147 @@ public class LevelGrammarGenerator : MonoBehaviour
     private int branchCount;
     private int levelDepth;
     [SerializeField]
-    private List<char> essentialRooms;
-    [SerializeField]
     private List<char> deadEnds;
     [SerializeField]
     private List<char> commonRooms;
-
+    [SerializeField]
+    private List<char> buildingBlocks;
+    private List<string> branches = new List<string>();
+    [SerializeField]
+    private int difficulty;
     void Awake()
     {
         levelDepth = 5;
         maxBranchDepth = 3;
-        branchCount = Random.Range(1, roomCount - levelDepth-1);
-        Debug.Log(branchCount);
+        branchCount = 10;
     }
 
+    private void ResetAll()
+    {
+        branches.Clear();
+    }
 
     public string GetGenerationTemplate()
     {
-        int roomsRemaining = roomCount;
-        int branchMin = 0;
-        string levelTemplate = "";
-        for (int i = 0; i < levelDepth; i++)
+        ResetAll();
+        int roomsRemaining = roomCount - 2;
+        int branchMin = 2;
+        string levelTemplate = "-";
+        for (int i = 1; i < levelDepth - 1; i++)
         {
             roomsRemaining--;
-            levelTemplate += commonRooms[Random.Range(0, commonRooms.Count - 1)];
+            levelTemplate += buildingBlocks[Random.Range(0, 1)];
         }
         for (int i = 0; i < branchCount; i++)
         {
-            if (i+1 == branchCount)
+            if (roomsRemaining <= 1)
             {
-                branchMin = roomsRemaining;
+                break;
             }
-            Debug.Log(roomsRemaining - branchCount + 1);
-            string branch = CreateBranch(Random.Range(branchMin, roomsRemaining - branchCount + 1));
+            string branch = CreateBranch(Random.Range(branchMin, Mathf.Min(roomsRemaining, levelDepth)));
             roomsRemaining -= branch.Length - 2;
-            int pos = Random.Range(1, levelTemplate.Length - 1);
-            if (levelTemplate[pos + 1] == '(') pos++;
-            if (levelTemplate[pos - 1] == ')') pos--;
-            levelTemplate = levelTemplate.Insert(pos, branch);
+            branches.Add(branch);
+
         }
-        return levelTemplate + "f";
+        for (int i = 0; i < branches.Count; i++)
+        {
+            CombineBranches();
+        }
+        
+        PlaceFinish();
+        levelTemplate += deadEnds[Random.Range(0, deadEnds.Count - 1)];
+        levelTemplate = PlaceBranches(levelTemplate);
+        return levelTemplate;
+    }
+
+    private string PlaceBranches(string level)
+    {
+        foreach(string branch in branches)
+        {
+            int pos = level.LastIndexOf(')') + 2;
+            if (pos < 0) pos = 1;
+            level = level.Insert(pos, branch);
+        }
+        return level;
+    }
+
+    private void PlaceFinish()
+    {
+        string branch = branches[branches.Count-1];
+        branches[branches.Count - 1] = branch.Insert(branch.IndexOf(')') , "f");
+    }
+
+    private void CombineBranches()
+    {
+        for (int i = 0; i < branches.Count; i++)
+        {
+            if (branches.Count < levelDepth - 1) return;
+            int braces = 0;
+            foreach (char c in branches[i])
+            {
+                if (c == ')' || c == '(') braces++;
+            }
+            if (braces <= branches[i].Length/2)
+            {
+                string nestedBranch = GetRandomBranch(i);
+                branches.Remove(nestedBranch);
+                branches[i] = branches[i].Insert(Random.Range(1, branches[i].Length-2), nestedBranch);
+            }
+        }
+    }
+
+    private string GetRandomBranch(int excludingIndex)
+    {
+        return branches[Random.Range(excludingIndex, branches.Count - 1)];
     }
 
     private string CreateBranch(int branchSize)
     {
+        branchSize = Mathf.Clamp(branchSize, 0, levelDepth);
         string branch = "(";
         for (int i = 1; i < branchSize; i++)
         {
-            branch += commonRooms[Random.Range(0, commonRooms.Count - 1)];
+            branch += buildingBlocks[Random.Range(0, 2)];
         }
-        branch += deadEnds[Random.Range(0, deadEnds.Count - 1)];
+        branch += buildingBlocks[3];
         branch += ")";
         return branch;
+    }
+
+    public string FillTemplate(string template)
+    {
+        for (int i = 0; i < template.Length; i++)
+        {
+            switch (template[i])
+            {
+                case '-':
+                    if (i == 0) break;
+                    template = ReplaceAt(template, i, commonRooms[Random.Range(0, 2)]);
+                    break;
+                case '*':
+                    template = ReplaceAt(template, i, commonRooms[2]);
+                    break;
+                case '#':
+                    template = ReplaceAt(template, i, deadEnds[Random.Range(0, deadEnds.Count - 1)]);
+                    break;
+                case '!':
+                case '(':
+                case ')':
+                    break;
+
+            }
+        }
+        return template;
+    }
+    private string ReplaceAt(string s, int index, char newChar)
+    {
+        char[] chars = s.ToCharArray();
+        chars[index] = newChar;
+        string newString = "";
+        foreach (char c in chars)
+        {
+            newString += c;
+        }
+        return newString;
     }
 }

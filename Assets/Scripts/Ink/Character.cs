@@ -25,6 +25,7 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
+        dialogueController = GameObject.Find("Main Camera/GameUI").GetComponent<DialogueController>();
         foreach (Thread t in GetComponentsInChildren<Thread>())
         {
             threads.Add(t);
