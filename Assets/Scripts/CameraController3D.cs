@@ -16,8 +16,8 @@ public class CameraController3D : MonoBehaviour
 
     void Start()
     {
+        Target = GameObject.Find("Player").transform;
         height = transform.position.y;
-
         var camera = GetComponent<Camera>();
         camera.orthographicSize = (camera.targetTexture.height / 2f) / PixelsPerUnit;
     }

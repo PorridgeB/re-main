@@ -47,14 +47,19 @@ public class LevelGrammarGenerator : MonoBehaviour
     private int difficulty;
     void Awake()
     {
-        levelDepth = roomCount/4;
+        levelDepth = 5;
         maxBranchDepth = 3;
         branchCount = 10;
     }
 
+    private void ResetAll()
+    {
+        branches.Clear();
+    }
 
     public string GetGenerationTemplate()
     {
+        ResetAll();
         int roomsRemaining = roomCount - 2;
         int branchMin = 2;
         string levelTemplate = "-";

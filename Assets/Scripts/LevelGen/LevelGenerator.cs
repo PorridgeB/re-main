@@ -21,6 +21,7 @@ public class LevelGenerator : MonoBehaviour
     private int index = 0;
     private int roomsSinceTurn = 0;
     private int maxRoomsSinceTurn;
+    [SerializeField]
     private int generationAttempts = 0;
 
     // Start is called before the first frame update
@@ -135,11 +136,6 @@ public class LevelGenerator : MonoBehaviour
     private void Turn()
     {
         currentDir = directions[Random.Range(0, directions.Count - 1)];
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(start.transform.position+Vector3.right*8, start.transform.position + Vector3.right * 8 + Vector3.down * 10);
     }
 }
 

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2129307586049694480}
   - component: {fileID: 2129307586049694481}
-  - component: {fileID: 2728653502603860301}
   m_Layer: 0
   m_Name: LeftWall
   m_TagString: Untagged
@@ -48,21 +47,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &2728653502603860301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129307586049694482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef5688bde5d79c4baedb8ccecc4d7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textfield: {fileID: 0}
-  cellSize: {x: 14, y: 14}
-  walls: []
 --- !u!1 &3217312884770524151
 GameObject:
   m_ObjectHideFlags: 0
