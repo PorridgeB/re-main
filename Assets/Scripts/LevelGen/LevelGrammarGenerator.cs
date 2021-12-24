@@ -85,7 +85,7 @@ public class LevelGrammarGenerator : MonoBehaviour
         }
         
         PlaceFinish();
-        levelTemplate += deadEnds[Random.Range(0, deadEnds.Count - 1)];
+        levelTemplate += deadEnds[Random.Range(0, deadEnds.Count)];
         levelTemplate = PlaceBranches(levelTemplate);
         return levelTemplate;
     }
@@ -137,7 +137,7 @@ public class LevelGrammarGenerator : MonoBehaviour
         string branch = "(";
         for (int i = 1; i < branchSize; i++)
         {
-            branch += buildingBlocks[Random.Range(0, 2)];
+            branch += buildingBlocks[Random.Range(0, buildingBlocks.Count-1)];
         }
         branch += buildingBlocks[3];
         branch += ")";
@@ -152,20 +152,24 @@ public class LevelGrammarGenerator : MonoBehaviour
             {
                 case '-':
                     if (i == 0) break;
-                    template = ReplaceAt(template, i, commonRooms[Random.Range(0, 2)]);
+                    char room = commonRooms[1];
+                    template = ReplaceAt(template, i, room);
                     break;
                 case '*':
-                    template = ReplaceAt(template, i, commonRooms[2]);
+                    template = ReplaceAt(template, i, commonRooms[1]);
                     break;
                 case '#':
-                    template = ReplaceAt(template, i, deadEnds[Random.Range(0, deadEnds.Count - 1)]);
+                    template = ReplaceAt(template, i, deadEnds[Random.Range(0, deadEnds.Count)]);
                     break;
                 case '!':
+                    template = ReplaceAt(template, i, commonRooms[0]);
+                    break;
                 case '(':
                 case ')':
                     break;
 
             }
+
         }
         return template;
     }
