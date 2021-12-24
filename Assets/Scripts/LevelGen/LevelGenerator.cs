@@ -24,6 +24,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private int generationAttempts = 0;
     private bool roomsGenerated;
+    [SerializeField]
+    private GameEvent SceneReady;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +78,7 @@ public class LevelGenerator : MonoBehaviour
                 r.Generate();
             }
             roomsGenerated = true;
+            SceneReady.Raise();
         }
         
     }
