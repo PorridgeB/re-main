@@ -70,7 +70,6 @@ public class Room : MonoBehaviour
 
     public void Generate()
     {
-        Debug.Log("generating");
         switch (name)
         {
             

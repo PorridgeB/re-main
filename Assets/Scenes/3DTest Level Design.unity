@@ -990,8 +990,9 @@ MonoBehaviour:
   roomCount: 10
   deadEnds: 74006e0062006100
   commonRooms: 6f0068006500
-  buildingBlocks: 2d002a0021002300
-  difficulty: 0
+  buildingBlocks: 2d0021002a0023002400
+  challengeRating: 0
+  rewardRating: 0
 --- !u!114 &566431488
 MonoBehaviour:
   m_ObjectHideFlags: 0

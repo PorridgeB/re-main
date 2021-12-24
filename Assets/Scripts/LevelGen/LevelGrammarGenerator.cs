@@ -42,14 +42,22 @@ public class LevelGrammarGenerator : MonoBehaviour
     private List<char> commonRooms;
     [SerializeField]
     private List<char> buildingBlocks;
+    [SerializeField]
     private List<string> branches = new List<string>();
     [SerializeField]
-    private int difficulty;
+    private int challengeRating;
+    [SerializeField]
+    private int rewardRating;
+
+    private int challengeCount = 0;
+    private int rewardCount = 0;
     void Awake()
     {
         levelDepth = 5;
         maxBranchDepth = 3;
         branchCount = 10;
+        challengeRating = (int)Mathf.Floor(roomCount / 3);
+        rewardRating = (int)Mathf.Floor(roomCount / 4);
     }
 
     private void ResetAll()
@@ -137,9 +145,23 @@ public class LevelGrammarGenerator : MonoBehaviour
         string branch = "(";
         for (int i = 1; i < branchSize; i++)
         {
-            branch += buildingBlocks[Random.Range(0, buildingBlocks.Count-1)];
+            char r = buildingBlocks[Random.Range(0, 2)];
+            if (challengeCount < challengeRating)
+            {
+                challengeCount++;
+                r = buildingBlocks[2];
+                Debug.Log(r);
+            }
+            branch += r;
         }
-        branch += buildingBlocks[3];
+        char room = buildingBlocks[3];
+        if (rewardCount < rewardRating)
+        {
+            Debug.Log("adding reward");
+            rewardCount++;
+            room = buildingBlocks[4]; 
+        }
+        branch += room;
         branch += ")";
         return branch;
     }
@@ -156,10 +178,13 @@ public class LevelGrammarGenerator : MonoBehaviour
                     template = ReplaceAt(template, i, room);
                     break;
                 case '*':
-                    template = ReplaceAt(template, i, commonRooms[1]);
+                    template = ReplaceAt(template, i, commonRooms[2]);
                     break;
                 case '#':
-                    template = ReplaceAt(template, i, deadEnds[Random.Range(0, deadEnds.Count)]);
+                    template = ReplaceAt(template, i, deadEnds[Random.Range(1, deadEnds.Count)]);
+                    break;
+                case '$':
+                    template = ReplaceAt(template, i, deadEnds[0]);
                     break;
                 case '!':
                     template = ReplaceAt(template, i, commonRooms[0]);
@@ -171,6 +196,7 @@ public class LevelGrammarGenerator : MonoBehaviour
             }
 
         }
+
         return template;
     }
     private string ReplaceAt(string s, int index, char newChar)
