@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHit: {fileID: 11400000, guid: eca38c15ab3894f448353cf12bbd9937, type: 2}
+  playerDeath: {fileID: 11400000, guid: b4a0d08297a6cab4a9140c4448d76ba0, type: 2}
   nextAttack: {fileID: 11400000, guid: b9e105216e42e4d4fad26a1e671d8889, type: 2}
   dashes: []
   dash: {fileID: 5909654488428309732, guid: 254e14969a4bfec47add5561f4da5a4d, type: 3}

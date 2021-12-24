@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class RunInfo : ScriptableObject
+[System.Serializable]
+public class RunInfo
 {
+    public bool ended;
     public int difficulty;
 }

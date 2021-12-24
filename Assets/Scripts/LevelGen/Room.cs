@@ -79,7 +79,7 @@ public class Room : MonoBehaviour
                 GameObject go = Instantiate(boss, transform);
                 go.transform.localPosition = Vector3.right * 8 + Vector3.up;
                 break;
-            case "t":
+            case "r":
                 go = Instantiate(chest, transform);
                 go.transform.localPosition = Vector3.right * 8 + Vector3.up;
                 break;
