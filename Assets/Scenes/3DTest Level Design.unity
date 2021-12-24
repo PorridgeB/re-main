@@ -991,6 +991,7 @@ MonoBehaviour:
   deadEnds: 74006e0062006100
   commonRooms: 6f0068006500
   buildingBlocks: 2d0021002a0023002400
+  branches: []
   challengeRating: 0
   rewardRating: 0
 --- !u!114 &566431488
