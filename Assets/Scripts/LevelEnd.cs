@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelEnd : MonoBehaviour
+public class LevelEnd : MonoBehaviour, IInteract
 {
     [SerializeField]
     public GameEvent LevelEndReached;
@@ -8,5 +8,10 @@ public class LevelEnd : MonoBehaviour
     public void EndLevel()
     {
         LevelEndReached.Raise();
+    }
+
+    public void Interact()
+    {
+        EndLevel();
     }
 }

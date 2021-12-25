@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   module: {fileID: 11400000, guid: 68698ef88d440d14690e4a5c2ff82aae, type: 2}
+  modulePickup: {fileID: 11400000, guid: 34442f816185a8149a21bd4fc893cb43, type: 2}
 --- !u!114 &-875428079670408186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 14df389c6df53ac48b4004fabf722e7d, type: 2}
   Response:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseGO:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseDS:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &880492962508957250

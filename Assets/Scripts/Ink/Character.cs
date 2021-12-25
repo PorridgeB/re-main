@@ -10,7 +10,7 @@ public struct EventConnectors
     public GameEvent gameEvent;
 }
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IInteract
 {
     [SerializeField]
     private DialogueController dialogueController;
@@ -40,6 +40,13 @@ public class Character : MonoBehaviour
             }
         }
     }
+
+    public void Interact()
+    {
+        GetStory();
+        PlayerController.instance.StartDialogue();
+    }
+
     public void AddToPriority(Thread t)
     {
         if (priority.Contains(t)) return;

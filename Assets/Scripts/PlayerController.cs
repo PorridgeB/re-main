@@ -104,6 +104,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        interactions.RemoveAll(delegate (Interaction i) { return i == null; });
+
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
