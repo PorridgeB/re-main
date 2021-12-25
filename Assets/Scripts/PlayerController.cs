@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public GameEvent playerDeath;
 
-    [SerializeField]
-    private AttackEvent nextAttack;
     private Animator anim;
 
     public readonly List<DamageInstance> damageTaken = new List<DamageInstance>();
@@ -22,7 +20,6 @@ public class PlayerController : MonoBehaviour
     private bool dashBlocked = true;
     private float viewDistance;
     private Vector2 facing;
-    private float health = 100f;
     //private Crosshair crosshair;
 
     [SerializeField]
@@ -52,6 +49,9 @@ public class PlayerController : MonoBehaviour
     private InputAction meleeAction;
     private InputAction interactAction;
     private InputAction overlayAction;
+
+    [SerializeField]
+    private Resource health;
 
     public Vector2 GetFacing()
     {
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
         if (healthRegenTimer.Finished)
         {
-            health += 1;
+            health.ChangeValue(1);
             healthRegenTimer.Reset(1/stats.HealthRegen.Value());
         }
     }
@@ -238,8 +238,8 @@ public class PlayerController : MonoBehaviour
                 finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
-        health -= finalDamageValue;
-        if (health < 0)
+        health.ChangeValue(-finalDamageValue);
+        if (health.Value < 0)
         {
             playerDeath.Raise();
         }
@@ -317,7 +317,6 @@ public class PlayerController : MonoBehaviour
                 if (damage.source != gameObject)
                 {
                     ReceiveDamage(damage);
-                    Debug.Log(health);
                 }
             }
             
