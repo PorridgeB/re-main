@@ -12,12 +12,13 @@ public class LevelGrammarGenerator : MonoBehaviour
     /// Common
     /// =======
     /// e = enemy room
+    /// t - trap room (enemy room but the player is locked in until all enemies are defeated)
     /// o = obstacle (trap or door or whatever)
     /// h = hallway (basically empty room, maybe some resources)
     /// 
     /// Dead Ends
     /// =========
-    /// t = treasure (modules or resources)
+    /// r = reward (modules or resources)
     /// n = NPC (has an special npc room)
     /// b = boss (has more enemies or a miniboss)
     /// a = artifact (has an artifact)
@@ -176,7 +177,7 @@ public class LevelGrammarGenerator : MonoBehaviour
                     template = ReplaceAt(template, i, room);
                     break;
                 case '*':
-                    template = ReplaceAt(template, i, commonRooms[2]);
+                    template = ReplaceAt(template, i, commonRooms[Random.Range(2,4)]);
                     break;
                 case '#':
                     template = ReplaceAt(template, i, deadEnds[Random.Range(1, deadEnds.Count)]);

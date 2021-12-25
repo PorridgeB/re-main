@@ -7,7 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    [SerializeField]
     public GameEvent playerHit;
+    [SerializeField]
+    public GameEvent playerDeath;
 
     [SerializeField]
     private AttackEvent nextAttack;
@@ -218,7 +221,7 @@ public class PlayerController : MonoBehaviour
         }
 
         damageTaken.Insert(0, damage);
-        //playerHit.Raise();
+        playerHit.Raise();
 
         float finalDamageValue = 0;
         switch (damage.type)
@@ -234,6 +237,10 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         health -= finalDamageValue;
+        if (health < 0)
+        {
+            playerDeath.Raise();
+        }
     }
 
     private bool CheckDodge()
