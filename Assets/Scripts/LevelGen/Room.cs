@@ -94,8 +94,7 @@ public class Room : MonoBehaviour
             case "e":
                 for (int i = 0; i < Random.Range(2,10); i++)
                 {
-                    go = Instantiate(drone, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);
-                    Debug.Log(transform.position + Vector3.right * 8 + Vector3.up);
+                    go = Instantiate(drone, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);                   
                 }
                 break;
             case "a":
