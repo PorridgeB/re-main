@@ -10,10 +10,6 @@ jobs:
     name: Request manual activation file 🔑
     runs-on: ubuntu-latest
     steps:
-      - name: Check for Unity License
-        if: ${{ !startsWith(env.UNITY_LICENSE, '<')}}
-        run: exit 1
-
       - name: Request manual activation file
         id: getManualLicenseFile
         uses: game-ci/unity-request-activation-file@v2
