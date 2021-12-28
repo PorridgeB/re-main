@@ -11,13 +11,13 @@ public class PlayerShoot : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Projectile p = Instantiate(projectile).GetComponent<Projectile>();
+        var p = Instantiate(projectile).GetComponent<Projectile>();
 
         var damageSource = p.GetComponent<DamageSource>();
         damageSource.source = PlayerController.instance.gameObject;
         damageSource.AddInstance(new DamageInstance { value = 10, source = PlayerController.instance.gameObject });
 
-        p.transform.position = new Vector3(animator.transform.position.x, 0.5f, animator.transform.position.z);
+        p.transform.position = new Vector3(animator.transform.position.x, 0f, animator.transform.position.z);
         p.Direction = PlayerController.instance.GetFacing();
         p.Speed = speed;
     }
