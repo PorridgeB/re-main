@@ -6,6 +6,7 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
 {
     public float Speed = 15f;
     public float Damage = 10f;
+    public float Distance = 0.25f;
     public int ProjectileCount = 4;
     public float SpreadAngle = 45f;
 
@@ -38,6 +39,9 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
 
     private void Shoot(int shotCount)
     {
+        var angle = shotCount * (SpreadAngle / (ProjectileCount - 1)) - SpreadAngle / 2;
+        var projectileDirection = Quaternion.Euler(0, 0, angle) * direction;
+
         var projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
 
         var damageSource = projectile.GetComponent<DamageSource>();
@@ -46,10 +50,8 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
 
         var player = PlayerController.instance;
 
-        var angle = shotCount * (SpreadAngle / (ProjectileCount - 1)) - SpreadAngle / 2;
-
-        projectile.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        projectile.Direction = Quaternion.Euler(0, 0, angle) * direction;
+        projectile.transform.position = player.transform.position + new Vector3(player.Facing.x, 0, player.Facing.y) * Distance;
+        projectile.Direction = projectileDirection;
         projectile.Speed = Speed;
     }
 

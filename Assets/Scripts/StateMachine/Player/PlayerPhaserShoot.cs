@@ -6,6 +6,7 @@ public class PlayerPhaserShoot : StateMachineBehaviour
 {
     public float Speed = 15f;
     public float Damage = 10f;
+    public float Distance = 0.25f;
 
     [SerializeField]
     private GameObject projectilePrefab;
@@ -20,7 +21,7 @@ public class PlayerPhaserShoot : StateMachineBehaviour
 
         var player = PlayerController.instance;
 
-        projectile.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        projectile.transform.position = player.transform.position + new Vector3(player.Facing.x, 0, player.Facing.y) * Distance;
         projectile.Direction = player.Facing;
         projectile.Speed = Speed;
     }

@@ -538,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 15
   Damage: 10
+  Distance: 0.25
   projectilePrefab: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
 --- !u!1101 &-279900010296653382
 AnimatorStateTransition:
@@ -713,6 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 15
   Damage: 10
+  Distance: 0.25
   ProjectileCount: 4
   SpreadAngle: 45
   projectilePrefab: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
