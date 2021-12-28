@@ -181,7 +181,7 @@ jobs:
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894758305690452039/success_kid.png"
           title: "New build status (${{ needs.releaseDraft.outputs.tag_name }}): SUCCESS!"
           description: |
-            🌐 Play the test build [here](https://shirokatake.github.io/apawllo-remake/).
+            🌐 Play the test build [here](https://PorridgeB.github.io/re-main/).
           include-details: "false"
           color-success: "#2eb886"
 
