@@ -6,7 +6,7 @@ public class Phaser : Weapon
 {
     public override void Fire()
     {
-        var shootBehaviour = Animator.GetBehaviour<PlayerShoot>();
+        var shootBehaviour = Animator.GetBehaviour<PlayerPhaserShoot>();
 
         Animator.SetTrigger("PhaserShoot");
     }

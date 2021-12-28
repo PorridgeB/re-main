@@ -46,7 +46,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Phaser Flurry
+  m_Name: PhaserFlurry
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -536,8 +536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4e5a82805d2cd4fb466e91d5d82786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
-  speed: 15
+  Speed: 15
+  Damage: 10
+  projectilePrefab: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
 --- !u!1101 &-279900010296653382
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -704,8 +705,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48588a6080d4db44aa0066286650b84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 15
+  Damage: 10
   ProjectileCount: 4
   SpreadAngle: 45
+  projectilePrefab: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
 --- !u!1101 &494429922815137026
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1172,7 +1176,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Phaser Shoot
+  m_Name: PhaserShoot
   m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
