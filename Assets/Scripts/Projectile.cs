@@ -49,14 +49,14 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(startPosition, transform.position) > Range)
-        {
-            Destroy(gameObject);
-        }
-
         if (SeekingEnable)
         {
             UpdateSeeking();
+        }
+
+        if (Vector3.Distance(startPosition, transform.position) > Range)
+        {
+            Impact();
         }
     }
 
@@ -97,8 +97,13 @@ public class Projectile : MonoBehaviour
         return closestEnemy;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    void Impact()
     {
         Destroy(gameObject);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Impact();
     }
 }

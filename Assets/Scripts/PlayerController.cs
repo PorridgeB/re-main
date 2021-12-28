@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Timer meleeCooldown;
     [SerializeField]
+    private Timer specialRangedCooldown;
+    [SerializeField]
+    private Timer specialMeleeCooldown;
+    [SerializeField]
     private Timer healthRegenTimer;
 
     [SerializeField]
@@ -336,14 +340,18 @@ public class PlayerController : MonoBehaviour
         {
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             rangedCooldown.Reset(1 / stats.RangedAttackSpeed.Value());
-
             rangedWeapon?.Fire();
         }
     }
 
     public void OnRangedSpecialAttack()
     {
-        rangedWeapon?.SpecialFire();
+        if (specialRangedCooldown.Finished)
+        {
+            // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+            specialRangedCooldown.Reset(1 / stats.SpecialRangedAttackSpeed.Value());
+            rangedWeapon?.SpecialFire();
+        }
     }
 
     public void OnMeleeAttack()
@@ -358,7 +366,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnMeleeSpecialAttack()
     {
-        meleeWeapon?.SpecialFire();
+        if (specialMeleeCooldown.Finished)
+        {
+            // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+            specialMeleeCooldown.Reset(1 / stats.SpecialMeleeAttackSpeed.Value());
+            meleeWeapon?.SpecialFire();
+        }
     }
 
     public void OnDash()
