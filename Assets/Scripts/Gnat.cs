@@ -8,6 +8,7 @@ public class Gnat : MonoBehaviour
 {
     public GameObject ExplosionPrefab;
     public float ExplosionDamage = 50f;
+    public float MaximumExplosionDelay = 0.4f;
 
     public void Prime()
     {
@@ -16,30 +17,35 @@ public class Gnat : MonoBehaviour
         behaviorTree.SetVariableValue("Primed", true);
     }
 
-    public void Detonate()
+    public void Detonate(float delay = 0f)
+    {
+        CreateExplosion(delay);
+
+        Destroy(gameObject);
+    }
+
+    private void CreateExplosion(float delay = 0f)
     {
         var explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 
-        DamageInstance damageInstance = new DamageInstance();
+        var delayedAnimatorTrigger = explosion.GetComponent<DelayedAnimatorTrigger>();
+        delayedAnimatorTrigger.Delay = delay;
+
+        var damageInstance = new DamageInstance();
         damageInstance.type = DamageType.Energy;
-        //damageInstance.source = gameObject;
         damageInstance.source = explosion;
         damageInstance.value = ExplosionDamage;
 
         var damageSource = explosion.GetComponent<DamageSource>();
-
-        //damageSource.source = gameObject;
         damageSource.source = explosion;
         damageSource.AddInstance(damageInstance);
-
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("DamageSource"))
         {
-            DamageSource source = collision.gameObject.GetComponent<DamageSource>();
+            var source = collision.gameObject.GetComponent<DamageSource>();
 
             // If projectile or explosion, detonate
             var isProjectile = collision.gameObject.GetComponent<Projectile>() != null;
@@ -47,7 +53,7 @@ public class Gnat : MonoBehaviour
 
             if (isProjectile || isEnergyDamage)
             {
-                Detonate();
+                Detonate(Random.Range(0, MaximumExplosionDelay));
             }
         }
     }
