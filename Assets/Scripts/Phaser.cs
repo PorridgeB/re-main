@@ -14,8 +14,10 @@ public class Phaser : Weapon
     public override void SpecialFire()
     {
         var flurryBehaviour = Animator.GetBehaviour<PlayerPhaserFlurry>();
-        flurryBehaviour.ProjectileCount = 4;
-        flurryBehaviour.SpreadAngle = 45f;
+        flurryBehaviour.ProjectileCount = 3;
+        flurryBehaviour.SpreadAngle = 30f;
+
+        Animator.SetFloat("PhaserFlurrySpeedMultiplier", 4f);
 
         Animator.SetTrigger("PhaserFlurry");
     }

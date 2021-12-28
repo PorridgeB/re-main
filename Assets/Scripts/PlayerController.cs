@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    public Vector2 Facing => facing;
+
     public GameEvent playerHit;
 
     [SerializeField]
@@ -53,12 +55,6 @@ public class PlayerController : MonoBehaviour
     private Weapon meleeWeapon = new Sword();
     private Weapon rangedWeapon = new Phaser();
 
-    public Vector2 GetFacing()
-    {
-        return facing;
-    }
-
-
 
     // Start is called before the first frame update
     void Awake()
@@ -78,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
         inputs = GetComponent<PlayerInput>();
         movement = GetComponent<PlayerMovement>();
@@ -105,6 +101,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
+        
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
@@ -114,8 +112,6 @@ public class PlayerController : MonoBehaviour
         {
             inputs.SwitchCurrentActionMap("OverlayControl");
         }
-
-        facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {

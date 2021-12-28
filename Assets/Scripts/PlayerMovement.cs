@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
 
     private CharacterController characterController;
-    private Animator anim;
+    private Animator animator;
     private Vector2 velocity;
 
     public Vector2 GetVelocity()
@@ -21,13 +21,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        anim.SetBool("Moving", velocity != Vector2.zero);
+        animator.SetBool("Moving", velocity != Vector2.zero);
 
         //rb.MovePosition(rb.position + velocity * speed * Time.fixedDeltaTime);
 
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Snap the player to the ground at all times.
         var playerPosition = characterController.transform.position;
-        playerPosition.y = 1;
+        playerPosition.y = 0;
         characterController.transform.position = playerPosition;
     }
 

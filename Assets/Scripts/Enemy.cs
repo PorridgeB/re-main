@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
                 // Using the player's facing direction if the damage source was from the player
                 if (source.source.CompareTag("Player"))
                 {
-                    var facing = PlayerController.instance.GetFacing();
+                    var facing = PlayerController.instance.Facing;
                     hitDirection = new Vector3(facing.x, 0, facing.y);
 
                     // Tell the behaviour tree that the enemy has been hurt by the player

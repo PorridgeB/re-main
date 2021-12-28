@@ -18,8 +18,10 @@ public class PlayerPhaserShoot : StateMachineBehaviour
         damageSource.source = PlayerController.instance.gameObject;
         damageSource.AddInstance(new DamageInstance { value = Damage, source = PlayerController.instance.gameObject });
 
-        projectile.transform.position = new Vector3(animator.transform.position.x, 0f, animator.transform.position.z);
-        projectile.Direction = PlayerController.instance.GetFacing();
+        var player = PlayerController.instance;
+
+        projectile.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        projectile.Direction = player.Facing;
         projectile.Speed = Speed;
     }
 }

@@ -13,7 +13,7 @@ public class WithinSight : Conditional
 
     public override TaskStatus OnUpdate()
     {
-        var direction = (Target.Value.transform.position - transform.position).normalized;
+        var direction = (Target.Value.transform.position + Vector3.up - transform.position).normalized;
 
         if (Physics.Raycast(transform.position, direction, out RaycastHit raycastHit, SightDistance.Value, Mask.Value))
         {

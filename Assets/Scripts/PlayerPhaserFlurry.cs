@@ -11,17 +11,46 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
 
     [SerializeField]
     private GameObject projectilePrefab;
+    private Vector2 direction;
+    private int previousShotCount = -1;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        var player = PlayerController.instance;
+
+        direction = player.Facing;
+        previousShotCount = -1;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        var shotCount = Mathf.FloorToInt(stateInfo.normalizedTime * ProjectileCount);
 
+        if (shotCount != previousShotCount)
+        {
+            Shoot(shotCount);
+
+            previousShotCount = shotCount;
+        }
+    }
+
+    private void Shoot(int shotCount)
+    {
+        var projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
+
+        var damageSource = projectile.GetComponent<DamageSource>();
+        damageSource.source = PlayerController.instance.gameObject;
+        damageSource.AddInstance(new DamageInstance { value = Damage, source = PlayerController.instance.gameObject });
+
+        var player = PlayerController.instance;
+
+        var angle = shotCount * (SpreadAngle / (ProjectileCount - 1)) - SpreadAngle / 2;
+
+        projectile.transform.position = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        projectile.Direction = Quaternion.Euler(0, 0, angle) * direction;
+        projectile.Speed = Speed;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

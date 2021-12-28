@@ -7,6 +7,7 @@ public class CameraController3D : MonoBehaviour
 {
     // What the camera will follow
     public Transform Target;
+    public Vector2 Offset = new Vector2(0, 0.5f);
     public float Speed = 20f;
     public int PixelsPerUnit = 16;
     public bool Smooth = false;
@@ -26,7 +27,7 @@ public class CameraController3D : MonoBehaviour
     {
         Camera.main.ResetWorldToCameraMatrix();
         
-        var targetPosition = new Vector3(Target.position.x, height, Target.position.z - height);
+        var targetPosition = new Vector3(Target.position.x + Offset.x, height, Target.position.z + Offset.y - height);
 
         if (Smooth)
         {
