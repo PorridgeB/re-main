@@ -34,7 +34,7 @@ public class Room : MonoBehaviour
 
     public Vector3 Offset(Vector3 dir)
     {
-        return new Vector3(dir.x * cellSize.x, dir.y, dir.z*cellSize.y);
+        return new Vector3(dir.x * cellSize.x, dir.y, dir.z*cellSize.y)/2;
     }
 
     public void OpenPassage(Vector3 dir)
@@ -70,14 +70,17 @@ public class Room : MonoBehaviour
 
     public void Generate()
     {
+        GameObject go;
         switch (name)
         {
             
             case "Start":
                 break;
             case "b":
-                GameObject go = Instantiate(boss, transform);
-                go.transform.localPosition = Vector3.right * 8 + Vector3.up;
+                for (int i = 0; i < Random.Range(3,6); i++)
+                {
+                    Instantiate(drone, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);
+                }
                 break;
             case "r":
                 go = Instantiate(chest, transform);
@@ -92,9 +95,17 @@ public class Room : MonoBehaviour
                 go.transform.localPosition = Vector3.right * 8 + Vector3.up;
                 break;
             case "e":
+                if (Random.value < 0.25)
+                {
+                    go = gnat;
+                }
+                else
+                {
+                    go = ooze;
+                }
                 for (int i = 0; i < Random.Range(2,10); i++)
                 {
-                    go = Instantiate(drone, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);                   
+                    Instantiate(go, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);                   
                 }
                 break;
             case "a":

@@ -69,6 +69,8 @@ public class LevelGrammarGenerator : MonoBehaviour
     public string GetGenerationTemplate()
     {
         ResetAll();
+
+        return "f";
         int roomsRemaining = roomCount - 2;
         int branchMin = 2;
         string levelTemplate = "-";

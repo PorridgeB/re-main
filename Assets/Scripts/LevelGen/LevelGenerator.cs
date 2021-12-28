@@ -6,13 +6,18 @@ using Unity.AI.Navigation;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
-    private Room start;
+    private GameObject cube;
     [SerializeField]
-    private GameObject room;
+    private Room start;
+
+    [SerializeField]
+    private List<GameObject> rooms;
     [SerializeField]
     private GameObject hall;
     [SerializeField]
     private List<Vector3> directions = new List<Vector3>();
+    [SerializeField]
+    private List<Vector3> corners = new List<Vector3>();
     [SerializeField]
     private string generationTemplate;
     private Vector3 currentDir;
@@ -41,7 +46,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (i == 0)
         {
-            roomPath.Push(Instantiate(room, transform).GetComponent<Room>());
+            roomPath.Push(Instantiate(rooms[0], transform).GetComponent<Room>());
             start = roomPath.Peek();
             roomPath.Peek().SetText("Start");
             Turn();
@@ -95,7 +100,7 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
-            if (!FindEmptyCell()) return false;
+            
             Room previousRoom = roomPath.Pop();
             Room currentRoom;
             if (c == 'h')
@@ -104,11 +109,12 @@ public class LevelGenerator : MonoBehaviour
             }
             else
             {
-                currentRoom = Instantiate(room, previousRoom.transform).GetComponent<Room>();
+                currentRoom = Instantiate(rooms[Random.Range(0,rooms.Count)], previousRoom.transform).GetComponent<Room>();
             }
-            
-            
-            currentRoom.transform.position += currentRoom.Offset(currentDir);
+
+            if (!FindEmptyCell(previousRoom, currentRoom)) return false;
+
+            currentRoom.transform.position += currentRoom.Offset(currentDir) + previousRoom.Offset(currentDir);
             currentRoom.SetText(c.ToString());
             currentRoom.OpenPassage(-currentDir);
             previousRoom.OpenPassage(currentDir);
@@ -118,18 +124,20 @@ public class LevelGenerator : MonoBehaviour
         return true;
     }
 
-    private bool FindEmptyCell()
+    private bool FindEmptyCell(Room previous, Room current)
     {
         List<Vector3> possibleDirections = new List<Vector3>();
-        RaycastHit hit;
         foreach (Vector3 v in directions)
         {
-            Physics.Raycast(roomPath.Peek().transform.position + roomPath.Peek().Offset(v) + Vector3.up / 2 + (Vector3.right * 8), Vector3.down, out hit);
-            if (hit.collider == null)
+            if (CheckBoxCollision(previous, current, v))
             {
-                possibleDirections.Add(v);
+                Debug.Log("Hit");
+                continue;
             }
+            possibleDirections.Add(v);
+
         }
+        Debug.Log(possibleDirections.Count);
         if (possibleDirections.Count > 0) {
             if (possibleDirections.Contains(currentDir) && roomsSinceTurn >= maxRoomsSinceTurn)
             {
@@ -142,6 +150,22 @@ public class LevelGenerator : MonoBehaviour
         }
         return false;
 
+    }
+
+    private bool CheckBoxCollision(Room previous, Room current, Vector3 v)
+    {
+        //GameObject go = Instantiate(cube, previous.transform.position + Vector3.up / 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v), new Quaternion(), null);
+        //go.transform.localScale = current.Offset(new Vector3(2, 5, 2));
+        Collider[] c = Physics.OverlapBox(previous.transform.position + Vector3.up * 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v), current.Offset(new Vector3(1, 1, 1)));
+        foreach (Collider col in c)
+        {
+            Debug.Log(col.name);
+            if (col.CompareTag("Room") && col.gameObject != current.gameObject)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void Turn()
