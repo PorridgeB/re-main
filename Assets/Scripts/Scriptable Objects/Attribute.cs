@@ -36,6 +36,12 @@ public class Attribute : BaseAttribute
         moduleBonuses.Clear();
     }
 
+    public void Reset()
+    {
+        moduleBonuses.Clear();
+        temporaryBonuses.Clear();
+    }
+
     public void AddModuleBonus(Bonus bonus)
     {
         moduleBonuses.Add(bonus);

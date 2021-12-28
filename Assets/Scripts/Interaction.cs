@@ -22,31 +22,6 @@ public class Interaction : MonoBehaviour
 
     public void Interact()
     {
-        if (transform.parent.CompareTag("Module"))
-        {
-            ModuleItem m = transform.parent.GetComponent<ModuleItem>();
-            m.Module.count++;
-            foreach (Bonus b in m.Module.bonuses)
-            {
-                b.attribute.AddModuleBonus(b);
-            }
-            
-            Destroy(m.gameObject);
-            modulePickup.Raise();
-        }
-        else if (transform.parent.CompareTag("Character"))
-        {
-            Character c = transform.parent.GetComponent<Character>();
-            c.GetStory();
-            PlayerController.instance.StartDialogue();
-        }
-        else if (transform.parent.CompareTag("Artifact"))
-        {
-            PlayerController.instance.OpenArtifact();
-        }
-        else if (transform.parent.CompareTag("End"))
-        {
-            transform.parent.GetComponent<LevelEnd>().EndLevel();
-        }
+        transform.parent.GetComponent<IInteract>().Interact();
     }
 }

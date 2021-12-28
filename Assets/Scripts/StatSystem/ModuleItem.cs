@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleItem : MonoBehaviour
+public class ModuleItem : MonoBehaviour, IInteract
 {
     [SerializeField]
     private Module module;
+    [SerializeField]
+    private GameEvent modulePickup;
 
     // Start is called before the first frame update
     void Start()
@@ -13,11 +15,15 @@ public class ModuleItem : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = module.sprite;
     }
 
-    public Module Module
+    public void Interact()
     {
-        get
+        module.count++;
+        foreach (Bonus b in module.bonuses)
         {
-            return module;
+            b.attribute.AddModuleBonus(b);
         }
+        modulePickup.Raise();
+        Destroy(gameObject);
+        
     }
 }
