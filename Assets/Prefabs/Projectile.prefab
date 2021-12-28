@@ -90,10 +90,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5d4837b4e9ad240b4526241858b586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: {x: 0, y: 0}
+  Direction: {x: 0, y: 0, z: 0}
   Speed: 0
-  MaximumDistance: 25
+  Range: 25
+  Size: 0.25
   Color: {r: 0, g: 0.80679727, b: 1, a: 1}
+  SeekingEnable: 1
+  SeekingAngularVelocity: 70
+  SeekingTargetDistance: 5
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0

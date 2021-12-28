@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Vector2 Direction;
+    public Vector3 Direction;
     public float Speed = 10f;
     public float Range = 25f;
     public float Size = 0.25f;
     public Color Color = Color.white;
-    
+    [Header("Seeking")]
+    public bool SeekingEnable = true;
+    public float SeekingAngularVelocity = 70f; // Degrees per second
+    public float SeekingTargetDistance = 5f;
+
     private new Rigidbody rigidbody;
     private new Light light;
     private TrailRenderer trailRenderer;
@@ -38,14 +42,59 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
-
+        //var velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
+        var velocity = Direction * Speed;
         rigidbody.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+    }
 
+    void Update()
+    {
         if (Vector3.Distance(startPosition, transform.position) > Range)
         {
             Destroy(gameObject);
         }
+
+        if (SeekingEnable)
+        {
+            UpdateSeeking();
+        }
+    }
+
+    void UpdateSeeking()
+    {
+        var closestEnemy = FindClosestEnemy(SeekingTargetDistance);
+        if (closestEnemy)
+        {
+            var enemyPosition = new Vector3(closestEnemy.transform.position.x, 0, closestEnemy.transform.position.z);
+            var enemyDirection = (enemyPosition - transform.position).normalized;
+
+            Direction = Vector3.RotateTowards(Direction, enemyDirection, Mathf.Deg2Rad * SeekingAngularVelocity * Time.deltaTime, 0);
+        }
+    }
+
+    GameObject FindClosestEnemy(float Radius)
+    {
+        GameObject closestEnemy = null;
+        var closestEnemyDistance = Mathf.Infinity;
+
+        var colliders = Physics.OverlapSphere(transform.position, Radius);
+        foreach (var collider in colliders)
+        {
+            if (collider.GetComponent<Enemy>() != null)
+            {
+                var enemy = collider.gameObject;
+                var enemyPosition = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
+                var enemyDistance = (enemyPosition - transform.position).sqrMagnitude;
+
+                if (enemyDistance < closestEnemyDistance)
+                {
+                    closestEnemy = enemy;
+                    closestEnemyDistance = enemyDistance;
+                }
+            }
+        }
+
+        return closestEnemy;
     }
 
     public void OnCollisionEnter(Collision collision)

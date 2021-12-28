@@ -51,7 +51,8 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
         var player = PlayerController.instance;
 
         projectile.transform.position = player.transform.position + new Vector3(player.Facing.x, 0, player.Facing.y) * Distance;
-        projectile.Direction = projectileDirection;
+        //projectile.Direction = projectileDirection;
+        projectile.Direction = new Vector3(projectileDirection.x, 0, projectileDirection.y);
         projectile.Speed = Speed;
         projectile.Color = Random.ColorHSV(0, 1, 1, 1, 1, 1);
     }
