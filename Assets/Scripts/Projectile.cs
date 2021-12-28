@@ -6,10 +6,10 @@ public class Projectile : MonoBehaviour
 {
     public Vector2 Direction;
     public float Speed = 10f;
-    public float MaximumDistance = 25f;
+    public float Range = 25f;
     public float Size = 0.25f;
     public Color Color = Color.white;
-
+    
     private new Rigidbody rigidbody;
     private new Light light;
     private TrailRenderer trailRenderer;
@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
 
         rigidbody.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
 
-        if (Vector3.Distance(startPosition, transform.position) > MaximumDistance)
+        if (Vector3.Distance(startPosition, transform.position) > Range)
         {
             Destroy(gameObject);
         }
