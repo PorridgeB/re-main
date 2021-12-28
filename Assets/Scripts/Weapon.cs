@@ -4,11 +4,17 @@ using UnityEngine;
 
 public abstract class Weapon
 {
-    public void Fire()
+    public Animator Animator;
+
+    public virtual void Fire()
     {
     }
 
-    public void SpecialFire()
+    public virtual void SpecialFire()
+    {
+    }
+
+    public virtual void DashFire()
     {
     }
 }

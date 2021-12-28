@@ -4,40 +4,33 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Vector2 dir;
-    private float speed;
-    private Vector3 startPosition;
-    private List<DamageInstance> damageInstances;
+    public Vector2 Direction;
+    public float Speed;
+    public float MaximumDistance = 25f;
 
-    // Start is called before the first frame update
+    private new Rigidbody rigidbody;
+    private Vector3 startPosition;
+
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
+
         startPosition = transform.position;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 move = new Vector3(speed * dir.x, 0, speed * dir.y);
-        transform.position += move * Time.fixedDeltaTime;
-    }
+        Vector3 velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
 
-    private void Update()
-    {
-        if (Vector3.Distance(startPosition, transform.position) > 50)
+        rigidbody.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+
+        if (Vector3.Distance(startPosition, transform.position) > MaximumDistance)
         {
             Destroy(gameObject);
         }
     }
 
-    public void Shoot(Vector3 position, Vector2 direction, float velocity)
-    {
-        transform.position = position;
-        dir = direction;
-        speed = velocity;
-    }
-
-    public void OnTriggerEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
     }

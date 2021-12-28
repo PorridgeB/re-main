@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class Phaser : Weapon
 {
-    
+    public override void Fire()
+    {
+        Animator.SetTrigger("Ranged");
+    }
+
+    public override void SpecialFire()
+    {
+    }
 }
