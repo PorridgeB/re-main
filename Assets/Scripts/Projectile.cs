@@ -4,28 +4,36 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    // Direction of travel (normalized)
     public Vector3 Direction;
+    // Speed of the projectile (in unit/s)
     public float Speed = 10f;
+    // Maximum distance the projectile can travel from its starting position before being destroyed
     public float Range = 25f;
+    // Number of enemy collisions before the projectile is destroyed
+    public int MaximumHits = 1;
+    // Radius of the sphere collider and the width of the trail
     public float Size = 0.25f;
+    // Colour of the light and the trail
     public Color Color = Color.white;
     [Header("Seeking")]
+    // Enables the projectile to bend toward nearby enemies
     public bool SeekingEnable = true;
-    public float SeekingAngularVelocity = 70f; // Degrees per second
+    // Maximum angle the projectile is allowed to turn within a second when seeking an enemy (in deg/s)
+    public float SeekingAngularVelocity = 70f;
     public float SeekingTargetDistance = 5f;
+    public float SeekingTargetAngle = 90f;
 
     private new Rigidbody rigidbody;
-    private new Light light;
-    private TrailRenderer trailRenderer;
-    private SphereCollider sphereCollider;
     private Vector3 startPosition;
+    private HashSet<int> hits = new HashSet<int>();
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        light = GetComponentInChildren<Light>();
-        trailRenderer = GetComponentInChildren<TrailRenderer>();
-        sphereCollider = GetComponent<SphereCollider>();
+        var light = GetComponentInChildren<Light>();
+        var trailRenderer = GetComponentInChildren<TrailRenderer>();
+        var sphereCollider = GetComponent<SphereCollider>();
 
         light.color = Color;
 
@@ -56,7 +64,7 @@ public class Projectile : MonoBehaviour
 
         if (Vector3.Distance(startPosition, transform.position) > Range)
         {
-            Impact();
+            Fizzle();
         }
     }
 
@@ -97,6 +105,11 @@ public class Projectile : MonoBehaviour
         return closestEnemy;
     }
 
+    void Fizzle()
+    {
+        Destroy(gameObject);
+    }
+
     void Impact()
     {
         Destroy(gameObject);
@@ -104,6 +117,23 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Impact();
+        if (collision.gameObject.GetComponent<Enemy>() != null)
+        {
+            var instanceId = collision.gameObject.GetInstanceID();
+
+            if (!hits.Contains(instanceId))
+            {
+                hits.Add(instanceId);
+
+                if (hits.Count >= MaximumHits)
+                {
+                    Impact();
+                }
+            }
+        }
+        else
+        {
+            Impact();
+        }
     }
 }
