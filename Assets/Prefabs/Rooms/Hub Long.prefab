@@ -298,7 +298,6 @@ GameObject:
   - component: {fileID: 3542891387217972498}
   - component: {fileID: 3542891387217972499}
   - component: {fileID: 682346894046154575}
-  - component: {fileID: 1260937398797210189}
   m_Layer: 0
   m_Name: Hub Long
   m_TagString: Room
@@ -373,19 +372,6 @@ MonoBehaviour:
   ooze: {fileID: 5687205683365402985, guid: 22e8965c052515040b7844a053bca54f, type: 3}
   drone: {fileID: 490558456128397107, guid: 27aa163beb3d4454490dc8a0ca2aa5f7, type: 3}
   gnat: {fileID: 6224184404059925612, guid: be18f4a76423f5645be27377b915aa6d, type: 3}
---- !u!65 &1260937398797210189
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3542891387217972496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 14, y: 1, z: 20}
-  m_Center: {x: 8, y: 2, z: 0}
 --- !u!1 &3542891388282503333
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,14 +4480,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eb218a3273d99c418e8c2e749f70986, type: 3}
---- !u!4 &6714587688666114987 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2129307586049694480, guid: 6eb218a3273d99c418e8c2e749f70986, type: 3}
-  m_PrefabInstance: {fileID: 4657795252406382779}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6714587688666114985 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2129307586049694482, guid: 6eb218a3273d99c418e8c2e749f70986, type: 3}
+  m_PrefabInstance: {fileID: 4657795252406382779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6714587688666114987 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2129307586049694480, guid: 6eb218a3273d99c418e8c2e749f70986, type: 3}
   m_PrefabInstance: {fileID: 4657795252406382779}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5639855228384559740

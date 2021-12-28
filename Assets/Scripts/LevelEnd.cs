@@ -7,6 +7,7 @@ public class LevelEnd : MonoBehaviour, IInteract
 
     public void EndLevel()
     {
+        Debug.Log("ending level");
         LevelEndReached.Raise();
     }
 

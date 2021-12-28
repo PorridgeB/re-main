@@ -65,7 +65,6 @@ public class LevelGenerator : MonoBehaviour
             Destroy(start.gameObject);
             start = null;
             index = 0;
-            return;
         }
     }
 
@@ -131,13 +130,11 @@ public class LevelGenerator : MonoBehaviour
         {
             if (CheckBoxCollision(previous, current, v))
             {
-                Debug.Log("Hit");
                 continue;
             }
             possibleDirections.Add(v);
 
         }
-        Debug.Log(possibleDirections.Count);
         if (possibleDirections.Count > 0) {
             if (possibleDirections.Contains(currentDir) && roomsSinceTurn >= maxRoomsSinceTurn)
             {
@@ -156,11 +153,10 @@ public class LevelGenerator : MonoBehaviour
     {
         //GameObject go = Instantiate(cube, previous.transform.position + Vector3.up / 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v), new Quaternion(), null);
         //go.transform.localScale = current.Offset(new Vector3(2, 5, 2));
-        Collider[] c = Physics.OverlapBox(previous.transform.position + Vector3.up * 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v), current.Offset(new Vector3(1, 1, 1)));
-        foreach (Collider col in c)
+        foreach (Vector3 cardinalPoint in corners)
         {
-            Debug.Log(col.name);
-            if (col.CompareTag("Room") && col.gameObject != current.gameObject)
+            RaycastHit hit;
+            if (Physics.Raycast(previous.transform.position + Vector3.up * 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v) + current.Offset(cardinalPoint), Vector3.down, out hit))
             {
                 return true;
             }

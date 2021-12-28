@@ -1046,7 +1046,7 @@ Transform:
   m_GameObject: {fileID: 476150017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.299839, y: 100, z: 16.395432}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1163,6 +1163,7 @@ MonoBehaviour:
   rooms:
   - {fileID: 3542891387217972496, guid: 0948639c3f710a44292a1b7906c7f7ed, type: 3}
   - {fileID: 3542891387217972496, guid: d4e7b416784baf94180059c675855871, type: 3}
+  - {fileID: 3542891387217972496, guid: cc90c1711b0d5d1419423d9e3ee328c3, type: 3}
   hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
   directions:
   - {x: 1, y: 0, z: 0}
@@ -1170,10 +1171,14 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: -1}
   corners:
-  - {x: 1, y: 0, z: 1}
-  - {x: -1, y: 0, z: -1}
-  - {x: 1, y: 0, z: -1}
-  - {x: -1, y: 0, z: 1}
+  - {x: 0.95, y: 0, z: 0.95}
+  - {x: -0.95, y: 0, z: -0.95}
+  - {x: 0.95, y: 0, z: -0.95}
+  - {x: -0.95, y: 0, z: 0.95}
+  - {x: 0.95, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0.95}
+  - {x: -0.95, y: 0, z: 0}
+  - {x: 0, y: 0, z: -0.95}
   generationTemplate: 
   generationAttempts: 0
   SceneReady: {fileID: 11400000, guid: 223b582ffa0eff245bd7d99fb33726c9, type: 2}
@@ -2492,7 +2497,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3314,7 +3319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1082616675
 RectTransform:
   m_ObjectHideFlags: 0

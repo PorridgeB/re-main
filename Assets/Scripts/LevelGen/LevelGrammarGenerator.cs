@@ -70,7 +70,6 @@ public class LevelGrammarGenerator : MonoBehaviour
     {
         ResetAll();
 
-        return "f";
         int roomsRemaining = roomCount - 2;
         int branchMin = 2;
         string levelTemplate = "-";
