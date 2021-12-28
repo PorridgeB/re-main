@@ -5,17 +5,38 @@ using UnityEngine;
 public class RunController : MonoBehaviour
 {
     public RunInfoHistory runHistory;
+    public List<Module> modules;
+    public List<Attribute> attributes;
+    public Resource playerHP;
 
     private void Start()
     {
+        //THIS IS ONLY BEING USED FOR TESTING
+        //this will delete all runs in the history to ensure it resets everything in editor
+        runHistory.Clear();
+
         if (runHistory.Count < 1)
         {
-            runHistory.NewRun();
+            StartNewRun();
         }
         else if (runHistory.Current.ended)
         {
-            runHistory.NewRun();
+            StartNewRun();
         }
+    }
+
+    public void StartNewRun()
+    {
+        runHistory.NewRun();
+        foreach (Module m in modules)
+        {
+            m.count = 0;
+        }
+        foreach (Attribute a in attributes)
+        {
+            a.Reset();
+        }
+        playerHP.Reset();
     }
 
     public void RunEnded()

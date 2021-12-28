@@ -23,6 +23,11 @@ public class RunInfoHistory : ScriptableObject
         }
     }
 
+    public void Clear()
+    {
+        runHistory.Clear();
+    }
+
     public void NewRun()
     {
         runHistory.Add(new RunInfo());

@@ -69,6 +69,7 @@ public class LevelGrammarGenerator : MonoBehaviour
     public string GetGenerationTemplate()
     {
         ResetAll();
+
         int roomsRemaining = roomCount - 2;
         int branchMin = 2;
         string levelTemplate = "-";
@@ -151,14 +152,12 @@ public class LevelGrammarGenerator : MonoBehaviour
             {
                 challengeCount++;
                 r = buildingBlocks[2];
-                Debug.Log(r);
             }
             branch += r;
         }
         char room = buildingBlocks[3];
         if (rewardCount < rewardRating)
         {
-            Debug.Log("adding reward");
             rewardCount++;
             room = buildingBlocks[4]; 
         }
