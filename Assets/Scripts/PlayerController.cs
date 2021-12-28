@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     private InputAction interactAction;
     private InputAction overlayAction;
 
+    private Weapon meleeWeapon;
+    private Weapon rangedWeapon;
+
     public Vector2 GetFacing()
     {
         return facing;
@@ -339,11 +342,13 @@ public class PlayerController : MonoBehaviour
             rangedCooldown.Reset(1 / stats.RangedAttackSpeed.Value());
             anim.SetTrigger("Ranged");
         }
+
+        rangedWeapon?.Fire();
     }
 
     public void OnRangedSpecialAttack()
     {
-
+        rangedWeapon?.SpecialFire();
     }
 
     public void OnMeleeAttack()
@@ -354,11 +359,13 @@ public class PlayerController : MonoBehaviour
             meleeCooldown.Reset(1 / stats.MeleeAttackSpeed.Value());
             anim.SetTrigger("Melee");
         }
+
+        meleeWeapon?.Fire();
     }
 
     public void OnMeleeSpecialAttack()
     {
-         
+        meleeWeapon?.SpecialFire();
     }
 
     public void OnDash()
