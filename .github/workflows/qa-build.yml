@@ -134,13 +134,13 @@ jobs:
           folder: build/WebGL
 
   notifyDiscord:
-    needs: publishRelease
+    needs: deployWebGL
     name: 📢 Notify on Discord
     if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Notify Success
-        if: ${{ needs.publishRelease.result == 'success' }}
+        if: ${{ needs.deployWebGL.result == 'success' }}
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -154,7 +154,7 @@ jobs:
           color-success: "#2eb886"
 
       - name: Notify Failure
-        if: ${{ needs.publishRelease.result != 'success' }}
+        if: ${{ needs.deployWebGL.result != 'success' }}
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
