@@ -102,7 +102,7 @@ MonoBehaviour:
   SeekingTargetDistance: 5
   SeekingTargetArcAngle: 60
   RicochetEnable: 1
-  RicochetChance: 0.75
+  RicochetChance: 0.33
   RicochetMax: 4
 --- !u!1 &7158787015642128309
 GameObject:
