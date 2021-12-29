@@ -3,16 +3,12 @@ tag-template: "v$RESOLVED_VERSION"
 template: |
   # What's Changed
   $CHANGES
-  # QA Testing
-  * Test build (WebGL) can be played [here](https://PorridgeB.github.io/re-main/).
 
 categories:
   - title: "⚡ Breaking"
     label: "major"
   - title: "🚀 New Features"
     label: "feature"
-  - title: "🐞 Bug Fixes"
-    label: "patch"
   - title: "✨ Workflow Updates"
     label: "workflow"
 
@@ -23,9 +19,6 @@ version-resolver:
   minor:
     labels:
       - "feature"
-  patch:
-    labels:
-      - "patch"
 
 exclude-labels:
   - "skip-changelog"
