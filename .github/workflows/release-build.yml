@@ -222,7 +222,7 @@ jobs:
           color-success: "#2eb886"
 
       - name: Notify Failure
-        if: ${{ needs.publishRelease.result != 'success' }}
+        if: ${{ needs.publishRelease.result == 'failure' }}
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

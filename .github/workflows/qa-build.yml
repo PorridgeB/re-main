@@ -155,7 +155,7 @@ jobs:
           color-success: "#2eb886"
 
       - name: Notify Failure
-        if: ${{ needs.deployWebGL.result != 'success' }}
+        if: ${{ needs.deployWebGL.result == 'failure' }}
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
