@@ -7,6 +7,11 @@ on:
       - main
     paths-ignore:
       - ".github/**"
+
+concurrency:
+  group: ${{ github.event }}
+  cancel-in-progress: true
+
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 

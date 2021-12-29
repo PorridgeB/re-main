@@ -2,12 +2,13 @@ name: Build for QA 🎮
 
 on:
   workflow_dispatch:
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 concurrency:
-  group: build-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.event }}
   cancel-in-progress: true
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
   # Uncomment these out when we have developed tests for the game
