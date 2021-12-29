@@ -177,7 +177,7 @@ jobs:
         with:
           upload_url: ${{ needs.releaseDraft.outputs.upload_url }}
           release_id: ${{ needs.releaseDraft.outputs.release_id }}
-          asset_path: ./build/${{ matrix.targetPlatform }}/build-${{ matrix.targetPlatform }}.zip
+          asset_path: ./build-${{ matrix.targetPlatform }}.zip
           asset_name: re-main_${{ matrix.targetPlatform }}_${{ needs.releaseDraft.outputs.tag_name }}.zip
           asset_content_type: application/zip
 
