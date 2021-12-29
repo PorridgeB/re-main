@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private InputAction overlayAction;
 
     private Weapon meleeWeapon = new Sword();
-    private Weapon rangedWeapon = new Phaser();
+    private Weapon rangedWeapon = new Railgun();
 
 
     // Start is called before the first frame update
