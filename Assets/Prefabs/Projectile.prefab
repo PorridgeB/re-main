@@ -103,9 +103,14 @@ MonoBehaviour:
   RicochetEnable: 1
   RicochetChance: 0.33
   RicochetMax: 4
-  PassthroughEnable: 1
+  PassthroughEnable: 0
   PassthroughChance: 0.25
   PassthroughMax: 1
+  SplitEnable: 1
+  SplitChance: 0.5
+  SplitMinProjectiles: 2
+  SplitMaxProjectiles: 2
+  SplitArcAngle: 30
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0

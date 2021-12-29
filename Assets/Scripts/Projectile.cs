@@ -40,6 +40,12 @@ public class Projectile : MonoBehaviour
     public float PassthroughChance = 1f;
     [Tooltip("Maximum number of enemy collisions before the projectile is destroyed")]
     public int PassthroughMax = 1;
+    [Header("Split")]
+    public bool SplitEnable = true;
+    public float SplitChance = 1f;
+    public int SplitMinProjectiles = 3;
+    public int SplitMaxProjectiles = 3;
+    public float SplitArcAngle = 30f;
 
     private new Rigidbody rigidbody;
     private new Light light;
@@ -149,8 +155,7 @@ public class Projectile : MonoBehaviour
     {
         if (ImpactPrefab != null)
         {
-            var impactGameObject = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
-            var impact = impactGameObject.GetComponent<ProjectileImpact>();
+            var impact = Instantiate(ImpactPrefab, transform.position, Quaternion.identity).GetComponent<ProjectileImpact>();
             impact.Color = Color;
         }
     }
@@ -159,8 +164,6 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // TODO: Add split and chain effects
-
             if (PassthroughEnable && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
             {
                 CreateImpact();
@@ -169,6 +172,26 @@ public class Projectile : MonoBehaviour
             }
             else
             {
+                // Split
+                if (SplitEnable && Random.value < SplitChance)
+                {
+                    var projectiles = Random.Range(SplitMinProjectiles, SplitMaxProjectiles);
+
+                    for (int i = 0; i < projectiles; i++)
+                    {
+                        var projectile = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<Projectile>();
+
+                        var projectileCollider = projectile.GetComponent<SphereCollider>();
+                        Physics.IgnoreCollision(projectileCollider, collision.collider);
+
+                        var angle = i * (SplitArcAngle / (projectiles - 1)) - SplitArcAngle / 2;
+                        projectile.Direction = Quaternion.Euler(0, angle, 0) * Direction;
+
+                        // Really important! Or else the projectiles will grow exponentially
+                        projectile.SplitEnable = false;
+                    }
+                }
+
                 Impact();
             }
         }
