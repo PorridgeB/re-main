@@ -1072,7 +1072,10 @@ MonoBehaviour:
   chestRooms:
   - {fileID: 3542891387217972496, guid: 85718ef28b57b094b9540498afc43688, type: 3}
   obstacleRooms:
+  - {fileID: 3542891387217972496, guid: d4e7b416784baf94180059c675855871, type: 3}
+  combatRooms:
   - {fileID: 3542891387217972496, guid: c4d3ccdf9a49a994da2b9e12c23033f9, type: 3}
+  - {fileID: 3542891387217972496, guid: 279d581f785a79446bd05cb695c49f9c, type: 3}
   hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
   directions:
   - {x: 1, y: 0, z: 0}
@@ -2389,7 +2392,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.30980393, g: 0.11764707, b: 0.27058825, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

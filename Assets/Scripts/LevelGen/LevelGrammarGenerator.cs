@@ -52,6 +52,7 @@ public class LevelGrammarGenerator : MonoBehaviour
 
     private int challengeCount = 0;
     private int rewardCount = 0;
+    private char previousRoom;
     void Awake()
     {
         levelDepth = 5;
@@ -174,7 +175,12 @@ public class LevelGrammarGenerator : MonoBehaviour
             {
                 case '-':
                     if (i == 0) break;
-                    char room = commonRooms[Random.Range(0,2)];
+                    char room = 'h';
+                    if (previousRoom == 'h')
+                    {
+                        room = 'o';
+                    }
+                    previousRoom = room;
                     template = ReplaceAt(template, i, room);
                     break;
                 case '*':

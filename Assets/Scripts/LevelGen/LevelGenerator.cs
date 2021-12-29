@@ -17,6 +17,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private List<GameObject> obstacleRooms;
     [SerializeField]
+    private List<GameObject> combatRooms;
+    [SerializeField]
     private GameObject hall;
     [SerializeField]
     private List<Vector3> directions = new List<Vector3>();
@@ -105,23 +107,27 @@ public class LevelGenerator : MonoBehaviour
         {
             
             Room previousRoom = roomPath.Pop();
-            Room currentRoom;
+            GameObject prefab;
             switch (c)
             {
                 case 'h':
-                    currentRoom = Instantiate(hall, previousRoom.transform).GetComponent<Room>();
+                    prefab = hall;
                     break;
                 case 'r':
-                    currentRoom = Instantiate(chestRooms[Random.Range(0, chestRooms.Count)], previousRoom.transform).GetComponent<Room>();
+                    prefab = chestRooms[Random.Range(0, chestRooms.Count)];
                     break;
                 case 'o':
-                    currentRoom = Instantiate(obstacleRooms[Random.Range(0, obstacleRooms.Count)], previousRoom.transform).GetComponent<Room>();
+                    prefab = obstacleRooms[Random.Range(0, obstacleRooms.Count)];
+                    break;
+                case 'e':
+                    prefab = combatRooms[Random.Range(0, combatRooms.Count)];
                     break;
                 default:
-                    currentRoom = Instantiate(rooms[Random.Range(0, rooms.Count)], previousRoom.transform).GetComponent<Room>();
+                    prefab = rooms[Random.Range(0, rooms.Count)];
                     break;
 
             }
+            Room currentRoom = Instantiate(prefab, previousRoom.transform).GetComponent<Room>();
 
             if (!FindEmptyCell(previousRoom, currentRoom)) return false;
 
@@ -129,7 +135,6 @@ public class LevelGenerator : MonoBehaviour
             currentRoom.SetText(c.ToString());
             currentRoom.OpenPassage(-currentDir);
             previousRoom.OpenPassage(currentDir);
-
             roomPath.Push(currentRoom);
         }
         return true;
