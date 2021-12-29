@@ -11,6 +11,7 @@ TagManager:
   - DamageSource
   - Enemy
   - End
+  - Room
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Flying Enemies
   - 
   - Level
-  - 
+  - Dashable
   - 
   - 
   - 

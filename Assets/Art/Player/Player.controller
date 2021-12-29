@@ -131,6 +131,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dashSpeed: 10
+  cube: {fileID: 2828698242158231304, guid: 50dd7b22af97baf449c8a92aa5430f6b, type: 3}
 --- !u!206 &-8175833681758895266
 BlendTree:
   m_ObjectHideFlags: 1
