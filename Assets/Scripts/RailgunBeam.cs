@@ -13,10 +13,11 @@ public class RailgunBeam : MonoBehaviour
     public LayerMask Mask;
     public GameObject Light;
     public int MaxLights = 8;
-    public float LightSpacing = 1.5f;
+    public float LightSpacing = 2f;
+    public GameObject Impact;
+    public ParticleSystem BeamParticleSystem;
 
     private LineRenderer line;
-    private new ParticleSystem particleSystem;
     private GameObject[] lights;
 
     // Start is called before the first frame update
@@ -27,12 +28,15 @@ public class RailgunBeam : MonoBehaviour
         line.startColor = Color;
         line.endColor = Color;
 
-        particleSystem = GetComponentInChildren<ParticleSystem>();
-        var main = particleSystem.main;
-        main.startColor = Color;
+        var beamMain = BeamParticleSystem.main;
+        beamMain.startColor = Color;
 
         var light = Light.GetComponent<Light>();
         light.color = Color;
+
+        var impactParticleSystem = Impact.GetComponent<ParticleSystem>();
+        var impactMain = impactParticleSystem.main;
+        impactMain.startColor = Color;
 
         SetupLights();
     }
@@ -66,7 +70,7 @@ public class RailgunBeam : MonoBehaviour
         line.SetPosition(1, new Vector3(0, 0, distance));
 
         // Update particle system
-        var shape = particleSystem.shape;
+        var shape = BeamParticleSystem.shape;
         shape.scale = new Vector3(1, 1, distance);
         shape.position = new Vector3(0, 0.5f, 0.5f + distance / 2);
 
@@ -77,6 +81,9 @@ public class RailgunBeam : MonoBehaviour
             var light = lights[i].GetComponent<Light>();
             light.enabled = i <= numLights;
         }
+
+        // Update end bit
+        Impact.transform.localPosition = new Vector3(0, 0.5f, distance);
     }
 
     void Update()
