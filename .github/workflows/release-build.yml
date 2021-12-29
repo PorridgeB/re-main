@@ -211,7 +211,7 @@ jobs:
           discord-webhook: ${{ secrets.WEBHOOK_URL }}
           username: "${{ github.workflow }}"
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894758305690452039/success_kid.png"
-          title: "New build status (${{ needs.releaseDraft.outputs.tag_name }}): SUCCESS!"
+          title: "Release build (${{ needs.releaseDraft.outputs.tag_name }}) status: SUCCESS!"
           description: |
             📜 View [Release Notes](https://github.com/PorridgeB/re-main/releases/tag/${{ needs.releaseDraft.outputs.tag_name }})
 
@@ -229,7 +229,7 @@ jobs:
           discord-webhook: ${{ secrets.WEBHOOK_URL }}
           username: "${{ github.workflow }}"
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
-          title: "New build status (${{ needs.releaseDraft.outputs.tag_name }}): FAILED . . ."
+          title: "Release build (${{ needs.releaseDraft.outputs.tag_name }}) status: FAILED . . ."
           description: "Status of build phases"
           include-details: "true"
           color-failure: "#a30200"

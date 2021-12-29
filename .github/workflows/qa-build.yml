@@ -1,4 +1,4 @@
-name: Build for QA 🎮
+name: Build for QA 🔎
 
 on:
   workflow_dispatch:
@@ -72,7 +72,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - name: Checkout repo
+      - name: Checkout develop branch
         uses: actions/checkout@v2
         with:
           ref: develop
@@ -118,7 +118,7 @@ jobs:
 
   deployWebGL:
     needs: buildWebGL
-    name: 🚢 Deploy WebGL
+    name: 🚚 Deploy WebGL
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
