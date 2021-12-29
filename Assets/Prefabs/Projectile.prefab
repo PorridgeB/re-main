@@ -93,11 +93,13 @@ MonoBehaviour:
   Direction: {x: 0, y: 0, z: 0}
   Speed: 0
   Range: 25
+  MaximumHits: 1
   Size: 0.25
   Color: {r: 0, g: 0.80679727, b: 1, a: 1}
   SeekingEnable: 1
   SeekingAngularVelocity: 70
   SeekingTargetDistance: 5
+  SeekingTargetArcAngle: 60
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0

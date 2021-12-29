@@ -10,6 +10,7 @@ TagManager:
   - Artifact
   - DamageSource
   - Enemy
+  - Level
   layers:
   - Default
   - TransparentFX

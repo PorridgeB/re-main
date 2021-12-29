@@ -21,8 +21,10 @@ public class Projectile : MonoBehaviour
     public bool SeekingEnable = true;
     // Maximum angle the projectile is allowed to turn within a second when seeking an enemy (in deg/s)
     public float SeekingAngularVelocity = 70f;
+    // Maximum distance that the projectile searches for nearby enemies
     public float SeekingTargetDistance = 5f;
-    public float SeekingTargetAngle = 90f;
+    // Maximum arc angle between the projectile's direction of travel and direction to enemy for seeking
+    public float SeekingTargetArcAngle = 60f;
 
     private new Rigidbody rigidbody;
     private Vector3 startPosition;
@@ -70,7 +72,7 @@ public class Projectile : MonoBehaviour
 
     void UpdateSeeking()
     {
-        var closestEnemy = FindClosestEnemy(SeekingTargetDistance);
+        var closestEnemy = FindClosestEnemy(SeekingTargetDistance, SeekingTargetArcAngle);
         if (closestEnemy)
         {
             var enemyPosition = new Vector3(closestEnemy.transform.position.x, 0, closestEnemy.transform.position.z);
@@ -80,7 +82,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    GameObject FindClosestEnemy(float Radius)
+    GameObject FindClosestEnemy(float Radius, float ArcAngle)
     {
         GameObject closestEnemy = null;
         var closestEnemyDistance = Mathf.Infinity;
@@ -88,11 +90,17 @@ public class Projectile : MonoBehaviour
         var colliders = Physics.OverlapSphere(transform.position, Radius);
         foreach (var collider in colliders)
         {
-            if (collider.GetComponent<Enemy>() != null)
+            if (collider.CompareTag("Enemy"))
             {
                 var enemy = collider.gameObject;
                 var enemyPosition = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
                 var enemyDistance = (enemyPosition - transform.position).sqrMagnitude;
+                var enemyDirection = (enemyPosition - transform.position).normalized;
+
+                if (Vector3.Angle(Direction, enemyDirection) > ArcAngle)
+                {
+                    continue;
+                }
 
                 if (enemyDistance < closestEnemyDistance)
                 {
@@ -117,7 +125,7 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Enemy>() != null)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             var instanceId = collision.gameObject.GetInstanceID();
 
@@ -130,6 +138,10 @@ public class Projectile : MonoBehaviour
                     Impact();
                 }
             }
+        }
+        else if (collision.gameObject.CompareTag("Level"))
+        {
+            Impact();
         }
         else
         {
