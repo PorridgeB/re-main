@@ -6,11 +6,11 @@ template: |
 
 categories:
   - title: "⚡ Breaking"
-    label: "major"
+    labels: "major"
   - title: "🚀 New Features"
-    label: "feature"
+    labels: "feature"
   - title: "✨ Workflow Updates"
-    label: "workflow"
+    labels: "workflow"
 version-template: "$MAJOR.$MINOR"
 version-resolver:
   major:

@@ -79,9 +79,9 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneLinux64
-          - StandaloneWindows
           - StandaloneOSX
+          - StandaloneWindows
+          - StandaloneLinux64
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -155,9 +155,9 @@ jobs:
     strategy:
       matrix:
         targetPlatform:
-          - StandaloneLinux64
-          - StandaloneWindows
           - StandaloneOSX
+          - StandaloneWindows
+          - StandaloneLinux64
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
