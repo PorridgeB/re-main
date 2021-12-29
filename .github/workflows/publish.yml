@@ -52,8 +52,11 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - name: Get Workflow Conclusion
+        uses: technote-space/workflow-conclusion-action@v2
+
       - name: Notify Success
-        if: ${{ needs.publishBuilds.result == 'success' }}
+        if: env.WORKFLOW_CONCLUSION == 'success'
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -79,7 +82,7 @@ jobs:
           color-cancelled: "#ffd513"
 
       - name: Notify Failure
-        if: ${{ needs.publishBuilds.result != 'success' }}
+        if: env.WORKFLOW_CONCLUSION == 'failure'
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
