@@ -32,13 +32,14 @@ public class Projectile : MonoBehaviour
     public float RicochetChance = 0.75f;
 
     private new Rigidbody rigidbody;
+    private new Light light;
     private Vector3 startPosition;
     private HashSet<int> hits = new HashSet<int>();
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        var light = GetComponentInChildren<Light>();
+        light = GetComponentInChildren<Light>();
         var trailRenderer = GetComponentInChildren<TrailRenderer>();
         var sphereCollider = GetComponent<SphereCollider>();
 
@@ -122,10 +123,13 @@ public class Projectile : MonoBehaviour
 
     void Impact()
     {
-        //var impact = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
+        var impactGameObject = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
+        var impact = impactGameObject.GetComponent<ProjectileImpact>();
+        impact.Color = Color;
 
         rigidbody.detectCollisions = false;
         rigidbody.velocity = Vector3.zero;
+        light.enabled = false;
         enabled = false;
         Destroy(gameObject, 1f);
     }
