@@ -100,10 +100,10 @@ public class PlayerController : MonoBehaviour
         meleeWeapon.Animator = animator;
         rangedWeapon.Animator = animator;
 
-        inputs.actions["RangedAttack"].canceled += PlayerController_canceled;
+        inputs.actions["RangedAttack"].canceled += OnRangedAttackCanceled;
     }
 
-    private void PlayerController_canceled(InputAction.CallbackContext obj)
+    private void OnRangedAttackCanceled(InputAction.CallbackContext obj)
     {
         animator.SetTrigger("RangedRelease");
     }
