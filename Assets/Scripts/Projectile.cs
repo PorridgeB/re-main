@@ -15,6 +15,8 @@ public class Projectile : MonoBehaviour
     public float Size = 0.25f;
     [Tooltip("Colour of the light and the trail")]
     public Color Color = Color.white;
+    [Tooltip("Time for the projectile to detect collisions again with the previous collider")]
+    public float IgnoreCollisionTime = 0.5f;
     [Tooltip("Prefab to create when the projectile has impacted with something")]
     public GameObject ImpactPrefab;
 
@@ -71,13 +73,16 @@ public class Projectile : MonoBehaviour
     private int ricochets = 0;
     private int passthroughs = 0;
 
-    void Start()
+    void Awake()
     {
+        collider = GetComponent<SphereCollider>();
         rigidbody = GetComponent<Rigidbody>();
         light = GetComponentInChildren<Light>();
         trail = GetComponentInChildren<TrailRenderer>();
-        collider = GetComponent<SphereCollider>();
+    }
 
+    void Start()
+    {
         light.color = Color;
 
         trail.startColor = Color;
@@ -148,12 +153,12 @@ public class Projectile : MonoBehaviour
         return closestEnemy;
     }
 
-    void Fizzle()
+    private void Fizzle()
     {
         Destroy(gameObject);
     }
 
-    void Impact()
+    private void Impact()
     {
         CreateImpactEffect();
 
@@ -166,7 +171,7 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, 1f);
     }
     
-    void CreateImpactEffect()
+    private void CreateImpactEffect()
     {
         if (ImpactPrefab != null)
         {
@@ -175,7 +180,19 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void Split(Collider collider)
+    private IEnumerator TemporarilyIgnoreCollision(Collider other, float time)
+    {
+        Physics.IgnoreCollision(collider, other);
+        yield return new WaitForSeconds(time);
+        Physics.IgnoreCollision(collider, other, false);
+    }
+
+    public void IgnoreCollision(Collider other)
+    {
+        StartCoroutine(TemporarilyIgnoreCollision(other, IgnoreCollisionTime));
+    }
+
+    private void Split(Collider collider)
     {
         var projectiles = Random.Range(SplitMinProjectiles, SplitMaxProjectiles);
 
@@ -183,8 +200,7 @@ public class Projectile : MonoBehaviour
         {
             var projectile = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<Projectile>();
 
-            var projectileCollider = projectile.GetComponent<SphereCollider>();
-            Physics.IgnoreCollision(projectileCollider, collider);
+            projectile.IgnoreCollision(collider);
 
             var angle = i * (SplitArcAngle / (projectiles - 1)) - SplitArcAngle / 2;
             projectile.Direction = Quaternion.Euler(0, angle, 0) * Direction;
@@ -196,7 +212,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void Ricochet(Vector3 normal)
+    private void Ricochet(Vector3 normal)
     {
         Direction = Vector3.Reflect(Direction, normal);
         Direction.y = 0;
@@ -214,7 +230,7 @@ public class Projectile : MonoBehaviour
             if (PassthroughEnabled && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
             {
                 CreateImpactEffect();
-                Physics.IgnoreCollision(collider, collision.collider);
+                IgnoreCollision(collision.collider);
             }
             else
             {
@@ -228,6 +244,7 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
+            // TODO: Change to on collision stayed?
             if (RicochetEnabled && Random.value < RicochetChance && ricochets++ < RicochetMax)
             {
                 var normal = collision.contacts[0].normal;
