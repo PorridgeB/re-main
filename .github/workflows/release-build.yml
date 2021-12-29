@@ -123,6 +123,7 @@ jobs:
         with:
           name: build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+          retention-days: 14 # Only retain as long as a sprint because they exist forever in the release notes
 
   releaseDraft:
     name: 📜 Release Draft
