@@ -5084,7 +5084,7 @@ MonoBehaviour:
     m_Bits: 2624
   Light: {fileID: 6032081221069839379}
   MaxLights: 8
-  LightSpacing: 1.5
+  LightSpacing: 2
   Impact: {fileID: 6248635049671098641}
   BeamParticleSystem: {fileID: 5347216215449729813}
 --- !u!1 &8953545144856922266
