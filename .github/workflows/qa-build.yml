@@ -2,11 +2,6 @@ name: Build for QA 🎮
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - ".github/**"
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
@@ -138,42 +133,8 @@ jobs:
           branch: build-webgl
           folder: build/WebGL
 
-  releaseDraft:
-    name: 📜 Release Draft
-    runs-on: ubuntu-latest
-    outputs:
-      upload_url: ${{ steps.output_upload_url.outputs.upload_url }}
-      tag_name: ${{ steps.output_tag_name.outputs.tag_name }}
-      release_id: ${{ steps.output_release_id.outputs.release_id }}
-      html_url: ${{ steps.output_html_url.outputs.html_url }}
-    steps:
-      - name: Draft a Release
-        uses: release-drafter/release-drafter@master
-        id: release-draft
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This secret is auto generated each run
-      - id: output_upload_url
-        run: echo "::set-output name=upload_url::${{ steps.release-draft.outputs.upload_url }}"
-      - id: output_tag_name
-        run: echo "::set-output name=tag_name::${{ steps.release-draft.outputs.tag_name }}"
-      - id: output_release_id
-        run: echo "::set-output name=release_id::${{ steps.release-draft.outputs.id }}"
-      - id: output_html_url
-        run: echo "::set-output name=html_url::${{ steps.release-draft.outputs.html_url }}"
-
-  publishRelease:
-    needs: [deployWebGL, releaseDraft]
-    name: 🚀 Publish Release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: eregon/publish-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: ${{ needs.releaseDraft.outputs.release_id }}
-
   notifyDiscord:
-    needs: [releaseDraft, publishRelease]
+    needs: publishRelease
     name: 📢 Notify on Discord
     if: always()
     runs-on: ubuntu-latest
@@ -186,9 +147,9 @@ jobs:
           discord-webhook: ${{ secrets.WEBHOOK_URL }}
           username: "${{ github.workflow }}"
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894758305690452039/success_kid.png"
-          title: "New build status (${{ needs.releaseDraft.outputs.tag_name }}): SUCCESS!"
+          title: "Test Build #${{ github.run_number }} status: SUCCESS!"
           description: |
-            🌐 Play the [test build](https://PorridgeB.github.io/re-main/).
+            🌐 Play the [test build on GitHub](https://PorridgeB.github.io/re-main/).
           include-details: "false"
           color-success: "#2eb886"
 
@@ -200,7 +161,7 @@ jobs:
           discord-webhook: ${{ secrets.WEBHOOK_URL }}
           username: "${{ github.workflow }}"
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
-          title: "New build status (${{ needs.releaseDraft.outputs.tag_name }}): FAILED . . ."
+          title: "Test Build #${{ github.run_number }} status: FAILED . . ."
           description: "Status of build phases"
           include-details: "true"
           color-failure: "#a30200"
