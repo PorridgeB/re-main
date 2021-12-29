@@ -11,7 +11,7 @@ categories:
     label: "feature"
   - title: "✨ Workflow Updates"
     label: "workflow"
-
+version-template: "$MAJOR.$MINOR"
 version-resolver:
   major:
     labels:
