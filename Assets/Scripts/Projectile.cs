@@ -17,6 +17,8 @@ public class Projectile : MonoBehaviour
     public float Size = 0.25f;
     [Tooltip("Colour of the light and the trail")]
     public Color Color = Color.white;
+    [Tooltip("Prefab to create when the projectile has impacted with something")]
+    public GameObject ImpactPrefab;
     [Header("Seeking")]
     [Tooltip("Enables the projectile to bend toward nearby enemies")]
     public bool SeekingEnable = true;
@@ -26,6 +28,8 @@ public class Projectile : MonoBehaviour
     public float SeekingTargetDistance = 5f;
     [Tooltip("Maximum arc angle between the projectile's direction of travel and direction to enemy for seeking")]
     public float SeekingTargetArcAngle = 60f;
+    [Header("Ricochet")]
+    public float RicochetChance = 0.75f;
 
     private new Rigidbody rigidbody;
     private Vector3 startPosition;
@@ -118,7 +122,12 @@ public class Projectile : MonoBehaviour
 
     void Impact()
     {
-        Destroy(gameObject);
+        //var impact = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
+
+        rigidbody.detectCollisions = false;
+        rigidbody.velocity = Vector3.zero;
+        enabled = false;
+        Destroy(gameObject, 1f);
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -139,19 +148,19 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
-            if (Random.value > 0.75f)
+            if (Random.value < RicochetChance)
             {
-                Impact();
-            }
-            else
-            {
-                // Riochet
+                // Ricochet
                 var normal = collision.contacts[0].normal;
                 Direction = Vector3.Reflect(Direction, normal);
                 Direction = new Vector3(Direction.x, 0, Direction.z);
 
                 //rigidbody.MovePosition(transform.position + Direction * 0.1f);
                 transform.position += Direction * 0.2f;
+            }
+            else
+            {
+                Impact();
             }
         }
         //else

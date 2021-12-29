@@ -50,7 +50,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 3
+  m_CollisionDetection: 2
 --- !u!135 &5702248069604812211
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   MaximumHits: 1
   Size: 0.25
   Color: {r: 0, g: 0.80679727, b: 1, a: 1}
+  ImpactPrefab: {fileID: 4179723668943172795, guid: 0af93eb30de829b4aabb00459fb3a379, type: 3}
   SeekingEnable: 1
   SeekingAngularVelocity: 70
   SeekingTargetDistance: 5
