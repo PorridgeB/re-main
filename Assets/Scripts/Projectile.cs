@@ -5,25 +5,26 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     // Direction of travel (normalized)
+    [HideInInspector]
     public Vector3 Direction;
-    // Speed of the projectile (in unit/s)
+    [Tooltip("Speed of the projectile (in unit/s)")]
     public float Speed = 10f;
-    // Maximum distance the projectile can travel from its starting position before being destroyed
+    [Tooltip("Maximum distance the projectile can travel from its starting position before being destroyed")]
     public float Range = 25f;
-    // Number of enemy collisions before the projectile is destroyed
+    [Tooltip("Number of enemy collisions before the projectile is destroyed")]
     public int MaximumHits = 1;
-    // Radius of the sphere collider and the width of the trail
+    [Tooltip("Radius of the sphere collider and the width of the trail")]
     public float Size = 0.25f;
-    // Colour of the light and the trail
+    [Tooltip("Colour of the light and the trail")]
     public Color Color = Color.white;
     [Header("Seeking")]
-    // Enables the projectile to bend toward nearby enemies
+    [Tooltip("Enables the projectile to bend toward nearby enemies")]
     public bool SeekingEnable = true;
-    // Maximum angle the projectile is allowed to turn within a second when seeking an enemy (in deg/s)
+    [Tooltip("Maximum angle the projectile is allowed to turn within a second when seeking an enemy (in deg/s)")]
     public float SeekingAngularVelocity = 70f;
-    // Maximum distance that the projectile searches for nearby enemies
+    [Tooltip("Maximum distance that the projectile searches for nearby enemies")]
     public float SeekingTargetDistance = 5f;
-    // Maximum arc angle between the projectile's direction of travel and direction to enemy for seeking
+    [Tooltip("Maximum arc angle between the projectile's direction of travel and direction to enemy for seeking")]
     public float SeekingTargetArcAngle = 60f;
 
     private new Rigidbody rigidbody;
@@ -45,20 +46,17 @@ public class Projectile : MonoBehaviour
         trailRenderer.startWidth = Size;
         trailRenderer.endWidth = 0;
 
-        sphereCollider.radius = Size;
+        //sphereCollider.radius = Size;
+        sphereCollider.radius = 0.1f;
 
         startPosition = transform.position;
     }
 
-    void FixedUpdate()
-    {
-        //var velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
-        var velocity = Direction * Speed;
-        rigidbody.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
-    }
-
     void Update()
     {
+        //var velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
+        rigidbody.velocity = Direction * Speed;
+
         if (SeekingEnable)
         {
             UpdateSeeking();
@@ -141,11 +139,24 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
-            Impact();
+            if (Random.value > 0.75f)
+            {
+                Impact();
+            }
+            else
+            {
+                // Riochet
+                var normal = collision.contacts[0].normal;
+                Direction = Vector3.Reflect(Direction, normal);
+                Direction = new Vector3(Direction.x, 0, Direction.z);
+
+                //rigidbody.MovePosition(transform.position + Direction * 0.1f);
+                transform.position += Direction * 0.2f;
+            }
         }
-        else
-        {
-            Impact();
-        }
+        //else
+        //{
+        //    Impact();
+        //}
     }
 }
