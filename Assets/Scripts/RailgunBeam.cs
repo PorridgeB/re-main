@@ -6,8 +6,10 @@ public class RailgunBeam : MonoBehaviour
 {
     public Color Color;
     public float MaxDistance = 15f;
+    public float DistanceFactor = 1f;
     public float HitOffset = -1f;
-    public float Width = 0.5f;
+    public float Width = 0.75f;
+    public float WidthFactor = 1f;
     public float WidthVariation = 0.1f;
     public float WidthFrequency = 10f;
     public LayerMask Mask;
@@ -58,10 +60,10 @@ public class RailgunBeam : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        var distance = MaxDistance;
+        var distance = MaxDistance * DistanceFactor;
 
         RaycastHit info;
-        if (Physics.Raycast(transform.position, transform.rotation * Vector3.forward, out info, MaxDistance, Mask))
+        if (Physics.Raycast(transform.position, transform.rotation * Vector3.forward, out info, MaxDistance * DistanceFactor, Mask))
         {
             distance = info.distance + HitOffset;
         }
@@ -88,7 +90,7 @@ public class RailgunBeam : MonoBehaviour
 
     void Update()
     {
-        var width = Width + WidthVariation * Mathf.Sin(2f * Mathf.PI * Time.time * WidthFrequency);
+        var width = (Width + WidthVariation * Mathf.Sin(2f * Mathf.PI * Time.time * WidthFrequency)) * WidthFactor;
 
         line.startWidth = width;
         line.endWidth = width;

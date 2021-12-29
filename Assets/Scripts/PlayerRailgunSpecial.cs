@@ -7,6 +7,7 @@ public class PlayerRailgunSpecial : StateMachineBehaviour
     public GameObject BeamPrefab;
     public float RecoilSpeed = 1.2f;
     public float RotationSpeed = 100f;
+    public AnimationCurve Power;
 
     private GameObject beam;
 
@@ -23,13 +24,19 @@ public class PlayerRailgunSpecial : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        var power = Power.Evaluate(stateInfo.normalizedTime);
+
+        var railgunBeam = beam.GetComponent<RailgunBeam>();
+        railgunBeam.DistanceFactor = power;
+        railgunBeam.WidthFactor = power;
+
         var player = PlayerController.instance;
 
         var targetRotation = Quaternion.LookRotation(new Vector3(player.Facing.x, 0, player.Facing.y), Vector3.up);
         beam.transform.rotation = Quaternion.RotateTowards(beam.transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
 
         var direction = beam.transform.rotation * Vector3.forward;
-        player.Dash(new Vector2(direction.x, direction.z) * -RecoilSpeed);
+        player.Dash(new Vector2(direction.x, direction.z) * -RecoilSpeed * power);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

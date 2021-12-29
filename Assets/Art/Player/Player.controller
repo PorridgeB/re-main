@@ -343,6 +343,48 @@ MonoBehaviour:
   BeamPrefab: {fileID: 6420662754274555934, guid: 7296568b8cc53a541a4c12bd46c467d5, type: 3}
   RecoilSpeed: 1.2
   RotationSpeed: 50
+  Power:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0
+      value: -0.0000025629997
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.14999999
+      value: 1.000001
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.585
+      value: 1
+      inSlope: -0.000004487879
+      outSlope: -0.000004487879
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: -0.0023584962
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &-5660584870998354935
 MonoBehaviour:
   m_ObjectHideFlags: 1
