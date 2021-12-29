@@ -11,12 +11,13 @@ public class Projectile : MonoBehaviour
     public float Speed = 10f;
     [Tooltip("Maximum distance the projectile can travel from its starting position before being destroyed")]
     public float Range = 25f;
-    [Tooltip("Radius of the sphere collider and the width of the trail")]
+    [Tooltip("Width of the trail")]
     public float Size = 0.25f;
     [Tooltip("Colour of the light and the trail")]
     public Color Color = Color.white;
     [Tooltip("Prefab to create when the projectile has impacted with something")]
     public GameObject ImpactPrefab;
+
     [Header("Seeking")]
     [Tooltip("Enables the projectile to bend toward nearby enemies")]
     public bool SeekingEnable = true;
@@ -25,26 +26,39 @@ public class Projectile : MonoBehaviour
     [Tooltip("Maximum distance that the projectile searches for nearby enemies")]
     public float SeekingTargetDistance = 5f;
     [Tooltip("Maximum arc angle between the projectile's direction of travel and direction to enemy for seeking")]
+    [Range(0, 180)]
     public float SeekingTargetArcAngle = 60f;
+
     [Header("Ricochet")]
     [Tooltip("Enables the projectile to bounce when colliding with a wall")]
     public bool RicochetEnable = true;
     [Tooltip("Chance of the projectile ricocheting when colliding with a wall")]
+    [Range(0, 1)]
     public float RicochetChance = 0.75f;
     [Tooltip("Maximum number of times the projectile can ricochet before impacting")]
     public int RicochetMax = 4;
+
     [Header("Passthrough")]
     [Tooltip("Enables the projectile to hit and passthrough an enemy")]
     public bool PassthroughEnable = true;
     [Tooltip("Chance of the projectile passing through an enemy when colliding with one")]
+    [Range(0, 1)]
     public float PassthroughChance = 1f;
     [Tooltip("Maximum number of enemy collisions before the projectile is destroyed")]
     public int PassthroughMax = 1;
+
     [Header("Split")]
+    [Tooltip("Enables the projectile to split off after impacting")]
     public bool SplitEnable = true;
+    [Tooltip("Chance of the projectile splitting after impacting")]
+    [Range(0, 1)]
     public float SplitChance = 1f;
-    public int SplitMinProjectiles = 3;
+    [Tooltip("Minimum number of new projectiles")]
+    public int SplitMinProjectiles = 2;
+    [Tooltip("Maximum number of new projectiles")]
     public int SplitMaxProjectiles = 3;
+    [Tooltip("Arc angle that indicates the spread of the new projectiles")]
+    [Range(0, 180)]
     public float SplitArcAngle = 30f;
 
     private new Rigidbody rigidbody;
@@ -70,15 +84,12 @@ public class Projectile : MonoBehaviour
         trail.startWidth = Size;
         trail.endWidth = 0;
 
-        //collider.radius = Size;
-        collider.radius = 0.1f;
-
         startPosition = transform.position;
     }
 
     void Update()
     {
-        //var velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
+        //rigidbody.velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
         rigidbody.velocity = Direction * Speed;
 
         if (SeekingEnable)
@@ -142,8 +153,10 @@ public class Projectile : MonoBehaviour
 
     void Impact()
     {
-        CreateImpact();
+        CreateImpactEffect();
 
+        // Destroy the projectile after some time has passed
+        // so the trail renderer can continue
         rigidbody.detectCollisions = false;
         rigidbody.velocity = Vector3.zero;
         light.enabled = false;
@@ -151,7 +164,7 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, 1f);
     }
     
-    void CreateImpact()
+    void CreateImpactEffect()
     {
         if (ImpactPrefab != null)
         {
@@ -160,36 +173,50 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    void Split(Collider collider)
+    {
+        var projectiles = Random.Range(SplitMinProjectiles, SplitMaxProjectiles);
+
+        for (int i = 0; i < projectiles; i++)
+        {
+            var projectile = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<Projectile>();
+
+            var projectileCollider = projectile.GetComponent<SphereCollider>();
+            Physics.IgnoreCollision(projectileCollider, collider);
+
+            var angle = i * (SplitArcAngle / (projectiles - 1)) - SplitArcAngle / 2;
+            projectile.Direction = Quaternion.Euler(0, angle, 0) * Direction;
+
+            // Really important! Or else the projectiles will grow exponentially
+            projectile.SplitEnable = false;
+        }
+    }
+
+    void Ricochet(Vector3 normal)
+    {
+        Direction = Vector3.Reflect(Direction, normal);
+        Direction.y = 0;
+        Direction.Normalize();
+
+        // Move the projectile out of the wall a little
+        //rigidbody.MovePosition(transform.position + Direction * 0.1f);
+        transform.position += Direction * 0.2f;
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (PassthroughEnable && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
             {
-                CreateImpact();
-
+                CreateImpactEffect();
                 Physics.IgnoreCollision(collider, collision.collider);
             }
             else
             {
-                // Split
                 if (SplitEnable && Random.value < SplitChance)
                 {
-                    var projectiles = Random.Range(SplitMinProjectiles, SplitMaxProjectiles);
-
-                    for (int i = 0; i < projectiles; i++)
-                    {
-                        var projectile = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<Projectile>();
-
-                        var projectileCollider = projectile.GetComponent<SphereCollider>();
-                        Physics.IgnoreCollision(projectileCollider, collision.collider);
-
-                        var angle = i * (SplitArcAngle / (projectiles - 1)) - SplitArcAngle / 2;
-                        projectile.Direction = Quaternion.Euler(0, angle, 0) * Direction;
-
-                        // Really important! Or else the projectiles will grow exponentially
-                        projectile.SplitEnable = false;
-                    }
+                    Split(collision.collider);
                 }
 
                 Impact();
@@ -199,13 +226,8 @@ public class Projectile : MonoBehaviour
         {
             if (RicochetEnable && Random.value < RicochetChance && ricochets++ < RicochetMax)
             {
-                // Ricochet
                 var normal = collision.contacts[0].normal;
-                Direction = Vector3.Reflect(Direction, normal);
-                Direction = new Vector3(Direction.x, 0, Direction.z);
-
-                //rigidbody.MovePosition(transform.position + Direction * 0.1f);
-                transform.position += Direction * 0.2f;
+                Ricochet(normal);
             }
             else
             {
