@@ -174,7 +174,7 @@ public class LevelGrammarGenerator : MonoBehaviour
             {
                 case '-':
                     if (i == 0) break;
-                    char room = commonRooms[1];
+                    char room = commonRooms[Random.Range(0,2)];
                     template = ReplaceAt(template, i, room);
                     break;
                 case '*':

@@ -13,6 +13,10 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private List<GameObject> rooms;
     [SerializeField]
+    private List<GameObject> chestRooms;
+    [SerializeField]
+    private List<GameObject> obstacleRooms;
+    [SerializeField]
     private GameObject hall;
     [SerializeField]
     private List<Vector3> directions = new List<Vector3>();
@@ -102,13 +106,21 @@ public class LevelGenerator : MonoBehaviour
             
             Room previousRoom = roomPath.Pop();
             Room currentRoom;
-            if (c == 'h')
+            switch (c)
             {
-                currentRoom = Instantiate(hall, previousRoom.transform).GetComponent<Room>();
-            }
-            else
-            {
-                currentRoom = Instantiate(rooms[Random.Range(0,rooms.Count)], previousRoom.transform).GetComponent<Room>();
+                case 'h':
+                    currentRoom = Instantiate(hall, previousRoom.transform).GetComponent<Room>();
+                    break;
+                case 'r':
+                    currentRoom = Instantiate(chestRooms[Random.Range(0, chestRooms.Count)], previousRoom.transform).GetComponent<Room>();
+                    break;
+                case 'o':
+                    currentRoom = Instantiate(obstacleRooms[Random.Range(0, obstacleRooms.Count)], previousRoom.transform).GetComponent<Room>();
+                    break;
+                default:
+                    currentRoom = Instantiate(rooms[Random.Range(0, rooms.Count)], previousRoom.transform).GetComponent<Room>();
+                    break;
+
             }
 
             if (!FindEmptyCell(previousRoom, currentRoom)) return false;
