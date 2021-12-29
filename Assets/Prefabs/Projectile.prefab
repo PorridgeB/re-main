@@ -101,7 +101,9 @@ MonoBehaviour:
   SeekingAngularVelocity: 70
   SeekingTargetDistance: 5
   SeekingTargetArcAngle: 60
+  RicochetEnable: 1
   RicochetChance: 0.75
+  RicochetMax: 4
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ public class Projectile : MonoBehaviour
     [Tooltip("Maximum arc angle between the projectile's direction of travel and direction to enemy for seeking")]
     public float SeekingTargetArcAngle = 60f;
     [Header("Ricochet")]
+    [Tooltip("Enables the projectile to bounce when colliding with a wall")]
+    public bool RicochetEnable = true;
     [Tooltip("Chance of the projectile ricocheting when colliding with a wall")]
     public float RicochetChance = 0.75f;
     [Tooltip("Maximum number of times the projectile can ricochet before impacting")]
@@ -161,7 +163,7 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
-            if (Random.value < RicochetChance && ricochets < RicochetMax)
+            if (RicochetEnable && Random.value < RicochetChance && ricochets < RicochetMax)
             {
                 // Ricochet
                 var normal = collision.contacts[0].normal;
