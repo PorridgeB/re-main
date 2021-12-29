@@ -29,12 +29,16 @@ public class Projectile : MonoBehaviour
     [Tooltip("Maximum arc angle between the projectile's direction of travel and direction to enemy for seeking")]
     public float SeekingTargetArcAngle = 60f;
     [Header("Ricochet")]
+    [Tooltip("Chance of the projectile ricocheting when colliding with a wall")]
     public float RicochetChance = 0.75f;
+    [Tooltip("Maximum number of times the projectile can ricochet before impacting")]
+    public int RicochetMax = 4;
 
     private new Rigidbody rigidbody;
     private new Light light;
     private Vector3 startPosition;
     private HashSet<int> hits = new HashSet<int>();
+    private int ricochets = 0;
 
     void Start()
     {
@@ -123,9 +127,12 @@ public class Projectile : MonoBehaviour
 
     void Impact()
     {
-        var impactGameObject = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
-        var impact = impactGameObject.GetComponent<ProjectileImpact>();
-        impact.Color = Color;
+        if (ImpactPrefab != null)
+        {
+            var impactGameObject = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
+            var impact = impactGameObject.GetComponent<ProjectileImpact>();
+            impact.Color = Color;
+        }
 
         rigidbody.detectCollisions = false;
         rigidbody.velocity = Vector3.zero;
@@ -138,6 +145,8 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            // TODO: Add split and chain effects
+
             var instanceId = collision.gameObject.GetInstanceID();
 
             if (!hits.Contains(instanceId))
@@ -152,7 +161,7 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
-            if (Random.value < RicochetChance)
+            if (Random.value < RicochetChance && ricochets < RicochetMax)
             {
                 // Ricochet
                 var normal = collision.contacts[0].normal;
@@ -161,6 +170,8 @@ public class Projectile : MonoBehaviour
 
                 //rigidbody.MovePosition(transform.position + Direction * 0.1f);
                 transform.position += Direction * 0.2f;
+
+                ricochets++;
             }
             else
             {
