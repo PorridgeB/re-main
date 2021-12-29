@@ -167,9 +167,9 @@ public class Projectile : MonoBehaviour
                 Impact();
             }
         }
-        //else
-        //{
-        //    Impact();
-        //}
+        else
+        {
+            Impact();
+        }
     }
 }
