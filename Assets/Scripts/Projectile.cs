@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Seeking")]
     [Tooltip("Enables the projectile to bend toward nearby enemies")]
-    public bool SeekingEnable = true;
+    public bool SeekingEnabled = true;
     [Tooltip("Maximum angle the projectile is allowed to turn within a second when seeking an enemy (in deg/s)")]
     public float SeekingAngularVelocity = 70f;
     [Tooltip("Maximum distance that the projectile searches for nearby enemies")]
@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Ricochet")]
     [Tooltip("Enables the projectile to bounce when colliding with a wall")]
-    public bool RicochetEnable = true;
+    public bool RicochetEnabled = true;
     [Tooltip("Chance of the projectile ricocheting when colliding with a wall")]
     [Range(0, 1)]
     public float RicochetChance = 0.75f;
@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Passthrough")]
     [Tooltip("Enables the projectile to hit and passthrough an enemy")]
-    public bool PassthroughEnable = true;
+    public bool PassthroughEnabled = true;
     [Tooltip("Chance of the projectile passing through an enemy when colliding with one")]
     [Range(0, 1)]
     public float PassthroughChance = 1f;
@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Split")]
     [Tooltip("Enables the projectile to split off after impacting")]
-    public bool SplitEnable = true;
+    public bool SplitEnabled = true;
     [Tooltip("Chance of the projectile splitting after impacting")]
     [Range(0, 1)]
     public float SplitChance = 1f;
@@ -94,7 +94,7 @@ public class Projectile : MonoBehaviour
         //rigidbody.velocity = new Vector3(Direction.x, 0, Direction.y) * Speed;
         rigidbody.velocity = Direction * Speed;
 
-        if (SeekingEnable)
+        if (SeekingEnabled)
         {
             UpdateSeeking();
         }
@@ -192,7 +192,7 @@ public class Projectile : MonoBehaviour
             projectile.Size = Size * SplitSizeMultiplier;
 
             // Really important! Or else the projectiles will grow exponentially
-            projectile.SplitEnable = false;
+            projectile.SplitEnabled = false;
         }
     }
 
@@ -211,14 +211,14 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (PassthroughEnable && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
+            if (PassthroughEnabled && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
             {
                 CreateImpactEffect();
                 Physics.IgnoreCollision(collider, collision.collider);
             }
             else
             {
-                if (SplitEnable && Random.value < SplitChance)
+                if (SplitEnabled && Random.value < SplitChance)
                 {
                     Split(collision.collider);
                 }
@@ -228,7 +228,7 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
-            if (RicochetEnable && Random.value < RicochetChance && ricochets++ < RicochetMax)
+            if (RicochetEnabled && Random.value < RicochetChance && ricochets++ < RicochetMax)
             {
                 var normal = collision.contacts[0].normal;
                 Ricochet(normal);
