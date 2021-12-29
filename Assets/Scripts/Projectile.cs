@@ -11,8 +11,6 @@ public class Projectile : MonoBehaviour
     public float Speed = 10f;
     [Tooltip("Maximum distance the projectile can travel from its starting position before being destroyed")]
     public float Range = 25f;
-    [Tooltip("Number of enemy collisions before the projectile is destroyed")]
-    public int MaximumHits = 1;
     [Tooltip("Radius of the sphere collider and the width of the trail")]
     public float Size = 0.25f;
     [Tooltip("Colour of the light and the trail")]
@@ -35,30 +33,39 @@ public class Projectile : MonoBehaviour
     public float RicochetChance = 0.75f;
     [Tooltip("Maximum number of times the projectile can ricochet before impacting")]
     public int RicochetMax = 4;
+    [Header("Passthrough")]
+    [Tooltip("Enables the projectile to hit and passthrough an enemy")]
+    public bool PassthroughEnable = true;
+    [Tooltip("Chance of the projectile passing through an enemy when colliding with one")]
+    public float PassthroughChance = 1f;
+    [Tooltip("Maximum number of enemy collisions before the projectile is destroyed")]
+    public int PassthroughMax = 1;
 
     private new Rigidbody rigidbody;
     private new Light light;
+    private TrailRenderer trail;
+    private new SphereCollider collider;
     private Vector3 startPosition;
-    private HashSet<int> hits = new HashSet<int>();
     private int ricochets = 0;
+    private int passthroughs = 0;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         light = GetComponentInChildren<Light>();
-        var trailRenderer = GetComponentInChildren<TrailRenderer>();
-        var sphereCollider = GetComponent<SphereCollider>();
+        trail = GetComponentInChildren<TrailRenderer>();
+        collider = GetComponent<SphereCollider>();
 
         light.color = Color;
 
-        trailRenderer.startColor = Color;
-        trailRenderer.endColor = new Color(Color.r, Color.g, Color.b, 0);
+        trail.startColor = Color;
+        trail.endColor = new Color(Color.r, Color.g, Color.b, 0);
 
-        trailRenderer.startWidth = Size;
-        trailRenderer.endWidth = 0;
+        trail.startWidth = Size;
+        trail.endWidth = 0;
 
-        //sphereCollider.radius = Size;
-        sphereCollider.radius = 0.1f;
+        //collider.radius = Size;
+        collider.radius = 0.1f;
 
         startPosition = transform.position;
     }
@@ -129,18 +136,23 @@ public class Projectile : MonoBehaviour
 
     void Impact()
     {
-        if (ImpactPrefab != null)
-        {
-            var impactGameObject = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
-            var impact = impactGameObject.GetComponent<ProjectileImpact>();
-            impact.Color = Color;
-        }
+        CreateImpact();
 
         rigidbody.detectCollisions = false;
         rigidbody.velocity = Vector3.zero;
         light.enabled = false;
         enabled = false;
         Destroy(gameObject, 1f);
+    }
+    
+    void CreateImpact()
+    {
+        if (ImpactPrefab != null)
+        {
+            var impactGameObject = Instantiate(ImpactPrefab, transform.position, Quaternion.identity);
+            var impact = impactGameObject.GetComponent<ProjectileImpact>();
+            impact.Color = Color;
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -149,21 +161,20 @@ public class Projectile : MonoBehaviour
         {
             // TODO: Add split and chain effects
 
-            var instanceId = collision.gameObject.GetInstanceID();
-
-            if (!hits.Contains(instanceId))
+            if (PassthroughEnable && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
             {
-                hits.Add(instanceId);
+                CreateImpact();
 
-                if (hits.Count >= MaximumHits)
-                {
-                    Impact();
-                }
+                Physics.IgnoreCollision(collider, collision.collider);
+            }
+            else
+            {
+                Impact();
             }
         }
         else if (collision.gameObject.CompareTag("Level"))
         {
-            if (RicochetEnable && Random.value < RicochetChance && ricochets < RicochetMax)
+            if (RicochetEnable && Random.value < RicochetChance && ricochets++ < RicochetMax)
             {
                 // Ricochet
                 var normal = collision.contacts[0].normal;
@@ -172,8 +183,6 @@ public class Projectile : MonoBehaviour
 
                 //rigidbody.MovePosition(transform.position + Direction * 0.1f);
                 transform.position += Direction * 0.2f;
-
-                ricochets++;
             }
             else
             {
