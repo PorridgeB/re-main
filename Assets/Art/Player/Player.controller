@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c402429fa57e445a283a0b2fb77d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeamPrefab: {fileID: 6420662754274555934, guid: 7296568b8cc53a541a4c12bd46c467d5, type: 3}
+  BeamPrefab: {fileID: 4871919980714681548, guid: 5f06027f051727740bc63a50b3a3e77a, type: 3}
   RecoilSpeed: 1.2
   RotationSpeed: 50
   Power:
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574a1c0b2b8a5a04fbe0a0921371a2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeamPrefab: {fileID: 6420662754274555934, guid: 7296568b8cc53a541a4c12bd46c467d5, type: 3}
+  BeamPrefab: {fileID: 4871919980714681548, guid: 5f06027f051727740bc63a50b3a3e77a, type: 3}
   RecoilSpeed: 1.2
   RotationSpeed: 100
   Power:

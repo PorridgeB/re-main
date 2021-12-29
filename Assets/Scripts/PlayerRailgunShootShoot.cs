@@ -26,7 +26,7 @@ public class PlayerRailgunShootShoot : StateMachineBehaviour
     {
         var power = Power.Evaluate(stateInfo.normalizedTime);
 
-        var railgunBeam = beam.GetComponent<RailgunBeam>();
+        var railgunBeam = beam.GetComponentInChildren<RailgunBeam>();
         railgunBeam.DistanceFactor = power;
         railgunBeam.WidthFactor = power;
     }

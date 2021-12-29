@@ -22,11 +22,9 @@ public class RailgunBeam : MonoBehaviour
     private LineRenderer line;
     private GameObject[] lights;
 
-    // Start is called before the first frame update
     void Start()
     {
         line = GetComponentInChildren<LineRenderer>();
-
         line.startColor = Color;
         line.endColor = Color;
 
@@ -57,8 +55,12 @@ public class RailgunBeam : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
+    {
+        UpdateBeam();
+    }
+
+    void UpdateBeam()
     {
         var distance = MaxDistance * DistanceFactor;
 
@@ -84,7 +86,7 @@ public class RailgunBeam : MonoBehaviour
             light.enabled = i <= numLights;
         }
 
-        // Update end bit
+        // Update impact position
         Impact.transform.localPosition = new Vector3(0, 0.5f, distance);
     }
 
