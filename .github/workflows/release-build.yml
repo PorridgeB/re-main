@@ -9,7 +9,7 @@ on:
       - ".github/**"
 
 concurrency:
-  group: ${{ github.event }}
+  group: ${{ github.action }}
   cancel-in-progress: true
 
 env:
