@@ -204,8 +204,11 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - name: Get Workflow Conclusion
+        uses: technote-space/workflow-conclusion-action@v2
+
       - name: Notify Success
-        if: ${{ needs.publishRelease.result == 'success' }}
+        if: env.WORKFLOW_CONCLUSION == 'success' }}
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -222,8 +225,21 @@ jobs:
           include-details: "false"
           color-success: "#2eb886"
 
+      - name: Notify Cancelled
+        if: env.WORKFLOW_CONCLUSION == 'cancelled'
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discord-webhook: ${{ secrets.WEBHOOK_URL }}
+          username: "${{ github.workflow }}"
+          avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
+          title: "Release build (${{ needs.releaseDraft.outputs.tag_name }}) status: CANCELLED . . ."
+          description: "Click the link above to view details on GitHub."
+          include-details: "false"
+          color-cancelled: "#ffd513"
+
       - name: Notify Failure
-        if: ${{ needs.publishRelease.result == 'failure' }}
+        if: env.WORKFLOW_CONCLUSION == 'failure'
         uses: nobrayner/discord-webhook@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -231,7 +247,6 @@ jobs:
           username: "${{ github.workflow }}"
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
           title: "Release build (${{ needs.releaseDraft.outputs.tag_name }}) status: FAILED . . ."
-          description: "Status of build phases"
-          include-details: "true"
+          description: "Click the link above to view details on GitHub."
+          include-details: "false"
           color-failure: "#a30200"
-          color-cancelled: "#a30200"
