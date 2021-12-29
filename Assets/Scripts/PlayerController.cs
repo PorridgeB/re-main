@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
     private Weapon meleeWeapon = new Sword();
     private Weapon rangedWeapon = new Railgun();
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -100,6 +99,13 @@ public class PlayerController : MonoBehaviour
 
         meleeWeapon.Animator = animator;
         rangedWeapon.Animator = animator;
+
+        inputs.actions["RangedAttack"].canceled += PlayerController_canceled;
+    }
+
+    private void PlayerController_canceled(InputAction.CallbackContext obj)
+    {
+        animator.SetTrigger("RangedRelease");
     }
 
     // Update is called once per frame
