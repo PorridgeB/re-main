@@ -60,6 +60,8 @@ public class Projectile : MonoBehaviour
     [Tooltip("Arc angle that indicates the spread of the new projectiles")]
     [Range(0, 180)]
     public float SplitArcAngle = 30f;
+    [Tooltip("Size factor of the new projectiles")]
+    public float SplitSizeMultiplier = 0.7f;
 
     private new Rigidbody rigidbody;
     private new Light light;
@@ -186,6 +188,8 @@ public class Projectile : MonoBehaviour
 
             var angle = i * (SplitArcAngle / (projectiles - 1)) - SplitArcAngle / 2;
             projectile.Direction = Quaternion.Euler(0, angle, 0) * Direction;
+
+            projectile.Size = Size * SplitSizeMultiplier;
 
             // Really important! Or else the projectiles will grow exponentially
             projectile.SplitEnable = false;

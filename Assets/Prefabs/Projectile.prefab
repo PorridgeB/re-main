@@ -111,6 +111,7 @@ MonoBehaviour:
   SplitMinProjectiles: 2
   SplitMaxProjectiles: 2
   SplitArcAngle: 30
+  SplitSizeMultiplier: 0.7
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0
