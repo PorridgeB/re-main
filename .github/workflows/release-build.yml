@@ -1,4 +1,4 @@
-name: Build for Release 🚀
+name: Build for Release 🚢
 
 on:
   workflow_dispatch:
@@ -68,7 +68,7 @@ jobs:
   buildForRelease:
     # needs: [testRunner, releaseDraft]
     needs: releaseDraft
-    name: Build ${{ matrix.targetPlatform }}
+    name: 🔧 Build
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -183,7 +183,7 @@ jobs:
 
   publishRelease:
     needs: [releaseDraft, uploadBuild]
-    name: 🚢 Publish Release
+    name: 🚢 Publish Release Notes
     runs-on: ubuntu-latest
     steps:
       - uses: eregon/publish-release@v1
@@ -193,7 +193,7 @@ jobs:
           release_id: ${{ needs.releaseDraft.outputs.release_id }}
 
   notifyDiscord:
-    needs: publishRelease
+    needs: [releaseDraft, publishRelease]
     name: 📢 Notify on Discord
     if: always()
     runs-on: ubuntu-latest
@@ -210,9 +210,9 @@ jobs:
           description: |
             📜 View [Release Notes](https://github.com/PorridgeB/re-main/releases/tag/${{ needs.releaseDraft.outputs.tag_name }})
 
-            🍎 Download [Mac build]()
-            🖥️ Download [Windows x64 build]()
-            🤖 Download [Linux x64 build]()
+            🍎 Download [Mac build](https://github.com/PorridgeB/re-main/releases/download/${{ needs.releaseDraft.outputs.tag_name }}/re-main_StandaloneOSX_${{ needs.releaseDraft.outputs.tag_name }}.zip)
+            🖥️ Download [Windows x64 build](https://github.com/PorridgeB/re-main/releases/download/${{ needs.releaseDraft.outputs.tag_name }}/re-main_StandaloneWindows_${{ needs.releaseDraft.outputs.tag_name }}.zip)
+            🤖 Download [Linux x64 build](https://github.com/PorridgeB/re-main/releases/download/${{ needs.releaseDraft.outputs.tag_name }}/re-main_StandaloneLinux64_${{ needs.releaseDraft.outputs.tag_name }}.zip)
           include-details: "false"
           color-success: "#2eb886"
 
