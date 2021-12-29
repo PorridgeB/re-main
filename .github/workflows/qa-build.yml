@@ -154,16 +154,16 @@ jobs:
           include-details: "false"
           color-success: "#2eb886"
 
-      # - name: Notify Failure
-      #   if: ${{ needs.deployWebGL.result != 'success' }}
-      #   uses: nobrayner/discord-webhook@v1
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     discord-webhook: ${{ secrets.WEBHOOK_URL }}
-      #     username: "${{ github.workflow }}"
-      #     avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
-      #     title: "Test Build #${{ github.run_number }} status: FAILED . . ."
-      #     description: "Status of build phases"
-      #     include-details: "true"
-      #     color-failure: "#a30200"
-      #     color-cancelled: "#a30200"
+      - name: Notify Failure
+        if: ${{ needs.deployWebGL.result != 'success' }}
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discord-webhook: ${{ secrets.WEBHOOK_URL }}
+          username: "${{ github.workflow }}"
+          avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
+          title: "Test Build #${{ github.run_number }} status: FAILED . . ."
+          description: "Status of build phases"
+          include-details: "true"
+          color-failure: "#a30200"
+          color-cancelled: "#a30200"
