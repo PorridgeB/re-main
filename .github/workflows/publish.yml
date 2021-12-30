@@ -40,7 +40,7 @@ jobs:
         uses: josephbmanley/butler-publish-itchio-action@v1.0.2
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
-          CHANNEL: Win-64
+          CHANNEL: ${{ matrix.targetPlatform }}
           ITCH_GAME: ${{ secrets.ITCH_GAME_ID }}
           ITCH_USER: ${{ secrets.ITCH_USERNAME }}
           PACKAGE: re-main_${{ matrix.targetPlatform }}_${{ needs.getLatestRelease.outputs.latest_version }}.zip
