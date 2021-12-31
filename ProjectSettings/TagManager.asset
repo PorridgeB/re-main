@@ -10,8 +10,8 @@ TagManager:
   - Artifact
   - DamageSource
   - Enemy
-  - End
-  - Room
+  - Level
+  - Hitbox
   layers:
   - Default
   - TransparentFX
@@ -25,8 +25,8 @@ TagManager:
   - Flying Enemies
   - 
   - Level
-  - Dashable
-  - 
+  - PostProcessing
+  - Projectiles
   - 
   - 
   - 
