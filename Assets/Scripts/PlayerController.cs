@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,14 +57,16 @@ public class PlayerController : MonoBehaviour
     private InputAction interactAction;
     private InputAction overlayAction;
 
-    private Weapon meleeWeapon = new Sword();
-    private Weapon rangedWeapon = new Railgun();
+    // Temporary way to switch weapons in-game for debug purposes
+    private List<Weapon> meleeWeapons = new List<Weapon>() { new Sword(), new Hammer() };
+    private List<Weapon> rangedWeapons = new List<Weapon>() { new Phaser(), new Railgun() };
+
+    private Weapon meleeWeapon;
+    private Weapon rangedWeapon;
 
     // Start is called before the first frame update
     void Awake()
     {
-        
-
         if (instance == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -97,8 +100,11 @@ public class PlayerController : MonoBehaviour
             dashes.Add(g.GetComponent<Dash>());
         }
 
-        meleeWeapon.Animator = animator;
-        rangedWeapon.Animator = animator;
+        foreach (var weapon in meleeWeapons) weapon.Animator = animator;
+        foreach (var weapon in rangedWeapons) weapon.Animator = animator;
+
+        meleeWeapon = meleeWeapons[0];
+        rangedWeapon = rangedWeapons[0];
 
         inputs.actions["RangedAttack"].canceled += OnRangedAttackCanceled;
     }
@@ -386,5 +392,22 @@ public class PlayerController : MonoBehaviour
         {
             ActivateDash();
         }
+    }
+
+    private Weapon NextWeapon(Weapon currentWeapon, List<Weapon> weapons)
+    {
+        int currentWeaponIndex = weapons.FindIndex(x => x == currentWeapon);
+        int nextWeaponIndex = (currentWeaponIndex + 1) % weapons.Count;
+        return weapons[nextWeaponIndex];
+    }
+
+    public void OnNextMeleeWeapon()
+    {
+        meleeWeapon = NextWeapon(meleeWeapon, meleeWeapons);
+    }
+
+    public void OnNextRangedWeapon()
+    {
+        rangedWeapon = NextWeapon(rangedWeapon, rangedWeapons);
     }
 }
