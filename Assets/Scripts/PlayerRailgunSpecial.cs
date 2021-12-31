@@ -29,6 +29,7 @@ public class PlayerRailgunSpecial : StateMachineBehaviour
         var railgunBeam = beam.GetComponentInChildren<RailgunBeam>();
         railgunBeam.DistanceFactor = power;
         railgunBeam.WidthFactor = power;
+        railgunBeam.BeamLightIntensity = power;
 
         var player = PlayerController.instance;
 

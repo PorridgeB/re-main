@@ -5,6 +5,7 @@ using UnityEngine;
 public class RailgunBeam : MonoBehaviour
 {
     public Color Color;
+    public float BeamLightIntensity = 1f;
     public float MaxDistance = 15f;
     public float DistanceFactor = 1f;
     public float HitOffset = -1f;
@@ -98,6 +99,7 @@ public class RailgunBeam : MonoBehaviour
         for (int i = 0; i < lights.Length; i++)
         {
             var light = lights[i].GetComponent<Light>();
+            light.intensity = BeamLightIntensity;
             light.enabled = i <= numLights;
         }
 
@@ -106,8 +108,15 @@ public class RailgunBeam : MonoBehaviour
 
         // Update hurtbox position and size
         var hurtboxCollider = hurtbox.GetComponent<BoxCollider>();
-        hurtboxCollider.center = new Vector3(0, 0, distance / 2);
-        hurtboxCollider.size = new Vector3(2, 2, distance);
+        if (distance > 0.1f)
+        {
+            hurtboxCollider.center = new Vector3(0, 0, distance / 2);
+            hurtboxCollider.size = new Vector3(2, 2, distance);
+        }
+        else
+        {
+            hurtboxCollider.enabled = false;
+        }
     }
 
     void Update()
