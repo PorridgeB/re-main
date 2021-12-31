@@ -71,10 +71,6 @@ public class PlayerDash : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         dashTimer += Time.deltaTime;
-        if (dashTimer > 0.13f)
-        {
-            SetCollisionWithDashable(true);
-        }
         PlayerController.instance.Dash(dashDirection * dashSpeed * speedCurve.Evaluate(dashTimer));
     }
 
