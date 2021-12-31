@@ -47,11 +47,8 @@ public class Gnat : MonoBehaviour
         {
             var source = collision.gameObject.GetComponent<DamageSource>();
 
-            // If projectile or explosion, detonate
-            var isProjectile = collision.gameObject.GetComponent<Projectile>() != null;
-            var isEnergyDamage = source.Damages.Any(x => x.type == DamageType.Energy); // Explosions are energy
-
-            if (isProjectile || isEnergyDamage)
+            var isEnergyDamage = source.Damages.Any(x => x.type == DamageType.Energy);
+            if (isEnergyDamage)
             {
                 Detonate(Random.Range(0, MaximumExplosionDelay));
             }

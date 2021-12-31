@@ -6,6 +6,8 @@ public class ProjectileImpact : MonoBehaviour
 {
     public Color Color;
 
+    [SerializeField]
+    private GameObject hurtbox;
     private new Light light;
     private float maxTime = 1f;
     private float startTime;
@@ -27,6 +29,12 @@ public class ProjectileImpact : MonoBehaviour
         endTime = startTime + maxTime;
 
         Destroy(gameObject, maxTime);
+
+        var damageSource = hurtbox.GetComponent<DamageSource>();
+        damageSource.source = PlayerController.instance.gameObject;
+        damageSource.AddInstance(new DamageInstance { source = PlayerController.instance.gameObject, type = DamageType.Energy, value = 1 });
+
+        Destroy(hurtbox, 0.1f);
     }
 
     void Update()
