@@ -84,6 +84,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "NextMeleeWeapon",
+                    "type": "Button",
+                    "id": "763d7627-d5b0-4307-9456-0c2a5600bcba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NextRangedWeapon",
+                    "type": "Button",
+                    "id": "6ae53d9a-e0c3-4668-bf19-7eb4f65fc466",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -326,6 +342,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MeleeSpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1757913a-d848-40e2-80f0-4ac961edd497",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextMeleeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d5e84dc-86c2-47e3-a3c0-763839ccda78",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextRangedWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

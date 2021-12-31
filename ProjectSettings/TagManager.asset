@@ -12,6 +12,8 @@ TagManager:
   - Enemy
   - End
   - Room
+  - Level
+  - Hitbox
   layers:
   - Default
   - TransparentFX
@@ -27,6 +29,8 @@ TagManager:
   - Level
   - Dashable
   - 
+  - PostProcessing
+  - Projectiles
   - 
   - 
   - 
