@@ -9,7 +9,11 @@ public class Hitbox : MonoBehaviour
         if (other.gameObject.CompareTag("DamageSource"))
         {
             var source = other.gameObject.GetComponent<DamageSource>();
-            SendMessageUpwards("OnDamage", source);
+
+            if (source != null)
+            {
+                SendMessageUpwards("OnDamage", source);
+            }
         }
     }
 }

@@ -58,37 +58,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("DamageSource"))
-        {
-            DamageSource source = collision.gameObject.GetComponent<DamageSource>();
-
-            foreach (Effect e in source.Effects)
-            {
-                e.Resolve(gameObject);
-            }
-
-            foreach (DamageInstance d in source.Damages)
-            {
-                Hurt(d);
-            }
-
-            if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
-            {
-                // Using the player's facing direction if the damage source was from the player
-                if (source.source.CompareTag("Player"))
-                {
-                    var facing = PlayerController.instance.Facing;
-                    hitDirection = new Vector3(facing.x, 0, facing.y);
-
-                    // Tell the behaviour tree that the enemy has been hurt by the player
-                    if (!unstoppable) behaviorTree.SendEvent("Hit");
-                }
-            }
-        }
-    }
-
     public void Slow(float duration)
     {
         if (slowAmount != 0) return;
@@ -169,5 +138,31 @@ public class Enemy : MonoBehaviour
         yield return null;
 
         Destroy(attackFieldInstance);
+    }
+
+    public void OnDamage(DamageSource source)
+    {
+        foreach (Effect e in source.Effects)
+        {
+            e.Resolve(gameObject);
+        }
+
+        foreach (DamageInstance d in source.Damages)
+        {
+            Hurt(d);
+        }
+
+        if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
+        {
+            // Using the player's facing direction if the damage source was from the player
+            if (source.source.CompareTag("Player"))
+            {
+                var facing = PlayerController.instance.Facing;
+                hitDirection = new Vector3(facing.x, 0, facing.y);
+
+                // Tell the behaviour tree that the enemy has been hurt by the player
+                if (!unstoppable) behaviorTree.SendEvent("Hit");
+            }
+        }
     }
 }

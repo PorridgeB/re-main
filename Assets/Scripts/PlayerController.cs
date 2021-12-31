@@ -314,21 +314,6 @@ public class PlayerController : MonoBehaviour
         {
             interactions.Add(collision.GetComponent<Interaction>());
         }
-        else if (collision.CompareTag("DamageSource"))
-        {
-            var damageSource = collision.gameObject.GetComponent<DamageSource>();
-
-            foreach (var damage in damageSource.Damages)
-            {
-                // Stop the player from hurting itself
-                if (damage.source != gameObject)
-                {
-                    ReceiveDamage(damage);
-                    Debug.Log(health);
-                }
-            }
-            
-        }
     }
 
     private void OnTriggerExit(Collider collision)
@@ -409,5 +394,18 @@ public class PlayerController : MonoBehaviour
     public void OnNextRangedWeapon()
     {
         rangedWeapon = NextWeapon(rangedWeapon, rangedWeapons);
+    }
+    
+    public void OnDamage(DamageSource source)
+    {
+        foreach (var instance in source.Damages)
+        {
+            // Stop the player from hurting itself
+            if (instance.source != gameObject)
+            {
+                ReceiveDamage(instance);
+                Debug.Log(health);
+            }
+        }
     }
 }

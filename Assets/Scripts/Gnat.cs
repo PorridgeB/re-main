@@ -41,17 +41,12 @@ public class Gnat : MonoBehaviour
         damageSource.AddInstance(damageInstance);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    public void OnDamage(DamageSource source)
     {
-        if (collision.gameObject.CompareTag("DamageSource"))
+        var hasEnergyDamage = source.Damages.Any(x => x.type == DamageType.Energy);
+        if (hasEnergyDamage)
         {
-            var source = collision.gameObject.GetComponent<DamageSource>();
-
-            var isEnergyDamage = source.Damages.Any(x => x.type == DamageType.Energy);
-            if (isEnergyDamage)
-            {
-                Detonate(Random.Range(0, MaximumExplosionDelay));
-            }
+            Detonate(Random.Range(0, MaximumExplosionDelay));
         }
     }
 
