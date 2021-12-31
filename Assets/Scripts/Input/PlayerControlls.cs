@@ -97,6 +97,22 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextMeleeWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""763d7627-d5b0-4307-9456-0c2a5600bcba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextRangedWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ae53d9a-e0c3-4668-bf19-7eb4f65fc466"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -341,6 +357,28 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""MeleeSpecialAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1757913a-d848-40e2-80f0-4ac961edd497"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextMeleeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d5e84dc-86c2-47e3-a3c0-763839ccda78"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextRangedWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -565,6 +603,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_CharacterControl_MeleeAttack = m_CharacterControl.FindAction("MeleeAttack", throwIfNotFound: true);
         m_CharacterControl_MeleeSpecialAttack = m_CharacterControl.FindAction("MeleeSpecialAttack", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
+        m_CharacterControl_NextMeleeWeapon = m_CharacterControl.FindAction("NextMeleeWeapon", throwIfNotFound: true);
+        m_CharacterControl_NextRangedWeapon = m_CharacterControl.FindAction("NextRangedWeapon", throwIfNotFound: true);
         // DialogueControl
         m_DialogueControl = asset.FindActionMap("DialogueControl", throwIfNotFound: true);
         m_DialogueControl_Continue = m_DialogueControl.FindAction("Continue", throwIfNotFound: true);
@@ -639,6 +679,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_MeleeAttack;
     private readonly InputAction m_CharacterControl_MeleeSpecialAttack;
     private readonly InputAction m_CharacterControl_Interact;
+    private readonly InputAction m_CharacterControl_NextMeleeWeapon;
+    private readonly InputAction m_CharacterControl_NextRangedWeapon;
     public struct CharacterControlActions
     {
         private @PlayerControlls m_Wrapper;
@@ -653,6 +695,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @MeleeAttack => m_Wrapper.m_CharacterControl_MeleeAttack;
         public InputAction @MeleeSpecialAttack => m_Wrapper.m_CharacterControl_MeleeSpecialAttack;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
+        public InputAction @NextMeleeWeapon => m_Wrapper.m_CharacterControl_NextMeleeWeapon;
+        public InputAction @NextRangedWeapon => m_Wrapper.m_CharacterControl_NextRangedWeapon;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -692,6 +736,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @NextMeleeWeapon.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextMeleeWeapon;
+                @NextMeleeWeapon.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextMeleeWeapon;
+                @NextMeleeWeapon.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextMeleeWeapon;
+                @NextRangedWeapon.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
+                @NextRangedWeapon.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
+                @NextRangedWeapon.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -726,6 +776,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @NextMeleeWeapon.started += instance.OnNextMeleeWeapon;
+                @NextMeleeWeapon.performed += instance.OnNextMeleeWeapon;
+                @NextMeleeWeapon.canceled += instance.OnNextMeleeWeapon;
+                @NextRangedWeapon.started += instance.OnNextRangedWeapon;
+                @NextRangedWeapon.performed += instance.OnNextRangedWeapon;
+                @NextRangedWeapon.canceled += instance.OnNextRangedWeapon;
             }
         }
     }
@@ -889,6 +945,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnMeleeSpecialAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnNextMeleeWeapon(InputAction.CallbackContext context);
+        void OnNextRangedWeapon(InputAction.CallbackContext context);
     }
     public interface IDialogueControlActions
     {
