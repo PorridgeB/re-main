@@ -6,10 +6,8 @@ public class StatBlock : MonoBehaviour
 {
     public Attribute MeleeAttackDamage;
     public Attribute MeleeAttackSpeed;
-    public Attribute SpecialMeleeAttackSpeed;
     public Attribute RangedAttackDamage;
     public Attribute RangedAttackSpeed;
-    public Attribute SpecialRangedAttackSpeed;
     public Attribute CritChance;
     public Attribute CritDamage;
 

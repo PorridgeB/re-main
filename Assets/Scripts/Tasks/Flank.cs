@@ -21,7 +21,7 @@ public class Flank : Action
     public override void OnStart()
     {
         agent = GetComponent<NavMeshAgent>();
-        ghostTrail = gameObject.GetComponentInChildren<ParticleSystem>();
+        ghostTrail = GetComponent<ParticleSystem>();
 
         clockwise = Random.value > 0.5f;
 

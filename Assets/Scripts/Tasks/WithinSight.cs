@@ -15,7 +15,7 @@ public class WithinSight : Conditional
     {
         var direction = (Target.Value.transform.position - transform.position).normalized;
 
-        if (Physics.Raycast(transform.position + Vector3.up, direction, out RaycastHit raycastHit, SightDistance.Value, Mask.Value))
+        if (Physics.Raycast(transform.position, direction, out RaycastHit raycastHit, SightDistance.Value, Mask.Value))
         {
             if (raycastHit.collider.gameObject == Target.Value)
             {

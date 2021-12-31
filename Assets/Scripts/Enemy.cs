@@ -37,9 +37,9 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
-        agent = GetComponentInChildren<NavMeshAgent>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         behaviorTree = GetComponent<BehaviorTree>();
 
         // Set the Player and PlayerTransform behaviour tree global variables
@@ -55,6 +55,37 @@ public class Enemy : MonoBehaviour
         if (Mathf.Abs(agent.velocity.x) > SpriteFlipDeadzone)
         {
             spriteRenderer.flipX = agent.velocity.x > 0;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("DamageSource"))
+        {
+            DamageSource source = collision.gameObject.GetComponent<DamageSource>();
+
+            foreach (Effect e in source.Effects)
+            {
+                e.Resolve(gameObject);
+            }
+
+            foreach (DamageInstance d in source.Damages)
+            {
+                Hurt(d);
+            }
+
+            if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
+            {
+                // Using the player's facing direction if the damage source was from the player
+                if (source.source.CompareTag("Player"))
+                {
+                    var facing = PlayerController.instance.GetFacing();
+                    hitDirection = new Vector3(facing.x, 0, facing.y);
+
+                    // Tell the behaviour tree that the enemy has been hurt by the player
+                    if (!unstoppable) behaviorTree.SendEvent("Hit");
+                }
+            }
         }
     }
 
@@ -134,7 +165,7 @@ public class Enemy : MonoBehaviour
 
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.z).normalized;
 
-        attackFieldInstance.transform.localPosition = new Vector3(0, 0.5f, 0) + forwardDirection * AttackFieldDistance;
+        attackFieldInstance.transform.localPosition = forwardDirection * AttackFieldDistance;
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
         // Wait for a few frames
@@ -142,31 +173,5 @@ public class Enemy : MonoBehaviour
         yield return null;
 
         Destroy(attackFieldInstance);
-    }
-
-    public void OnDamage(DamageSource source)
-    {
-        foreach (Effect e in source.Effects)
-        {
-            e.Resolve(gameObject);
-        }
-
-        foreach (DamageInstance d in source.Damages)
-        {
-            Hurt(d);
-        }
-
-        if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
-        {
-            // Using the player's facing direction if the damage source was from the player
-            if (source.source.CompareTag("Player"))
-            {
-                var facing = PlayerController.instance.Facing;
-                hitDirection = new Vector3(facing.x, 0, facing.y);
-
-                // Tell the behaviour tree that the enemy has been hurt by the player
-                if (!unstoppable) behaviorTree.SendEvent("Hit");
-            }
-        }
     }
 }
