@@ -130,7 +130,7 @@ public class Enemy : MonoBehaviour
 
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.z).normalized;
 
-        attackFieldInstance.transform.localPosition = forwardDirection * AttackFieldDistance;
+        attackFieldInstance.transform.localPosition = new Vector3(0, 0.5f, 0) + forwardDirection * AttackFieldDistance;
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
         // Wait for a few frames
