@@ -7,32 +7,17 @@ public class TargetDummy : MonoBehaviour
     [SerializeField]
     private float damageTotal;
     [SerializeField]
-    private GameObject damageToken;
+    private GameObject damageTokenPrefab;
+    [SerializeField]
+    private Transform damageTokenSpawn;
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnDamage(DamageSource source)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("DamageSource"))
+        foreach (var instance in source.Damages)
         {
-            List<DamageInstance> sources = collision.gameObject.GetComponent<DamageSource>().Damages;
-            foreach (DamageInstance d in sources)
-            {
-                damageTotal += d.value;
-                GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
-                g.GetComponent<DamageToken>().SetValue(d);
-            }
-            
+            damageTotal += instance.value;
+            var damageToken = Instantiate(damageTokenPrefab, damageTokenSpawn.position, Quaternion.identity);
+            damageToken.GetComponent<DamageToken>().SetValue(instance);
         }
     }
 }
