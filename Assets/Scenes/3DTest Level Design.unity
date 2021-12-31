@@ -1074,7 +1074,6 @@ MonoBehaviour:
   obstacleRooms:
   - {fileID: 3542891387217972496, guid: d4e7b416784baf94180059c675855871, type: 3}
   combatRooms:
-  - {fileID: 3542891387217972496, guid: c4d3ccdf9a49a994da2b9e12c23033f9, type: 3}
   - {fileID: 3542891387217972496, guid: 279d581f785a79446bd05cb695c49f9c, type: 3}
   hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
   directions:

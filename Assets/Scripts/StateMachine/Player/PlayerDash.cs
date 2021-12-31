@@ -12,8 +12,6 @@ public class PlayerDash : StateMachineBehaviour
     private float dashTimer;
     private float dashSoundRange;
     private Vector2 dashDirection;
-    [SerializeField]
-    private GameObject cube;
 
     private void SetCollisionWithEnemies(bool enabled)
     {
@@ -27,24 +25,28 @@ public class PlayerDash : StateMachineBehaviour
     {
         var dashableLayer = LayerMask.NameToLayer("Dashable");
         var playerLayer = LayerMask.NameToLayer("Player");
-
         Physics.IgnoreLayerCollision(playerLayer, dashableLayer, !enabled);
     }
 
     private void CheckEndpointClear()
     {
-        Vector3 origin = GameObject.Find("Player").transform.position + new Vector3(dashDirection.x, 0, dashDirection.y) * 5.5f;
-        Collider[] cols = Physics.OverlapBox(origin, new Vector3(0.1f, 0.1f, 0.1f));
-        foreach (Collider c in cols)
+        Vector3 playerPos = GameObject.Find("Player").transform.position;
+        for (int i = 1; i < 6; i++)
         {
-            Debug.Log(c.name);
-            if (c.gameObject.layer == LayerMask.NameToLayer("Dashable"))
+            Vector3 origin = playerPos + new Vector3(dashDirection.x, 0, dashDirection.y) * (i + .5f);
+            Collider[] cols = Physics.OverlapBox(origin, new Vector3(0.1f, 0.1f, 0.1f));
+            foreach (Collider c in cols)
             {
-                Debug.Log("cant dash here");
-                return;
+                if (c.gameObject.layer == LayerMask.NameToLayer("Dashable"))
+                {
+                    Debug.Log("hit dashable on " + i);
+                    continue;
+                }
             }
+            SetCollisionWithDashable(false);
+            return;
         }
-        SetCollisionWithDashable(false);
+        
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -69,6 +71,10 @@ public class PlayerDash : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         dashTimer += Time.deltaTime;
+        if (dashTimer > 0.13f)
+        {
+            SetCollisionWithDashable(true);
+        }
         PlayerController.instance.Dash(dashDirection * dashSpeed * speedCurve.Evaluate(dashTimer));
     }
 
