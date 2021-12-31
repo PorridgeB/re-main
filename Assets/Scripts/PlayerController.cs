@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private bool dashBlocked = true;
     private float viewDistance;
     private Vector2 facing;
+    // temporary (use SO)
+    private float health = 100f;
     //private Crosshair crosshair;
 
     [SerializeField]
@@ -174,7 +176,8 @@ public class PlayerController : MonoBehaviour
 
         if (healthRegenTimer.Finished)
         {
-            health.ChangeValue(1);
+            //health.ChangeValue(1);
+            health += 1;
             healthRegenTimer.Reset(1/stats.HealthRegen.Value());
         }
     }
@@ -253,9 +256,11 @@ public class PlayerController : MonoBehaviour
                 finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
-        health.ChangeValue(-finalDamageValue);
+        //health.ChangeValue(-finalDamageValue);
+        health -= finalDamageValue;
         CreateDamageToken(finalDamageValue);
-        if (health.Value < 0)
+        //if (health.Value < 0)
+        if (health < 0)
         {
             playerDeath.Raise();
         }

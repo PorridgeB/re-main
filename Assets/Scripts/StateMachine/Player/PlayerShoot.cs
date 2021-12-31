@@ -17,6 +17,6 @@ public class PlayerShoot : StateMachineBehaviour
         damageSource.source = PlayerController.instance.gameObject;
         
 
-        p.Shoot(new Vector3(animator.transform.position.x,0.5f, animator.transform.position.z), PlayerController.instance.GetFacing(), speed);
+        //p.Shoot(new Vector3(animator.transform.position.x,0.5f, animator.transform.position.z), PlayerController.instance.GetFacing(), speed);
     }
 }

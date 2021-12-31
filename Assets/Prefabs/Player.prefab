@@ -245,8 +245,6 @@ Transform:
   - {fileID: 4016479379570521998}
   - {fileID: 4505106388328366135}
   - {fileID: 391824669696522478}
-  - {fileID: 8684325453331471707}
-  - {fileID: 6959805361367312119}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,11 +301,7 @@ MonoBehaviour:
   healthRegenTimer: {fileID: 4505106388328366134}
   interactions: []
   stats: {fileID: 6292936344987751588}
-  health:
-    UseConstant: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 818fe3adad0eba143b337e4e800f20c9, type: 2}
-    maxValue: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
+  damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
 --- !u!114 &4505106388035379474
 MonoBehaviour:
   m_ObjectHideFlags: 0
