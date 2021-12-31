@@ -37,9 +37,9 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
+        agent = GetComponentInChildren<NavMeshAgent>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         behaviorTree = GetComponent<BehaviorTree>();
 
         // Set the Player and PlayerTransform behaviour tree global variables

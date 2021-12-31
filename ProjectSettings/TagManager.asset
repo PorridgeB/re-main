@@ -11,6 +11,7 @@ TagManager:
   - DamageSource
   - Enemy
   - Level
+  - Hitbox
   layers:
   - Default
   - TransparentFX
