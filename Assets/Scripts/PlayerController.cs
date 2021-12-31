@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,15 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-    [SerializeField]
+    public Vector2 Facing => facing;
+
     public GameEvent playerHit;
     [SerializeField]
     public GameEvent playerDeath;
 
     private Animator anim;
+    private AttackEvent nextAttack;
+    private Animator animator;
 
     public readonly List<DamageInstance> damageTaken = new List<DamageInstance>();
 
@@ -30,6 +34,10 @@ public class PlayerController : MonoBehaviour
     private Timer rangedCooldown;
     [SerializeField]
     private Timer meleeCooldown;
+    [SerializeField]
+    private Timer specialRangedCooldown;
+    [SerializeField]
+    private Timer specialMeleeCooldown;
     [SerializeField]
     private Timer healthRegenTimer;
 
@@ -53,21 +61,16 @@ public class PlayerController : MonoBehaviour
     private InputAction interactAction;
     private InputAction overlayAction;
 
-    [SerializeField]
-    private Resource health;
+    // Temporary way to switch weapons in-game for debug purposes
+    private List<Weapon> meleeWeapons = new List<Weapon>() { new Sword(), new Hammer() };
+    private List<Weapon> rangedWeapons = new List<Weapon>() { new Phaser(), new Railgun() };
 
-    public Vector2 GetFacing()
-    {
-        return facing;
-    }
-
-
+    private Weapon meleeWeapon;
+    private Weapon rangedWeapon;
 
     // Start is called before the first frame update
     void Awake()
     {
-        
-
         if (instance == null)
         {
             instance = this;
@@ -79,14 +82,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-
-        //health = GetComponentInChildren<Resource>();
-        //crosshair = GetComponentInChildren<Crosshair>();
-        anim = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
         inputs = GetComponent<PlayerInput>();
         movement = GetComponent<PlayerMovement>();
-
 
         moveAction = inputs.actions["move"];
         walkAction = inputs.actions["walk"];
@@ -102,6 +101,19 @@ public class PlayerController : MonoBehaviour
             g.transform.SetParent(transform);
             dashes.Add(g.GetComponent<Dash>());
         }
+
+        foreach (var weapon in meleeWeapons) weapon.Animator = animator;
+        foreach (var weapon in rangedWeapons) weapon.Animator = animator;
+
+        meleeWeapon = meleeWeapons[0];
+        rangedWeapon = rangedWeapons[0];
+
+        inputs.actions["RangedAttack"].canceled += OnRangedAttackCanceled;
+    }
+
+    private void OnRangedAttackCanceled(InputAction.CallbackContext obj)
+    {
+        animator.SetTrigger("RangedRelease");
     }
 
     // Update is called once per frame
@@ -109,6 +121,8 @@ public class PlayerController : MonoBehaviour
     {
         interactions.RemoveAll(delegate (Interaction i) { return i == null; });
 
+        facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
+        
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
@@ -119,18 +133,16 @@ public class PlayerController : MonoBehaviour
             inputs.SwitchCurrentActionMap("OverlayControl");
         }
 
-        facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
-
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {
-            anim.SetFloat("Horizontal", facing.x);
-            anim.SetFloat("Vertical", facing.y);
+            animator.SetFloat("Horizontal", facing.x);
+            animator.SetFloat("Vertical", facing.y);
         }
         
         // As deadzones don't seem to work, I have added a manual deadzone so it will ignore input that is too small to be deliberate
-        anim.SetFloat("VelX", Mathf.Abs(moveAction.ReadValue<Vector2>().x) > 0.2 ? moveAction.ReadValue<Vector2>().x : 0);
-        anim.SetFloat("VelY", Mathf.Abs(moveAction.ReadValue<Vector2>().y) > 0.2 ? moveAction.ReadValue<Vector2>().y : 0);
-        anim.SetBool("Sneak", walkAction.phase == InputActionPhase.Started);
+        animator.SetFloat("VelX", Mathf.Abs(moveAction.ReadValue<Vector2>().x) > 0.2 ? moveAction.ReadValue<Vector2>().x : 0);
+        animator.SetFloat("VelY", Mathf.Abs(moveAction.ReadValue<Vector2>().y) > 0.2 ? moveAction.ReadValue<Vector2>().y : 0);
+        animator.SetBool("Sneak", walkAction.phase == InputActionPhase.Started);
 
         if (interactions.Count == 1)
         {
@@ -174,7 +186,7 @@ public class PlayerController : MonoBehaviour
             if (d.Ready)
             {
                 d.Activate(1 / stats.DashRechargeRate.Value());
-                anim.SetTrigger("Dash");
+                animator.SetTrigger("Dash");
                 return;
             }
         }
@@ -317,20 +329,6 @@ public class PlayerController : MonoBehaviour
         {
             interactions.Add(collision.GetComponent<Interaction>());
         }
-        else if (collision.CompareTag("DamageSource"))
-        {
-            var damageSource = collision.gameObject.GetComponent<DamageSource>();
-
-            foreach (var damage in damageSource.Damages)
-            {
-                // Stop the player from hurting itself
-                if (damage.source != gameObject)
-                {
-                    ReceiveDamage(damage);
-                }
-            }
-            
-        }
     }
 
     private void OnTriggerExit(Collider collision)
@@ -354,13 +352,18 @@ public class PlayerController : MonoBehaviour
         {
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             rangedCooldown.Reset(1 / stats.RangedAttackSpeed.Value());
-            anim.SetTrigger("Ranged");
+            rangedWeapon?.Fire();
         }
     }
 
     public void OnRangedSpecialAttack()
     {
-
+        if (specialRangedCooldown.Finished)
+        {
+            // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+            specialRangedCooldown.Reset(1 / stats.SpecialRangedAttackSpeed.Value());
+            rangedWeapon?.SpecialFire();
+        }
     }
 
     public void OnMeleeAttack()
@@ -369,20 +372,55 @@ public class PlayerController : MonoBehaviour
         {
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             meleeCooldown.Reset(1 / stats.MeleeAttackSpeed.Value());
-            anim.SetTrigger("Melee");
+            meleeWeapon?.Fire();
         }
     }
 
     public void OnMeleeSpecialAttack()
     {
-         
+        if (specialMeleeCooldown.Finished)
+        {
+            // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
+            specialMeleeCooldown.Reset(1 / stats.SpecialMeleeAttackSpeed.Value());
+            meleeWeapon?.SpecialFire();
+        }
     }
 
     public void OnDash()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
         {
             ActivateDash();
+        }
+    }
+
+    private Weapon NextWeapon(Weapon currentWeapon, List<Weapon> weapons)
+    {
+        int currentWeaponIndex = weapons.FindIndex(x => x == currentWeapon);
+        int nextWeaponIndex = (currentWeaponIndex + 1) % weapons.Count;
+        return weapons[nextWeaponIndex];
+    }
+
+    public void OnNextMeleeWeapon()
+    {
+        meleeWeapon = NextWeapon(meleeWeapon, meleeWeapons);
+    }
+
+    public void OnNextRangedWeapon()
+    {
+        rangedWeapon = NextWeapon(rangedWeapon, rangedWeapons);
+    }
+    
+    public void OnDamage(DamageSource source)
+    {
+        foreach (var instance in source.Damages)
+        {
+            // Stop the player from hurting itself
+            if (instance.source != gameObject)
+            {
+                ReceiveDamage(instance);
+                Debug.Log(health);
+            }
         }
     }
 }
