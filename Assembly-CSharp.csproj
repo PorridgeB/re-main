@@ -183,7 +183,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\SetStartRotation.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\GetVector2.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\Distance.cs" />
-    <Compile Include="Assets\Hitbox.cs" />
+    <Compile Include="Assets\Scripts\Hitbox.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetShadowSoftness.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\GetRightVector.cs" />
     <Compile Include="Assets\Scripts\TargetDummy.cs" />
@@ -1371,10 +1371,6 @@
       <Project>{F38A7D76-3E23-530C-BA63-5B90915CC13B}</Project>
       <Name>Unity.2D.Path.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
-      <Project>{B38BD489-0773-D7C3-4BFD-EA9905078013}</Project>
-      <Name>Unity.Postprocessing.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.csproj">
       <Project>{43C1EA42-8BE8-7CF0-FFA3-6CDDDDF1FB82}</Project>
       <Name>Unity.InputSystem</Name>
@@ -1414,10 +1410,6 @@
     <ProjectReference Include="InkEditor.csproj">
       <Project>{E7FAF185-93D9-A64F-260A-96FACEA9E036}</Project>
       <Name>InkEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
-      <Project>{E8E6DDCB-EA38-6BCB-413B-63B1CFBB144B}</Project>
-      <Name>Unity.Postprocessing.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj">
       <Project>{F77E19C4-AEEC-2519-27B0-DCC2C6E03B23}</Project>
@@ -1478,6 +1470,14 @@
     <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj">
       <Project>{52B5D4F3-E2E8-80BF-11A9-6C1C5EEBB682}</Project>
       <Name>Unity.2D.SpriteShape.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
+      <Project>{B38BD489-0773-D7C3-4BFD-EA9905078013}</Project>
+      <Name>Unity.Postprocessing.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
+      <Project>{E8E6DDCB-EA38-6BCB-413B-63B1CFBB144B}</Project>
+      <Name>Unity.Postprocessing.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
