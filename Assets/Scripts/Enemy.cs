@@ -111,10 +111,14 @@ public class Enemy : MonoBehaviour
     public void Hurt(DamageInstance d)
     {
         // Stop it from hurting itself
-        if (CompareTag(d.source.tag))
+        if (d.source != null)
         {
-            return;
+            if (CompareTag(d.source.tag))
+            {
+                return;
+            }
         }
+        
 
         GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
         g.GetComponent<DamageToken>().SetValue(d);

@@ -1072,9 +1072,12 @@ MonoBehaviour:
   chestRooms:
   - {fileID: 3542891387217972496, guid: 85718ef28b57b094b9540498afc43688, type: 3}
   obstacleRooms:
-  - {fileID: 3542891387217972496, guid: d4e7b416784baf94180059c675855871, type: 3}
+  - {fileID: 3542891387217972496, guid: 36a4e5d5f8af4a5409b423f7fc2f6a95, type: 3}
   combatRooms:
   - {fileID: 3542891387217972496, guid: 279d581f785a79446bd05cb695c49f9c, type: 3}
+  - {fileID: 3542891387217972496, guid: c4d3ccdf9a49a994da2b9e12c23033f9, type: 3}
+  trapRooms:
+  - {fileID: 3542891387217972496, guid: 86087c9e94e51e4449702169b32182ef, type: 3}
   hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
   directions:
   - {x: 1, y: 0, z: 0}
@@ -4366,6 +4369,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4505106388035379476, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: damageToken
+      value: 
+      objectReference: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
     - target: {fileID: 4505106388035379476, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
       propertyPath: health.UseConstant
       value: 0

@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private StatBlock stats;
 
+    [SerializeField]
+    private GameObject damageToken;
+
     private InputAction moveAction;
     private InputAction walkAction;
     private InputAction dashAction;
@@ -239,10 +242,17 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         health.ChangeValue(-finalDamageValue);
+        CreateDamageToken(finalDamageValue);
         if (health.Value < 0)
         {
             playerDeath.Raise();
         }
+    }
+
+    private void CreateDamageToken(float value)
+    {
+        GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
+        g.GetComponent<DamageToken>().SetValue(value);
     }
 
     private bool CheckDodge()

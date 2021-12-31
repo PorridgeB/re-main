@@ -19,6 +19,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private List<GameObject> combatRooms;
     [SerializeField]
+    private List<GameObject> trapRooms;
+    [SerializeField]
     private GameObject hall;
     [SerializeField]
     private List<Vector3> directions = new List<Vector3>();
@@ -121,6 +123,9 @@ public class LevelGenerator : MonoBehaviour
                     break;
                 case 'e':
                     prefab = combatRooms[Random.Range(0, combatRooms.Count)];
+                    break;
+                case 't':
+                    prefab = trapRooms[Random.Range(0, trapRooms.Count)];
                     break;
                 default:
                     prefab = rooms[Random.Range(0, rooms.Count)];

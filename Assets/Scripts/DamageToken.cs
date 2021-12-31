@@ -46,6 +46,13 @@ public class DamageToken : MonoBehaviour
         }
     }
 
+    public void SetValue(float value)
+    {
+        DamageInstance d = new DamageInstance();
+        d.value = value;
+        SetValue(d);
+    }
+
     public void Finish()
     {
         Destroy(gameObject);

@@ -11,6 +11,15 @@ public class Room : MonoBehaviour
     private Vector2 cellSize;
     [SerializeField]
     private List<GameObject> walls;
+    [SerializeField]
+    private List<Transform> enemySpawns;
+    public List<Transform> EnemySpawns
+    {
+        get
+        {
+            return enemySpawns;
+        }
+    }
 
     [SerializeField]
     private GameObject chest;
