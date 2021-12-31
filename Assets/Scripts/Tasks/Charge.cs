@@ -16,7 +16,7 @@ public class Charge : Action
 
 	public override void OnStart()
 	{
-		agent = gameObject.GetComponentInChildren<NavMeshAgent>();
+		agent = GetComponent<NavMeshAgent>();
 		ghostTrail = gameObject.GetComponentInChildren<ParticleSystem>();
 
 		startTime = Time.time;
