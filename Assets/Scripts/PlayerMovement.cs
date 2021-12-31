@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
 
     private CharacterController characterController;
+    [SerializeField]
     private Animator anim;
     private Vector2 velocity;
 
@@ -21,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame

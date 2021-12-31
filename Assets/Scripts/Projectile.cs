@@ -155,10 +155,7 @@ public class Projectile : MonoBehaviour
 
     private void Fizzle()
     {
-        if (!GetComponent<DamageSource>().source.CompareTag(other.gameObject.tag))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     private void Impact()

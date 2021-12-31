@@ -1074,25 +1074,25 @@ MonoBehaviour:
   obstacleRooms:
   - {fileID: 3542891387217972496, guid: 36a4e5d5f8af4a5409b423f7fc2f6a95, type: 3}
   combatRooms:
-  - {fileID: 3542891387217972496, guid: 279d581f785a79446bd05cb695c49f9c, type: 3}
   - {fileID: 3542891387217972496, guid: c4d3ccdf9a49a994da2b9e12c23033f9, type: 3}
+  - {fileID: 3542891387217972496, guid: 279d581f785a79446bd05cb695c49f9c, type: 3}
   trapRooms:
   - {fileID: 3542891387217972496, guid: 86087c9e94e51e4449702169b32182ef, type: 3}
-  hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
+  hall: {fileID: 0}
   directions:
   - {x: 1, y: 0, z: 0}
-  - {x: -1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
+  - {x: -1, y: 0, z: 0}
   - {x: 0, y: 0, z: -1}
   corners:
-  - {x: 0.95, y: 0, z: 0.95}
-  - {x: -0.95, y: 0, z: -0.95}
-  - {x: 0.95, y: 0, z: -0.95}
-  - {x: -0.95, y: 0, z: 0.95}
   - {x: 0.95, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0.95}
+  - {x: 0.95, y: 0, z: 0.95}
   - {x: -0.95, y: 0, z: 0}
+  - {x: -0.95, y: 0, z: -0.95}
+  - {x: 0, y: 0, z: 0.95}
+  - {x: 0.95, y: 0, z: -0.95}
   - {x: 0, y: 0, z: -0.95}
+  - {x: -0.95, y: 0, z: 0.95}
   generationTemplate: 
   generationAttempts: 0
   SceneReady: {fileID: 11400000, guid: 223b582ffa0eff245bd7d99fb33726c9, type: 2}
@@ -4007,6 +4007,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1668776408 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2345034748397969761, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+  m_PrefabInstance: {fileID: 1915708898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1680510412
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,6 +4330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4505106388035379474, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1668776408}
     - target: {fileID: 4505106388035379475, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4373,6 +4382,14 @@ PrefabInstance:
       propertyPath: damageToken
       value: 
       objectReference: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
+    - target: {fileID: 4505106388035379476, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: health.Variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 818fe3adad0eba143b337e4e800f20c9, type: 2}
+    - target: {fileID: 4505106388035379476, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: health.maxValue
+      value: 
+      objectReference: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
     - target: {fileID: 4505106388035379476, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
       propertyPath: health.UseConstant
       value: 0
