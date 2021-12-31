@@ -8,6 +8,7 @@ public class RailgunBeam : MonoBehaviour
     public float MaxDistance = 15f;
     public float DistanceFactor = 1f;
     public float HitOffset = -1f;
+    public float HurtboxFrequency = 5f;
     public float Width = 0.75f;
     public float WidthFactor = 1f;
     public float WidthVariation = 0.1f;
@@ -19,6 +20,8 @@ public class RailgunBeam : MonoBehaviour
     public GameObject Impact;
     public ParticleSystem BeamParticleSystem;
 
+    [SerializeField]
+    private GameObject hurtbox;
     private LineRenderer line;
     private GameObject[] lights;
 
@@ -39,6 +42,18 @@ public class RailgunBeam : MonoBehaviour
         impactMain.startColor = Color;
 
         SetupLights();
+
+        var hurtboxDamageSource = hurtbox.GetComponent<DamageSource>();
+        hurtboxDamageSource.source = PlayerController.instance.gameObject;
+        hurtboxDamageSource.AddInstance(new DamageInstance { source = PlayerController.instance.gameObject, type = DamageType.Energy, value = 1 });
+
+        InvokeRepeating("ToggleHurtbox", 0.1f, 1 / HurtboxFrequency);
+    }
+
+    private void ToggleHurtbox()
+    {
+        var hurtboxCollider = hurtbox.GetComponent<BoxCollider>();
+        hurtboxCollider.enabled = !hurtboxCollider.enabled;
     }
 
     void SetupLights()
@@ -88,6 +103,11 @@ public class RailgunBeam : MonoBehaviour
 
         // Update impact position
         Impact.transform.localPosition = new Vector3(0, 0.5f, distance);
+
+        // Update hurtbox position and size
+        var hurtboxCollider = hurtbox.GetComponent<BoxCollider>();
+        hurtboxCollider.center = new Vector3(0, 0, distance / 2);
+        hurtboxCollider.size = new Vector3(2, 2, distance);
     }
 
     void Update()

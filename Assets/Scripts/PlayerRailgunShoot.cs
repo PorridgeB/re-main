@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRailgunShootShoot : StateMachineBehaviour
+public class PlayerRailgunShoot : StateMachineBehaviour
 {
     public GameObject BeamPrefab;
     public float RecoilSpeed = 1.2f;

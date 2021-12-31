@@ -6,7 +6,7 @@ public class Railgun : Weapon
 {
     public override void Fire()
     {
-        var shootBehaviour = Animator.GetBehaviour<PlayerRailgunShootShoot>();
+        var shootBehaviour = Animator.GetBehaviour<PlayerRailgunShoot>();
 
         Animator.SetTrigger("RailgunShoot");
     }
