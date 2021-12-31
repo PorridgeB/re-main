@@ -1,7 +1,12 @@
-name: Build for QA 🔎
+name: Build for Release 🚢
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - ".github/**"
 
 concurrency:
   group: ${{ github.workflow }}
@@ -65,17 +70,21 @@ jobs:
   #         name: Test results (${{ matrix.testMode }})
   #         path: ${{ steps.testRunner.outputs.artifactsPath }}
 
-  buildWebGL:
-    # needs: testRunner
-    name: 🌐 Build WebGL
+  buildForRelease:
+    # needs: [testRunner, releaseDraft]
+    needs: releaseDraft
+    name: 🔧 Build
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX
+          - StandaloneWindows
+          - StandaloneLinux64
     steps:
-      - name: Checkout develop branch
+      - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          ref: develop
 
       - name: Create LFS file list
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
@@ -102,25 +111,54 @@ jobs:
             Library-build-
             Library-
 
-      - name: Build into WebGL
-        continue-on-error: true
+      - name: Build into ${{ matrix.targetPlatform }}
         uses: game-ci/unity-builder@4e7125603b7544961022d5a1fd09094b00918abd
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          targetPlatform: WebGL
+          targetPlatform: ${{ matrix.targetPlatform }}
 
-      - name: Upload Build
+      - name: Upload ${{ matrix.targetPlatform }} Build
         uses: actions/upload-artifact@v2
         with:
-          name: build-WebGL
-          path: build/WebGL
-          retention-days: 30 # 30 days of retention in case we need to look at what the previous tests look like
+          name: build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
+          retention-days: 14 # Only retain as long as a sprint because they exist forever in the release notes
 
-  deployWebGL:
-    needs: buildWebGL
-    name: 🚚 Deploy WebGL
+  releaseDraft:
+    name: 📜 Release Draft
+    if: always()
     runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.output_upload_url.outputs.upload_url }}
+      tag_name: ${{ steps.output_tag_name.outputs.tag_name }}
+      release_id: ${{ steps.output_release_id.outputs.release_id }}
+      html_url: ${{ steps.output_html_url.outputs.html_url }}
+    steps:
+      - name: Draft a Release
+        uses: release-drafter/release-drafter@master
+        id: release-draft
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - id: output_upload_url
+        run: echo "::set-output name=upload_url::${{ steps.release-draft.outputs.upload_url }}"
+      - id: output_tag_name
+        run: echo "::set-output name=tag_name::${{ steps.release-draft.outputs.tag_name }}"
+      - id: output_release_id
+        run: echo "::set-output name=release_id::${{ steps.release-draft.outputs.id }}"
+      - id: output_html_url
+        run: echo "::set-output name=html_url::${{ steps.release-draft.outputs.html_url }}"
+
+  uploadBuild:
+    needs: [releaseDraft, buildForRelease]
+    name: 📦 Upload to Draft
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        targetPlatform:
+          - StandaloneOSX
+          - StandaloneWindows
+          - StandaloneLinux64
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -128,17 +166,40 @@ jobs:
       - name: Download Build
         uses: actions/download-artifact@v2
         with:
-          name: build-WebGL
-          path: build
+          name: build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+      - name: Zip Build
+        uses: TheDoctor0/zip-release@0.6.0
         with:
-          branch: build-webgl
-          folder: build/WebGL
+          type: "zip"
+          path: ./build/${{ matrix.targetPlatform }}
+          filename: "build-${{ matrix.targetPlatform }}.zip"
+
+      - name: Upload Build as Release Asset
+        uses: gfreezy/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.releaseDraft.outputs.upload_url }}
+          release_id: ${{ needs.releaseDraft.outputs.release_id }}
+          asset_path: ./build-${{ matrix.targetPlatform }}.zip
+          asset_name: re-main_${{ matrix.targetPlatform }}_${{ needs.releaseDraft.outputs.tag_name }}.zip
+          asset_content_type: application/zip
+
+  publishRelease:
+    needs: [releaseDraft, uploadBuild]
+    name: 🚢 Publish Release Notes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ needs.releaseDraft.outputs.release_id }}
 
   notifyDiscord:
-    needs: deployWebGL
+    needs: [releaseDraft, publishRelease]
     name: 📢 Notify on Discord
     if: always()
     runs-on: ubuntu-latest
@@ -154,9 +215,13 @@ jobs:
           discord-webhook: ${{ secrets.WEBHOOK_URL }}
           username: "${{ github.workflow }}"
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894758305690452039/success_kid.png"
-          title: "Test Build #${{ github.run_number }} status: SUCCESS!"
+          title: "Release build (${{ needs.releaseDraft.outputs.tag_name }}) status: SUCCESS!"
           description: |
-            🌐 Play the [test build on GitHub](https://PorridgeB.github.io/re-main/).
+            📜 View [Release Notes](https://github.com/PorridgeB/re-main/releases/tag/${{ needs.releaseDraft.outputs.tag_name }})
+
+            🍎 Download [Mac build](https://github.com/PorridgeB/re-main/releases/download/${{ needs.releaseDraft.outputs.tag_name }}/re-main_StandaloneOSX_${{ needs.releaseDraft.outputs.tag_name }}.zip)
+            🖥️ Download [Windows x64 build](https://github.com/PorridgeB/re-main/releases/download/${{ needs.releaseDraft.outputs.tag_name }}/re-main_StandaloneWindows_${{ needs.releaseDraft.outputs.tag_name }}.zip)
+            🤖 Download [Linux x64 build](https://github.com/PorridgeB/re-main/releases/download/${{ needs.releaseDraft.outputs.tag_name }}/re-main_StandaloneLinux64_${{ needs.releaseDraft.outputs.tag_name }}.zip)
           include-details: "false"
           color-success: "#2eb886"
 
@@ -181,7 +246,7 @@ jobs:
           discord-webhook: ${{ secrets.WEBHOOK_URL }}
           username: "${{ github.workflow }}"
           avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
-          title: "Test Build #${{ github.run_number }} status: FAILED . . ."
+          title: "Release build (${{ needs.releaseDraft.outputs.tag_name }}) status: FAILED . . ."
           description: "Click the link above to view details on GitHub."
           include-details: "false"
           color-failure: "#a30200"

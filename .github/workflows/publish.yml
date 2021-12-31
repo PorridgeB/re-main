@@ -1,0 +1,96 @@
+name: Publish to Itch.io 🚀
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  getLatestRelease:
+    name: ✅ Get Latest Release
+    runs-on: ubuntu-latest
+    outputs:
+      latest_version: ${{ steps.latest_release.outputs.release }}
+    steps:
+      - uses: pozetroninc/github-action-get-latest-release@master
+        id: latest_release
+        with:
+          owner: PorridgeB
+          repo: re-main
+
+  publishBuilds:
+    needs: getLatestRelease
+    name: 🚀 Publish
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        targetPlatform:
+          - StandaloneOSX
+          - StandaloneWindows
+          - StandaloneLinux64
+    steps:
+      - name: Download game .zip file from release
+        uses: dsaltares/fetch-gh-release-asset@0.06
+        with:
+          file: re-main_${{ matrix.targetPlatform }}_${{ needs.getLatestRelease.outputs.latest_version }}.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Itch.io
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCH_API_KEY }}
+          CHANNEL: ${{ matrix.targetPlatform }}
+          ITCH_GAME: ${{ secrets.ITCH_GAME_ID }}
+          ITCH_USER: ${{ secrets.ITCH_USERNAME }}
+          PACKAGE: re-main_${{ matrix.targetPlatform }}_${{ needs.getLatestRelease.outputs.latest_version }}.zip
+          VERSION: ${{ needs.getLatestRelease.outputs.latest_version }}
+
+  notifyDiscord:
+    needs: [getLatestRelease, publishBuilds]
+    name: 📢 Notify on Discord
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Workflow Conclusion
+        uses: technote-space/workflow-conclusion-action@v2
+
+      - name: Notify Success
+        if: env.WORKFLOW_CONCLUSION == 'success'
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discord-webhook: ${{ secrets.WEBHOOK_URL }}
+          username: "${{ github.workflow }}"
+          avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894758305690452039/success_kid.png"
+          title: "New itch.io deployment (${{ needs.getLatestRelease.outputs.latest_version }}) status: SUCCESS!"
+          description: 🎮 Play on itch.io at [https://porridgebee.itch.io/remain](https://porridgebee.itch.io/remain)
+          include-details: "false"
+          color-success: "#2eb886"
+
+      - name: Notify Cancelled
+        if: env.WORKFLOW_CONCLUSION == 'cancelled'
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discord-webhook: ${{ secrets.WEBHOOK_URL }}
+          username: "${{ github.workflow }}"
+          avatar-url: "https://media.discordapp.net/attachments/821500555696013343/925737666685837353/Blank-Nut-Button.png"
+          title: "Release build (${{ needs.releaseDraft.outputs.tag_name }}) status: CANCELLED . . ."
+          description: "Click the link above to view details on GitHub."
+          include-details: "false"
+          color-cancelled: "#ffd513"
+
+      - name: Notify Failure
+        if: env.WORKFLOW_CONCLUSION == 'failure'
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discord-webhook: ${{ secrets.WEBHOOK_URL }}
+          username: "${{ github.workflow }}"
+          avatar-url: "https://media.discordapp.net/attachments/857447804977152000/894760486439125042/explosion.png"
+          title: "New itch.io deployment (${{ needs.getLatestRelease.outputs.latest_version }}) status: FAILED . . ."
+          description: "Click the link above to view details on GitHub."
+          include-details: "false"
+          color-failure: "#a30200"
+          color-cancelled: "#a30200"
