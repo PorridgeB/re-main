@@ -39,12 +39,12 @@ public class WallTile : Tile
 
         if (!(neighbours.North is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y + 1), new Vector2Int(1, height), Vector3Int.forward, uv);
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y + 1), new Vector2Int(1, height), Vector3Int.forward, null);
         }
 
         if (!(neighbours.East is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right, uv);
+            tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right, null);
         }
 
         if (!(neighbours.South is WallTile))
@@ -54,7 +54,7 @@ public class WallTile : Tile
 
         if (!(neighbours.West is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left, uv);
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left, null);
         }
 
         //tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv);
