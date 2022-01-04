@@ -30,13 +30,34 @@ public class WallTile : Tile
         tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y), Vector2Int.one, Vector3Int.up, null);
 
         // Front facing wall
-        if (neighbours.South is WallTile)
-        {
-            return;
-        }
+        //if (neighbours.South is WallTile)
+        //{
+        //    return;
+        //}
 
         var uv = Sprite != null ? Sprite.uv : null;
-        tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv);
+
+        if (!(neighbours.North is WallTile))
+        {
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y + 1), new Vector2Int(1, height), Vector3Int.forward, uv);
+        }
+
+        if (!(neighbours.East is WallTile))
+        {
+            tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right, uv);
+        }
+
+        if (!(neighbours.South is WallTile))
+        {
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv);
+        }
+
+        if (!(neighbours.West is WallTile))
+        {
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left, uv);
+        }
+
+        //tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv);
     }
 
     public override void AddCollisionMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
