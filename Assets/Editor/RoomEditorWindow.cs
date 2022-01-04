@@ -60,12 +60,11 @@ public class RoomEditorWindow : EditorWindow
 
         GUILayout.Space(8f);
 
-        var room = GetRoom();
-
         GUILayout.Label("Room Options");
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Move To Origin"))
         {
+            var room = GetRoom();
             Undo.RecordObject(room, "Moved To Origin");
             room.MoveToOrigin();
             room.Rebuild();
@@ -73,6 +72,7 @@ public class RoomEditorWindow : EditorWindow
 
         if (GUILayout.Button("Fill Outline"))
         {
+            var room = GetRoom();
             Undo.RecordObject(room, "Filled Outline");
             room.FillOutline(SelectedTile);
             room.Rebuild();
@@ -89,7 +89,6 @@ public class RoomEditorWindow : EditorWindow
         }
 
         var mouseCell = GetMouseCell();
-        var room = GetRoom();
 
         if (Event.current.type == EventType.Layout)
         {
@@ -103,6 +102,8 @@ public class RoomEditorWindow : EditorWindow
 
                 if ((Event.current.type == EventType.MouseDown || Event.current.type == EventType.MouseDrag) && Event.current.button == 0)
                 {
+                    var room = GetRoom();
+
                     if (Event.current.control)
                     {
                         room.RemoveTile(mouseCell);
@@ -132,6 +133,8 @@ public class RoomEditorWindow : EditorWindow
                             rectFillDragging = false;
 
                             var rect = RectFromCells(rectFillFrom, mouseCell);
+
+                            var room = GetRoom();
 
                             if (Event.current.control)
                             {
