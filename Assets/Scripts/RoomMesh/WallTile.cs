@@ -48,7 +48,7 @@ public class WallTile : Tile
 
         if (!(neighbours.East == null || neighbours.East is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, 0, position.y), new Vector2Int(height, 1), Vector3Int.left);
+            tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right);
         }
 
         if (!(neighbours.South == null || neighbours.South is WallTile))
@@ -58,7 +58,7 @@ public class WallTile : Tile
 
         if (!(neighbours.West == null || neighbours.West is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y), new Vector2Int(height, 1), Vector3Int.right);
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left);
         }
     }
 }
