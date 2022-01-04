@@ -1,0 +1,1090 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4647841354489242017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6891726654058301614}
+  - component: {fileID: 281276500717493256}
+  - component: {fileID: 5264739993801037141}
+  - component: {fileID: 6109290311823955878}
+  - component: {fileID: 6570868208521623772}
+  m_Layer: 0
+  m_Name: Room
+  m_TagString: Room
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6891726654058301614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647841354489242017}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6086116174100728350}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &281276500717493256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647841354489242017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef716698b88db14f90d0cb670611dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - Position: {x: 0, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 1}
+    Tile:
+      id: 1
+  - Position: {x: 12, y: 1}
+    Tile:
+      id: 1
+  - Position: {x: 0, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 2}
+    Tile:
+      id: 2
+  - Position: {x: 9, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 2}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 2}
+    Tile:
+      id: 1
+  - Position: {x: 12, y: 2}
+    Tile:
+      id: 1
+  - Position: {x: 0, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 3}
+    Tile:
+      id: 2
+  - Position: {x: 6, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 3}
+    Tile:
+      id: 3
+  - Position: {x: 8, y: 3}
+    Tile:
+      id: 4
+  - Position: {x: 9, y: 3}
+    Tile:
+      id: 5
+  - Position: {x: 10, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 3}
+    Tile:
+      id: 1
+  - Position: {x: 12, y: 3}
+    Tile:
+      id: 1
+  - Position: {x: 0, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 4}
+    Tile:
+      id: 2
+  - Position: {x: 6, y: 4}
+    Tile:
+      id: 2
+  - Position: {x: 7, y: 4}
+    Tile:
+      id: 6
+  - Position: {x: 8, y: 4}
+    Tile:
+      id: 7
+  - Position: {x: 9, y: 4}
+    Tile:
+      id: 5
+  - Position: {x: 10, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 4}
+    Tile:
+      id: 1
+  - Position: {x: 12, y: 4}
+    Tile:
+      id: 1
+  - Position: {x: 0, y: 5}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 5}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 5}
+    Tile:
+      id: 8
+  - Position: {x: 3, y: 5}
+    Tile:
+      id: 8
+  - Position: {x: 4, y: 5}
+    Tile:
+      id: 2
+  - Position: {x: 5, y: 5}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 5}
+    Tile:
+      id: 2
+  - Position: {x: 7, y: 5}
+    Tile:
+      id: 9
+  - Position: {x: 8, y: 5}
+    Tile:
+      id: 10
+  - Position: {x: 9, y: 5}
+    Tile:
+      id: 2
+  - Position: {x: 10, y: 5}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 5}
+    Tile:
+      id: 1
+  - Position: {x: 12, y: 5}
+    Tile:
+      id: 1
+  - Position: {x: 0, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 6}
+    Tile:
+      id: 8
+  - Position: {x: 3, y: 6}
+    Tile:
+      id: 8
+  - Position: {x: 4, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 6}
+    Tile:
+      id: 2
+  - Position: {x: 7, y: 6}
+    Tile:
+      id: 11
+  - Position: {x: 8, y: 6}
+    Tile:
+      id: 12
+  - Position: {x: 9, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 7}
+    Tile:
+      id: 8
+  - Position: {x: 3, y: 7}
+    Tile:
+      id: 8
+  - Position: {x: 4, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 7}
+    Tile:
+      id: 13
+  - Position: {x: 8, y: 7}
+    Tile:
+      id: 14
+  - Position: {x: 9, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 8}
+    Tile:
+      id: 8
+  - Position: {x: 3, y: 8}
+    Tile:
+      id: 8
+  - Position: {x: 4, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 8}
+    Tile:
+      id: 2
+  - Position: {x: 8, y: 8}
+    Tile:
+      id: 2
+  - Position: {x: 9, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 13}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 14}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 15}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 16}
+    Tile:
+      id: 0
+  - Position: {x: 0, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 2, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 12, y: 17}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 0}
+    Tile:
+      id: 1
+  - Position: {x: 12, y: 0}
+    Tile:
+      id: 1
+  - Position: {x: 13, y: 0}
+    Tile:
+      id: 1
+  - Position: {x: 13, y: 1}
+    Tile:
+      id: 1
+  - Position: {x: 13, y: 2}
+    Tile:
+      id: 1
+  - Position: {x: 13, y: 3}
+    Tile:
+      id: 1
+  - Position: {x: 13, y: 4}
+    Tile:
+      id: 1
+  - Position: {x: 13, y: 5}
+    Tile:
+      id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: {fileID: -3309781605116015348, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000001:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: {fileID: -8442174482077232629, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000002:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: {fileID: 5441223297315994465, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000003:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000004:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000005:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: {fileID: 5441223297315994465, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000006:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000007:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000008:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: -3218248262026354849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    00000009:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    0000000A:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    0000000B:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    0000000C:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    0000000D:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+    0000000E:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        WallTrim:
+        - {fileID: -9164683769879867358, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2167505942708378944, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -4087309676702264633, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 3931779560235752176, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -72156938504300551, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 4938342473259674171, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 5682393469540925955, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7769453424612927293, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -8480404140891905064, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 7556688037006072682, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6108889420429456849, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 2403724249865808194, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -7933298228110686459, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6056380807486736462, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: 8040196581939011165, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -6067546800638825156, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        - {fileID: -3797298643398675104, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: 2551541108661590903, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+--- !u!23 &5264739993801037141
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647841354489242017}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3cf00d4fcfd350a4c8dc048af3acef3a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &6109290311823955878
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647841354489242017}
+  m_Mesh: {fileID: 0}
+--- !u!64 &6570868208521623772
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647841354489242017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!1 &7856854617863096779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6086116174100728350}
+  m_Layer: 0
+  m_Name: New Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6086116174100728350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856854617863096779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6891726654058301614}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

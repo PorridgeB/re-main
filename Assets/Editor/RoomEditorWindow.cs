@@ -236,17 +236,39 @@ public class RoomEditorWindow : EditorWindow
 
     private RoomMesh GetRoom()
     {
-        var room = FindObjectOfType<RoomMesh>();
+        var rootGameObject = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage()?.prefabContentsRoot;
+        //var assetPath = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage()?.prefabAssetPath;
+        //var rootGameObject = PrefabUtility.LoadPrefabContents(assetPath);
+
+        //var room = rootGameObject.FindObjectOfType<RoomMesh>();
+        var room = rootGameObject.GetComponentInChildren(typeof(RoomMesh)) as RoomMesh;
+        //var room = rootGameObject.Find("Room") as GameObject;
 
         // Create the Room GameObject if one doesn't exist
         if (room == null)
         {
             var roomObject = new GameObject("Room");
+            roomObject.transform.parent = rootGameObject.transform;
             roomObject.tag = "Room";
             room = roomObject.AddComponent<RoomMesh>();
+            //PrefabUtility.ReplacePrefab(rootGameObject, PrefabUtility.GetPrefabParent(rootGameObject), ReplacePrefabOptions.ConnectToPrefab);
         }
 
+        //PrefabUtility.UnloadPrefabContents(assetPath);
+
         return room;
+
+        //var room = FindObjectOfType<RoomMesh>();
+
+        //// Create the Room GameObject if one doesn't exist
+        //if (room == null)
+        //{
+        //    var roomObject = new GameObject("Room");
+        //    roomObject.tag = "Room";
+        //    room = roomObject.AddComponent<RoomMesh>();
+        //}
+
+        //return room;
     }
 
     private void OnFocus()
