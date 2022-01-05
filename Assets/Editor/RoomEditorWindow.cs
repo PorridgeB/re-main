@@ -275,12 +275,11 @@ public class RoomEditorWindow : EditorWindow
     {
         tileset = Resources.LoadAll<Sprite>(RoomMesh.DefaultTilesetPath);
 
-        var wallTrimSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallTrimPrefix)));
         var floorSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(FloorPrefix)));
         var wallSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallPrefix)));
 
         var floorPalette = new Palette { Name = "Floors", Tiles = floorSprites.Select(x => (Tile)new FloorTile { Sprite = x.name }).ToList() };
-        var wallPalette = new Palette { Name = "Walls", Tiles = wallSprites.Select(x => (Tile)new WallTile { Sprite = x.name, WallTrim = "WallTrim_0" }).ToList() };
+        var wallPalette = new Palette { Name = "Walls", Tiles = wallSprites.Select(x => (Tile)new WallTile { Sprite = x.name, Trim = "WallTrim_0" }).ToList() };
         var pitPalette = new Palette { Name = "Pits", Tiles = new List<Tile>() { new PitTile() } };
 
         palettes = new List<Palette>() { floorPalette, wallPalette, pitPalette };

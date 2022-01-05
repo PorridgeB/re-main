@@ -9,7 +9,7 @@ public class WallTile : Tile
 {
     public override string PreviewSpriteName => Sprite;
 
-    public string WallTrim;
+    public string Trim;
     public string Sprite;
 
     private const int height = 2;
@@ -20,7 +20,7 @@ public class WallTile : Tile
         foreach (var texture in ConnectedTextures.GetTextures<WallTile>(neighbours))
         {
             //var wallTrimSprite = WallTrim.Find(x => x.name == $"WallTrim_{texture}");
-            var wallTrimSprite = sprites[$"{WallTrim}_{texture}"];
+            var wallTrimSprite = sprites[$"{Trim}_{texture}"];
             if (wallTrimSprite)
             {
                 tileMeshBuilder.AddTile(new Vector3(position.x, height + 0.01f, position.y), Vector2Int.one, Vector3Int.up, wallTrimSprite.uv);
