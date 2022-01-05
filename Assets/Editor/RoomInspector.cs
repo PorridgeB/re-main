@@ -32,13 +32,9 @@ public class RoomInspector : Editor
         {
             room.Rebuild();
         }
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Move To Origin"))
-        {
-            room.MoveToOrigin();
-            room.Rebuild();
-        }
-        GUILayout.EndHorizontal();
+
+        GUILayout.Space(8f);
+
         if (GUILayout.Button("Open Room Editor"))
         {
             var window = (RoomEditorWindow)EditorWindow.GetWindow(typeof(RoomEditorWindow), false, "Room Editor");

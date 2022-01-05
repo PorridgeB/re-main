@@ -48,8 +48,25 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        GUILayout.Label("Tool");
+        if (Selection.activeGameObject != Room.gameObject)
+        {
+            GUILayout.FlexibleSpace();
+            GUILayout.Label("Room Mesh not selected!");
+            GUILayout.FlexibleSpace();
+            return;
+        }
+
+        GUILayout.Label("Tool (Hold ctrl to remove tiles)");
         selectedTool = GUILayout.Toolbar(selectedTool, new string[] { "None", "Paint", "Fill Rect" });
+
+        GUILayout.Space(8f);
+
+        if (GUILayout.Button("Fill Outline"))
+        {
+            Undo.RecordObject(Room, "Filled Outline");
+            Room.FillOutline(SelectedTile);
+            Room.Rebuild();
+        }
 
         GUILayout.Space(8f);
 
@@ -71,11 +88,10 @@ public class RoomEditorWindow : EditorWindow
             Room.MoveToOrigin();
             Room.Rebuild();
         }
-
-        if (GUILayout.Button("Fill Outline"))
+        if (GUILayout.Button("Rotate"))
         {
-            Undo.RecordObject(Room, "Filled Outline");
-            Room.FillOutline(SelectedTile);
+            Undo.RecordObject(Room, "Moved To Origin");
+            Room.MoveToOrigin();
             Room.Rebuild();
         }
         GUILayout.EndHorizontal();
