@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.U2D;
 
 [Serializable]
 [ExecuteAlways]
 public class RoomMesh : MonoBehaviour
 {
-    private const string DefaultMaterialPath = "RoomMaterial";
+    public const string DefaultMaterialPath = "RoomMaterial";
+    public const string DefaultTilesetPath = "Tileset";
 
     [Serializable]
     public class TileInstance
@@ -19,36 +21,36 @@ public class RoomMesh : MonoBehaviour
     }
 
     [SerializeField]
-    public List<TileInstance> tiles = new List<TileInstance>();
+    private List<TileInstance> Tiles = new List<TileInstance>();
 
     public void Clear()
     {
-        tiles.Clear();
+        Tiles.Clear();
     }
 
     public void PlaceTile(Vector2Int position, Tile tile)
     {
-        var placedTile = tiles.Find(x => x.Position == position);
+        var placedTile = Tiles.Find(x => x.Position == position);
         if (placedTile != null)
         {
             placedTile.Tile = tile;
         }
         else
         {
-            tiles.Add(new TileInstance { Position = position, Tile = tile });
+            Tiles.Add(new TileInstance { Position = position, Tile = tile });
         }
     }
 
     public bool RemoveTile(Vector2Int position)
     {
-        return tiles.RemoveAll(x => x.Position == position) > 0;
+        return Tiles.RemoveAll(x => x.Position == position) > 0;
     }
 
     public void FillOutline(Tile tile)
     {
         var outlinePositions = new HashSet<Vector2Int>();
 
-        foreach (var instance in tiles)
+        foreach (var instance in Tiles)
         {
             var position = instance.Position;
             var neighbours = GetTileNeighbours(position);
@@ -88,7 +90,7 @@ public class RoomMesh : MonoBehaviour
     {
         var rect = GetRect();
     
-        foreach (var instance in tiles)
+        foreach (var instance in Tiles)
         {
             instance.Position -= new Vector2Int(rect.xMin, rect.yMin);
         }
@@ -98,7 +100,7 @@ public class RoomMesh : MonoBehaviour
     {
         var rect = GetRect();
 
-        foreach (var instance in tiles)
+        foreach (var instance in Tiles)
         {
             instance.Position = new Vector2Int(-instance.Position.y, instance.Position.x);
         }
@@ -108,6 +110,14 @@ public class RoomMesh : MonoBehaviour
 
     public void Rebuild()
     {
+        var tileset = Resources.LoadAll<Sprite>(DefaultTilesetPath);
+        var sprites = new Dictionary<string, Sprite>();
+       
+        foreach (var sprite in tileset)
+        {
+            sprites[sprite.name] = sprite;
+        }
+
         var meshRenderer = GetComponent<MeshRenderer>();
         if (meshRenderer == null)
         {
@@ -115,7 +125,7 @@ public class RoomMesh : MonoBehaviour
             meshRenderer.material = Resources.Load<Material>(DefaultMaterialPath);
         }
 
-        var mesh = CreateMesh();
+        var mesh = CreateMesh(sprites);
         var meshFilter = GetComponent<MeshFilter>();
         if (meshFilter == null)
         {
@@ -136,7 +146,7 @@ public class RoomMesh : MonoBehaviour
     {
         var rect = new RectInt();
 
-        if (tiles.Count == 0)
+        if (Tiles.Count == 0)
         {
             return rect;
         }
@@ -146,7 +156,7 @@ public class RoomMesh : MonoBehaviour
         var yMin = int.MaxValue;
         var yMax = int.MinValue;
 
-        foreach (var instance in tiles)
+        foreach (var instance in Tiles)
         {
             xMin = Mathf.Min(xMin, instance.Position.x);
             xMax = Mathf.Max(xMax, instance.Position.x);
@@ -164,16 +174,16 @@ public class RoomMesh : MonoBehaviour
         Rebuild();
     }
 
-    private Mesh CreateMesh()
+    private Mesh CreateMesh(Dictionary<string, Sprite> sprites)
     {
         var tileMeshBuilder = new TileMeshBuilder();
 
-        foreach (var instance in tiles)
+        foreach (var instance in Tiles)
         {
             var position = instance.Position;
             var tile = instance.Tile;
             var neighbours = GetTileNeighbours(position);
-            tile.AddMesh(tileMeshBuilder, position, neighbours);
+            tile.AddMesh(tileMeshBuilder, sprites, position, neighbours);
         }
 
         return tileMeshBuilder.ToMesh();
@@ -183,7 +193,7 @@ public class RoomMesh : MonoBehaviour
     {
         var tileMeshBuilder = new TileMeshBuilder();
 
-        foreach (var instance in tiles)
+        foreach (var instance in Tiles)
         {
             var position = instance.Position;
             var tile = instance.Tile;
@@ -201,7 +211,7 @@ public class RoomMesh : MonoBehaviour
         for (int i = 0; i < TileNeighbours.Offsets.Length; i++)
         {
             var neighbourPosition = position + TileNeighbours.Offsets[i];
-            var neighbourInstance = tiles.Find(x => x.Position == neighbourPosition);
+            var neighbourInstance = Tiles.Find(x => x.Position == neighbourPosition);
             neighbourTiles[i] = neighbourInstance?.Tile;
         }
 

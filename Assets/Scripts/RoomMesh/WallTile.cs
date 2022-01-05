@@ -7,19 +7,22 @@ using UnityEngine;
 [Serializable]
 public class WallTile : Tile
 {
-    public override Texture2D Preview => TextureFromSprite(Sprite);
+    //public override Texture2D Preview => Texture2D.blackTexture;//TextureFromSprite(Sprite);
 
-    public List<Sprite> WallTrim;
-    public Sprite Sprite;
+    //public List<Sprite> WallTrim;
+    //public Sprite Sprite;
+    public string WallTrim;
+    public string Sprite;
 
     private const int height = 2;
 
-    public override void AddMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
+    public override void AddMesh(TileMeshBuilder tileMeshBuilder, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
         // Wall trimmings
         foreach (var texture in ConnectedTextures.GetTextures<WallTile>(neighbours))
         {
-            var wallTrimSprite = WallTrim.Find(x => x.name == $"WallTrim_{texture}");
+            //var wallTrimSprite = WallTrim.Find(x => x.name == $"WallTrim_{texture}");
+            var wallTrimSprite = sprites[$"{WallTrim}_{texture}"];
             if (wallTrimSprite)
             {
                 tileMeshBuilder.AddTile(new Vector3(position.x, height + 0.01f, position.y), Vector2Int.one, Vector3Int.up, wallTrimSprite.uv);
@@ -35,7 +38,7 @@ public class WallTile : Tile
         //    return;
         //}
 
-        var uv = Sprite != null ? Sprite.uv : null;
+        var uv = Sprite != null ? sprites[Sprite]?.uv : null;
 
         if (!(neighbours.North is WallTile))
         {
@@ -81,5 +84,18 @@ public class WallTile : Tile
         {
             tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left);
         }
+    }
+
+    public override Texture2D GetPreview(Sprite[] sprites)
+    {
+        foreach (var sprite in sprites)
+        {
+            if (sprite.name == Sprite)
+            {
+                return TextureFromSprite(sprite);
+            }
+        }
+
+        return Texture2D.blackTexture;
     }
 }

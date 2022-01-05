@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public abstract class Tile
 {
-    public virtual Texture2D Preview { get; }
+    //public virtual Texture2D Preview { get; }
 
     public static Texture2D TextureFromSprite(Sprite sprite)
     {
@@ -19,11 +19,16 @@ public abstract class Tile
         return croppedTexture;
     }
 
-    public virtual void AddMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
+    public virtual void AddMesh(TileMeshBuilder tileMeshBuilder, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
     }
 
     public virtual void AddCollisionMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
     {
+    }
+
+    public virtual Texture2D GetPreview(Sprite[] sprites)
+    {
+        return Texture2D.blackTexture;
     }
 }

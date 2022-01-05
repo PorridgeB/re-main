@@ -16,55 +16,55 @@ TextureImporter:
     second: Floor_1
   - first:
       213: -6108889420429456849
-    second: WallTrim_ExSE
+    second: WallTrim_0_ExSE
   - first:
       213: 5682393469540925955
-    second: WallTrim_EdgeS
+    second: WallTrim_0_EdgeS
   - first:
       213: 2403724249865808194
-    second: WallTrim_ExSW
+    second: WallTrim_0_ExSW
   - first:
       213: 8040196581939011165
-    second: WallTrim_InNW
+    second: WallTrim_0_InNW
   - first:
       213: -6056380807486736462
-    second: WallTrim_InNE
+    second: WallTrim_0_InNE
   - first:
       213: -8480404140891905064
-    second: WallTrim_ExNE
+    second: WallTrim_0_ExNE
   - first:
       213: -72156938504300551
-    second: WallTrim_EdgeE
+    second: WallTrim_0_EdgeE
   - first:
       213: 7769453424612927293
-    second: WallTrim_EdgeW
+    second: WallTrim_0_EdgeW
   - first:
       213: -8025435653959805260
-    second: WallTrim_EdgeE
+    second: WallTrim_0_EdgeE
   - first:
       213: 4938342473259674171
-    second: WallTrim_EdgeN
+    second: WallTrim_0_EdgeN
   - first:
       213: -6315978382755026507
-    second: WallTrim_ExNE
+    second: WallTrim_0_ExNE
   - first:
       213: -1010255394613501995
-    second: WallTrim_EdgeN
+    second: WallTrim_0_EdgeN
   - first:
       213: -7933298228110686459
-    second: WallTrim_Full
+    second: WallTrim_0_Full
   - first:
       213: 2167505942708378944
-    second: WallTrim_CapN
+    second: WallTrim_0_CapN
   - first:
       213: -9164683769879867358
-    second: WallTrim_CapE
+    second: WallTrim_0_CapE
   - first:
       213: -4087309676702264633
-    second: WallTrim_CapS
+    second: WallTrim_0_CapS
   - first:
       213: 3931779560235752176
-    second: WallTrim_CapW
+    second: WallTrim_0_CapW
   - first:
       213: -1865757787562490331
     second: Floor_2
@@ -256,7 +256,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_ExSE
+      name: WallTrim_0_ExSE
       rect:
         serializedVersion: 2
         x: 176
@@ -277,7 +277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_EdgeS
+      name: WallTrim_0_EdgeS
       rect:
         serializedVersion: 2
         x: 192
@@ -298,7 +298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_ExSW
+      name: WallTrim_0_ExSW
       rect:
         serializedVersion: 2
         x: 208
@@ -319,7 +319,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_InNW
+      name: WallTrim_0_InNW
       rect:
         serializedVersion: 2
         x: 176
@@ -340,7 +340,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_InNE
+      name: WallTrim_0_InNE
       rect:
         serializedVersion: 2
         x: 208
@@ -361,7 +361,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_InSE
+      name: WallTrim_0_InSE
       rect:
         serializedVersion: 2
         x: 208
@@ -382,7 +382,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_InSW
+      name: WallTrim_0_InSW
       rect:
         serializedVersion: 2
         x: 176
@@ -403,7 +403,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_EdgeW
+      name: WallTrim_0_EdgeW
       rect:
         serializedVersion: 2
         x: 224
@@ -424,7 +424,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_EdgeE
+      name: WallTrim_0_EdgeE
       rect:
         serializedVersion: 2
         x: 160
@@ -445,7 +445,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_ExNW
+      name: WallTrim_0_ExNW
       rect:
         serializedVersion: 2
         x: 224
@@ -466,7 +466,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_ExNE
+      name: WallTrim_0_ExNE
       rect:
         serializedVersion: 2
         x: 160
@@ -487,7 +487,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_EdgeN
+      name: WallTrim_0_EdgeN
       rect:
         serializedVersion: 2
         x: 192
@@ -508,7 +508,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_Full
+      name: WallTrim_0_Full
       rect:
         serializedVersion: 2
         x: 224
@@ -529,7 +529,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_CapN
+      name: WallTrim_0_CapN
       rect:
         serializedVersion: 2
         x: 240
@@ -550,7 +550,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_CapE
+      name: WallTrim_0_CapE
       rect:
         serializedVersion: 2
         x: 240
@@ -571,7 +571,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_CapS
+      name: WallTrim_0_CapS
       rect:
         serializedVersion: 2
         x: 240
@@ -592,7 +592,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WallTrim_CapW
+      name: WallTrim_0_CapW
       rect:
         serializedVersion: 2
         x: 240
@@ -621,7 +621,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -642,7 +642,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -663,7 +663,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -684,7 +684,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -705,7 +705,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -726,7 +726,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

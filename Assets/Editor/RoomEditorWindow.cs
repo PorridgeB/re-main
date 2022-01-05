@@ -16,7 +16,6 @@ public class RoomEditorWindow : EditorWindow
         public Tile SelectedTile => Tiles[SelectedTileIndex];
     }
 
-    private const string DefaultTilesetPath = "Tileset";
     private const int paletteColumns = 4;
     private const float cellSelectionOutlineWidth = 4;
     private readonly Color cellSelectionOutlineColor = new Color(0.3f, 0.4f, 0.9f);
@@ -36,6 +35,8 @@ public class RoomEditorWindow : EditorWindow
     private List<Palette> palettes = new List<Palette>();
     private int selectedPalette = 0;
     private int selectedTool = 0;
+
+    private Sprite[] tileset;
 
     [MenuItem("Window/Room Editor")]
     private static void ShowWindow()
@@ -66,7 +67,7 @@ public class RoomEditorWindow : EditorWindow
 
         var palette = palettes[selectedPalette];
         palette.ScrollPosition = EditorGUILayout.BeginScrollView(palette.ScrollPosition, false, true);
-        palette.SelectedTileIndex = GUILayout.SelectionGrid(palette.SelectedTileIndex, palette.Tiles.Select(x => x.Preview).ToArray(), paletteColumns);
+        palette.SelectedTileIndex = GUILayout.SelectionGrid(palette.SelectedTileIndex, palette.Tiles.Select(x => x.GetPreview(tileset)).ToArray(), paletteColumns);
         EditorGUILayout.EndScrollView();
 
         GUILayout.Space(8f);
@@ -245,14 +246,14 @@ public class RoomEditorWindow : EditorWindow
 
     private void RefreshPalettes()
     {
-        var tileset = Resources.LoadAll<Sprite>(DefaultTilesetPath);
+        tileset = Resources.LoadAll<Sprite>(RoomMesh.DefaultTilesetPath);
 
         var wallTrimSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallTrimPrefix)));
         var floorSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(FloorPrefix)));
         var wallSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallPrefix)));
 
-        var floorPalette = new Palette { Name = "Floors", Tiles = floorSprites.Select(x => (Tile)new FloorTile { Sprite = x }).ToList() };
-        var wallPalette = new Palette { Name = "Walls", Tiles = wallSprites.Select(x => (Tile)new WallTile { Sprite = x, WallTrim = wallTrimSprites }).ToList() };
+        var floorPalette = new Palette { Name = "Floors", Tiles = floorSprites.Select(x => (Tile)new FloorTile { Sprite = x.name }).ToList() };
+        var wallPalette = new Palette { Name = "Walls", Tiles = wallSprites.Select(x => (Tile)new WallTile { Sprite = x.name, WallTrim = "WallTrim_0" }).ToList() };
         var pitPalette = new Palette { Name = "Pits", Tiles = new List<Tile>() { new PitTile() } };
 
         palettes = new List<Palette>() { floorPalette, wallPalette, pitPalette };

@@ -6,11 +6,9 @@ using UnityEngine;
 [Serializable]
 public class PitTile : Tile
 {
-    public override Texture2D Preview => Texture2D.redTexture;
-
     private const int depth = 4;
 
-    public override void AddMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
+    public override void AddMesh(TileMeshBuilder tileMeshBuilder, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
         if (neighbours.North is PitTile)
         {
