@@ -87,7 +87,7 @@ public class LevelGenerator : MonoBehaviour
             GetComponent<NavMeshSurface>().BuildNavMesh();
             foreach (Room r in start.GetComponentsInChildren<Room>())
             {
-                r.Generate();
+                //r.Generate();
             }
             roomsGenerated = true;
             SceneReady.Raise();

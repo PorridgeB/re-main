@@ -73,7 +73,7 @@ public class Room : MonoBehaviour
 
     public void SetText(string text)
     {
-        textfield.text = text;
+        //textfield.text = text;
         name = text;
     }
 

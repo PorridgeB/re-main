@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6957577627220585600}
   - component: {fileID: 5523368052921003360}
   m_Layer: 0
-  m_Name: LeftWall
+  m_Name: HallWall
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,13 +64,73 @@ MonoBehaviour:
       id: 4
   - Position: {x: 2, y: -1}
     Tile:
-      id: 5
+      id: 4
   - Position: {x: 1, y: -1}
     Tile:
-      id: 6
+      id: 4
   - Position: {x: 0, y: -1}
     Tile:
+      id: 4
+  - Position: {x: 1, y: 1}
+    Tile:
+      id: 5
+  - Position: {x: 2, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 1}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 2}
+    Tile:
+      id: 5
+  - Position: {x: 0, y: 2}
+    Tile:
+      id: 5
+  - Position: {x: 0, y: 1}
+    Tile:
+      id: 6
+  - Position: {x: 1, y: 3}
+    Tile:
+      id: 5
+  - Position: {x: 0, y: 3}
+    Tile:
       id: 7
+  - Position: {x: 1, y: 4}
+    Tile:
+      id: 8
+  - Position: {x: 2, y: 3}
+    Tile:
+      id: 8
+  - Position: {x: 3, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 0, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 0, y: 5}
+    Tile:
+      id: 10
+  - Position: {x: 1, y: 5}
+    Tile:
+      id: 7
+  - Position: {x: 2, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 3, y: 3}
+    Tile:
+      id: 10
+  - Position: {x: 3, y: 4}
+    Tile:
+      id: 10
+  - Position: {x: 2, y: 5}
+    Tile:
+      id: 11
+  - Position: {x: 3, y: 5}
+    Tile:
+      id: 12
   references:
     version: 1
     00000000:
@@ -96,19 +156,47 @@ MonoBehaviour:
     00000004:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Sprite: Floor_0
     00000005:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000006:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000007:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000008:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000009:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000A:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000B:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000C:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
 --- !u!23 &4384507927706757535
 MeshRenderer:
   m_ObjectHideFlags: 0
