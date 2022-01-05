@@ -12,6 +12,8 @@ public class RoomInspector : Editor
     {
         var go = new GameObject("Room Mesh");
 
+        go.tag = "Room";
+
         go.AddComponent<RoomMesh>();
 
         // Ensure it gets reparented if this was a context click (otherwise does nothing)

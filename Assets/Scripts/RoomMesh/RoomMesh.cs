@@ -93,6 +93,18 @@ public class RoomMesh : MonoBehaviour
         }
     }
 
+    public void Rotate()
+    {
+        var rect = GetRect();
+
+        foreach (var instance in tiles)
+        {
+            instance.Position = new Vector2Int(-instance.Position.y, instance.Position.x);
+        }
+
+        MoveToOrigin();
+    }
+
     public void Rebuild()
     {
         var meshRenderer = GetComponent<MeshRenderer>();

@@ -63,7 +63,7 @@ public class RoomEditorWindow : EditorWindow
 
         if (GUILayout.Button("Fill Outline"))
         {
-            Undo.RecordObject(Room, "Filled Outline");
+            Undo.RecordObject(Room, "Filled Room Outline");
             Room.FillOutline(SelectedTile);
             Room.Rebuild();
         }
@@ -84,14 +84,14 @@ public class RoomEditorWindow : EditorWindow
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Move To Origin"))
         {
-            Undo.RecordObject(Room, "Moved To Origin");
+            Undo.RecordObject(Room, "Moved Room To Origin");
             Room.MoveToOrigin();
             Room.Rebuild();
         }
         if (GUILayout.Button("Rotate"))
         {
-            Undo.RecordObject(Room, "Moved To Origin");
-            Room.MoveToOrigin();
+            Undo.RecordObject(Room, "Rotated Room");
+            Room.Rotate();
             Room.Rebuild();
         }
         GUILayout.EndHorizontal();
