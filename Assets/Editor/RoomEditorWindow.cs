@@ -48,7 +48,7 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        if (Selection.activeGameObject != Room.gameObject)
+        if (Room == null || Selection.activeGameObject != Room.gameObject)
         {
             GUILayout.FlexibleSpace();
             GUILayout.Label("Room Mesh not selected!");
@@ -100,7 +100,7 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnSceneGUI(SceneView sceneView)
     {
-        if (Selection.activeGameObject != Room.gameObject)
+        if (Room == null || Selection.activeGameObject != Room.gameObject)
         {
             return;
         }
