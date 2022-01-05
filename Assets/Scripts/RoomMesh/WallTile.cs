@@ -7,10 +7,8 @@ using UnityEngine;
 [Serializable]
 public class WallTile : Tile
 {
-    //public override Texture2D Preview => Texture2D.blackTexture;//TextureFromSprite(Sprite);
+    public override string PreviewSpriteName => Sprite;
 
-    //public List<Sprite> WallTrim;
-    //public Sprite Sprite;
     public string WallTrim;
     public string Sprite;
 
@@ -84,18 +82,5 @@ public class WallTile : Tile
         {
             tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left);
         }
-    }
-
-    public override Texture2D GetPreview(Sprite[] sprites)
-    {
-        foreach (var sprite in sprites)
-        {
-            if (sprite.name == Sprite)
-            {
-                return TextureFromSprite(sprite);
-            }
-        }
-
-        return Texture2D.blackTexture;
     }
 }

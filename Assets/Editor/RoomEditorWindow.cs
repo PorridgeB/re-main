@@ -67,7 +67,7 @@ public class RoomEditorWindow : EditorWindow
 
         var palette = palettes[selectedPalette];
         palette.ScrollPosition = EditorGUILayout.BeginScrollView(palette.ScrollPosition, false, true);
-        palette.SelectedTileIndex = GUILayout.SelectionGrid(palette.SelectedTileIndex, palette.Tiles.Select(x => x.GetPreview(tileset)).ToArray(), paletteColumns);
+        palette.SelectedTileIndex = GUILayout.SelectionGrid(palette.SelectedTileIndex, palette.Tiles.Select(x => GetPreview(x.PreviewSpriteName)).ToArray(), paletteColumns);
         EditorGUILayout.EndScrollView();
 
         GUILayout.Space(8f);
@@ -183,6 +183,33 @@ public class RoomEditorWindow : EditorWindow
         }
 
         sceneView.Repaint();
+    }
+
+    private Texture2D GetPreview(string spriteName)
+    {
+        if (spriteName == "")
+        {
+            return Texture2D.blackTexture;
+        }
+
+        var sprite = tileset.First(x => x.name == spriteName);
+        if (sprite == null)
+        {
+            return Texture2D.blackTexture;
+        }
+
+        return TextureFromSprite(sprite);
+    }
+
+    private static Texture2D TextureFromSprite(Sprite sprite)
+    {
+        var croppedTexture = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
+        var pixels = sprite.texture.GetPixels((int)sprite.textureRect.x, (int)sprite.textureRect.y, (int)sprite.textureRect.width, (int)sprite.textureRect.height);
+
+        croppedTexture.SetPixels(pixels);
+        croppedTexture.Apply();
+
+        return croppedTexture;
     }
 
     private Vector2Int GetMouseCell()
