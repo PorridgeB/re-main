@@ -50,7 +50,9 @@ public class WallTile : Tile
 
         if (!(neighbours.South is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv);
+            var aoColor = new Color(0.4f, 0.4f, 0.4f);
+            var color = new Color[] { Color.white, Color.white, aoColor, aoColor };
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv, color);
         }
 
         if (!(neighbours.West is WallTile))
