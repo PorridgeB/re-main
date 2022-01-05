@@ -38,34 +38,41 @@ public class WallTile : Tile
 
         var uv = Sprite != null ? sprites[Sprite]?.uv : null;
 
-        if (!(neighbours.North is WallTile))
+        if (options.AddHiddenWallFaces)
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y + 1), new Vector2Int(1, height), Vector3Int.forward, null);
-        }
+            if (!(neighbours.North is WallTile))
+            {
+                tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y + 1), new Vector2Int(1, height), Vector3Int.forward, null);
+            }
 
-        if (!(neighbours.East is WallTile))
-        {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right, null);
+            if (!(neighbours.East is WallTile))
+            {
+                tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right, null);
+            }
+
+            if (!(neighbours.West is WallTile))
+            {
+                tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left, null);
+            }
         }
 
         if (!(neighbours.South is WallTile))
         {
-            var colors = new Color[]
+            Color[] colors = null;
+            if (options.BakeAmbientOcclusion)
             {
-                //neighbours.SouthWest is WallTile ? aoColor : Color.white,
-                //neighbours.SouthEast is WallTile ? aoColor : Color.white,
-                Color.white,
-                Color.white,
-                options.AmbientOcclusionColor,
-                options.AmbientOcclusionColor,
-            };
+                colors = new Color[]
+                {
+                    //neighbours.SouthWest is WallTile ? aoColor : Color.white,
+                    //neighbours.SouthEast is WallTile ? aoColor : Color.white,
+                    Color.white,
+                    Color.white,
+                    options.AmbientOcclusionColor,
+                    options.AmbientOcclusionColor,
+                };
+            }
 
             tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv, colors);
-        }
-
-        if (!(neighbours.West is WallTile))
-        {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left, null);
         }
 
         //tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv);
