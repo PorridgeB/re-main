@@ -50,7 +50,7 @@ public class WallTile : Tile
 
         if (!(neighbours.South is WallTile))
         {
-            var aoColor = new Color(0.4f, 0.4f, 0.45f);
+            var aoColor = new Color(0.4f, 0.4f, 0.5f);
             //var aoColor = Color.white;
             var colors = new Color[]
             {

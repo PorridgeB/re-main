@@ -12,7 +12,7 @@ public class FloorTile : Tile
 
     public override void AddMesh(TileMeshBuilder tileMeshBuilder, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
-        var aoColor = new Color(0.4f, 0.4f, 0.45f);
+        var aoColor = new Color(0.4f, 0.4f, 0.5f);
         //var aoColor = Color.white;
         var colors = new Color[]
         {
