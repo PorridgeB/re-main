@@ -8,7 +8,7 @@ public class PitTile : Tile
 {
     private const int depth = 4;
 
-    public override void AddMesh(TileMeshBuilder tileMeshBuilder, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
+    public override void AddMesh(TileMeshBuilder tileMeshBuilder, RoomMeshOptions options, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
         if (neighbours.North is PitTile)
         {
