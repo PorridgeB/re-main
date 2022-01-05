@@ -51,6 +51,11 @@ public class Room : MonoBehaviour
         walls[GetRoomSide(dir)].SetActive(false);
     }
 
+    public void CenterRoom(Room previousRoom)
+    {
+        transform.position += (previousRoom.Offset(new Vector3(1,0,1)) - Offset(new Vector3(1, 0, 1))) ;
+    }
+
     private int GetRoomSide(Vector3 dir)
     {
         if (dir.z == 1)
@@ -88,20 +93,20 @@ public class Room : MonoBehaviour
             case "b":
                 for (int i = 0; i < Random.Range(3,6); i++)
                 {
-                    Instantiate(drone, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);
+                    Instantiate(drone, transform.position + Vector3.up, new Quaternion(), null);
                 }
                 break;
             case "r":
                 go = Instantiate(chest, transform);
-                go.transform.localPosition = Vector3.right * 8 + Vector3.up;
+                go.transform.localPosition = Vector3.up;
                 break;
             case "f":
                 go = Instantiate(end, transform);
-                go.transform.localPosition = Vector3.right * 8 + Vector3.up;
+                go.transform.localPosition = Vector3.up;
                 break;
             case "n":
                 go = Instantiate(npc, transform);
-                go.transform.localPosition = Vector3.right * 8 + Vector3.up;
+                go.transform.localPosition = Vector3.up;
                 break;
             case "e":
                 if (Random.value < 0.25)
@@ -114,12 +119,12 @@ public class Room : MonoBehaviour
                 }
                 for (int i = 0; i < Random.Range(2,10); i++)
                 {
-                    Instantiate(go, transform.position + Vector3.right * 8 + Vector3.up, new Quaternion(), null);                   
+                    Instantiate(go, transform.position + Vector3.up, new Quaternion(), null);                   
                 }
                 break;
             case "a":
                 go = Instantiate(artifact, transform);
-                go.transform.localPosition = Vector3.right * 8 + Vector3.up;
+                go.transform.localPosition = Vector3.up;
                 break;
         }
     }

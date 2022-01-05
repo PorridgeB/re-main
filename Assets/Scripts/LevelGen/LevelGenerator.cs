@@ -54,9 +54,11 @@ public class LevelGenerator : MonoBehaviour
     {
         if (i == 0)
         {
-            roomPath.Push(Instantiate(rooms[0], transform).GetComponent<Room>());
-            start = roomPath.Peek();
-            roomPath.Peek().SetText("Start");
+            Room room = Instantiate(rooms[0], transform).GetComponent<Room>();
+            roomPath.Push(room);
+
+            start = room;
+            start.SetText("Start");
             Turn();
         }
         index++;
@@ -133,6 +135,7 @@ public class LevelGenerator : MonoBehaviour
 
             }
             Room currentRoom = Instantiate(prefab, previousRoom.transform).GetComponent<Room>();
+            currentRoom.CenterRoom(previousRoom);
 
             if (!FindEmptyCell(previousRoom, currentRoom)) return false;
 
@@ -173,12 +176,10 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckBoxCollision(Room previous, Room current, Vector3 v)
     {
-        //GameObject go = Instantiate(cube, previous.transform.position + Vector3.up / 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v), new Quaternion(), null);
-        //go.transform.localScale = current.Offset(new Vector3(2, 5, 2));
         foreach (Vector3 cardinalPoint in corners)
         {
             RaycastHit hit;
-            if (Physics.Raycast(previous.transform.position + Vector3.up * 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v) + current.Offset(cardinalPoint), Vector3.down, out hit))
+            if (Physics.Raycast(previous.transform.position + Vector3.up * 2  + current.Offset(v) + previous.Offset(v) + current.Offset(cardinalPoint), Vector3.down, out hit))
             {
                 return true;
             }

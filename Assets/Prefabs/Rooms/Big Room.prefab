@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1190692585394875130}
   - component: {fileID: 2251013610909116966}
   m_Layer: 0
-  m_Name: Room
+  m_Name: Big Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,198 +52,438 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tiles:
-  - Position: {x: 3, y: 3}
+  - Position: {x: 5, y: 5}
     Tile:
       id: 0
-  - Position: {x: 4, y: 3}
+  - Position: {x: 6, y: 5}
     Tile:
       id: 1
-  - Position: {x: 4, y: 4}
+  - Position: {x: 6, y: 6}
     Tile:
       id: 0
-  - Position: {x: 3, y: 4}
+  - Position: {x: 5, y: 6}
     Tile:
       id: 2
-  - Position: {x: 4, y: 5}
+  - Position: {x: 6, y: 7}
     Tile:
       id: 0
-  - Position: {x: 3, y: 5}
+  - Position: {x: 5, y: 7}
     Tile:
       id: 0
-  - Position: {x: 5, y: 5}
+  - Position: {x: 7, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 5}
+    Tile:
+      id: 3
+  - Position: {x: 7, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 4}
     Tile:
       id: 0
   - Position: {x: 5, y: 4}
     Tile:
       id: 0
-  - Position: {x: 5, y: 3}
-    Tile:
-      id: 3
-  - Position: {x: 5, y: 2}
+  - Position: {x: 4, y: 4}
     Tile:
       id: 0
-  - Position: {x: 4, y: 2}
+  - Position: {x: 4, y: 5}
     Tile:
       id: 0
-  - Position: {x: 3, y: 2}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 2}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 4}
+  - Position: {x: 4, y: 6}
     Tile:
       id: 4
-  - Position: {x: 2, y: 5}
+  - Position: {x: 4, y: 7}
     Tile:
       id: 0
-  - Position: {x: 2, y: 6}
+  - Position: {x: 4, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 8}
+    Tile:
+      id: 5
+  - Position: {x: 8, y: 7}
+    Tile:
+      id: 6
+  - Position: {x: 8, y: 6}
+    Tile:
+      id: 7
+  - Position: {x: 8, y: 5}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 5}
     Tile:
       id: 0
   - Position: {x: 3, y: 6}
     Tile:
       id: 0
-  - Position: {x: 4, y: 6}
+  - Position: {x: 3, y: 7}
     Tile:
       id: 0
-  - Position: {x: 5, y: 6}
-    Tile:
-      id: 0
-  - Position: {x: 6, y: 6}
-    Tile:
-      id: 5
-  - Position: {x: 6, y: 5}
-    Tile:
-      id: 6
-  - Position: {x: 6, y: 4}
-    Tile:
-      id: 7
-  - Position: {x: 6, y: 3}
+  - Position: {x: 3, y: 8}
     Tile:
       id: 0
   - Position: {x: 6, y: 2}
     Tile:
-      id: 0
-  - Position: {x: 6, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 5, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 4, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 3, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 2}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 6}
-    Tile:
-      id: 0
-  - Position: {x: 7, y: 6}
+      id: 8
+  - Position: {x: 5, y: 2}
     Tile:
       id: 8
-  - Position: {x: 7, y: 5}
+  - Position: {x: 9, y: 5}
     Tile:
       id: 8
+  - Position: {x: 9, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 9}
+    Tile:
+      id: 8
+  - Position: {x: 5, y: 9}
+    Tile:
+      id: 8
+  - Position: {x: 2, y: 6}
+    Tile:
+      id: 8
+  - Position: {x: 2, y: 5}
+    Tile:
+      id: 8
+  - Position: {x: 2, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 3}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 3, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 4, y: 2}
+    Tile:
+      id: 9
   - Position: {x: 7, y: 2}
     Tile:
-      id: 8
-  - Position: {x: 7, y: 1}
+      id: 9
+  - Position: {x: 8, y: 2}
     Tile:
-      id: 8
-  - Position: {x: 7, y: 0}
+      id: 9
+  - Position: {x: 9, y: 2}
     Tile:
-      id: 8
-  - Position: {x: 6, y: 0}
+      id: 9
+  - Position: {x: 9, y: 3}
     Tile:
-      id: 8
-  - Position: {x: 5, y: 0}
+      id: 9
+  - Position: {x: 9, y: 4}
     Tile:
-      id: 8
-  - Position: {x: 2, y: 0}
+      id: 9
+  - Position: {x: 9, y: 7}
     Tile:
-      id: 8
-  - Position: {x: 1, y: 0}
+      id: 9
+  - Position: {x: 9, y: 8}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 0}
+      id: 9
+  - Position: {x: 9, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 1}
+      id: 9
+  - Position: {x: 8, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 2}
+      id: 9
+  - Position: {x: 7, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 5}
+      id: 9
+  - Position: {x: 4, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 6}
+      id: 9
+  - Position: {x: 3, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 7}
+      id: 9
+  - Position: {x: 2, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 1, y: 7}
+      id: 9
+  - Position: {x: 2, y: 8}
     Tile:
-      id: 8
+      id: 9
   - Position: {x: 2, y: 7}
     Tile:
-      id: 8
-  - Position: {x: 5, y: 7}
+      id: 9
+  - Position: {x: 10, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 6, y: 7}
+      id: 9
+  - Position: {x: 10, y: 8}
     Tile:
-      id: 8
-  - Position: {x: 7, y: 7}
+      id: 9
+  - Position: {x: 10, y: 7}
     Tile:
-      id: 8
+      id: 9
+  - Position: {x: 10, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 5}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 3}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 9, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 8, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 7, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 5, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 4, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 3, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 3}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 5}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 7}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 8}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 9}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 3, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 4, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 5, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 7, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 8, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 9, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 11, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 11, y: 5}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 0}
+    Tile:
+      id: 10
+  - Position: {x: 5, y: 0}
+    Tile:
+      id: 10
+  - Position: {x: 0, y: 5}
+    Tile:
+      id: 10
+  - Position: {x: 0, y: 6}
+    Tile:
+      id: 10
+  - Position: {x: 6, y: 11}
+    Tile:
+      id: 10
+  - Position: {x: 5, y: 11}
+    Tile:
+      id: 10
+  - Position: {x: 7, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 8, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 9, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 10, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 10}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 9}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 8}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 7}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 4}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 3}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 2}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 1}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 0}
+    Tile:
+      id: 11
+  - Position: {x: 10, y: 0}
+    Tile:
+      id: 12
+  - Position: {x: 9, y: 0}
+    Tile:
+      id: 12
+  - Position: {x: 8, y: 0}
+    Tile:
+      id: 12
+  - Position: {x: 7, y: 0}
+    Tile:
+      id: 12
   - Position: {x: 4, y: 0}
     Tile:
-      id: 9
+      id: 12
   - Position: {x: 3, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 7, y: 3}
+      id: 12
+  - Position: {x: 2, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 7, y: 4}
+      id: 12
+  - Position: {x: 1, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 4, y: 7}
+      id: 12
+  - Position: {x: 0, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 3, y: 7}
+      id: 12
+  - Position: {x: 0, y: 1}
     Tile:
-      id: 9
-  - Position: {x: 0, y: 4}
+      id: 12
+  - Position: {x: 0, y: 2}
     Tile:
-      id: 9
+      id: 12
   - Position: {x: 0, y: 3}
     Tile:
-      id: 9
+      id: 12
+  - Position: {x: 0, y: 4}
+    Tile:
+      id: 12
+  - Position: {x: 0, y: 7}
+    Tile:
+      id: 12
+  - Position: {x: 0, y: 8}
+    Tile:
+      id: 13
+  - Position: {x: 0, y: 9}
+    Tile:
+      id: 13
+  - Position: {x: 0, y: 10}
+    Tile:
+      id: 13
+  - Position: {x: 0, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 1, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 2, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 3, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 4, y: 11}
+    Tile:
+      id: 13
   references:
     version: 1
     00000000:
@@ -279,14 +519,32 @@ MonoBehaviour:
       data:
         Sprite: Floor_4
     00000008:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000009:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
+    0000000A:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000000B:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000C:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000D:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
 --- !u!23 &1662831724924116183
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -363,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textfield: {fileID: 0}
-  cellSize: {x: 8, y: 8}
+  cellSize: {x: 12, y: 12}
   walls:
   - {fileID: 1529506222559683339}
   - {fileID: 4868330825320700022}
@@ -392,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -400,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -433,6 +691,10 @@ PrefabInstance:
     - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Name
       value: TopWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh
@@ -467,7 +729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.99999976
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -475,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4999995
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -508,6 +770,10 @@ PrefabInstance:
     - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Name
       value: LeftWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh
@@ -570,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -578,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.0000005
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -611,6 +877,10 @@ PrefabInstance:
     - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Name
       value: RightWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh
@@ -673,7 +943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -714,6 +984,10 @@ PrefabInstance:
     - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Name
       value: BottomWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh

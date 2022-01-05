@@ -1215,16 +1215,18 @@ MonoBehaviour:
   start: {fileID: 0}
   rooms:
   - {fileID: 989419758299023129, guid: f5b2ec85a52c3804ab9a95bf939c03a8, type: 3}
+  - {fileID: 989419758299023129, guid: 7e7b1923d3caaf945ae663b2715ba77f, type: 3}
   chestRooms:
   - {fileID: 989419758299023129, guid: f5b2ec85a52c3804ab9a95bf939c03a8, type: 3}
+  - {fileID: 989419758299023129, guid: 7e7b1923d3caaf945ae663b2715ba77f, type: 3}
   obstacleRooms:
   - {fileID: 989419758299023129, guid: f5b2ec85a52c3804ab9a95bf939c03a8, type: 3}
   combatRooms:
   - {fileID: 989419758299023129, guid: f5b2ec85a52c3804ab9a95bf939c03a8, type: 3}
-  - {fileID: 989419758299023129, guid: f5b2ec85a52c3804ab9a95bf939c03a8, type: 3}
+  - {fileID: 989419758299023129, guid: 7e7b1923d3caaf945ae663b2715ba77f, type: 3}
   trapRooms:
   - {fileID: 989419758299023129, guid: f5b2ec85a52c3804ab9a95bf939c03a8, type: 3}
-  hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
+  hall: {fileID: 989419758299023129, guid: f5b2ec85a52c3804ab9a95bf939c03a8, type: 3}
   directions:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
