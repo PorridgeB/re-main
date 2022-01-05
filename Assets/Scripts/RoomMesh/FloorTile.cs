@@ -12,7 +12,8 @@ public class FloorTile : Tile
 
     public override void AddMesh(TileMeshBuilder tileMeshBuilder, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
-        var aoColor = new Color(0.4f, 0.4f, 0.4f);
+        var aoColor = new Color(0.4f, 0.4f, 0.45f);
+        //var aoColor = Color.white;
         var colors = new Color[]
         {
             (neighbours.North is WallTile || neighbours.West is WallTile || neighbours.NorthWest is WallTile) ? aoColor : Color.white,

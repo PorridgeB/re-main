@@ -50,9 +50,19 @@ public class WallTile : Tile
 
         if (!(neighbours.South is WallTile))
         {
-            var aoColor = new Color(0.4f, 0.4f, 0.4f);
-            var color = new Color[] { Color.white, Color.white, aoColor, aoColor };
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv, color);
+            var aoColor = new Color(0.4f, 0.4f, 0.45f);
+            //var aoColor = Color.white;
+            var colors = new Color[]
+            {
+                //neighbours.SouthWest is WallTile ? aoColor : Color.white,
+                //neighbours.SouthEast is WallTile ? aoColor : Color.white,
+                Color.white,
+                Color.white,
+                aoColor,
+                aoColor,
+            };
+
+            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv, colors);
         }
 
         if (!(neighbours.West is WallTile))
