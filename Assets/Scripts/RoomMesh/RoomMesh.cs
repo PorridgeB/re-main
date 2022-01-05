@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
+[ExecuteAlways]
 public class RoomMesh : MonoBehaviour
 {
     private const string DefaultMaterialPath = "RoomMaterial";

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class RoomEditorWindow : EditorWindow
 {
-
     public class Palette
     {
         public string Name;
