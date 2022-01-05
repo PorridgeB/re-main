@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class RoomEditorWindow : EditorWindow
 {
+
     public class Palette
     {
         public string Name;
@@ -15,6 +16,8 @@ public class RoomEditorWindow : EditorWindow
 
         public Tile SelectedTile => Tiles[SelectedTileIndex];
     }
+
+    public RoomMesh Room;
 
     private const string DefaultTilesetPath = "Tileset";
     private const int paletteColumns = 4;
@@ -37,11 +40,11 @@ public class RoomEditorWindow : EditorWindow
     private int selectedPalette = 0;
     private int selectedTool = 0;
 
-    [MenuItem("Window/Room Editor")]
-    private static void ShowWindow()
-    {
-        GetWindow(typeof(RoomEditorWindow), false, "Room Editor");
-    }
+    //[MenuItem("Window/Room Editor")]
+    //private static void ShowWindow()
+    //{
+    //    GetWindow(typeof(RoomEditorWindow), false, "Room Editor");
+    //}
 
     private void OnGUI()
     {
@@ -64,18 +67,16 @@ public class RoomEditorWindow : EditorWindow
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Move To Origin"))
         {
-            var room = GetRoom();
-            Undo.RecordObject(room, "Moved To Origin");
-            room.MoveToOrigin();
-            room.Rebuild();
+            Undo.RecordObject(Room, "Moved To Origin");
+            Room.MoveToOrigin();
+            Room.Rebuild();
         }
 
         if (GUILayout.Button("Fill Outline"))
         {
-            var room = GetRoom();
-            Undo.RecordObject(room, "Filled Outline");
-            room.FillOutline(SelectedTile);
-            room.Rebuild();
+            Undo.RecordObject(Room, "Filled Outline");
+            Room.FillOutline(SelectedTile);
+            Room.Rebuild();
         }
         GUILayout.EndHorizontal();
         GUILayout.Space(8f);
@@ -102,19 +103,17 @@ public class RoomEditorWindow : EditorWindow
 
                 if ((Event.current.type == EventType.MouseDown || Event.current.type == EventType.MouseDrag) && Event.current.button == 0)
                 {
-                    var room = GetRoom();
-
                     if (Event.current.control)
                     {
-                        room.RemoveTile(mouseCell);
+                        Room.RemoveTile(mouseCell);
                     }
                     else
                     {
-                        Undo.RecordObject(room, "Placed Tile");
-                        room.PlaceTile(mouseCell, SelectedTile);
+                        Undo.RecordObject(Room, "Placed Tile");
+                        Room.PlaceTile(mouseCell, SelectedTile);
                     }
 
-                    room.Rebuild();
+                    Room.Rebuild();
                 }
 
                 break;
@@ -134,19 +133,17 @@ public class RoomEditorWindow : EditorWindow
 
                             var rect = RectFromCells(rectFillFrom, mouseCell);
 
-                            var room = GetRoom();
-
                             if (Event.current.control)
                             {
-                                room.RemoveRect(rect);
+                                Room.RemoveRect(rect);
                             }
                             else
                             {
-                                Undo.RecordObject(room, "Placed Tiles");
-                                room.FillRect(rect, SelectedTile);
+                                Undo.RecordObject(Room, "Placed Tiles");
+                                Room.FillRect(rect, SelectedTile);
                             }
-                            
-                            room.Rebuild();
+
+                            Room.Rebuild();
 
                             break;
                     }
@@ -234,43 +231,6 @@ public class RoomEditorWindow : EditorWindow
         palettes = new List<Palette>() { floorPalette, wallPalette, pitPalette };
     }
 
-    private RoomMesh GetRoom()
-    {
-        var rootGameObject = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage()?.prefabContentsRoot;
-        //var assetPath = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage()?.prefabAssetPath;
-        //var rootGameObject = PrefabUtility.LoadPrefabContents(assetPath);
-
-        //var room = rootGameObject.FindObjectOfType<RoomMesh>();
-        var room = rootGameObject.GetComponentInChildren(typeof(RoomMesh)) as RoomMesh;
-        //var room = rootGameObject.Find("Room") as GameObject;
-
-        // Create the Room GameObject if one doesn't exist
-        if (room == null)
-        {
-            var roomObject = new GameObject("Room");
-            roomObject.transform.parent = rootGameObject.transform;
-            roomObject.tag = "Room";
-            room = roomObject.AddComponent<RoomMesh>();
-            //PrefabUtility.ReplacePrefab(rootGameObject, PrefabUtility.GetPrefabParent(rootGameObject), ReplacePrefabOptions.ConnectToPrefab);
-        }
-
-        //PrefabUtility.UnloadPrefabContents(assetPath);
-
-        return room;
-
-        //var room = FindObjectOfType<RoomMesh>();
-
-        //// Create the Room GameObject if one doesn't exist
-        //if (room == null)
-        //{
-        //    var roomObject = new GameObject("Room");
-        //    roomObject.tag = "Room";
-        //    room = roomObject.AddComponent<RoomMesh>();
-        //}
-
-        //return room;
-    }
-
     private void OnFocus()
     {
         SceneView.duringSceneGui -= this.OnSceneGUI;
@@ -290,7 +250,6 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnUndoRedo()
     {
-        var room = GetRoom();
-        room.Rebuild();
+        Room.Rebuild();
     }
 }
