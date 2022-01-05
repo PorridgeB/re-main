@@ -84,6 +84,11 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnSceneGUI(SceneView sceneView)
     {
+        if (Selection.activeGameObject != Room.gameObject)
+        {
+            return;
+        }
+
         if (selectedTool == 0)
         {
             return;
