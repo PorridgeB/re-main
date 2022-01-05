@@ -73,7 +73,7 @@ MonoBehaviour:
       id: 3
   - Position: {x: 10, y: 9}
     Tile:
-      id: 1
+      id: 3
   - Position: {x: 9, y: 1}
     Tile:
       id: 1
@@ -100,7 +100,7 @@ MonoBehaviour:
       id: 3
   - Position: {x: 9, y: 9}
     Tile:
-      id: 5
+      id: 3
   - Position: {x: 8, y: 1}
     Tile:
       id: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
       id: 3
   - Position: {x: 8, y: 9}
     Tile:
-      id: 5
+      id: 3
   - Position: {x: 7, y: 1}
     Tile:
       id: 1
@@ -145,16 +145,16 @@ MonoBehaviour:
       id: 1
   - Position: {x: 7, y: 6}
     Tile:
-      id: 1
+      id: 3
   - Position: {x: 7, y: 7}
     Tile:
-      id: 5
+      id: 3
   - Position: {x: 7, y: 8}
     Tile:
-      id: 5
+      id: 3
   - Position: {x: 7, y: 9}
     Tile:
-      id: 5
+      id: 3
   - Position: {x: 6, y: 1}
     Tile:
       id: 1
@@ -172,16 +172,16 @@ MonoBehaviour:
       id: 1
   - Position: {x: 6, y: 6}
     Tile:
-      id: 1
+      id: 3
   - Position: {x: 6, y: 7}
     Tile:
-      id: 1
+      id: 3
   - Position: {x: 6, y: 8}
     Tile:
-      id: 1
+      id: 3
   - Position: {x: 6, y: 9}
     Tile:
-      id: 1
+      id: 3
   - Position: {x: 5, y: 5}
     Tile:
       id: 1
@@ -610,7 +610,7 @@ MonoBehaviour:
     00000003:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: {fileID: -1865757787562490331, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
+        Sprite: {fileID: -3309781605116015348, guid: ebc2eba9ecea5dd4d970847ff0b37060, type: 3}
     00000004:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
