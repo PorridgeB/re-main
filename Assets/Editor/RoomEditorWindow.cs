@@ -17,8 +17,6 @@ public class RoomEditorWindow : EditorWindow
         public Tile SelectedTile => Tiles[SelectedTileIndex];
     }
 
-    public RoomMesh Room;
-
     private const string DefaultTilesetPath = "Tileset";
     private const int paletteColumns = 4;
     private const float cellSelectionOutlineWidth = 4;
@@ -40,33 +38,27 @@ public class RoomEditorWindow : EditorWindow
     private int selectedPalette = 0;
     private int selectedTool = 0;
 
-    //[MenuItem("Window/Room Editor")]
-    //private static void ShowWindow()
-    //{
-    //    GetWindow(typeof(RoomEditorWindow), false, "Room Editor");
-    //}
+    [MenuItem("Window/Room Editor")]
+    private static void ShowWindow()
+    {
+        GetWindow(typeof(RoomEditorWindow), false, "Room Editor");
+    }
 
     private void OnGUI()
     {
-        if (Room == null || Selection.activeGameObject != Room.gameObject)
+        var room = GetRoom();
+
+        if (room == null)
         {
             GUILayout.FlexibleSpace();
-            GUILayout.Label("Room Mesh not selected!");
+            var style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
+            GUILayout.Label("No Room Mesh selected!", style, GUILayout.ExpandWidth(true));
             GUILayout.FlexibleSpace();
             return;
         }
 
         GUILayout.Label("Tool (Hold ctrl to remove tiles)");
         selectedTool = GUILayout.Toolbar(selectedTool, new string[] { "None", "Paint", "Fill Rect" });
-
-        GUILayout.Space(8f);
-
-        if (GUILayout.Button("Fill Outline"))
-        {
-            Undo.RecordObject(Room, "Filled Room Outline");
-            Room.FillOutline(SelectedTile);
-            Room.Rebuild();
-        }
 
         GUILayout.Space(8f);
 
@@ -80,19 +72,25 @@ public class RoomEditorWindow : EditorWindow
 
         GUILayout.Space(8f);
 
-        GUILayout.Label("Room Options");
+        GUILayout.Label("Room");
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Move To Origin"))
         {
-            Undo.RecordObject(Room, "Moved Room To Origin");
-            Room.MoveToOrigin();
-            Room.Rebuild();
+            Undo.RecordObject(room, "Moved Room To Origin");
+            room.MoveToOrigin();
+            room.Rebuild();
         }
         if (GUILayout.Button("Rotate"))
         {
-            Undo.RecordObject(Room, "Rotated Room");
-            Room.Rotate();
-            Room.Rebuild();
+            Undo.RecordObject(room, "Rotated Room");
+            room.Rotate();
+            room.Rebuild();
+        }
+        if (GUILayout.Button("Fill Outline"))
+        {
+            Undo.RecordObject(room, "Filled Room Outline");
+            room.FillOutline(SelectedTile);
+            room.Rebuild();
         }
         GUILayout.EndHorizontal();
         GUILayout.Space(8f);
@@ -100,7 +98,9 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnSceneGUI(SceneView sceneView)
     {
-        if (Room == null || Selection.activeGameObject != Room.gameObject)
+        var room = GetRoom();
+
+        if (room == null)
         {
             return;
         }
@@ -126,15 +126,15 @@ public class RoomEditorWindow : EditorWindow
                 {
                     if (Event.current.control)
                     {
-                        Room.RemoveTile(mouseCell);
+                        room.RemoveTile(mouseCell);
                     }
                     else
                     {
-                        Undo.RecordObject(Room, "Placed Tile");
-                        Room.PlaceTile(mouseCell, SelectedTile);
+                        Undo.RecordObject(room, "Placed Tile");
+                        room.PlaceTile(mouseCell, SelectedTile);
                     }
 
-                    Room.Rebuild();
+                    room.Rebuild();
                 }
 
                 break;
@@ -156,15 +156,15 @@ public class RoomEditorWindow : EditorWindow
 
                             if (Event.current.control)
                             {
-                                Room.RemoveRect(rect);
+                                room.RemoveRect(rect);
                             }
                             else
                             {
-                                Undo.RecordObject(Room, "Placed Tiles");
-                                Room.FillRect(rect, SelectedTile);
+                                Undo.RecordObject(room, "Placed Tiles");
+                                room.FillRect(rect, SelectedTile);
                             }
 
-                            Room.Rebuild();
+                            room.Rebuild();
 
                             break;
                     }
@@ -210,6 +210,13 @@ public class RoomEditorWindow : EditorWindow
         return rect;
     }
 
+    private RoomMesh GetRoom()
+    {
+        var selected = Selection.activeGameObject;
+
+        return selected?.GetComponent<RoomMesh>();
+    }
+
     private void DrawRectSelection(Vector2Int fromCell, Vector2Int toCell)
     {
         DrawRectSelection(RectFromCells(fromCell, toCell));
@@ -240,7 +247,7 @@ public class RoomEditorWindow : EditorWindow
     private void RefreshPalettes()
     {
         var tileset = Resources.LoadAll<Sprite>(DefaultTilesetPath);
-        
+
         var wallTrimSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallTrimPrefix)));
         var floorSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(FloorPrefix)));
         var wallSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallPrefix)));
@@ -271,6 +278,13 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnUndoRedo()
     {
-        Room.Rebuild();
+        var room = GetRoom();
+
+        room?.Rebuild();
+    }
+
+    private void OnSelectionChange()
+    {
+        Repaint();
     }
 }

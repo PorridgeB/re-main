@@ -40,7 +40,6 @@ public class RoomInspector : Editor
         if (GUILayout.Button("Open Room Editor"))
         {
             var window = (RoomEditorWindow)EditorWindow.GetWindow(typeof(RoomEditorWindow), false, "Room Editor");
-            window.Room = room;
             window.Show();
         }
     }
