@@ -20,5 +20,6 @@ public class PlayerPhaserShoot : StateMachineBehaviour
         projectile.transform.position = player.transform.position + new Vector3(player.Facing.x, 0, player.Facing.y) * Distance;
         projectile.Direction = new Vector3(player.Facing.x, 0, player.Facing.y);
         projectile.Speed = Speed;
+        projectile.Source = player.gameObject;
     }
 }

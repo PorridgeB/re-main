@@ -23,6 +23,8 @@ public class Projectile : MonoBehaviour
     public string Target = "Enemy";
     [Tooltip("Prefab to create when the projectile has impacted with something")]
     public GameObject ImpactPrefab;
+    [HideInInspector]
+    public GameObject Source;
 
     [Header("Seeking")]
     [Tooltip("Enables the projectile to bend toward nearby enemies")]
@@ -188,6 +190,7 @@ public class Projectile : MonoBehaviour
         {
             var impact = Instantiate(ImpactPrefab, transform.position, Quaternion.identity).GetComponent<ProjectileImpact>();
             impact.Color = Color;
+            impact.Source = Source;
         }
     }
 
