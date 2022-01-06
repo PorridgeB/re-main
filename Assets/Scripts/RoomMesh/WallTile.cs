@@ -63,8 +63,8 @@ public class WallTile : Tile
             {
                 colors = new Color[]
                 {
-                    neighbours.SouthWest is WallTile ? options.AmbientOcclusionColor : Color.white,
-                    neighbours.SouthEast is WallTile ? options.AmbientOcclusionColor : Color.white,
+                    options.CalculateAmbientOcclusion(false, neighbours.SouthWest is WallTile),
+                    options.CalculateAmbientOcclusion(false, neighbours.SouthEast is WallTile),
                     options.CalculateAmbientOcclusion(true, neighbours.SouthWest is WallTile),
                     options.CalculateAmbientOcclusion(true, neighbours.SouthEast is WallTile),
                 };
