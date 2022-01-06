@@ -112,6 +112,12 @@ public class RoomMesh : MonoBehaviour
 
     public void Rebuild()
     {
+        if (Options == null)
+        {
+            Debug.LogError("RoomMeshOptions not set!");
+            return;
+        }
+
         var tileset = Resources.LoadAll<Sprite>(DefaultTilesetPath);
         var sprites = new Dictionary<string, Sprite>();
        
