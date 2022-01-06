@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
     public float Speed = 10f;
     [Tooltip("Maximum distance the projectile can travel from its starting position before being destroyed")]
     public float Range = 25f;
+    [Tooltip("Maximum time the projectile can travel")]
+    public float Lifespan = 8f;
     [Tooltip("Width of the trail")]
     public float Size = 0.25f;
     [Tooltip("Colour of the light and the trail")]
@@ -70,6 +72,7 @@ public class Projectile : MonoBehaviour
     private TrailRenderer trail;
     private new SphereCollider collider;
     private Vector3 startPosition;
+    private float startTime;
     private int ricochets = 0;
     private int passthroughs = 0;
 
@@ -92,6 +95,7 @@ public class Projectile : MonoBehaviour
         trail.endWidth = 0;
 
         startPosition = transform.position;
+        startTime = Time.time;
     }
 
     void Update()
@@ -105,6 +109,11 @@ public class Projectile : MonoBehaviour
         }
 
         if (Vector3.Distance(startPosition, transform.position) > Range)
+        {
+            Fizzle();
+        }
+
+        if (Time.time - startTime > Lifespan)
         {
             Fizzle();
         }
