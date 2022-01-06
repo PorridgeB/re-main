@@ -705,6 +705,7 @@
     <Compile Include="Assets\Scripts\MeshTexturer.cs" />
     <Compile Include="Assets\Scripts\EnemySpawn.cs" />
     <Compile Include="Assets\Scripts\Encounter.cs" />
+    <Compile Include="Assets\RogueShoot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
