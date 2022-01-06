@@ -18,6 +18,7 @@ public class RogueShoot : StateMachineBehaviour
         projectile.transform.position = animator.transform.position + directionToTarget * 1.2f;
         projectile.Direction = directionToTarget;
         projectile.Speed = 15f;
+        projectile.Target = target.tag;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

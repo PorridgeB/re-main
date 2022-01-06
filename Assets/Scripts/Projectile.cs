@@ -19,6 +19,8 @@ public class Projectile : MonoBehaviour
     public Color Color = Color.white;
     [Tooltip("Time for the projectile to detect collisions again with the previous collider")]
     public float IgnoreCollisionTime = 0.5f;
+    [Tooltip("GameObject tag that this projectile targets")]
+    public string Target = "Enemy";
     [Tooltip("Prefab to create when the projectile has impacted with something")]
     public GameObject ImpactPrefab;
 
@@ -139,7 +141,7 @@ public class Projectile : MonoBehaviour
         var colliders = Physics.OverlapSphere(transform.position, Radius);
         foreach (var collider in colliders)
         {
-            if (collider.CompareTag("Enemy"))
+            if (collider.CompareTag(Target))
             {
                 var enemy = collider.gameObject;
                 var enemyPosition = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
@@ -234,7 +236,7 @@ public class Projectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag(Target))
         {
             if (PassthroughEnabled && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
             {
