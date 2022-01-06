@@ -4,8 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class RoomMeshOptions
+[CreateAssetMenu(fileName = "RoomMeshOptions", menuName = "Room Mesh Options", order = 1)]
+public class RoomMeshOptions : ScriptableObject
 {
     [Tooltip("Add the hidden back and side faces to the walls")]
     public bool AddHiddenWallFaces = true;

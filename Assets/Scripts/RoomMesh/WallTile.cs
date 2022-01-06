@@ -61,22 +61,10 @@ public class WallTile : Tile
             Color[] colors = null;
             if (options.BakeAmbientOcclusion)
             {
-                //colors = new Color[]
-                //{
-                //    //neighbours.SouthWest is WallTile ? options.AmbientOcclusionColor : Color.white,
-                //    //neighbours.SouthEast is WallTile ? options.AmbientOcclusionColor : Color.white,
-                //    Color.white,
-                //    Color.white,
-                //    options.AmbientOcclusionColor,
-                //    options.AmbientOcclusionColor,
-                //};
-
                 colors = new Color[]
                 {
                     neighbours.SouthWest is WallTile ? options.AmbientOcclusionColor : Color.white,
                     neighbours.SouthEast is WallTile ? options.AmbientOcclusionColor : Color.white,
-              //    Color.white,
-              //    Color.white,
                     options.CalculateAmbientOcclusion(true, neighbours.SouthWest is WallTile),
                     options.CalculateAmbientOcclusion(true, neighbours.SouthEast is WallTile),
                 };
