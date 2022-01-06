@@ -15,4 +15,4 @@ MonoBehaviour:
   AddHiddenWallFaces: 1
   BakeAmbientOcclusion: 1
   SimpleAmbientOcclusion: 0
-  AmbientOcclusionColor: {r: 0.4, g: 0.4, b: 0.5, a: 1}
+  AmbientOcclusionColor: {r: 0.3, g: 0.3, b: 0.4, a: 1}

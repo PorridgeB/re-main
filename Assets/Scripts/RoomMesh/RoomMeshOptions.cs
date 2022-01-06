@@ -14,7 +14,7 @@ public class RoomMeshOptions : ScriptableObject
     [Tooltip("Use the ambient occlusion color when there is at least one occluder")]
     public bool SimpleAmbientOcclusion = false;
     [Tooltip("The tint of the ambient occlusion")]
-    public Color AmbientOcclusionColor = new Color(0.4f, 0.4f, 0.5f);
+    public Color AmbientOcclusionColor = new Color(0.3f, 0.3f, 0.4f);
 
     public Color CalculateAmbientOcclusion(params bool[] occluders)
     {
