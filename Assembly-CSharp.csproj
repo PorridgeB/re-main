@@ -701,6 +701,9 @@
     <Compile Include="Assets\Scripts\RoomMesh\ConnectedTextures.cs" />
     <Compile Include="Assets\Scripts\RoomMesh\FloorTile.cs" />
     <Compile Include="Assets\Scripts\RoomMesh\RoomMesh.cs" />
+    <Compile Include="Assets\Scripts\Encounter.cs" />
+    <Compile Include="Assets\Scripts\Scriptable Objects\ObjectPool.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

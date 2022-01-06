@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a72207fd1c557642850c58e36d5b2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCost: 10
+  type: 2
   unstoppable: 0
   hitDirection: {x: 0, y: 0, z: 0}
   AttackField: {fileID: 0}

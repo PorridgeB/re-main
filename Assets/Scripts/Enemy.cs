@@ -7,6 +7,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public int unitCost;
+    public EnemyType type;
+
     [HideInInspector]
     public bool unstoppable = false;
 

@@ -131,6 +131,30 @@ MonoBehaviour:
   - Position: {x: 3, y: 5}
     Tile:
       id: 12
+  - Position: {x: 0, y: 6}
+    Tile:
+      id: 13
+  - Position: {x: 0, y: 7}
+    Tile:
+      id: 13
+  - Position: {x: 1, y: 7}
+    Tile:
+      id: 13
+  - Position: {x: 2, y: 7}
+    Tile:
+      id: 13
+  - Position: {x: 3, y: 7}
+    Tile:
+      id: 13
+  - Position: {x: 3, y: 6}
+    Tile:
+      id: 13
+  - Position: {x: 2, y: 6}
+    Tile:
+      id: 13
+  - Position: {x: 1, y: 6}
+    Tile:
+      id: 13
   references:
     version: 1
     00000000:
@@ -193,6 +217,11 @@ MonoBehaviour:
         Trim: WallTrim_0
         Sprite: Wall_0
     0000000C:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000D:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
         Trim: WallTrim_0

@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &794517070914952442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281819060531938660}
+  - component: {fileID: 6297280665543643196}
+  m_Layer: 0
+  m_Name: Spawn (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1281819060531938660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794517070914952442}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.4999995, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8180371347073500000}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6297280665543643196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794517070914952442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preferedEnemyType: 5
 --- !u!1 &989419758299023129
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,9 +57,9 @@ GameObject:
   - component: {fileID: 1662831724924116183}
   - component: {fileID: 6867976489319204350}
   - component: {fileID: 1190692585394875130}
-  - component: {fileID: 2251013610909116966}
+  - component: {fileID: 4657052127418929233}
   m_Layer: 0
-  m_Name: Room
+  m_Name: CombatRoomA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,6 +80,7 @@ Transform:
   - {fileID: 4868330825320700020}
   - {fileID: 7269778868513056382}
   - {fileID: 4241243282603327553}
+  - {fileID: 8180371347073500000}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,198 +97,438 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tiles:
-  - Position: {x: 3, y: 3}
+  - Position: {x: 5, y: 5}
     Tile:
       id: 0
-  - Position: {x: 4, y: 3}
+  - Position: {x: 6, y: 5}
     Tile:
       id: 1
-  - Position: {x: 4, y: 4}
+  - Position: {x: 6, y: 6}
     Tile:
       id: 0
-  - Position: {x: 3, y: 4}
+  - Position: {x: 5, y: 6}
     Tile:
       id: 2
-  - Position: {x: 4, y: 5}
+  - Position: {x: 6, y: 7}
     Tile:
       id: 0
-  - Position: {x: 3, y: 5}
+  - Position: {x: 5, y: 7}
     Tile:
       id: 0
-  - Position: {x: 5, y: 5}
+  - Position: {x: 7, y: 7}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 6}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 5}
+    Tile:
+      id: 3
+  - Position: {x: 7, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 4}
     Tile:
       id: 0
   - Position: {x: 5, y: 4}
     Tile:
       id: 0
-  - Position: {x: 5, y: 3}
-    Tile:
-      id: 3
-  - Position: {x: 5, y: 2}
+  - Position: {x: 4, y: 4}
     Tile:
       id: 0
-  - Position: {x: 4, y: 2}
+  - Position: {x: 4, y: 5}
     Tile:
       id: 0
-  - Position: {x: 3, y: 2}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 2}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 4}
+  - Position: {x: 4, y: 6}
     Tile:
       id: 4
-  - Position: {x: 2, y: 5}
+  - Position: {x: 4, y: 7}
     Tile:
       id: 0
-  - Position: {x: 2, y: 6}
+  - Position: {x: 4, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 8}
+    Tile:
+      id: 5
+  - Position: {x: 8, y: 7}
+    Tile:
+      id: 6
+  - Position: {x: 8, y: 6}
+    Tile:
+      id: 7
+  - Position: {x: 8, y: 5}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 7, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 6, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 5, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 4, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 3}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 4}
+    Tile:
+      id: 0
+  - Position: {x: 3, y: 5}
     Tile:
       id: 0
   - Position: {x: 3, y: 6}
     Tile:
       id: 0
-  - Position: {x: 4, y: 6}
+  - Position: {x: 3, y: 7}
     Tile:
       id: 0
-  - Position: {x: 5, y: 6}
-    Tile:
-      id: 0
-  - Position: {x: 6, y: 6}
-    Tile:
-      id: 5
-  - Position: {x: 6, y: 5}
-    Tile:
-      id: 6
-  - Position: {x: 6, y: 4}
-    Tile:
-      id: 7
-  - Position: {x: 6, y: 3}
+  - Position: {x: 3, y: 8}
     Tile:
       id: 0
   - Position: {x: 6, y: 2}
     Tile:
-      id: 0
-  - Position: {x: 6, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 5, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 4, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 3, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 2, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 1}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 2}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 1, y: 6}
-    Tile:
-      id: 0
-  - Position: {x: 7, y: 6}
+      id: 8
+  - Position: {x: 5, y: 2}
     Tile:
       id: 8
-  - Position: {x: 7, y: 5}
+  - Position: {x: 9, y: 5}
     Tile:
       id: 8
+  - Position: {x: 9, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 9}
+    Tile:
+      id: 8
+  - Position: {x: 5, y: 9}
+    Tile:
+      id: 8
+  - Position: {x: 2, y: 6}
+    Tile:
+      id: 8
+  - Position: {x: 2, y: 5}
+    Tile:
+      id: 8
+  - Position: {x: 2, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 3}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 3, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 4, y: 2}
+    Tile:
+      id: 9
   - Position: {x: 7, y: 2}
     Tile:
-      id: 8
-  - Position: {x: 7, y: 1}
+      id: 9
+  - Position: {x: 8, y: 2}
     Tile:
-      id: 8
-  - Position: {x: 7, y: 0}
+      id: 9
+  - Position: {x: 9, y: 2}
     Tile:
-      id: 8
-  - Position: {x: 6, y: 0}
+      id: 9
+  - Position: {x: 9, y: 3}
     Tile:
-      id: 8
-  - Position: {x: 5, y: 0}
+      id: 9
+  - Position: {x: 9, y: 4}
     Tile:
-      id: 8
-  - Position: {x: 2, y: 0}
+      id: 9
+  - Position: {x: 9, y: 7}
     Tile:
-      id: 8
-  - Position: {x: 1, y: 0}
+      id: 9
+  - Position: {x: 9, y: 8}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 0}
+      id: 9
+  - Position: {x: 9, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 1}
+      id: 9
+  - Position: {x: 8, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 2}
+      id: 9
+  - Position: {x: 7, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 5}
+      id: 9
+  - Position: {x: 4, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 6}
+      id: 9
+  - Position: {x: 3, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 0, y: 7}
+      id: 9
+  - Position: {x: 2, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 1, y: 7}
+      id: 9
+  - Position: {x: 2, y: 8}
     Tile:
-      id: 8
+      id: 9
   - Position: {x: 2, y: 7}
     Tile:
-      id: 8
-  - Position: {x: 5, y: 7}
+      id: 9
+  - Position: {x: 10, y: 9}
     Tile:
-      id: 8
-  - Position: {x: 6, y: 7}
+      id: 9
+  - Position: {x: 10, y: 8}
     Tile:
-      id: 8
-  - Position: {x: 7, y: 7}
+      id: 9
+  - Position: {x: 10, y: 7}
     Tile:
-      id: 8
+      id: 9
+  - Position: {x: 10, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 5}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 3}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 9, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 8, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 7, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 5, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 4, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 3, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 1}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 2}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 3}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 4}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 5}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 7}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 8}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 9}
+    Tile:
+      id: 9
+  - Position: {x: 1, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 2, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 3, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 4, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 5, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 7, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 8, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 9, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 10, y: 10}
+    Tile:
+      id: 9
+  - Position: {x: 11, y: 6}
+    Tile:
+      id: 9
+  - Position: {x: 11, y: 5}
+    Tile:
+      id: 9
+  - Position: {x: 6, y: 0}
+    Tile:
+      id: 10
+  - Position: {x: 5, y: 0}
+    Tile:
+      id: 10
+  - Position: {x: 0, y: 5}
+    Tile:
+      id: 10
+  - Position: {x: 0, y: 6}
+    Tile:
+      id: 10
+  - Position: {x: 6, y: 11}
+    Tile:
+      id: 10
+  - Position: {x: 5, y: 11}
+    Tile:
+      id: 10
+  - Position: {x: 7, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 8, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 9, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 10, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 11}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 10}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 9}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 8}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 7}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 4}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 3}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 2}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 1}
+    Tile:
+      id: 11
+  - Position: {x: 11, y: 0}
+    Tile:
+      id: 11
+  - Position: {x: 10, y: 0}
+    Tile:
+      id: 12
+  - Position: {x: 9, y: 0}
+    Tile:
+      id: 12
+  - Position: {x: 8, y: 0}
+    Tile:
+      id: 12
+  - Position: {x: 7, y: 0}
+    Tile:
+      id: 12
   - Position: {x: 4, y: 0}
     Tile:
-      id: 9
+      id: 12
   - Position: {x: 3, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 7, y: 3}
+      id: 12
+  - Position: {x: 2, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 7, y: 4}
+      id: 12
+  - Position: {x: 1, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 4, y: 7}
+      id: 12
+  - Position: {x: 0, y: 0}
     Tile:
-      id: 9
-  - Position: {x: 3, y: 7}
+      id: 12
+  - Position: {x: 0, y: 1}
     Tile:
-      id: 9
-  - Position: {x: 0, y: 4}
+      id: 12
+  - Position: {x: 0, y: 2}
     Tile:
-      id: 9
+      id: 12
   - Position: {x: 0, y: 3}
     Tile:
-      id: 9
+      id: 12
+  - Position: {x: 0, y: 4}
+    Tile:
+      id: 12
+  - Position: {x: 0, y: 7}
+    Tile:
+      id: 12
+  - Position: {x: 0, y: 8}
+    Tile:
+      id: 13
+  - Position: {x: 0, y: 9}
+    Tile:
+      id: 13
+  - Position: {x: 0, y: 10}
+    Tile:
+      id: 13
+  - Position: {x: 0, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 1, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 2, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 3, y: 11}
+    Tile:
+      id: 13
+  - Position: {x: 4, y: 11}
+    Tile:
+      id: 13
   references:
     version: 1
     00000000:
@@ -279,14 +564,32 @@ MonoBehaviour:
       data:
         Sprite: Floor_4
     00000008:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000009:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
+    0000000A:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000000B:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000C:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000D:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
 --- !u!23 &1662831724924116183
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -350,7 +653,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &2251013610909116966
+--- !u!114 &4657052127418929233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,26 +662,230 @@ MonoBehaviour:
   m_GameObject: {fileID: 989419758299023129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef5688bde5d79c4baedb8ccecc4d7e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1232a691c24ab5b438b27396c9a025d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textfield: {fileID: 0}
-  cellSize: {x: 8, y: 8}
+  cellSize: {x: 12, y: 12}
   walls:
   - {fileID: 1529506222559683339}
   - {fileID: 4868330825320700022}
   - {fileID: 7269778868513056380}
   - {fileID: 4241243282603327555}
   enemySpawns: []
-  chest: {fileID: 0}
-  boss: {fileID: 0}
-  end: {fileID: 0}
-  npc: {fileID: 0}
-  dummy: {fileID: 0}
-  artifact: {fileID: 0}
-  ooze: {fileID: 0}
-  drone: {fileID: 0}
-  gnat: {fileID: 0}
+  enemyPool: {fileID: 0}
+  runInfoHistory: {fileID: 0}
+  spawns: []
+--- !u!1 &2862390788361698852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2219882250129173009}
+  - component: {fileID: 5726912267341546632}
+  m_Layer: 0
+  m_Name: Spawn (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2219882250129173009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862390788361698852}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.0000005, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8180371347073500000}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5726912267341546632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862390788361698852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preferedEnemyType: 5
+--- !u!1 &3478444989018860338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3095056191445226727}
+  - component: {fileID: 3276349297390054836}
+  m_Layer: 0
+  m_Name: Spawn (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3095056191445226727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478444989018860338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.9999995, y: 0, z: -2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8180371347073500000}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3276349297390054836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478444989018860338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preferedEnemyType: 5
+--- !u!1 &4774225529960905509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7002999846318067573}
+  - component: {fileID: 8127118769839471833}
+  m_Layer: 0
+  m_Name: Spawn (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7002999846318067573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4774225529960905509}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.0000005, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8180371347073500000}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8127118769839471833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4774225529960905509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preferedEnemyType: 5
+--- !u!1 &6728983749479359664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8180371347073500000}
+  m_Layer: 0
+  m_Name: EnemySpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8180371347073500000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728983749479359664}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.9999995, y: 1.0149999, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2370359031475384581}
+  - {fileID: 7002999846318067573}
+  - {fileID: 2219882250129173009}
+  - {fileID: 3095056191445226727}
+  - {fileID: 1281819060531938660}
+  m_Father: {fileID: 672875148287564569}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6741735801023183256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2370359031475384581}
+  - component: {fileID: 4904357736053244894}
+  m_Layer: 0
+  m_Name: Spawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2370359031475384581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6741735801023183256}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8180371347073500000}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4904357736053244894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6741735801023183256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preferedEnemyType: 5
 --- !u!1001 &627465144810747929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -392,7 +899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -400,7 +907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -434,6 +941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWall
       objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -444,14 +955,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
---- !u!1 &1529506222559683339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
-  m_PrefabInstance: {fileID: 627465144810747929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1529506222559683337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+  m_PrefabInstance: {fileID: 627465144810747929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1529506222559683339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
   m_PrefabInstance: {fileID: 627465144810747929}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2834802371028851537
@@ -467,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.99999976
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -475,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4999995
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -509,6 +1020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftWall
       objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -547,14 +1062,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
---- !u!1 &4241243282603327555 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
-  m_PrefabInstance: {fileID: 2834802371028851537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4241243282603327553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+  m_PrefabInstance: {fileID: 2834802371028851537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4241243282603327555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
   m_PrefabInstance: {fileID: 2834802371028851537}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6774285616329409380
@@ -570,7 +1085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -578,7 +1093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.0000005
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -612,6 +1127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightWall
       objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -650,14 +1169,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
---- !u!1 &4868330825320700022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
-  m_PrefabInstance: {fileID: 6774285616329409380}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4868330825320700020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+  m_PrefabInstance: {fileID: 6774285616329409380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4868330825320700022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
   m_PrefabInstance: {fileID: 6774285616329409380}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8750389256789556590
@@ -673,7 +1192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2129307586049694480, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -714,6 +1233,10 @@ PrefabInstance:
     - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Name
       value: BottomWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129307586049694482, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5523368052921003360, guid: 44cfc4346a5aa484ca3d0385773801b7, type: 3}
       propertyPath: m_Mesh
