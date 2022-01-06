@@ -10,6 +10,11 @@ TagManager:
   - Artifact
   - DamageSource
   - Enemy
+<<<<<<< HEAD
+=======
+  - End
+  - Room
+>>>>>>> develop2
   - Level
   - Hitbox
   layers:
@@ -25,6 +30,11 @@ TagManager:
   - Flying Enemies
   - 
   - Level
+<<<<<<< HEAD
+=======
+  - Dashable
+  - 
+>>>>>>> develop2
   - PostProcessing
   - Projectiles
   - 

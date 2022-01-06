@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 682346894046154575}
   m_Layer: 0
   m_Name: Combat Room B
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,6 +367,7 @@ MonoBehaviour:
   - {fileID: 2573036944455926283}
   - {fileID: 6037105559549024622}
   - {fileID: 7998039971796586098}
+  enemySpawns: []
   chest: {fileID: 5013732311888727905, guid: a85b03f18826f0d4385f016f957eaaa2, type: 3}
   boss: {fileID: 5479519566288126510, guid: 5c2c2aa69a663e84bbb57032b039a2c3, type: 3}
   end: {fileID: 9025796265695135403, guid: d24eaa8b1d7b7944caed6498646e7b80, type: 3}

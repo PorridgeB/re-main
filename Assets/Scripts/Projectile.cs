@@ -242,7 +242,7 @@ public class Projectile : MonoBehaviour
                 Impact();
             }
         }
-        else if (collision.gameObject.CompareTag("Level"))
+        else if (collision.gameObject.CompareTag("Room"))
         {
             // TODO: Change to on collision stayed?
             if (RicochetEnabled && Random.value < RicochetChance && ricochets++ < RicochetMax)

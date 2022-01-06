@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+<<<<<<< HEAD
     
     public Vector2 Facing => facing;
     [SerializeField]
@@ -15,6 +16,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public GameEvent playerDeath;
     
+=======
+    public Vector2 Facing => facing;
+
+    public GameEvent playerHit;
+    [SerializeField]
+    public GameEvent playerDeath;
+
+    private Animator anim;
+    private AttackEvent nextAttack;
+>>>>>>> develop2
     private Animator animator;
 
     public readonly List<DamageInstance> damageTaken = new List<DamageInstance>();
@@ -23,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private bool dashBlocked = true;
     private float viewDistance;
     private Vector2 facing;
+    // temporary (use SO)
+    private float health = 100f;
     //private Crosshair crosshair;
 
     [SerializeField]
@@ -60,6 +73,7 @@ public class PlayerController : MonoBehaviour
     private InputAction interactAction;
     private InputAction overlayAction;
 
+<<<<<<< HEAD
     [SerializeField]
     private Resource health;
 
@@ -68,6 +82,8 @@ public class PlayerController : MonoBehaviour
         return facing;
     }
 
+=======
+>>>>>>> develop2
     // Temporary way to switch weapons in-game for debug purposes
     private List<Weapon> meleeWeapons = new List<Weapon>() { new Sword(), new Hammer() };
     private List<Weapon> rangedWeapons = new List<Weapon>() { new Phaser(), new Railgun() };
@@ -181,7 +197,8 @@ public class PlayerController : MonoBehaviour
 
         if (healthRegenTimer.Finished)
         {
-            health.ChangeValue(1);
+            //health.ChangeValue(1);
+            health += 1;
             healthRegenTimer.Reset(1/stats.HealthRegen.Value());
         }
     }
@@ -260,9 +277,11 @@ public class PlayerController : MonoBehaviour
                 finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
-        health.ChangeValue(-finalDamageValue);
+        //health.ChangeValue(-finalDamageValue);
+        health -= finalDamageValue;
         CreateDamageToken(finalDamageValue);
-        if (health.Value < 0)
+        //if (health.Value < 0)
+        if (health < 0)
         {
             playerDeath.Raise();
         }
@@ -336,6 +355,7 @@ public class PlayerController : MonoBehaviour
         {
             interactions.Add(collision.GetComponent<Interaction>());
         }
+<<<<<<< HEAD
         else if (collision.CompareTag("DamageSource"))
         {
             var damageSource = collision.gameObject.GetComponent<DamageSource>();
@@ -350,6 +370,8 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+=======
+>>>>>>> develop2
     }
 
     private void OnTriggerExit(Collider collision)

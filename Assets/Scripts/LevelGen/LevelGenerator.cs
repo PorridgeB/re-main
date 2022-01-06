@@ -11,6 +11,9 @@ public class LevelGenerator : MonoBehaviour
     private Room start;
 
     [SerializeField]
+    private List<Room> allRooms;
+
+    [SerializeField]
     private List<GameObject> rooms;
     [SerializeField]
     private List<GameObject> chestRooms;
@@ -54,9 +57,11 @@ public class LevelGenerator : MonoBehaviour
     {
         if (i == 0)
         {
-            roomPath.Push(Instantiate(rooms[0], transform).GetComponent<Room>());
-            start = roomPath.Peek();
-            roomPath.Peek().SetText("Start");
+            Room room = Instantiate(rooms[0], transform).GetComponent<Room>();
+            roomPath.Push(room);
+            allRooms.Add(room);
+            start = room;
+            start.SetText("Start");
             Turn();
         }
         index++;
@@ -66,11 +71,13 @@ public class LevelGenerator : MonoBehaviour
             generationAttempts++;
             if (generationAttempts > 5)
             {
+                Debug.Log("Fetching new template");
                 generationAttempts = 0;
                 generationTemplate = grammarGenerator.GetGenerationTemplate();
                 generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
             }
             Destroy(start.gameObject);
+            allRooms.Clear();
             start = null;
             index = 0;
         }
@@ -133,6 +140,7 @@ public class LevelGenerator : MonoBehaviour
 
             }
             Room currentRoom = Instantiate(prefab, previousRoom.transform).GetComponent<Room>();
+            currentRoom.CenterRoom(previousRoom);
 
             if (!FindEmptyCell(previousRoom, currentRoom)) return false;
 
@@ -141,6 +149,7 @@ public class LevelGenerator : MonoBehaviour
             currentRoom.OpenPassage(-currentDir);
             previousRoom.OpenPassage(currentDir);
             roomPath.Push(currentRoom);
+            allRooms.Add(currentRoom);
         }
         return true;
     }
@@ -150,7 +159,7 @@ public class LevelGenerator : MonoBehaviour
         List<Vector3> possibleDirections = new List<Vector3>();
         foreach (Vector3 v in directions)
         {
-            if (CheckBoxCollision(previous, current, v))
+            if (CheckForOverlap(previous, current, v))
             {
                 continue;
             }
@@ -158,7 +167,7 @@ public class LevelGenerator : MonoBehaviour
 
         }
         if (possibleDirections.Count > 0) {
-            if (possibleDirections.Contains(currentDir) && roomsSinceTurn >= maxRoomsSinceTurn)
+            if (possibleDirections.Contains(currentDir) && roomsSinceTurn <= maxRoomsSinceTurn)
             {
                 roomsSinceTurn++;
                 return true;
@@ -171,14 +180,37 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
+    private bool CheckForOverlap(Room previousRoom, Room currentRoom, Vector3 direction)
+    {
+        
+        Vector3 newPosition = previousRoom.GetCenter() + currentRoom.Offset(direction) + previousRoom.Offset(direction);
+        foreach (Room r in allRooms)
+        {
+            Vector3 min = currentRoom.HalfExtent + r.HalfExtent;
+            if (min.x > Mathf.Abs(Mathf.Round(newPosition.x - r.GetCenter().x)) &&
+                min.z > Mathf.Abs(Mathf.Round(newPosition.z - r.GetCenter().z)))
+            {
+                return true;
+
+            }
+            else if (Mathf.Abs(Mathf.Round(newPosition.x - r.GetCenter().x)) == 0 && 
+                Mathf.Abs(Mathf.Round(newPosition.z - r.GetCenter().z)) == 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private bool CheckBoxCollision(Room previous, Room current, Vector3 v)
     {
-        //GameObject go = Instantiate(cube, previous.transform.position + Vector3.up / 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v), new Quaternion(), null);
-        //go.transform.localScale = current.Offset(new Vector3(2, 5, 2));
+        GameObject direction = Instantiate(cube, previous.transform.position + Vector3.up * 2 + current.Offset(v) + previous.Offset(v), new Quaternion(), current.transform);
         foreach (Vector3 cardinalPoint in corners)
         {
             RaycastHit hit;
-            if (Physics.Raycast(previous.transform.position + Vector3.up * 2 + (Vector3.right * 8) + current.Offset(v) + previous.Offset(v) + current.Offset(cardinalPoint), Vector3.down, out hit))
+            Debug.Log("checking point");
+            Instantiate(cube, previous.transform.position + Vector3.up * 2 + current.Offset(v) + previous.Offset(v) + current.GetBound(cardinalPoint), new Quaternion(), direction.transform);
+            if (Physics.Raycast(previous.transform.position + Vector3.up * 2  + current.Offset(v) + previous.Offset(v) + current.GetBound(cardinalPoint), Vector3.down, out hit))
             {
                 return true;
             }
