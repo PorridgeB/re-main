@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,10 +18,10 @@ public class FloorTile : Tile
         {
             colors = new Color[]
             {
-                (neighbours.North is WallTile || neighbours.West is WallTile || neighbours.NorthWest is WallTile) ? options.AmbientOcclusionColor : Color.white,
-                (neighbours.North is WallTile || neighbours.East is WallTile || neighbours.NorthEast is WallTile) ? options.AmbientOcclusionColor : Color.white,
-                (neighbours.South is WallTile || neighbours.West is WallTile || neighbours.SouthWest is WallTile) ? options.AmbientOcclusionColor : Color.white,
-                (neighbours.South is WallTile || neighbours.East is WallTile || neighbours.SouthEast is WallTile) ? options.AmbientOcclusionColor : Color.white,
+                options.CalculateAmbientOcclusion(neighbours.North is WallTile, neighbours.West is WallTile, neighbours.NorthWest is WallTile),
+                options.CalculateAmbientOcclusion(neighbours.North is WallTile, neighbours.East is WallTile, neighbours.NorthEast is WallTile),
+                options.CalculateAmbientOcclusion(neighbours.South is WallTile, neighbours.West is WallTile, neighbours.SouthWest is WallTile),
+                options.CalculateAmbientOcclusion(neighbours.South is WallTile, neighbours.East is WallTile, neighbours.SouthEast is WallTile),
             };
         }
 
