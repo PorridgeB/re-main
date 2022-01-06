@@ -8,7 +8,7 @@ public abstract class Tile
 {
     public virtual string PreviewSpriteName => "";
 
-    public virtual void AddMesh(TileMeshBuilder tileMeshBuilder, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
+    public virtual void AddMesh(TileMeshBuilder tileMeshBuilder, RoomMeshOptions options, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
     }
 

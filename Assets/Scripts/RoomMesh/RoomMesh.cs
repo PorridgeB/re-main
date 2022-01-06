@@ -20,6 +20,8 @@ public class RoomMesh : MonoBehaviour
         public Tile Tile;
     }
 
+    public RoomMeshOptions Options;
+
     [SerializeField]
     private List<TileInstance> Tiles = new List<TileInstance>();
 
@@ -110,6 +112,12 @@ public class RoomMesh : MonoBehaviour
 
     public void Rebuild()
     {
+        if (Options == null)
+        {
+            Debug.LogError("RoomMeshOptions not set!");
+            return;
+        }
+
         var tileset = Resources.LoadAll<Sprite>(DefaultTilesetPath);
         var sprites = new Dictionary<string, Sprite>();
        
@@ -183,7 +191,7 @@ public class RoomMesh : MonoBehaviour
             var position = instance.Position;
             var tile = instance.Tile;
             var neighbours = GetTileNeighbours(position);
-            tile.AddMesh(tileMeshBuilder, sprites, position, neighbours);
+            tile.AddMesh(tileMeshBuilder, Options, sprites, position, neighbours);
         }
 
         return tileMeshBuilder.ToMesh();
