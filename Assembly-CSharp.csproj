@@ -710,6 +710,7 @@
     <Compile Include="Assets\Scripts\PhaserProjectileSplit.cs" />
     <Compile Include="Assets\Scripts\PhaserProjectileRicochet.cs" />
     <Compile Include="Assets\Scripts\PhaserProjectilePassthrough.cs" />
+    <Compile Include="Assets\Scripts\PhaserProjectileEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

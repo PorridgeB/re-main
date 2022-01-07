@@ -85,22 +85,6 @@ MonoBehaviour:
   Target: Enemy
   ImpactPrefab: {fileID: 4179723668943172795, guid: 0af93eb30de829b4aabb00459fb3a379, type: 3}
   Source: {fileID: 0}
-  SeekingEnabled: 1
-  SeekingAngularVelocity: 70
-  SeekingTargetDistance: 5
-  SeekingTargetArcAngle: 60
-  RicochetEnabled: 1
-  RicochetChance: 0.33
-  RicochetMax: 4
-  PassthroughEnabled: 0
-  PassthroughChance: 0.25
-  PassthroughMax: 1
-  SplitEnabled: 1
-  SplitChance: 0.5
-  SplitMinProjectiles: 2
-  SplitMaxProjectiles: 2
-  SplitArcAngle: 30
-  SplitSizeMultiplier: 0.7
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0
