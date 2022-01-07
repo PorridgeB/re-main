@@ -10,7 +10,7 @@ public class RogueShoot : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var projectile = Instantiate(Projectile).GetComponent<Projectile>();
+        var projectile = Instantiate(Projectile).GetComponent<PhaserProjectile>();
 
         var target = PlayerController.instance;
 

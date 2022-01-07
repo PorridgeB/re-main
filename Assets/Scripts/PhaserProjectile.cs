@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class PhaserProjectile : MonoBehaviour
 {
     // Direction of travel (normalized)
     [HideInInspector]
@@ -188,7 +188,7 @@ public class Projectile : MonoBehaviour
     {
         if (ImpactPrefab != null)
         {
-            var impact = Instantiate(ImpactPrefab, transform.position, Quaternion.identity).GetComponent<ProjectileImpact>();
+            var impact = Instantiate(ImpactPrefab, transform.position, Quaternion.identity).GetComponent<PhaserProjectileImpact>();
             impact.Color = Color;
             impact.Source = Source;
         }
@@ -212,7 +212,7 @@ public class Projectile : MonoBehaviour
 
         for (int i = 0; i < projectiles; i++)
         {
-            var projectile = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<Projectile>();
+            var projectile = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<PhaserProjectile>();
 
             projectile.IgnoreCollision(collider);
 

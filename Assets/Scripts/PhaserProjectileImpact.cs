@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileImpact : MonoBehaviour
+public class PhaserProjectileImpact : MonoBehaviour
 {
     public Color Color;
 

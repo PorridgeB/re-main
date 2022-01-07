@@ -42,7 +42,7 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
         var angle = shotCount * (SpreadAngle / (ProjectileCount - 1)) - SpreadAngle / 2;
         var projectileDirection = Quaternion.Euler(0, 0, angle) * direction;
 
-        var projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
+        var projectile = Instantiate(projectilePrefab).GetComponent<PhaserProjectile>();
 
         var player = PlayerController.instance;
 

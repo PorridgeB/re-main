@@ -13,7 +13,7 @@ public class PlayerPhaserShoot : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
+        var projectile = Instantiate(projectilePrefab).GetComponent<PhaserProjectile>();
 
         var player = PlayerController.instance;
 
