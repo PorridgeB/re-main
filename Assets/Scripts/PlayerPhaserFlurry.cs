@@ -50,6 +50,7 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
         projectile.Direction = new Vector3(projectileDirection.x, 0, projectileDirection.y);
         projectile.Speed = Speed;
         projectile.Color = Random.ColorHSV(0, 1, 1, 1, 1, 1);
+        projectile.Source = player.gameObject;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

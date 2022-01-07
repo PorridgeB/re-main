@@ -14,6 +14,7 @@ TagManager:
   - Room
   - Level
   - Hitbox
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -31,8 +32,6 @@ TagManager:
   - 
   - PostProcessing
   - Projectiles
-  - 
-  - 
   - 
   - 
   - 

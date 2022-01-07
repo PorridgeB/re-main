@@ -35,7 +35,7 @@ public class PhaserProjectileImpact : MonoBehaviour
 
         var damageSource = hurtbox.GetComponent<DamageSource>();
         damageSource.source = Source;
-        damageSource.AddInstance(new DamageInstance { source = Source, type = DamageType.Energy, value = 1 });
+        damageSource.AddInstance(new DamageInstance { source = Source, type = DamageType.Energy, value = 30 });
 
         Destroy(hurtbox, 0.1f);
     }

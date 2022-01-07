@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4143467952847481715}
   m_Layer: 15
   m_Name: PhaserProjectile
-  m_TagString: DamageSource
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
