@@ -10,12 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4798669769740775045}
   - component: {fileID: 5036658877580722809}
-  - component: {fileID: 2628071630113409118}
   - component: {fileID: 7782459429134183958}
   - component: {fileID: 5564871658346023331}
   - component: {fileID: 7528054689901301396}
   - component: {fileID: 1515403333284858738}
   - component: {fileID: 7149625720241924668}
+  - component: {fileID: 2628071630113409118}
+  - component: {fileID: 1950498357395293538}
+  - component: {fileID: 7049648073408164574}
+  - component: {fileID: 365641862823815452}
   m_Layer: 6
   m_Name: Rogue
   m_TagString: Enemy
@@ -69,42 +72,22 @@ MonoBehaviour:
       variableStartIndex: 
       JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(-2466.15039,-87.80371)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.84960938,122.196289)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(4.963379,130.263229)"},"ID":2,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"LastActivated","NodeData":{"Offset":"(-149.74707,134.239777)"},"ID":3,"Name":"Last
         Activated","Instant":true,"SharedFloatDuration":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.5}},{"Type":"WithinSight","NodeData":{"Offset":"(1.55810547,129.0224)"},"ID":4,"Name":"Within
-        Sight","Instant":true,"SharedFloatSightDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":10},"SharedGameObjectTarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true,"IsGlobal":true,"GameObjectmValue":0},"SharedLayerMaskMask":{"Type":"BehaviorDesigner.Runtime.SharedLayerMask","Name":null,"LayerMaskmValue":2304}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetTrigger","NodeData":{"Offset":"(137.0456,131.172363)"},"ID":5,"Name":"Set
-        Trigger","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":1},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Shoot"}}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Target","IsShared":true}]}'
+        Sight","Instant":true,"SharedFloatSightDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":10},"SharedGameObjectTarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true,"IsGlobal":true},"SharedLayerMaskMask":{"Type":"BehaviorDesigner.Runtime.SharedLayerMask","Name":null,"LayerMaskmValue":2304}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetTrigger","NodeData":{"Offset":"(137.0456,131.172363)"},"ID":5,"Name":"Set
+        Trigger","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":0},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Shoot"}}]}]},"DetachedTasks":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-2270.06714,448.420837)"},"ID":6,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"FindCover","NodeData":{"Offset":"(-66.8505859,111.8085)"},"ID":7,"Name":"Find
+        Cover","Instant":true,"SharedVector3CoverPosition":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"CoverPosition","IsShared":true,"Vector3mValue":"(0,0,0)"}},{"Type":"GoTo","NodeData":{"Offset":"(69.11694,110.665619)"},"ID":8,"Name":"Go
+        To","Instant":true,"SharedVector3TargetPosition":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"CoverPosition","IsShared":true,"Vector3mValue":"(0,0,0)"},"SharedFloatSpeed":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":5},"SingleTargetReachedRadius":0.1}]}],"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Target","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"CoverPosition","IsShared":true,"Vector3mValue":"(0,0,0)"}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
         startIndex: 
         dataPosition: 
         unityObjects:
-        - {fileID: 0}
         - {fileID: 1769214919239781289}
         byteData: 
         byteDataArray: 
       Version: 1.7.1
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
---- !u!114 &2628071630113409118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769214919239781289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a72207fd1c557642850c58e36d5b2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitCost: 0
-  type: 1
-  unstoppable: 0
-  hitDirection: {x: 0, y: 0, z: 0}
-  AttackField: {fileID: 3298188469097433944, guid: d03355a6e044760448deb0c982da0b8d, type: 3}
-  AttackDamage: 10
-  OnDeath: {fileID: 0}
-  OnHurt: {fileID: 0}
-  damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
 --- !u!195 &7782459429134183958
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -227,6 +210,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2628071630113409118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769214919239781289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a72207fd1c557642850c58e36d5b2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitCost: 0
+  type: 1
+  unstoppable: 0
+  hitDirection: {x: 0, y: 0, z: 0}
+  AttackField: {fileID: 3298188469097433944, guid: d03355a6e044760448deb0c982da0b8d, type: 3}
+  AttackDamage: 10
+  OnDeath: {fileID: 0}
+  OnHurt: {fileID: 0}
+  damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
+--- !u!114 &1950498357395293538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769214919239781289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b349aaa6288c123488765e6d03a17a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7049648073408164574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769214919239781289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ce1b1d1bb63f74d92b67b6c79ff6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expiryTime: 1.5
+  observations: []
+--- !u!114 &365641862823815452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769214919239781289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4c336b9d569f54496d1f4e358bbcbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rate: 0.5
+  MaxDistance: 7
 --- !u!1 &1786208039703026264
 GameObject:
   m_ObjectHideFlags: 0

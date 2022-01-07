@@ -440,7 +440,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\SetFloatParameter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Input\IsButtonUp.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\SetTrigger.cs" />
-    <Compile Include="Assets\RogueShoot.cs" />
+    <Compile Include="Assets\Scripts\RogueShoot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\Rotate.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\SetDrag.cs" />
     <Compile Include="Assets\Scripts\RoomMesh\TileMeshBuilder.cs" />
@@ -711,6 +711,12 @@
     <Compile Include="Assets\Scripts\PhaserProjectileRicochetEffect.cs" />
     <Compile Include="Assets\Scripts\PhaserProjectilePassthroughEffect.cs" />
     <Compile Include="Assets\Scripts\PhaserProjectileEffect.cs" />
+    <Compile Include="Assets\Scripts\Tasks\FindCover.cs" />
+    <Compile Include="Assets\Scripts\TargetSelector.cs" />
+    <Compile Include="Assets\Scripts\Memory.cs" />
+    <Compile Include="Assets\Scripts\Sensor.cs" />
+    <Compile Include="Assets\Scripts\Observation.cs" />
+    <Compile Include="Assets\Scripts\SightSensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
