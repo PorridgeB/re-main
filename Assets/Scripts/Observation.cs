@@ -7,7 +7,14 @@ using UnityEngine;
 public class Observation
 {
     // Time when the observation was made
-    public float Time;
-    public GameObject GameObject;
-    public Vector3 Position;
+    public float When;
+    public Vector3 Where;
+    public GameObject Who;
+
+    public Observation(Vector3 where, GameObject who)
+    {
+        When = Time.time;
+        Where = where;
+        Who = who;
+    }
 }

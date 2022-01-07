@@ -12,12 +12,13 @@ public class Memory : MonoBehaviour
 
     private void Update()
     {
-        observations.RemoveAll(x => Time.time - x.Time > expiryTime);
+        // Remove all expired observations
+        observations.RemoveAll(x => Time.time - x.When > expiryTime);
     }
 
     public Observation WithTag(string tag)
     {
-        return observations.Find(x => x.GameObject?.tag == tag);
+        return observations.Find(x => x.Who?.tag == tag);
     }
 
     public void Record(Observation observation)

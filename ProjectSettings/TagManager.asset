@@ -15,6 +15,7 @@ TagManager:
   - Level
   - Hitbox
   - Projectile
+  - Cover
   layers:
   - Default
   - TransparentFX
