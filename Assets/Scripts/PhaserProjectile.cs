@@ -112,6 +112,14 @@ public class PhaserProjectile : MonoBehaviour
         StartCoroutine(TemporarilyIgnoreCollision(other, IgnoreCollisionTime));
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject != Source)
+        {
+            Impact();
+        }
+    }
+
     //public void OnCollisionEnter(Collision collision)
     //{
     //    if (collision.gameObject.CompareTag(Target))
