@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaserProjectileSplit : PhaserProjectileEffect
+public class PhaserProjectileSplitEffect : PhaserProjectileEffect
 {
     [Tooltip("Chance of the projectile splitting after impacting")]
     [Range(0, 1)]
@@ -33,7 +33,7 @@ public class PhaserProjectileSplit : PhaserProjectileEffect
             newProjectile.Size = projectile.Size * SizeMultiplier;
 
             // Really important! Or else the projectiles will grow exponentially
-            Destroy(newProjectile.GetComponent<PhaserProjectileSplit>());
+            Destroy(newProjectile.GetComponent<PhaserProjectileSplitEffect>());
         }
     }
 

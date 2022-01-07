@@ -706,10 +706,10 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\ClampMagnitude.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
-    <Compile Include="Assets\Scripts\PhaserProjectileSeeking.cs" />
-    <Compile Include="Assets\Scripts\PhaserProjectileSplit.cs" />
-    <Compile Include="Assets\Scripts\PhaserProjectileRicochet.cs" />
-    <Compile Include="Assets\Scripts\PhaserProjectilePassthrough.cs" />
+    <Compile Include="Assets\Scripts\PhaserProjectileSeekingEffect.cs" />
+    <Compile Include="Assets\Scripts\PhaserProjectileSplitEffect.cs" />
+    <Compile Include="Assets\Scripts\PhaserProjectileRicochetEffect.cs" />
+    <Compile Include="Assets\Scripts\PhaserProjectilePassthroughEffect.cs" />
     <Compile Include="Assets\Scripts\PhaserProjectileEffect.cs" />
   </ItemGroup>
   <ItemGroup>

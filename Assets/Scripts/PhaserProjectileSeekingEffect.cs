@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaserProjectileSeeking : PhaserProjectileEffect
+public class PhaserProjectileSeekingEffect : PhaserProjectileEffect
 {
     [Tooltip("Maximum angle the projectile is allowed to turn within a second when seeking a target (in deg/s)")]
     public float MaxAngularVelocity = 70;

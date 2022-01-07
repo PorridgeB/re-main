@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaserProjectilePassthrough : PhaserProjectileEffect
+public class PhaserProjectilePassthroughEffect : PhaserProjectileEffect
 {
     [Tooltip("Chance of the projectile passing through a target when colliding with one")]
     [Range(0, 1)]

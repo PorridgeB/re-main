@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 137784690322477463}
   - component: {fileID: 5702248069604812211}
   - component: {fileID: 4143467952847481715}
+  - component: {fileID: 7855430005416622364}
+  - component: {fileID: 6922920283916787485}
+  - component: {fileID: 3361828779073628034}
   m_Layer: 15
   m_Name: PhaserProjectile
   m_TagString: DamageSource
@@ -85,6 +88,52 @@ MonoBehaviour:
   Target: Enemy
   ImpactPrefab: {fileID: 4179723668943172795, guid: 0af93eb30de829b4aabb00459fb3a379, type: 3}
   Source: {fileID: 0}
+--- !u!114 &7855430005416622364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298188469097433944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83cb7bbc8878cc24482d799901f24777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chance: 0.75
+  MaxTimes: 4
+--- !u!114 &6922920283916787485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298188469097433944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8abdabd011bb140bf4e0fb04985787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxAngularVelocity: 70
+  TargetMaxDistance: 5
+  TargetMaxArcAngle: 60
+--- !u!114 &3361828779073628034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298188469097433944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105b48024bcdb5a42b259fdde53ecdfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chance: 1
+  MinProjectiles: 2
+  MaxProjectiles: 3
+  ArcAngle: 30
+  SizeMultiplier: 0.7
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0

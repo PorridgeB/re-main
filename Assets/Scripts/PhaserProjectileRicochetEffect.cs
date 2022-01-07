@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaserProjectileRicochet : PhaserProjectileEffect
+public class PhaserProjectileRicochetEffect : PhaserProjectileEffect
 {
     [Tooltip("Chance of the projectile ricocheting when colliding with a wall")]
     [Range(0, 1)]
