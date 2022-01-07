@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RogueShoot : StateMachineBehaviour
 {
+    public Color Color;
     public GameObject Projectile;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -19,6 +20,7 @@ public class RogueShoot : StateMachineBehaviour
         projectile.Direction = directionToTarget;
         projectile.Speed = 15f;
         projectile.Target = target.tag;
+        projectile.Color = Color;
         projectile.Source = animator.gameObject;
     }
 
