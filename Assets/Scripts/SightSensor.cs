@@ -15,7 +15,6 @@ public class SightSensor : Sensor
         var direction = (to - from).normalized;
         if (Physics.Raycast(from, direction, out RaycastHit raycastHit, MaxDistance, mask))
         {
-            //if ((raycastHit.point - target.transform.position).magnitude < 2f)
             if (raycastHit.collider.gameObject == target)
             {
                 Debug.Log("hey");
