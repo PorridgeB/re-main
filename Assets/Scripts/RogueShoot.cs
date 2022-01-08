@@ -5,23 +5,57 @@ using UnityEngine;
 public class RogueShoot : StateMachineBehaviour
 {
     public Color Color;
-    public GameObject Projectile;
+    public float ProjectileOffset = 0.5f;
+    public float ProjectileSpeed = 15;
+    public GameObject ProjectilePrefab;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var projectile = Instantiate(Projectile).GetComponent<PhaserProjectile>();
+        var projectile = Instantiate(ProjectilePrefab).GetComponent<PhaserProjectile>();
 
         var target = PlayerController.instance;
 
-        var directionToTarget = (target.transform.position - animator.transform.position).normalized;
+        var targetPosition = target.transform.position;
+        var targetVelocity = new Vector3(target.GetVelocity().x, 0, target.GetVelocity().y);
 
-        projectile.transform.position = animator.transform.position + directionToTarget * 1.2f;
-        projectile.Direction = directionToTarget;
-        projectile.Speed = 15f;
-        projectile.Target = target.tag;
-        projectile.Color = Color;
-        projectile.Source = animator.gameObject;
+        // Find the relative position and velocities
+        var relativePosition = targetPosition - animator.transform.position;
+        relativePosition.y = 0;
+        var relativeVelocity = targetVelocity;
+
+        var deltaTime = AimAhead(relativePosition, relativeVelocity, ProjectileSpeed);
+        
+        // Slight correction
+        deltaTime += 0.03f;
+
+        // If the time is negative, then we didn't get a solution.
+        if (deltaTime > 0)
+        {
+            // Aim at the point where the target will be at the time of the collision.
+            var futurePosition = targetPosition + targetVelocity * deltaTime;
+
+            var projectileDirection = (futurePosition - animator.transform.position).normalized;
+
+            projectile.transform.position = animator.transform.position + projectileDirection * ProjectileOffset;
+            projectile.Direction = projectileDirection;
+            projectile.Speed = ProjectileSpeed;
+            projectile.Target = target.tag;
+            projectile.Color = Color;
+            projectile.Source = animator.gameObject;
+        }
+    }
+
+    private static float AimAhead(Vector3 relativePosition, Vector3 relativeVelocity, float projectileSpeed)
+    {
+        var a = Vector3.Dot(relativeVelocity, relativeVelocity) - projectileSpeed * projectileSpeed;
+        var b = 2f * Vector3.Dot(relativeVelocity, relativePosition);
+        var c = Vector3.Dot(relativePosition, relativePosition);
+
+        var discriminant = b * b - 4f * a * c;
+
+        // If the discriminant is negative, then there is no solution
+        return discriminant > 0 ? 2 * c / (Mathf.Sqrt(discriminant) - b) : -1;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
