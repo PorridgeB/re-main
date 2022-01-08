@@ -4,13 +4,21 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class Regenerate : Action
 {
-	public override void OnStart()
-	{
-		
-	}
+	public SharedFloat Health;
+	public SharedFloat MaxHealth;
+	// Health points gained per second
+	public SharedFloat Rate;
 
 	public override TaskStatus OnUpdate()
 	{
-		return TaskStatus.Success;
+		Health.Value += Rate.Value * Time.deltaTime;
+
+		if (Health.Value >= MaxHealth.Value)
+        {
+			Health.Value = MaxHealth.Value;
+			return TaskStatus.Success;
+		}
+
+		return TaskStatus.Running;
 	}
 }
