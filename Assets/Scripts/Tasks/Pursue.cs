@@ -17,6 +17,11 @@ public class Pursue : Action
 
 	public override TaskStatus OnUpdate()
 	{
+		if (Target.Value == null)
+        {
+			return TaskStatus.Failure;
+        }
+
 		agent.speed = Speed.Value;
 		agent.destination = Target.Value.transform.position;
 
