@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sensor : MonoBehaviour
+public abstract class Sensor : MonoBehaviour
 {
     [Tooltip("Rate of sensor update")]
     public float Rate = 0.25f;
@@ -19,7 +19,5 @@ public class Sensor : MonoBehaviour
         InvokeRepeating("Sense", Random.Range(0, Rate), Rate);
     }
 
-    public virtual void Sense()
-    {
-    }
+    public abstract void Sense();
 }
