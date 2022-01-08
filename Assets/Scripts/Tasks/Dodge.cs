@@ -11,6 +11,6 @@ public class Dodge : Action
 
 	public override TaskStatus OnUpdate()
 	{
-		return TaskStatus.Success;
+		return TaskStatus.Failure;
 	}
 }

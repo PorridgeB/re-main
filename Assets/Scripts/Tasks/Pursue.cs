@@ -7,6 +7,7 @@ public class Pursue : Action
 {
 	public SharedGameObject Target;
 	public SharedFloat Speed;
+	public SharedFloat MinDistance;
 
 	private NavMeshAgent agent;
 
@@ -20,6 +21,11 @@ public class Pursue : Action
 		if (Target.Value == null)
         {
 			return TaskStatus.Failure;
+        }
+
+		if (Vector3.Distance(transform.position, Target.Value.transform.position) < MinDistance.Value)
+        {
+			return TaskStatus.Success;
         }
 
 		agent.speed = Speed.Value;

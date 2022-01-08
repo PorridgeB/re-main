@@ -18,12 +18,12 @@ public class Memory : MonoBehaviour
 
     public Observation FirstWithTag(string tag)
     {
-        return observations.Find(x => x.Who?.tag == tag);
+        return observations.Find(x => x.Who != null && x.Who.CompareTag(tag));
     }
 
     public List<Observation> WithTag(string tag)
     {
-        return observations.FindAll(x => x.Who?.tag == tag);
+        return observations.FindAll(x => x.Who != null && x.Who.CompareTag(tag));
     }
 
     // Adds a new observation.
