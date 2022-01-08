@@ -21,8 +21,11 @@ public class Memory : MonoBehaviour
         return observations.Find(x => x.Who?.tag == tag);
     }
 
+    // Adds a new observation.
+    // Any observation with the same `Who` will be replaced
     public void Record(Observation observation)
     {
+        observations.RemoveAll(x => x.Who == observation.Who);
         observations.Add(observation);
     }
 }
