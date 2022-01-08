@@ -721,6 +721,9 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\ClampMagnitude.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
+    <Compile Include="Assets\Scripts\Tasks\Pursue.cs" />
+    <Compile Include="Assets\Scripts\Tasks\Dodge.cs" />
+    <Compile Include="Assets\Scripts\Tasks\NotNone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
