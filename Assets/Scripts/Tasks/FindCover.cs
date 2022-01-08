@@ -13,6 +13,17 @@ public class FindCover : Action
 
 	public override TaskStatus OnUpdate()
 	{
+		var memory = GetComponent<Memory>();
+
+		var observation = memory.WithTag("Cover");
+
+		if (observation == null)
+		{
+			return TaskStatus.Failure;
+		}
+
+		CoverPosition.Value = observation.Who.transform.position;
+
 		return TaskStatus.Success;
 	}
 }
