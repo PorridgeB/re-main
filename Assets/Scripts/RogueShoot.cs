@@ -26,8 +26,8 @@ public class RogueShoot : StateMachineBehaviour
 
         var deltaTime = AimAhead(relativePosition, relativeVelocity, ProjectileSpeed);
         
-        // Slight correction
-        deltaTime += 0.03f;
+        // Variation for some fun
+        deltaTime += Random.Range(0.025f, 0.035f);
 
         // If the time is negative, then we didn't get a solution.
         if (deltaTime > 0)
