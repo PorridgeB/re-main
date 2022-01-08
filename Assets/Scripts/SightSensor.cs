@@ -22,11 +22,9 @@ public class SightSensor : Sensor
 
             if (Tags.Exists(tag => other.CompareTag(tag)))
             {
-                var to = other.transform.position + Vector3.up;
-                var from = transform.position + Vector3.up;
-                var direction = (to - from).normalized;
+                var direction = (other.transform.position - transform.position).normalized;
 
-                if (!Physics.Raycast(from, direction, out RaycastHit hit, MaxDistance, LayerMask.GetMask("Level")))
+                if (!Physics.Raycast(transform.position + Vector3.up, direction, out RaycastHit hit, MaxDistance, LayerMask.GetMask("Level")))
                 {
                     memory.Record(new Observation(other.transform.position, other));
                 }
