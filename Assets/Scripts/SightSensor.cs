@@ -17,7 +17,6 @@ public class SightSensor : Sensor
         {
             if (raycastHit.collider.gameObject == target)
             {
-                Debug.Log("hey");
                 memory.Record(new Observation(target.transform.position, target));
             }
         }
