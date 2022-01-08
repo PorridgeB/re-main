@@ -19,7 +19,7 @@ public class LocateCover : Action
 
 		var observations = memory.WithTag("Cover");
 
-		var cover = observations.Where(x => IsValid(x.Who.transform.position)).First();
+		var cover = observations.Where(x => IsValid(x.Who.transform.position)).FirstOrDefault();
 
 		if (cover == null)
         {
