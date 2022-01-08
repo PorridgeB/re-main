@@ -40,7 +40,7 @@ public class LocateCover : Action
 	
 	private bool IsClose(Vector3 position)
     {
-		return (position - transform.position).magnitude < MaxDistance.Value;
+		return Vector3.Distance(transform.position, position) < MaxDistance.Value;
 	}
 
 	private bool IsFree(Vector3 position)
@@ -62,7 +62,7 @@ public class LocateCover : Action
 
 		if (Physics.Raycast(from, direction, out RaycastHit hit, maxDistance, LayerMask.GetMask("Level")))
 		{
-			if ((hit.point - position).magnitude < 1)
+			if (Vector3.Distance(hit.point, position) < 1)
 			{
 				return false;
 			}

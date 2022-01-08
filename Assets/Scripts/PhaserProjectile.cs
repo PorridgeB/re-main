@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PhaserProjectile : MonoBehaviour
 {
-    // Direction of travel (normalized)
-    [HideInInspector]
+    [Tooltip("Direction of travel (normalized)")]
     public Vector3 Direction;
     [Tooltip("Speed of the projectile (in unit/s)")]
     public float Speed = 15;
@@ -14,7 +13,7 @@ public class PhaserProjectile : MonoBehaviour
     [Tooltip("Maximum time the projectile can travel")]
     public float Lifespan = 8;
     [Tooltip("Width of the trail")]
-    public float Size = 0.25f;
+    public float TrailWidth = 0.25f;
     [Tooltip("Colour of the light and the trail")]
     public Color Color = Color.white;
     [Tooltip("Time for the projectile to detect collisions again with the previous collider")]
@@ -23,7 +22,7 @@ public class PhaserProjectile : MonoBehaviour
     public string Target = "Enemy";
     [Tooltip("Prefab to create when the projectile has impacted with something")]
     public GameObject ImpactPrefab;
-    [HideInInspector]
+    [Tooltip("Who created the projectile")]
     public GameObject Source;
 
     private new Rigidbody rigidbody;
@@ -48,7 +47,7 @@ public class PhaserProjectile : MonoBehaviour
         trail.startColor = Color;
         trail.endColor = new Color(Color.r, Color.g, Color.b, 0);
 
-        trail.startWidth = Size;
+        trail.startWidth = TrailWidth;
         trail.endWidth = 0;
 
         startPosition = transform.position;

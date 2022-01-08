@@ -724,6 +724,7 @@
     <Compile Include="Assets\Scripts\Tasks\Pursue.cs" />
     <Compile Include="Assets\Scripts\Tasks\Dodge.cs" />
     <Compile Include="Assets\Scripts\Tasks\NotNone.cs" />
+    <Compile Include="Assets\Scripts\Tasks\Regenerate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -30,7 +30,7 @@ public class PhaserProjectileSplitEffect : PhaserProjectileEffect
             var angle = i * (ArcAngle / (projectiles - 1)) - ArcAngle / 2;
             newProjectile.Direction = Quaternion.Euler(0, angle, 0) * projectile.Direction;
 
-            newProjectile.Size = projectile.Size * SizeMultiplier;
+            newProjectile.TrailWidth = projectile.TrailWidth * SizeMultiplier;
 
             // Really important! Or else the projectiles will grow exponentially
             Destroy(newProjectile.GetComponent<PhaserProjectileSplitEffect>());
