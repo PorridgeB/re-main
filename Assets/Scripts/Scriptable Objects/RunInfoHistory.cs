@@ -30,6 +30,8 @@ public class RunInfoHistory : ScriptableObject
 
     public void NewRun()
     {
-        runHistory.Add(new RunInfo());
+        RunInfo newRun = new RunInfo();
+        newRun.difficulty = 1;
+        runHistory.Add(newRun);
     }
 }

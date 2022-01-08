@@ -65,6 +65,8 @@ public class LevelGrammarGenerator : MonoBehaviour
     private void ResetAll()
     {
         branches.Clear();
+        challengeCount = 0;
+        rewardCount = 0;
     }
 
     public string GetGenerationTemplate()
@@ -148,9 +150,10 @@ public class LevelGrammarGenerator : MonoBehaviour
         string branch = "(";
         for (int i = 1; i < branchSize; i++)
         {
-            char r = buildingBlocks[Random.Range(0, 2)];
+            char r = buildingBlocks[Random.Range(0, 3)];
             if (challengeCount < challengeRating)
             {
+                Debug.Log("adding combat room");
                 challengeCount++;
                 r = buildingBlocks[2];
             }

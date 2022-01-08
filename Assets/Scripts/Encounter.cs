@@ -7,7 +7,7 @@ public class Encounter : Room
     public ObjectPool enemyPool;
     public RunInfoHistory runInfoHistory;
     public List<EnemySpawn> spawns;
-
+    [SerializeField]
     private float budget;
 
     public void SetBudget(float value)
@@ -17,6 +17,7 @@ public class Encounter : Room
 
     public override void Generate()
     {
+        SetBudget(50);
         foreach (EnemySpawn s in spawns) 
         {
             Enemy enemy = enemyPool.GetRandom().GetComponent<Enemy>();

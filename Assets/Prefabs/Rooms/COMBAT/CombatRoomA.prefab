@@ -673,9 +673,14 @@ MonoBehaviour:
   - {fileID: 7269778868513056380}
   - {fileID: 4241243282603327555}
   enemySpawns: []
-  enemyPool: {fileID: 0}
-  runInfoHistory: {fileID: 0}
-  spawns: []
+  enemyPool: {fileID: 11400000, guid: 9c11e02621cf05a4ba0a322c4cb24a16, type: 2}
+  runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
+  spawns:
+  - {fileID: 4904357736053244894}
+  - {fileID: 8127118769839471833}
+  - {fileID: 5726912267341546632}
+  - {fileID: 3276349297390054836}
+  - {fileID: 6297280665543643196}
 --- !u!1 &2862390788361698852
 GameObject:
   m_ObjectHideFlags: 0

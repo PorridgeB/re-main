@@ -1223,7 +1223,7 @@ MonoBehaviour:
   obstacleRooms:
   - {fileID: 989419758299023129, guid: 8a624a177e68db64298343491ad80a96, type: 3}
   combatRooms:
-  - {fileID: 989419758299023129, guid: 7e7b1923d3caaf945ae663b2715ba77f, type: 3}
+  - {fileID: 989419758299023129, guid: df54c1ed99d33834aa599033cbd057ce, type: 3}
   trapRooms:
   - {fileID: 989419758299023129, guid: 8a624a177e68db64298343491ad80a96, type: 3}
   hall: {fileID: 3542891387217972496, guid: 65a382f933460fa42b3be8df70632ae7, type: 3}
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7015f040cc47d6d4281e52f3adc8d22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCount: 20
+  roomCount: 14
   deadEnds: 72006e0062006100
   commonRooms: 6f00680065007400
   buildingBlocks: 2d0021002a0023002400
