@@ -20,6 +20,6 @@ public class TargetSelector : MonoBehaviour
     {
         //behaviorTree.SetVariableValue("Target", PlayerController.instance.gameObject);
 
-        behaviorTree.SetVariableValue("Target", memory.WithTag(Tag)?.Who);
+        behaviorTree.SetVariableValue("Target", memory.FirstWithTag(Tag)?.Who);
     }
 }

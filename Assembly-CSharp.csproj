@@ -70,6 +70,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\BoxCollider\SetCenter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Input\GetAxis.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\GetSqrMagnitude.cs" />
+    <Compile Include="Assets\Scripts\SoundSensor.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\TaskGuard.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetPanLevel.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\AddRelativeTorque.cs" />
@@ -258,6 +259,7 @@
     <Compile Include="Assets\Scripts\PlayerPhaserFlurry.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\GetGravtyScale.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetMute.cs" />
+    <Compile Include="Assets\Scripts\CoverPosition.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\Cooldown.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\Pause.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Behaviour\GetEnabled.cs" />
@@ -371,7 +373,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\Multiply.cs" />
     <Compile Include="Assets\Scripts\DialogueController.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedColor.cs" />
-    <Compile Include="Assets\Scripts\Tasks\FindCover.cs" />
+    <Compile Include="Assets\Scripts\Tasks\LocateCover.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Object Drawers\FloatSliderAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animation\PlayQueued.cs" />
     <Compile Include="Assets\Scripts\HUD.cs" />
@@ -397,6 +399,7 @@
     <Compile Include="Assets\Scripts\Tasks\Flank.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\GameObject\Instantiate.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Quaternion\Euler.cs" />
+    <Compile Include="Assets\Scripts\CoverSensor.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\Interrupt.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\IsParameterControlledByCurve.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\GetAngularVelocity.cs" />
@@ -717,9 +720,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\ClampMagnitude.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\Scripts\CoverPosition.cs" />
-    <Compile Include="Assets\Scripts\CoverSensor.cs" />
-    <Compile Include="Assets\Scripts\SoundSensor.cs" />
+    <Compile Include="Assets\Scripts\Tasks\HasObserved.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -16,9 +16,14 @@ public class Memory : MonoBehaviour
         observations.RemoveAll(x => Time.time - x.When > expiryTime);
     }
 
-    public Observation WithTag(string tag)
+    public Observation FirstWithTag(string tag)
     {
         return observations.Find(x => x.Who?.tag == tag);
+    }
+
+    public List<Observation> WithTag(string tag)
+    {
+        return observations.FindAll(x => x.Who?.tag == tag);
     }
 
     // Adds a new observation.
