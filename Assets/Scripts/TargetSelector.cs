@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TargetSelector : MonoBehaviour
 {
+    public string Tag = "Player";
+
     private BehaviorTree behaviorTree;
     private Memory memory;
 
@@ -16,6 +18,8 @@ public class TargetSelector : MonoBehaviour
 
     private void Update()
     {
-        behaviorTree.SetVariableValue("Target", PlayerController.instance.gameObject);
+        //behaviorTree.SetVariableValue("Target", PlayerController.instance.gameObject);
+
+        behaviorTree.SetVariableValue("Target", memory.WithTag(Tag)?.Who);
     }
 }

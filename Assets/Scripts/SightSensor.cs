@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,19 +6,30 @@ using UnityEngine;
 public class SightSensor : Sensor
 {
     public float MaxDistance = 7;
+    public List<string> Tags = new List<string> { "Player", "Enemy" };
 
     public override void Sense()
     {
-        var mask = new LayerMask { value = LayerMask.GetMask("Player") | LayerMask.GetMask("Level") };
-        var target = PlayerController.instance.gameObject;
-        var to = target.transform.position + Vector3.up;
-        var from = transform.position + Vector3.up;
-        var direction = (to - from).normalized;
-        if (Physics.Raycast(from, direction, out RaycastHit raycastHit, MaxDistance, mask))
+        var colliders = Physics.OverlapSphere(transform.position, MaxDistance);
+        foreach (var collider in colliders)
         {
-            if (raycastHit.collider.gameObject == target)
+            var other = collider.gameObject;
+
+            if (other == gameObject)
             {
-                memory.Record(new Observation(target.transform.position, target));
+                continue;
+            }
+
+            if (Tags.Exists(tag => other.CompareTag(tag)))
+            {
+                var to = other.transform.position + Vector3.up;
+                var from = transform.position + Vector3.up;
+                var direction = (to - from).normalized;
+
+                if (!Physics.Raycast(from, direction, out RaycastHit hit, MaxDistance, LayerMask.GetMask("Level")))
+                {
+                    memory.Record(new Observation(other.transform.position, other));
+                }
             }
         }
     }
