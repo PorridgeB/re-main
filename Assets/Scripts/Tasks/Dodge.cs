@@ -1,6 +1,7 @@
 using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using UnityEngine.AI;
 
 public class Dodge : Action
 {
@@ -9,9 +10,15 @@ public class Dodge : Action
 	public SharedFloat Duration;
 
 	private Vector3 dodgeDirection;
+	private float startTime = 0;
+	private NavMeshAgent agent;
 
 	public override void OnStart()
 	{
+		agent = GetComponent<NavMeshAgent>();
+
+		startTime = -1;
+
 		// Find incoming projectile
 		var projectiles = GameObject.FindGameObjectsWithTag("Projectile");
 		foreach (var projectile in projectiles)
@@ -35,13 +42,25 @@ public class Dodge : Action
 			if (Vector3.Dot(phaserProjectile.Direction, directionToProjectile) < 0)
             {
 				var perpDirectionToProj = new Vector3(-directionToProjectile.z, 0, directionToProjectile.x);
-				dodgeDirection = perpDirectionToProj * (Vector3.Dot(phaserProjectile.Direction, perpDirectionToProj) > 0 ? 1 : -1);
-            }
+				dodgeDirection = perpDirectionToProj * (Vector3.Dot(phaserProjectile.Direction, perpDirectionToProj) < 0 ? 1 : -1);
+				startTime = Time.time;
+				break;
+			}
 		}
 	}
 
 	public override TaskStatus OnUpdate()
 	{
-		return TaskStatus.Failure;
+		if (startTime < 0)
+        {
+			return TaskStatus.Failure;
+        }
+
+		var timePercentage = (Time.time - startTime) / Duration.Value;
+		var speedFactor = Mathf.Pow(1 - timePercentage, 2);
+
+		agent.Move(dodgeDirection * speedFactor * Speed.Value * Time.deltaTime);
+
+		return Time.time - startTime > Duration.Value ? TaskStatus.Success : TaskStatus.Running;
 	}
 }
