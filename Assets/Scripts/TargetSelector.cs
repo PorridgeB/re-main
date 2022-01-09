@@ -9,9 +9,11 @@ public class TargetSelector : MonoBehaviour
     [Tooltip("Objects with this tag will be candidates for targetting")]
     public string Tag = "Player";
     [Tooltip("How much to favour targets that are close")]
-    public float DistanceFactor = 1;
-    [Tooltip("How much to favour target with low health")]
-    public float HealthFactor = 1.5f;
+    [Range(0, 1)]
+    public float DistanceFactor = 0.5f;
+    [Tooltip("How much to favour targets with low health")]
+    [Range(0, 1)]
+    public float HealthFactor = 0.7f;
 
     private BehaviorTree behaviorTree;
     private Memory memory;
