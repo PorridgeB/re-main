@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private float health = 100f;
     //private Crosshair crosshair;
 
+    public float Health => health;
+
     [SerializeField]
     private List<Dash> dashes;
     [SerializeField]

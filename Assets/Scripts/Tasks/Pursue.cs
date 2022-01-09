@@ -23,11 +23,11 @@ public class Pursue : Action
 			return TaskStatus.Failure;
         }
 
-		if (Vector3.Distance(transform.position, Target.Value.transform.position) < MinDistance.Value)
-        {
-			//return TaskStatus.Success;
-			return TaskStatus.Failure;
-        }
+		//if (Vector3.Distance(transform.position, Target.Value.transform.position) < MinDistance.Value)
+  //      {
+		//	//return TaskStatus.Success;
+		//	return TaskStatus.Failure;
+  //      }
 
 		agent.speed = Speed.Value;
 		agent.destination = Target.Value.transform.position;
