@@ -9,7 +9,6 @@ public class WithinSight : Conditional
 {
     public SharedFloat SightDistance;
     public SharedGameObject Target;
-    public SharedLayerMask Mask = new LayerMask { value = LayerMask.GetMask("Player") | LayerMask.GetMask("Level") };
 
     public override TaskStatus OnUpdate()
     {
@@ -19,13 +18,9 @@ public class WithinSight : Conditional
         }
 
         var direction = (Target.Value.transform.position - transform.position).normalized;
-
-        if (Physics.Raycast(transform.position + Vector3.up, direction, out RaycastHit raycastHit, SightDistance.Value, Mask.Value))
+        if (!Physics.Raycast(transform.position + Vector3.up, direction, out _, SightDistance.Value, LayerMask.GetMask("Level")))
         {
-            if (raycastHit.collider.gameObject == Target.Value)
-            {
-                return TaskStatus.Success;
-            }
+            return TaskStatus.Success;
         }
 
         return TaskStatus.Failure;
