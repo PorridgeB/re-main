@@ -36,6 +36,11 @@ public class Dodge : Action
 				continue;
             }
 
+			if (!gameObject.CompareTag(phaserProjectile.Target))
+            {
+				continue;
+            }
+
 			var directionToProjectile = (projectile.transform.position - transform.position).normalized;
 
 			// Projectile is heading towards us
