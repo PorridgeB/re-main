@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,38 +13,62 @@ public class RogueShoot : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        var behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
+        var targetObject = behaviorTree.GetVariable("Target").GetValue() as GameObject;
+
+        // Can't shoot if there isn't any target
+        if (targetObject == null)
+        {
+            Debug.Log("Failed");
+            return;
+        }
+
+        // If the target is the player, shoot at their predicted future position.
+        // Otherwise, shoot directly towards their current position
+        var playerTarget = targetObject.GetComponent<PlayerController>();
+
+        Vector3 shootDirection;
+
+        if (playerTarget != null)
+        {
+            var targetPosition = playerTarget.transform.position;
+            var targetVelocity = new Vector3(playerTarget.GetVelocity().x, 0, playerTarget.GetVelocity().y);
+
+            // Find the relative position and velocities
+            var relativePosition = targetPosition - animator.transform.position;
+            relativePosition.y = 0;
+            var relativeVelocity = targetVelocity;
+
+            var deltaTime = AimAhead(relativePosition, relativeVelocity, ProjectileSpeed);
+
+            // Variation for some fun
+            deltaTime += Random.Range(0.025f, 0.035f);
+
+            // If the time is negative, then we didn't get a solution.
+            if (deltaTime > 0)
+            {
+                // Aim at the point where the target will be at the time of the collision.
+                var futurePosition = targetPosition + targetVelocity * deltaTime;
+                shootDirection = (futurePosition - animator.transform.position).normalized;
+            }
+            else
+            {
+                return;
+            }
+        }
+        else
+        {
+            shootDirection = (targetObject.transform.position - animator.transform.position).normalized;
+        }
+
         var projectile = Instantiate(ProjectilePrefab).GetComponent<PhaserProjectile>();
 
-        var target = PlayerController.instance;
-
-        var targetPosition = target.transform.position;
-        var targetVelocity = new Vector3(target.GetVelocity().x, 0, target.GetVelocity().y);
-
-        // Find the relative position and velocities
-        var relativePosition = targetPosition - animator.transform.position;
-        relativePosition.y = 0;
-        var relativeVelocity = targetVelocity;
-
-        var deltaTime = AimAhead(relativePosition, relativeVelocity, ProjectileSpeed);
-        
-        // Variation for some fun
-        deltaTime += Random.Range(0.025f, 0.035f);
-
-        // If the time is negative, then we didn't get a solution.
-        if (deltaTime > 0)
-        {
-            // Aim at the point where the target will be at the time of the collision.
-            var futurePosition = targetPosition + targetVelocity * deltaTime;
-
-            var projectileDirection = (futurePosition - animator.transform.position).normalized;
-
-            projectile.transform.position = animator.transform.position + projectileDirection * ProjectileOffset;
-            projectile.Direction = projectileDirection;
-            projectile.Speed = ProjectileSpeed;
-            projectile.Target = target.tag;
-            projectile.Color = Color;
-            projectile.Source = animator.gameObject;
-        }
+        projectile.transform.position = animator.transform.position + shootDirection * ProjectileOffset;
+        projectile.Direction = shootDirection;
+        projectile.Speed = ProjectileSpeed;
+        projectile.Target = targetObject.tag;
+        projectile.Color = Color;
+        projectile.Source = animator.gameObject;
     }
 
     private static float AimAhead(Vector3 relativePosition, Vector3 relativeVelocity, float projectileSpeed)
