@@ -182,6 +182,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\PlayerPrefs\GetInt.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\SetGravityScale.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetFreezeRotation.cs" />
+    <Compile Include="Assets\Scripts\Tasks\Pursue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Timeline\Stop.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCookie.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\SetStartRotation.cs" />
@@ -371,6 +372,7 @@
     <Compile Include="Assets\Scripts\ScrollMenu.cs" />
     <Compile Include="Assets\Scripts\Tasks\Charge.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\Multiply.cs" />
+    <Compile Include="Assets\Scripts\Tasks\NotNone.cs" />
     <Compile Include="Assets\Scripts\DialogueController.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedColor.cs" />
     <Compile Include="Assets\Scripts\Tasks\LocateCover.cs" />
@@ -510,6 +512,7 @@
     <Compile Include="Assets\Scripts\StateMachine\Player\PlayerShoot.cs" />
     <Compile Include="Assets\Scripts\Tasks\HasObserved.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\SetApplyRootMotion.cs" />
+    <Compile Include="Assets\Scripts\Tasks\Regenerate.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\AddRelativeForce.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\SetMaxParticles.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\SetStartDelay.cs" />
@@ -536,6 +539,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCookieSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetMass.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\BoolComparison.cs" />
+    <Compile Include="Assets\Scripts\Tasks\Dodge.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Actions\Reflection\GetPropertyValue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\GameObject\GetComponent.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\GetVector3.cs" />
@@ -721,10 +725,8 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\ClampMagnitude.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\Scripts\Tasks\Pursue.cs" />
-    <Compile Include="Assets\Scripts\Tasks\Dodge.cs" />
-    <Compile Include="Assets\Scripts\Tasks\NotNone.cs" />
-    <Compile Include="Assets\Scripts\Tasks\Regenerate.cs" />
+    <Compile Include="Assets\CoverGenerator.cs" />
+    <Compile Include="Assets\TileContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
