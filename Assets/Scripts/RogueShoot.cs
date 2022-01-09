@@ -2,6 +2,7 @@ using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RogueShoot : StateMachineBehaviour
 {
@@ -14,24 +15,19 @@ public class RogueShoot : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var behaviorTree = animator.gameObject.GetComponent<BehaviorTree>();
-        var targetObject = behaviorTree.GetVariable("Target").GetValue() as GameObject;
+        var target = behaviorTree.GetVariable("Target").GetValue() as GameObject;
 
         // Can't shoot if there isn't any target
-        if (targetObject == null)
+        if (target == null)
         {
             return;
         }
 
-        // If the target is the player, shoot at their predicted future position.
-        // Otherwise, shoot directly towards their current position
-        var playerTarget = targetObject.GetComponent<PlayerController>();
-
         Vector3 shootDirection;
 
-        if (playerTarget != null)
+        if (TryGetTargetVelocity(target, out Vector3 targetVelocity))
         {
-            var targetPosition = playerTarget.transform.position;
-            var targetVelocity = new Vector3(playerTarget.GetVelocity().x, 0, playerTarget.GetVelocity().y);
+            var targetPosition = target.transform.position;
 
             // Find the relative position and velocities
             var relativePosition = targetPosition - animator.transform.position;
@@ -40,24 +36,21 @@ public class RogueShoot : StateMachineBehaviour
 
             var deltaTime = AimAhead(relativePosition, relativeVelocity, ProjectileSpeed);
 
-            // Variation for some fun
-            deltaTime += Random.Range(0.025f, 0.035f);
-
-            // If the time is negative, then we didn't get a solution.
+            // If the time is negative, then we didn't get a solution
             if (deltaTime > 0)
             {
-                // Aim at the point where the target will be at the time of the collision.
+                // Aim at the point where the target will be at the time of the collision
                 var futurePosition = targetPosition + targetVelocity * deltaTime;
                 shootDirection = (futurePosition - animator.transform.position).normalized;
             }
             else
             {
-                return;
+                shootDirection = (target.transform.position - animator.transform.position).normalized;
             }
         }
         else
         {
-            shootDirection = (targetObject.transform.position - animator.transform.position).normalized;
+            shootDirection = (target.transform.position - animator.transform.position).normalized;
         }
 
         var projectile = Instantiate(ProjectilePrefab).GetComponent<PhaserProjectile>();
@@ -65,9 +58,31 @@ public class RogueShoot : StateMachineBehaviour
         projectile.transform.position = animator.transform.position + shootDirection * ProjectileOffset;
         projectile.Direction = shootDirection;
         projectile.Speed = ProjectileSpeed;
-        projectile.Target = targetObject.tag;
+        projectile.Target = target.tag;
         projectile.Color = Color;
         projectile.Source = animator.gameObject;
+    }
+
+    private static bool TryGetTargetVelocity(GameObject target, out Vector3 velocity)
+    {
+        var playerTarget = target.GetComponent<PlayerController>();
+        if (playerTarget != null)
+        {
+            // Convert the player's 2D velocity into 3D
+            velocity = new Vector3(playerTarget.GetVelocity().x, 0, playerTarget.GetVelocity().y);
+            return true;
+        }
+
+        var navMeshAgentTarget = target.GetComponent<NavMeshAgent>();
+        if (navMeshAgentTarget != null)
+        {
+            velocity = navMeshAgentTarget.velocity;
+            return true;
+        }
+
+        velocity = new Vector3();
+
+        return false;
     }
 
     private static float AimAhead(Vector3 relativePosition, Vector3 relativeVelocity, float projectileSpeed)
