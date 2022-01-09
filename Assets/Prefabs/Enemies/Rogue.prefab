@@ -288,6 +288,7 @@ MonoBehaviour:
   Tags:
   - Player
   - Enemy
+  - Projectile
 --- !u!114 &5261302550128724566
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,6 @@ public class RogueShoot : StateMachineBehaviour
         // Can't shoot if there isn't any target
         if (targetObject == null)
         {
-            Debug.Log("Failed");
             return;
         }
 

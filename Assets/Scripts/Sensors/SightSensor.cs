@@ -6,7 +6,7 @@ using UnityEngine;
 public class SightSensor : Sensor
 {
     public float MaxDistance = 7;
-    public List<string> Tags = new List<string> { "Player", "Enemy" };
+    public List<string> Tags = new List<string> { "Player", "Enemy", "Projectile" };
 
     public override void Sense()
     {

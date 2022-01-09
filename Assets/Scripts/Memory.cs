@@ -14,6 +14,9 @@ public class Memory : MonoBehaviour
     {
         // Remove all expired observations
         observations.RemoveAll(x => Time.time - x.When > expiryTime);
+
+        // Remove all observations with missing `Who` GameObjects
+        observations.RemoveAll(x => x.Who == null);
     }
 
     public Observation FirstWithTag(string tag)

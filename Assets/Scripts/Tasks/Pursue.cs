@@ -25,7 +25,8 @@ public class Pursue : Action
 
 		if (Vector3.Distance(transform.position, Target.Value.transform.position) < MinDistance.Value)
         {
-			return TaskStatus.Success;
+			//return TaskStatus.Success;
+			return TaskStatus.Failure;
         }
 
 		agent.speed = Speed.Value;
