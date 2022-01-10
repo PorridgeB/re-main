@@ -6,9 +6,13 @@ using TMPro;
 public class Room : MonoBehaviour
 {
     [SerializeField]
+    private TMP_Text textfield;
+    [SerializeField]
     private Vector2 cellSize;
     [SerializeField]
-    private List<GameObject> walls;
+    private List<Passage> passages;
+    private int currentPassageIndex;
+
     [SerializeField]
     private List<Transform> enemySpawns;
     public List<Transform> EnemySpawns
@@ -19,10 +23,38 @@ public class Room : MonoBehaviour
         }
     }
 
+    public Passage CurrentPassage(){
+        return passages[currentPassageIndex];
+    }
+
+    public void ReservePassage(ConnectionSide side){
+        Passage removeTarget = null;
+        foreach (Passage p in passages){
+            if (p.side == side){
+                removeTarget = p;
+                Debug.Log("Reserving Passage: " + p.side);
+            }
+        }
+        passages.Remove(removeTarget);
+    }
+
+    public Passage NewPassage(){
+        currentPassageIndex = Random.Range(0, passages.Count);
+        return CurrentPassage();
+    }
 
     public Vector3 Offset(Vector3 dir)
     {
         return new Vector3(dir.x * cellSize.x, dir.y, dir.z*cellSize.y)/2;
+    }
+
+    public void CenterRoom(Room previousRoom)
+    {
+        transform.position += (previousRoom.Offset(new Vector3(1,0,1)) - Offset(new Vector3(1, 0, 1))) ;
+    }
+
+    public Vector3 GetCenter(){
+        return transform.position + Offset(new Vector3(1,0,1));
     }
 
     public Vector3 GetBound(Vector3 dir)
@@ -39,19 +71,29 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void OpenPassage(Vector3 dir)
-    {
-        walls[GetRoomSide(dir)].SetActive(false);
+    public List<Passage> Passages{
+        get{
+            return passages;
+        }
     }
 
-    public void CenterRoom(Room previousRoom)
-    {
-        transform.position += (previousRoom.Offset(new Vector3(1,0,1)) - Offset(new Vector3(1, 0, 1))) ;
+    public bool HasSides(List<ConnectionSide> sides) {
+        foreach (ConnectionSide s in sides){
+            if (!HasSide(s)){
+                return false;
+            }
+        }
+        
+        return true;
     }
 
-    public Vector3 GetCenter()
-    {
-        return transform.position + Offset(new Vector3(1, 0, 1));
+    private bool HasSide(ConnectionSide side){
+        foreach (Passage p in passages){
+            if (p.side == side) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private int GetRoomSide(Vector3 dir)
@@ -76,11 +118,12 @@ public class Room : MonoBehaviour
 
     public void SetText(string text)
     {
-        //textfield.text = text;
+        textfield.text = text;
         name = text;
     }
 
     public virtual void Generate()
     {
+        
     }
 }

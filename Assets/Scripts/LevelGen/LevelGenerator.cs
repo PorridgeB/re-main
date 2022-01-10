@@ -3,12 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
 
+public enum ConnectionSide{
+    Top,
+    Right,
+    Left,
+    Bottom
+}
+
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
-    private GameObject cube;
-    [SerializeField]
     private Room start;
+
+    [SerializeField]
+    private List<GameObject> singleConnection;
+    [SerializeField]
+    private List<GameObject> doubleConnection;
+    [SerializeField]
+    private List<GameObject> tripleConnection;
+    [SerializeField]
+    private List<GameObject> hub;
 
     [SerializeField]
     private List<Room> allRooms;
@@ -53,41 +67,12 @@ public class LevelGenerator : MonoBehaviour
         maxRoomsSinceTurn = 4;
     }
 
-    private void CreateLevel(int i)
-    {
-        if (i == 0)
-        {
-            Room room = Instantiate(rooms[0], transform).GetComponent<Room>();
-            roomPath.Push(room);
-            allRooms.Add(room);
-            start = room;
-            start.SetText("Start");
-            Turn();
-        }
-        index++;
-        if (!Step(generationTemplate.ToCharArray()[i]))
-        {
-            Debug.Log("Generation Failed");
-            generationAttempts++;
-            if (generationAttempts > 5)
-            {
-                Debug.Log("Fetching new template");
-                generationAttempts = 0;
-                generationTemplate = grammarGenerator.GetGenerationTemplate();
-                generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
-            }
-            Destroy(start.gameObject);
-            allRooms.Clear();
-            start = null;
-            index = 0;
-        }
-    }
 
     public void FixedUpdate()
     {
         if (index < generationTemplate.Length)
         {
-            CreateLevel(index);
+            CreateLevel();
         }
         else if (!roomsGenerated)
         {
@@ -102,8 +87,136 @@ public class LevelGenerator : MonoBehaviour
         
     }
 
+    
+    private Vector3 GetVector(ConnectionSide side){
+        switch(side){
+            case ConnectionSide.Top:
+                return new Vector3(0,0,1);
+            case ConnectionSide.Right:
+                return new Vector3(1,0,0);
+            case ConnectionSide.Bottom:
+                return new Vector3(0,0,-1);
+            case ConnectionSide.Left:
+                return new Vector3(-1,0,0);
+            default:
+                return new Vector3();
+        }
+    }
+
+    private void CreateLevel()
+    {
+        Debug.Log(index);
+        if (index == 0)
+        {
+            Room room = Instantiate(singleConnection[Random.Range(0,singleConnection.Count)], transform).GetComponent<Room>();
+            roomPath.Push(room);
+            allRooms.Add(room);
+            start = room;
+            start.SetText("Start");
+            Debug.Log("creating start");
+        }
+        if (!Step(generationTemplate[index]))
+        {
+            Debug.LogError("Generation Failed");
+            generationAttempts++;
+            if (generationAttempts > 5)
+            {
+                generationAttempts = 0;
+                generationTemplate = grammarGenerator.GetGenerationTemplate();
+                generationTemplate = grammarGenerator.FillTemplate(generationTemplate);
+            }
+            Destroy(start.gameObject);
+            roomPath.Clear();
+            allRooms.Clear();
+            start = null;
+            index = 0;
+        }
+        else{
+            index++;
+        }
+        
+    }
+
+    private GameObject GetRoom(List<ConnectionSide> sides) {
+        List<GameObject> pool = null;
+        switch(sides.Count){
+            case 1:
+                pool = singleConnection;
+                break;
+            case 2:
+                pool = doubleConnection;
+                break;
+            case 3:
+                pool = tripleConnection;
+                break;
+            case 4:
+                pool = hub;
+                break;
+        }
+        foreach (GameObject go in pool){
+            if (go.GetComponent<Room>().HasSides(sides)){
+                return go;
+            }
+        }
+        return null;
+    }
+
+    private List<GameObject> GetRooms(List<ConnectionSide> sides, int count) {
+        List<GameObject> rooms = new List<GameObject>();
+        List<GameObject> pool = null;
+        switch(count){
+            case 1:
+                pool = singleConnection;
+                break;
+            case 2:
+                pool = doubleConnection;
+                break;
+            case 3:
+                pool = tripleConnection;
+                break;
+            case 4:
+                pool = hub;
+                break;
+        }
+        foreach (GameObject go in pool){
+            if (go.GetComponent<Room>().HasSides(sides)){
+
+                rooms.Add(go);
+            }
+        }
+        return rooms;
+    }
+
+    private int GetConnectionCount() {
+        
+        int branchDepth = 0;
+        int count = 1;
+        for (int i = index+1; i < generationTemplate.Length; i++) {
+            if (branchDepth == 0) {
+                count++;
+                if (generationTemplate[i] != ')' && generationTemplate[i] != '('){
+                    
+                    return count;
+                }
+            }
+            if (generationTemplate[i] == ')'){
+                branchDepth -= 1;
+                continue;
+            }
+            else if(generationTemplate[i] == '(') {
+                branchDepth += 1;
+                continue;
+            }
+            else if (branchDepth < 0){
+                return count-1;
+            }
+        }
+        return count;
+    }
+
     public bool Step(char c)
     {
+        
         if (c == '(')
         {
             roomPath.Push(roomPath.Peek());
@@ -114,70 +227,78 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
-            
+            Debug.Log("Spawning " + c);
             Room previousRoom = roomPath.Pop();
-            GameObject prefab;
-            switch (c)
-            {
-                case 'h':
-                    prefab = hall;
-                    break;
-                case 'r':
-                    prefab = chestRooms[Random.Range(0, chestRooms.Count)];
-                    break;
-                case 'o':
-                    prefab = obstacleRooms[Random.Range(0, obstacleRooms.Count)];
-                    break;
-                case 'e':
-                    prefab = combatRooms[Random.Range(0, combatRooms.Count)];
-                    break;
-                case 't':
-                    prefab = trapRooms[Random.Range(0, trapRooms.Count)];
-                    break;
-                default:
-                    prefab = rooms[Random.Range(0, rooms.Count)];
-                    break;
-
+            string potentialSides = "potential sides:";
+            foreach (Passage p in previousRoom.Passages){
+                potentialSides += " " + p.side;
             }
-            Room currentRoom = Instantiate(prefab, previousRoom.transform).GetComponent<Room>();
-            currentRoom.CenterRoom(previousRoom);
+            Debug.Log(potentialSides);
+            currentDir = GetVector(previousRoom.Passages[0].side);
 
-            if (!FindEmptyCell(previousRoom, currentRoom)) return false;
+            int connectionCount = GetConnectionCount();
+            List<ConnectionSide> sides = new List<ConnectionSide>();
+            for (int i = 0; i < connectionCount; i++)
+            {
+                sides.Add((ConnectionSide)Random.Range(0,4));
+            }
+            Debug.Log("next room must have " +  GetConnectionSide(-currentDir) + " and " + connectionCount + " connections");
+            if (!sides.Contains(GetConnectionSide(-currentDir)))
+            {
+                
+                sides[0] = GetConnectionSide(-currentDir);
+            }
+            Room currentRoom = null;
+            List<GameObject> potentialRooms = GetRooms(new List<ConnectionSide>(){GetConnectionSide(-currentDir)}, connectionCount);
+            Debug.Log("Finding valid room in direction: " + currentDir);
+            currentRoom = FindValidRoom(potentialRooms, previousRoom);
+            if (currentRoom == null) return false;
+            
+            previousRoom.ReservePassage(GetConnectionSide(currentDir)); 
+            currentRoom.ReservePassage(GetConnectionSide(-currentDir));
 
             currentRoom.transform.position += currentRoom.Offset(currentDir) + previousRoom.Offset(currentDir);
             currentRoom.SetText(c.ToString());
-            currentRoom.OpenPassage(-currentDir);
-            previousRoom.OpenPassage(currentDir);
+
+            
+
             roomPath.Push(currentRoom);
-            allRooms.Add(currentRoom);
         }
         return true;
     }
 
-    private bool FindEmptyCell(Room previous, Room current)
-    {
-        List<Vector3> possibleDirections = new List<Vector3>();
-        foreach (Vector3 v in directions)
-        {
-            if (CheckForOverlap(previous, current, v))
-            {
-                continue;
-            }
-            possibleDirections.Add(v);
+    private Room FindValidRoom(List<GameObject> potentialRooms, Room previousRoom) {
+        List<GameObject> validRooms = new List<GameObject>(); 
+        Room currentRoom = null;
+        foreach (GameObject room in potentialRooms){
+                currentRoom = Instantiate(room, previousRoom.transform).GetComponent<Room>();
+                currentRoom.CenterRoom(previousRoom);
 
-        }
-        if (possibleDirections.Count > 0) {
-            if (possibleDirections.Contains(currentDir) && roomsSinceTurn <= maxRoomsSinceTurn)
-            {
-                roomsSinceTurn++;
-                return true;
+                if (!CheckForOverlap(previousRoom, currentRoom, currentDir)) {
+                    validRooms.Add(room);
+                }
+                DestroyImmediate(currentRoom.gameObject);
             }
-            roomsSinceTurn = 0;
-            currentDir = possibleDirections[Random.Range(0, possibleDirections.Count - 1)];
-            return true;
+        if (validRooms.Count <= 0) {
+            Debug.LogError("No Valid Rooms");
+            return null;
         }
-        return false;
+        return Instantiate(validRooms[Random.Range(0, validRooms.Count)], previousRoom.transform).GetComponent<Room>();
+    }
 
+    public ConnectionSide GetConnectionSide(Vector3 side) {
+        if (side.x < 0){
+            return ConnectionSide.Left;
+        }
+        else if (side.x > 0){
+            return ConnectionSide.Right;
+        }
+        else if (side.z > 0){
+            return ConnectionSide.Top;
+        }
+        else{
+            return ConnectionSide.Bottom;
+        }
     }
 
     private bool CheckForOverlap(Room previousRoom, Room currentRoom, Vector3 direction)
@@ -200,27 +321,6 @@ public class LevelGenerator : MonoBehaviour
             }
         }
         return false;
-    }
-
-    private bool CheckBoxCollision(Room previous, Room current, Vector3 v)
-    {
-        GameObject direction = Instantiate(cube, previous.transform.position + Vector3.up * 2 + current.Offset(v) + previous.Offset(v), new Quaternion(), current.transform);
-        foreach (Vector3 cardinalPoint in corners)
-        {
-            RaycastHit hit;
-            Debug.Log("checking point");
-            Instantiate(cube, previous.transform.position + Vector3.up * 2 + current.Offset(v) + previous.Offset(v) + current.GetBound(cardinalPoint), new Quaternion(), direction.transform);
-            if (Physics.Raycast(previous.transform.position + Vector3.up * 2  + current.Offset(v) + previous.Offset(v) + current.GetBound(cardinalPoint), Vector3.down, out hit))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void Turn()
-    {
-        currentDir = directions[Random.Range(0, directions.Count - 1)];
     }
 }
 
