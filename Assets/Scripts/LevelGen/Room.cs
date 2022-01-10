@@ -6,10 +6,9 @@ using TMPro;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    private Vector2 cellSize;
-    [SerializeField]
     private List<Passage> passages;
 
+    private Vector2 size;
     [SerializeField]
     private List<Transform> enemySpawns;
     public List<Transform> EnemySpawns
@@ -20,11 +19,17 @@ public class Room : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        RectInt rect = GetComponent<RoomMesh>().GetRect();
+        size = new Vector2(rect.xMax-rect.xMin+1, rect.yMax-rect.yMin+1);
+    }
+
     public void ReservePassage(ConnectionSide side){
         foreach (Passage p in passages){
             if (p.side == side){
                 p.connected = true;
-                Debug.Log("Reserving Passage: " + p.side);
+                //Debug.Log("Reserving Passage: " + p.side);
             }
         }
     }
@@ -40,7 +45,7 @@ public class Room : MonoBehaviour
 
     public Vector3 Offset(Vector3 dir)
     {
-        return new Vector3(dir.x * cellSize.x, dir.y, dir.z*cellSize.y)/2;
+        return new Vector3(dir.x * size.x, dir.y, dir.z*size.y)/2;
     }
 
     public Vector3 PassageOffset(ConnectionSide side){
@@ -63,7 +68,6 @@ public class Room : MonoBehaviour
     public Passage GetPassage(ConnectionSide side) {
         foreach (Passage p in passages){
             if (p.side == side){
-                Debug.Log(p);
                 return p;
             }
         }

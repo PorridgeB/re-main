@@ -105,7 +105,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void CreateLevel()
     {
-        Debug.Log(index);
+        //Debug.Log(index);
         if (index == 0)
         {
             Room room = Instantiate(singleConnection[Random.Range(0,singleConnection.Count)], transform).GetComponent<Room>();
@@ -113,7 +113,7 @@ public class LevelGenerator : MonoBehaviour
             allRooms.Add(room);
             start = room;
             start.SetText("Start");
-            Debug.Log("creating start");
+            //Debug.Log("creating start");
         }
         if (!Step(generationTemplate[index]))
         {
@@ -227,7 +227,7 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log("Spawning " + c);
+            //Debug.Log("Spawning " + c);
             Room previousRoom = roomPath.Pop();
             if (previousRoom.Passages.Count <= 0) return false;
             Passage passage = previousRoom.GetUnconnectedPassage();
@@ -240,7 +240,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 sides.Add((ConnectionSide)Random.Range(0,4));
             }
-            Debug.Log("next room must have " +  GetConnectionSide(-currentDir) + " and " + connectionCount + " connections");
+            //Debug.Log("next room must have " +  GetConnectionSide(-currentDir) + " and " + connectionCount + " connections");
             if (!sides.Contains(GetConnectionSide(-currentDir)))
             {
                 
@@ -248,14 +248,20 @@ public class LevelGenerator : MonoBehaviour
             }
             Room currentRoom = null;
             List<GameObject> potentialRooms = GetRooms(new List<ConnectionSide>(){GetConnectionSide(-currentDir)}, connectionCount);
-            Debug.Log("Finding valid room in direction: " + currentDir);
+            //Debug.Log("Finding valid room in direction: " + currentDir);
             currentRoom = FindValidRoom(potentialRooms, previousRoom);
             if (currentRoom == null) return false;
             
             previousRoom.ReservePassage(GetConnectionSide(currentDir)); 
             currentRoom.ReservePassage(GetConnectionSide(-currentDir));
 
+            currentRoom.CenterRoom(previousRoom);
             currentRoom.transform.position += currentRoom.Offset(currentDir) + previousRoom.Offset(currentDir);
+            if (currentRoom.name == "TopBottom(Clone)"){
+                Debug.Log(currentRoom.PassageOffset(GetConnectionSide(-currentDir)));
+                Debug.Log(previousRoom.PassageOffset(GetConnectionSide(currentDir)));
+
+            }
             currentRoom.transform.position -= currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir));
             currentRoom.SetText(c.ToString());
 
@@ -311,14 +317,14 @@ public class LevelGenerator : MonoBehaviour
             if (min.x > Mathf.Abs(Mathf.Round(newPosition.x - r.GetCenter().x)) &&
                 min.z > Mathf.Abs(Mathf.Round(newPosition.z - r.GetCenter().z)))
             {
-                Debug.LogError("overlapping with " + r.name);
+                //Debug.LogError("overlapping with " + r.name);
                 return true;
 
             }
             else if (Mathf.Abs(Mathf.Round(newPosition.x - r.GetCenter().x)) == 0 && 
                 Mathf.Abs(Mathf.Round(newPosition.z - r.GetCenter().z)) == 0)
             {
-                Debug.LogError("overlapping with " + r.name);
+                //Debug.LogError("overlapping with " + r.name);
                 return true;
             }
         }
