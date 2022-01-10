@@ -6,12 +6,9 @@ using TMPro;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text textfield;
-    [SerializeField]
     private Vector2 cellSize;
     [SerializeField]
     private List<Passage> passages;
-    private int currentPassageIndex;
 
     [SerializeField]
     private List<Transform> enemySpawns;
@@ -23,29 +20,55 @@ public class Room : MonoBehaviour
         }
     }
 
-    public Passage CurrentPassage(){
-        return passages[currentPassageIndex];
-    }
-
     public void ReservePassage(ConnectionSide side){
-        Passage removeTarget = null;
         foreach (Passage p in passages){
             if (p.side == side){
-                removeTarget = p;
+                p.connected = true;
                 Debug.Log("Reserving Passage: " + p.side);
             }
         }
-        passages.Remove(removeTarget);
     }
 
-    public Passage NewPassage(){
-        currentPassageIndex = Random.Range(0, passages.Count);
-        return CurrentPassage();
+    public Passage GetUnconnectedPassage() {
+        foreach (Passage p in passages){
+            if (!p.connected){
+                return p;
+            }
+        }
+        return null;
     }
 
     public Vector3 Offset(Vector3 dir)
     {
         return new Vector3(dir.x * cellSize.x, dir.y, dir.z*cellSize.y)/2;
+    }
+
+    public Vector3 PassageOffset(ConnectionSide side){
+        
+        Vector3 t = GetPassage(side).Offset - HalfExtent;
+        t.y = 0;
+        switch(side){
+            case ConnectionSide.Top:
+            case ConnectionSide.Bottom:
+                t.z = 0;
+                break;
+            case ConnectionSide.Left:
+            case ConnectionSide.Right:
+                t.x = 0;
+                break;
+        }
+        return t;
+    }
+
+    public Passage GetPassage(ConnectionSide side) {
+        foreach (Passage p in passages){
+            if (p.side == side){
+                Debug.Log(p);
+                return p;
+            }
+        }
+        Debug.LogError("Couldn't find passage");
+        return null;
     }
 
     public void CenterRoom(Room previousRoom)
@@ -55,12 +78,6 @@ public class Room : MonoBehaviour
 
     public Vector3 GetCenter(){
         return transform.position + Offset(new Vector3(1,0,1));
-    }
-
-    public Vector3 GetBound(Vector3 dir)
-    {
-        Vector3 offset = Offset(dir);
-        return offset;
     }
 
     public Vector3 HalfExtent
@@ -96,29 +113,8 @@ public class Room : MonoBehaviour
         return false;
     }
 
-    private int GetRoomSide(Vector3 dir)
-    {
-        if (dir.z == 1)
-        {
-            return 0;
-        }
-        else if (dir.x == 1)
-        {
-            return 1;
-        }
-        else if (dir.z == -1)
-        {
-            return 2;
-        }
-        else
-        {
-            return 3;
-        }
-    }
-
     public void SetText(string text)
     {
-        textfield.text = text;
         name = text;
     }
 

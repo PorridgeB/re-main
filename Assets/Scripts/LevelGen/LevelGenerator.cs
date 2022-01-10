@@ -229,12 +229,10 @@ public class LevelGenerator : MonoBehaviour
         {
             Debug.Log("Spawning " + c);
             Room previousRoom = roomPath.Pop();
-            string potentialSides = "potential sides:";
-            foreach (Passage p in previousRoom.Passages){
-                potentialSides += " " + p.side;
-            }
-            Debug.Log(potentialSides);
-            currentDir = GetVector(previousRoom.Passages[0].side);
+            if (previousRoom.Passages.Count <= 0) return false;
+            Passage passage = previousRoom.GetUnconnectedPassage();
+            if (passage == null) return false;
+            currentDir = GetVector(passage.side);
 
             int connectionCount = GetConnectionCount();
             List<ConnectionSide> sides = new List<ConnectionSide>();
@@ -258,11 +256,13 @@ public class LevelGenerator : MonoBehaviour
             currentRoom.ReservePassage(GetConnectionSide(-currentDir));
 
             currentRoom.transform.position += currentRoom.Offset(currentDir) + previousRoom.Offset(currentDir);
+            currentRoom.transform.position -= currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir));
             currentRoom.SetText(c.ToString());
 
             
 
             roomPath.Push(currentRoom);
+            allRooms.Add(currentRoom);
         }
         return true;
     }
@@ -304,19 +304,21 @@ public class LevelGenerator : MonoBehaviour
     private bool CheckForOverlap(Room previousRoom, Room currentRoom, Vector3 direction)
     {
         
-        Vector3 newPosition = previousRoom.GetCenter() + currentRoom.Offset(direction) + previousRoom.Offset(direction);
+        Vector3 newPosition = previousRoom.GetCenter() + currentRoom.Offset(direction) + previousRoom.Offset(direction) - (currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir)));
         foreach (Room r in allRooms)
         {
             Vector3 min = currentRoom.HalfExtent + r.HalfExtent;
             if (min.x > Mathf.Abs(Mathf.Round(newPosition.x - r.GetCenter().x)) &&
                 min.z > Mathf.Abs(Mathf.Round(newPosition.z - r.GetCenter().z)))
             {
+                Debug.LogError("overlapping with " + r.name);
                 return true;
 
             }
             else if (Mathf.Abs(Mathf.Round(newPosition.x - r.GetCenter().x)) == 0 && 
                 Mathf.Abs(Mathf.Round(newPosition.z - r.GetCenter().z)) == 0)
             {
+                Debug.LogError("overlapping with " + r.name);
                 return true;
             }
         }

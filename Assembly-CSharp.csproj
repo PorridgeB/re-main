@@ -1287,12 +1287,6 @@
     <Reference Include="System.Xml.Serialization">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.22f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InternalAPIEngineBridge.001">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -1314,9 +1308,6 @@
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
@@ -1326,9 +1317,6 @@
     <Reference Include="Unity.Searcher.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.IK.Editor">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
@@ -1337,9 +1325,6 @@
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -1359,29 +1344,14 @@
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Mathematics">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.IK.Runtime">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Animation.Runtime">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
@@ -1401,23 +1371,26 @@
     <Reference Include="Unity.Mathematics.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Common.Runtime">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Common.Editor">
-        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+        <HintPath>C:\Users\brian\Documents\re-main\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

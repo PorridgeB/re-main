@@ -6,20 +6,11 @@ using UnityEngine;
 public class Passage : MonoBehaviour
 {
     public ConnectionSide side;
+    public bool connected;
 
     public Vector3 Offset {
         get{
             Vector3 t = transform.localPosition;
-            switch(side){
-                case ConnectionSide.Top:
-                case ConnectionSide.Bottom:
-                    t.x = 0;
-                    break;
-                case ConnectionSide.Left:
-                case ConnectionSide.Right:
-                    t.z = 0;
-                    break;
-            }
             return t;
         } 
     }

@@ -836,10 +836,10 @@ MonoBehaviour:
       id: 34
   - Position: {x: 0, y: 15}
     Tile:
-      id: 34
+      id: 35
   - Position: {x: 0, y: 16}
     Tile:
-      id: 34
+      id: 35
   - Position: {x: 0, y: 7}
     Tile:
       id: 34
@@ -866,163 +866,163 @@ MonoBehaviour:
       id: 34
   - Position: {x: 1, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 2, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 3, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 4, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 5, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 6, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 7, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 10, y: 0}
     Tile:
-      id: 36
+      id: 37
   - Position: {x: 11, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 12, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 13, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 14, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 15, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 16, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 0}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 1}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 2}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 3}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 4}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 5}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 6}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 7}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 10}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 11}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 12}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 13}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 14}
     Tile:
-      id: 35
+      id: 36
   - Position: {x: 17, y: 15}
     Tile:
-      id: 35
+      id: 38
   - Position: {x: 17, y: 16}
     Tile:
-      id: 35
+      id: 38
   - Position: {x: 17, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 16, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 15, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 14, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 13, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 12, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 11, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 10, y: 17}
     Tile:
-      id: 38
+      id: 40
   - Position: {x: 7, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 6, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 5, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 4, y: 17}
     Tile:
-      id: 37
+      id: 39
   - Position: {x: 3, y: 17}
     Tile:
-      id: 39
+      id: 41
   - Position: {x: 2, y: 17}
     Tile:
-      id: 39
+      id: 41
   - Position: {x: 1, y: 17}
     Tile:
-      id: 40
+      id: 42
   - Position: {x: 0, y: 17}
     Tile:
-      id: 40
+      id: 42
   - Position: {x: 9, y: 17}
     Tile:
-      id: 41
+      id: 43
   - Position: {x: 8, y: 17}
     Tile:
-      id: 41
+      id: 43
   - Position: {x: 0, y: 8}
     Tile:
-      id: 42
+      id: 44
   - Position: {x: 0, y: 9}
     Tile:
-      id: 42
+      id: 44
   - Position: {x: 17, y: 8}
     Tile:
-      id: 32
+      id: 44
   - Position: {x: 17, y: 9}
     Tile:
-      id: 32
+      id: 44
   - Position: {x: 9, y: 0}
     Tile:
-      id: 36
+      id: 37
   - Position: {x: 8, y: 0}
     Tile:
-      id: 36
+      id: 37
   references:
     version: 1
     00000000:
@@ -1168,10 +1168,9 @@ MonoBehaviour:
         Trim: WallTrim_0
         Sprite: Wall_0
     00000023:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000024:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
@@ -1183,10 +1182,9 @@ MonoBehaviour:
         Trim: WallTrim_0
         Sprite: Wall_0
     00000026:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000027:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
@@ -1203,9 +1201,20 @@ MonoBehaviour:
         Trim: WallTrim_0
         Sprite: Wall_0
     0000002A:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000002B:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000002C:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
 --- !u!23 &1662831724924116183
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1307,7 +1316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1384,7 +1393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalRotation.w
