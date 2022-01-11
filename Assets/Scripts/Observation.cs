@@ -6,15 +6,23 @@ using UnityEngine;
 [Serializable]
 public class Observation
 {
+    // The GameObject that was observed
+    public GameObject Who;
     // Time when the observation was made
     public float When;
+    // Position of GameObject when the observation was made
     public Vector3 Where;
-    public GameObject Who;
+    // How long the observation can last in memory before being forgotten
+    public float ExpiryTime;
 
-    public Observation(Vector3 where, GameObject who)
+    // If the observation is no longer relevant and should be destroyed
+    public bool Expired => Time.time - When > ExpiryTime;
+
+    public Observation(GameObject who, float expiryTime)
     {
-        When = Time.time;
-        Where = where;
         Who = who;
+        When = Time.time;
+        Where = who.transform.position;
+        ExpiryTime = expiryTime;
     }
 }

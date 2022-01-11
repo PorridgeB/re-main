@@ -41,24 +41,27 @@ public class LocateCover : Action
 
 	private bool IsFree(Vector3 position)
     {
+		//var collider = GetComponent<CapsuleCollider>();
+		//Physics.CheckCapsule(position, position + Vector3.up * collider.height, collider.radius);
 		return !Physics.CheckBox(position + Vector3.up, Vector3.one * 0.25f);
 	}
 
 	private bool IsSafe(Vector3 position)
     {
-		if (Target.Value == null)
+		var target = Target.Value;
+		if (target == null)
         {
 			return true;
         }
 
 		// A single check is not sufficient
-		//return CheckSafe(position, Target.Value.transform.position);
+		//return CheckSafe(position, target.transform.position);
 
-		float d = 0.45f;
-		var offsets = new Vector3[] { Vector3.forward * d, Vector3.right * d, Vector3.back * d, Vector3.left * d };
-		foreach (var offset in offsets)
+		var checkRadius = 0.45f;
+		var checkDirections = new Vector3[] { Vector3.forward, Vector3.right, Vector3.back, Vector3.left };
+		foreach (var direction in checkDirections)
         {
-			if (!CheckSafe(position + offset, Target.Value.transform.position))
+			if (!CheckSafe(position + direction * checkRadius, target.transform.position))
             {
 				return false;
             }

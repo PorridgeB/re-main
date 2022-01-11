@@ -6,17 +6,12 @@ using UnityEngine;
 public class Memory : MonoBehaviour
 {
     [SerializeField]
-    private float expiryTime = 1.5f;
-    [SerializeField]
     private List<Observation> observations = new List<Observation>();
 
     private void Update()
     {
-        // Remove all expired observations
-        observations.RemoveAll(x => Time.time - x.When > expiryTime);
-
-        // Remove all observations with missing `Who` GameObjects
-        observations.RemoveAll(x => x.Who == null);
+        // Remove all expired and invalid observations
+        observations.RemoveAll(x => x.Expired || x.Who == null);
     }
 
     public Observation FirstWithTag(string tag)
