@@ -10,7 +10,7 @@ public class Observation
     public GameObject Who;
     // Time when the observation was made
     public float When;
-    // Position of GameObject when the observation was made
+    // Position of the GameObject when the observation was made
     public Vector3 Where;
     // How long the observation can last in memory before being forgotten
     public float ExpiryTime;

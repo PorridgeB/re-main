@@ -13,6 +13,7 @@ public class SightSensor : Sensor
     public override void Sense()
     {
         var colliders = Physics.OverlapSphere(transform.position, MaxDistance);
+
         foreach (var collider in colliders)
         {
             var other = collider.gameObject;
