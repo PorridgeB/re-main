@@ -113,6 +113,12 @@ public class PhaserProjectile : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag(Source.tag))
+        {
+            Physics.IgnoreCollision(collider, collision.collider);
+            return;
+        }
+
         if (collision.gameObject != Source)
         {
             Impact();
