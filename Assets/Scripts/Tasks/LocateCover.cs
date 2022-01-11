@@ -16,11 +16,9 @@ public class LocateCover : Action
 	public override TaskStatus OnUpdate()
 	{
 		var memory = GetComponent<Memory>();
-
 		var observations = memory.WithTag("Cover");
 
 		var cover = observations.Where(x => IsValid(x.Who.transform.position)).OrderBy(x => Vector3.Distance(transform.position, x.Who.transform.position)).FirstOrDefault();
-
 		if (cover == null)
         {
 			return TaskStatus.Failure;
@@ -33,8 +31,6 @@ public class LocateCover : Action
 
 	private bool IsValid(Vector3 position)
     {
-		// TODO: Check if can be reached
-		// TODO: Check if it is in the direction away from the player/enemy
 		return IsClose(position) && IsFree(position) && IsSafe(position);
 	}
 	
@@ -55,19 +51,24 @@ public class LocateCover : Action
 			return true;
         }
 
-		var target = Target.Value;
-		var from = target.transform.position + Vector3.up;
-		var direction = (position - from).normalized;
-		var maxDistance = 10;
+		// A single check is not sufficient
+		//return CheckSafe(position, Target.Value.transform.position);
 
-		if (Physics.Raycast(from, direction, out RaycastHit hit, maxDistance, LayerMask.GetMask("Level")))
-		{
-			if (Vector3.Distance(hit.point, position) < 1)
-			{
+		float d = 0.45f;
+		var offsets = new Vector3[] { Vector3.forward * d, Vector3.right * d, Vector3.back * d, Vector3.left * d };
+		foreach (var offset in offsets)
+        {
+			if (!CheckSafe(position + offset, Target.Value.transform.position))
+            {
 				return false;
-			}
-		}
+            }
+        }
 
 		return true;
+	}
+
+	private bool CheckSafe(Vector3 from, Vector3 to, float maxDistance = 20)
+    {
+		return Physics.Raycast(from + Vector3.up, (to - from).normalized, out _, maxDistance, LayerMask.GetMask("Level"));
 	}
 }

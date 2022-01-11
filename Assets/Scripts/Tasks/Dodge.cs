@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
@@ -20,8 +21,11 @@ public class Dodge : Action
 		startTime = -1;
 
 		// Find incoming projectile
-		var projectiles = GameObject.FindGameObjectsWithTag("Projectile");
-		foreach (var projectile in projectiles)
+		//var projectiles = GameObject.FindGameObjectsWithTag("Projectile");
+		//foreach (var projectile in projectiles)
+
+		var memory = GetComponent<Memory>();
+		foreach (var projectile in memory.WithTag("Projectile").Select(x => x.Who))
         {
 			if (Vector3.Distance(transform.position, projectile.transform.position) > Distance.Value)
 			{
