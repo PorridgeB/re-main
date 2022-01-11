@@ -272,7 +272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ce1b1d1bb63f74d92b67b6c79ff6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expiryTime: 5
   observations: []
 --- !u!114 &365641862823815452
 MonoBehaviour:
@@ -287,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rate: 0.25
+  ExpiryTime: 5
   MaxDistance: 7
   Tags:
   - Player
@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rate: 0.25
+  ExpiryTime: 16
   MaxDistance: 10
 --- !u!1 &1786208039703026264
 GameObject:

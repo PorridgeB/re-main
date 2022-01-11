@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 1569522206675169474}
   - component: {fileID: 609309480849136903}
   - component: {fileID: 339786816575211900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2795216800954713284}
   - component: {fileID: 5421462076035599423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 4505106388035379476}
   - component: {fileID: 4505106388035379474}
   - component: {fileID: 4505106388035379477}
+  - component: {fileID: 5804502810967060110}
   - component: {fileID: 2308147112961719939}
   m_Layer: 8
   m_Name: Player
@@ -416,6 +417,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &5804502810967060110
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505106388035379472}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &2308147112961719939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5618870042844818605}
   - component: {fileID: 7219956415136863720}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
