@@ -10,7 +10,7 @@ public class GoTo : Action
 {
     public SharedVector3 TargetPosition;
     public SharedFloat Speed;
-    public float TargetReachedRadius = 0.1f;
+    public float TargetReachedRadius = 0.5f;
 
     public override TaskStatus OnUpdate()
     {
