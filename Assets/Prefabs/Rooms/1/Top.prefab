@@ -1262,7 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef5688bde5d79c4baedb8ccecc4d7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellSize: {x: 18, y: 18}
   passages:
   - {fileID: 1231905630899777089}
   enemySpawns: []

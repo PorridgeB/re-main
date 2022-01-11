@@ -9,28 +9,45 @@ public enum ConnectionSide{
     Left,
     Bottom
 }
+[System.Serializable]
+public class GenerationStep{
+
+    public GenerationStep(int i, List<GameObject> rooms){
+        index = i;
+        stepAttempts = 0;
+        roomOptions = rooms;
+    }
+
+    public GameObject NextRoom(){
+        if (roomOptions.Count > 0){ 
+            GameObject g = roomOptions[Random.Range(0, roomOptions.Count)];
+            roomOptions.Remove(g);
+            return g;
+        }
+        return null;
+    }
+
+    public int index;
+    public Room room;
+    public List<GameObject> roomOptions;
+    public int stepAttempts;
+
+}
 
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
     private Room start;
-
     [SerializeField]
-    private List<GameObject> singleConnection;
+    private List<GameObject> roomTestPool;
     [SerializeField]
-    private List<GameObject> doubleConnection;
+    private List<Room> allRooms = new List<Room>();
     [SerializeField]
-    private List<GameObject> tripleConnection;
+    private List<GameObject> startRooms;
     [SerializeField]
-    private List<GameObject> hub;
-
+    private List<GameObject> finishRooms;
     [SerializeField]
-    private List<Room> allRooms;
-
-    [SerializeField]
-    private List<GameObject> rooms;
-    [SerializeField]
-    private List<GameObject> chestRooms;
+    private List<GameObject> rewardRooms;
     [SerializeField]
     private List<GameObject> obstacleRooms;
     [SerializeField]
@@ -38,21 +55,26 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private List<GameObject> trapRooms;
     [SerializeField]
-    private GameObject hall;
+    private List<GameObject> npcRooms;
     [SerializeField]
-    private List<Vector3> directions = new List<Vector3>();
+    private List<GameObject> bossRooms;
     [SerializeField]
-    private List<Vector3> corners = new List<Vector3>();
+    private List<GameObject> artifactRooms;
+    [SerializeField]
+    private List<GameObject> hallways;
     [SerializeField]
     private string generationTemplate;
     private Vector3 currentDir;
-    private Stack<Room> roomPath = new Stack<Room>();
+    [SerializeField]
+    private List<GenerationStep> stepHistory = new List<GenerationStep>();
+    private Stack<GenerationStep> roomPath = new Stack<GenerationStep>();
     private LevelGrammarGenerator grammarGenerator;
     private int index = 0;
-    private int roomsSinceTurn = 0;
+    private int roomHistoryIndex = 0;
     private int maxRoomsSinceTurn;
     [SerializeField]
     private int generationAttempts = 0;
+    private int roomAttempts = 0;
     private bool roomsGenerated;
     [SerializeField]
     private GameEvent SceneReady;
@@ -79,7 +101,7 @@ public class LevelGenerator : MonoBehaviour
             GetComponent<NavMeshSurface>().BuildNavMesh();
             foreach (Room r in start.GetComponentsInChildren<Room>())
             {
-                r.Generate();
+                //r.Generate();
             }
             roomsGenerated = true;
             SceneReady.Raise();
@@ -108,8 +130,11 @@ public class LevelGenerator : MonoBehaviour
         //Debug.Log(index);
         if (index == 0)
         {
-            Room room = Instantiate(singleConnection[Random.Range(0,singleConnection.Count)], transform).GetComponent<Room>();
-            roomPath.Push(room);
+            Room room = Instantiate(startRooms[Random.Range(0,startRooms.Count)], transform).GetComponent<Room>();
+            GenerationStep step = new GenerationStep(-1, new List<GameObject>());
+            step.room = room;
+            roomPath.Push(step);
+            
             allRooms.Add(room);
             start = room;
             start.SetText("Start");
@@ -128,6 +153,7 @@ public class LevelGenerator : MonoBehaviour
             Destroy(start.gameObject);
             roomPath.Clear();
             allRooms.Clear();
+            stepHistory.Clear();
             start = null;
             index = 0;
         }
@@ -137,51 +163,49 @@ public class LevelGenerator : MonoBehaviour
         
     }
 
-    private GameObject GetRoom(List<ConnectionSide> sides) {
-        List<GameObject> pool = null;
-        switch(sides.Count){
-            case 1:
-                pool = singleConnection;
-                break;
-            case 2:
-                pool = doubleConnection;
-                break;
-            case 3:
-                pool = tripleConnection;
-                break;
-            case 4:
-                pool = hub;
-                break;
-        }
-        foreach (GameObject go in pool){
-            if (go.GetComponent<Room>().HasSides(sides)){
-                return go;
-            }
-        }
-        return null;
-    }
-
-    private List<GameObject> GetRooms(List<ConnectionSide> sides, int count) {
+    private List<GameObject> GetRooms(List<ConnectionSide> sides, int count, char c) {
         List<GameObject> rooms = new List<GameObject>();
         List<GameObject> pool = null;
-        switch(count){
-            case 1:
-                pool = singleConnection;
+        switch(c){
+            case 'e':
+                pool = combatRooms;
                 break;
-            case 2:
-                pool = doubleConnection;
+            case 't':
+                pool = trapRooms;
                 break;
-            case 3:
-                pool = tripleConnection;
+            case 'o':
+                pool = obstacleRooms;
                 break;
-            case 4:
-                pool = hub;
+            case 'h':
+                pool = hallways;
+                break;
+            case 'r':
+                pool = rewardRooms;
+                break;
+            case 'n':
+                pool = npcRooms;
+                break;
+            case 'b':
+                pool = bossRooms;
+                break;
+            case 'a':
+                pool = artifactRooms;
+                break;
+            case 'f':
+                pool = finishRooms;
+                break;
+            case '-':
+                pool = hallways;
                 break;
         }
+        pool = roomTestPool;
         foreach (GameObject go in pool){
-            if (go.GetComponent<Room>().HasSides(sides)){
-
-                rooms.Add(go);
+            Room r = go.GetComponent<Room>();
+            if (r.HasSides(sides)){
+                if (r.Passages.Count == count) {
+                    rooms.Add(go);
+                }
+                
             }
         }
         return rooms;
@@ -193,6 +217,7 @@ public class LevelGenerator : MonoBehaviour
         int count = 1;
         for (int i = index+1; i < generationTemplate.Length; i++) {
             if (branchDepth == 0) {
+                //Debug.Log(generationTemplate[i]);
                 count++;
                 if (generationTemplate[i] != ')' && generationTemplate[i] != '('){
                     
@@ -216,7 +241,7 @@ public class LevelGenerator : MonoBehaviour
 
     public bool Step(char c)
     {
-        
+        Debug.Log(c);
         if (c == '(')
         {
             roomPath.Push(roomPath.Peek());
@@ -227,59 +252,123 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Spawning " + c);
-            Room previousRoom = roomPath.Pop();
-            if (previousRoom.Passages.Count <= 0) return false;
+            if (roomPath.Count <= 0) return false;
+            Room previousRoom = roomPath.Pop().room;
+            if (previousRoom.Passages.Count <= 0){
+                Debug.LogError("previous room has no passages");
+                return false;
+            }
             Passage passage = previousRoom.GetUnconnectedPassage();
-            if (passage == null) return false;
+            if (passage == null){
+                Debug.LogError("no unconnected passages on " + previousRoom.name);
+                return false;
+            }
             currentDir = GetVector(passage.side);
-
-            int connectionCount = GetConnectionCount();
-            List<ConnectionSide> sides = new List<ConnectionSide>();
-            for (int i = 0; i < connectionCount; i++)
-            {
-                sides.Add((ConnectionSide)Random.Range(0,4));
+            if (stepHistory.Count <= index){
+                CreateGenerationStep(previousRoom, c);
             }
-            //Debug.Log("next room must have " +  GetConnectionSide(-currentDir) + " and " + connectionCount + " connections");
-            if (!sides.Contains(GetConnectionSide(-currentDir)))
-            {
-                
-                sides[0] = GetConnectionSide(-currentDir);
+            if (stepHistory[roomHistoryIndex].roomOptions == null){
+                if (index == 0){
+                    return false;
+                }
+                Rewind(previousRoom);
             }
-            Room currentRoom = null;
-            List<GameObject> potentialRooms = GetRooms(new List<ConnectionSide>(){GetConnectionSide(-currentDir)}, connectionCount);
-            //Debug.Log("Finding valid room in direction: " + currentDir);
-            currentRoom = FindValidRoom(potentialRooms, previousRoom);
-            if (currentRoom == null) return false;
-            
-            previousRoom.ReservePassage(GetConnectionSide(currentDir)); 
-            currentRoom.ReservePassage(GetConnectionSide(-currentDir));
-
-            currentRoom.CenterRoom(previousRoom);
-            currentRoom.transform.position += currentRoom.Offset(currentDir) + previousRoom.Offset(currentDir);
-            if (currentRoom.name == "TopBottom(Clone)"){
-                Debug.Log(currentRoom.PassageOffset(GetConnectionSide(-currentDir)));
-                Debug.Log(previousRoom.PassageOffset(GetConnectionSide(currentDir)));
-
+            else if (stepHistory[roomHistoryIndex].roomOptions.Count <= 0){
+                Debug.LogError("No alternatives");
+                return false;
             }
-            currentRoom.transform.position -= currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir));
-            currentRoom.SetText(c.ToString());
-
-            
-
-            roomPath.Push(currentRoom);
-            allRooms.Add(currentRoom);
+            else {
+                Room currentRoom = Instantiate(stepHistory[roomHistoryIndex].NextRoom(), previousRoom.transform).GetComponent<Room>();
+                CreateRoom(currentRoom, previousRoom, c);
+            }
+            roomHistoryIndex++;
         }
         return true;
     }
 
-    private Room FindValidRoom(List<GameObject> potentialRooms, Room previousRoom) {
+    private void Rewind(Room previousRoom){
+        Debug.LogWarning("Rewinding");
+        GenerationStep step = GetStepByRoom(previousRoom.transform.parent.GetComponent<Room>());
+        step.room.DisconnectPassages(step.room);
+        index = step.index;
+        step.stepAttempts++;
+        roomHistoryIndex = stepHistory.IndexOf(step);
+        if (roomPath.Count > 0) roomPath.Pop();
+        roomPath.Push(step);
+        allRooms.Remove(previousRoom);
+        Destroy(previousRoom.gameObject);
+    }
+
+    private void CreateGenerationStep(Room previousRoom, char c) {
+        
+
+        int connectionCount = GetConnectionCount();
+        List<ConnectionSide> sides = new List<ConnectionSide>();
+        for (int i = 0; i < connectionCount; i++)
+        {
+            sides.Add((ConnectionSide)Random.Range(0,4));
+        }
+        //Debug.Log("next room must have " +  GetConnectionSide(-currentDir) + " and " + connectionCount + " connections");
+        if (!sides.Contains(GetConnectionSide(-currentDir)))
+        {
+            
+            sides[0] = GetConnectionSide(-currentDir);
+        }
+
+        List<GameObject> potentialRooms = GetRooms(new List<ConnectionSide>(){GetConnectionSide(-currentDir)}, connectionCount, c);
+        //Debug.Log("Finding valid room in direction: " + currentDir);
+        List<GameObject> validRooms = FindValidRooms(potentialRooms, previousRoom);
+
+        stepHistory.Add(new GenerationStep(index, validRooms));
+        roomHistoryIndex = stepHistory.Count-1;
+        stepHistory[roomHistoryIndex].roomOptions = validRooms;
+        
+    }
+    private void CreateRoom(Room currentRoom, Room previousRoom, char c) {
+        previousRoom.ReservePassage(GetConnectionSide(currentDir), currentRoom); 
+        currentRoom.ReservePassage(GetConnectionSide(-currentDir), previousRoom);
+
+        currentRoom.CenterRoom(previousRoom);
+        currentRoom.transform.position += currentRoom.Offset(currentDir) + previousRoom.Offset(currentDir);
+
+        currentRoom.transform.position -= currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir));
+        currentRoom.SetText(c.ToString());
+        GenerationStep s = GetStep();
+        if (s != null){
+            s.room = currentRoom;
+        }
+        else{
+            Debug.Log("we fucked up lol");
+        }
+        roomPath.Push(s);
+        allRooms.Add(currentRoom);
+    }
+
+    public GenerationStep GetStepByRoom(Room room) {
+        foreach (GenerationStep s in stepHistory){
+            if (s.room == room){
+                return s;
+            }
+        }
+        return null;
+    }   
+
+    public GenerationStep GetStep() {
+        foreach (GenerationStep g in stepHistory){
+            if (g.index == index){
+                return g;
+            }
+        }
+        return null;
+    }
+
+    private List<GameObject> FindValidRooms(List<GameObject> potentialRooms, Room previousRoom) {
         List<GameObject> validRooms = new List<GameObject>(); 
         Room currentRoom = null;
         foreach (GameObject room in potentialRooms){
                 currentRoom = Instantiate(room, previousRoom.transform).GetComponent<Room>();
                 currentRoom.CenterRoom(previousRoom);
-
+                
                 if (!CheckForOverlap(previousRoom, currentRoom, currentDir)) {
                     validRooms.Add(room);
                 }
@@ -289,7 +378,7 @@ public class LevelGenerator : MonoBehaviour
             Debug.LogError("No Valid Rooms");
             return null;
         }
-        return Instantiate(validRooms[Random.Range(0, validRooms.Count)], previousRoom.transform).GetComponent<Room>();
+        return validRooms;
     }
 
     public ConnectionSide GetConnectionSide(Vector3 side) {
@@ -309,7 +398,8 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForOverlap(Room previousRoom, Room currentRoom, Vector3 direction)
     {
-        
+        Debug.Log(previousRoom + " : " + currentRoom);
+        Debug.Log(previousRoom.GetCenter());
         Vector3 newPosition = previousRoom.GetCenter() + currentRoom.Offset(direction) + previousRoom.Offset(direction) - (currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir)));
         foreach (Room r in allRooms)
         {

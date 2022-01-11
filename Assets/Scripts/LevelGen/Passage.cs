@@ -6,8 +6,13 @@ using UnityEngine;
 public class Passage : MonoBehaviour
 {
     public ConnectionSide side;
-    public bool connected;
+    public Room connection;
 
+    public bool Connected{
+        get{
+            return connection != null;
+        }
+    }
     public Vector3 Offset {
         get{
             Vector3 t = transform.localPosition;

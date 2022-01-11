@@ -25,18 +25,26 @@ public class Room : MonoBehaviour
         size = new Vector2(rect.xMax-rect.xMin+1, rect.yMax-rect.yMin+1);
     }
 
-    public void ReservePassage(ConnectionSide side){
+    public void ReservePassage(ConnectionSide side, Room room){
         foreach (Passage p in passages){
             if (p.side == side){
-                p.connected = true;
+                p.connection = room;
                 //Debug.Log("Reserving Passage: " + p.side);
             }
         }
     }
 
+    public void DisconnectPassages(Room room){
+        foreach (Passage p in passages) {
+            if (p.connection == room || p.connection == null){
+                Debug.Log("disconnecting passage from " + name);
+                p.connection = null;
+            }
+        }
+    }
     public Passage GetUnconnectedPassage() {
         foreach (Passage p in passages){
-            if (!p.connected){
+            if (!p.Connected){
                 return p;
             }
         }
