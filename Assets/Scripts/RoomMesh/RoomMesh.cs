@@ -133,6 +133,8 @@ public class RoomMesh : MonoBehaviour
             meshRenderer.material = Resources.Load<Material>(DefaultMaterialPath);
         }
 
+        Tiles.RemoveAll(x => x.Tile == null);
+
         var mesh = CreateMesh(sprites);
         var meshFilter = GetComponent<MeshFilter>();
         if (meshFilter == null)
