@@ -12,7 +12,7 @@ public class WallTile : Tile
     public string Trim;
     public string Sprite;
 
-    private const int height = 2;
+    private const float height = 1.5f;
 
     public override void AddMesh(TileMeshBuilder tileMeshBuilder, RoomMeshOptions options, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
@@ -23,12 +23,12 @@ public class WallTile : Tile
             var wallTrimSprite = sprites[$"{Trim}_{texture}"];
             if (wallTrimSprite)
             {
-                tileMeshBuilder.AddTile(new Vector3(position.x, height + 0.01f, position.y), Vector2Int.one, Vector3Int.up, wallTrimSprite.uv);
+                tileMeshBuilder.AddTile(new Vector3(position.x, height + 0.01f, position.y), Vector2Int.one, Vector3.up, wallTrimSprite.uv);
             }
         }
 
         // Wall trimmings background
-        tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y), Vector2Int.one, Vector3Int.up, null);
+        tileMeshBuilder.AddTile(new Vector3(position.x, height, position.y), Vector2Int.one, Vector3.up, null);
 
         // Front facing wall
         //if (neighbours.South is WallTile)
@@ -42,17 +42,17 @@ public class WallTile : Tile
         {
             if (!(neighbours.North is WallTile))
             {
-                tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y + 1), new Vector2Int(1, height), Vector3Int.forward, null);
+                tileMeshBuilder.AddTile(new Vector3(position.x, height, position.y + 1), new Vector2(1, height), Vector3.forward, null);
             }
 
             if (!(neighbours.East is WallTile))
             {
-                tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right, null);
+                tileMeshBuilder.AddTile(new Vector3(position.x + 1, height, position.y), new Vector2(height, 1), Vector3.right, null);
             }
 
             if (!(neighbours.West is WallTile))
             {
-                tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left, null);
+                tileMeshBuilder.AddTile(new Vector3(position.x, 0, position.y), new Vector2(height, 1), Vector3.left, null);
             }
         }
 
@@ -70,32 +70,32 @@ public class WallTile : Tile
                 };
             }
 
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv, colors);
+            tileMeshBuilder.AddTile(new Vector3(position.x, 0, position.y), new Vector2(1, height), Vector3.back, neighbours.South == null ? null : uv, colors);
         }
 
-        //tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back, neighbours.South == null ? null : uv);
+        //tileMeshBuilder.AddTile(new Vector3(position.x, 0, position.y), new Vector2(1, height), Vector3.back, neighbours.South == null ? null : uv);
     }
 
     public override void AddCollisionMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
     {
         if (!(neighbours.North == null || neighbours.North is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, height, position.y + 1), new Vector2Int(1, height), Vector3Int.forward);
+            tileMeshBuilder.AddTile(new Vector3(position.x, height, position.y + 1), new Vector2(1, height), Vector3.forward);
         }
 
         if (!(neighbours.East == null || neighbours.East is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x + 1, height, position.y), new Vector2Int(height, 1), Vector3Int.right);
+            tileMeshBuilder.AddTile(new Vector3(position.x + 1, height, position.y), new Vector2(height, 1), Vector3.right);
         }
 
         if (!(neighbours.South == null || neighbours.South is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(1, height), Vector3Int.back);
+            tileMeshBuilder.AddTile(new Vector3(position.x, 0, position.y), new Vector2(1, height), Vector3.back);
         }
 
         if (!(neighbours.West == null || neighbours.West is WallTile))
         {
-            tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), new Vector2Int(height, 1), Vector3Int.left);
+            tileMeshBuilder.AddTile(new Vector3(position.x, 0, position.y), new Vector2(height, 1), Vector3.left);
         }
     }
 }
