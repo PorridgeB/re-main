@@ -241,7 +241,6 @@ public class LevelGenerator : MonoBehaviour
 
     public bool Step(char c)
     {
-        Debug.Log(c);
         if (c == '(')
         {
             roomPath.Push(roomPath.Peek());
@@ -398,8 +397,6 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForOverlap(Room previousRoom, Room currentRoom, Vector3 direction)
     {
-        Debug.Log(previousRoom + " : " + currentRoom);
-        Debug.Log(previousRoom.GetCenter());
         Vector3 newPosition = previousRoom.GetCenter() + currentRoom.Offset(direction) + previousRoom.Offset(direction) - (currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir)));
         foreach (Room r in allRooms)
         {
