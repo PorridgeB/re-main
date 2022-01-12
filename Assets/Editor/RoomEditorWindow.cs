@@ -25,6 +25,8 @@ public class RoomEditorWindow : EditorWindow
     private const string FloorPrefix = "Floor_";
     private const string WallPrefix = "Wall_";
     private const string WallTrimPrefix = "WallTrim_";
+    private const string PitSidePrefix = "PitSide_";
+    private const string PitBottomPrefix = "PitBottom_";
 
     // Rect fill tool
     private Vector2Int rectFillFrom = new Vector2Int();
@@ -277,10 +279,11 @@ public class RoomEditorWindow : EditorWindow
 
         var floorSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(FloorPrefix)));
         var wallSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallPrefix)));
+        var pitSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(PitSidePrefix)));
 
         var floorPalette = new Palette { Name = "Floors", Tiles = floorSprites.Select(x => (Tile)new FloorTile { Sprite = x.name }).ToList() };
         var wallPalette = new Palette { Name = "Walls", Tiles = wallSprites.Select(x => (Tile)new WallTile { Sprite = x.name, Trim = "WallTrim_0" }).ToList() };
-        var pitPalette = new Palette { Name = "Pits", Tiles = new List<Tile>() { new PitTile() } };
+        var pitPalette = new Palette { Name = "Pits", Tiles = pitSprites.Select(x => (Tile)new PitTile { Side = x.name, Bottom = "PitBottom_0" }).ToList() };
 
         palettes = new List<Palette>() { floorPalette, wallPalette, pitPalette };
     }
