@@ -12,9 +12,12 @@ public class Room : MonoBehaviour
 {
     [SerializeField]
     private List<Passage> passages;
-    private List<Transform> resourceSpawns = new List<Transform>();
-    private List<Transform> pickupSpawns = new List<Transform>();
-    private List<GameObject> crateWalls = new List<GameObject>();
+    [SerializeField]
+    private GameObject resourceSpawns;
+    [SerializeField]
+    private GameObject pickupSpawns;
+    [SerializeField]
+    private GameObject crateWalls;
     private ResourceType type;
     [SerializeField]
     private int resourceBudget;
@@ -32,23 +35,9 @@ public class Room : MonoBehaviour
         RectInt rect = GetComponent<RoomMesh>().GetRect();
         size = new Vector2(rect.xMax-rect.xMin+1, rect.yMax-rect.yMin+1);
         type = (ResourceType)Random.Range(0,2);
-
         resourceBudget = Random.Range(2, 150);
 
-        //FindRoomContents();
-    }
-    public void FindRoomContents() {
-        if (transform.Find("ResourceSpawns") != null){
-            foreach (Transform child in transform.Find("ResourceSpawns").transform){    
-                resourceSpawns.Add(child);
-            }
-            foreach (Transform child in transform.Find("PickupSpawns").transform){
-                pickupSpawns.Add(child);
-            }
-            foreach (Transform child in transform.Find("CrateWalls").transform){
-                crateWalls.Add(child.gameObject);
-            }
-        }
+        
     }
 
     public void ReservePassage(ConnectionSide side, Room room){
@@ -144,7 +133,6 @@ public class Room : MonoBehaviour
 
     private bool HasSide(ConnectionSide side){
         foreach (Passage p in passages){
-            Debug.Log(p.side);
             if (p.side == side) {
                 return true;
             }
@@ -158,7 +146,10 @@ public class Room : MonoBehaviour
     }
 
     private void SpawnResources() {
-        foreach (Transform t in resourceSpawns){
+        if (resourceSpawns == null){
+            Debug.Log(name);
+        }
+        foreach (Transform t in transform.Find("ResourceSpawns")){
             int value = Mathf.Min(30, resourceBudget);
             resourceBudget -= value;
             GameObject go = null;
@@ -170,25 +161,26 @@ public class Room : MonoBehaviour
                     go = scrap;
                     break;
             }
-            Instantiate(go, t.position, new Quaternion(), null);
+            Instantiate(go, t.position+Vector3.up, new Quaternion(), transform);
             if (resourceBudget == 0) return;
         }
     }
 
     private void EnableCrates() {
-        foreach (GameObject g in crateWalls){
-            if (Random.value < 1/crateWalls.Count){
-                g.SetActive(true);
+        foreach (Transform t in transform.Find("CrateWalls")){
+            if (Random.value < 1){
+                Debug.Log("enabling crate");
+                t.gameObject.SetActive(true);
             }
         }
         
     }
 
     private void SpawnPickups() {
-        foreach (Transform t in pickupSpawns){
+        foreach (Transform t in transform.Find("PickupSpawns")){
             //TODO: make this 0.5f/difficulty
             if (Random.value < 0.5f){
-
+                Instantiate(pickupPlaceholder, t.transform.position+Vector3.up, new Quaternion(), transform);
             }
         }
     }

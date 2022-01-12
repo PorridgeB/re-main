@@ -4,9 +4,4 @@ using UnityEngine;
 
 public class Trap : Room
 {
-    public override void Generate()
-    {
-        base.Generate();
-        
-    }
 }
