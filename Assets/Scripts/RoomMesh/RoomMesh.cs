@@ -133,6 +133,8 @@ public class RoomMesh : MonoBehaviour
             meshRenderer.material = Resources.Load<Material>(DefaultMaterialPath);
         }
 
+        Tiles.RemoveAll(x => x.Tile == null);
+
         var mesh = CreateMesh(sprites);
         var meshFilter = GetComponent<MeshFilter>();
         if (meshFilter == null)
@@ -148,6 +150,8 @@ public class RoomMesh : MonoBehaviour
             meshCollider = gameObject.AddComponent<MeshCollider>();
         }
         meshCollider.sharedMesh = collisionMesh;
+
+        CreateLayerCollisionMeshes();
     }
 
     public RectInt GetRect()
@@ -210,6 +214,47 @@ public class RoomMesh : MonoBehaviour
         }
 
         return tileMeshBuilder.ToMesh();
+    }
+
+    private void CreateLayerCollisionMeshes()
+    {
+        var meshBuilders = new Dictionary<string, TileMeshBuilder>();
+
+        // Generate the layer mesh colliders
+        foreach (var instance in Tiles)
+        {
+            var position = instance.Position;
+            var tile = instance.Tile;
+            var neighbours = GetTileNeighbours(position);
+            tile.AddLayerCollisionMeshes(meshBuilders, position, neighbours);
+        }
+
+        // Create a LayerColliders game object to store the individual layer mesh colliders if there isn't one already
+        var layerCollidersObject = transform.Find("LayerColliders")?.gameObject;
+        if (layerCollidersObject == null)
+        {
+            layerCollidersObject = new GameObject("LayerColliders");
+            layerCollidersObject.transform.parent = transform;
+        }
+
+        // Destroy the old layer collider game objects
+        foreach (Transform child in layerCollidersObject.transform)
+        {
+            DestroyImmediate(child.gameObject);
+        }
+
+        foreach (var pair in meshBuilders)
+        {
+            var layerName = pair.Key;
+            var meshBuilder = pair.Value;
+
+            var layerColliderObject = new GameObject(layerName);
+            layerColliderObject.transform.parent = layerCollidersObject.transform;
+            layerColliderObject.layer = LayerMask.NameToLayer(layerName);
+
+            var layerMeshCollider = layerColliderObject.AddComponent<MeshCollider>();
+            layerMeshCollider.sharedMesh = meshBuilder.ToMesh();
+        }
     }
 
     private TileNeighbours GetTileNeighbours(Vector2Int position)

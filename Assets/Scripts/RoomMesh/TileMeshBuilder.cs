@@ -10,7 +10,7 @@ public class TileMeshBuilder
     private List<Vector2> uv = new List<Vector2>();
     private List<Color> colors = new List<Color>();
 
-    public void AddTile(Vector3 position, Vector2Int size, Vector3Int normal, Vector2[] textureUvs, Color[] col = null)
+    public void AddTile(Vector3 position, Vector2 size, Vector3 normal, Vector2[] textureUvs, Color[] vertexColors = null)
     {
         AddTile(position, size, normal);
 
@@ -18,10 +18,10 @@ public class TileMeshBuilder
 
         uv.AddRange(uvs);
 
-        colors.AddRange(col != null ? col : new Color[] { Color.white, Color.white, Color.white, Color.white });
+        colors.AddRange(vertexColors != null ? vertexColors : new Color[] { Color.white, Color.white, Color.white, Color.white });
     }
 
-    public void AddTile(Vector3 position, Vector2Int size, Vector3Int normal)
+    public void AddTile(Vector3 position, Vector2 size, Vector3 normal)
     {
         var rotation = Quaternion.FromToRotation(Vector3.up, normal);
 
