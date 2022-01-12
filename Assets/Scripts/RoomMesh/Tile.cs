@@ -15,4 +15,8 @@ public abstract class Tile
     public virtual void AddCollisionMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
     {
     }
+
+    public virtual void AddLayerCollisionMeshes(Dictionary<string, TileMeshBuilder> meshes, Vector2Int position, TileNeighbours neighbours)
+    {
+    }
 }

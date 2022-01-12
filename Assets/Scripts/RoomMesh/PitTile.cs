@@ -27,8 +27,15 @@ public class PitTile : Tile
         tileMeshBuilder.AddTile(new Vector3(position.x, -Depth, position.y + 1), new Vector2(1, Depth), Vector3.back, sideUvs);
     }
 
-    public override void AddCollisionMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
+    public override void AddLayerCollisionMeshes(Dictionary<string, TileMeshBuilder> meshes, Vector2Int position, TileNeighbours neighbours)
     {
+        TileMeshBuilder tileMeshBuilder;
+        if (!meshes.TryGetValue("Dashable", out tileMeshBuilder))
+        {
+            tileMeshBuilder = new TileMeshBuilder();
+            meshes["Dashable"] = tileMeshBuilder;
+        }
+
         if (!(neighbours.North is PitTile))
         {
             tileMeshBuilder.AddTile(new Vector3(position.x, WallTile.Height, position.y + 1), new Vector2(1, WallTile.Height), Vector3.forward);
