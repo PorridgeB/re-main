@@ -3,26 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum ResourceType {
+    Data,
+    Scrap
+}
+
 public class Room : MonoBehaviour
 {
     [SerializeField]
     private List<Passage> passages;
-
+    [SerializeField]
+    private GameObject resourceSpawns;
+    [SerializeField]
+    private GameObject pickupSpawns;
+    [SerializeField]
+    private GameObject crateWalls;
+    private ResourceType type;
+    [SerializeField]
+    private int resourceBudget;
+    private int pickupBudget;
     private Vector2 size;
     [SerializeField]
-    private List<Transform> enemySpawns;
-    public List<Transform> EnemySpawns
-    {
-        get
-        {
-            return enemySpawns;
-        }
-    }
+    private GameObject dataFragment;
+    [SerializeField]    
+    private GameObject scrap;
+    [SerializeField]
+    private GameObject pickupPlaceholder;
 
     void Awake()
     {
         RectInt rect = GetComponent<RoomMesh>().GetRect();
         size = new Vector2(rect.xMax-rect.xMin+1, rect.yMax-rect.yMin+1);
+        type = (ResourceType)Random.Range(0,2);
+        resourceBudget = Random.Range(2, 150);
+
+        
     }
 
     public void ReservePassage(ConnectionSide side, Room room){
@@ -130,8 +145,50 @@ public class Room : MonoBehaviour
         name = text;
     }
 
+    private void SpawnResources() {
+        if (resourceSpawns == null){
+            Debug.Log(name);
+        }
+        foreach (Transform t in transform.Find("ResourceSpawns")){
+            int value = Mathf.Min(30, resourceBudget);
+            resourceBudget -= value;
+            GameObject go = null;
+            switch(type){
+                case ResourceType.Data:
+                    go = dataFragment;
+                    break;
+                case ResourceType.Scrap:
+                    go = scrap;
+                    break;
+            }
+            Instantiate(go, t.position+Vector3.up, new Quaternion(), transform);
+            if (resourceBudget == 0) return;
+        }
+    }
+
+    private void EnableCrates() {
+        foreach (Transform t in transform.Find("CrateWalls")){
+            if (Random.value < 1){
+                Debug.Log("enabling crate");
+                t.gameObject.SetActive(true);
+            }
+        }
+        
+    }
+
+    private void SpawnPickups() {
+        foreach (Transform t in transform.Find("PickupSpawns")){
+            //TODO: make this 0.5f/difficulty
+            if (Random.value < 0.5f){
+                Instantiate(pickupPlaceholder, t.transform.position+Vector3.up, new Quaternion(), transform);
+            }
+        }
+    }
+
     public virtual void Generate()
     {
-        
+        SpawnResources();
+        SpawnPickups();
+        EnableCrates();
     }
 }

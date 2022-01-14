@@ -99,9 +99,10 @@ public class LevelGenerator : MonoBehaviour
         else if (!roomsGenerated)
         {
             GetComponent<NavMeshSurface>().BuildNavMesh();
-            foreach (Room r in start.GetComponentsInChildren<Room>())
+            foreach (Room r in allRooms)
             {
-                //r.Generate();
+                Debug.Log("Generating Rooms");
+                r.Generate();
             }
             roomsGenerated = true;
             SceneReady.Raise();
@@ -201,6 +202,7 @@ public class LevelGenerator : MonoBehaviour
         pool = roomTestPool;
         foreach (GameObject go in pool){
             Room r = go.GetComponent<Room>();
+            Debug.Log(r.Passages.Count);
             if (r.HasSides(sides)){
                 if (r.Passages.Count == count) {
                     rooms.Add(go);
@@ -241,7 +243,6 @@ public class LevelGenerator : MonoBehaviour
 
     public bool Step(char c)
     {
-        Debug.Log(c);
         if (c == '(')
         {
             roomPath.Push(roomPath.Peek());
@@ -261,6 +262,11 @@ public class LevelGenerator : MonoBehaviour
             Passage passage = previousRoom.GetUnconnectedPassage();
             if (passage == null){
                 Debug.LogError("no unconnected passages on " + previousRoom.name);
+                foreach (GameObject g in roomTestPool){
+                    if (previousRoom.gameObject == g){
+                        Debug.LogError(g.name);
+                    }
+                }
                 return false;
             }
             currentDir = GetVector(passage.side);
@@ -398,8 +404,6 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForOverlap(Room previousRoom, Room currentRoom, Vector3 direction)
     {
-        Debug.Log(previousRoom + " : " + currentRoom);
-        Debug.Log(previousRoom.GetCenter());
         Vector3 newPosition = previousRoom.GetCenter() + currentRoom.Offset(direction) + previousRoom.Offset(direction) - (currentRoom.PassageOffset(GetConnectionSide(-currentDir)) - previousRoom.PassageOffset(GetConnectionSide(currentDir)));
         foreach (Room r in allRooms)
         {

@@ -15,7 +15,7 @@ public class Encounter : Room
         budget = value * runInfoHistory.Current.difficulty;
     }
 
-    public override void Generate()
+    public void GenerateStuff()
     {
         SetBudget(50);
         foreach (EnemySpawn s in spawns) 
