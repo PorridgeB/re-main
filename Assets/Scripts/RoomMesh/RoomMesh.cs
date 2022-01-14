@@ -251,6 +251,7 @@ public class RoomMesh : MonoBehaviour
             var layerColliderObject = new GameObject(layerName);
             layerColliderObject.transform.parent = layerCollidersObject.transform;
             layerColliderObject.layer = LayerMask.NameToLayer(layerName);
+            layerColliderObject.transform.localPosition = Vector3.zero;
 
             var layerMeshCollider = layerColliderObject.AddComponent<MeshCollider>();
             layerMeshCollider.sharedMesh = meshBuilder.ToMesh();

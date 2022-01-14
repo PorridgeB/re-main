@@ -166,40 +166,40 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> GetRooms(List<ConnectionSide> sides, int count, char c) {
         List<GameObject> rooms = new List<GameObject>();
-        List<GameObject> pool = null;
+        List<GameObject> pool = roomTestPool;
         switch(c){
             case 'e':
-                pool = combatRooms;
+                //pool = combatRooms;
                 break;
             case 't':
-                pool = trapRooms;
+                //pool = trapRooms;
                 break;
             case 'o':
-                pool = obstacleRooms;
+                //pool = obstacleRooms;
                 break;
             case 'h':
-                pool = hallways;
+                //pool = hallways;
                 break;
             case 'r':
-                pool = rewardRooms;
+                //pool = rewardRooms;
                 break;
             case 'n':
-                pool = npcRooms;
+                //pool = npcRooms;
                 break;
             case 'b':
-                pool = bossRooms;
+                //pool = bossRooms;
                 break;
             case 'a':
-                pool = artifactRooms;
+                //pool = artifactRooms;
                 break;
             case 'f':
-                pool = finishRooms;
+                //pool = finishRooms;
                 break;
             case '-':
-                pool = hallways;
+                //pool = hallways;
                 break;
         }
-        pool = roomTestPool;
+        
         foreach (GameObject go in pool){
             Room r = go.GetComponent<Room>();
             Debug.Log(r.Passages.Count);
