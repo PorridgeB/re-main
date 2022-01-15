@@ -18,6 +18,9 @@ public class Observation
     // If the observation is no longer relevant and should be destroyed
     public bool Expired => Time.time - When > ExpiryTime;
 
+    // The percentage of time left until the observation has expired
+    public float TimeLeftPercentage => Mathf.Clamp01(1 - ((Time.time - When) / ExpiryTime));
+
     public Observation(GameObject who, float expiryTime)
     {
         Who = who;

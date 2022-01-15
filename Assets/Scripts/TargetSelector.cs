@@ -58,13 +58,13 @@ public class TargetSelector : MonoBehaviour
 
         if (target != null)
         {
-            //Gizmos.color = Color.red;
-            //Gizmos.DrawWireCube(target.transform.position + Vector3.up, new Vector3(1, 2, 1));
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(target.transform.position + Vector3.up, new Vector3(1, 2, 1));
 
-            Handles.color = Color.red;
-            Handles.DrawWireDisc(target.transform.position, Vector3.up, 0.5f);
+            //Handles.color = Color.red;
+            //Handles.DrawWireDisc(target.transform.position, Vector3.up, 0.5f);
 
-            Handles.Label(target.transform.position, $"{EvaluateTarget(target)}");
+            //Handles.Label(target.transform.position, $"Target Eval: {EvaluateTarget(target)}");
         }
     }
 }
