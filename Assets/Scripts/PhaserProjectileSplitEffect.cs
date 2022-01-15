@@ -25,7 +25,7 @@ public class PhaserProjectileSplitEffect : PhaserProjectileEffect
         {
             var newProjectile = Instantiate(gameObject, transform.position, Quaternion.identity).GetComponent<PhaserProjectile>();
 
-            newProjectile.IgnoreCollision(collider);
+            newProjectile.TemporarilyIgnoreCollision(collider);
 
             var angle = i * (ArcAngle / (projectiles - 1)) - ArcAngle / 2;
             newProjectile.Direction = Quaternion.Euler(0, angle, 0) * projectile.Direction;
@@ -36,17 +36,15 @@ public class PhaserProjectileSplitEffect : PhaserProjectileEffect
             Destroy(newProjectile.GetComponent<PhaserProjectileSplitEffect>());
         }
     }
-
-    public void OnCollisionEnter(Collision collision)
+    
+    private void OnProjectileImpact(Collider collider)
     {
-        if (collision.gameObject.CompareTag(projectile.Target))
+        if (collider.gameObject.CompareTag(projectile.Target))
         {
             if (Random.value < Chance)
             {
-                Split(collision.collider);
+                Split(collider);
             }
-
-            projectile.Impact();
         }
     }
 }

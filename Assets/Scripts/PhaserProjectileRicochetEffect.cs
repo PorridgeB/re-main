@@ -23,20 +23,35 @@ public class PhaserProjectileRicochetEffect : PhaserProjectileEffect
         transform.position += projectile.Direction * 0.2f;
     }
 
-    // OnCollisionStayed(Collision collision)?
-    public void OnCollisionEnter(Collision collision)
+    private void OnProjectileCollision(PhaserProjectileCollisionMessage message)
     {
+        var collision = message.Collision;
+
         if (collision.gameObject.CompareTag("Room"))
         {
             if (Random.value < Chance && ricochets++ < MaxTimes)
             {
                 var normal = collision.contacts[0].normal;
                 Ricochet(normal);
+
+                message.DontImpact();
             }
-            else
-            {
-                projectile.Impact();
-            }
-       }
+        }
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Room"))
+    //    {
+    //        if (Random.value < Chance && ricochets++ < MaxTimes)
+    //        {
+    //            var normal = collision.contacts[0].normal;
+    //            Ricochet(normal);
+    //        }
+    //        else
+    //        {
+    //            projectile.Impact(collision.collider);
+    //        }
+    //   }
+    //}
 }

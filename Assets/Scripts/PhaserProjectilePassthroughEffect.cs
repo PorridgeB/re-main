@@ -12,15 +12,35 @@ public class PhaserProjectilePassthroughEffect : PhaserProjectileEffect
 
     private int passthroughs = 0;
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnProjectileCollision(PhaserProjectileCollisionMessage message)
     {
+        var collision = message.Collision;
+
         if (collision.gameObject.CompareTag(projectile.Target))
         {
             if (Random.value < Chance && passthroughs++ < MaxTimes)
             {
-                projectile.CreateImpactEffect();
-                projectile.IgnoreCollision(collision.collider);
+                projectile.CreateProjectileImpact();
+                projectile.TemporarilyIgnoreCollision(collision.collider);
+
+                message.DontImpact();
             }
         }
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag(projectile.Target))
+    //    {
+    //        if (Random.value < Chance && passthroughs++ < MaxTimes)
+    //        {
+    //            projectile.CreateProjectileImpact();
+    //            projectile.TemporarilyIgnoreCollision(collision.collider);
+    //        }
+    //        else
+    //        {
+    //            projectile.Impact(collision.collider);
+    //        }
+    //    }
+    //}
 }

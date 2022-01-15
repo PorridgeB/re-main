@@ -69,7 +69,7 @@ public class PhaserProjectile : MonoBehaviour
         }
     }
 
-    private IEnumerator TemporarilyIgnoreCollision(Collider other, float time)
+    private IEnumerator IgnoreCollisionForDuration(Collider other, float time)
     {
         Physics.IgnoreCollision(collider, other);
         yield return new WaitForSeconds(time);
@@ -81,11 +81,11 @@ public class PhaserProjectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Impact()
+    public void Impact(Collider collider)
     {
-        SendMessage("OnImpact", SendMessageOptions.DontRequireReceiver);
+        SendMessage("OnProjectileImpact", collider, SendMessageOptions.DontRequireReceiver);
         
-        CreateImpactEffect();
+        CreateProjectileImpact();
 
         // Destroy the projectile after some time has passed
         // so the trail renderer can continue
@@ -96,7 +96,7 @@ public class PhaserProjectile : MonoBehaviour
         Destroy(gameObject, 1);
     }
 
-    public void CreateImpactEffect()
+    public void CreateProjectileImpact()
     {
         if (ImpactPrefab != null)
         {
@@ -106,22 +106,26 @@ public class PhaserProjectile : MonoBehaviour
         }
     }
 
-    public void IgnoreCollision(Collider other)
+    public void TemporarilyIgnoreCollision(Collider other)
     {
-        StartCoroutine(TemporarilyIgnoreCollision(other, IgnoreCollisionTime));
+        StartCoroutine(IgnoreCollisionForDuration(other, IgnoreCollisionTime));
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(Source.tag))
+        // Ignore friendly collisions forever
+        if (collision.gameObject == Source || (collision.gameObject != null && collision.gameObject.CompareTag(Source.tag)))
         {
             Physics.IgnoreCollision(collider, collision.collider);
             return;
         }
 
-        if (collision.gameObject != Source)
+        var message = new PhaserProjectileCollisionMessage { Collision = collision };
+        SendMessage("OnProjectileCollision", message, SendMessageOptions.DontRequireReceiver);
+
+        if (message.Impact)
         {
-            Impact();
+            Impact(collision.collider);
         }
     }
 
@@ -131,7 +135,7 @@ public class PhaserProjectile : MonoBehaviour
     //    {
     //        if (PassthroughEnabled && Random.value < PassthroughChance && passthroughs++ < PassthroughMax)
     //        {
-    //            CreateImpactEffect();
+    //            CreateProjectileImpact();
     //            IgnoreCollision(collision.collider);
     //        }
     //        else
