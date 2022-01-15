@@ -73,7 +73,10 @@ public class PhaserProjectile : MonoBehaviour
     {
         Physics.IgnoreCollision(collider, other);
         yield return new WaitForSeconds(time);
-        Physics.IgnoreCollision(collider, other, false);
+        if (other != null)
+        {
+            Physics.IgnoreCollision(collider, other, false);
+        }
     }
 
     public void Fizzle()
