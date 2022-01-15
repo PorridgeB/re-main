@@ -50,4 +50,20 @@ public class TargetSelector : MonoBehaviour
 
         return DistanceFactor / distance + HealthFactor / health;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (behaviorTree == null)
+        {
+            return;
+        }
+
+        var target = behaviorTree.GetVariable("Target").GetValue() as GameObject;
+
+        if (target != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(target.transform.position + Vector3.up, new Vector3(1, 2, 1));
+        }
+    }
 }
