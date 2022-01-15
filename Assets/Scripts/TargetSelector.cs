@@ -3,6 +3,7 @@ using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class TargetSelector : MonoBehaviour
 {
@@ -53,17 +54,17 @@ public class TargetSelector : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (behaviorTree == null)
-        {
-            return;
-        }
-
-        var target = behaviorTree.GetVariable("Target").GetValue() as GameObject;
+        var target = behaviorTree?.GetVariable("Target").GetValue() as GameObject;
 
         if (target != null)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(target.transform.position + Vector3.up, new Vector3(1, 2, 1));
+            //Gizmos.color = Color.red;
+            //Gizmos.DrawWireCube(target.transform.position + Vector3.up, new Vector3(1, 2, 1));
+
+            Handles.color = Color.red;
+            Handles.DrawWireDisc(target.transform.position, Vector3.up, 0.5f);
+
+            Handles.Label(target.transform.position, $"{EvaluateTarget(target)}");
         }
     }
 }
