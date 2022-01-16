@@ -172,4 +172,9 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+    public void DoAttack()
+    {
+        StartCoroutine(Attack());
+    }
 }
