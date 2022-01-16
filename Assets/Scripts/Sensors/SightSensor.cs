@@ -34,6 +34,14 @@ public class SightSensor : Sensor
                 if (!Physics.Raycast(transform.position + Vector3.up, direction, out _, distance, LayerMask.GetMask("Level")))
                 {
                     memory.Record(new Observation(other, ExpiryTime));
+
+                    // If the object is a projectile, then observe the source of who fired that projectile
+                    // Kinda hacky way to start pursing a target that has fired an incoming projectile
+                    if (other.CompareTag("Projectile"))
+                    {
+                        var projectile = other.GetComponent<PhaserProjectile>();
+                        memory.Record(new Observation(projectile.Source, ExpiryTime));
+                    }
                 }
             }
         }
