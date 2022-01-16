@@ -731,6 +731,7 @@
     <Compile Include="Assets\Scripts\Tasks\WithinRange.cs" />
     <Compile Include="Assets\Scripts\Tasks\MaintainDistance.cs" />
     <Compile Include="Assets\Scripts\Tasks\Strike.cs" />
+    <Compile Include="Assets\Scripts\Tasks\Reposition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

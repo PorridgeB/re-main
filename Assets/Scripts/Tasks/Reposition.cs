@@ -3,50 +3,52 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
-public class Strike : Action
+public class Reposition : Action
 {
 	public SharedGameObject Target;
 	public SharedFloat Speed;
 	public SharedFloat Duration;
-	public SharedFloat AttackDistance;
 	public SharedAnimationCurve SpeedCurve;
 
 	private NavMeshAgent agent;
-	private Enemy enemy;
 	private float startTime;
+	private bool clockwise;
 
 	public override void OnStart()
 	{
 		agent = GetComponent<NavMeshAgent>();
-		enemy = GetComponent<Enemy>();
 
 		startTime = Time.time;
+		clockwise = Random.value > 0.5f;
 	}
 
 	public override TaskStatus OnUpdate()
 	{
 		if (Target.Value == null)
-        {
+		{
 			return TaskStatus.Failure;
-        }
-
-		var distanceToTarget = Vector3.Distance(Target.Value.transform.position, transform.position);
+		}
 
 		var directionToTarget = (Target.Value.transform.position - transform.position).normalized;
 		directionToTarget.y = 0;
 		directionToTarget.Normalize();
 
-		var time = (Time.time - startTime) / Duration.Value;
+		var perpDirectionToTarget = new Vector3(-directionToTarget.z, 0, directionToTarget.x) * (clockwise ? -1 : 1);
 
-		agent.Move(directionToTarget * Speed.Value * SpeedCurve.Value.Evaluate(time) * Time.deltaTime);
+		float time = (Time.time - startTime) / Duration.Value;
 
-		if (distanceToTarget < AttackDistance.Value || Time.time - startTime > Duration.Value)
-        {
-			enemy.DoAttack();
+		agent.Move(perpDirectionToTarget * Speed.Value * SpeedCurve.Value.Evaluate(time) * Time.deltaTime);
 
+		if (Time.time - startTime > Duration.Value)
+		{
 			return TaskStatus.Success;
-        }
+		}
 
 		return TaskStatus.Running;
+	}
+
+	public override void OnEnd()
+	{
+		agent.speed = 0;
 	}
 }
