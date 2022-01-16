@@ -20,7 +20,9 @@ public class CoverSensor : Sensor
 
             var direction = (cover.transform.position - transform.position).normalized;
 
-            if (!Physics.Raycast(transform.position + Vector3.up, direction, out _, MaxDistance, LayerMask.GetMask("Level")))
+            var distance = Mathf.Min(MaxDistance, Vector3.Distance(cover.transform.position, transform.position));
+
+            if (!Physics.Raycast(transform.position + Vector3.up, direction, out _, distance, LayerMask.GetMask("Level")))
             {
                 memory.Record(new Observation(cover, ExpiryTime));
             }

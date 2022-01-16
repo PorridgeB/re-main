@@ -18,7 +18,8 @@ public class WithinSight : Conditional
         }
 
         var direction = (Target.Value.transform.position - transform.position).normalized;
-        if (!Physics.Raycast(transform.position + Vector3.up, direction, out _, SightDistance.Value, LayerMask.GetMask("Level")))
+        var distance = Mathf.Min(SightDistance.Value, Vector3.Distance(Target.Value.transform.position, transform.position));
+        if (!Physics.Raycast(transform.position + Vector3.up, direction, out _, distance, LayerMask.GetMask("Level")))
         {
             return TaskStatus.Success;
         }

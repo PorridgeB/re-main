@@ -70,8 +70,9 @@ public class LocateCover : Action
 		return true;
 	}
 
-	private bool CheckSafe(Vector3 from, Vector3 to, float maxDistance = 20)
+	private bool CheckSafe(Vector3 from, Vector3 to)
     {
-		return Physics.Raycast(from + Vector3.up, (to - from).normalized, out _, maxDistance, LayerMask.GetMask("Level"));
+		var distance = Vector3.Distance(from, to);
+		return Physics.Raycast(from + Vector3.up, (to - from).normalized, out _, distance, LayerMask.GetMask("Level"));
 	}
 }
