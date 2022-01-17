@@ -1202,7 +1202,17 @@ MonoBehaviour:
   - {fileID: 989419758299023129, guid: 25de3bf45fac694418dc0a4e39661007, type: 3}
   rewardRooms: []
   obstacleRooms: []
-  combatRooms: []
+  combatRooms:
+  - {fileID: 989419758299023129, guid: dff08eb35f7e4cd4d8ddf4b730ca69a4, type: 3}
+  - {fileID: 989419758299023129, guid: 25f419d915809ed4ca69ba29c7a8901f, type: 3}
+  - {fileID: 989419758299023129, guid: 7751f8c1aebe07947994ff1b11255ce3, type: 3}
+  - {fileID: 989419758299023129, guid: e66bf986dbc02f94785f65ae9c5e4a11, type: 3}
+  - {fileID: 989419758299023129, guid: 42a59513ac7a2f24ab48278d68eae0ce, type: 3}
+  - {fileID: 989419758299023129, guid: 26d9452ae952dd74d8c432a0ce7383d9, type: 3}
+  - {fileID: 989419758299023129, guid: 5ec2e6e47295a574aa74320aeb61e994, type: 3}
+  - {fileID: 989419758299023129, guid: 04e0a37f235fb8744a661115c410ac88, type: 3}
+  - {fileID: 989419758299023129, guid: d41b13b2a13d4f742a88a5c1f2b92f94, type: 3}
+  - {fileID: 989419758299023129, guid: a4485cf4efaf65e4fae82f6373616bce, type: 3}
   trapRooms: []
   npcRooms: []
   bossRooms: []
