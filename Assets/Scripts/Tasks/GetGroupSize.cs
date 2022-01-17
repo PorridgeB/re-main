@@ -11,7 +11,7 @@ public class GetGroupSize : Action
 	{
 		var enemy = GetComponent<Enemy>();
 
-		StoreValue.Value = enemy.group != null ? enemy.group.Size : 0;
+		StoreValue.Value = enemy.Group != null ? enemy.Group.Size : 0;
 	}
 
 	public override TaskStatus OnUpdate()

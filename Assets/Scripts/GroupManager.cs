@@ -34,7 +34,7 @@ public class GroupManager : MonoBehaviour
 
         foreach (var enemy in enemies)
         {
-            enemy.group = null;
+            enemy.Group = null;
         }
 
         foreach (var enemy in enemies)
@@ -43,7 +43,7 @@ public class GroupManager : MonoBehaviour
             var enemiesInProximity = Physics.OverlapSphere(enemy.transform.position, ProximityRadius).Select(x => x.gameObject.GetComponent<Enemy>()).Where(x => x != null);
 
             // Find the first nearby group that isn't full
-            var group = enemiesInProximity.Select(x => x.group).FirstOrDefault(x => x != null && x.Size < MaxGroupSize);
+            var group = enemiesInProximity.Select(x => x.Group).FirstOrDefault(x => x != null && x.Size < MaxGroupSize);
 
             // If no nearby groups are available to join, then create a new group
             if (group == null)
@@ -53,7 +53,7 @@ public class GroupManager : MonoBehaviour
             }
 
             // Add enemy to that group
-            enemy.group = group;
+            enemy.Group = group;
             group.AddMember(enemy.gameObject);
         }
 
@@ -62,7 +62,7 @@ public class GroupManager : MonoBehaviour
         {
             if (group.Size == 1)
             {
-                group.First().GetComponent<Enemy>().group = null;
+                group.First().GetComponent<Enemy>().Group = null;
             }
         }
 

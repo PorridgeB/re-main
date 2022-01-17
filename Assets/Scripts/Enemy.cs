@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public EnemyType type;
 
     [Tooltip("The current group that the enemy belongs to. Maintained by the GroupManager")]
-    public Group group = null;
+    public Group Group = null;
 
     [HideInInspector]
     public bool unstoppable = false;
