@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitCost: 0
   type: 1
-  Mass: 5
+  Mass: 5.5
   Group:
     members: []
   unstoppable: 0
