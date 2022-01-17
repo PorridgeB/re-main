@@ -42,7 +42,7 @@ public class GroupManager : MonoBehaviour
             // Find the first nearby group that isn't full
             var group = enemiesInProximity.Select(x => x.group).FirstOrDefault(x => x != null && x.Size < MaxGroupSize);
 
-            // If no nearby groups are available to join, then create a new one group
+            // If no nearby groups are available to join, then create a new group
             if (group == null)
             {
                 group = new Group();
