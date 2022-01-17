@@ -6,7 +6,7 @@ using UnityEditor;
 
 public class GroupManager : MonoBehaviour
 {
-    public float ProximityRadius = 3;
+    public float ProximityRadius = 5;
     public int MaxGroupSize = 5;
 
     [SerializeField]
@@ -53,7 +53,7 @@ public class GroupManager : MonoBehaviour
             group.Add(enemy.gameObject);
         }
 
-        groups.OrderByDescending(x => x.Size);
+        groups = groups.OrderByDescending(x => x.Size).ToList();
     }
 
     private void OnDrawGizmosSelected()
