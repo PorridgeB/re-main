@@ -10,14 +10,6 @@ public class GroupManager : MonoBehaviour
     public float ProximityRadius = 3;
     public int MaxGroupSize = 5;
 
-    [Serializable]
-    public class Group
-    {
-        public List<GameObject> Members = new List<GameObject>();
-
-        public int Size => Members.Count;
-    }
-
     [SerializeField]
     private List<Group> groups = new List<Group>();
 
@@ -34,39 +26,35 @@ public class GroupManager : MonoBehaviour
     {
         var enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(x => x.GetComponent<Enemy>());
 
+        // Remove all groups
         groups.Clear();
 
         foreach (var enemy in enemies)
         {
-            enemy.group = -1;
+            enemy.group = null;
         }
 
         foreach (var enemy in enemies)
         {
-            var proximityEnemies = Physics.OverlapSphere(enemy.transform.position, ProximityRadius).Select(x => x.gameObject.GetComponent<Enemy>()).Where(x => x != null);
+            // Find all the enemies that are within the proximity radius
+            var enemiesInProximity = Physics.OverlapSphere(enemy.transform.position, ProximityRadius).Select(x => x.gameObject.GetComponent<Enemy>()).Where(x => x != null);
 
-            int group = -1;
+            // Find the first nearby group that isn't full
+            var group = enemiesInProximity.Select(x => x.group).FirstOrDefault(x => x != null && x.Size < MaxGroupSize);
 
-            foreach (var proximityEnemy in proximityEnemies)
+            // If no nearby groups are available to join, then create a new one group
+            if (group == null)
             {
-                if (proximityEnemy.group != -1)
-                {
-                    if (groups[proximityEnemy.group].Size < MaxGroupSize)
-                    {
-                        group = proximityEnemy.group;
-                    }
-                }
+                group = new Group();
+                groups.Add(group);
             }
 
-            if (group == -1)
-            {
-                group = groups.Count;
-                groups.Add(new Group());
-            }
-
+            // Add enemy to that group
             enemy.group = group;
-            groups[group].Members.Add(enemy.gameObject);
+            group.Add(enemy.gameObject);
         }
+
+        groups.OrderByDescending(x => x.Size);
     }
 
     private void OnDrawGizmosSelected()

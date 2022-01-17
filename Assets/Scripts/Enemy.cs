@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public int unitCost;
     public EnemyType type;
 
-    public int group = -1;
+    public Group group = null;
 
     [HideInInspector]
     public bool unstoppable = false;
