@@ -30,14 +30,14 @@ public class MaintainDistance : Action
 		directionToTarget.y = 0;
 		directionToTarget.Normalize();
 
-		var distance = Mathf.Min(MaxDistance.Value, Vector3.Distance(Target.Value.transform.position, transform.position));
+		//var distance = Mathf.Min(MaxDistance.Value, Vector3.Distance(Target.Value.transform.position, transform.position));
 
-		// If we cannot see the target, move towards them anyway, disregarding distance
-		if (Physics.Raycast(transform.position + Vector3.up, directionToTarget, out _, distance, LayerMask.GetMask("Level")))
-		{
-			agent.speed = Speed.Value;
-			return TaskStatus.Running;
-		}
+		//// If we cannot see the target, move towards them anyway, disregarding distance
+		//if (Physics.Raycast(transform.position + Vector3.up, directionToTarget, out _, distance, LayerMask.GetMask("Level")))
+		//{
+		//	agent.speed = Speed.Value;
+		//	return TaskStatus.Running;
+		//}
 
 		var distanceToTarget = Vector3.Distance(Target.Value.transform.position, transform.position);
 

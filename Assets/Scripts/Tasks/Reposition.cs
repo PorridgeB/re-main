@@ -7,11 +7,13 @@ public class Reposition : Action
 {
 	public SharedGameObject Target;
 	public SharedFloat Speed;
-	public SharedFloat Duration;
+	public SharedFloat MinDuration;
+	public SharedFloat MaxDuration;
 	public SharedAnimationCurve SpeedCurve;
 
 	private NavMeshAgent agent;
 	private float startTime;
+	private float duration;
 	private bool clockwise;
 
 	public override void OnStart()
@@ -19,6 +21,7 @@ public class Reposition : Action
 		agent = GetComponent<NavMeshAgent>();
 
 		startTime = Time.time;
+		duration = Random.Range(MinDuration.Value, MaxDuration.Value);
 		clockwise = Random.value > 0.5f;
 	}
 
@@ -35,11 +38,11 @@ public class Reposition : Action
 
 		var perpDirectionToTarget = new Vector3(-directionToTarget.z, 0, directionToTarget.x) * (clockwise ? -1 : 1);
 
-		float time = (Time.time - startTime) / Duration.Value;
+		float time = (Time.time - startTime) / duration;
 
 		agent.Move(perpDirectionToTarget * Speed.Value * SpeedCurve.Value.Evaluate(time) * Time.deltaTime);
 
-		if (Time.time - startTime > Duration.Value)
+		if (Time.time - startTime > duration)
 		{
 			return TaskStatus.Success;
 		}
