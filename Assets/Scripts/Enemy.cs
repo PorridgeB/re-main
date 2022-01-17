@@ -100,12 +100,12 @@ public class Enemy : MonoBehaviour
         var token = Instantiate(damageToken, transform.position, new Quaternion());
         token.GetComponent<DamageToken>().SetValue(damage);
 
-        var health = (float)behaviorTree.GetVariable("Health").GetValue();
-        behaviorTree.SetVariableValue("Health", health - damage.value);
+        var health = behaviorTree.GetVariable("Health");
+        health.SetValue((float)health.GetValue() - damage.value);
 
         //OnHurt.Raise(gameObject);
 
-        if ((float)behaviorTree.GetVariable("Health").GetValue() < 0)
+        if ((float)health.GetValue() < 0)
         {
             //OnDeath.Raise();
 
@@ -166,8 +166,8 @@ public class Enemy : MonoBehaviour
         }
 
         // If the enemy is still alive
-        var health = (float)behaviorTree.GetVariable("Health").GetValue();
-        if (health > 0)
+        var health = behaviorTree.GetVariable("Health");
+        if ((float)health.GetValue() > 0)
         {
             // Use the player's facing direction if the damage source was from the player.
             // Otherwise, calculate the hit direction based on the position of the damage source
