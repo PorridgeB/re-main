@@ -247,10 +247,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitCost: 0
   type: 1
+  Mass: 5
   Group:
     members: []
   unstoppable: 0
-  hitDirection: {x: 0, y: 0, z: 0}
   AttackField: {fileID: 3298188469097433944, guid: d03355a6e044760448deb0c982da0b8d, type: 3}
   AttackDamage: 10
   OnDeath: {fileID: 0}
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tag: Player
-  DistanceFactor: 0.5
-  HealthFactor: 0.7
+  DistanceWeight: 0.5
+  HealthWeight: 0.7
 --- !u!114 &7049648073408164574
 MonoBehaviour:
   m_ObjectHideFlags: 0
