@@ -736,6 +736,8 @@
     <Compile Include="Assets\Scripts\GroupManager.cs" />
     <Compile Include="Assets\Scripts\Group.cs" />
     <Compile Include="Assets\Scripts\Tasks\GetGroupSize.cs" />
+    <Compile Include="Assets\Scripts\Tasks\ResetTimer.cs" />
+    <Compile Include="Assets\Scripts\Tasks\TimerExpired.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
