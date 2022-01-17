@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour
 
     private float slowAmount;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -67,46 +66,50 @@ public class Enemy : MonoBehaviour
     public void Slow(float duration)
     {
         if (slowAmount != 0) return;
+
         Debug.Log("Slowed");
-        var bd = GetComponent<BehaviorTree>();
-        float currentSpeed = (float)bd.GetVariable("Speed").GetValue();
-        slowAmount = currentSpeed * 0.2f;
-        bd.SetVariableValue("Speed", currentSpeed - slowAmount);
+
+        var pursueSpeed = behaviorTree.GetVariable("PursueSpeed");
+        slowAmount = (float)pursueSpeed.GetValue() * 0.2f;
+        behaviorTree.SetVariableValue("PursueSpeed", (float)pursueSpeed.GetValue() - slowAmount);
+
         StartCoroutine(StopSlow(duration));
     }
 
     private IEnumerator StopSlow(float duration)
     {
         yield return new WaitForSeconds(duration);
-        var bd = GetComponent<BehaviorTree>();
-        bd.SetVariableValue("Speed", (float)bd.GetVariable("Speed").GetValue() + slowAmount);
+
+        var pursueSpeed = behaviorTree.GetVariable("PursueSpeed");
+        pursueSpeed.SetValue((float)pursueSpeed.GetValue() + slowAmount);
+
         slowAmount = 0;
     }
 
-    public void Hurt(DamageInstance d)
+    public void Hurt(DamageInstance damage)
     {
         // Stop it from hurting itself
-        if (d.source != null)
+        if (damage.source != null)
         {
-            if (CompareTag(d.source.tag))
+            if (CompareTag(damage.source.tag))
             {
                 return;
             }
         }
-        
 
-        GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
-        g.GetComponent<DamageToken>().SetValue(d);
+        var token = Instantiate(damageToken, transform.position, new Quaternion());
+        token.GetComponent<DamageToken>().SetValue(damage);
 
-        var health = behaviorTree.GetVariable("Health");
-        behaviorTree.SetVariableValue("Health", (float)health.GetValue() - d.value);
+        var health = (float)behaviorTree.GetVariable("Health").GetValue();
+        behaviorTree.SetVariableValue("Health", health - damage.value);
 
         //OnHurt.Raise(gameObject);
 
-        if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
+        if ((float)behaviorTree.GetVariable("Health").GetValue() < 0)
         {
             //OnDeath.Raise();
 
+            // Hacky way to check if the enemy has a death animation
             if (!animator.parameters.Any(x => x.name == "Died"))
             {
                 Destroy(gameObject);
@@ -181,7 +184,10 @@ public class Enemy : MonoBehaviour
             }
 
             // Tell the behaviour tree that the enemy has been hit
-            if (!unstoppable) behaviorTree.SendEvent("Hit");
+            if (!unstoppable)
+            {
+                behaviorTree.SendEvent("Hit");
+            }
         }
     }
 
