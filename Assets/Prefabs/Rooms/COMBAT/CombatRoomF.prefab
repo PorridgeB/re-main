@@ -166,25 +166,25 @@ MonoBehaviour:
       id: 5
   - Position: {x: 4, y: 5}
     Tile:
-      id: 5
+      id: 6
   - Position: {x: 5, y: 5}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 6, y: 5}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 7, y: 5}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 5}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 5}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 10, y: 5}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 11, y: 5}
     Tile:
       id: 5
@@ -214,25 +214,25 @@ MonoBehaviour:
       id: 5
   - Position: {x: 4, y: 6}
     Tile:
-      id: 5
+      id: 6
   - Position: {x: 5, y: 6}
     Tile:
-      id: 6
+      id: 9
   - Position: {x: 6, y: 6}
     Tile:
-      id: 6
+      id: 10
   - Position: {x: 7, y: 6}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 6}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 6}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 10, y: 6}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 11, y: 6}
     Tile:
       id: 5
@@ -262,25 +262,25 @@ MonoBehaviour:
       id: 5
   - Position: {x: 4, y: 7}
     Tile:
-      id: 5
+      id: 6
   - Position: {x: 5, y: 7}
     Tile:
-      id: 6
+      id: 11
   - Position: {x: 6, y: 7}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 7, y: 7}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 7}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 7}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 10, y: 7}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 11, y: 7}
     Tile:
       id: 5
@@ -310,25 +310,25 @@ MonoBehaviour:
       id: 5
   - Position: {x: 4, y: 8}
     Tile:
-      id: 5
+      id: 6
   - Position: {x: 5, y: 8}
     Tile:
-      id: 6
+      id: 13
   - Position: {x: 6, y: 8}
     Tile:
-      id: 6
+      id: 14
   - Position: {x: 7, y: 8}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 8}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 8}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 10, y: 8}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 11, y: 8}
     Tile:
       id: 5
@@ -358,25 +358,25 @@ MonoBehaviour:
       id: 5
   - Position: {x: 4, y: 9}
     Tile:
-      id: 5
+      id: 6
   - Position: {x: 5, y: 9}
     Tile:
-      id: 6
+      id: 15
   - Position: {x: 6, y: 9}
     Tile:
-      id: 6
+      id: 16
   - Position: {x: 7, y: 9}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 9}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 9}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 10, y: 9}
     Tile:
-      id: 7
+      id: 8
   - Position: {x: 11, y: 9}
     Tile:
       id: 5
@@ -397,28 +397,28 @@ MonoBehaviour:
       id: 2
   - Position: {x: 1, y: 10}
     Tile:
-      id: 5
+      id: 17
   - Position: {x: 2, y: 10}
     Tile:
-      id: 5
+      id: 18
   - Position: {x: 3, y: 10}
     Tile:
-      id: 5
+      id: 19
   - Position: {x: 4, y: 10}
     Tile:
-      id: 5
+      id: 6
   - Position: {x: 5, y: 10}
     Tile:
-      id: 6
+      id: 20
   - Position: {x: 6, y: 10}
     Tile:
-      id: 6
+      id: 20
   - Position: {x: 7, y: 10}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 10}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 10}
     Tile:
       id: 8
@@ -427,16 +427,16 @@ MonoBehaviour:
       id: 8
   - Position: {x: 11, y: 10}
     Tile:
-      id: 9
+      id: 21
   - Position: {x: 12, y: 10}
     Tile:
-      id: 9
+      id: 21
   - Position: {x: 13, y: 10}
     Tile:
-      id: 9
+      id: 21
   - Position: {x: 14, y: 10}
     Tile:
-      id: 9
+      id: 21
   - Position: {x: 15, y: 10}
     Tile:
       id: 4
@@ -457,22 +457,22 @@ MonoBehaviour:
       id: 5
   - Position: {x: 5, y: 11}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 6, y: 11}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 7, y: 11}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 11}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 11}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 10, y: 11}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 11, y: 11}
     Tile:
       id: 5
@@ -505,22 +505,22 @@ MonoBehaviour:
       id: 5
   - Position: {x: 5, y: 12}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 6, y: 12}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 7, y: 12}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 12}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 12}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 10, y: 12}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 11, y: 12}
     Tile:
       id: 5
@@ -553,22 +553,22 @@ MonoBehaviour:
       id: 5
   - Position: {x: 5, y: 13}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 6, y: 13}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 7, y: 13}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 13}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 13}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 10, y: 13}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 11, y: 13}
     Tile:
       id: 5
@@ -601,34 +601,34 @@ MonoBehaviour:
       id: 5
   - Position: {x: 5, y: 14}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 6, y: 14}
     Tile:
-      id: 6
+      id: 22
   - Position: {x: 7, y: 14}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 8, y: 14}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 9, y: 14}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 10, y: 14}
     Tile:
-      id: 6
+      id: 7
   - Position: {x: 11, y: 14}
     Tile:
-      id: 10
+      id: 23
   - Position: {x: 12, y: 14}
     Tile:
-      id: 11
+      id: 24
   - Position: {x: 13, y: 14}
     Tile:
-      id: 12
+      id: 25
   - Position: {x: 14, y: 14}
     Tile:
-      id: 13
+      id: 26
   - Position: {x: 15, y: 14}
     Tile:
       id: 4
@@ -760,19 +760,19 @@ MonoBehaviour:
       id: 1
   - Position: {x: 15, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 15, y: 1}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 15, y: 2}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 15, y: 3}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 0, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 1, y: 0}
     Tile:
       id: 3
@@ -784,46 +784,46 @@ MonoBehaviour:
       id: 3
   - Position: {x: 4, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 5, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 6, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 7, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 8, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 9, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 10, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 11, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 12, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 13, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 14, y: 0}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 0, y: 1}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 0, y: 2}
     Tile:
-      id: 14
+      id: 27
   - Position: {x: 0, y: 3}
     Tile:
-      id: 14
+      id: 27
   references:
     version: 1
     00000000:
@@ -854,41 +854,103 @@ MonoBehaviour:
       data:
         Sprite: Floor_4
     00000006:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000007:
       type: {class: PitTile, ns: , asm: Assembly-CSharp}
       data:
         Side: PitSide_0
         Bottom: PitBottom_0
-    00000007:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
-      data:
-        Sprite: Floor_4
     00000008:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Side: PitSide_0
+        Bottom: PitBottom_0
     00000009:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000000A:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000000B:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000000C:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000000D:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000000E:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000000F:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    00000010:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    00000011:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000012:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000013:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000014:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
         Trim: WallTrim_0
         Sprite: Wall_0
-    0000000A:
+    00000015:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000016:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
-    0000000B:
+    00000017:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
-    0000000C:
+    00000018:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
-    0000000D:
+    00000019:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
-    0000000E:
+    0000001A:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000001B:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
         Trim: WallTrim_0
@@ -970,14 +1032,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passages:
   - {fileID: 6187850157751808273}
-  - {fileID: 0}
+  - {fileID: 6260872845998938600}
   resourceSpawns: {fileID: 5714767408369199526}
   pickupSpawns: {fileID: 3846841906690681606}
   crateWalls: {fileID: 3945951897222951389}
   resourceBudget: 0
-  dataFragment: {fileID: 0}
-  scrap: {fileID: 0}
-  pickupPlaceholder: {fileID: 0}
+  dataFragment: {fileID: 4455021367583085666, guid: 92fcc895e3a0e7046956a67418a9d554, type: 3}
+  scrap: {fileID: 4561892286078966979, guid: bb36590e750a50049a3f60d0e68c3a24, type: 3}
+  pickupPlaceholder: {fileID: 3610493291560515907, guid: a2b0450e1af425a4687db9ba96c1c7fd, type: 3}
   enemyPool: {fileID: 11400000, guid: 9c11e02621cf05a4ba0a322c4cb24a16, type: 2}
   runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
   spawns:
@@ -985,9 +1047,52 @@ MonoBehaviour:
   - {fileID: 6434799617529056667}
   - {fileID: 4472277861107055483}
   - {fileID: 9117339882969609814}
-  - {fileID: 0}
-  - {fileID: 0}
   budget: 0
+--- !u!1 &2716746469125562781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5285915866467687747}
+  - component: {fileID: 5076840535004988555}
+  m_Layer: 12
+  m_Name: Dashable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5285915866467687747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716746469125562781}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4830248959993630614}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &5076840535004988555
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716746469125562781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &3846841906690681606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,51 +1153,6 @@ Transform:
   m_Father: {fileID: 672875148287564569}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4429020619416581398
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1177297856448246139}
-  - component: {fileID: 3839676012940217159}
-  m_Layer: 12
-  m_Name: Dashable
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1177297856448246139
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4429020619416581398}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4830248959993630614}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3839676012940217159
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4429020619416581398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &5714767408369199526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1244,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1177297856448246139}
+  - {fileID: 5285915866467687747}
   m_Father: {fileID: 672875148287564569}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1480,6 +1540,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
+--- !u!4 &7076232708391064038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
+  m_PrefabInstance: {fileID: 7255265280595545111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6187850157751808273 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3562428369423006982, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
@@ -1491,11 +1556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e823de97c2f37804192709fbdd56a8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7076232708391064038 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
-  m_PrefabInstance: {fileID: 7255265280595545111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7463413549815866606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1557,6 +1617,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
+--- !u!114 &6260872845998938600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3562428369423006982, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
+  m_PrefabInstance: {fileID: 7463413549815866606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e823de97c2f37804192709fbdd56a8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6993925748254161183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
