@@ -3,6 +3,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
+[TaskCategory("Enemies/Rogue")]
 public class Reposition : Action
 {
 	public SharedGameObject Target;

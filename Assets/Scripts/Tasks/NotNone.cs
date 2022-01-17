@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[TaskCategory("Common")]
 public class NotNone : Conditional
 {
-    public SharedGameObject Target;
+    public SharedGameObject Object;
 
     public override TaskStatus OnUpdate()
     {
-        return Target.Value != null ? TaskStatus.Success : TaskStatus.Failure;
+        return Object.Value != null ? TaskStatus.Success : TaskStatus.Failure;
     }
 }

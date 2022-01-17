@@ -94,7 +94,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\AddTorque.cs" />
     <Compile Include="Assets\Scripts\Tasks\Knockback.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\Sleep.cs" />
-    <Compile Include="Assets\Scripts\Tasks\HearSound.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\GetCookieSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\PlayDelayed.cs" />
     <Compile Include="Assets\Scripts\FloatReference.cs" />
@@ -736,6 +735,7 @@
     <Compile Include="Assets\Scripts\Formations.cs" />
     <Compile Include="Assets\Scripts\GroupManager.cs" />
     <Compile Include="Assets\Scripts\Group.cs" />
+    <Compile Include="Assets\Scripts\Tasks\GetGroupSize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

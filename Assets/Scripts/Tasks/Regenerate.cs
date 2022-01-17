@@ -2,6 +2,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 
+[TaskCategory("Enemies")]
 public class Regenerate : Action
 {
 	public SharedFloat Health;
