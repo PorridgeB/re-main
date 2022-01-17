@@ -8,13 +8,14 @@ public class GroupManager : MonoBehaviour
 {
     public float ProximityRadius = 5;
     public int MaxGroupSize = 5;
+    public float UpdateRate = 1;
 
     [SerializeField]
     private List<Group> groups = new List<Group>();
 
     private void Start()
     {
-        InvokeRepeating("UpdateGroups", 0, 0.5f);
+        InvokeRepeating("UpdateGroups", 0, UpdateRate);
     }
 
     private void Update()
@@ -52,6 +53,9 @@ public class GroupManager : MonoBehaviour
             enemy.group = group;
             group.Add(enemy.gameObject);
         }
+
+        // Remove all groups with only one member in them
+        groups.RemoveAll(x => x.Size == 1);
 
         groups = groups.OrderByDescending(x => x.Size).ToList();
     }
