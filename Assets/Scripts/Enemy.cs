@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     public int unitCost;
     public EnemyType type;
 
+    [Tooltip("The current group that the enemy belongs to. Maintained by the GroupManager")]
+    public Group Group = null;
+
     [HideInInspector]
     public bool unstoppable = false;
 
@@ -35,7 +38,6 @@ public class Enemy : MonoBehaviour
     private BehaviorTree behaviorTree;
 
     private float slowAmount;
-
 
     // Start is called before the first frame update
     void Start()
@@ -64,46 +66,50 @@ public class Enemy : MonoBehaviour
     public void Slow(float duration)
     {
         if (slowAmount != 0) return;
+
         Debug.Log("Slowed");
-        var bd = GetComponent<BehaviorTree>();
-        float currentSpeed = (float)bd.GetVariable("Speed").GetValue();
-        slowAmount = currentSpeed * 0.2f;
-        bd.SetVariableValue("Speed", currentSpeed - slowAmount);
+
+        var pursueSpeed = behaviorTree.GetVariable("PursueSpeed");
+        slowAmount = (float)pursueSpeed.GetValue() * 0.2f;
+        behaviorTree.SetVariableValue("PursueSpeed", (float)pursueSpeed.GetValue() - slowAmount);
+
         StartCoroutine(StopSlow(duration));
     }
 
     private IEnumerator StopSlow(float duration)
     {
         yield return new WaitForSeconds(duration);
-        var bd = GetComponent<BehaviorTree>();
-        bd.SetVariableValue("Speed", (float)bd.GetVariable("Speed").GetValue() + slowAmount);
+
+        var pursueSpeed = behaviorTree.GetVariable("PursueSpeed");
+        pursueSpeed.SetValue((float)pursueSpeed.GetValue() + slowAmount);
+
         slowAmount = 0;
     }
 
-    public void Hurt(DamageInstance d)
+    public void Hurt(DamageInstance damage)
     {
         // Stop it from hurting itself
-        if (d.source != null)
+        if (damage.source != null)
         {
-            if (CompareTag(d.source.tag))
+            if (CompareTag(damage.source.tag))
             {
                 return;
             }
         }
-        
 
-        GameObject g = Instantiate(damageToken, transform.position, new Quaternion());
-        g.GetComponent<DamageToken>().SetValue(d);
+        var token = Instantiate(damageToken, transform.position, new Quaternion());
+        token.GetComponent<DamageToken>().SetValue(damage);
 
         var health = behaviorTree.GetVariable("Health");
-        behaviorTree.SetVariableValue("Health", (float)health.GetValue() - d.value);
+        health.SetValue((float)health.GetValue() - damage.value);
 
         //OnHurt.Raise(gameObject);
 
-        if ((float)behaviorTree.GetVariable("Health").GetValue() < 0f)
+        if ((float)health.GetValue() < 0)
         {
             //OnDeath.Raise();
 
+            // Hacky way to check if the enemy has a death animation
             if (!animator.parameters.Any(x => x.name == "Died"))
             {
                 Destroy(gameObject);
@@ -149,27 +155,44 @@ public class Enemy : MonoBehaviour
 
     public void OnDamage(DamageSource source)
     {
-        foreach (Effect e in source.Effects)
+        foreach (var effect in source.Effects)
         {
-            e.Resolve(gameObject);
+            effect.Resolve(gameObject);
         }
 
-        foreach (DamageInstance d in source.Damages)
+        foreach (var damage in source.Damages)
         {
-            Hurt(d);
+            Hurt(damage);
         }
 
-        if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
+        // If the enemy is still alive
+        var health = behaviorTree.GetVariable("Health");
+        if ((float)health.GetValue() > 0)
         {
-            // Using the player's facing direction if the damage source was from the player
+            // Use the player's facing direction if the damage source was from the player.
+            // Otherwise, calculate the hit direction based on the position of the damage source
             if (source.source.CompareTag("Player"))
             {
                 var facing = PlayerController.instance.Facing;
                 hitDirection = new Vector3(facing.x, 0, facing.y);
+            }
+            else
+            {
+                hitDirection = transform.position - source.transform.position;
+                hitDirection.y = 0;
+                hitDirection.Normalize();
+            }
 
-                // Tell the behaviour tree that the enemy has been hurt by the player
-                if (!unstoppable) behaviorTree.SendEvent("Hit");
+            // Tell the behaviour tree that the enemy has been hit
+            if (!unstoppable)
+            {
+                behaviorTree.SendEvent("Hit");
             }
         }
+    }
+
+    public void DoAttack()
+    {
+        StartCoroutine(Attack());
     }
 }

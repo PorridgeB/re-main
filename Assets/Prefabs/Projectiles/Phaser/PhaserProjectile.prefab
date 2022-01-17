@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 137784690322477463}
   - component: {fileID: 5702248069604812211}
   - component: {fileID: 4143467952847481715}
-  m_Layer: 13
-  m_Name: Projectile
-  m_TagString: DamageSource
+  m_Layer: 15
+  m_Name: PhaserProjectile
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,26 +78,13 @@ MonoBehaviour:
   Direction: {x: 0, y: 0, z: 0}
   Speed: 0
   Range: 25
+  Lifespan: 8
   Size: 0.25
   Color: {r: 0, g: 0.80679727, b: 1, a: 1}
   IgnoreCollisionTime: 0.5
+  Target: Enemy
   ImpactPrefab: {fileID: 4179723668943172795, guid: 0af93eb30de829b4aabb00459fb3a379, type: 3}
-  SeekingEnabled: 1
-  SeekingAngularVelocity: 70
-  SeekingTargetDistance: 5
-  SeekingTargetArcAngle: 60
-  RicochetEnabled: 1
-  RicochetChance: 0.33
-  RicochetMax: 4
-  PassthroughEnabled: 0
-  PassthroughChance: 0.25
-  PassthroughMax: 1
-  SplitEnabled: 1
-  SplitChance: 0.5
-  SplitMinProjectiles: 2
-  SplitMaxProjectiles: 2
-  SplitArcAngle: 30
-  SplitSizeMultiplier: 0.7
+  Source: {fileID: 0}
 --- !u!1 &7158787015642128309
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +96,7 @@ GameObject:
   - component: {fileID: 6114872580815711424}
   - component: {fileID: 8200956701641274768}
   - component: {fileID: 8929718708587696199}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

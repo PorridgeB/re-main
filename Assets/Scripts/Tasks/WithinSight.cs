@@ -9,18 +9,19 @@ public class WithinSight : Conditional
 {
     public SharedFloat SightDistance;
     public SharedGameObject Target;
-    public SharedLayerMask Mask = new LayerMask { value = LayerMask.GetMask("Player") | LayerMask.GetMask("Level") };
 
     public override TaskStatus OnUpdate()
     {
-        var direction = (Target.Value.transform.position - transform.position).normalized;
-
-        if (Physics.Raycast(transform.position + Vector3.up, direction, out RaycastHit raycastHit, SightDistance.Value, Mask.Value))
+        if (Target.Value == null)
         {
-            if (raycastHit.collider.gameObject == Target.Value)
-            {
-                return TaskStatus.Success;
-            }
+            return TaskStatus.Failure;
+        }
+
+        var direction = (Target.Value.transform.position - transform.position).normalized;
+        var distance = Mathf.Min(SightDistance.Value, Vector3.Distance(Target.Value.transform.position, transform.position));
+        if (!Physics.Raycast(transform.position + Vector3.up, direction, out _, distance, LayerMask.GetMask("Level")))
+        {
+            return TaskStatus.Success;
         }
 
         return TaskStatus.Failure;

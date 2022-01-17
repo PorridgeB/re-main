@@ -11,7 +11,7 @@ public class PlayerShoot : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Projectile p = Instantiate(projectile).GetComponent<Projectile>();
+        PhaserProjectile p = Instantiate(projectile).GetComponent<PhaserProjectile>();
 
         var damageSource = p.GetComponent<DamageSource>();
         damageSource.source = PlayerController.instance.gameObject;

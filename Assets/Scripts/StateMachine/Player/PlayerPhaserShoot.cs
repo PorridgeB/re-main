@@ -13,12 +13,13 @@ public class PlayerPhaserShoot : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
+        var projectile = Instantiate(projectilePrefab).GetComponent<PhaserProjectile>();
 
         var player = PlayerController.instance;
 
         projectile.transform.position = player.transform.position + new Vector3(player.Facing.x, 0, player.Facing.y) * Distance;
         projectile.Direction = new Vector3(player.Facing.x, 0, player.Facing.y);
         projectile.Speed = Speed;
+        projectile.Source = player.gameObject;
     }
 }

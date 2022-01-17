@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileImpact : MonoBehaviour
+public class PhaserProjectileImpact : MonoBehaviour
 {
     public Color Color;
+
+    [HideInInspector]
+    public GameObject Source;
 
     [SerializeField]
     private GameObject hurtbox;
@@ -31,8 +34,8 @@ public class ProjectileImpact : MonoBehaviour
         Destroy(gameObject, maxTime);
 
         var damageSource = hurtbox.GetComponent<DamageSource>();
-        damageSource.source = PlayerController.instance.gameObject;
-        damageSource.AddInstance(new DamageInstance { source = PlayerController.instance.gameObject, type = DamageType.Energy, value = 1 });
+        damageSource.source = Source;
+        damageSource.AddInstance(new DamageInstance { source = Source, type = DamageType.Energy, value = 30 });
 
         Destroy(hurtbox, 0.1f);
     }

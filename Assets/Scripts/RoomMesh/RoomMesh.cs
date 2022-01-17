@@ -7,7 +7,7 @@ using UnityEngine.U2D;
 
 [Serializable]
 [ExecuteAlways]
-public class RoomMesh : MonoBehaviour
+public class RoomMesh : MonoBehaviour, IEnumerable<TileContext>
 {
     public const string DefaultMaterialPath = "RoomMaterial";
     public const string DefaultTilesetPath = "Tileset";
@@ -270,5 +270,18 @@ public class RoomMesh : MonoBehaviour
         }
 
         return new TileNeighbours(neighbourTiles);
+    }
+
+    public IEnumerator<TileContext> GetEnumerator()
+    {
+        foreach (var instance in Tiles)
+        {
+            yield return new TileContext { Tile = instance.Tile, Position = instance.Position, Neighbours = GetTileNeighbours(instance.Position) };
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
