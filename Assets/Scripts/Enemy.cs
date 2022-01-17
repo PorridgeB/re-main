@@ -152,27 +152,36 @@ public class Enemy : MonoBehaviour
 
     public void OnDamage(DamageSource source)
     {
-        foreach (Effect e in source.Effects)
+        foreach (var effect in source.Effects)
         {
-            e.Resolve(gameObject);
+            effect.Resolve(gameObject);
         }
 
-        foreach (DamageInstance d in source.Damages)
+        foreach (var damage in source.Damages)
         {
-            Hurt(d);
+            Hurt(damage);
         }
 
-        if ((float)behaviorTree.GetVariable("Health").GetValue() > 0f)
+        // If the enemy is still alive
+        var health = (float)behaviorTree.GetVariable("Health").GetValue();
+        if (health > 0)
         {
-            // Using the player's facing direction if the damage source was from the player
+            // Use the player's facing direction if the damage source was from the player.
+            // Otherwise, calculate the hit direction based on the position of the damage source
             if (source.source.CompareTag("Player"))
             {
                 var facing = PlayerController.instance.Facing;
                 hitDirection = new Vector3(facing.x, 0, facing.y);
-
-                // Tell the behaviour tree that the enemy has been hurt by the player
-                if (!unstoppable) behaviorTree.SendEvent("Hit");
             }
+            else
+            {
+                hitDirection = transform.position - source.transform.position;
+                hitDirection.y = 0;
+                hitDirection.Normalize();
+            }
+
+            // Tell the behaviour tree that the enemy has been hit
+            if (!unstoppable) behaviorTree.SendEvent("Hit");
         }
     }
 
