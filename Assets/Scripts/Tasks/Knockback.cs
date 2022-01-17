@@ -27,11 +27,10 @@ public class Knockback : Action
 	public override TaskStatus OnUpdate()
 	{
 		var initialVelocity = ImpulseTime.Value * force / enemy.Mass;
-		var acceleration = -FrictionCoefficient.Value;// * enemy.Mass;
+		var acceleration = -FrictionCoefficient.Value;
 		var velocity = initialVelocity + acceleration * (Time.time - startTime);
 
-		//if (velocity <= 0)
-		if (velocity <= initialVelocity * 0.1f)
+		if (velocity < initialVelocity * 0.05f)
 		{
 			return TaskStatus.Success;
 		}
