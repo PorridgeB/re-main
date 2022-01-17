@@ -11,10 +11,10 @@ public class TargetSelector : MonoBehaviour
     public string Tag = "Player";
     [Tooltip("How much to favour targets that are close")]
     [Range(0, 1)]
-    public float DistanceFactor = 0.5f;
+    public float DistanceWeight = 0.5f;
     [Tooltip("How much to favour targets with low health")]
     [Range(0, 1)]
-    public float HealthFactor = 0.7f;
+    public float HealthWeight = 0.7f;
 
     private BehaviorTree behaviorTree;
     private Memory memory;
@@ -35,7 +35,7 @@ public class TargetSelector : MonoBehaviour
     {
         var distance = Vector3.Distance(transform.position, target.transform.position) / 5;
 
-        // Try and get the health value
+        // Hacky way to try and get the health value
         float health;
 
         var player = target.GetComponent<PlayerController>();
@@ -49,7 +49,7 @@ public class TargetSelector : MonoBehaviour
             health = (float)behaviorTree?.GetVariable("Health")?.GetValue() / 100;
         }
 
-        return DistanceFactor / distance + HealthFactor / health;
+        return DistanceWeight / distance + HealthWeight / health;
     }
 
     private void OnDrawGizmosSelected()
@@ -60,11 +60,6 @@ public class TargetSelector : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(target.transform.position + Vector3.up, new Vector3(1, 2, 1));
-
-            //Handles.color = Color.red;
-            //Handles.DrawWireDisc(target.transform.position, Vector3.up, 0.5f);
-
-            //Handles.Label(target.transform.position, $"Target Eval: {EvaluateTarget(target)}");
         }
     }
 }
