@@ -169,7 +169,7 @@ public class LevelGenerator : MonoBehaviour
         List<GameObject> pool = roomTestPool;
         switch(c){
             case 'e':
-                //pool = combatRooms;
+                pool = combatRooms;
                 break;
             case 't':
                 //pool = trapRooms;

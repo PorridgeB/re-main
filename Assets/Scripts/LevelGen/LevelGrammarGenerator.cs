@@ -65,6 +65,8 @@ public class LevelGrammarGenerator : MonoBehaviour
     private void ResetAll()
     {
         branches.Clear();
+        challengeCount = 0;
+        rewardCount = 0;
     }
 
     public string GetGenerationTemplate()
