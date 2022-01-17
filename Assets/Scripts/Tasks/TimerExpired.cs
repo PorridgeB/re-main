@@ -2,6 +2,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 
+[TaskCategory("Common")]
 public class TimerExpired : Conditional
 {
 	public SharedFloat Timer;
