@@ -38,21 +38,11 @@ public class PlayerDash : StateMachineBehaviour
         RaycastHit hitB;
         Physics.Raycast(startPosition, (otherSide-startPosition), out hitA);
         Physics.Raycast(otherSide, (startPosition-otherSide), out hitB);
-        Debug.Log(hitA.collider.name + " : " + hitA.point + ", " + hitB.collider.name + " : " + hitB.point);
-        if (hitA.point == hitB.point)
-        {
-            Debug.Log("Hit the same point");
-        }
-        else if (hitB.collider.gameObject.layer != LayerMask.NameToLayer("Dashable"))
-        {
-            Debug.Log("Not dashable");
-        }
-        else
-        {
-            otherSide = hitB.point;
-            SetCollisionWithDashable(false);
-            return;
-        }
+        if (hitA.point == hitB.point) return;
+        if (hitB.collider.gameObject.layer != LayerMask.NameToLayer("Dashable")) return;
+        
+        otherSide = hitB.point;
+        SetCollisionWithDashable(false);
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
