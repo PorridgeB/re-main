@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public int unitCost;
     public EnemyType type;
 
+    [Tooltip("The current group that the enemy belongs to. Maintained by the GroupManager")]
     public Group group = null;
 
     [HideInInspector]

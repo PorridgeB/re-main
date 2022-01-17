@@ -11,9 +11,17 @@ public class Group : IEnumerable<GameObject>
     [SerializeField]
     private List<GameObject> members = new List<GameObject>();
 
-    public void Add(GameObject gameObject)
+    public void AddMember(GameObject gameObject)
     {
         members.Add(gameObject);
+    }
+
+    public void BroadcastMessage(string methodName, object value)
+    {
+        foreach (var member in members)
+        {
+            member?.SendMessage(methodName, value, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     public IEnumerator<GameObject> GetEnumerator()

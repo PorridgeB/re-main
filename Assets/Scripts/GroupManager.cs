@@ -6,8 +6,11 @@ using UnityEditor;
 
 public class GroupManager : MonoBehaviour
 {
+    [Tooltip("The radius of which to search for nearby enemies and the groups they belong to")]
     public float ProximityRadius = 5;
+    [Tooltip("Maximum number of members each group is allowed to have")]
     public int MaxGroupSize = 5;
+    [Tooltip("How often to update the list of groups")]
     public float UpdateRate = 1;
 
     [SerializeField]
@@ -51,10 +54,18 @@ public class GroupManager : MonoBehaviour
 
             // Add enemy to that group
             enemy.group = group;
-            group.Add(enemy.gameObject);
+            group.AddMember(enemy.gameObject);
         }
 
         // Remove all groups with only one member in them
+        foreach (var group in groups)
+        {
+            if (group.Size == 1)
+            {
+                group.First().GetComponent<Enemy>().group = null;
+            }
+        }
+
         groups.RemoveAll(x => x.Size == 1);
 
         groups = groups.OrderByDescending(x => x.Size).ToList();
