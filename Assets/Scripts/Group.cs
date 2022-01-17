@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Group
+public class Group : IEnumerable<GameObject>
 {
     public int Size => members.Count;
 
@@ -14,5 +14,15 @@ public class Group
     public void Add(GameObject gameObject)
     {
         members.Add(gameObject);
+    }
+
+    public IEnumerator<GameObject> GetEnumerator()
+    {
+        return ((IEnumerable<GameObject>)members).GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return ((IEnumerable)members).GetEnumerator();
     }
 }

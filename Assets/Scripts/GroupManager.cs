@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -59,5 +58,13 @@ public class GroupManager : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        foreach (var group in groups)
+        {
+            var positions = group.Select(x => x.transform.position).ToArray();
+            var bounds = GeometryUtility.CalculateBounds(positions, Matrix4x4.identity);
+
+            Handles.color = Color.Lerp(Color.blue, Color.red, group.Size / (float)MaxGroupSize);
+            Handles.DrawWireDisc(bounds.center, Vector3.up, 0.5f + Mathf.Max(bounds.size.x, bounds.size.y));
+        }
     }
 }
