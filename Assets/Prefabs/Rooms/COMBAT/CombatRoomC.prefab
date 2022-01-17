@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1190692585394875130}
   - component: {fileID: 4657052127418929233}
   m_Layer: 0
-  m_Name: GeneralI 1
+  m_Name: CombatRoomC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +35,10 @@ Transform:
   - {fileID: 8180371347073500000}
   - {fileID: 7076232708391064038}
   - {fileID: 6776671710448659932}
+  - {fileID: 2905394712819080921}
+  - {fileID: 1423337260888254149}
+  - {fileID: 1746262589133439262}
+  - {fileID: 4830248959993630614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,184 +56,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Options: {fileID: 11400000, guid: a20e8beeeed80934ab291b99ce0b935f, type: 2}
   Tiles:
-  - Position: {x: 8, y: 1}
+  - Position: {x: 1, y: 1}
     Tile:
       id: 0
-  - Position: {x: 9, y: 1}
+  - Position: {x: 2, y: 1}
     Tile:
       id: 0
-  - Position: {x: 10, y: 1}
+  - Position: {x: 3, y: 1}
     Tile:
       id: 0
-  - Position: {x: 11, y: 1}
+  - Position: {x: 4, y: 1}
     Tile:
       id: 0
-  - Position: {x: 12, y: 1}
+  - Position: {x: 5, y: 1}
     Tile:
       id: 0
-  - Position: {x: 13, y: 1}
+  - Position: {x: 1, y: 2}
     Tile:
       id: 0
-  - Position: {x: 14, y: 1}
+  - Position: {x: 2, y: 2}
     Tile:
       id: 0
-  - Position: {x: 15, y: 1}
+  - Position: {x: 3, y: 2}
     Tile:
       id: 0
-  - Position: {x: 16, y: 1}
+  - Position: {x: 4, y: 2}
     Tile:
       id: 0
-  - Position: {x: 17, y: 1}
+  - Position: {x: 5, y: 2}
     Tile:
       id: 0
-  - Position: {x: 18, y: 1}
+  - Position: {x: 1, y: 3}
     Tile:
       id: 0
-  - Position: {x: 19, y: 1}
+  - Position: {x: 2, y: 3}
     Tile:
       id: 0
-  - Position: {x: 8, y: 2}
+  - Position: {x: 3, y: 3}
     Tile:
       id: 0
-  - Position: {x: 9, y: 2}
+  - Position: {x: 4, y: 3}
     Tile:
       id: 0
-  - Position: {x: 10, y: 2}
+  - Position: {x: 5, y: 3}
     Tile:
       id: 0
-  - Position: {x: 11, y: 2}
+  - Position: {x: 1, y: 4}
     Tile:
       id: 0
-  - Position: {x: 12, y: 2}
+  - Position: {x: 2, y: 4}
     Tile:
       id: 0
-  - Position: {x: 13, y: 2}
+  - Position: {x: 3, y: 4}
     Tile:
       id: 0
-  - Position: {x: 14, y: 2}
+  - Position: {x: 4, y: 4}
     Tile:
       id: 0
-  - Position: {x: 15, y: 2}
+  - Position: {x: 5, y: 4}
     Tile:
       id: 0
-  - Position: {x: 16, y: 2}
+  - Position: {x: 1, y: 5}
     Tile:
       id: 0
-  - Position: {x: 17, y: 2}
+  - Position: {x: 2, y: 5}
     Tile:
       id: 0
-  - Position: {x: 18, y: 2}
+  - Position: {x: 3, y: 5}
     Tile:
       id: 0
-  - Position: {x: 19, y: 2}
+  - Position: {x: 4, y: 5}
     Tile:
       id: 0
-  - Position: {x: 8, y: 3}
+  - Position: {x: 5, y: 5}
     Tile:
       id: 0
-  - Position: {x: 9, y: 3}
+  - Position: {x: 1, y: 6}
     Tile:
       id: 0
-  - Position: {x: 10, y: 3}
+  - Position: {x: 2, y: 6}
     Tile:
       id: 0
-  - Position: {x: 11, y: 3}
+  - Position: {x: 3, y: 6}
     Tile:
       id: 0
-  - Position: {x: 12, y: 3}
+  - Position: {x: 4, y: 6}
     Tile:
       id: 0
-  - Position: {x: 13, y: 3}
+  - Position: {x: 5, y: 6}
     Tile:
       id: 0
-  - Position: {x: 14, y: 3}
+  - Position: {x: 6, y: 6}
     Tile:
-      id: 0
-  - Position: {x: 15, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 16, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 17, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 18, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 19, y: 3}
-    Tile:
-      id: 0
-  - Position: {x: 8, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 9, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 10, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 14, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 15, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 16, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 17, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 18, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 19, y: 4}
-    Tile:
-      id: 0
-  - Position: {x: 8, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 9, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 10, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 14, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 15, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 16, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 17, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 18, y: 5}
-    Tile:
-      id: 0
-  - Position: {x: 19, y: 5}
+      id: 1
+  - Position: {x: 7, y: 6}
     Tile:
       id: 0
   - Position: {x: 8, y: 6}
@@ -241,31 +161,25 @@ MonoBehaviour:
   - Position: {x: 10, y: 6}
     Tile:
       id: 0
-  - Position: {x: 11, y: 6}
+  - Position: {x: 1, y: 7}
     Tile:
       id: 0
-  - Position: {x: 12, y: 6}
+  - Position: {x: 2, y: 7}
     Tile:
       id: 0
-  - Position: {x: 13, y: 6}
+  - Position: {x: 3, y: 7}
     Tile:
       id: 0
-  - Position: {x: 14, y: 6}
+  - Position: {x: 4, y: 7}
     Tile:
       id: 0
-  - Position: {x: 15, y: 6}
+  - Position: {x: 5, y: 7}
     Tile:
       id: 0
-  - Position: {x: 16, y: 6}
+  - Position: {x: 6, y: 7}
     Tile:
-      id: 0
-  - Position: {x: 17, y: 6}
-    Tile:
-      id: 0
-  - Position: {x: 18, y: 6}
-    Tile:
-      id: 0
-  - Position: {x: 19, y: 6}
+      id: 2
+  - Position: {x: 7, y: 7}
     Tile:
       id: 0
   - Position: {x: 8, y: 7}
@@ -275,123 +189,6 @@ MonoBehaviour:
     Tile:
       id: 0
   - Position: {x: 10, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 14, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 15, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 16, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 17, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 18, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 19, y: 7}
-    Tile:
-      id: 0
-  - Position: {x: 8, y: 8}
-    Tile:
-      id: 0
-  - Position: {x: 9, y: 8}
-    Tile:
-      id: 0
-  - Position: {x: 10, y: 8}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 8}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 8}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 8}
-    Tile:
-      id: 0
-  - Position: {x: 8, y: 9}
-    Tile:
-      id: 0
-  - Position: {x: 9, y: 9}
-    Tile:
-      id: 0
-  - Position: {x: 10, y: 9}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 9}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 9}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 9}
-    Tile:
-      id: 0
-  - Position: {x: 8, y: 10}
-    Tile:
-      id: 0
-  - Position: {x: 9, y: 10}
-    Tile:
-      id: 0
-  - Position: {x: 10, y: 10}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 10}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 10}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 10}
-    Tile:
-      id: 0
-  - Position: {x: 8, y: 11}
-    Tile:
-      id: 0
-  - Position: {x: 9, y: 11}
-    Tile:
-      id: 0
-  - Position: {x: 10, y: 11}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 11}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 11}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 11}
-    Tile:
-      id: 0
-  - Position: {x: 8, y: 12}
-    Tile:
-      id: 0
-  - Position: {x: 9, y: 12}
-    Tile:
-      id: 0
-  - Position: {x: 10, y: 12}
-    Tile:
-      id: 0
-  - Position: {x: 11, y: 12}
-    Tile:
-      id: 0
-  - Position: {x: 12, y: 12}
-    Tile:
-      id: 0
-  - Position: {x: 13, y: 12}
     Tile:
       id: 0
   - Position: {x: 1, y: 8}
@@ -411,8 +208,17 @@ MonoBehaviour:
       id: 0
   - Position: {x: 6, y: 8}
     Tile:
-      id: 0
+      id: 3
   - Position: {x: 7, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 8}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 8}
     Tile:
       id: 0
   - Position: {x: 1, y: 9}
@@ -432,8 +238,17 @@ MonoBehaviour:
       id: 0
   - Position: {x: 6, y: 9}
     Tile:
-      id: 0
+      id: 4
   - Position: {x: 7, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 8, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 9, y: 9}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 9}
     Tile:
       id: 0
   - Position: {x: 1, y: 10}
@@ -457,393 +272,363 @@ MonoBehaviour:
   - Position: {x: 7, y: 10}
     Tile:
       id: 0
-  - Position: {x: 1, y: 11}
+  - Position: {x: 8, y: 10}
     Tile:
       id: 0
+  - Position: {x: 9, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 10, y: 10}
+    Tile:
+      id: 0
+  - Position: {x: 1, y: 11}
+    Tile:
+      id: 5
   - Position: {x: 2, y: 11}
     Tile:
       id: 0
   - Position: {x: 3, y: 11}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 4, y: 11}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 5, y: 11}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 6, y: 11}
     Tile:
-      id: 0
+      id: 7
   - Position: {x: 7, y: 11}
     Tile:
-      id: 0
+      id: 8
+  - Position: {x: 8, y: 11}
+    Tile:
+      id: 9
+  - Position: {x: 9, y: 11}
+    Tile:
+      id: 10
+  - Position: {x: 10, y: 11}
+    Tile:
+      id: 11
   - Position: {x: 1, y: 12}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 2, y: 12}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 3, y: 12}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 4, y: 12}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 5, y: 12}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 6, y: 12}
     Tile:
-      id: 0
+      id: 6
   - Position: {x: 7, y: 12}
     Tile:
-      id: 0
-  - Position: {x: 20, y: 1}
+      id: 6
+  - Position: {x: 8, y: 12}
     Tile:
-      id: 1
-  - Position: {x: 20, y: 2}
+      id: 6
+  - Position: {x: 9, y: 12}
     Tile:
-      id: 1
-  - Position: {x: 20, y: 3}
+      id: 6
+  - Position: {x: 10, y: 12}
     Tile:
-      id: 2
-  - Position: {x: 20, y: 4}
-    Tile:
-      id: 2
-  - Position: {x: 20, y: 5}
-    Tile:
-      id: 2
-  - Position: {x: 20, y: 6}
-    Tile:
-      id: 1
-  - Position: {x: 20, y: 7}
-    Tile:
-      id: 1
-  - Position: {x: 20, y: 8}
-    Tile:
-      id: 1
-  - Position: {x: 14, y: 8}
-    Tile:
-      id: 1
-  - Position: {x: 15, y: 8}
-    Tile:
-      id: 1
-  - Position: {x: 16, y: 8}
-    Tile:
-      id: 1
-  - Position: {x: 17, y: 8}
-    Tile:
-      id: 1
-  - Position: {x: 18, y: 8}
-    Tile:
-      id: 1
-  - Position: {x: 19, y: 8}
-    Tile:
-      id: 1
-  - Position: {x: 14, y: 9}
-    Tile:
-      id: 1
-  - Position: {x: 14, y: 10}
-    Tile:
-      id: 1
-  - Position: {x: 14, y: 11}
-    Tile:
-      id: 1
-  - Position: {x: 14, y: 12}
-    Tile:
-      id: 1
-  - Position: {x: 14, y: 13}
-    Tile:
-      id: 1
-  - Position: {x: 0, y: 13}
-    Tile:
-      id: 1
+      id: 6
   - Position: {x: 1, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 2, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 3, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 4, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 5, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 6, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 7, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 8, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 9, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 10, y: 13}
     Tile:
-      id: 1
-  - Position: {x: 11, y: 13}
+      id: 6
+  - Position: {x: 1, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 12, y: 13}
+      id: 6
+  - Position: {x: 2, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 13, y: 13}
+      id: 6
+  - Position: {x: 3, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 0, y: 7}
+      id: 6
+  - Position: {x: 4, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 0, y: 8}
+      id: 6
+  - Position: {x: 5, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 0, y: 9}
+      id: 6
+  - Position: {x: 6, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 0, y: 10}
+      id: 6
+  - Position: {x: 7, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 0, y: 11}
+      id: 6
+  - Position: {x: 8, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 0, y: 12}
+      id: 6
+  - Position: {x: 9, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 1, y: 7}
+      id: 6
+  - Position: {x: 10, y: 14}
     Tile:
-      id: 1
-  - Position: {x: 2, y: 7}
+      id: 6
+  - Position: {x: 1, y: 15}
     Tile:
-      id: 2
-  - Position: {x: 3, y: 7}
+      id: 6
+  - Position: {x: 2, y: 15}
     Tile:
-      id: 2
-  - Position: {x: 4, y: 7}
+      id: 6
+  - Position: {x: 3, y: 15}
     Tile:
-      id: 2
-  - Position: {x: 5, y: 7}
+      id: 6
+  - Position: {x: 4, y: 15}
     Tile:
-      id: 1
-  - Position: {x: 6, y: 7}
+      id: 6
+  - Position: {x: 5, y: 15}
     Tile:
-      id: 1
-  - Position: {x: 7, y: 7}
+      id: 6
+  - Position: {x: 6, y: 15}
     Tile:
-      id: 3
-  - Position: {x: 7, y: 1}
+      id: 6
+  - Position: {x: 7, y: 15}
     Tile:
-      id: 3
-  - Position: {x: 7, y: 2}
+      id: 6
+  - Position: {x: 8, y: 15}
     Tile:
-      id: 3
-  - Position: {x: 7, y: 3}
+      id: 6
+  - Position: {x: 9, y: 15}
     Tile:
-      id: 3
-  - Position: {x: 7, y: 4}
+      id: 6
+  - Position: {x: 10, y: 15}
     Tile:
-      id: 3
-  - Position: {x: 7, y: 5}
-    Tile:
-      id: 3
-  - Position: {x: 7, y: 6}
-    Tile:
-      id: 3
-  - Position: {x: 7, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 8, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 9, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 10, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 11, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 12, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 13, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 14, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 15, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 16, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 17, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 18, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 19, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 20, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 0, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 1, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 2, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 3, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 4, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 5, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 6, y: 0}
-    Tile:
-      id: 3
-  - Position: {x: 0, y: 1}
-    Tile:
-      id: 2
-  - Position: {x: 0, y: 2}
-    Tile:
-      id: 2
-  - Position: {x: 0, y: 3}
-    Tile:
-      id: 2
-  - Position: {x: 0, y: 4}
-    Tile:
-      id: 3
-  - Position: {x: 0, y: 5}
-    Tile:
-      id: 3
-  - Position: {x: 0, y: 6}
-    Tile:
-      id: 3
-  - Position: {x: 1, y: 1}
-    Tile:
-      id: 2
-  - Position: {x: 2, y: 1}
-    Tile:
-      id: 2
-  - Position: {x: 3, y: 1}
-    Tile:
-      id: 2
-  - Position: {x: 4, y: 1}
-    Tile:
-      id: 2
-  - Position: {x: 5, y: 1}
-    Tile:
-      id: 2
+      id: 6
   - Position: {x: 6, y: 1}
     Tile:
-      id: 2
-  - Position: {x: 1, y: 2}
-    Tile:
-      id: 2
-  - Position: {x: 2, y: 2}
-    Tile:
-      id: 2
-  - Position: {x: 3, y: 2}
-    Tile:
-      id: 2
-  - Position: {x: 4, y: 2}
-    Tile:
-      id: 2
-  - Position: {x: 5, y: 2}
-    Tile:
-      id: 2
+      id: 12
   - Position: {x: 6, y: 2}
     Tile:
-      id: 2
-  - Position: {x: 1, y: 3}
-    Tile:
-      id: 2
-  - Position: {x: 2, y: 3}
-    Tile:
-      id: 2
-  - Position: {x: 3, y: 3}
-    Tile:
-      id: 2
-  - Position: {x: 4, y: 3}
-    Tile:
-      id: 2
-  - Position: {x: 5, y: 3}
-    Tile:
-      id: 2
+      id: 13
   - Position: {x: 6, y: 3}
     Tile:
-      id: 2
-  - Position: {x: 1, y: 4}
-    Tile:
-      id: 2
-  - Position: {x: 2, y: 4}
-    Tile:
-      id: 2
-  - Position: {x: 3, y: 4}
-    Tile:
-      id: 2
-  - Position: {x: 4, y: 4}
-    Tile:
-      id: 2
-  - Position: {x: 5, y: 4}
-    Tile:
-      id: 2
+      id: 14
   - Position: {x: 6, y: 4}
     Tile:
-      id: 2
-  - Position: {x: 1, y: 5}
-    Tile:
-      id: 2
-  - Position: {x: 2, y: 5}
-    Tile:
-      id: 2
-  - Position: {x: 3, y: 5}
-    Tile:
-      id: 2
-  - Position: {x: 4, y: 5}
-    Tile:
-      id: 2
-  - Position: {x: 5, y: 5}
-    Tile:
-      id: 2
+      id: 15
   - Position: {x: 6, y: 5}
     Tile:
-      id: 2
-  - Position: {x: 1, y: 6}
+      id: 16
+  - Position: {x: 7, y: 5}
     Tile:
-      id: 2
-  - Position: {x: 2, y: 6}
+      id: 17
+  - Position: {x: 8, y: 5}
     Tile:
-      id: 2
-  - Position: {x: 3, y: 6}
+      id: 18
+  - Position: {x: 9, y: 5}
     Tile:
-      id: 2
-  - Position: {x: 4, y: 6}
+      id: 19
+  - Position: {x: 10, y: 5}
     Tile:
-      id: 2
-  - Position: {x: 5, y: 6}
+      id: 20
+  - Position: {x: 11, y: 5}
     Tile:
-      id: 2
-  - Position: {x: 6, y: 6}
+      id: 21
+  - Position: {x: 11, y: 6}
     Tile:
-      id: 2
+      id: 22
+  - Position: {x: 11, y: 7}
+    Tile:
+      id: 23
+  - Position: {x: 11, y: 8}
+    Tile:
+      id: 24
+  - Position: {x: 11, y: 9}
+    Tile:
+      id: 25
+  - Position: {x: 11, y: 10}
+    Tile:
+      id: 26
+  - Position: {x: 11, y: 11}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 12}
+    Tile:
+      id: 0
+  - Position: {x: 11, y: 13}
+    Tile:
+      id: 27
+  - Position: {x: 11, y: 14}
+    Tile:
+      id: 27
+  - Position: {x: 11, y: 15}
+    Tile:
+      id: 27
+  - Position: {x: 11, y: 16}
+    Tile:
+      id: 27
+  - Position: {x: 0, y: 16}
+    Tile:
+      id: 27
+  - Position: {x: 1, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 2, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 3, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 4, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 5, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 6, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 7, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 8, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 9, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 10, y: 16}
+    Tile:
+      id: 28
+  - Position: {x: 0, y: 0}
+    Tile:
+      id: 29
+  - Position: {x: 0, y: 1}
+    Tile:
+      id: 30
+  - Position: {x: 0, y: 2}
+    Tile:
+      id: 31
+  - Position: {x: 0, y: 3}
+    Tile:
+      id: 32
+  - Position: {x: 0, y: 4}
+    Tile:
+      id: 33
+  - Position: {x: 0, y: 5}
+    Tile:
+      id: 34
+  - Position: {x: 0, y: 6}
+    Tile:
+      id: 35
+  - Position: {x: 0, y: 7}
+    Tile:
+      id: 36
+  - Position: {x: 0, y: 8}
+    Tile:
+      id: 37
+  - Position: {x: 0, y: 9}
+    Tile:
+      id: 38
+  - Position: {x: 0, y: 10}
+    Tile:
+      id: 39
+  - Position: {x: 0, y: 11}
+    Tile:
+      id: 27
+  - Position: {x: 0, y: 12}
+    Tile:
+      id: 27
+  - Position: {x: 0, y: 13}
+    Tile:
+      id: 27
+  - Position: {x: 0, y: 14}
+    Tile:
+      id: 27
+  - Position: {x: 0, y: 15}
+    Tile:
+      id: 27
+  - Position: {x: 1, y: 0}
+    Tile:
+      id: 40
+  - Position: {x: 2, y: 0}
+    Tile:
+      id: 41
+  - Position: {x: 3, y: 0}
+    Tile:
+      id: 41
+  - Position: {x: 4, y: 0}
+    Tile:
+      id: 41
+  - Position: {x: 5, y: 0}
+    Tile:
+      id: 42
+  - Position: {x: 6, y: 0}
+    Tile:
+      id: 43
+  - Position: {x: 0, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 1, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 2, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 3, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 4, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 5, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 6, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 7, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 8, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 9, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 10, y: 17}
+    Tile:
+      id: 44
+  - Position: {x: 11, y: 17}
+    Tile:
+      id: 44
   references:
     version: 1
     00000000:
@@ -851,15 +636,207 @@ MonoBehaviour:
       data:
         Sprite: Floor_4
     00000001:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000002:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
     00000003:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000004:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000005:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000006:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000007:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000008:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000009:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000000A:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000000B:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000000C:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000D:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000E:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000000F:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000010:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000011:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000012:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000013:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000014:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000015:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000016:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000017:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000018:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000019:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000001A:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000001B:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000001C:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000001D:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000001E:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000001F:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000020:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000021:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000022:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000023:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000024:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000025:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000026:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000027:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000028:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000029:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    0000002A:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000002B:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    0000002C:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
         Trim: WallTrim_0
@@ -942,7 +919,13 @@ MonoBehaviour:
   passages:
   - {fileID: 6187850157751808273}
   - {fileID: 7631331714924105003}
-  enemySpawns: []
+  resourceSpawns: {fileID: 5714767408369199526}
+  pickupSpawns: {fileID: 3846841906690681606}
+  crateWalls: {fileID: 3945951897222951389}
+  resourceBudget: 0
+  dataFragment: {fileID: 0}
+  scrap: {fileID: 0}
+  pickupPlaceholder: {fileID: 0}
   enemyPool: {fileID: 11400000, guid: 9c11e02621cf05a4ba0a322c4cb24a16, type: 2}
   runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
   spawns:
@@ -950,9 +933,99 @@ MonoBehaviour:
   - {fileID: 6434799617529056667}
   - {fileID: 4472277861107055483}
   - {fileID: 9117339882969609814}
-  - {fileID: 2909201218161405074}
-  - {fileID: 3449390995930778471}
+  - {fileID: 0}
+  - {fileID: 0}
   budget: 0
+--- !u!1 &3846841906690681606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423337260888254149}
+  m_Layer: 0
+  m_Name: PickupSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1423337260888254149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846841906690681606}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0.98500013, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 672875148287564569}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3945951897222951389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1746262589133439262}
+  m_Layer: 0
+  m_Name: CrateWalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1746262589133439262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945951897222951389}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0.98500013, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 672875148287564569}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5714767408369199526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2905394712819080921}
+  m_Layer: 0
+  m_Name: ResourceSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2905394712819080921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714767408369199526}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0.98500013, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 672875148287564569}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6728983749479359664
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,10 +1057,38 @@ Transform:
   - {fileID: 3923888100586158404}
   - {fileID: 5848428094822764452}
   - {fileID: 1278528656176956041}
-  - {fileID: 5145076978454796365}
-  - {fileID: 4676919551086100408}
   m_Father: {fileID: 672875148287564569}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8649932761227887598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4830248959993630614}
+  m_Layer: 0
+  m_Name: LayerColliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4830248959993630614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8649932761227887598}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 672875148287564569}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2947787294302966126
 PrefabInstance:
@@ -996,6 +1097,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8180371347073500000}
     m_Modifications:
+    - target: {fileID: 1205921708892139931, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
+      propertyPath: preferedEnemyType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7736269806004219391, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_Name
       value: Enemy Spawn
@@ -1006,7 +1111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5000005
+      value: 2.5000005
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1014,7 +1119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1069,6 +1174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8180371347073500000}
     m_Modifications:
+    - target: {fileID: 1205921708892139931, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
+      propertyPath: preferedEnemyType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7736269806004219391, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_Name
       value: Enemy Spawn (2)
@@ -1079,7 +1188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5000005
+      value: -2.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1087,7 +1196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1135,152 +1244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &4099336137889701129
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8180371347073500000}
-    m_Modifications:
-    - target: {fileID: 7736269806004219391, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_Name
-      value: Enemy Spawn (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
---- !u!4 &5145076978454796365 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-  m_PrefabInstance: {fileID: 4099336137889701129}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2909201218161405074 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1205921708892139931, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-  m_PrefabInstance: {fileID: 4099336137889701129}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &4567487516727327484
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8180371347073500000}
-    m_Modifications:
-    - target: {fileID: 7736269806004219391, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_Name
-      value: Enemy Spawn (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
---- !u!4 &4676919551086100408 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-  m_PrefabInstance: {fileID: 4567487516727327484}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3449390995930778471 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1205921708892139931, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
-  m_PrefabInstance: {fileID: 4567487516727327484}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e31bf6a99eff874f8d85b57f50059d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5328122637213318144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1288,6 +1251,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8180371347073500000}
     m_Modifications:
+    - target: {fileID: 1205921708892139931, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
+      propertyPath: preferedEnemyType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7736269806004219391, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_Name
       value: Enemy Spawn (1)
@@ -1298,7 +1265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5000005
+      value: -1.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1306,7 +1273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1367,7 +1334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1375,7 +1342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1407,7 +1374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3562428369423006982, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: side
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6132279198511797387, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_Name
@@ -1444,7 +1411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1452,7 +1419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.5
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1492,11 +1459,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
---- !u!4 &7076232708391064038 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
-  m_PrefabInstance: {fileID: 7255265280595545111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6187850157751808273 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3562428369423006982, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
@@ -1508,6 +1470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e823de97c2f37804192709fbdd56a8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7076232708391064038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 476314471761518065, guid: 3a8dbdb6cebad684daa8de88b4bd31a2, type: 3}
+  m_PrefabInstance: {fileID: 7255265280595545111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7942950300360705997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1515,6 +1482,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8180371347073500000}
     m_Modifications:
+    - target: {fileID: 1205921708892139931, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
+      propertyPath: preferedEnemyType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7736269806004219391, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_Name
       value: Enemy Spawn (3)
@@ -1525,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1533,7 +1504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9188812458003842372, guid: a6fbc01ac9193dd46b503dd08168572e, type: 3}
       propertyPath: m_LocalRotation.w

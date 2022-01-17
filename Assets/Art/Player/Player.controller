@@ -163,14 +163,14 @@ MonoBehaviour:
       inWeight: 1
       outWeight: 0.21828802
     - serializedVersion: 3
-      time: 0.099999994
-      value: 1.0000196
-      inSlope: 0
-      outSlope: 0
+      time: 0.012892202
+      value: 0.998605
+      inSlope: -2.5645256
+      outSlope: -2.5645256
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.04603462
     - serializedVersion: 3
       time: 1
       value: 0.0017716885
@@ -183,8 +183,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashSpeed: 10
-  cube: {fileID: 2828698242158231304, guid: 50dd7b22af97baf449c8a92aa5430f6b, type: 3}
+  dashSpeed: 12
+  dashDistance: 4
 --- !u!206 &-8175833681758895266
 BlendTree:
   m_ObjectHideFlags: 1
@@ -1563,9 +1563,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.18
   m_TransitionOffset: 0
-  m_ExitTime: 0.25
+  m_ExitTime: 0.15
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
