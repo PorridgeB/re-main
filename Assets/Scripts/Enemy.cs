@@ -10,14 +10,18 @@ public class Enemy : MonoBehaviour
     public int unitCost;
     public EnemyType type;
 
+    [Tooltip("A higher mass will mean the enemy is less affected by knockbacks")]
+    public float Mass = 1;
+
     [Tooltip("The current group that the enemy belongs to. Maintained by the GroupManager")]
     public Group Group = null;
 
+    // The direction and force of the latest hit against the enemy
+    public Vector3 HitDirection { private set; get; }
+    public float HitForce { private set; get; }
+
     [HideInInspector]
     public bool unstoppable = false;
-
-    // Used by the Knockback action to know the direction of the hit
-    public Vector3 hitDirection;
 
     public GameObject AttackField;
     public float AttackDamage = 10f;
@@ -169,6 +173,8 @@ public class Enemy : MonoBehaviour
         var health = behaviorTree.GetVariable("Health");
         if ((float)health.GetValue() > 0)
         {
+            Vector3 hitDirection;
+
             // Use the player's facing direction if the damage source was from the player.
             // Otherwise, calculate the hit direction based on the position of the damage source
             if (source.source.CompareTag("Player"))
@@ -182,6 +188,9 @@ public class Enemy : MonoBehaviour
                 hitDirection.y = 0;
                 hitDirection.Normalize();
             }
+
+            HitDirection = hitDirection;
+            HitForce = source.Force;
 
             // Tell the behaviour tree that the enemy has been hit
             if (!unstoppable)

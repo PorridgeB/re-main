@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,33 +21,16 @@ public class DamageSource : MonoBehaviour
 
     private void Start()
     {
-        //source = transform?.parent?.gameObject;
         damageSourceCreated.Raise(this);
     }
 
-    public List<DamageInstance> Damages
-    {
-        get
-        {
-            return damageInstances;
-        }
-    }
+    // Knockback force of the damage
+    // TODO: Add multiplier and/or override for the knockback force
+    public float Force => 1;
 
-    public int Count
-    {
-        get
-        {
-            return damageInstances.Count;
-        }
-    }
-
-    public List<Effect> Effects
-    {
-        get
-        {
-            return effects;
-        }
-    }
+    public int Count => damageInstances.Count;
+    public List<DamageInstance> Damages => damageInstances;
+    public List<Effect> Effects => effects;
 
     public void AddEffect(Effect effect)
     {
