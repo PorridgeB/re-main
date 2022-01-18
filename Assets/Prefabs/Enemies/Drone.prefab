@@ -131,8 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitCost: 20
   type: 0
+  Mass: 5
+  Group:
+    members: []
   unstoppable: 0
-  hitDirection: {x: 0, y: 0, z: 0}
   AttackField: {fileID: 3298188469097433944, guid: d03355a6e044760448deb0c982da0b8d, type: 3}
   AttackDamage: 15
   OnDeath: {fileID: 0}
