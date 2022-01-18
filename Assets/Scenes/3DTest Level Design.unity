@@ -231,7 +231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76615081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2197852, y: -3.7084465, z: 14.652191}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1182,13 +1182,14 @@ MonoBehaviour:
   - {fileID: 989419758299023129, guid: b452da96a76d7bc41aacca3ba195db23, type: 3}
   - {fileID: 989419758299023129, guid: 57fb2cce2ef37a34090d8a3b4521feb5, type: 3}
   - {fileID: 989419758299023129, guid: d5aecef97babeca4fa21c02fea1f0c50, type: 3}
-  - {fileID: 989419758299023129, guid: 8c3af3d011f7b4349a6f9b1395aa07a5, type: 3}
+  - {fileID: 989419758299023129, guid: 24642d3ea449f03409ffb8e64ad9b4d9, type: 3}
   - {fileID: 989419758299023129, guid: 72eafce7ed7a3524dbc2ac8416daadab, type: 3}
   - {fileID: 989419758299023129, guid: ce9bf224979ff2545b7b650fbe46e070, type: 3}
-  - {fileID: 989419758299023129, guid: c59c31355383aff4c84528b0a2d810da, type: 3}
-  - {fileID: 989419758299023129, guid: 6983c48b56498214c8c699727dae9c2a, type: 3}
-  - {fileID: 989419758299023129, guid: 2dae1278fab72ed409fd21308d4d28ee, type: 3}
-  - {fileID: 989419758299023129, guid: 25de3bf45fac694418dc0a4e39661007, type: 3}
+  - {fileID: 989419758299023129, guid: 5084aabefe009b148a65da88ba65ba57, type: 3}
+  - {fileID: 989419758299023129, guid: 090e73d90a2a777428e40eb5a24fd623, type: 3}
+  - {fileID: 989419758299023129, guid: 3fa679db11c80f74dbeb22d0bc473b37, type: 3}
+  - {fileID: 989419758299023129, guid: 4f3fa2347d15dce48a9a2035f07dd037, type: 3}
+  - {fileID: 989419758299023129, guid: 1cf8af850dc668a4689b9d9acdf72078, type: 3}
   allRooms: []
   startRooms:
   - {fileID: 989419758299023129, guid: 72eafce7ed7a3524dbc2ac8416daadab, type: 3}
@@ -1202,8 +1203,28 @@ MonoBehaviour:
   - {fileID: 989419758299023129, guid: 25de3bf45fac694418dc0a4e39661007, type: 3}
   rewardRooms: []
   obstacleRooms: []
-  combatRooms: []
-  trapRooms: []
+  combatRooms:
+  - {fileID: 989419758299023129, guid: dff08eb35f7e4cd4d8ddf4b730ca69a4, type: 3}
+  - {fileID: 989419758299023129, guid: 25f419d915809ed4ca69ba29c7a8901f, type: 3}
+  - {fileID: 989419758299023129, guid: 7751f8c1aebe07947994ff1b11255ce3, type: 3}
+  - {fileID: 989419758299023129, guid: e66bf986dbc02f94785f65ae9c5e4a11, type: 3}
+  - {fileID: 989419758299023129, guid: 42a59513ac7a2f24ab48278d68eae0ce, type: 3}
+  - {fileID: 989419758299023129, guid: 26d9452ae952dd74d8c432a0ce7383d9, type: 3}
+  - {fileID: 989419758299023129, guid: 5ec2e6e47295a574aa74320aeb61e994, type: 3}
+  - {fileID: 989419758299023129, guid: 04e0a37f235fb8744a661115c410ac88, type: 3}
+  - {fileID: 989419758299023129, guid: d41b13b2a13d4f742a88a5c1f2b92f94, type: 3}
+  - {fileID: 989419758299023129, guid: a4485cf4efaf65e4fae82f6373616bce, type: 3}
+  trapRooms:
+  - {fileID: 989419758299023129, guid: 7f75861f51296a840b38bcf761b5d621, type: 3}
+  - {fileID: 989419758299023129, guid: ddb7ea4a57507b94f80189777d546402, type: 3}
+  - {fileID: 989419758299023129, guid: f9857747dd299d9419d8e0bae9546779, type: 3}
+  - {fileID: 989419758299023129, guid: eb942ac81d2df8b43b7738b18c1620a2, type: 3}
+  - {fileID: 989419758299023129, guid: d3756404962b6bd48b6dae2beda1c945, type: 3}
+  - {fileID: 989419758299023129, guid: c933714434e2614449f2dc3897579c04, type: 3}
+  - {fileID: 989419758299023129, guid: a04c558ca6e36144b96ff55262e20213, type: 3}
+  - {fileID: 989419758299023129, guid: 3bdb71e664bd6b04b8a31714d4f80af1, type: 3}
+  - {fileID: 989419758299023129, guid: 12f046133bc53d3479a1c6d493ab06cb, type: 3}
+  - {fileID: 989419758299023129, guid: 4dbc8d69ef10dd44d86e0d8c2562e45a, type: 3}
   npcRooms: []
   bossRooms: []
   artifactRooms: []
@@ -1220,7 +1241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566431484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.01953, y: -0.063596964, z: -1.5788294}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3904,6 +3925,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136449512}
   m_CullTransparentMesh: 1
+--- !u!1 &1213158968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213158970}
+  - component: {fileID: 1213158969}
+  m_Layer: 14
+  m_Name: PostProcessVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1213158969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213158968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 1466f4ddcfea8084e8f50e3f9bb18ac0, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &1213158970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213158968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.627104, y: 0.5154427, z: 11.976642}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1358554492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4505106388035379475, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
@@ -4619,6 +4688,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 566656646826971442, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4505106388035379472, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
       propertyPath: m_Name
       value: Player

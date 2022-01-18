@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerDash : StateMachineBehaviour
 {
@@ -9,9 +8,13 @@ public class PlayerDash : StateMachineBehaviour
     private AnimationCurve speedCurve;
     [SerializeField]
     private float dashSpeed;
+    [SerializeField]
+    private float dashDistance;
     private float dashTimer;
     private float dashSoundRange;
     private Vector2 dashDirection;
+    private Vector3 startPosition;
+    private Vector3 otherSide;
 
     private void SetCollisionWithEnemies(bool enabled)
     {
@@ -28,50 +31,48 @@ public class PlayerDash : StateMachineBehaviour
         Physics.IgnoreLayerCollision(playerLayer, dashableLayer, !enabled);
     }
 
-    private void CheckEndpointClear()
+    private void CheckotherSideClear()
     {
-        Vector3 playerPos = GameObject.Find("Player").transform.position;
-        for (int i = 1; i < 6; i++)
-        {
-            Vector3 origin = playerPos + new Vector3(dashDirection.x, 0, dashDirection.y) * (i + .5f);
-            Collider[] cols = Physics.OverlapBox(origin, new Vector3(0.1f, 0.1f, 0.1f));
-            foreach (Collider c in cols)
-            {
-                if (c.gameObject.layer == LayerMask.NameToLayer("Dashable"))
-                {
-                    Debug.Log("hit dashable on " + i);
-                    continue;
-                }
-            }
-            SetCollisionWithDashable(false);
-            return;
-        }
+        otherSide = new Vector3(startPosition.x+(dashDirection.x*dashDistance), startPosition.y, startPosition.z+(dashDirection.y*dashDistance));
+        RaycastHit hitA;
+        RaycastHit hitB;
+        Physics.Raycast(startPosition, (otherSide-startPosition), out hitA);
+        Physics.Raycast(otherSide, (startPosition-otherSide), out hitB);
+        if (hitA.point == hitB.point) return;
+        if (hitB.collider.gameObject.layer != LayerMask.NameToLayer("Dashable")) return;
         
+        otherSide = hitB.point;
+        SetCollisionWithDashable(false);
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Ignore collision with Enemies
         SetCollisionWithEnemies(false);
-        
+        startPosition = GameObject.Find("Player").transform.position + Vector3.up / 2;
 
 
 
         dashTimer = 0;
         dashDirection = new Vector2(animator.GetFloat("VelX"), animator.GetFloat("VelY"));
 
-        CheckEndpointClear();
-
         if (dashDirection == Vector2.zero)
         {
             dashDirection = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical")).normalized;
         }
+
+        CheckotherSideClear();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         dashTimer += Time.deltaTime;
         PlayerController.instance.Dash(dashDirection * dashSpeed * speedCurve.Evaluate(dashTimer));
+
+        if (Vector3.Distance(PlayerController.instance.transform.position, otherSide) < 0.1f){
+            Debug.Log("reached other side");
+            SetCollisionWithDashable(true);
+        }
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -82,4 +83,6 @@ public class PlayerDash : StateMachineBehaviour
 
         PlayerController.instance.Stop();
     }
+
+    
 }

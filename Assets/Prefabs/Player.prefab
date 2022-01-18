@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &143966708726108879
 GameObject:
   m_ObjectHideFlags: 0
