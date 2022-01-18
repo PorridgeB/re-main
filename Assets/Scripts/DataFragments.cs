@@ -24,7 +24,6 @@ public class DataFragments : MonoBehaviour
             }
         }
         if (timer >= (float)value/80){
-            Debug.Log("stopped");
             pSystem.Stop();
         }
         

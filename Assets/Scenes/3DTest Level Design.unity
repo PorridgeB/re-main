@@ -1214,7 +1214,17 @@ MonoBehaviour:
   - {fileID: 989419758299023129, guid: 04e0a37f235fb8744a661115c410ac88, type: 3}
   - {fileID: 989419758299023129, guid: d41b13b2a13d4f742a88a5c1f2b92f94, type: 3}
   - {fileID: 989419758299023129, guid: a4485cf4efaf65e4fae82f6373616bce, type: 3}
-  trapRooms: []
+  trapRooms:
+  - {fileID: 989419758299023129, guid: 7f75861f51296a840b38bcf761b5d621, type: 3}
+  - {fileID: 989419758299023129, guid: ddb7ea4a57507b94f80189777d546402, type: 3}
+  - {fileID: 989419758299023129, guid: f9857747dd299d9419d8e0bae9546779, type: 3}
+  - {fileID: 989419758299023129, guid: eb942ac81d2df8b43b7738b18c1620a2, type: 3}
+  - {fileID: 989419758299023129, guid: d3756404962b6bd48b6dae2beda1c945, type: 3}
+  - {fileID: 989419758299023129, guid: c933714434e2614449f2dc3897579c04, type: 3}
+  - {fileID: 989419758299023129, guid: a04c558ca6e36144b96ff55262e20213, type: 3}
+  - {fileID: 989419758299023129, guid: 3bdb71e664bd6b04b8a31714d4f80af1, type: 3}
+  - {fileID: 989419758299023129, guid: 12f046133bc53d3479a1c6d493ab06cb, type: 3}
+  - {fileID: 989419758299023129, guid: 4dbc8d69ef10dd44d86e0d8c2562e45a, type: 3}
   npcRooms: []
   bossRooms: []
   artifactRooms: []

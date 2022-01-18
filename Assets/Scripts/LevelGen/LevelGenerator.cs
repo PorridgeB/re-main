@@ -172,7 +172,7 @@ public class LevelGenerator : MonoBehaviour
                 pool = combatRooms;
                 break;
             case 't':
-                //pool = trapRooms;
+                pool = trapRooms;
                 break;
             case 'o':
                 //pool = obstacleRooms;
