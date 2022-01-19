@@ -1198,10 +1198,10 @@ MonoBehaviour:
   - {fileID: 989419758299023129, guid: 3fa679db11c80f74dbeb22d0bc473b37, type: 3}
   - {fileID: 989419758299023129, guid: 1cf8af850dc668a4689b9d9acdf72078, type: 3}
   finishRooms:
-  - {fileID: 989419758299023129, guid: 72eafce7ed7a3524dbc2ac8416daadab, type: 3}
-  - {fileID: 989419758299023129, guid: ce9bf224979ff2545b7b650fbe46e070, type: 3}
-  - {fileID: 989419758299023129, guid: 6983c48b56498214c8c699727dae9c2a, type: 3}
-  - {fileID: 989419758299023129, guid: 25de3bf45fac694418dc0a4e39661007, type: 3}
+  - {fileID: 989419758299023129, guid: 442bfc9dd4f03354fb33bd3d8584b30c, type: 3}
+  - {fileID: 989419758299023129, guid: 78bd957eab66e0b478a7ce2bf0448d02, type: 3}
+  - {fileID: 989419758299023129, guid: b6b2b92c67538e84aa4f6f2d79ebfb13, type: 3}
+  - {fileID: 989419758299023129, guid: f66d875f59d30004aba86c41a583caf9, type: 3}
   rewardRooms:
   - {fileID: 989419758299023129, guid: c1f4041cf48eb6243a9f637e84621c46, type: 3}
   - {fileID: 989419758299023129, guid: 55fd794c0ad77e4439b16179e170cdc5, type: 3}

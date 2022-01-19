@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6867976489319204350}
   - component: {fileID: 1190692585394875130}
   - component: {fileID: 5683499886205144497}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TrapA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,6 +950,7 @@ MonoBehaviour:
   - {fileID: 8523410104408146550}
   - {fileID: 1487512895990416442}
   budget: 0
+  enemies: []
 --- !u!1 &1195826400718298240
 GameObject:
   m_ObjectHideFlags: 0

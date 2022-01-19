@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1190692585394875130}
   - component: {fileID: 2251013610909116966}
   - component: {fileID: 8152779464363235924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NPCA
   m_TagString: Untagged
   m_Icon: {fileID: 0}

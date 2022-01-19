@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 1190692585394875130}
   - component: {fileID: 2251013610909116966}
   - component: {fileID: 3293845155727313463}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArtifactC
   m_TagString: Untagged
   m_Icon: {fileID: 0}

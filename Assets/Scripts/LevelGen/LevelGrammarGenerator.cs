@@ -97,8 +97,7 @@ public class LevelGrammarGenerator : MonoBehaviour
             CombineBranches();
         }
         
-        PlaceFinish();
-        levelTemplate += deadEnds[Random.Range(0, deadEnds.Count)];
+        levelTemplate += 'f';
         levelTemplate = PlaceBranches(levelTemplate);
         return levelTemplate;
     }
@@ -111,12 +110,6 @@ public class LevelGrammarGenerator : MonoBehaviour
             level = level.Insert(pos, branch);
         }
         return level;
-    }
-
-    private void PlaceFinish()
-    {
-        string branch = branches[branches.Count-1];
-        branches[branches.Count - 1] = branch.Insert(branch.IndexOf(')')-1 , "f");
     }
 
     private void CombineBranches()

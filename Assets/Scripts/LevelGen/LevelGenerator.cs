@@ -181,7 +181,7 @@ public class LevelGenerator : MonoBehaviour
                 //pool = hallways;
                 break;
             case 'r':
-                //pool = rewardRooms;
+                pool = rewardRooms;
                 break;
             case 'n':
                 pool = npcRooms;
@@ -193,7 +193,7 @@ public class LevelGenerator : MonoBehaviour
                 pool = artifactRooms;
                 break;
             case 'f':
-                //pool = finishRooms;
+                pool = finishRooms;
                 break;
             case '-':
                 //pool = hallways;

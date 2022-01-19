@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6867976489319204350}
   - component: {fileID: 1190692585394875130}
   - component: {fileID: 4657052127418929233}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CombatRoomJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,97 +121,97 @@ MonoBehaviour:
       id: 0
   - Position: {x: 12, y: 9}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 12, y: 10}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 12, y: 11}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 12, y: 12}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 11, y: 8}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 11, y: 9}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 11, y: 10}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 11, y: 11}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 11, y: 12}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 11, y: 13}
     Tile:
-      id: 1
+      id: 3
   - Position: {x: 11, y: 14}
     Tile:
-      id: 2
+      id: 4
   - Position: {x: 11, y: 15}
     Tile:
       id: 2
   - Position: {x: 11, y: 16}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 11, y: 17}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 10, y: 8}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 10, y: 9}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 10, y: 10}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 10, y: 11}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 10, y: 12}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 10, y: 13}
     Tile:
-      id: 1
+      id: 6
   - Position: {x: 10, y: 14}
     Tile:
-      id: 1
+      id: 7
   - Position: {x: 10, y: 15}
     Tile:
-      id: 1
+      id: 8
   - Position: {x: 10, y: 16}
     Tile:
-      id: 1
+      id: 8
   - Position: {x: 10, y: 17}
     Tile:
-      id: 1
+      id: 8
   - Position: {x: 9, y: 8}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 9, y: 9}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 9, y: 10}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 9, y: 11}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 9, y: 12}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 9, y: 13}
     Tile:
-      id: 3
+      id: 9
   - Position: {x: 9, y: 14}
     Tile:
-      id: 0
+      id: 2
   - Position: {x: 9, y: 15}
     Tile:
       id: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
       id: 0
   - Position: {x: 8, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 8, y: 9}
     Tile:
       id: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
       id: 0
   - Position: {x: 8, y: 13}
     Tile:
-      id: 5
+      id: 11
   - Position: {x: 8, y: 14}
     Tile:
       id: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
       id: 0
   - Position: {x: 7, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 9}
     Tile:
       id: 0
@@ -283,586 +283,586 @@ MonoBehaviour:
       id: 0
   - Position: {x: 6, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 9}
     Tile:
       id: 0
   - Position: {x: 6, y: 10}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 6, y: 11}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 6, y: 12}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 6, y: 13}
     Tile:
-      id: 7
+      id: 13
   - Position: {x: 6, y: 14}
     Tile:
-      id: 8
+      id: 14
   - Position: {x: 6, y: 15}
     Tile:
-      id: 9
+      id: 15
   - Position: {x: 6, y: 16}
     Tile:
-      id: 10
+      id: 16
   - Position: {x: 6, y: 17}
     Tile:
-      id: 11
+      id: 17
   - Position: {x: 5, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 9}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 10}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 11}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 12}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 13}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 14}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 15}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 16}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 5, y: 17}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 4, y: 9}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 10}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 11}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 12}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 13}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 14}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 15}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 16}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 4, y: 17}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 3, y: 9}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 10}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 11}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 12}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 13}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 14}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 15}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 16}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 3, y: 17}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 2, y: 9}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 10}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 11}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 12}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 13}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 14}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 15}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 16}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 2, y: 17}
     Tile:
-      id: 6
+      id: 12
   - Position: {x: 16, y: 13}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 15, y: 13}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 14, y: 13}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 13, y: 13}
     Tile:
-      id: 12
+      id: 18
   - Position: {x: 12, y: 13}
     Tile:
-      id: 13
+      id: 19
   - Position: {x: 12, y: 14}
     Tile:
       id: 2
   - Position: {x: 12, y: 15}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 12, y: 16}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 12, y: 17}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 12, y: 18}
     Tile:
       id: 1
   - Position: {x: 11, y: 18}
     Tile:
-      id: 14
+      id: 20
   - Position: {x: 10, y: 18}
     Tile:
       id: 1
   - Position: {x: 9, y: 18}
     Tile:
-      id: 15
+      id: 21
   - Position: {x: 8, y: 18}
     Tile:
-      id: 16
+      id: 22
   - Position: {x: 7, y: 18}
     Tile:
-      id: 17
+      id: 23
   - Position: {x: 6, y: 18}
     Tile:
-      id: 17
+      id: 23
   - Position: {x: 5, y: 18}
     Tile:
-      id: 17
+      id: 23
   - Position: {x: 4, y: 18}
     Tile:
-      id: 18
+      id: 24
   - Position: {x: 3, y: 18}
     Tile:
-      id: 18
+      id: 24
   - Position: {x: 2, y: 18}
     Tile:
-      id: 18
+      id: 24
   - Position: {x: 1, y: 18}
     Tile:
-      id: 18
+      id: 24
   - Position: {x: 1, y: 7}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 1, y: 8}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 1, y: 9}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 10}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 11}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 12}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 13}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 14}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 15}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 16}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 1, y: 17}
     Tile:
-      id: 20
+      id: 26
   - Position: {x: 17, y: 7}
     Tile:
-      id: 21
+      id: 27
   - Position: {x: 16, y: 7}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 15, y: 7}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 14, y: 7}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 13, y: 7}
     Tile:
       id: 1
   - Position: {x: 12, y: 7}
     Tile:
-      id: 23
+      id: 29
   - Position: {x: 11, y: 7}
     Tile:
-      id: 24
+      id: 30
   - Position: {x: 10, y: 7}
     Tile:
-      id: 25
+      id: 31
   - Position: {x: 9, y: 7}
     Tile:
-      id: 26
+      id: 32
   - Position: {x: 8, y: 7}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 7}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 7}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 7}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 4, y: 7}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 3, y: 7}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 2, y: 7}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 17, y: 8}
     Tile:
-      id: 27
+      id: 33
   - Position: {x: 17, y: 9}
     Tile:
-      id: 28
+      id: 34
   - Position: {x: 17, y: 10}
     Tile:
-      id: 28
+      id: 34
   - Position: {x: 17, y: 11}
     Tile:
-      id: 28
+      id: 34
   - Position: {x: 17, y: 12}
     Tile:
-      id: 29
+      id: 35
   - Position: {x: 17, y: 13}
     Tile:
       id: 1
   - Position: {x: 0, y: 7}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 0, y: 8}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 0, y: 9}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 0, y: 10}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 0, y: 11}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 0, y: 12}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 0, y: 13}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 0, y: 14}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 0, y: 15}
     Tile:
-      id: 31
+      id: 37
   - Position: {x: 0, y: 16}
     Tile:
-      id: 31
+      id: 37
   - Position: {x: 0, y: 17}
     Tile:
-      id: 31
+      id: 37
   - Position: {x: 0, y: 18}
     Tile:
-      id: 30
+      id: 36
   - Position: {x: 8, y: 1}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 8, y: 2}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 8, y: 3}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 8, y: 4}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 8, y: 5}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 8, y: 6}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 1}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 2}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 3}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 4}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 5}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 7, y: 6}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 1}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 2}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 3}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 4}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 5}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 6, y: 6}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 1}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 2}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 3}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 4}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 5}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 5, y: 6}
     Tile:
-      id: 4
+      id: 10
   - Position: {x: 4, y: 1}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 4, y: 2}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 4, y: 3}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 4, y: 4}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 4, y: 5}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 4, y: 6}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 12, y: 1}
     Tile:
-      id: 32
+      id: 38
   - Position: {x: 12, y: 2}
     Tile:
-      id: 33
+      id: 39
   - Position: {x: 12, y: 3}
     Tile:
-      id: 34
+      id: 40
   - Position: {x: 12, y: 4}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 12, y: 5}
     Tile:
-      id: 35
+      id: 42
   - Position: {x: 12, y: 6}
     Tile:
-      id: 35
+      id: 43
   - Position: {x: 11, y: 1}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 11, y: 2}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 11, y: 3}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 11, y: 4}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 11, y: 5}
     Tile:
-      id: 35
+      id: 44
   - Position: {x: 11, y: 6}
     Tile:
-      id: 35
+      id: 45
   - Position: {x: 10, y: 1}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 10, y: 2}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 10, y: 3}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 10, y: 4}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 10, y: 5}
     Tile:
-      id: 35
+      id: 46
   - Position: {x: 10, y: 6}
     Tile:
-      id: 35
+      id: 47
   - Position: {x: 9, y: 1}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 9, y: 2}
     Tile:
-      id: 35
+      id: 48
   - Position: {x: 9, y: 3}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 9, y: 4}
     Tile:
-      id: 35
+      id: 41
   - Position: {x: 9, y: 5}
     Tile:
-      id: 35
+      id: 49
   - Position: {x: 9, y: 6}
     Tile:
-      id: 35
+      id: 50
   - Position: {x: 16, y: 1}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 16, y: 2}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 16, y: 3}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 16, y: 4}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 16, y: 5}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 16, y: 6}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 15, y: 1}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 15, y: 2}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 15, y: 3}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 15, y: 4}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 15, y: 5}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 15, y: 6}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 14, y: 1}
     Tile:
-      id: 36
+      id: 51
   - Position: {x: 14, y: 2}
     Tile:
-      id: 37
+      id: 52
   - Position: {x: 14, y: 3}
     Tile:
-      id: 38
+      id: 53
   - Position: {x: 14, y: 4}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 14, y: 5}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 14, y: 6}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 13, y: 1}
     Tile:
-      id: 39
+      id: 54
   - Position: {x: 13, y: 2}
     Tile:
-      id: 40
+      id: 55
   - Position: {x: 13, y: 3}
     Tile:
-      id: 41
+      id: 56
   - Position: {x: 13, y: 4}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 13, y: 5}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 13, y: 6}
     Tile:
-      id: 22
+      id: 28
   - Position: {x: 17, y: 14}
     Tile:
       id: 1
@@ -892,112 +892,112 @@ MonoBehaviour:
       id: 1
   - Position: {x: 16, y: 14}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 16, y: 15}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 16, y: 16}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 16, y: 17}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 15, y: 14}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 15, y: 15}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 15, y: 16}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 15, y: 17}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 14, y: 14}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 14, y: 15}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 14, y: 16}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 14, y: 17}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 13, y: 14}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 13, y: 15}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 13, y: 16}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 13, y: 17}
     Tile:
-      id: 2
+      id: 5
   - Position: {x: 17, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 17, y: 1}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 17, y: 2}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 17, y: 3}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 17, y: 4}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 17, y: 5}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 17, y: 6}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 16, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 15, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 14, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 13, y: 0}
     Tile:
-      id: 42
+      id: 57
   - Position: {x: 12, y: 0}
     Tile:
-      id: 42
+      id: 57
   - Position: {x: 11, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 10, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 9, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 8, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 7, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 6, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 5, y: 0}
     Tile:
-      id: 19
+      id: 25
   - Position: {x: 4, y: 0}
     Tile:
-      id: 19
+      id: 25
   references:
     version: 1
     00000000:
@@ -1014,9 +1014,10 @@ MonoBehaviour:
       data:
         Sprite: Floor_4
     00000003:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000004:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
@@ -1026,13 +1027,15 @@ MonoBehaviour:
       data:
         Sprite: Floor_4
     00000006:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000007:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000008:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
@@ -1050,35 +1053,29 @@ MonoBehaviour:
       data:
         Sprite: Floor_4
     0000000C:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     0000000D:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     0000000E:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     0000000F:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000010:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000011:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     00000012:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
@@ -1090,18 +1087,20 @@ MonoBehaviour:
         Trim: WallTrim_0
         Sprite: Wall_0
     00000014:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000015:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
         Trim: WallTrim_0
         Sprite: Wall_0
     00000016:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000017:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
@@ -1118,10 +1117,9 @@ MonoBehaviour:
         Trim: WallTrim_0
         Sprite: Wall_0
     0000001A:
-      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
-        Trim: WallTrim_0
-        Sprite: Wall_0
+        Sprite: Floor_4
     0000001B:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
@@ -1142,54 +1140,128 @@ MonoBehaviour:
         Trim: WallTrim_0
         Sprite: Wall_0
     0000001F:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000020:
-      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Side: PitSide_0
-        Bottom: PitBottom_0
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000021:
-      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
-        Side: PitSide_0
-        Bottom: PitBottom_0
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000022:
-      type: {class: PitTile, ns: , asm: Assembly-CSharp}
-      data:
-        Side: PitSide_0
-        Bottom: PitBottom_0
-    00000023:
-      type: {class: PitTile, ns: , asm: Assembly-CSharp}
-      data:
-        Side: PitSide_0
-        Bottom: PitBottom_0
-    00000024:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
+    00000023:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
+    00000024:
+      type: {class: WallTile, ns: , asm: Assembly-CSharp}
+      data:
+        Trim: WallTrim_0
+        Sprite: Wall_0
     00000025:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
     00000026:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Side: PitSide_0
+        Bottom: PitBottom_0
     00000027:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Side: PitSide_0
+        Bottom: PitBottom_0
     00000028:
-      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
       data:
-        Sprite: Floor_4
+        Side: PitSide_0
+        Bottom: PitBottom_0
     00000029:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000002A:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000002B:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000002C:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000002D:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000002E:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    0000002F:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    00000030:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    00000031:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    00000032:
+      type: {class: PitTile, ns: , asm: Assembly-CSharp}
+      data:
+        Side: PitSide_0
+        Bottom: PitBottom_0
+    00000033:
       type: {class: FloorTile, ns: , asm: Assembly-CSharp}
       data:
         Sprite: Floor_4
-    0000002A:
+    00000034:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000035:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000036:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000037:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000038:
+      type: {class: FloorTile, ns: , asm: Assembly-CSharp}
+      data:
+        Sprite: Floor_4
+    00000039:
       type: {class: WallTile, ns: , asm: Assembly-CSharp}
       data:
         Trim: WallTrim_0
@@ -1318,6 +1390,51 @@ Transform:
   m_Father: {fileID: 672875148287564569}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3881079402779527151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7411467131093319484}
+  - component: {fileID: 6534369940578400082}
+  m_Layer: 12
+  m_Name: Dashable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7411467131093319484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881079402779527151}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4830248959993630614}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6534369940578400082
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881079402779527151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &3945951897222951389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,55 +1557,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 715545213276916079}
+  - {fileID: 7411467131093319484}
   m_Father: {fileID: 672875148287564569}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8902768599448208446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 715545213276916079}
-  - component: {fileID: 1075364117570190624}
-  m_Layer: 12
-  m_Name: Dashable
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &715545213276916079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8902768599448208446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4830248959993630614}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1075364117570190624
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8902768599448208446}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &1939934762506923488
 PrefabInstance:
   m_ObjectHideFlags: 0
