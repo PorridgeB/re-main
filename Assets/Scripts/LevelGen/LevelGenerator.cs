@@ -184,13 +184,13 @@ public class LevelGenerator : MonoBehaviour
                 //pool = rewardRooms;
                 break;
             case 'n':
-                //pool = npcRooms;
+                pool = npcRooms;
                 break;
             case 'b':
-                //pool = bossRooms;
+                pool = bossRooms;
                 break;
             case 'a':
-                //pool = artifactRooms;
+                pool = artifactRooms;
                 break;
             case 'f':
                 //pool = finishRooms;
@@ -202,7 +202,6 @@ public class LevelGenerator : MonoBehaviour
         
         foreach (GameObject go in pool){
             Room r = go.GetComponent<Room>();
-            Debug.Log(r.Passages.Count);
             if (r.HasSides(sides)){
                 if (r.Passages.Count == count) {
                     rooms.Add(go);

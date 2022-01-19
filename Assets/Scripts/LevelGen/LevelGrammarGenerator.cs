@@ -116,7 +116,7 @@ public class LevelGrammarGenerator : MonoBehaviour
     private void PlaceFinish()
     {
         string branch = branches[branches.Count-1];
-        branches[branches.Count - 1] = branch.Insert(branch.IndexOf(')') , "f");
+        branches[branches.Count - 1] = branch.Insert(branch.IndexOf(')')-1 , "f");
     }
 
     private void CombineBranches()

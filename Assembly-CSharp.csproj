@@ -742,6 +742,7 @@
     <Compile Include="Assets\Scripts\RaycastUtils.cs" />
     <Compile Include="Assets\Scripts\TargetSelector.cs" />
     <Compile Include="Assets\Scripts\PhaserProjectileRicochetEffect.cs" />
+    <Compile Include="Assets\Scripts\SpawnFromPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
