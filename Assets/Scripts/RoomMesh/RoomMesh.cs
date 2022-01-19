@@ -110,6 +110,16 @@ public class RoomMesh : MonoBehaviour, IEnumerable<TileContext>
         MoveToOrigin();
     }
 
+    public void FlipX()
+    {
+
+    }
+
+    public void FlipY()
+    {
+
+    }
+
     public void Rebuild()
     {
         if (Options == null)
@@ -269,7 +279,7 @@ public class RoomMesh : MonoBehaviour, IEnumerable<TileContext>
             neighbourTiles[i] = neighbourInstance?.Tile;
         }
 
-        return new TileNeighbours(neighbourTiles);
+        return new TileNeighbours { Tiles = neighbourTiles };
     }
 
     public IEnumerator<TileContext> GetEnumerator()

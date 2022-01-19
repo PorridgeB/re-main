@@ -6,8 +6,6 @@ using UnityEngine;
 [Serializable]
 public class PitTile : Tile
 {
-    public const float Depth = 1.5f;
-
     public override string PreviewSpriteName => Side;
 
     public string Side;
@@ -15,16 +13,24 @@ public class PitTile : Tile
 
     public override void AddMesh(TileMeshBuilder tileMeshBuilder, RoomMeshOptions options, Dictionary<string, Sprite> sprites, Vector2Int position, TileNeighbours neighbours)
     {
-        var bottomUvs = Bottom != null && sprites.ContainsKey(Bottom) ? sprites[Bottom].uv : null;
-        tileMeshBuilder.AddTile(new Vector3(position.x, -Depth, position.y), Vector2.one, Vector3.up, bottomUvs);
+        if (Side == null || !sprites.ContainsKey(Side))
+        {
+            return;
+        }
 
+        var depth = sprites[Side].rect.height / (float)sprites[Side].pixelsPerUnit;
+
+        if (Bottom != null && sprites.ContainsKey(Bottom))
+        {
+            tileMeshBuilder.AddTile(new Vector3(position.x, -depth, position.y), Vector2.one, Vector3.up, sprites[Bottom].uv);
+        }
+        
         if (neighbours.North is PitTile)
         {
             return;
         }
 
-        var sideUvs = Side != null && sprites.ContainsKey(Side) ? sprites[Side].uv : null;
-        tileMeshBuilder.AddTile(new Vector3(position.x, -Depth, position.y + 1), new Vector2(1, Depth), Vector3.back, sideUvs);
+        tileMeshBuilder.AddTile(new Vector3(position.x, -depth, position.y + 1), new Vector2(1, depth), Vector3.back, sprites[Side].uv);
     }
 
     public override void AddLayerCollisionMeshes(Dictionary<string, TileMeshBuilder> meshes, Vector2Int position, TileNeighbours neighbours)
