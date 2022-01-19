@@ -112,12 +112,22 @@ public class RoomMesh : MonoBehaviour, IEnumerable<TileContext>
 
     public void FlipX()
     {
+        var rect = GetRect();
 
+        foreach (var instance in Tiles)
+        {
+            instance.Position = new Vector2Int(rect.width - instance.Position.x, instance.Position.y);
+        }
     }
 
     public void FlipY()
     {
+        var rect = GetRect();
 
+        foreach (var instance in Tiles)
+        {
+            instance.Position = new Vector2Int(instance.Position.x, rect.height - instance.Position.y);
+        }
     }
 
     public void Rebuild()
