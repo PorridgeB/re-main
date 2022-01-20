@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class ResourcesBar : MonoBehaviour
 {
-    public int DataFragments = 31;
-    public int Scrap = 22;
+    public Counter DataFragmentsCounter;
+    public Counter ScrapCounter;
 
     private void Start()
     {
-        var rectTrans = GetComponent<RectTransform>();
+        DataFragmentsCounter.SetValue(0);
+        ScrapCounter.SetValue(0);
 
-        LeanTween.moveY(rectTrans, rectTrans.rect.height, 1).setEaseInOutExpo().setLoopPingPong();
+        //var rectTrans = GetComponent<RectTransform>();
+        //LeanTween.moveY(rectTrans, rectTrans.rect.height, 1).setEaseInOutExpo().setLoopPingPong();
+    }
+    
+    private void Update()
+    {
     }
 }
