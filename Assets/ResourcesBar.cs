@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ResourcesBar : MonoBehaviour
 {
-    public Counter DataFragmentsCounter;
-    public Counter ScrapCounter;
+    [SerializeField]
+    private Counter dataFragmentsCounter;
+    [SerializeField]
+    private Counter scrapCounter;
 
     private void Start()
     {
-        DataFragmentsCounter.SetValue(0);
-        ScrapCounter.SetValue(0);
+        dataFragmentsCounter.SetValue(0);
+        scrapCounter.SetValue(0);
 
         //var rectTrans = GetComponent<RectTransform>();
         //LeanTween.moveY(rectTrans, rectTrans.rect.height, 1).setEaseInOutExpo().setLoopPingPong();
