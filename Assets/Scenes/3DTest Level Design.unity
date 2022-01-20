@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -4763,6 +4763,18 @@ PrefabInstance:
       objectReference: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
     - target: {fileID: 4505106388035379476, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
       propertyPath: health.UseConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808116222799587349, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808116222799587349, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808116222799587349, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
