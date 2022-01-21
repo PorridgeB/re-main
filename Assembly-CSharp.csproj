@@ -412,6 +412,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\GetCenter.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\CompareTo.cs" />
+    <Compile Include="Assets\Scripts\Counter.cs" />
     <Compile Include="Assets\Scripts\Ink\Character.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\GameObject\FindGameObjectsWithTag.cs" />
     <Compile Include="Assets\Scripts\PhaserProjectileRicochetEffect.cs" />
@@ -712,6 +713,7 @@
     <Compile Include="Assets\Scripts\InkManager.cs" />
     <Compile Include="Assets\Scripts\Tasks\ResetTimer.cs" />
     <Compile Include="Assets\Scripts\Modules\PowerReserves.cs" />
+    <Compile Include="Assets\Scripts\ResourcesBar.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\GetSpeed.cs" />
     <Compile Include="Assets\Scripts\DamageInstance.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\AttackEvent.cs" />
@@ -774,8 +776,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\ResourcesBar.cs" />
-    <Compile Include="Assets\Counter.cs" />
+    <Compile Include="Assets\PauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
