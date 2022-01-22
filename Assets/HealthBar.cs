@@ -7,7 +7,6 @@ public class HealthBar : MonoBehaviour
 {
     public Camera Camera;
     public GameObject Object;
-    //public float HealthPercentage = 1;
 
     [SerializeField]
     private RectTransform Foreground;

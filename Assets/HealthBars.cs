@@ -1,3 +1,4 @@
+using System.Linq;
 using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,18 +11,23 @@ public class HealthBars : MonoBehaviour
 
     private void Start()
     {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(x => x.GetComponent<Enemy>()).Where(x => ShowHealthBar(x));
 
         foreach (var enemy in enemies)
         {
             var healthBar = Instantiate(HealthBarPrefab, transform).GetComponent<HealthBar>();
 
-            healthBar.Object = enemy;
+            healthBar.Object = enemy.gameObject;
             healthBar.Camera = Camera;
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+    }
+
+    private bool ShowHealthBar(Enemy enemy)
+    {
+        return true;
     }
 }
