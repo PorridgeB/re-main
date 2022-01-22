@@ -690,7 +690,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\GetMinDistance.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetPosition.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\ClampMagnitude.cs" />
-    <Compile Include="Assets\MainMenuAnimations.cs" />
+    <Compile Include="Assets\Scripts\MainMenuAnimations.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedString.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\MoveRotation.cs" />
@@ -781,6 +781,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
+    <Compile Include="Assets\Scripts\QuitButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
