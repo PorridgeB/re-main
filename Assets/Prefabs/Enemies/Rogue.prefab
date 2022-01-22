@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tag: Player
-  DistanceFactor: 0.5
-  HealthFactor: 0.7
+  DistanceWeight: 0.5
+  HealthWeight: 0.7
 --- !u!114 &7049648073408164574
 MonoBehaviour:
   m_ObjectHideFlags: 0
