@@ -92,6 +92,9 @@ TextureImporter:
   - first:
       213: -7245433517681746672
     second: PitBottom_0
+  - first:
+      213: -251839660766796828
+    second: FloorSide_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -785,6 +788,27 @@ TextureImporter:
       bones: []
       spriteID: 01dded68a9c037b90800000000000000
       internalID: -7245433517681746672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorSide_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 72
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3e3afa929418cf0800000000000000
+      internalID: -251839660766796828
       vertices: []
       indices: 
       edges: []

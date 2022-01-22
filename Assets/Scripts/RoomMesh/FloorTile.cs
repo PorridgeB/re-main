@@ -26,7 +26,13 @@ public class FloorTile : Tile
         }
 
         tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), Vector2Int.one, Vector3Int.up, sprites[Sprite]?.uv, colors);
+
+        //if (neighbours.South == null)
+        //{
+        //    tileMeshBuilder.AddTile(new Vector3(position.x, -1, position.y), new Vector2(1, 1), Vector3.back, sprites[Sprite]?.uv);
+        //}
     }
+
     public override void AddCollisionMesh(TileMeshBuilder tileMeshBuilder, Vector2Int position, TileNeighbours neighbours)
     {
         tileMeshBuilder.AddTile(new Vector3Int(position.x, 0, position.y), Vector2Int.one, Vector3Int.up);
