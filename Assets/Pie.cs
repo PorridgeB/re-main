@@ -8,7 +8,7 @@ public class Pie : Graphic
 {
     public float Radius = 20;
     public float Thickness = 2;
-    public int Layers = 3;
+    public int Rings = 3;
     public int Lines = 5;
     public int Segments = 16;
 
@@ -16,9 +16,9 @@ public class Pie : Graphic
     {
         vh.Clear();
 
-        for (int i = 0; i < Layers; i++)
+        for (int i = 0; i < Rings; i++)
         {
-            GraphicShapes.AddCircle(vh, color, Radius * ((i + 1) / (float)Layers), Thickness, Segments);
+            GraphicShapes.AddCircle(vh, color, Radius * ((i + 1) / (float)Rings), Thickness, Segments);
         }
 
         for (int i = 0; i < Lines; i++)

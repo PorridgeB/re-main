@@ -13,6 +13,11 @@ public class WithinRange : Conditional
 
     public override TaskStatus OnUpdate()
     {
+        if (Target.Value == null)
+        {
+            return TaskStatus.Failure;
+        }
+
         var distanceToTarget = Vector3.Distance(Target.Value.transform.position, transform.position);
 
         return distanceToTarget < Distance.Value ? TaskStatus.Success : TaskStatus.Failure;
