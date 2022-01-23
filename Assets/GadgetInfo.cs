@@ -14,6 +14,15 @@ public class GadgetInfo : MonoBehaviour
 
     public void SetGadget(Gadget gadget)
     {
+        if (gadget == null)
+        {
+            name.text = "Name";
+            description.text = "Description";
+            cost.text = "100 <sprite=1>";
+
+            return;
+        }
+
         name.text = gadget.Name;
         description.text = gadget.Description;
         cost.text = $"{gadget.Cost} <sprite=1>";

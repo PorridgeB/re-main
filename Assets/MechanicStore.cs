@@ -22,6 +22,8 @@ public class MechanicStore : MonoBehaviour
             
             gadgetRow.Gadget = gadget;
         }
+
+        SelectGadget(gadgets.FirstOrDefault());
     }
 
     private void SelectGadget(Gadget gadget)
