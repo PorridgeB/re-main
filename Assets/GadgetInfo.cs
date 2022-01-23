@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class GadgetInfo : MonoBehaviour
 {
-    public TextMeshProUGUI Name;
-    public TextMeshProUGUI Description;
-    public TextMeshProUGUI Cost;
+    [SerializeField]
+    private TextMeshProUGUI name;
+    [SerializeField]
+    private TextMeshProUGUI description;
+    [SerializeField]
+    private TextMeshProUGUI cost;
 
     public void SetGadget(Gadget gadget)
     {
-        Name.text = gadget.Name;
-        Description.text = gadget.Description;
-        Cost.text = gadget.Cost.ToString();
+        name.text = gadget.Name;
+        description.text = gadget.Description;
+        cost.text = gadget.Cost.ToString();
     }
 }

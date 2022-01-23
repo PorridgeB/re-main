@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,6 +13,8 @@ public class MechanicStore : MonoBehaviour
     private void Start()
     {
         var gadgets = Resources.LoadAll<Gadget>("Gadgets");
+
+        gadgets = gadgets.OrderBy(x => x.Cost).ToArray();
 
         foreach (var gadget in gadgets)
         {
