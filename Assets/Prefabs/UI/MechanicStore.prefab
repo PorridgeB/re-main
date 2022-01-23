@@ -129,7 +129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 100 <sprite=1>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1415e35e116a394eb2e588583eaf613, type: 2}
   m_sharedMaterial: {fileID: -4072116164706997164, guid: b1415e35e116a394eb2e588583eaf613, type: 2}
@@ -148,7 +148,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 019ac2f533ac8ed4ab66be373c67565c, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Scrap - 120
+  m_text: 120 <sprite=1>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1415e35e116a394eb2e588583eaf613, type: 2}
   m_sharedMaterial: {fileID: -4072116164706997164, guid: b1415e35e116a394eb2e588583eaf613, type: 2}
@@ -999,7 +999,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 019ac2f533ac8ed4ab66be373c67565c, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

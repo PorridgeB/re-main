@@ -19,7 +19,7 @@ public class GadgetRow : MonoBehaviour
     private void Start()
     {
         name.text = Gadget.Name;
-        cost.text = Gadget.Cost.ToString();
+        cost.text = $"{Gadget.Cost} <sprite=1>";
     }
 
     public void Select()

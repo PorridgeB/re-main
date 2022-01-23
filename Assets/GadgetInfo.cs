@@ -16,6 +16,6 @@ public class GadgetInfo : MonoBehaviour
     {
         name.text = gadget.Name;
         description.text = gadget.Description;
-        cost.text = gadget.Cost.ToString();
+        cost.text = $"{gadget.Cost} <sprite=1>";
     }
 }
