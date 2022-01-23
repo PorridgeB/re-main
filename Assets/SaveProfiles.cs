@@ -1,6 +1,8 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveProfiles : MonoBehaviour
 {
@@ -22,10 +24,18 @@ public class SaveProfiles : MonoBehaviour
 
         Debug.Log(JsonUtility.ToJson(save));
 
-        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
+        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>().Take(2))
         {
             saveProfile.Save = save;
             saveProfile.Refresh();
+        }
+
+        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
+        {
+            if (saveProfile.Save == null)
+            {
+                saveProfile.Interactable = false;
+            }
         }
     }
 

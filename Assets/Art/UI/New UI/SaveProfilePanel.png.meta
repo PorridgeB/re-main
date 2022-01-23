@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -5133931850866742603
     second: SaveProfilePanel_Pressed
+  - first:
+      213: -7846998221391753743
+    second: SaveProfilePanel_Disabled
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,11 +107,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
+        y: 150
         width: 317
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,11 +128,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 50
+        y: 100
         width: 317
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,6 +149,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 50
+        width: 317
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba2600be2c90c8b0800000000000000
+      internalID: -5133931850866742603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaveProfilePanel_Disabled
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 317
         height: 50
@@ -156,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ba2600be2c90c8b0800000000000000
-      internalID: -5133931850866742603
+      spriteID: 1fd82dc51bcd91390800000000000000
+      internalID: -7846998221391753743
       vertices: []
       indices: 
       edges: []

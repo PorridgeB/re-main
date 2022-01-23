@@ -3,9 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveProfile : MonoBehaviour
 {
+    public bool Interactable
+    {
+        set
+        {
+            var button = GetComponent<Button>();
+            button.interactable = value;
+
+            contents.color = value ? new Color(0, 0.5843138f, 0.9137255f) : Color.gray;
+        }
+    }
+
     [SerializeReference]
     public Save Save;
 
