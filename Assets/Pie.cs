@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Pie : MonoBehaviour
+[ExecuteAlways]
+public class Pie : Graphic
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int Layers = 3;
+    public int Lines = 5;
+    public float Radius = 20;
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnPopulateMesh(VertexHelper vh)
     {
-        
     }
 }

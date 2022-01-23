@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2261217678007269428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -125,6 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9a58579be21e3468d10f64477bad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  Layers: 0
+  Lines: 5
+  Radius: 20
 --- !u!1 &4597631341947822436
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,11 +193,11 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  OuterRadius: 11.76
-  InnerRadius: 9.8
+  OuterRadius: 10
+  InnerRadius: 5
   MinArcAngle: 0
-  MaxArcAngle: 647.8
-  Segments: 18
+  MaxArcAngle: 180
+  Segments: 16
 --- !u!1 &6373026390096058587
 GameObject:
   m_ObjectHideFlags: 0
