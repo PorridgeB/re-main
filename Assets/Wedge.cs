@@ -17,30 +17,6 @@ public class Wedge : Graphic
     {
         vh.Clear();
 
-        var vert = UIVertex.simpleVert;
-
-        //vert.position = new Vector2();
-        //vert.color = color;
-        //vh.AddVert(vert);
-
-        for (int i = 0; i < Segments + 1; i++)
-        {
-            var angle = (MinArcAngle + (MaxArcAngle - MinArcAngle) * (i / (float)Segments)) * Mathf.Deg2Rad;
-            var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-
-            vert.position = direction * InnerRadius;
-            vert.color = color;
-            vh.AddVert(vert);
-
-            vert.position = direction * OuterRadius;
-            vert.color = color;
-            vh.AddVert(vert);
-
-            if (i < Segments)
-            {
-                vh.AddTriangle(i * 2, i * 2 + 2, i * 2 + 1);
-                vh.AddTriangle(i * 2 + 1, i * 2 + 2, i * 2 + 3);
-            }
-        }
+        GraphicShapes.AddArc(vh, color, OuterRadius, InnerRadius, MinArcAngle, MaxArcAngle, Segments);
     }
 }
