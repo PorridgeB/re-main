@@ -794,6 +794,7 @@
     <Compile Include="Assets\Pie.cs" />
     <Compile Include="Assets\GraphicShapes.cs" />
     <Compile Include="Assets\Chart.cs" />
+    <Compile Include="Assets\Options.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
