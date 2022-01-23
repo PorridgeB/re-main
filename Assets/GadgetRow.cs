@@ -13,6 +13,7 @@ public class GadgetRow : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI cost;
 
+    [HideInInspector]
     public Gadget Gadget;
 
     private void Start()
