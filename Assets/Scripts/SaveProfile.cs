@@ -21,6 +21,6 @@ public class SaveProfile : MonoBehaviour
         var dataFragments = 0;
         var scrap = 0;
 
-        Text.text = $"Total Time - {totalTime}\tStory - {story}%\nData Fragments - {dataFragments}\tScrap - {scrap}";
+        Text.text = $"Total Time - {totalTime}\tStory - {story}%\n{dataFragments} <sprite=0>\t{scrap} <sprite=1>";
     }
 }
