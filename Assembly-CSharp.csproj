@@ -795,6 +795,9 @@
     <Compile Include="Assets\Scripts\GraphicShapes.cs" />
     <Compile Include="Assets\Scripts\Chart.cs" />
     <Compile Include="Assets\Scripts\Options.cs" />
+    <Compile Include="Assets\Scripts\Save.cs" />
+    <Compile Include="Assets\SaveProfiles.cs" />
+    <Compile Include="Assets\Loadout.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

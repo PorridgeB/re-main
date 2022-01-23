@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448977, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Name
-      value: SaveProfile (1)
+      value: SaveProfile2
       objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448978, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Pivot.x
@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 656658705}
   - component: {fileID: 656658707}
   - component: {fileID: 656658706}
+  - component: {fileID: 656658708}
   m_Layer: 5
   m_Name: SaveProfiles
   m_TagString: Untagged
@@ -921,6 +922,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656658704}
   m_CullTransparentMesh: 1
+--- !u!114 &656658708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656658704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4d81b91f6dd66468707eec952f7fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentMode: 0
+  profiles: {fileID: 203908542}
 --- !u!1 &757971306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448977, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Name
-      value: SaveProfile (2)
+      value: SaveProfile3
       objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448978, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Pivot.x
@@ -2608,7 +2623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448977, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Name
-      value: SaveProfile (3)
+      value: SaveProfile4
       objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448978, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Pivot.x
@@ -3457,9 +3472,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.55609894
       objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331830442194237472, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448977, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Name
-      value: SaveProfile
+      value: SaveProfile1
       objectReference: {fileID: 0}
     - target: {fileID: 9099362196805448978, guid: 0961df969ba82674aa98c9db3b7963f8, type: 3}
       propertyPath: m_Pivot.x
