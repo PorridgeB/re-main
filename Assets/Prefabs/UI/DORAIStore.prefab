@@ -140,7 +140,7 @@ MonoBehaviour:
   Radius: 50
   Thickness: 1
   Rings: 3
-  Lines: 5
+  Lines: 3
   Segments: 32
 --- !u!1 &2351133856069519778
 GameObject:

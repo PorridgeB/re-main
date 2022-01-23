@@ -28,6 +28,7 @@ public class Chart : MonoBehaviour
 
         var outerRadius = (ring + 1) * (Pie.Radius / Pie.Rings);
         var innerRadius = ring * (Pie.Radius / Pie.Rings);
+        
         var minArcAngle = line * (180 / Pie.Lines);
         var maxArcAngle = (line + 1) * (180 / Pie.Lines);
 
