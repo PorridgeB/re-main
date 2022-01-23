@@ -78,7 +78,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\Inverter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\TaskGuard.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
-    <Compile Include="Assets\MechanicStore.cs" />
+    <Compile Include="Assets\Scripts\MechanicStore.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetEnableEmission.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\SetLoop.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\IsChildOf.cs" />
@@ -97,7 +97,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\AddTorque.cs" />
     <Compile Include="Assets\Scripts\Tasks\Knockback.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\Sleep.cs" />
-    <Compile Include="Assets\HealthBars.cs" />
+    <Compile Include="Assets\Scripts\HealthBars.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\GetCookieSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\PlayDelayed.cs" />
@@ -250,7 +250,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\Selector.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Input\IsKeyDown.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\AddForceAtPosition.cs" />
-    <Compile Include="Assets\Popup.cs" />
+    <Compile Include="Assets\Scripts\Popup.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SetSharedTransform.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\PlayerPrefs\SetInt.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\SetXY.cs" />
@@ -258,7 +258,7 @@
     <Compile Include="Assets\Scripts\GroupManager.cs" />
     <Compile Include="Assets\Scripts\Crosshair.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Player\PlayerIdle.cs" />
-    <Compile Include="Assets\DORAIStore.cs" />
+    <Compile Include="Assets\Scripts\DORAIStore.cs" />
     <Compile Include="Assets\Scripts\DataFragments.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animation\Stop.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Physics\Spherecast.cs" />
@@ -465,7 +465,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\GetUpVector.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Actions\Reflection\InvokeMethod.cs" />
     <Compile Include="Assets\Scripts\Observation.cs" />
-    <Compile Include="Assets\GadgetInfo.cs" />
+    <Compile Include="Assets\Scripts\GadgetInfo.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetLoop.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\UntilSuccess.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SharedGameObjectToTransform.cs" />
@@ -527,7 +527,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\WakeUp.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\IsPaused.cs" />
     <Compile Include="Assets\Scripts\DiveState.cs" />
-    <Compile Include="Assets\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetPosition.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\SetLookAtPosition.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\BehaviorTree.cs" />
@@ -605,14 +605,14 @@
     <Compile Include="Assets\Scripts\StateMachine\Player\PlayerRunning.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\GameObject\SendMessage.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\GetDestination.cs" />
-    <Compile Include="Assets\GadgetRow.cs" />
+    <Compile Include="Assets\Scripts\GadgetRow.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\SetTime.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Debug\LogFormat.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\BoxCollider2D\SetSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\RandomSequence.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetSpread.cs" />
-    <Compile Include="Assets\Wedge.cs" />
+    <Compile Include="Assets\Scripts\Wedge.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetShadowSoftnessFade.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SetSharedVector2.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
@@ -791,10 +791,10 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\Pie.cs" />
-    <Compile Include="Assets\GraphicShapes.cs" />
-    <Compile Include="Assets\Chart.cs" />
-    <Compile Include="Assets\Options.cs" />
+    <Compile Include="Assets\Scripts\Pie.cs" />
+    <Compile Include="Assets\Scripts\GraphicShapes.cs" />
+    <Compile Include="Assets\Scripts\Chart.cs" />
+    <Compile Include="Assets\Scripts\Options.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
