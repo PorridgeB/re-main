@@ -49,10 +49,10 @@ public class Wedge : Graphic
             vert.color = color;
             vh.AddVert(vert);
 
-            if (i < Segments)
+            if (i < Segments + 1)
             {
                 vh.AddTriangle(i, i + 1, i + 2);
-                vh.AddTriangle(i + 2, i + 3, i);
+                vh.AddTriangle(i + 1, i + 3, i + 2);
             }
         }
 

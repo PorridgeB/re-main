@@ -137,11 +137,11 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  OuterRadius: 26.16
-  InnerRadius: 11.61
-  MinArcAngle: 69.2
-  MaxArcAngle: 619.03
-  Segments: 19
+  OuterRadius: 18.4
+  InnerRadius: 9.8
+  MinArcAngle: -37.21
+  MaxArcAngle: 312.4
+  Segments: 12
 --- !u!1 &6373026390096058587
 GameObject:
   m_ObjectHideFlags: 0
