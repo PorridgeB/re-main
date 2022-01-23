@@ -16,6 +16,8 @@ public class HealthBar : MonoBehaviour
         if (Object == null)
         {
             Destroy(gameObject);
+
+            return;
         }
 
         var screenPoint = Camera.WorldToScreenPoint(Object.transform.position + new Vector3(0, 1.5f, 0));
