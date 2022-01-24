@@ -50,6 +50,8 @@ public class SaveProfiles : MonoBehaviour
             dialog.Prompt = "Are you sure you want to delete this save profile?";
             dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); Refresh(); };
 
+            delete.isOn = false;
+
             return;
         }
 
