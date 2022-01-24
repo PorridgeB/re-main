@@ -1043,6 +1043,7 @@ MonoBehaviour:
   CurrentMode: 0
   delete: {fileID: 1226245533}
   profiles: {fileID: 203908542}
+  yesNoDialog: {fileID: 7238142353429323147, guid: 8c34cf5087ec1cf4a8ad3e7621506875, type: 3}
 --- !u!1 &757971306
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,7 +3533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5275078815467868594, guid: df8b7a032b15d494bacbfceee26ee0ef, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5275078815467868594, guid: df8b7a032b15d494bacbfceee26ee0ef, type: 3}
       propertyPath: m_AnchorMax.x

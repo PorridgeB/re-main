@@ -18,6 +18,8 @@ public class SaveProfile : MonoBehaviour
         }
     }
 
+    public bool IsEmpty => Save == null;
+
     [SerializeReference]
     public Save Save;
 
@@ -31,7 +33,7 @@ public class SaveProfile : MonoBehaviour
 
     private string GetText()
     {
-        if (Save == null)
+        if (IsEmpty)
         {
             return "Empty";
         }

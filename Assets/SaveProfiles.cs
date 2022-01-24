@@ -10,7 +10,6 @@ public class SaveProfiles : MonoBehaviour
     {
         Continue,
         NewGame,
-        Delete,
     }
 
     public Mode CurrentMode = Mode.Continue;
@@ -19,6 +18,8 @@ public class SaveProfiles : MonoBehaviour
     private Toggle delete;
     [SerializeField]
     private GameObject profiles;
+    [SerializeField]
+    private GameObject yesNoDialog;
 
     private void Start()
     {
@@ -53,19 +54,20 @@ public class SaveProfiles : MonoBehaviour
                     saveProfile.Interactable = true;
                 }
                 break;
-            case Mode.Delete:
-                break;
         }
     }
 
     private void OnSaveProfileSelected(SaveProfile saveProfile)
     {
-        if (delete.isOn)
+        if (delete.isOn && !saveProfile.IsEmpty)
         {
-            saveProfile.Delete();
-            saveProfile.Refresh();
-            delete.isOn = false;
+            var dialog = Instantiate(yesNoDialog, transform).GetComponent<YesNoDialog>();
+
+            dialog.Prompt = "Are you sure you want to delete this save profile?";
+            dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); };
         }
+
+        delete.isOn = false;
     }
 
     public void EnterMode(string mode)
@@ -75,8 +77,6 @@ public class SaveProfiles : MonoBehaviour
             case "Continue":
                 break;
             case "NewGame":
-                break;
-            case "Delete":
                 break;
         }
     }
@@ -91,13 +91,6 @@ public class SaveProfiles : MonoBehaviour
     public void EnterNewGame()
     {
         CurrentMode = Mode.NewGame;
-
-        Refresh();
-    }
-
-    public void EnterDelete()
-    {
-        CurrentMode = Mode.Delete;
 
         Refresh();
     }
