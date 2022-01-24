@@ -16,6 +16,8 @@ public class SaveProfiles : MonoBehaviour
     public Mode CurrentMode = Mode.Continue;
 
     [SerializeField]
+    private Toggle delete;
+    [SerializeField]
     private GameObject profiles;
 
     private void Start()
@@ -27,28 +29,76 @@ public class SaveProfiles : MonoBehaviour
         foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>().Take(2))
         {
             saveProfile.Save = save;
+            saveProfile.Interactable = true;
             saveProfile.Refresh();
         }
+    }
 
-        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
+    public void Refresh()
+    {
+        switch (CurrentMode)
         {
-            if (saveProfile.Save == null)
-            {
-                saveProfile.Interactable = false;
-            }
+            case Mode.Continue:
+                foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
+                {
+                    if (saveProfile.Save == null)
+                    {
+                        saveProfile.Interactable = false;
+                    }
+                }
+                break;
+            case Mode.NewGame:
+                foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
+                {
+                    saveProfile.Interactable = true;
+                }
+                break;
+            case Mode.Delete:
+                break;
         }
     }
 
     private void OnSaveProfileSelected(SaveProfile saveProfile)
     {
-        switch (CurrentMode)
+        if (delete.isOn)
         {
-            case Mode.Continue:
+            saveProfile.Delete();
+            saveProfile.Refresh();
+            delete.isOn = false;
+        }
+    }
+
+    public void EnterMode(string mode)
+    {
+        switch (mode)
+        {
+            case "Continue":
                 break;
-            case Mode.NewGame:
+            case "NewGame":
                 break;
-            case Mode.Delete:
+            case "Delete":
                 break;
         }
+    }
+    
+    public void EnterContinue()
+    {
+        CurrentMode = Mode.Continue;
+
+        Refresh();
+    }
+
+    public void EnterNewGame()
+    {
+        CurrentMode = Mode.NewGame;
+
+        Refresh();
+    }
+
+    public void EnterDelete()
+    {
+        CurrentMode = Mode.Delete;
+
+        Refresh();
     }
 }

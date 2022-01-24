@@ -53,4 +53,11 @@ public class SaveProfile : MonoBehaviour
     {
         SendMessageUpwards("OnSaveProfileSelected", this);
     }
+
+    public void Delete()
+    {
+        Save = null;
+
+        Refresh();
+    }
 }
