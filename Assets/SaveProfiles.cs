@@ -25,9 +25,7 @@ public class SaveProfiles : MonoBehaviour
     {
         var save = new Save { DataFragments = 42, Scrap = 64, TotalTime = 300, Loadouts = new List<Loadout> { new Loadout { Weapon1 = "A", Weapon2 = "B", Gadget = "C" } } };
 
-        Debug.Log(JsonUtility.ToJson(save));
-
-        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>().Take(2))
+        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
         {
             saveProfile.Save = save;
             saveProfile.Interactable = true;
@@ -37,23 +35,9 @@ public class SaveProfiles : MonoBehaviour
 
     public void Refresh()
     {
-        switch (CurrentMode)
+        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
         {
-            case Mode.Continue:
-                foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
-                {
-                    if (saveProfile.Save == null)
-                    {
-                        saveProfile.Interactable = false;
-                    }
-                }
-                break;
-            case Mode.NewGame:
-                foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
-                {
-                    saveProfile.Interactable = true;
-                }
-                break;
+            saveProfile.Interactable = CurrentMode == Mode.NewGame || (CurrentMode == Mode.Continue && saveProfile.Save != null);
         }
     }
 
@@ -64,34 +48,33 @@ public class SaveProfiles : MonoBehaviour
             var dialog = Instantiate(yesNoDialog, transform).GetComponent<YesNoDialog>();
 
             dialog.Prompt = "Are you sure you want to delete this save profile?";
-            dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); };
+            dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); Refresh(); };
+
+            return;
         }
 
         delete.isOn = false;
-    }
-
-    public void EnterMode(string mode)
-    {
-        switch (mode)
+    
+        if (CurrentMode == Mode.NewGame && !saveProfile.IsEmpty)
         {
-            case "Continue":
-                break;
-            case "NewGame":
-                break;
+            var dialog = Instantiate(yesNoDialog, transform).GetComponent<YesNoDialog>();
+
+            dialog.Prompt = "Are you sure you want to overwrite this save profile?";
+            dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); Refresh(); };
+
+            return;
         }
     }
     
     public void EnterContinue()
     {
         CurrentMode = Mode.Continue;
-
         Refresh();
     }
 
     public void EnterNewGame()
     {
         CurrentMode = Mode.NewGame;
-
         Refresh();
     }
 }
