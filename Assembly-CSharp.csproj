@@ -802,6 +802,12 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\WeaponAttachment.cs" />
+    <Compile Include="Assets\Scripts\Scriptable Objects\SoftwareUpgrade.cs" />
+    <Compile Include="Assets\Scripts\SoftwareUpgradeConfiguration.cs" />
+    <Compile Include="Assets\Scripts\WeaponSlotConfiguration.cs" />
+    <Compile Include="Assets\SoftwareUpgradeRow.cs" />
+    <Compile Include="Assets\SaveManager.cs" />
+    <Compile Include="Assets\SoftwareUpgradeConfigurationBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

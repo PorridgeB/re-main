@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class MechanicStore : MonoBehaviour
 {
-    public GameObject GadgetRowPrefab;
-    public GameObject GadgetList;
-    public GadgetInfo GadgetInfo;
+    [SerializeField]
+    private GameObject gadgetRowPrefab;
+    [SerializeField]
+    private GameObject gadgetList;
+    [SerializeField]
+    private GadgetInfo gadgetInfo;
 
     private void Start()
     {
@@ -18,8 +21,7 @@ public class MechanicStore : MonoBehaviour
 
         foreach (var gadget in gadgets)
         {
-            var gadgetRow = Instantiate(GadgetRowPrefab, GadgetList.transform).GetComponentInChildren<GadgetRow>();
-            
+            var gadgetRow = Instantiate(gadgetRowPrefab, gadgetList.transform).GetComponent<GadgetRow>();
             gadgetRow.Gadget = gadget;
         }
 
@@ -28,6 +30,6 @@ public class MechanicStore : MonoBehaviour
 
     private void SelectGadget(Gadget gadget)
     {
-        GadgetInfo.SetGadget(gadget);
+        gadgetInfo.SetGadget(gadget);
     }
 }

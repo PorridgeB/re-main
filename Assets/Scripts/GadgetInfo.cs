@@ -6,7 +6,7 @@ using UnityEngine;
 public class GadgetInfo : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI name;
+    private new TextMeshProUGUI name;
     [SerializeField]
     private TextMeshProUGUI description;
     [SerializeField]

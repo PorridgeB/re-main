@@ -15,11 +15,22 @@ public class Save
     public int DataFragments;
     // Quantity of scrap in the player's inventory
     public int Scrap;
-
+    // Maximum number of points allocated for software upgrades
+    public int SoftwareUpgradeCapacity;
+    // List of unlocked software upgrades
+    public List<string> UnlockedSoftwareUpgrades;
+    // List of bought weapon attachments
+    public List<string> UnlockedWeaponAttachments;
+    // List of bought gadgets
+    public List<string> UnlockedGadgets;
+    // Loadouts that the player has configured
     public List<Loadout> Loadouts;
-
+    // Index of the selected loadout
+    public int LoadoutIndex;
     // Percentage of story completion
     public int StoryCompletion => 0;
+
+    public Loadout SelectedLoadout => Loadouts[LoadoutIndex];
 
     //public static Save Read(string filename = "/gamesave.save")
     //{

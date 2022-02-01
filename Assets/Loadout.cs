@@ -6,9 +6,8 @@ using UnityEngine;
 [Serializable]
 public class Loadout
 {
-    public string Weapon1;
-    public List<string> Weapon1Attachments;
-    public string Weapon2;
-    public List<string> Weapon2Attachments;
+    public SoftwareUpgradeConfiguration SoftwareUpgradeConfiguration;
+    public WeaponSlotConfiguration Weapon1;
+    public WeaponSlotConfiguration Weapon2;
     public string Gadget;
 }

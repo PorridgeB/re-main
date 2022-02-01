@@ -24,11 +24,9 @@ public class SaveProfiles : MonoBehaviour
 
     private void Start()
     {
-        var save = new Save { DataFragments = 42, Scrap = 64, TotalTime = 300, Loadouts = new List<Loadout> { new Loadout { Weapon1 = "A", Weapon2 = "B", Gadget = "C" } } };
-
         foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
         {
-            saveProfile.Save = save;
+            saveProfile.Save = null;
             saveProfile.Interactable = true;
             saveProfile.Refresh();
         }
