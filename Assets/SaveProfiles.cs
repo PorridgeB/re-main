@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SaveProfiles : MonoBehaviour
 {
@@ -57,14 +58,26 @@ public class SaveProfiles : MonoBehaviour
 
         delete.isOn = false;
     
-        if (CurrentMode == Mode.NewGame && !saveProfile.IsEmpty)
+        if (CurrentMode == Mode.NewGame)
         {
-            var dialog = Instantiate(yesNoDialog, transform).GetComponent<YesNoDialog>();
+            if (saveProfile.IsEmpty)
+            {
+                SceneManager.LoadScene("Hub");
+            }
+            else
+            {
+                var dialog = Instantiate(yesNoDialog, transform).GetComponent<YesNoDialog>();
 
-            dialog.Prompt = "Are you sure you want to overwrite this save profile?";
-            dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); Refresh(); };
-
+                dialog.Prompt = "Are you sure you want to overwrite this save profile?";
+                dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); Refresh(); SceneManager.LoadScene("Hub"); };
+            }
+            
             return;
+        }
+
+        if (CurrentMode == Mode.Continue && !saveProfile.IsEmpty)
+        {
+            SceneManager.LoadScene("Hub");
         }
     }
     
