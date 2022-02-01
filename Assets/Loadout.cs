@@ -7,6 +7,8 @@ using UnityEngine;
 public class Loadout
 {
     public string Weapon1;
+    public List<string> Weapon1Attachments;
     public string Weapon2;
+    public List<string> Weapon2Attachments;
     public string Gadget;
 }

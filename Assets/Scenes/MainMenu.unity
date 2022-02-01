@@ -928,7 +928,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1.35
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1129,7 +1129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4780725068333247875, guid: 184f1e9dc37ca704bb666f316b4f88a3, type: 3}
       propertyPath: m_text
-      value: 'Continue
+      value: 'CONTINUE
 
 '
       objectReference: {fileID: 0}
@@ -1325,7 +1325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4780725068333247875, guid: 184f1e9dc37ca704bb666f316b4f88a3, type: 3}
       propertyPath: m_text
-      value: 'New Game
+      value: 'NEW GAME
 
 '
       objectReference: {fileID: 0}
@@ -1493,7 +1493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4780725068333247875, guid: 184f1e9dc37ca704bb666f316b4f88a3, type: 3}
       propertyPath: m_text
-      value: 'Options
+      value: 'OPTIONS
 
 '
       objectReference: {fileID: 0}
@@ -1637,7 +1637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4780725068333247875, guid: 184f1e9dc37ca704bb666f316b4f88a3, type: 3}
       propertyPath: m_text
-      value: 'Quit
+      value: 'QUIT
 
 '
       objectReference: {fileID: 0}
