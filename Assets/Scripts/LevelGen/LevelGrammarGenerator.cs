@@ -31,11 +31,15 @@ public class LevelGrammarGenerator : MonoBehaviour
     /// 
     /// </summary>
 
+    [SerializeField]
+    private RunInfoHistory runInfoHistory;
 
+    [SerializeField]
+    private int maxRoomCount;
     [SerializeField]
     private int roomCount;
     private int maxBranchDepth;
-    private int branchCount;
+    private int maxBranchCount;
     private int levelDepth;
     [SerializeField]
     private List<char> deadEnds;
@@ -53,13 +57,15 @@ public class LevelGrammarGenerator : MonoBehaviour
     private int challengeCount = 0;
     private int rewardCount = 0;
     private char previousRoom;
-    void Awake()
+    void Start()
     {
+        Debug.Log(runInfoHistory.GenerationCoefficient);
+        roomCount = 5 + Mathf.RoundToInt(maxRoomCount * runInfoHistory.GenerationCoefficient);
         levelDepth = 5;
         maxBranchDepth = 3;
-        branchCount = 10;
-        challengeRating = (int)Mathf.Floor(roomCount / 3);
-        rewardRating = (int)Mathf.Floor(roomCount / 4);
+        maxBranchCount = 10;
+        challengeRating = Mathf.RoundToInt((roomCount/3)*runInfoHistory.GenerationCoefficient);
+        rewardRating = Mathf.RoundToInt((roomCount / 4)*runInfoHistory.GenerationCoefficient);
     }
 
     private void ResetAll()
@@ -81,7 +87,7 @@ public class LevelGrammarGenerator : MonoBehaviour
             roomsRemaining--;
             levelTemplate += buildingBlocks[Random.Range(0, 1)];
         }
-        for (int i = 0; i < branchCount; i++)
+        for (int i = 0; i < maxBranchCount; i++)
         {
             if (roomsRemaining <= 1)
             {

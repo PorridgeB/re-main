@@ -9,11 +9,9 @@ public class RunController : MonoBehaviour
     public List<Attribute> attributes;
     public Resource playerHP;
 
-    private void Start()
+    private void Awake()
     {
-        //THIS IS ONLY BEING USED FOR TESTING
-        //this will delete all runs in the history to ensure it resets everything in editor
-        runHistory.Clear();
+        
 
         if (runHistory.Count < 1)
         {
@@ -42,5 +40,18 @@ public class RunController : MonoBehaviour
     public void RunEnded()
     {
         runHistory.Current.ended = true;
+    }
+
+    public void StageComplete()
+    {
+        runHistory.Current.sector++;
+
+    }
+
+    public void OnApplicationQuit()
+    {
+        //THIS IS ONLY BEING USED FOR TESTING
+        //this will delete all runs in the history to ensure it resets everything in editor
+        runHistory.Clear();
     }
 }

@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 76615083}
   - component: {fileID: 76615082}
   - component: {fileID: 76615084}
+  - component: {fileID: 76615085}
   m_Layer: 0
   m_Name: RunController
   m_TagString: Untagged
@@ -355,6 +356,40 @@ MonoBehaviour:
       - m_Target: {fileID: 76615082}
         m_TargetAssemblyTypeName: RunController, Assembly-CSharp
         m_MethodName: RunEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ResponseGO:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseDS:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &76615085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76615081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 83b3f075daa65c14d9d9b3e369540f97, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 76615082}
+        m_TargetAssemblyTypeName: RunController, Assembly-CSharp
+        m_MethodName: StageComplete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1891,7 +1926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7015f040cc47d6d4281e52f3adc8d22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCount: 14
+  runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
+  maxRoomCount: 15
   deadEnds: 72006e0062006100
   commonRooms: 6f00680065007400
   buildingBlocks: 2d0021002a0023002400

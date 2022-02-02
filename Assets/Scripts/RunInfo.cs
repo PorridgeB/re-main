@@ -7,4 +7,7 @@ public class RunInfo
 {
     public bool ended;
     public int difficulty;
+    public int quadrant;
+    public int sector;
+
 }

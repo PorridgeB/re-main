@@ -19,7 +19,15 @@ public class RunInfoHistory : ScriptableObject
     {
         get
         {
-            return runHistory[0];
+            return runHistory[runHistory.Count-1];
+        }
+    }
+
+    public float GenerationCoefficient
+    {
+        get
+        {
+            return 1 - (1 /(float)Current.sector);
         }
     }
 
@@ -32,6 +40,8 @@ public class RunInfoHistory : ScriptableObject
     {
         RunInfo newRun = new RunInfo();
         newRun.difficulty = 1;
+        newRun.quadrant = 1;
+        newRun.sector = 1;
         runHistory.Add(newRun);
     }
 }
