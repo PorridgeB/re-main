@@ -27,6 +27,8 @@ public class Save
     public List<Loadout> Loadouts;
     // Index of the selected loadout
     public int LoadoutIndex;
+    // List of completed runs
+    public RunInfoHistory Runs;
     // Percentage of story completion
     public int StoryCompletion => 0;
 
