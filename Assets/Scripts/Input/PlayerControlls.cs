@@ -587,6 +587,33 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PauseControl"",
+            ""id"": ""04e4f79d-bf5f-484f-9119-4d79dd9e6fd8"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ce98c59-5f37-47bf-afb8-a68743a23304"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""166342e0-f8d1-409d-9a22-cf459ec53c64"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -620,6 +647,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_ArtifactControl = asset.FindActionMap("ArtifactControl", throwIfNotFound: true);
         m_ArtifactControl_ArtContinue = m_ArtifactControl.FindAction("ArtContinue", throwIfNotFound: true);
         m_ArtifactControl_ArtBack = m_ArtifactControl.FindAction("ArtBack", throwIfNotFound: true);
+        // PauseControl
+        m_PauseControl = asset.FindActionMap("PauseControl", throwIfNotFound: true);
+        m_PauseControl_Pause = m_PauseControl.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -933,6 +963,39 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         }
     }
     public ArtifactControlActions @ArtifactControl => new ArtifactControlActions(this);
+
+    // PauseControl
+    private readonly InputActionMap m_PauseControl;
+    private IPauseControlActions m_PauseControlActionsCallbackInterface;
+    private readonly InputAction m_PauseControl_Pause;
+    public struct PauseControlActions
+    {
+        private @PlayerControlls m_Wrapper;
+        public PauseControlActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_PauseControl_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_PauseControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseControlActions set) { return set.Get(); }
+        public void SetCallbacks(IPauseControlActions instance)
+        {
+            if (m_Wrapper.m_PauseControlActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_PauseControlActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PauseControlActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PauseControlActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_PauseControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public PauseControlActions @PauseControl => new PauseControlActions(this);
     public interface ICharacterControlActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -965,5 +1028,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     {
         void OnArtContinue(InputAction.CallbackContext context);
         void OnArtBack(InputAction.CallbackContext context);
+    }
+    public interface IPauseControlActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

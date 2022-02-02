@@ -5,7 +5,6 @@ using UnityEngine;
 public class Grounded : MonoBehaviour
 {
     public bool grounded;
-    public LayerMask mask;
 
     private void SetCollisionWithDashable(bool enabled)
     {
@@ -22,10 +21,10 @@ public class Grounded : MonoBehaviour
     private void CheckGrounded()
     {
         RaycastHit hit;
-        Physics.Raycast(new Ray(transform.position+Vector3.up*1, Vector3.down), out hit);
+        Physics.Raycast(new Ray(transform.position, Vector3.down), out hit);
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Default"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Level"))
             {
                 if (!grounded)
                 {
@@ -35,6 +34,7 @@ public class Grounded : MonoBehaviour
                 return;
             }
         }
+        //Debug.Log("not grounded");
         grounded = false;
     }
 }
