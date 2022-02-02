@@ -243,6 +243,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1852,6 +1853,80 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      books_byBatuhan_66: -9109006167024419351
+      books_byBatuhan_35: 6497863386131260905
+      books_byBatuhan_9: -1533123067639800293
+      books_byBatuhan_51: -5076075083195231231
+      books_byBatuhan_69: -6126695487698904674
+      books_byBatuhan_57: -6856168901275001232
+      books_byBatuhan_14: -3561740862355449711
+      books_byBatuhan_50: 3717476097822357779
+      books_byBatuhan_32: 5959709255543999699
+      books_byBatuhan_54: -8918066104573532656
+      books_byBatuhan_17: 8196075760663837698
+      books_byBatuhan_1: 7115904013785137633
+      books_byBatuhan_30: 4630689808116840913
+      books_byBatuhan_42: 5863312462048890449
+      books_byBatuhan_64: 7053875739559034098
+      books_byBatuhan_27: 6971202565543585225
+      books_byBatuhan_8: 2561996518909941496
+      books_byBatuhan_23: -7049133477723613904
+      books_byBatuhan_6: 8952549319199964333
+      books_byBatuhan_63: 8858447686299728275
+      books_byBatuhan_52: -1102826447197924327
+      books_byBatuhan_25: 6957221839628287776
+      books_byBatuhan_24: -596723583611082467
+      books_byBatuhan_34: 1092121948012621105
+      books_byBatuhan_48: 3761433599871467445
+      books_byBatuhan_60: -1816562880473139338
+      books_byBatuhan_38: -6450178837159782098
+      books_byBatuhan_16: 8721371525234205771
+      books_byBatuhan_4: -4031336077612466943
+      books_byBatuhan_55: -1577604579778877508
+      books_byBatuhan_65: 2043476373190855856
+      books_byBatuhan_71: 1536407308030707559
+      books_byBatuhan_41: -8753387052331075325
+      books_byBatuhan_40: -5766473532086497003
+      books_byBatuhan_21: -36712800743633565
+      books_byBatuhan_20: 6538025259917028727
+      books_byBatuhan_37: -5177698043360455930
+      books_byBatuhan_45: 6831896708851654454
+      books_byBatuhan_19: 3742333166928417493
+      books_byBatuhan_33: -95559953927487139
+      books_byBatuhan_10: 2895677261935056102
+      books_byBatuhan_43: 2236668277958911376
+      books_byBatuhan_67: 2496482768390492066
+      books_byBatuhan_39: -6363133300299941209
+      books_byBatuhan_61: 74752831481903213
+      books_byBatuhan_31: 2602684532977693122
+      books_byBatuhan_49: -6118322038417413938
+      books_byBatuhan_62: -2776430724489259091
+      books_byBatuhan_26: -7267578980894557611
+      books_byBatuhan_53: -4384527948776974476
+      books_byBatuhan_5: -1478990790489808525
+      books_byBatuhan_36: 3377050396161842126
+      books_byBatuhan_0: 1206068405650854677
+      books_byBatuhan_47: -1639984379512051309
+      books_byBatuhan_18: -1355080425185239012
+      books_byBatuhan_68: -3437109680338385768
+      books_byBatuhan_72: -128796316557112568
+      books_byBatuhan_3: 4279921135978318750
+      books_byBatuhan_15: -1676701428466016082
+      books_byBatuhan_11: 2344228597923613934
+      books_byBatuhan_7: 1504240474967396936
+      books_byBatuhan_12: -3466258772036217361
+      books_byBatuhan_22: 4815401712035101944
+      books_byBatuhan_29: 4443463963411126941
+      books_byBatuhan_13: -459681771859498734
+      books_byBatuhan_70: 4424976476378741282
+      books_byBatuhan_46: -6048162764729060301
+      books_byBatuhan_2: -8754798503806337995
+      books_byBatuhan_28: -7124953292294388841
+      books_byBatuhan_58: -1200912359806880616
+      books_byBatuhan_44: 5344779694093088362
+      books_byBatuhan_59: 8382672869655889879
+      books_byBatuhan_56: 7430146907041810068
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

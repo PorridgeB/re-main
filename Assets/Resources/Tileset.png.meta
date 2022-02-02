@@ -117,6 +117,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -430,7 +431,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4b698f51bccef9090800000000000000
-      internalID: -8025435653959805260
+      internalID: 3173957460363908247
       vertices: []
       indices: 
       edges: []
@@ -472,7 +473,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5b927d6df132958a0800000000000000
-      internalID: -6315978382755026507
+      internalID: -751010177911815959
       vertices: []
       indices: 
       edges: []
@@ -493,7 +494,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5dfd3a7321adaf1f0800000000000000
-      internalID: -1010255394613501995
+      internalID: -2181882499932441668
       vertices: []
       indices: 
       edges: []
@@ -745,7 +746,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: fc34fa88f85066c60800000000000000
-      internalID: 7810936717752353743
+      internalID: -3218248262026354849
       vertices: []
       indices: 
       edges: []
@@ -823,6 +824,37 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      WallTrim_0_EdgeW: 7769453424612927293
+      Floor_4: -7869403223043187030
+      Floor_8: -8442174482077232629
+      PitBottom_0: -7245433517681746672
+      Floor_2: -1865757787562490331
+      WallTrim_0_CapS: -4087309676702264633
+      Floor_6: 511961965738296472
+      WallTrim_0_EdgeS: 5682393469540925955
+      WallTrim_0_EdgeN: -2181882499932441668
+      Wall_1: 2551541108661590903
+      Floor_9: -6936079216851816805
+      Wall_0: -3218248262026354849
+      WallTrim_0_ExNW: 4938342473259674171
+      WallTrim_0_CapN: 2167505942708378944
+      FloorSide_0: -251839660766796828
+      WallTrim_0_InSE: -8480404140891905064
+      WallTrim_0_ExNE: -751010177911815959
+      WallTrim_0_CapE: -9164683769879867358
+      WallTrim_0_InNW: 8040196581939011165
+      PitSide_0: 3419707775326841495
+      WallTrim_0_InSW: -72156938504300551
+      WallTrim_0_CapW: 3931779560235752176
+      WallTrim_0_InNE: -6056380807486736462
+      Floor_1: -3309781605116015348
+      WallTrim_0_ExSW: 2403724249865808194
+      Floor_0: 5441223297315994465
+      WallTrim_0_Full: -7933298228110686459
+      Floor_5: 6408231970667830406
+      WallTrim_0_EdgeE: 3173957460363908247
+      WallTrim_0_ExSE: -6108889420429456849
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

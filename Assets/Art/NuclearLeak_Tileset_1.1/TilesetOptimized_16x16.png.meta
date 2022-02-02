@@ -324,6 +324,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -2512,6 +2513,107 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TilesetOptimized_16x16_18: 5070007768399655165
+      TilesetOptimized_16x16_62: 5632761619733154513
+      TilesetOptimized_16x16_51: -279271325600699962
+      TilesetOptimized_16x16_97: 4291473479424402016
+      TilesetOptimized_16x16_57: -3019026986786259992
+      TilesetOptimized_16x16_93: -12595957543060261
+      TilesetOptimized_16x16_29: -6698415456365690541
+      TilesetOptimized_16x16_23: 3490796665256113913
+      TilesetOptimized_16x16_69: 5060629756148959726
+      TilesetOptimized_16x16_42: 1839201228010245985
+      TilesetOptimized_16x16_41: 2360576543897612004
+      TilesetOptimized_16x16_54: 453923566559881892
+      TilesetOptimized_16x16_37: -5203958117387944768
+      TilesetOptimized_16x16_59: -916300630201553857
+      TilesetOptimized_16x16_61: -4966563848631483766
+      TilesetOptimized_16x16_85: 1593671095842747189
+      TilesetOptimized_16x16_50: -8308846384916428612
+      TilesetOptimized_16x16_67: -3652056934931503521
+      TilesetOptimized_16x16_21: 2409438571216183455
+      TilesetOptimized_16x16_75: -7121079707352796159
+      TilesetOptimized_16x16_14: 2859473953984992698
+      TilesetOptimized_16x16_66: 8543839342506664533
+      TilesetOptimized_16x16_91: -5785423719515802731
+      TilesetOptimized_16x16_53: -30426172919712879
+      TilesetOptimized_16x16_56: -9107203222614980391
+      TilesetOptimized_16x16_63: -5550196539342972401
+      TilesetOptimized_16x16_82: 1415073281878645166
+      TilesetOptimized_16x16_92: -2154234924960141439
+      TilesetOptimized_16x16_8: 4834688425751353485
+      TilesetOptimized_16x16_81: 4279868656238926457
+      TilesetOptimized_16x16_13: 2331198068038755661
+      TilesetOptimized_16x16_5: 7639702225300237548
+      TilesetOptimized_16x16_1: 4195951855755767081
+      TilesetOptimized_16x16_9: 6290954006348976440
+      TilesetOptimized_16x16_19: 3381204721355494279
+      TilesetOptimized_16x16_95: 6583519358277588207
+      TilesetOptimized_16x16_68: 2241091836614999358
+      TilesetOptimized_16x16_79: 2647539289292314559
+      TilesetOptimized_16x16_15: -7503290115345877537
+      TilesetOptimized_16x16_84: 2249469604461529590
+      TilesetOptimized_16x16_77: 7859805467929300096
+      TilesetOptimized_16x16_46: -3106188956652577546
+      TilesetOptimized_16x16_32: -3336006120243078217
+      TilesetOptimized_16x16_31: 6858356348508331609
+      TilesetOptimized_16x16_94: 3498063991014133901
+      TilesetOptimized_16x16_22: 2559397188790418590
+      TilesetOptimized_16x16_98: -4388239471103842505
+      TilesetOptimized_16x16_39: 8498037090437289106
+      TilesetOptimized_16x16_52: 6493713587890676
+      TilesetOptimized_16x16_73: 8692302621367874931
+      TilesetOptimized_16x16_3: -5300329061601372172
+      TilesetOptimized_16x16_89: -4304777626827388596
+      TilesetOptimized_16x16_60: 270031772264616691
+      TilesetOptimized_16x16_24: -3062174277859763466
+      TilesetOptimized_16x16_20: 5295767218983594208
+      TilesetOptimized_16x16_70: 71967408859506945
+      TilesetOptimized_16x16_64: 4211583466705760000
+      TilesetOptimized_16x16_76: -6356091393050185822
+      TilesetOptimized_16x16_47: 9195135501665691761
+      TilesetOptimized_16x16_25: 6534192376907811974
+      TilesetOptimized_16x16_86: 5656016019689930226
+      TilesetOptimized_16x16_35: 4255626368290573978
+      TilesetOptimized_16x16_49: 6125811693514357055
+      TilesetOptimized_16x16_83: 512389155341743774
+      TilesetOptimized_16x16_55: 8164028404566809883
+      TilesetOptimized_16x16_17: 2868745294285877832
+      TilesetOptimized_16x16_74: 9198973537508069312
+      TilesetOptimized_16x16_30: -122032521654094589
+      TilesetOptimized_16x16_40: -8632120301513139101
+      TilesetOptimized_16x16_10: -999001110259153193
+      TilesetOptimized_16x16_4: 288920817196095895
+      TilesetOptimized_16x16_78: -3140138532378640901
+      TilesetOptimized_16x16_16: -4273368217412837283
+      TilesetOptimized_16x16_33: -8941639966215980142
+      TilesetOptimized_16x16_6: 8816274692554790211
+      TilesetOptimized_16x16_48: 3720449055904037875
+      TilesetOptimized_16x16_71: -675574124859015822
+      TilesetOptimized_16x16_44: 1923099552015094294
+      TilesetOptimized_16x16_2: 6608487606255242492
+      TilesetOptimized_16x16_7: -3762153864512396203
+      TilesetOptimized_16x16_26: 3017789948288256917
+      TilesetOptimized_16x16_27: 3812322545708892381
+      TilesetOptimized_16x16_36: -1389095998495748241
+      TilesetOptimized_16x16_88: -6130080723445065818
+      TilesetOptimized_16x16_38: 1752615310502240332
+      TilesetOptimized_16x16_96: 2201453497721169557
+      TilesetOptimized_16x16_0: -6762881668346763515
+      TilesetOptimized_16x16_65: -8335665590118050249
+      TilesetOptimized_16x16_43: 8254000735607771126
+      TilesetOptimized_16x16_34: 6031515120542244150
+      TilesetOptimized_16x16_99: -2823945912439724563
+      TilesetOptimized_16x16_12: 6046036200918884080
+      TilesetOptimized_16x16_58: -2908940413074417467
+      TilesetOptimized_16x16_11: -6142312126358924503
+      TilesetOptimized_16x16_28: 2859711856444211844
+      TilesetOptimized_16x16_72: 2626494848210735490
+      TilesetOptimized_16x16_45: 6055551820520753600
+      TilesetOptimized_16x16_90: -7911844344165462267
+      TilesetOptimized_16x16_80: 5900186997083896363
+      TilesetOptimized_16x16_87: 783460298948619994
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
