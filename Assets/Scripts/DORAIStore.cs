@@ -52,11 +52,6 @@ public class DORAIStore : MonoBehaviour
 
     private void Update()
     {
-        // canvas.scaleFactor
-
-        var relMousePos = (Mouse.current.position.ReadValue() - new Vector2(pie.transform.position.x, pie.transform.position.y)) * 0.25f;
-
-        //Debug.Log(pie.ToCoordinates(relMousePos));
     }
 
     private void Place(SoftwareUpgradeInstance instance)
@@ -107,35 +102,12 @@ public class DORAIStore : MonoBehaviour
             return false;
         }
 
-        foreach (var x in instances)
-        {
-            if (Intersects(instance, x))
-            {
-                return false;
-            }
-        }
-
-        return true;
-
-        //return instances.TrueForAll(x => !Intersects(x, instance));
+        return instances.TrueForAll(x => !Intersects(x, instance));
     }
 
     public bool Intersects(SoftwareUpgradeInstance a, SoftwareUpgradeInstance b)
     {
-        foreach (var aCell in Occupied(a))
-        {
-            foreach (var bCell in Occupied(b))
-            {
-                if (aCell == bCell)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-
-        //return Occupied(a).Intersect(Occupied(b)).Any();
+        return Occupied(a).Intersect(Occupied(b)).Any();
     }
 
     // Enumerates over all the positions that the software upgrade piece occupies
