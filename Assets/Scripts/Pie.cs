@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [ExecuteAlways]
-public class Pie : Graphic, IDropHandler
+public class Pie : Graphic, IBeginDragHandler, IDragHandler, IDropHandler
 {
     public float Radius = 20;
     public float Thickness = 2;
@@ -51,14 +51,32 @@ public class Pie : Graphic, IDropHandler
         return new Vector2Int(line, ring);
     }
 
+    public Vector2Int MousePosition()
+    {
+        var relMousePos = (Mouse.current.position.ReadValue() - new Vector2(transform.position.x, transform.position.y)) * 0.25f;
+        return ToCoordinates(relMousePos);
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
+        if (eventData.pointerDrag == null)
+        {
+            return;
+        }
+
         var softwareUpgrade = eventData.pointerDrag.GetComponent<Drag>().SoftwareUpgrade;
 
-        var relMousePos = (Mouse.current.position.ReadValue() - new Vector2(transform.position.x, transform.position.y)) * 0.25f;
+        SendMessageUpwards("OnSoftwareUpgradeDrop", new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrade, Position = MousePosition() });
 
-        SendMessageUpwards("OnSoftwareUpgradeDrop", new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrade, Position = ToCoordinates(relMousePos) });
+        Debug.Log($"{softwareUpgrade.Name} at {MousePosition()}");
+    }
 
-        Debug.Log($"{softwareUpgrade.Name} at {ToCoordinates(relMousePos)}");
+    public void OnDrag(PointerEventData eventData)
+    {
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        SendMessageUpwards("OnSoftwareUpgradePieBeginDrag", eventData);
     }
 }

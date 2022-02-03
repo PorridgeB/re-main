@@ -23,8 +23,8 @@ public class DORAIStore : MonoBehaviour
 
     private List<SoftwareUpgradeInstance> instances;
 
-    // Buy upgrades
-    // Drag out upgrade from list
+    // If failed replacement, go to old position
+    // Split drag prefab up into pieces visually
 
     private void Start()
     {
@@ -58,6 +58,8 @@ public class DORAIStore : MonoBehaviour
     {
         var wedge = Instantiate(wedgePrefab, pie.transform).GetComponent<Wedge>();
 
+        instance.Object = wedge.gameObject;
+
         var softwareUpgrade = instance.SoftwareUpgrade;
         var line = instance.Position.x;
         var ring = instance.Position.y;
@@ -84,15 +86,33 @@ public class DORAIStore : MonoBehaviour
 
     public void OnSoftwareUpgradeDrop(SoftwareUpgradeInstance instance)
     {
-        if (!CanPlace(instance))
+        foreach (var line in new int[] { 0, -1, 1 })
         {
-            Debug.Log("Occupied");
-            return;
+            foreach (var ring in new int[] { 0, -1, 1 })
+            {
+                var newPosition = new Vector2Int((instance.Position.x + line) % (pie.Lines * 2), Mathf.Max(0, instance.Position.y + ring));
+
+                var newInstance = new SoftwareUpgradeInstance { Object = instance.Object, SoftwareUpgrade = instance.SoftwareUpgrade, Position = newPosition };
+
+                if (CanPlace(newInstance))
+                {
+                    Place(newInstance);
+
+                    instances.Add(instance);
+
+                    return;
+                }
+            }
         }
 
-        Place(instance);
+        //if (!CanPlace(instance))
+        //{
+        //    return;
+        //}
 
-        instances.Add(instance);
+        //Place(instance);
+
+        //instances.Add(instance);
     }
 
     public bool CanPlace(SoftwareUpgradeInstance instance)
@@ -120,5 +140,34 @@ public class DORAIStore : MonoBehaviour
                 yield return new Vector2Int((instance.Position.x + line) % (pie.Lines * 2), instance.Position.y + ring);
             }
         }
+    }
+
+    public SoftwareUpgradeInstance PieceAt(Vector2Int position)
+    {
+        return instances.FirstOrDefault(x => Occupied(x).Contains(position));
+    }
+
+    public void OnSoftwareUpgradePieBeginDrag(PointerEventData eventData)
+    {
+        var piece = PieceAt(pie.MousePosition());
+        if (piece == null)
+        {
+            return;
+        }
+
+        instances.Remove(piece);
+        Destroy(piece.Object);
+
+        OnSoftwareUpgradeRowBeginDrag(new SoftwareUpgradeRow.BeginDragData { eventData = eventData, softwareUpgrade = piece.SoftwareUpgrade });
+    }
+
+    public void Clear()
+    {
+        foreach (var piece in instances)
+        {
+            Destroy(piece.Object);
+        }
+
+        instances.Clear();
     }
 }

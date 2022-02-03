@@ -16,6 +16,8 @@ public class Drag : MonoBehaviour, IDragHandler, IEndDragHandler
         parentCanvas = GetComponentInParent<Canvas>();
 
         GetComponent<Image>().color = SoftwareUpgrade.Color;
+
+        GetComponent<RectTransform>().sizeDelta = new Vector2(10 * SoftwareUpgrade.Lines, 10 * SoftwareUpgrade.Rings);
     }
 
     public void OnDrag(PointerEventData eventData)
