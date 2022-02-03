@@ -278,6 +278,7 @@ public class LevelGenerator : MonoBehaviour
                 if (index == 0){
                     return false;
                 }
+                if (previousRoom == null) return false;
                 Rewind(previousRoom);
             }
             else if (stepHistory[roomHistoryIndex].roomOptions.Count <= 0){

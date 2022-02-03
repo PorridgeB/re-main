@@ -59,7 +59,6 @@ public class LevelGrammarGenerator : MonoBehaviour
     private char previousRoom;
     void Start()
     {
-        Debug.Log(runInfoHistory.GenerationCoefficient);
         roomCount = 5 + Mathf.RoundToInt(maxRoomCount * runInfoHistory.GenerationCoefficient);
         levelDepth = 5;
         maxBranchDepth = 3;

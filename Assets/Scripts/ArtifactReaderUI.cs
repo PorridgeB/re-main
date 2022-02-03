@@ -36,19 +36,23 @@ public class ArtifactReaderUI : MonoBehaviour
     void Update()
     {
         artifactUI.SetActive(inputs.currentActionMap.name == "ArtifactControl");
-        title.text = story.TagsForContentAtPath("Main")[0];
-        content.text = text;
-        if (inputs.currentActionMap.name == "ArtifactControl")
+        if (artifactUI.activeInHierarchy)
         {
-            if (continueAction.triggered)
+            title.text = story.TagsForContentAtPath("Main")[0];
+            content.text = text;
+            if (inputs.currentActionMap.name == "ArtifactControl")
             {
-                inputs.SwitchCurrentActionMap("CharacterControl");
-            }
-            if (backAction.triggered)
-            {
-                inputs.SwitchCurrentActionMap("CharacterControl");
+                if (continueAction.triggered)
+                {
+                    inputs.SwitchCurrentActionMap("CharacterControl");
+                }
+                if (backAction.triggered)
+                {
+                    inputs.SwitchCurrentActionMap("CharacterControl");
+                }
             }
         }
+        
         
         
     }
