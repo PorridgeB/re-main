@@ -7,6 +7,7 @@ public class Transition : MonoBehaviour
 {
     [SerializeField]
     private Animator veil;
+    private string destination;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,13 @@ public class Transition : MonoBehaviour
 
     public void LevelEndReached()
     {
+        destination = "Level";
+        veil.SetTrigger("SceneEnded");
+    }
+
+    public void playerDied()
+    {
+        destination = "Hub";
         veil.SetTrigger("SceneEnded");
     }
 
@@ -37,6 +45,6 @@ public class Transition : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(destination);
     }
 }

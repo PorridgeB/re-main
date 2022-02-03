@@ -11,8 +11,6 @@ public class RunController : MonoBehaviour
 
     private void Awake()
     {
-        
-
         if (runHistory.Count < 1)
         {
             StartNewRun();
@@ -45,7 +43,6 @@ public class RunController : MonoBehaviour
     public void StageComplete()
     {
         runHistory.Current.sector++;
-
     }
 
     public void OnApplicationQuit()

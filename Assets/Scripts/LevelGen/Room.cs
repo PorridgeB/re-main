@@ -168,7 +168,7 @@ public class Room : MonoBehaviour
 
     private void EnableCrates() {
         foreach (Transform t in transform.Find("CrateWalls")){
-            if (Random.value < 1){
+            if (Random.value < 0.5){
                 Debug.Log("enabling crate");
                 t.gameObject.SetActive(true);
             }
@@ -189,6 +189,6 @@ public class Room : MonoBehaviour
     {
         SpawnResources();
         SpawnPickups();
-        EnableCrates();
+        //EnableCrates();
     }
 }

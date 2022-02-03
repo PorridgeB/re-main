@@ -231,7 +231,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedColor.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\Stop.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCullingMask.cs" />
-    <Compile Include="Assets\Scripts\SceneChangeTrigger.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetIgnoreListenerPause.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Debug\DrawRay.cs" />
     <Compile Include="Assets\Scripts\StateMachine\Player\PlayerSneak.cs" />
@@ -746,7 +745,6 @@
     <Compile Include="Assets\Scripts\Pie.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
     <Compile Include="Assets\Scripts\GadgetRow.cs" />
-    <Compile Include="Assets\Scripts\SceneTransition.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
     <Compile Include="Assets\Scripts\SoftwareUpgradeConfiguration.cs" />
     <Compile Include="Assets\Scripts\Options.cs" />
@@ -810,6 +808,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
     <Compile Include="Assets\Scripts\GraphicShapes.cs" />
     <Compile Include="Assets\Scripts\SoftwareUpgradeRow.cs" />
+    <Compile Include="Assets\Scripts\Vitals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -25,11 +25,11 @@ public class PlayerController : MonoBehaviour
     private bool dashBlocked = true;
     private float viewDistance;
     private Vector2 facing;
-    // temporary (use SO)
-    private float health = 100f;
+    [SerializeField]
+    private Resource health;
     //private Crosshair crosshair;
 
-    public float Health => health;
+    public float Health => health.Value;
 
     [SerializeField]
     private List<Dash> dashes;
@@ -99,6 +99,8 @@ public class PlayerController : MonoBehaviour
         meleeAction = inputs.actions["MeleeAttack"];
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
+
+        health.SetValue(stats.Health.Value());
 
         for (int i = 0; i < stats.DashCharges.Value(); i++)
         {
@@ -176,13 +178,6 @@ public class PlayerController : MonoBehaviour
         {
             selectedInteraction.ChangeVisibility(true);
         }
-
-        if (healthRegenTimer.Finished)
-        {
-            //health.ChangeValue(1);
-            health += 1;
-            healthRegenTimer.Reset(1/stats.HealthRegen.Value());
-        }
     }
 
     public void ActivateDash()
@@ -259,11 +254,9 @@ public class PlayerController : MonoBehaviour
                 finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
-        //health.ChangeValue(-finalDamageValue);
-        health -= finalDamageValue;
+        health.ChangeValue(-finalDamageValue);
         CreateDamageToken(finalDamageValue);
-        //if (health.Value < 0)
-        if (health < 0)
+        if (health.Value < 0)
         {
             playerDeath.Raise();
 
@@ -429,7 +422,6 @@ public class PlayerController : MonoBehaviour
             if (instance.source != gameObject)
             {
                 ReceiveDamage(instance);
-                Debug.Log(health);
             }
         }
     }
