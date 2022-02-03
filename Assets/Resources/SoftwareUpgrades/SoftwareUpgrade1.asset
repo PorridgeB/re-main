@@ -15,4 +15,5 @@ MonoBehaviour:
   Name: A
   Description: 
   Color: {r: 0, g: 1, b: 0.17791557, a: 1}
-  Points: 1
+  Lines: 2
+  Rings: 1

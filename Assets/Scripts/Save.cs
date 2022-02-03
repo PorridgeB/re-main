@@ -15,8 +15,8 @@ public class Save
     public int DataFragments;
     // Quantity of scrap in the player's inventory
     public int Scrap;
-    // Maximum number of points allocated for software upgrades
-    public int SoftwareUpgradeCapacity;
+    // Number of rings allocated for software upgrades (D.O.R.A.I.)
+    public int SoftwareUpgradeRings;
     // List of unlocked software upgrades
     public List<string> UnlockedSoftwareUpgrades;
     // List of bought weapon attachments
@@ -31,7 +31,7 @@ public class Save
     public RunInfoHistory Runs;
     // Percentage of story completion
     public int StoryCompletion => 0;
-
+    // Selected loadout
     public Loadout SelectedLoadout => Loadouts[LoadoutIndex];
 
     //public static Save Read(string filename = "/gamesave.save")

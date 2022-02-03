@@ -10,5 +10,7 @@ public class SoftwareUpgrade : ScriptableObject
     public string Description;
     public Color Color = Color.white;
     [Min(1)]
-    public int Points = 1;
+    public int Lines = 1;
+    [Min(1)]
+    public int Rings = 1;
 }

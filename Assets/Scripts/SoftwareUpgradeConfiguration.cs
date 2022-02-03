@@ -6,5 +6,5 @@ using UnityEngine;
 [Serializable]
 public class SoftwareUpgradeConfiguration
 {
-    public Dictionary<string, int> SoftwareUpgrades;
+    public List<SoftwareUpgradeInstance> Upgrades;
 }
