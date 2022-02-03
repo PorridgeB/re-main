@@ -14,7 +14,7 @@ public class StatBlock : MonoBehaviour
     public Attribute CritDamage;
 
     public Attribute Health;
-    public Attribute HealthRegen;
+    public Attribute Energy;
     public Attribute RunSpeed;
     public Attribute WalkSpeed;
     public Attribute DashCharges;

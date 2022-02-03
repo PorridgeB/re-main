@@ -1182,7 +1182,7 @@ MonoBehaviour:
   CritChance: {fileID: 11400000, guid: 28b198edeb7eae44ba56e285fcb4e018, type: 2}
   CritDamage: {fileID: 11400000, guid: 7103fb180d526e74dba49abe2aec03e0, type: 2}
   Health: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
-  HealthRegen: {fileID: 11400000, guid: b6595f5455caabb4abac0f1b28a405dc, type: 2}
+  Energy: {fileID: 11400000, guid: fc93bc30d383e0e4da2261600197f18a, type: 2}
   RunSpeed: {fileID: 11400000, guid: ce4f011195d4b3a45aad24644d70e3da, type: 2}
   WalkSpeed: {fileID: 11400000, guid: b76c544252b5edc4f99b615415ad8a72, type: 2}
   DashCharges: {fileID: 11400000, guid: a2e0ffe76b39f234a8ce92ddc2eb31fd, type: 2}
