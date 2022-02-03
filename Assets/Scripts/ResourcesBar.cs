@@ -8,6 +8,8 @@ public class ResourcesBar : MonoBehaviour
     private Counter dataFragmentsCounter;
     [SerializeField]
     private Counter scrapCounter;
+    [SerializeField]
+    private RunInfoHistory runInfoHistory;
 
     private void Start()
     {
@@ -20,5 +22,7 @@ public class ResourcesBar : MonoBehaviour
     
     private void Update()
     {
+        dataFragmentsCounter.SetValue(runInfoHistory.Current.dataFragments);
+        scrapCounter.SetValue(runInfoHistory.Current.scrap);
     }
 }

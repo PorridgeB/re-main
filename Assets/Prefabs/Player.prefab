@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eaac95e8c96a9d4fa2fb53612413ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
   playerHit: {fileID: 11400000, guid: eca38c15ab3894f448353cf12bbd9937, type: 2}
   playerDeath: {fileID: 11400000, guid: b4a0d08297a6cab4a9140c4448d76ba0, type: 2}
   health:

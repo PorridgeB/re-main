@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class DataFragments : MonoBehaviour
 {
+
     [SerializeField]
     private int value;
     private bool timerStarted = false;
     private float timer = 0;
+
+    public int Value => value;
 
     private ParticleSystem pSystem;
     void Start()

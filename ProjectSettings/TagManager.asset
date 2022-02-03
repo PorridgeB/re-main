@@ -16,6 +16,8 @@ TagManager:
   - Hitbox
   - Projectile
   - Cover
+  - DataFragment
+  - Scrap
   layers:
   - Default
   - TransparentFX

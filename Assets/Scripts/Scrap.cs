@@ -14,6 +14,8 @@ public class Scrap : MonoBehaviour
     [SerializeField]
     private int value;
 
+    public int Value => value;
+
     [SerializeField]
     private AnimationCurve speedCurve;
     private float timeInRange;

@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataFragmentsCounter: {fileID: 5553423198760311780}
   scrapCounter: {fileID: 5553423197525209196}
+  runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
 --- !u!1 &5553423197525209184
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +388,7 @@ MonoBehaviour:
   - {fileID: 2592228314826895714}
   - {fileID: 4038848595983764447}
   - {fileID: 317758065642688811}
+  cellFills: []
 --- !u!1 &5553423197671741266
 GameObject:
   m_ObjectHideFlags: 0

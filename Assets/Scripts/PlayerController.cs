@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    [SerializeField]
+    private RunInfoHistory runInfoHistory;
     public Vector2 Facing => facing;
 
     public GameEvent playerHit;
@@ -331,6 +333,14 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Interaction"))
         {
             interactions.Add(collision.GetComponent<Interaction>());
+        }
+        if (collision.CompareTag("DataFragment"))
+        {
+            runInfoHistory.Current.dataFragments += collision.GetComponent<DataFragments>().Value;
+        }
+        if (collision.CompareTag("Scrap"))
+        {
+            runInfoHistory.Current.scrap += collision.GetComponent<Scrap>().Value;
         }
     }
 

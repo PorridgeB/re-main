@@ -9,5 +9,6 @@ public class RunInfo
     public int difficulty;
     public int quadrant;
     public int sector;
-
+    public int scrap;
+    public int dataFragments;
 }
