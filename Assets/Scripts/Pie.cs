@@ -57,7 +57,7 @@ public class Pie : Graphic, IDropHandler
 
         var relMousePos = (Mouse.current.position.ReadValue() - new Vector2(transform.position.x, transform.position.y)) * 0.25f;
 
-
+        SendMessageUpwards("OnSoftwareUpgradeDrop", new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrade, Position = ToCoordinates(relMousePos) });
 
         Debug.Log($"{softwareUpgrade.Name} at {ToCoordinates(relMousePos)}");
     }
