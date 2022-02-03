@@ -106,6 +106,7 @@ public class LevelGenerator : MonoBehaviour
             }
             GetComponent<NavMeshSurface>().BuildNavMesh();
             roomsGenerated = true;
+            GameObject.Find("Player").transform.position = start.GetCenter();
             SceneReady.Raise();
         }
         
