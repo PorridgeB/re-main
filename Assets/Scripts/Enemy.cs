@@ -111,7 +111,7 @@ public class Enemy : MonoBehaviour
 
         if ((float)health.GetValue() < 0)
         {
-            //OnDeath.Raise();
+            OnDeath.Raise();
 
             // Hacky way to check if the enemy has a death animation
             if (!animator.parameters.Any(x => x.name == "Died"))

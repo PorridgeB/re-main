@@ -105,7 +105,6 @@ public class PlayerController : MonoBehaviour
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
 
-        health.SetValue(stats.Health.Value());
 
         for (int i = 0; i < stats.DashCharges.Value(); i++)
         {
@@ -187,7 +186,6 @@ public class PlayerController : MonoBehaviour
         if (health.Value <= 0 && !dead)
         {
             dead = true;
-            Debug.Log("player dead");
             playerDeath.Raise();
         }
     }

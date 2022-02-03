@@ -10,7 +10,7 @@ public class RunController : MonoBehaviour
     public Resource playerHP;
     public Resource playerEnergy;
 
-    private void Awake()
+    private void Start()
     {
         if (runHistory.Count < 1)
         {
@@ -45,6 +45,11 @@ public class RunController : MonoBehaviour
     public void StageComplete()
     {
         runHistory.Current.sector++;
+    }
+
+    public void EnemyKilled()
+    {
+        runHistory.Current.kills++;
     }
 
     public void OnApplicationQuit()

@@ -253,7 +253,7 @@ MonoBehaviour:
   unstoppable: 0
   AttackField: {fileID: 3298188469097433944, guid: d03355a6e044760448deb0c982da0b8d, type: 3}
   AttackDamage: 10
-  OnDeath: {fileID: 0}
+  OnDeath: {fileID: 11400000, guid: a16be0633d61f1f478249c43808276c6, type: 2}
   OnHurt: {fileID: 0}
   damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
 --- !u!114 &1950498357395293538
