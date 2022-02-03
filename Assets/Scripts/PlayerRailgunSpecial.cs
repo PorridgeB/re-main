@@ -8,17 +8,16 @@ public class PlayerRailgunSpecial : StateMachineBehaviour
     public float RecoilSpeed = 1.2f;
     public float RotationSpeed = 100f;
     public AnimationCurve Power;
-
     private GameObject beam;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var player = PlayerController.instance;
+            var player = PlayerController.instance;
 
-        beam = Instantiate(BeamPrefab, player.gameObject.transform);
+            beam = Instantiate(BeamPrefab, player.gameObject.transform);
 
-        beam.transform.rotation = Quaternion.LookRotation(new Vector3(player.Facing.x, 0, player.Facing.y), Vector3.up);
+            beam.transform.rotation = Quaternion.LookRotation(new Vector3(player.Facing.x, 0, player.Facing.y), Vector3.up);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

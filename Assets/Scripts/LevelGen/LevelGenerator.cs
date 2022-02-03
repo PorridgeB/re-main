@@ -101,7 +101,6 @@ public class LevelGenerator : MonoBehaviour
             
             foreach (Room r in allRooms)
             {
-                Debug.Log("Generating Rooms");
                 r.Generate();
             }
             GetComponent<NavMeshSurface>().BuildNavMesh();

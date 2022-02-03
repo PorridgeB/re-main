@@ -8,6 +8,7 @@ public class RunController : MonoBehaviour
     public List<Module> modules;
     public List<Attribute> attributes;
     public Resource playerHP;
+    public Resource playerEnergy;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class RunController : MonoBehaviour
             a.Reset();
         }
         playerHP.Reset();
+        playerEnergy.Reset();
     }
 
     public void RunEnded()

@@ -1024,6 +1024,7 @@ MonoBehaviour:
   ProjectileCount: 4
   SpreadAngle: 45
   projectilePrefab: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
+  energy: {fileID: 11400000, guid: 166162811c7413e47861ea4b8595e875, type: 2}
 --- !u!1101 &494429922815137026
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

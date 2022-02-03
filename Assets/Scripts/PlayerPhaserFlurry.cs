@@ -12,6 +12,8 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
 
     [SerializeField]
     private GameObject projectilePrefab;
+    [SerializeField]
+    private FloatVariable energy;
     private Vector2 direction;
     private int previousShotCount = -1;
 

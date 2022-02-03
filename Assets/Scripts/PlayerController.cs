@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 facing;
     [SerializeField]
     private Resource health;
+    [SerializeField]
+    private Resource energy;
     //private Crosshair crosshair;
+    private bool dead;
 
     public float Health => health.Value;
 
@@ -179,6 +182,13 @@ public class PlayerController : MonoBehaviour
         if (selectedInteraction != null)
         {
             selectedInteraction.ChangeVisibility(true);
+        }
+
+        if (health.Value <= 0 && !dead)
+        {
+            dead = true;
+            Debug.Log("player dead");
+            playerDeath.Raise();
         }
     }
 
@@ -371,8 +381,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnRangedSpecialAttack()
     {
-        if (specialRangedCooldown.Finished)
+        if (specialRangedCooldown.Finished && energy.Value > 0)
         {
+            energy.ChangeValue(-1);
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             specialRangedCooldown.Reset(1 / stats.SpecialRangedAttackSpeed.Value());
             rangedWeapon?.SpecialFire();
@@ -391,8 +402,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnMeleeSpecialAttack()
     {
-        if (specialMeleeCooldown.Finished)
+        if (specialMeleeCooldown.Finished && energy.Value > 0)
         {
+            energy.ChangeValue(-1);
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             specialMeleeCooldown.Reset(1 / stats.SpecialMeleeAttackSpeed.Value());
             meleeWeapon?.SpecialFire();

@@ -340,10 +340,15 @@ MonoBehaviour:
   playerHit: {fileID: 11400000, guid: eca38c15ab3894f448353cf12bbd9937, type: 2}
   playerDeath: {fileID: 11400000, guid: b4a0d08297a6cab4a9140c4448d76ba0, type: 2}
   health:
-    UseConstant: 1
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 818fe3adad0eba143b337e4e800f20c9, type: 2}
     maxValue: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
+  energy:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 166162811c7413e47861ea4b8595e875, type: 2}
+    maxValue: {fileID: 11400000, guid: fc93bc30d383e0e4da2261600197f18a, type: 2}
   dashes: []
   dash: {fileID: 5909654488428309732, guid: 254e14969a4bfec47add5561f4da5a4d, type: 3}
   rangedCooldown: {fileID: 4505106388187775772}
@@ -1211,7 +1216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8549944001849009305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.1}
+  m_LocalPosition: {x: 0, y: 2, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4505106388035379475}

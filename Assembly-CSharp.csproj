@@ -809,6 +809,7 @@
     <Compile Include="Assets\Scripts\GraphicShapes.cs" />
     <Compile Include="Assets\Scripts\SoftwareUpgradeRow.cs" />
     <Compile Include="Assets\Scripts\Vitals.cs" />
+    <Compile Include="Assets\Scripts\SceneChangeTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

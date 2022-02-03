@@ -1944,10 +1944,6 @@ PrefabInstance:
       propertyPath: damageToken
       value: 
       objectReference: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
-    - target: {fileID: 4505106388035379476, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
-      propertyPath: health.UseConstant
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4505106388035379477, guid: 8798b3669c8b893459bb6d9316b37a1c, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2444,10 +2440,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce4f011195d4b3a45aad24644d70e3da, type: 2}
   - {fileID: 11400000, guid: b76c544252b5edc4f99b615415ad8a72, type: 2}
   playerHP:
-    UseConstant: 1
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 818fe3adad0eba143b337e4e800f20c9, type: 2}
     maxValue: {fileID: 11400000, guid: ace1d754eda24764ab9afa2c703ab895, type: 2}
+  playerEnergy:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 166162811c7413e47861ea4b8595e875, type: 2}
+    maxValue: {fileID: 11400000, guid: fc93bc30d383e0e4da2261600197f18a, type: 2}
 --- !u!4 &881850605
 Transform:
   m_ObjectHideFlags: 0
@@ -5563,6 +5564,7 @@ GameObject:
   - component: {fileID: 2091283846}
   - component: {fileID: 2091283845}
   - component: {fileID: 2091283844}
+  - component: {fileID: 2091283850}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -5727,6 +5729,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091283842}
   m_CullTransparentMesh: 1
+--- !u!114 &2091283850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091283842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: b4a0d08297a6cab4a9140c4448d76ba0, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2091283846}
+        m_TargetAssemblyTypeName: Transition, Assembly-CSharp
+        m_MethodName: playerDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ResponseGO:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseDS:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2125469664
 GameObject:
   m_ObjectHideFlags: 0

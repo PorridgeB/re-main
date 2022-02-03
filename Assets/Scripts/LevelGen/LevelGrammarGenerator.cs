@@ -59,7 +59,7 @@ public class LevelGrammarGenerator : MonoBehaviour
     private char previousRoom;
     void Awake()
     {
-        roomCount = 5 + Mathf.RoundToInt(maxRoomCount * runInfoHistory.GenerationCoefficient);
+        roomCount = 3 + Mathf.RoundToInt(maxRoomCount * runInfoHistory.GenerationCoefficient);
         Debug.Log(roomCount);
         levelDepth = 5;
         maxBranchDepth = 3;
@@ -85,7 +85,7 @@ public class LevelGrammarGenerator : MonoBehaviour
         Debug.Log(roomCount + " : " + levelDepth);
         for (int i = 1; i < levelDepth - 1; i++)
         {
-            Debug.Log("Creating room");
+            if (roomsRemaining == 0) break;
             roomsRemaining--;
             levelTemplate += buildingBlocks[Random.Range(0, 1)];
         }
