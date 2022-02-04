@@ -10,6 +10,8 @@ public class MechanicStoreWeapons : MonoBehaviour
     private GameObject attachmentRowPrefab;
     [SerializeField]
     private GameObject attachmentList;
+    [SerializeField]
+    private GameObject weaponList;
 
     private void Start()
     {
