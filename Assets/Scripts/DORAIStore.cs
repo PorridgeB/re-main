@@ -20,6 +20,8 @@ public class DORAIStore : MonoBehaviour
     private GameObject wedgePrefab;
     [SerializeField]
     private GameObject dragPrefab;
+    [SerializeField]
+    private GameObject yesNoDialogPrefab;
 
     private List<SoftwareUpgradeInstance> instances;
 
@@ -164,11 +166,14 @@ public class DORAIStore : MonoBehaviour
 
     public void Clear()
     {
-        foreach (var piece in instances)
-        {
-            Destroy(piece.Object);
-        }
+        var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
 
-        instances.Clear();
+        dialog.Prompt = "Are you sure you want to clear the memory configuration?";
+        dialog.OnYes += delegate { instances.ForEach(x => Destroy(x.Object)); instances.Clear(); };
+    }
+
+    public void Close()
+    {
+        Destroy(gameObject);
     }
 }
