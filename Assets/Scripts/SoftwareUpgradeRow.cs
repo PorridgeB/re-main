@@ -28,6 +28,11 @@ public class SoftwareUpgradeRow : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
     }
 
+    public void Buy()
+    {
+        SendMessageUpwards("OnSoftwareUpgradeBuy", SoftwareUpgrade);
+    }
+
     private void Start()
     {
         name.text = SoftwareUpgrade.Name;

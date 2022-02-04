@@ -164,6 +164,14 @@ public class DORAIStore : MonoBehaviour
         OnSoftwareUpgradeRowBeginDrag(new SoftwareUpgradeRow.BeginDragData { eventData = eventData, softwareUpgrade = piece.SoftwareUpgrade });
     }
 
+    public void OnSoftwareUpgradeBuy(SoftwareUpgrade softwareUpgrade)
+    {
+        var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
+
+        dialog.Prompt = $"Are you sure you want to buy {softwareUpgrade.Name} for {softwareUpgrade.Cost} <sprite=0>?";
+        dialog.OnYes += delegate { };
+    }
+
     public void Clear()
     {
         var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
