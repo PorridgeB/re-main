@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoftwareUpgrade: {fileID: 0}
   name: {fileID: 985168345194072141}
-  counter: {fileID: 0}
+  cost: {fileID: 4991304369884816685}
 --- !u!1 &4123175235117073483
 GameObject:
   m_ObjectHideFlags: 0
