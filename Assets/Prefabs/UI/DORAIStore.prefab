@@ -372,9 +372,11 @@ MonoBehaviour:
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   Radius: 50
   Thickness: 1
-  Rings: 3
+  Rings: 4
   Lines: 5
   Segments: 32
+  UnlockedRings: 1
+  LockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1001 &3724561965341829103
 PrefabInstance:
   m_ObjectHideFlags: 0

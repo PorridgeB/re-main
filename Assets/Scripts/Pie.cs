@@ -13,24 +13,32 @@ public class Pie : Graphic, IBeginDragHandler, IDragHandler, IDropHandler
     public int Rings = 3;
     public int Lines = 5;
     public int Segments = 16;
+    public int UnlockedRings = 2;
+    public Color LockedColor = Color.gray;
 
     protected override void OnPopulateMesh(VertexHelper vh)
     {
         vh.Clear();
 
-        for (int i = 0; i < Rings; i++)
-        {
-            GraphicShapes.AddCircle(vh, color, Radius * ((i + 1) / (float)Rings), Thickness, Segments);
-        }
-
         for (int i = 0; i < Lines; i++)
         {
             var angle = Mathf.PI * (i / (float)Lines);
 
-            var from = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * Radius;
-            var to = -from;
+            var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
-            GraphicShapes.AddLine(vh, color, from, to, Thickness);
+            var unlocked = direction * UnlockedRings * (Radius / Rings);
+            var boundary = direction * Radius;
+
+            GraphicShapes.AddLine(vh, color, -unlocked, unlocked, Thickness);
+            GraphicShapes.AddLine(vh, LockedColor, -boundary, -unlocked, Thickness);
+            GraphicShapes.AddLine(vh, LockedColor, unlocked, boundary, Thickness);
+        }
+
+        for (int i = 0; i < Rings; i++)
+        {
+            var ringColor = i < UnlockedRings ? color : LockedColor;
+
+            GraphicShapes.AddCircle(vh, ringColor, Radius * ((i + 1) / (float)Rings), Thickness, Segments);
         }
     }
 

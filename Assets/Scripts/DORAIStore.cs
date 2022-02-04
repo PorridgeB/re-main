@@ -36,13 +36,14 @@ public class DORAIStore : MonoBehaviour
             softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
         }
 
-        var softwareUpgradeInst1 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[0], Position = new Vector2Int(0, 0) };
-        var softwareUpgradeInst2 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[1], Position = new Vector2Int(9, 1) };
-        var softwareUpgradeInst3 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[2], Position = new Vector2Int(2, 1) };
+        //var softwareUpgradeInst1 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[0], Position = new Vector2Int(0, 0) };
+        //var softwareUpgradeInst2 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[1], Position = new Vector2Int(9, 1) };
+        //var softwareUpgradeInst3 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[2], Position = new Vector2Int(2, 1) };
 
-        Debug.Log(string.Join(", ", Occupied(softwareUpgradeInst3).Select(x => x.ToString())));
+        //Debug.Log(string.Join(", ", Occupied(softwareUpgradeInst3).Select(x => x.ToString())));
 
-        instances = new List<SoftwareUpgradeInstance>() { softwareUpgradeInst1, softwareUpgradeInst2, softwareUpgradeInst3 };
+        //instances = new List<SoftwareUpgradeInstance>() { softwareUpgradeInst1, softwareUpgradeInst2, softwareUpgradeInst3 };
+        instances = new List<SoftwareUpgradeInstance>();
 
         foreach (var instance in instances)
         {
@@ -86,38 +87,38 @@ public class DORAIStore : MonoBehaviour
 
     public void OnSoftwareUpgradeDrop(SoftwareUpgradeInstance instance)
     {
-        foreach (var line in new int[] { 0, -1, 1 })
-        {
-            foreach (var ring in new int[] { 0, -1, 1 })
-            {
-                var newPosition = new Vector2Int((instance.Position.x + line) % (pie.Lines * 2), Mathf.Max(0, instance.Position.y + ring));
-
-                var newInstance = new SoftwareUpgradeInstance { Object = instance.Object, SoftwareUpgrade = instance.SoftwareUpgrade, Position = newPosition };
-
-                if (CanPlace(newInstance))
-                {
-                    Place(newInstance);
-
-                    instances.Add(instance);
-
-                    return;
-                }
-            }
-        }
-
-        //if (!CanPlace(instance))
+        //foreach (var line in new int[] { 0, -1, 1 })
         //{
-        //    return;
+        //    foreach (var ring in new int[] { 0, -1, 1 })
+        //    {
+        //        var newPosition = new Vector2Int((instance.Position.x + line) % (pie.Lines * 2), Mathf.Max(0, instance.Position.y + ring));
+
+        //        var newInstance = new SoftwareUpgradeInstance { Object = instance.Object, SoftwareUpgrade = instance.SoftwareUpgrade, Position = newPosition };
+
+        //        if (CanPlace(newInstance))
+        //        {
+        //            Place(newInstance);
+
+        //            instances.Add(instance);
+
+        //            return;
+        //        }
+        //    }
         //}
 
-        //Place(instance);
+        if (!CanPlace(instance))
+        {
+            return;
+        }
 
-        //instances.Add(instance);
+        Place(instance);
+
+        instances.Add(instance);
     }
 
     public bool CanPlace(SoftwareUpgradeInstance instance)
     {
-        if (instance.Position.y + instance.SoftwareUpgrade.Rings > pie.Rings)
+        if (instance.Position.y + instance.SoftwareUpgrade.Rings > pie.UnlockedRings)
         {
             return false;
         }
