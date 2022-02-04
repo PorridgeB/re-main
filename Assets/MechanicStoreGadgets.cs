@@ -21,6 +21,7 @@ public class MechanicStoreGadgets : MonoBehaviour
         foreach (var gadget in gadgets)
         {
             var gadgetRow = Instantiate(gadgetRowPrefab, gadgetList.transform).GetComponent<GadgetRow>();
+            gadgetRow.Equipped = false;
             gadgetRow.Gadget = gadget;
         }
 
