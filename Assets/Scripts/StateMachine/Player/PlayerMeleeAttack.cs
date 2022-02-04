@@ -8,6 +8,8 @@ public class PlayerMeleeAttack : StateMachineBehaviour
     [SerializeField]
     private GameObject attackField;
     [SerializeField]
+    private AudioClip swordMelee;
+    [SerializeField]
     private float dashSpeed;
     [SerializeField]
     private float comboDashSpeed;
@@ -36,6 +38,8 @@ public class PlayerMeleeAttack : StateMachineBehaviour
 
         dashTimer = 0;
         direction = PlayerController.instance.Facing;
+
+        SoundManager.PlaySound(swordMelee, Random.Range(0.4f, 0.5f));
         
         attackFieldInstance = Instantiate(attackField, PlayerController.instance.transform);
 

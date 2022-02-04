@@ -23,7 +23,11 @@ public class SoundManager : MonoBehaviour
             nextSong = currentSong;
 
             music = GetComponent<AudioSource>();
-            music.clip = currentSong.clip;
+            if (currentSong != null)
+            {
+                music.clip = currentSong.clip;
+            }
+            
         }
         else
         {
@@ -33,17 +37,10 @@ public class SoundManager : MonoBehaviour
 
     private void SceneUpdate(Scene current)
     {
+        //change music when scene changes
         Debug.Log(current.name);
         switch (current.name)
         {
-            case "The Overgrowth":
-                Debug.Log("Staring music");
-                music.Play();
-                break;
-            case "0_start":
-                music.Stop();
-                break;
-
         }
 
     }
@@ -64,15 +61,19 @@ public class SoundManager : MonoBehaviour
         {
 
         }
-        if (currentSong.bar)
+        if (currentSong != null)
         {
-            if (currentSong != nextSong)
+            if (currentSong.bar)
             {
-                currentSong = nextSong;
-                music.clip = currentSong.clip;
-                music.Play();
+                if (currentSong != nextSong)
+                {
+                    currentSong = nextSong;
+                    music.clip = currentSong.clip;
+                    music.Play();
+                }
             }
         }
+        
     }
 
     public static void ChangeMusic(Song song, bool changeImmediate)
@@ -99,15 +100,16 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 
-    public static void PlaySound(AudioClip clip, float volume)
+    public static GameObject PlaySound(AudioClip clip, float volume)
     {
         if (Time.timeScale == 0)
         {
-            return;
+            return null;
         }
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.volume = volume;
         audioSource.PlayOneShot(clip);
+        return audioSource.gameObject;
     }
 }

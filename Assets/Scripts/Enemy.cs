@@ -41,6 +41,11 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BehaviorTree behaviorTree;
 
+    [SerializeField]
+    private AudioClip hurt;
+    [SerializeField]
+    private AudioClip die;
+
     private float slowAmount;
 
     // Start is called before the first frame update
@@ -112,7 +117,7 @@ public class Enemy : MonoBehaviour
         if ((float)health.GetValue() < 0)
         {
             OnDeath.Raise();
-
+            SoundManager.PlaySound(die);
             // Hacky way to check if the enemy has a death animation
             if (!animator.parameters.Any(x => x.name == "Died"))
             {
@@ -120,6 +125,10 @@ public class Enemy : MonoBehaviour
             }
 
             behaviorTree.SendEvent("Die");
+        }
+        else
+        {
+            SoundManager.PlaySound(hurt);
         }
     }
 

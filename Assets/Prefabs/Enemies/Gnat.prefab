@@ -252,6 +252,8 @@ MonoBehaviour:
   OnDeath: {fileID: 11400000, guid: a16be0633d61f1f478249c43808276c6, type: 2}
   OnHurt: {fileID: 0}
   damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
+  hurt: {fileID: 8300000, guid: 875d903584d2b0248a8af48846b43349, type: 3}
+  die: {fileID: 8300000, guid: 721d78b449460c34aa1979bdb865c755, type: 3}
 --- !u!195 &4974727407962876956
 NavMeshAgent:
   m_ObjectHideFlags: 0

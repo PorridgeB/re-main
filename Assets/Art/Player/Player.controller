@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackField: {fileID: 3298188469097433944, guid: d03355a6e044760448deb0c982da0b8d, type: 3}
+  swordMelee: {fileID: 8300000, guid: 84c2801d74bd90e468b97709067456b3, type: 3}
   dashSpeed: 5
   comboDashSpeed: 9
   speedCurve:
@@ -183,6 +184,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  dash: {fileID: 8300000, guid: adb5087a4a4c4bd4d922baadccbb52fb, type: 3}
   dashSpeed: 12
   dashDistance: 4
 --- !u!206 &-8175833681758895266
@@ -420,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdf1bbc90cc925458f2a4b22e90ba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  railgunCharge: {fileID: 8300000, guid: 147da2a25cbcdd240a8a17cc83d4cfda, type: 3}
 --- !u!114 &-5660584870998354935
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -571,6 +574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSoundRange: 0
   runSoundPeriod: 0
+  step: {fileID: 8300000, guid: e0d4b16a3f87b2847af195713c5d0f14, type: 3}
+  stepInterval: 0.5
 --- !u!1107 &-3725275409237692164
 AnimatorStateMachine:
   serializedVersion: 6
@@ -653,6 +658,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  railgunShoot: {fileID: 8300000, guid: 64be3272f61d570439dc6fd6ec1e481d, type: 3}
 --- !u!206 &-3110551259940928347
 BlendTree:
   m_ObjectHideFlags: 1
@@ -827,6 +833,7 @@ MonoBehaviour:
   Speed: 15
   Damage: 10
   Distance: 0.25
+  phaserShoot: {fileID: 8300000, guid: c51c1f4144e857a458d1988e9af95c56, type: 3}
   projectilePrefab: {fileID: 3298188469097433944, guid: 80f934f2212792146adc407da1a1998b, type: 3}
 --- !u!1101 &-279900010296653382
 AnimatorStateTransition:

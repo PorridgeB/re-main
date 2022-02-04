@@ -9,10 +9,16 @@ public class PlayerPhaserShoot : StateMachineBehaviour
     public float Distance = 0.25f;
 
     [SerializeField]
+    private AudioClip phaserShoot;
+
+
+    [SerializeField]
     private GameObject projectilePrefab;
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        SoundManager.PlaySound(phaserShoot, Random.Range(0.8f, 0.9f));
+
         var projectile = Instantiate(projectilePrefab).GetComponent<PhaserProjectile>();
 
         var player = PlayerController.instance;

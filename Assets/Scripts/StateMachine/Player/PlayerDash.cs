@@ -7,6 +7,8 @@ public class PlayerDash : StateMachineBehaviour
     [SerializeField]
     private AnimationCurve speedCurve;
     [SerializeField]
+    private AudioClip dash;
+    [SerializeField]
     private float dashSpeed;
     [SerializeField]
     private float dashDistance;
@@ -43,6 +45,7 @@ public class PlayerDash : StateMachineBehaviour
         
         otherSide = hitB.point;
         SetCollisionWithDashable(false);
+        
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -51,7 +54,7 @@ public class PlayerDash : StateMachineBehaviour
         SetCollisionWithEnemies(false);
         startPosition = GameObject.Find("Player").transform.position + Vector3.up / 2;
 
-
+        SoundManager.PlaySound(dash, Random.Range(0.7f, 0.8f));
 
         dashTimer = 0;
         dashDirection = new Vector2(animator.GetFloat("VelX"), animator.GetFloat("VelY"));
