@@ -36,6 +36,8 @@ public class MechanicStoreGadgets : MonoBehaviour
 
     public void OnGadgetBuy(Gadget gadget)
     {
-
+        var save = SaveManager.Instance.Save;
+        save.Scrap -= gadget.Cost;
+        save.UnlockedGadgets.Add(gadget.name);
     }
 }
