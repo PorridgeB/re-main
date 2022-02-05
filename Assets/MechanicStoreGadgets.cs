@@ -21,15 +21,21 @@ public class MechanicStoreGadgets : MonoBehaviour
         foreach (var gadget in gadgets)
         {
             var gadgetRow = Instantiate(gadgetRowPrefab, gadgetList.transform).GetComponent<GadgetRow>();
-            gadgetRow.Equipped = false;
+
+            gadgetRow.Equipped = gadget.name == SaveManager.Instance.Save.Loadout.Gadget;
             gadgetRow.Gadget = gadget;
         }
 
-        SelectGadget(gadgets.FirstOrDefault());
+        gadgetInfo.ShowGadget(gadgets.FirstOrDefault());
     }
 
-    public void SelectGadget(Gadget gadget)
+    public void OnGadgetSelected(Gadget gadget)
     {
-        gadgetInfo.SetGadget(gadget);
+        gadgetInfo.ShowGadget(gadget);
+    }
+
+    public void OnGadgetBuy(Gadget gadget)
+    {
+
     }
 }

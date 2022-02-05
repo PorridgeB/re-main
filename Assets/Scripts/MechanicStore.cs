@@ -13,7 +13,7 @@ public class MechanicStore : MonoBehaviour
 
     private void Start()
     {
-        
+        scrap.text = $"{SaveManager.Instance.Save.Scrap} <sprite=1>";
     }
 
     public void Close()

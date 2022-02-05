@@ -11,8 +11,12 @@ public class GadgetInfo : MonoBehaviour
     private TextMeshProUGUI description;
     [SerializeField]
     private TextMeshProUGUI cost;
+    [SerializeField]
+    private GameObject buy;
+    [SerializeField]
+    private GameObject equip;
 
-    public void SetGadget(Gadget gadget)
+    public void ShowGadget(Gadget gadget)
     {
         if (gadget == null)
         {
@@ -26,5 +30,15 @@ public class GadgetInfo : MonoBehaviour
         name.text = gadget.Name;
         description.text = gadget.Description;
         cost.text = $"{gadget.Cost} <sprite=1>";
+    }
+
+    public void Buy()
+    {
+
+    }
+
+    public void Equip()
+    {
+
     }
 }

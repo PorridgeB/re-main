@@ -33,6 +33,6 @@ public class GadgetRow : MonoBehaviour
 
     public void Select()
     {
-        SendMessageUpwards("SelectGadget", Gadget);
+        SendMessageUpwards("OnGadgetSelected", Gadget);
     }
 }

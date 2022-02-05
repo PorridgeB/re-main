@@ -22,7 +22,7 @@ public class Save
     // List of bought gadgets
     public List<string> UnlockedGadgets = new List<string>();
     // Loadouts that the player has configured
-    public List<Loadout> Loadouts = new List<Loadout>();
+    public List<Loadout> Loadouts = new List<Loadout>() { new Loadout() };
     // Index of the selected loadout
     public int LoadoutIndex = 0;
     // List of completed runs
@@ -30,7 +30,7 @@ public class Save
     // Percentage of story completion
     public int StoryCompletion => 0;
     // Selected loadout
-    public Loadout SelectedLoadout => Loadouts[LoadoutIndex];
+    public Loadout Loadout => Loadouts[LoadoutIndex];
 
     //public static Save Read(string filename = "/gamesave.save")
     //{
