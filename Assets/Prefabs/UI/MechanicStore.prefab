@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1633155413442775823}
   - component: {fileID: 8603356353774141219}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1000,6 +1000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentRowPrefab: {fileID: 3955475176232150011, guid: e03dadce20072a3498c8f5156cea19c1, type: 3}
   attachmentList: {fileID: 2857281971783377554}
+  attachmentInfo: {fileID: 388717016322359873}
 --- !u!1 &4999455701140917315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,7 +1511,7 @@ GameObject:
   - component: {fileID: 1341767890362319643}
   - component: {fileID: 5522921389293513294}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2017,6 +2018,7 @@ GameObject:
   - component: {fileID: 5686367398846143268}
   - component: {fileID: 8290610327714660894}
   - component: {fileID: 5682591860527060638}
+  - component: {fileID: 388717016322359873}
   m_Layer: 5
   m_Name: Info
   m_TagString: Untagged
@@ -2130,6 +2132,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &388717016322359873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227295496875900447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5d525b5b34d0d478d8a975e056a67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 5522921389293513294}
+  name: {fileID: 7549703909775838720}
+  description: {fileID: 7599575741614388205}
+  cost: {fileID: 6100746960217962003}
 --- !u!1 &8602819478679017188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,6 +2771,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Railgun
       objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 77577860823780875}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowAttachments
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MechanicStoreWeapons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Railgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8893767121106108801, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
       propertyPath: m_IsOn
       value: 0
@@ -2870,6 +2920,38 @@ PrefabInstance:
     - target: {fileID: 7354763466170689997, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 77577860823780875}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowAttachments
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MechanicStoreWeapons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8893767121106108801, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
       propertyPath: m_IsOn
@@ -3253,10 +3335,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Phaser
       objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 77577860823780875}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowAttachments
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MechanicStoreWeapons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Phaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8893767121106108801, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 9037236310913829804}
+    - target: {fileID: 8893767121106108801, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893767121106108801, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893767121106108801, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
 --- !u!224 &7904855781951993111 stripped
@@ -3835,6 +3961,38 @@ PrefabInstance:
     - target: {fileID: 7354763466170689997, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
       propertyPath: m_Name
       value: Hammer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 77577860823780875}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowAttachments
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MechanicStoreWeapons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Hammer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316405886068266132, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8893767121106108801, guid: 24307a0d50cc9e5408f4fd1335f9955e, type: 3}
       propertyPath: m_IsOn

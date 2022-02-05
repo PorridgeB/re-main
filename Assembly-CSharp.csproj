@@ -385,6 +385,7 @@
     <Compile Include="Assets\Scripts\Tasks\Dive.cs" />
     <Compile Include="Assets\Scripts\UISoundController.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetRotation.cs" />
+    <Compile Include="Assets\MechanicStoreWeapons.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\GetApplyRootMotion.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedFloat.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetForwardVector.cs" />
@@ -603,6 +604,7 @@
     <Compile Include="Assets\Scripts\Tasks\Strike.cs" />
     <Compile Include="Assets\Scripts\Pie.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetRotation.cs" />
+    <Compile Include="Assets\MechanicStoreGadgets.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCookieSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetMass.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\BoolComparison.cs" />
@@ -815,8 +817,8 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\MechanicStoreGadgets.cs" />
-    <Compile Include="Assets\MechanicStoreWeapons.cs" />
+    <Compile Include="Assets\AttachmentRow.cs" />
+    <Compile Include="Assets\AttachmentInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62fb3458e7d2054bb0d01d378cb603c, type: 3}
   m_Name: WeaponAttachment4
   m_EditorClassIdentifier: 
-  Name: C
+  Name: D
   Description: 
   Icon: {fileID: 0}
   Cost: 0
-  Weapon: Sword
+  Weapon: Hammer

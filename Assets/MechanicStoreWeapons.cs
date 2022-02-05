@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MechanicStoreWeapons : MonoBehaviour
 {
@@ -11,23 +13,43 @@ public class MechanicStoreWeapons : MonoBehaviour
     [SerializeField]
     private GameObject attachmentList;
     [SerializeField]
-    private GameObject weaponList;
+    private AttachmentInfo attachmentInfo;
+    private WeaponAttachment[] attachments;
 
     private void Start()
     {
-        var attachments = Resources.LoadAll<WeaponAttachment>("WeaponAttachments");
+        attachments = Resources.LoadAll<WeaponAttachment>("WeaponAttachments");
 
-        foreach (var attachment in attachments)
+        ShowAttachments("Phaser");
+    }
+
+    public void ClearAttachments()
+    {
+        foreach (Transform child in attachmentList.transform)
         {
-            Instantiate(attachmentRowPrefab, attachmentList.transform);
-
-            //var attachmentRow = Instantiate(attachmentRowPrefab, attachmentList.transform).GetComponent<AttachmentRow>();
-            //attachmentRow.Attachment = attachment;
+            Destroy(child.gameObject);
         }
     }
 
-    public void ShowAttachments(string type)
+    public void ShowAttachments(string weapon)
     {
+        ClearAttachments();
 
+        foreach (var attachment in attachments.Where(x => x.Weapon == weapon))
+        {
+            var attachmentRow = Instantiate(attachmentRowPrefab, attachmentList.transform).GetComponent<AttachmentRow>();
+            
+            attachmentRow.WeaponAttachment = attachment;
+
+            //var button = attachmentRow.GetComponent<Button>();
+            //button.onClick.AddListener(() => attachmentInfo.ShowAttachment(attachment));
+        }
+
+        attachmentInfo.ShowAttachment(attachments.Where(x => x.Weapon == weapon).FirstOrDefault());
+    }
+
+    public void OnAttachmentSelected(WeaponAttachment attachment)
+    {
+        attachmentInfo.ShowAttachment(attachment);
     }
 }

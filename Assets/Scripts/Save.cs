@@ -7,26 +7,24 @@ using UnityEngine;
 [Serializable]
 public class Save
 {
-    // Date and time the save file was created
-    public DateTime Created;
     // Number of seconds spent playing the game (does not include paused time)
-    public int TotalTime;
+    public int TotalTime = 0;
     // Quantity of data fragments in the player's inventory
-    public int DataFragments;
+    public int DataFragments = 0;
     // Quantity of scrap in the player's inventory
-    public int Scrap;
+    public int Scrap = 0;
     // Number of rings allocated for software upgrades (D.O.R.A.I.)
-    public int SoftwareUpgradeRings;
+    public int SoftwareUpgradeRings = 1;
     // List of unlocked software upgrades
-    public List<string> UnlockedSoftwareUpgrades;
+    public List<string> UnlockedSoftwareUpgrades = new List<string>();
     // List of bought weapon attachments
-    public List<string> UnlockedWeaponAttachments;
+    public List<string> UnlockedWeaponAttachments = new List<string>();
     // List of bought gadgets
-    public List<string> UnlockedGadgets;
+    public List<string> UnlockedGadgets = new List<string>();
     // Loadouts that the player has configured
-    public List<Loadout> Loadouts;
+    public List<Loadout> Loadouts = new List<Loadout>();
     // Index of the selected loadout
-    public int LoadoutIndex;
+    public int LoadoutIndex = 0;
     // List of completed runs
     public RunInfoHistory Runs;
     // Percentage of story completion

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7049297334288896896}
   - component: {fileID: 5549714612340859257}
   - component: {fileID: 7041445239999067406}
+  - component: {fileID: 6013342940221209400}
   m_Layer: 5
   m_Name: AttachmentRow
   m_TagString: Untagged
@@ -184,6 +185,18 @@ MonoBehaviour:
           m_StringArgument: OnButtonClick
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6013342940221209400}
+        m_TargetAssemblyTypeName: AttachmentRow, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7041445239999067406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +226,22 @@ MonoBehaviour:
             m_StringArgument: OnButtonHighlight
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &6013342940221209400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955475176232150011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321726e53687c65458dc6b564c8b204f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponAttachment: {fileID: 0}
+  icon: {fileID: 9050260885759911308}
+  name: {fileID: 985168345194072141}
+  equipped: {fileID: 6322349224167148772}
 --- !u!1 &4728692493929845216
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,11 +481,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 350665672885246839, guid: e3c5f4ab13a4ea34d9504294684868aa, type: 3}
       propertyPath: m_Name
-      value: Toggle
+      value: Equipped
       objectReference: {fileID: 0}
     - target: {fileID: 1846912244952363835, guid: e3c5f4ab13a4ea34d9504294684868aa, type: 3}
       propertyPath: m_IsOn
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846912244952363835, guid: e3c5f4ab13a4ea34d9504294684868aa, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3239344564957590340, guid: e3c5f4ab13a4ea34d9504294684868aa, type: 3}
       propertyPath: m_Pivot.x
@@ -549,3 +582,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3239344564957590340, guid: e3c5f4ab13a4ea34d9504294684868aa, type: 3}
   m_PrefabInstance: {fileID: 5628641887356682207}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6322349224167148772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1846912244952363835, guid: e3c5f4ab13a4ea34d9504294684868aa, type: 3}
+  m_PrefabInstance: {fileID: 5628641887356682207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
