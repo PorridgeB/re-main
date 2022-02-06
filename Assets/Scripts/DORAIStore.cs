@@ -22,7 +22,9 @@ public class DORAIStore : MonoBehaviour
     private GameObject dragPrefab;
     [SerializeField]
     private GameObject yesNoDialogPrefab;
-
+    [SerializeField]
+    private Wedge phantom;
+    private Drag currentDrag = null;
     private List<SoftwareUpgradeInstance> instances;
 
     // If failed replacement, go to old position
@@ -48,6 +50,30 @@ public class DORAIStore : MonoBehaviour
 
     private void Update()
     {
+        phantom.gameObject.SetActive(false);
+
+        if (currentDrag != null)
+        {
+            var softwareUpgrade = currentDrag.SoftwareUpgrade;
+            var position = pie.MousePosition();
+            var line = position.x;
+            var ring = position.y;
+
+            if (ring >= 0 && ring < pie.Rings - 1)
+            {
+                phantom.gameObject.SetActive(true);
+
+                phantom.InnerRadius = (ring + 1) * (pie.Radius / pie.Rings);
+                phantom.OuterRadius = (ring + 1 + softwareUpgrade.Rings) * (pie.Radius / pie.Rings);
+                phantom.MinArcAngle = line * (180f / pie.Lines);
+                phantom.MaxArcAngle = (line + softwareUpgrade.Lines) * (180f / pie.Lines);
+
+                var color = new Color(softwareUpgrade.Color.r, softwareUpgrade.Color.g, softwareUpgrade.Color.b, 0.25f);
+                phantom.color = color;
+
+                phantom.SetAllDirty();
+            }
+        }
     }
 
     private void Place(SoftwareUpgradeInstance instance)
@@ -77,30 +103,13 @@ public class DORAIStore : MonoBehaviour
         go.transform.SetParent(transform, false);
         eventData.pointerDrag = go;
 
-        go.GetComponent<Drag>().SoftwareUpgrade = data.softwareUpgrade;
+        var drag = go.GetComponent<Drag>();
+        drag.SoftwareUpgrade = data.softwareUpgrade;
+        currentDrag = drag;
     }
 
     public void OnSoftwareUpgradeDrop(SoftwareUpgradeInstance instance)
     {
-        //foreach (var line in new int[] { 0, -1, 1 })
-        //{
-        //    foreach (var ring in new int[] { 0, -1, 1 })
-        //    {
-        //        var newPosition = new Vector2Int((instance.Position.x + line) % (pie.Lines * 2), Mathf.Max(0, instance.Position.y + ring));
-
-        //        var newInstance = new SoftwareUpgradeInstance { Object = instance.Object, SoftwareUpgrade = instance.SoftwareUpgrade, Position = newPosition };
-
-        //        if (CanPlace(newInstance))
-        //        {
-        //            Place(newInstance);
-
-        //            instances.Add(instance);
-
-        //            return;
-        //        }
-        //    }
-        //}
-
         if (!CanPlace(instance))
         {
             return;
