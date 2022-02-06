@@ -16,22 +16,31 @@ public class Pie : Graphic, IBeginDragHandler, IDragHandler, IDropHandler
     public int UnlockedRings = 2;
     public Color LockedColor = Color.gray;
 
+    // Show outline when wedge is hovering above pie
+    // Give outline to wedges
+    // Drag is wedge shaped
+
     protected override void OnPopulateMesh(VertexHelper vh)
     {
         vh.Clear();
 
-        for (int i = 0; i < Lines; i++)
+        for (int i = 0; i < Lines * 2; i++)
         {
             var angle = Mathf.PI * (i / (float)Lines);
 
             var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
             var unlocked = direction * UnlockedRings * (Radius / Rings);
-            var boundary = direction * Radius;
+            var max = direction * Radius;
+            var min = direction * (Radius / Rings);
 
-            GraphicShapes.AddLine(vh, color, -unlocked, unlocked, Thickness);
-            GraphicShapes.AddLine(vh, LockedColor, -boundary, -unlocked, Thickness);
-            GraphicShapes.AddLine(vh, LockedColor, unlocked, boundary, Thickness);
+            GraphicShapes.AddLine(vh, color, min, unlocked, Thickness);
+            GraphicShapes.AddLine(vh, LockedColor, unlocked, max, Thickness);
+
+            //GraphicShapes.AddLine(vh, color, -unlocked, -min, Thickness);
+            //GraphicShapes.AddLine(vh, color, min, unlocked, Thickness);
+            //GraphicShapes.AddLine(vh, LockedColor, -max, -unlocked, Thickness);
+            //GraphicShapes.AddLine(vh, LockedColor, unlocked, max, Thickness);
         }
 
         for (int i = 0; i < Rings; i++)

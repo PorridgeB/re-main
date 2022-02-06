@@ -678,7 +678,7 @@ MonoBehaviour:
   Rings: 4
   Lines: 5
   Segments: 32
-  UnlockedRings: 1
+  UnlockedRings: 2
   LockedColor: {r: 0.22745098, g: 0.26666668, b: 0.4, a: 1}
 --- !u!114 &6916691387712359529
 MonoBehaviour:
