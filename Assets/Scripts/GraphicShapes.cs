@@ -8,6 +8,7 @@ public static class GraphicShapes
     public static void AddArc(VertexHelper vh, Color color, float outerRadius, float innerRadius, float minArcAngle, float maxArcAngle, int segments)
     {
         var vert = UIVertex.simpleVert;
+        vert.color = color;
 
         var baseIndex = vh.currentVertCount;
 
@@ -17,11 +18,9 @@ public static class GraphicShapes
             var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
             vert.position = direction * innerRadius;
-            vert.color = color;
             vh.AddVert(vert);
 
             vert.position = direction * outerRadius;
-            vert.color = color;
             vh.AddVert(vert);
 
             if (i < segments)
@@ -78,14 +77,7 @@ public static class GraphicShapes
 
     public static void AddLine(VertexHelper vh, Color color, Vector2 from, Vector2 to, float thickness)
     {
-        var perpendicular = Vector2.Perpendicular(to - from).normalized;
-
-        var v1 = from + perpendicular * thickness * 0.5f;
-        var v2 = from - perpendicular * thickness * 0.5f;
-        var v3 = to + perpendicular * thickness * 0.5f;
-        var v4 = to - perpendicular * thickness * 0.5f;
-
-        AddQuad(vh, color, v1, v2, v3, v4);
+        AddLine(vh, color, from, to, thickness * 0.5f, thickness * 0.5f);
     }
 
     public static void AddLine(VertexHelper vh, Color color, Vector2 from, Vector2 to, float leftThickness, float rightThickness)
