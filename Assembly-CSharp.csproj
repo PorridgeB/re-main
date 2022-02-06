@@ -108,7 +108,7 @@
     <Compile Include="Assets\Scripts\FloatReference.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CapsuleCollider\GetHeight.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\GetPosition.cs" />
-    <Compile Include="Assets\Drag.cs" />
+    <Compile Include="Assets\Scripts\Drag.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedUInt.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Actions\StopBehaviorTree.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetLocalScale.cs" />
@@ -368,6 +368,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedTransform.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\Stop.cs" />
     <Compile Include="Assets\Scripts\PlayerRailgunShoot.cs" />
+    <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetAngularVelocity.cs" />
     <Compile Include="Assets\Scripts\SaveProfile.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\LayerMask\SetLayer.cs" />
@@ -385,7 +386,7 @@
     <Compile Include="Assets\Scripts\Tasks\Dive.cs" />
     <Compile Include="Assets\Scripts\UISoundController.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetRotation.cs" />
-    <Compile Include="Assets\MechanicStoreWeapons.cs" />
+    <Compile Include="Assets\Scripts\MechanicStoreWeapons.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\GetApplyRootMotion.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedFloat.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetForwardVector.cs" />
@@ -553,6 +554,7 @@
     <Compile Include="Assets\Scripts\PhaserProjectileEffect.cs" />
     <Compile Include="Assets\Scripts\Tasks\WithinDistance.cs" />
     <Compile Include="Assets\Scripts\Group.cs" />
+    <Compile Include="Assets\Scripts\AttachmentInfo.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\Angle.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\Play.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Time\GetTime.cs" />
@@ -604,7 +606,7 @@
     <Compile Include="Assets\Scripts\Tasks\Strike.cs" />
     <Compile Include="Assets\Scripts\Pie.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetRotation.cs" />
-    <Compile Include="Assets\MechanicStoreGadgets.cs" />
+    <Compile Include="Assets\Scripts\MechanicStoreGadgets.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCookieSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetMass.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\BoolComparison.cs" />
@@ -633,6 +635,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Debug\LogFormat.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\BoxCollider2D\SetSize.cs" />
+    <Compile Include="Assets\Scripts\AttachmentRow.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\RandomSequence.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetSpread.cs" />
     <Compile Include="Assets\Scripts\Wedge.cs" />
@@ -817,9 +820,6 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\AttachmentRow.cs" />
-    <Compile Include="Assets\AttachmentInfo.cs" />
-    <Compile Include="Assets\Scripts\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
