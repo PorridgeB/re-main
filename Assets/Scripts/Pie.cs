@@ -13,6 +13,7 @@ public class Pie : Graphic, IBeginDragHandler, IDragHandler, IDropHandler
     public int Rings = 3;
     public int Lines = 5;
     public int Segments = 16;
+    [Min(0)]
     public int UnlockedRings = 2;
     public Color LockedColor = Color.gray;
 
@@ -23,31 +24,47 @@ public class Pie : Graphic, IBeginDragHandler, IDragHandler, IDropHandler
     protected override void OnPopulateMesh(VertexHelper vh)
     {
         vh.Clear();
+        DrawLines(vh);
+        DrawRings(vh);
+    }
 
+    private void DrawRings(VertexHelper vh)
+    {
+        for (int i = 0; i < Rings; i++)
+        {
+            var ringColor = i <= UnlockedRings ? color : LockedColor;
+
+            if (UnlockedRings == 0)
+            {
+                ringColor = LockedColor;
+            }
+
+            var radius = Radius * ((i + 1) / (float)Rings);
+
+            GraphicShapes.AddCircle(vh, ringColor, radius, Thickness, Segments);
+        }
+    }
+
+    private void DrawLines(VertexHelper vh)
+    {
         for (int i = 0; i < Lines * 2; i++)
         {
             var angle = Mathf.PI * (i / (float)Lines);
 
             var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
-            var unlocked = direction * UnlockedRings * (Radius / Rings);
+            var unlocked = direction * Mathf.Clamp(UnlockedRings + 1, 0, Rings) * (Radius / Rings);
+            
             var max = direction * Radius;
             var min = direction * (Radius / Rings);
 
+            if (UnlockedRings == 0)
+            {
+                unlocked = min;
+            }
+
             GraphicShapes.AddLine(vh, color, min, unlocked, Thickness);
             GraphicShapes.AddLine(vh, LockedColor, unlocked, max, Thickness);
-
-            //GraphicShapes.AddLine(vh, color, -unlocked, -min, Thickness);
-            //GraphicShapes.AddLine(vh, color, min, unlocked, Thickness);
-            //GraphicShapes.AddLine(vh, LockedColor, -max, -unlocked, Thickness);
-            //GraphicShapes.AddLine(vh, LockedColor, unlocked, max, Thickness);
-        }
-
-        for (int i = 0; i < Rings; i++)
-        {
-            var ringColor = i < UnlockedRings ? color : LockedColor;
-
-            GraphicShapes.AddCircle(vh, ringColor, Radius * ((i + 1) / (float)Rings), Thickness, Segments);
         }
     }
 

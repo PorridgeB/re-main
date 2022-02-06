@@ -61,7 +61,7 @@ public static class GraphicShapes
         vert.color = color;
         vh.AddVert(vert);
 
-        vh.AddTriangle(baseIndex, baseIndex + 2, baseIndex + 1);
-        vh.AddTriangle(baseIndex + 2, baseIndex + 3, baseIndex);
+        vh.AddTriangle(baseIndex, baseIndex + 3, baseIndex + 1);
+        vh.AddTriangle(baseIndex, baseIndex + 2, baseIndex + 3);
     }
 }
