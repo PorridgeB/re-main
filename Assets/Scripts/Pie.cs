@@ -17,9 +17,9 @@ public class Pie : Graphic, IBeginDragHandler, IDragHandler, IDropHandler
     public int UnlockedRings = 2;
     public Color LockedColor = Color.gray;
 
-    // Show outline when wedge is hovering above pie
-    // Give outline to wedges
-    // Drag is wedge shaped
+    // TODO: Show outline when wedge is hovering above pie
+    // TODO: Give outline to wedges
+    // TODO: Drag is wedge shaped
 
     protected override void OnPopulateMesh(VertexHelper vh)
     {
@@ -79,7 +79,7 @@ public class Pie : Graphic, IBeginDragHandler, IDragHandler, IDropHandler
             angle += 360;
         }
 
-        var ring = Mathf.FloorToInt(distance / (Radius / Rings));
+        var ring = Mathf.FloorToInt(distance / (Radius / Rings)) - 1;
         var line = Mathf.FloorToInt(angle / (180f / Lines));
 
         return new Vector2Int(line, ring);

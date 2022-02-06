@@ -38,13 +38,6 @@ public class DORAIStore : MonoBehaviour
             softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
         }
 
-        //var softwareUpgradeInst1 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[0], Position = new Vector2Int(0, 0) };
-        //var softwareUpgradeInst2 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[1], Position = new Vector2Int(9, 1) };
-        //var softwareUpgradeInst3 = new SoftwareUpgradeInstance { SoftwareUpgrade = softwareUpgrades[2], Position = new Vector2Int(2, 1) };
-
-        //Debug.Log(string.Join(", ", Occupied(softwareUpgradeInst3).Select(x => x.ToString())));
-
-        //instances = new List<SoftwareUpgradeInstance>() { softwareUpgradeInst1, softwareUpgradeInst2, softwareUpgradeInst3 };
         instances = new List<SoftwareUpgradeInstance>();
 
         foreach (var instance in instances)
@@ -67,8 +60,8 @@ public class DORAIStore : MonoBehaviour
         var line = instance.Position.x;
         var ring = instance.Position.y;
 
-        wedge.InnerRadius = ring * (pie.Radius / pie.Rings);
-        wedge.OuterRadius = (ring + softwareUpgrade.Rings) * (pie.Radius / pie.Rings);
+        wedge.InnerRadius = (ring + 1) * (pie.Radius / pie.Rings);
+        wedge.OuterRadius = (ring + 1 + softwareUpgrade.Rings) * (pie.Radius / pie.Rings);
         wedge.MinArcAngle = line * (180f / pie.Lines);
         wedge.MaxArcAngle = (line + softwareUpgrade.Lines) * (180f / pie.Lines);
         wedge.color = softwareUpgrade.Color;
@@ -120,7 +113,7 @@ public class DORAIStore : MonoBehaviour
 
     public bool CanPlace(SoftwareUpgradeInstance instance)
     {
-        if (instance.Position.y + instance.SoftwareUpgrade.Rings > pie.UnlockedRings)
+        if (instance.Position.y < 0 || instance.Position.y + instance.SoftwareUpgrade.Rings > pie.UnlockedRings)
         {
             return false;
         }
