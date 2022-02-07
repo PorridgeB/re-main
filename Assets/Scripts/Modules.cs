@@ -18,10 +18,10 @@ public class Modules : MonoBehaviour
             Instantiate(moduleSlotPrefab, moduleGrid.transform);
         }
 
-        for (int i = 0; i < 40; i++)
-        {
-            Instantiate(emptyModuleSlotPrefab, moduleGrid.transform);
-        }
+        //for (int i = 0; i < 40; i++)
+        //{
+        //    Instantiate(emptyModuleSlotPrefab, moduleGrid.transform);
+        //}
     }
 
     public void Close()
