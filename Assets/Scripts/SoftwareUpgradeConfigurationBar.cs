@@ -19,15 +19,15 @@ public class SoftwareUpgradeConfigurationBar : MonoBehaviour
         //    Destroy(child.gameObject);
         //}
 
-        foreach (var softwareUpgrade in softwareUpgrades.OrderBy(x => x.Key.Points * x.Value))
-        {
-            var bar = Instantiate(BarPrefab, transform);
+        //foreach (var softwareUpgrade in softwareUpgrades.OrderBy(x => x.Key.Points * x.Value))
+        //{
+        //    var bar = Instantiate(BarPrefab, transform);
 
-            var barImage = bar.GetComponent<Image>();
-            barImage.color = softwareUpgrade.Key.Color;
+        //    var barImage = bar.GetComponent<Image>();
+        //    barImage.color = softwareUpgrade.Key.Color;
 
-            var barRectTrans = bar.GetComponent<RectTransform>();
-            barRectTrans.sizeDelta = new Vector2(30 * softwareUpgrade.Key.Points * softwareUpgrade.Value, 30);
-        }
+        //    var barRectTrans = bar.GetComponent<RectTransform>();
+        //    barRectTrans.sizeDelta = new Vector2(30 * softwareUpgrade.Key.Points * softwareUpgrade.Value, 30);
+        //}
     }
 }

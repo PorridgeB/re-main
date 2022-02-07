@@ -3,33 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System;
+using UnityEditor;
 
 public class MechanicStore : MonoBehaviour
 {
     [SerializeField]
-    private GameObject gadgetRowPrefab;
-    [SerializeField]
-    private GameObject gadgetList;
-    [SerializeField]
-    private GadgetInfo gadgetInfo;
+    private TextMeshProUGUI scrap;
 
     private void Start()
     {
-        var gadgets = Resources.LoadAll<Gadget>("Gadgets");
-
-        gadgets = gadgets.OrderBy(x => x.Cost).ToArray();
-
-        foreach (var gadget in gadgets)
-        {
-            var gadgetRow = Instantiate(gadgetRowPrefab, gadgetList.transform).GetComponent<GadgetRow>();
-            gadgetRow.Gadget = gadget;
-        }
-
-        SelectGadget(gadgets.FirstOrDefault());
+        scrap.text = $"{SaveManager.Instance.Save.Scrap} <sprite=1>";
     }
 
-    private void SelectGadget(Gadget gadget)
+    public void Close()
     {
-        gadgetInfo.SetGadget(gadget);
+        Destroy(gameObject);
     }
 }

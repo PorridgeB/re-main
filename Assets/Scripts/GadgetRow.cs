@@ -15,15 +15,24 @@ public class GadgetRow : MonoBehaviour
 
     [HideInInspector]
     public Gadget Gadget;
+    public bool Equipped = false;
 
     private void Start()
     {
         name.text = Gadget.Name;
         cost.text = $"{Gadget.Cost} <sprite=1>";
+
+        if (Equipped)
+        {
+            var buttonImage = GetComponent<Image>();
+            buttonImage.color = Color.white;
+            name.color = Color.white;
+            icon.color = Color.white;
+        }
     }
 
     public void Select()
     {
-        SendMessageUpwards("SelectGadget", Gadget);
+        SendMessageUpwards("OnGadgetSelected", Gadget);
     }
 }

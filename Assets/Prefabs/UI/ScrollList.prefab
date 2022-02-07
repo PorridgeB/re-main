@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6292010642502882736}
   - component: {fileID: 4503097335872299746}
   - component: {fileID: 6348993340714790177}
-  - component: {fileID: 8836181155443775804}
   - component: {fileID: 4839570535260064490}
+  - component: {fileID: 6855096865963229574}
   m_Layer: 5
   m_Name: ScrollList
   m_TagString: Untagged
@@ -109,19 +109,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8836181155443775804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467359809592415248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!114 &4839570535260064490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +129,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6855096865963229574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3467359809592415248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 4, y: 4, z: 4, w: 4}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &7282722243531218533
 GameObject:
   m_ObjectHideFlags: 0
