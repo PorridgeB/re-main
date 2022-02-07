@@ -822,6 +822,9 @@
     <Compile Include="Assets\Scripts\Memory.cs" />
     <Compile Include="Assets\Scripts\ArtifactInfo.cs" />
     <Compile Include="Assets\Scripts\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\Modules.cs" />
+    <Compile Include="Assets\Scripts\ModuleSlot.cs" />
+    <Compile Include="Assets\Scripts\ModuleSlotTooltip.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
