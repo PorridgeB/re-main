@@ -24,6 +24,13 @@ public class DORAIStore : MonoBehaviour
     private GameObject yesNoDialogPrefab;
     [SerializeField]
     private Wedge phantom;
+    [SerializeField]
+    private AudioClip click;
+    [SerializeField]
+    private AudioClip failure;
+    [SerializeField]
+    private AudioSource soundEffects;
+    private Vector2Int previousPosition;
     private Drag currentDrag = null;
     private List<SoftwareUpgradeInstance> instances;
 
@@ -72,6 +79,13 @@ public class DORAIStore : MonoBehaviour
                 phantom.color = color;
 
                 phantom.SetAllDirty();
+
+                if (position != previousPosition)
+                {
+                    //soundEffects.PlayOneShot(click);
+                }
+
+                previousPosition = position;
             }
         }
     }
@@ -106,18 +120,23 @@ public class DORAIStore : MonoBehaviour
         var drag = go.GetComponent<Drag>();
         drag.SoftwareUpgrade = data.softwareUpgrade;
         currentDrag = drag;
+
+        soundEffects.PlayOneShot(click);
     }
 
     public void OnSoftwareUpgradeDrop(SoftwareUpgradeInstance instance)
     {
         if (!CanPlace(instance))
         {
+            soundEffects.PlayOneShot(failure);
             return;
         }
 
         Place(instance);
 
         instances.Add(instance);
+
+        soundEffects.PlayOneShot(click);
     }
 
     public bool CanPlace(SoftwareUpgradeInstance instance)
