@@ -15,7 +15,7 @@ public class MechanicStore : MonoBehaviour
 
     private void Awake()
     {
-        SaveManager.Instance.Save.Scrap += 190;
+        //SaveManager.Instance.Save.Scrap += 190;
     }
 
     private void Start()
@@ -25,7 +25,7 @@ public class MechanicStore : MonoBehaviour
 
     public void OnGadgetBuy(Gadget gadget)
     {
-        var save = SaveManager.Instance.Save;
+        var save = new Save();// SaveManager.Instance.Save;
         save.Scrap -= gadget.Cost;
         save.UnlockedGadgets.Add(gadget.name);
 
@@ -34,15 +34,15 @@ public class MechanicStore : MonoBehaviour
 
     public void OnGadgetEquip(Gadget gadget)
     {
-        var save = SaveManager.Instance.Save;
-        save.Loadout.Gadget = gadget.name;
+        var save = new Save();// SaveManager.Instance.Save;
+        //save.Loadout.Gadget = gadget.name;
 
         Refresh();
     }
 
     public void Refresh()
     {
-        scrap.text = $"{SaveManager.Instance.Save.Scrap} <sprite=1 tint>";
+        //scrap.text = $"{SaveManager.Instance.Save.Scrap} <sprite=1 tint>";
 
         gadgets.Refresh();
     }

@@ -37,7 +37,7 @@ public class GadgetInfo : MonoBehaviour
             return;
         }
 
-        var save = SaveManager.Instance.Save;
+        var save = new Save();//SaveManager.Instance.Save;
 
         var canBuy = save.Scrap >= gadget.Cost;
         buyButton.interactable = canBuy;
