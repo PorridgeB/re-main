@@ -36,6 +36,6 @@ public class SoftwareUpgradeRow : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void Start()
     {
         name.text = SoftwareUpgrade.Name;
-        cost.text = $"{SoftwareUpgrade.Cost} <sprite=0>";
+        cost.text = $"{SoftwareUpgrade.Cost} <sprite=0 tint>";
     }
 }

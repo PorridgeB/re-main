@@ -11,6 +11,7 @@ public class MechanicStoreGadgets : MonoBehaviour
     private GameObject gadgetList;
     [SerializeField]
     private GadgetInfo gadgetInfo;
+    private Gadget selectedGadget;
 
     private void Start()
     {
@@ -38,11 +39,18 @@ public class MechanicStoreGadgets : MonoBehaviour
             gadgetRow.Gadget = gadget;
         }
 
-        gadgetInfo.ShowGadget(gadgets.FirstOrDefault());
+        if (selectedGadget == null)
+        {
+            selectedGadget = gadgets.FirstOrDefault();
+        }
+
+        gadgetInfo.ShowGadget(selectedGadget);
     }
 
     public void OnGadgetSelected(Gadget gadget)
     {
+        selectedGadget = gadget;
+
         gadgetInfo.ShowGadget(gadget);
     }
 }
