@@ -19,11 +19,11 @@ public class Scrap : MonoBehaviour
     [SerializeField]
     private AnimationCurve speedCurve;
     private float timeInRange;
-
+    [SerializeField]
     private SpriteRenderer render;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         render = GetComponent<SpriteRenderer>();
         SetValue(value);
@@ -31,9 +31,6 @@ public class Scrap : MonoBehaviour
 
     public void SetValue(int v){
         value = v;
-        
-        if (value == 0) Destroy(gameObject);
-        
         if (value < 5){
             render.sprite = small;
         }
@@ -43,6 +40,11 @@ public class Scrap : MonoBehaviour
         else {
             render.sprite = large;
         }
+    }
+
+    public void Update()
+    {
+        if (value == 0) Destroy(gameObject);
     }
     void OnTriggerStay(Collider other)
     {

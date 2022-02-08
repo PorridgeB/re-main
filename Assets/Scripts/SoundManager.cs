@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     public Song currentSong;
     public static Song nextSong;
 
-    public
+    public Song gameMusic;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
             spawned = true;
             DontDestroyOnLoad(gameObject);
             nextSong = currentSong;
-
+            SceneManager.sceneLoaded += SceneUpdate;
             music = GetComponent<AudioSource>();
             if (currentSong != null)
             {
@@ -35,12 +35,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void SceneUpdate(Scene current)
+    private void SceneUpdate(Scene current, LoadSceneMode mode)
     {
         //change music when scene changes
         Debug.Log(current.name);
         switch (current.name)
         {
+            case "Level":
+                nextSong = gameMusic;
+                break;
         }
 
     }
@@ -73,7 +76,10 @@ public class SoundManager : MonoBehaviour
                 }
             }
         }
-        
+        else if (nextSong != null)
+        {
+            currentSong = nextSong;
+        }
     }
 
     public static void ChangeMusic(Song song, bool changeImmediate)
