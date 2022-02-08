@@ -21,19 +21,25 @@ public class SaveProfiles : MonoBehaviour
     private GameObject profiles;
     [SerializeField]
     private GameObject yesNoDialog;
+    [SerializeField]
+    private SaveManager saveManager;
 
     private void Start()
     {
-        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
-        {
-            saveProfile.Save = null;
-            saveProfile.Interactable = true;
-            saveProfile.Refresh();
-        }
+        Refresh();
     }
 
     public void Refresh()
     {
+        int i = 0;
+        foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
+        {
+            saveProfile.Save = saveManager.GetSave(i);
+            saveProfile.Interactable = true;
+            saveProfile.index = i;
+            saveProfile.Refresh();
+            i++;
+        }
         foreach (var saveProfile in profiles.GetComponentsInChildren<SaveProfile>())
         {
             saveProfile.Interactable = CurrentMode == Mode.NewGame || (CurrentMode == Mode.Continue && saveProfile.Save != null);
@@ -60,6 +66,7 @@ public class SaveProfiles : MonoBehaviour
         {
             if (saveProfile.IsEmpty)
             {
+                saveManager.CreateNewSave(saveProfile.index);
                 SceneManager.LoadScene("Hub");
             }
             else

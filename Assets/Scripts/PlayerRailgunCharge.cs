@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlayerRailgunCharge : StateMachineBehaviour
 {
+    [SerializeField]
+    private AudioClip railgunCharge;
+    private GameObject sound;
+
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        sound = SoundManager.PlaySound(railgunCharge, 0.4f);
         animator.ResetTrigger("RangedRelease");
     }
 
@@ -19,6 +24,7 @@ public class PlayerRailgunCharge : StateMachineBehaviour
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Destroy(sound);
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

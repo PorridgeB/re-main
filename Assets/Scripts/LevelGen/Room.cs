@@ -35,7 +35,7 @@ public class Room : MonoBehaviour
         RectInt rect = GetComponent<RoomMesh>().GetRect();
         size = new Vector2(rect.xMax-rect.xMin+1, rect.yMax-rect.yMin+1);
         type = (ResourceType)Random.Range(0,2);
-        resourceBudget = Random.Range(2, 150);
+        resourceBudget = Random.Range(2, 30);
 
         
     }
@@ -159,6 +159,7 @@ public class Room : MonoBehaviour
                     break;
                 case ResourceType.Scrap:
                     go = scrap;
+                    go.GetComponent<Scrap>().SetValue(value);
                     break;
             }
             Instantiate(go, t.position+Vector3.up, new Quaternion(), transform);

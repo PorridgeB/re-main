@@ -11,12 +11,16 @@ public class PlayerRailgunShoot : StateMachineBehaviour
 
     private GameObject beam;
 
+    [SerializeField]
+    private AudioClip railgunShoot;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         var player = PlayerController.instance;
 
         beam = Instantiate(BeamPrefab, player.gameObject.transform);
+        SoundManager.PlaySound(railgunShoot);
 
         beam.transform.rotation = Quaternion.LookRotation(new Vector3(player.Facing.x, 0, player.Facing.y), Vector3.up);
     }

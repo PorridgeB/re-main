@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6751787821179033053, guid: 9336ede620c7e51419343c10a74b5547, type: 3}
+  m_Sprite: {fileID: -6935062248524124518, guid: 167bac8211406f74385e51700429eb22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   small: {fileID: 2310953992495266966, guid: 167bac8211406f74385e51700429eb22, type: 3}
   medium: {fileID: 588994088739490009, guid: 167bac8211406f74385e51700429eb22, type: 3}
   large: {fileID: -6935062248524124518, guid: 167bac8211406f74385e51700429eb22, type: 3}
-  value: 50
+  value: 21
   speedCurve:
     serializedVersion: 2
     m_Curve:
@@ -124,6 +124,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  render: {fileID: 4561892286078966978}
 --- !u!135 &190142626141134022
 SphereCollider:
   m_ObjectHideFlags: 0

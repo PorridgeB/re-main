@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SaveProfile : MonoBehaviour
 {
+
     public bool Interactable
     {
         set
@@ -18,9 +19,11 @@ public class SaveProfile : MonoBehaviour
         }
     }
 
+    public int index;
+
     public bool IsEmpty => Save == null;
 
-    [SerializeReference]
+    [SerializeField]
     public Save Save;
 
     [SerializeField]
@@ -30,6 +33,7 @@ public class SaveProfile : MonoBehaviour
     {
         Refresh();
     }
+    
 
     private string GetText()
     {
