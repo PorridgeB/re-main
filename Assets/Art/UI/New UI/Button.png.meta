@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 8467241744927558709
     second: Button_Pressed
+  - first:
+      213: 1566552715412073297
+    second: Button_Disabled
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,7 +107,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 26
+        y: 39
         width: 67
         height: 13
       alignment: 0
@@ -125,7 +128,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 13
+        y: 26
         width: 67
         height: 13
       alignment: 0
@@ -146,7 +149,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 13
         width: 67
         height: 13
       alignment: 0
@@ -158,6 +161,27 @@ TextureImporter:
       bones: []
       spriteID: 53c04c1718fa18570800000000000000
       internalID: 8467241744927558709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Disabled
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 67
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15b6f0c05638db510800000000000000
+      internalID: 1566552715412073297
       vertices: []
       indices: 
       edges: []

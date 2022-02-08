@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class RunInfoHistory : ScriptableObject
     {
         get
         {
-            return runHistory[runHistory.Count-1];
+            return runHistory.LastOrDefault();
         }
     }
 

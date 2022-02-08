@@ -14,15 +14,27 @@ public class MechanicStoreGadgets : MonoBehaviour
 
     private void Start()
     {
+        Refresh();
+    }
+
+    public void Refresh()
+    {
         var gadgets = Resources.LoadAll<Gadget>("Gadgets");
 
         gadgets = gadgets.OrderBy(x => x.Cost).ToArray();
+        
+        // Clear gadget list
+        foreach (Transform child in gadgetList.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         foreach (var gadget in gadgets)
         {
             var gadgetRow = Instantiate(gadgetRowPrefab, gadgetList.transform).GetComponent<GadgetRow>();
 
-            gadgetRow.Equipped = gadget.name == SaveManager.Instance.Save.Loadout.Gadget;
+            var isEquipped = gadget.name == SaveManager.Instance.Save.Loadout.Gadget;
+            gadgetRow.Equipped = isEquipped;
             gadgetRow.Gadget = gadget;
         }
 
@@ -32,12 +44,5 @@ public class MechanicStoreGadgets : MonoBehaviour
     public void OnGadgetSelected(Gadget gadget)
     {
         gadgetInfo.ShowGadget(gadget);
-    }
-
-    public void OnGadgetBuy(Gadget gadget)
-    {
-        var save = SaveManager.Instance.Save;
-        save.Scrap -= gadget.Cost;
-        save.UnlockedGadgets.Add(gadget.name);
     }
 }

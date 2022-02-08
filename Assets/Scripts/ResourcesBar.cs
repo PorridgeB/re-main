@@ -22,6 +22,11 @@ public class ResourcesBar : MonoBehaviour
     
     private void Update()
     {
+        if (runInfoHistory.Current == null)
+        {
+            return;
+        }
+
         dataFragmentsCounter.SetValue(runInfoHistory.Current.dataFragments);
         scrapCounter.SetValue(runInfoHistory.Current.scrap);
     }
