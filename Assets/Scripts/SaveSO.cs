@@ -23,6 +23,11 @@ public class SaveSO : ScriptableObject
         }
     }
 
+    public void AddTime(float time)
+    {
+        save.TotalTime += time;
+    }
+
     public int Difficulty
     {
         get

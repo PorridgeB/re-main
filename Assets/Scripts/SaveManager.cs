@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -26,6 +27,8 @@ public class SaveManager : MonoBehaviour
         ImportSaves();
 
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneUnloaded += UpdateTime;
     }
 
     public Save GetSave(int index)
@@ -42,6 +45,7 @@ public class SaveManager : MonoBehaviour
 
     public void OnApplicationQuit()
     {
+        UpdateTime(SceneManager.GetActiveScene());
         ExportSaves();
     }
 
@@ -63,5 +67,13 @@ public class SaveManager : MonoBehaviour
         Save s = new Save();
         saves.saves.SetValue(s, i);
         SetCurrentSave(i);
+    }
+
+    public void UpdateTime(Scene current)
+    {
+        if (current.name == "Level" || current.name == "Hub")
+        {
+            currentSave.AddTime(Time.timeSinceLevelLoad);
+        }
     }
 }

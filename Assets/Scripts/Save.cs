@@ -11,7 +11,7 @@ public class Save
     {
         Created = System.DateTime.Now;
         Difficulty = 1;
-        TotalTime = 10;
+        TotalTime = 0;
         DataFragments = 0;
         Scrap = 0;
         SoftwareUpgradeCapacity = 0;
@@ -25,7 +25,7 @@ public class Save
     // Date and time the save file was created
     public DateTime Created;
     // Number of seconds spent playing the game (does not include paused time)
-    public int TotalTime;
+    public float TotalTime;
     // Quantity of data fragments in the player's inventory
     public int DataFragments;
     // Quantity of scrap in the player's inventory

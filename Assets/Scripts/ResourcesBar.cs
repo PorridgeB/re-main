@@ -22,7 +22,7 @@ public class ResourcesBar : MonoBehaviour
     
     private void Update()
     {
-        if (runInfoHistory.Current == null)
+        if (currentSave.CurrentRun == null)
         {
             return;
         }
