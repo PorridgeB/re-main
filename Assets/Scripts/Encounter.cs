@@ -5,14 +5,14 @@ using UnityEngine;
 public class Encounter : Room
 {
     public ObjectPool enemyPool;
-    public RunInfoHistory runInfoHistory;
+    public SaveSO currentSave;
     public List<EnemySpawn> spawns;
     [SerializeField]
     private float budget;
 
     public void SetBudget(float value)
     {
-        budget = value * runInfoHistory.Current.difficulty;
+        budget = value * currentSave.Difficulty;
     }
 
     public override void Generate()

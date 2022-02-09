@@ -6,30 +6,65 @@ using System;
 [CreateAssetMenu]
 public class SaveSO : ScriptableObject
 {
-    // Date and time the save file was created
-    public DateTime Created;
-    // Number of seconds spent playing the game (does not include paused time)
-    public int TotalTime;
-    // Quantity of data fragments in the player's inventory
-    public int DataFragments;
-    // Quantity of scrap in the player's inventory
-    public int Scrap;
-    // Maximum number of points allocated for software upgrades
-    public int SoftwareUpgradeCapacity;
-    // List of unlocked software upgrades
-    public List<string> UnlockedSoftwareUpgrades;
-    // List of bought weapon attachments
-    public List<string> UnlockedWeaponAttachments;
-    // List of bought gadgets
-    public List<string> UnlockedGadgets;
-    // Loadouts that the player has configured
-    public List<Loadout> Loadouts;
-    // Index of the selected loadout
-    public int LoadoutIndex;
-    // List of completed runs
-    public List<RunInfo> Runs;
-    // Percentage of story completion
-    public int StoryCompletion => 0;
+    [SerializeField]
+    private Save save;
 
-    public Loadout SelectedLoadout => Loadouts[LoadoutIndex];
+    public void ImportSave(Save s)
+    {
+        Debug.Log("Importing Save");
+        save = s;
+    }
+
+    public int Count
+    {
+        get
+        {
+            return save.Runs.Count;
+        }
+    }
+
+    public int Difficulty
+    {
+        get
+        {
+            return CurrentRun.difficulty;
+        }
+    }
+
+    public RunInfo CurrentRun
+    {
+        get
+        {
+            return save.Runs[save.Runs.Count - 1];
+        }
+    }
+
+    public float GenerationCoefficient
+    {
+        get
+        {
+            return 1 - (1 / (float)CurrentRun.sector);
+        }
+    }
+
+    public void Clear()
+    {
+        save.Runs.Clear();
+    }
+
+    public void NewRun()
+    {
+        RunInfo newRun = new RunInfo();
+        newRun.difficulty = save.Difficulty;
+        newRun.quadrant = 1;
+        newRun.sector = 1;
+        save.Runs.Add(newRun);
+    }
+
+    public void CompleteRun()
+    {
+        CurrentRun.ended = true;
+        save.Scrap += CurrentRun.scrap;
+        save.DataFragments += CurrentRun.dataFragments;
+    }
 }

@@ -7,6 +7,21 @@ using UnityEngine;
 [Serializable]
 public class Save
 {
+    public Save()
+    {
+        Created = System.DateTime.Now;
+        Difficulty = 1;
+        TotalTime = 10;
+        DataFragments = 0;
+        Scrap = 0;
+        SoftwareUpgradeCapacity = 0;
+        UnlockedSoftwareUpgrades = new List<string>() { "a", "b", "c" };
+        UnlockedGadgets = new List<string>() { "a", "b", "c" };
+        Loadouts = new List<Loadout>() { new Loadout() };
+        LoadoutIndex = 0;
+        Runs = new List<RunInfo>();
+    }
+
     // Date and time the save file was created
     public DateTime Created;
     // Number of seconds spent playing the game (does not include paused time)
@@ -29,6 +44,8 @@ public class Save
     public int LoadoutIndex;
     // List of completed runs
     public List<RunInfo> Runs;
+    // The difficulty set by the player from the settings. Determines the difficulty of the next run
+    public int Difficulty;
     // Percentage of story completion
     public int StoryCompletion => 0;
 
