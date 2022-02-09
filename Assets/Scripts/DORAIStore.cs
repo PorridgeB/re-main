@@ -44,16 +44,16 @@ public class DORAIStore : MonoBehaviour
 
     private void Start()
     {
-        var softwareUpgrades = Resources.LoadAll<SoftwareUpgrade>("SoftwareUpgrades");
-
-        foreach (var softwareUpgrade in softwareUpgrades)
-        {
-            var softwareUpgradeRow = Instantiate(softwareUpgradeRowPrefab, softwareUpgradeList.transform).GetComponent<SoftwareUpgradeRow>();
-            softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
-        }
+        Refresh();
 
         pieces = new List<SoftwareUpgradePiece>();
+
+        foreach (var softwareUpgrade in save.SelectedLoadout.SoftwareUpgrades)
+        {
+            Place(softwareUpgrade);
+        }
     }
+
 
     private void Update()
     {
@@ -92,7 +92,20 @@ public class DORAIStore : MonoBehaviour
 
     private void Refresh()
     {
+        var softwareUpgrades = Resources.LoadAll<SoftwareUpgrade>("SoftwareUpgrades");
 
+        // Clear software upgrade list
+        foreach (Transform child in softwareUpgradeList.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var softwareUpgrade in softwareUpgrades)
+        {
+            var softwareUpgradeRow = Instantiate(softwareUpgradeRowPrefab, softwareUpgradeList.transform).GetComponent<SoftwareUpgradeRow>();
+            softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
+            softwareUpgradeRow.Unlocked = save.UnlockedSoftwareUpgrades.Contains(softwareUpgrade.name);
+        }
     }
 
     private void Place(SoftwareUpgradeInstance instance)
@@ -208,5 +221,12 @@ public class DORAIStore : MonoBehaviour
     public void Close()
     {
         Destroy(gameObject);
+
+        Save();
+    }
+
+    public void Save()
+    {
+        save.SelectedLoadout.SoftwareUpgrades = pieces.Select(x => x.Instance).ToList();
     }
 }
