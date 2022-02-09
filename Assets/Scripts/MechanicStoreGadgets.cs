@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MechanicStoreGadgets : MonoBehaviour
 {
+    public SaveSO Save;
+
     [SerializeField]
     private GameObject gadgetRowPrefab;
     [SerializeField]
@@ -34,7 +36,7 @@ public class MechanicStoreGadgets : MonoBehaviour
         {
             var gadgetRow = Instantiate(gadgetRowPrefab, gadgetList.transform).GetComponent<GadgetRow>();
 
-            var isEquipped = false;//gadget.name == SaveManager.Instance.Save.Loadout.Gadget;
+            var isEquipped = gadget.name == Save.SelectedLoadout.Gadget;
             gadgetRow.Equipped = isEquipped;
             gadgetRow.Gadget = gadget;
         }
@@ -44,13 +46,13 @@ public class MechanicStoreGadgets : MonoBehaviour
             selectedGadget = gadgets.FirstOrDefault();
         }
 
-        gadgetInfo.ShowGadget(selectedGadget);
+        gadgetInfo.ShowGadget(selectedGadget, Save);
     }
 
     public void OnGadgetSelected(Gadget gadget)
     {
         selectedGadget = gadget;
 
-        gadgetInfo.ShowGadget(gadget);
+        gadgetInfo.ShowGadget(gadget, Save);
     }
 }

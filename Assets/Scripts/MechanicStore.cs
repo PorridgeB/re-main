@@ -9,13 +9,15 @@ using UnityEditor;
 public class MechanicStore : MonoBehaviour
 {
     [SerializeField]
+    private SaveSO save;
+    [SerializeField]
     private TextMeshProUGUI scrap;
     [SerializeField]
     private MechanicStoreGadgets gadgets;
 
     private void Awake()
     {
-        //SaveManager.Instance.Save.Scrap += 190;
+        gadgets.Save = save;
     }
 
     private void Start()
@@ -25,7 +27,6 @@ public class MechanicStore : MonoBehaviour
 
     public void OnGadgetBuy(Gadget gadget)
     {
-        var save = new Save();// SaveManager.Instance.Save;
         save.Scrap -= gadget.Cost;
         save.UnlockedGadgets.Add(gadget.name);
 
@@ -34,15 +35,15 @@ public class MechanicStore : MonoBehaviour
 
     public void OnGadgetEquip(Gadget gadget)
     {
-        var save = new Save();// SaveManager.Instance.Save;
-        //save.Loadout.Gadget = gadget.name;
+        var save = new Save();
+        save.SelectedLoadout.Gadget = gadget.name;
 
         Refresh();
     }
 
     public void Refresh()
     {
-        //scrap.text = $"{SaveManager.Instance.Save.Scrap} <sprite=1 tint>";
+        scrap.text = $"{save.Scrap} <sprite=1 tint>";
 
         gadgets.Refresh();
     }
