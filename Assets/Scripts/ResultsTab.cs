@@ -9,19 +9,19 @@ public class ResultsTab : MonoBehaviour
     [SerializeField]
     private GameObject container;
     [SerializeField]
-    private RunInfoHistory runInfoHistory;
+    private SaveSO currentSave;
 
     // Start is called before the first frame update
     void Start()
     {
         //Time
-        CreateResult("Time", runInfoHistory.Current.time.ToString());
-        CreateResult("Stage", runInfoHistory.Current.quadrant.ToString() + " - " + runInfoHistory.Current.sector.ToString());
-        CreateResult("Scrap", runInfoHistory.Current.scrap.ToString());
-        CreateResult("Data Fragments", runInfoHistory.Current.dataFragments.ToString());
-        CreateResult("Kills", runInfoHistory.Current.kills.ToString());
-        CreateResult("Damage", runInfoHistory.Current.damage.ToString());
-        CreateResult("Largest Hit", runInfoHistory.Current.largestHit.ToString());
+        CreateResult("Time", currentSave.CurrentRun.time.ToString());
+        CreateResult("Stage", currentSave.CurrentRun.quadrant.ToString() + " - " + currentSave.CurrentRun.sector.ToString());
+        CreateResult("Scrap", currentSave.CurrentRun.scrap.ToString());
+        CreateResult("Data Fragments", currentSave.CurrentRun.dataFragments.ToString());
+        CreateResult("Kills", currentSave.CurrentRun.kills.ToString());
+        CreateResult("Damage", currentSave.CurrentRun.damage.ToString());
+        CreateResult("Largest Hit", currentSave.CurrentRun.largestHit.ToString());
     }
 
     private void CreateResult(string name, string value)

@@ -2414,7 +2414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cb3eb746c7bfa4ba3f4a2ad296d4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
+  currentSave: {fileID: 11400000, guid: 729bd232ee905d2408c246da6adb1980, type: 2}
   modules:
   - {fileID: 11400000, guid: 3fac0410179161e4fa9122b69d3db8d0, type: 2}
   - {fileID: 11400000, guid: fc48bdf0fd397a74c83f22224043ea63, type: 2}
@@ -4477,7 +4477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7015f040cc47d6d4281e52f3adc8d22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
+  currentSave: {fileID: 11400000, guid: 729bd232ee905d2408c246da6adb1980, type: 2}
   maxRoomCount: 15
   roomCount: 0
   deadEnds: 72006e0062006100

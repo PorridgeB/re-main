@@ -32,7 +32,7 @@ public class LevelGrammarGenerator : MonoBehaviour
     /// </summary>
 
     [SerializeField]
-    private RunInfoHistory runInfoHistory;
+    private SaveSO currentSave;
 
     [SerializeField]
     private int maxRoomCount;
@@ -59,12 +59,12 @@ public class LevelGrammarGenerator : MonoBehaviour
     private char previousRoom;
     void Awake()
     {
-        roomCount = 3 + Mathf.RoundToInt(maxRoomCount * runInfoHistory.GenerationCoefficient);
+        roomCount = 3 + Mathf.RoundToInt(maxRoomCount * currentSave.GenerationCoefficient);
         levelDepth = 5;
         maxBranchDepth = 3;
         maxBranchCount = 10;
-        challengeRating = Mathf.RoundToInt((roomCount/3)*runInfoHistory.GenerationCoefficient);
-        rewardRating = Mathf.RoundToInt((roomCount / 4)*runInfoHistory.GenerationCoefficient);
+        challengeRating = Mathf.RoundToInt((roomCount/3)*currentSave.GenerationCoefficient);
+        rewardRating = Mathf.RoundToInt((roomCount / 4)*currentSave.GenerationCoefficient);
     }
 
     private void ResetAll()

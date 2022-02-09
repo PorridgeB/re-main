@@ -12,12 +12,15 @@ public class Transition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "Level")
+        switch (SceneManager.GetActiveScene().name)
         {
-            SceneReady();
+            case "Level":
+                break;
+            default:
+                SceneReady();
+                break;
         }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -48,6 +51,7 @@ public class Transition : MonoBehaviour
 
     public void ReturnToMenu()
     {
+
         veil.gameObject.SetActive(true);
         destination = "Hub";
         veil.SetTrigger("SceneEnded");

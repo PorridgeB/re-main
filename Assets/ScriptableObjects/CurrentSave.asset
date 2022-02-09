@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e617716171e1a0b4fb2d704e8986a149, type: 3}
   m_Name: CurrentSave
   m_EditorClassIdentifier: 
-  TotalTime: 0
-  DataFragments: 0
-  Scrap: 0
-  SoftwareUpgradeCapacity: 0
-  UnlockedSoftwareUpgrades: []
-  UnlockedWeaponAttachments: []
-  UnlockedGadgets: []
-  Loadouts: []
-  LoadoutIndex: 0
-  Runs: {fileID: 0}
+  save:
+    TotalTime: 0
+    DataFragments: 0
+    Scrap: 0
+    SoftwareUpgradeCapacity: 0
+    UnlockedSoftwareUpgrades: []
+    UnlockedWeaponAttachments: []
+    UnlockedGadgets: []
+    Loadouts: []
+    LoadoutIndex: 0
+    Runs: []

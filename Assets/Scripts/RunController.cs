@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class RunController : MonoBehaviour
 {
-    public RunInfoHistory runHistory;
+    public SaveSO currentSave;
     public List<Module> modules;
     public List<Attribute> attributes;
     public Resource playerHP;
     public Resource playerEnergy;
 
-    private void Start()
+    private void Awake()
     {
-        if (runHistory.Count < 1)
+        if (currentSave.Count < 1)
         {
             StartNewRun();
         }
-        else if (runHistory.Current.ended)
+        else if (currentSave.CurrentRun.ended)
         {
             StartNewRun();
         }
@@ -24,7 +24,7 @@ public class RunController : MonoBehaviour
 
     public void StartNewRun()
     {
-        runHistory.NewRun();
+        currentSave.NewRun();
         foreach (Module m in modules)
         {
             m.count = 0;
@@ -39,23 +39,21 @@ public class RunController : MonoBehaviour
 
     public void RunEnded()
     {
-        runHistory.Current.ended = true;
+        currentSave.CompleteRun();
     }
 
     public void StageComplete()
     {
-        runHistory.Current.sector++;
+        currentSave.CurrentRun.sector++;
     }
 
     public void EnemyKilled()
     {
-        runHistory.Current.kills++;
+        currentSave.CurrentRun.kills++;
     }
 
     public void OnApplicationQuit()
     {
-        //THIS IS ONLY BEING USED FOR TESTING
-        //this will delete all runs in the history to ensure it resets everything in editor
-        runHistory.Clear();
+        currentSave.Clear();
     }
 }

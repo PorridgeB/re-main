@@ -10,7 +10,7 @@ public class Trap : Room
     private bool activated;
     private bool complete;
     public ObjectPool enemyPool;
-    public RunInfoHistory runInfoHistory;
+    public SaveSO currentSave;
     public List<EnemySpawn> spawns;
     [SerializeField]
     private float budget;
@@ -19,7 +19,7 @@ public class Trap : Room
 
     public void SetBudget(float value)
     {
-        budget = value * runInfoHistory.Current.difficulty;
+        budget = value * currentSave.Difficulty;
     }
 
     public override void Generate()

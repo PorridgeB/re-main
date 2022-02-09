@@ -82,6 +82,7 @@ public class SaveProfiles : MonoBehaviour
 
         if (CurrentMode == Mode.Continue && !saveProfile.IsEmpty)
         {
+            saveManager.SetCurrentSave(saveProfile.index);
             SceneManager.LoadScene("Hub");
         }
     }

@@ -278,6 +278,11 @@ public class LevelGenerator : MonoBehaviour
                     return false;
                 }
                 if (previousRoom == null) return false;
+                GenerationStep step = GetStepByRoom(previousRoom.transform.parent.GetComponent<Room>());
+
+                if (step == null) return false;
+                if (step.room == null) return false;
+                
                 Rewind(previousRoom);
             }
             else if (stepHistory[roomHistoryIndex].roomOptions.Count <= 0){

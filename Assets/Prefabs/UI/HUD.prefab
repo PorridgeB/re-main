@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataFragmentsCounter: {fileID: 5553423198760311780}
   scrapCounter: {fileID: 5553423197525209196}
-  runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
+  currentSave: {fileID: 11400000, guid: 729bd232ee905d2408c246da6adb1980, type: 2}
 --- !u!1 &5553423197525209184
 GameObject:
   m_ObjectHideFlags: 0

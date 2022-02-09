@@ -1128,7 +1128,7 @@ MonoBehaviour:
   pickupPlaceholder: {fileID: 3610493291560515907, guid: a2b0450e1af425a4687db9ba96c1c7fd, type: 3}
   doors: []
   enemyPool: {fileID: 11400000, guid: 9c11e02621cf05a4ba0a322c4cb24a16, type: 2}
-  runInfoHistory: {fileID: 11400000, guid: da8c7e93ebc9b20478cd088bddccca65, type: 2}
+  currentSave: {fileID: 11400000, guid: 729bd232ee905d2408c246da6adb1980, type: 2}
   spawns:
   - {fileID: 9182661196446415002}
   - {fileID: 9075696994069327817}
