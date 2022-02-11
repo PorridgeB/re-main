@@ -61,5 +61,14 @@ public class PitTile : Tile
         {
             tileMeshBuilder.AddTile(new Vector3(position.x, 0, position.y), new Vector2(WallTile.Height, 1), Vector3.left);
         }
+
+        TileMeshBuilder tileMeshBuilder2;
+        if (!meshes.TryGetValue("Pits", out tileMeshBuilder2))
+        {
+            tileMeshBuilder2 = new TileMeshBuilder();
+            meshes["Pits"] = tileMeshBuilder2;
+        }
+
+        tileMeshBuilder2.AddTile(new Vector3Int(position.x, 0, position.y), Vector2Int.one, Vector3Int.up);
     }
 }
