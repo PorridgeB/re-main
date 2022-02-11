@@ -203,6 +203,6 @@ public class DORAIStore : MonoBehaviour
 
     public void Close()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -22,4 +22,16 @@ MonoBehaviour:
     UnlockedGadgets: []
     Loadouts: []
     LoadoutIndex: 0
-    Runs: []
+    Runs:
+    - ended: 0
+      difficulty: 0
+      quadrant: 0
+      sector: 0
+      scrap: 0
+      dataFragments: 0
+      kills: 0
+      damage: 0
+      largestHit: 0
+      killedBy: 
+      time: 0
+    Difficulty: 1
