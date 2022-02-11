@@ -8,5 +8,4 @@ public class SoftwareUpgradeInstance
 {
     public SoftwareUpgrade SoftwareUpgrade;
     public Vector2Int Position; // X - Line, Y - Ring
-    public GameObject Object;
 }

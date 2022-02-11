@@ -539,6 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c6b9d7c800144419af05b18d542858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  save: {fileID: 11400000, guid: 729bd232ee905d2408c246da6adb1980, type: 2}
   softwareUpgradeRowPrefab: {fileID: 3955475176232150011, guid: 1028cc60be792e944a69bff69bafe1e9, type: 3}
   softwareUpgradeList: {fileID: 4070976671544912218}
   dataFragments: {fileID: 8094607951422764933}

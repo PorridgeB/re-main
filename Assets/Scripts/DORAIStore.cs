@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 public class DORAIStore : MonoBehaviour
 {
     [SerializeField]
+    private SaveSO save;
+    [SerializeField]
     private GameObject softwareUpgradeRowPrefab;
     [SerializeField]
     private GameObject softwareUpgradeList;
@@ -32,28 +34,26 @@ public class DORAIStore : MonoBehaviour
     private AudioSource soundEffects;
     private Vector2Int previousPosition;
     private Drag currentDrag = null;
-    private List<SoftwareUpgradeInstance> instances;
+    private List<SoftwareUpgradePiece> pieces;
 
-    // If failed replacement, go to old position
-    // Split drag prefab up into pieces visually
+    public class SoftwareUpgradePiece
+    {
+        public SoftwareUpgradeInstance Instance;
+        public GameObject Object;
+    }
 
     private void Start()
     {
-        var softwareUpgrades = Resources.LoadAll<SoftwareUpgrade>("SoftwareUpgrades");
+        Refresh();
 
-        foreach (var softwareUpgrade in softwareUpgrades)
+        pieces = new List<SoftwareUpgradePiece>();
+
+        foreach (var softwareUpgrade in save.SelectedLoadout.SoftwareUpgrades)
         {
-            var softwareUpgradeRow = Instantiate(softwareUpgradeRowPrefab, softwareUpgradeList.transform).GetComponent<SoftwareUpgradeRow>();
-            softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
-        }
-
-        instances = new List<SoftwareUpgradeInstance>();
-
-        foreach (var instance in instances)
-        {
-            Place(instance);
+            Place(softwareUpgrade);
         }
     }
+
 
     private void Update()
     {
@@ -90,11 +90,30 @@ public class DORAIStore : MonoBehaviour
         }
     }
 
+    private void Refresh()
+    {
+        var softwareUpgrades = Resources.LoadAll<SoftwareUpgrade>("SoftwareUpgrades");
+
+        // Clear software upgrade list
+        foreach (Transform child in softwareUpgradeList.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var softwareUpgrade in softwareUpgrades)
+        {
+            var softwareUpgradeRow = Instantiate(softwareUpgradeRowPrefab, softwareUpgradeList.transform).GetComponent<SoftwareUpgradeRow>();
+            softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
+            softwareUpgradeRow.Unlocked = save.UnlockedSoftwareUpgrades.Contains(softwareUpgrade.name);
+        }
+    }
+
     private void Place(SoftwareUpgradeInstance instance)
     {
         var wedge = Instantiate(wedgePrefab, pie.transform).GetComponent<Wedge>();
 
-        instance.Object = wedge.gameObject;
+        var piece = new SoftwareUpgradePiece { Instance = instance, Object = wedge.gameObject };
+        pieces.Add(piece);
 
         var softwareUpgrade = instance.SoftwareUpgrade;
         var line = instance.Position.x;
@@ -134,8 +153,6 @@ public class DORAIStore : MonoBehaviour
 
         Place(instance);
 
-        instances.Add(instance);
-
         soundEffects.PlayOneShot(click);
     }
 
@@ -146,7 +163,7 @@ public class DORAIStore : MonoBehaviour
             return false;
         }
 
-        return instances.TrueForAll(x => !Intersects(x, instance));
+        return pieces.TrueForAll(x => !Intersects(x.Instance, instance));
     }
 
     public bool Intersects(SoftwareUpgradeInstance a, SoftwareUpgradeInstance b)
@@ -166,9 +183,9 @@ public class DORAIStore : MonoBehaviour
         }
     }
 
-    public SoftwareUpgradeInstance PieceAt(Vector2Int position)
+    public SoftwareUpgradePiece PieceAt(Vector2Int position)
     {
-        return instances.FirstOrDefault(x => Occupied(x).Contains(position));
+        return pieces.FirstOrDefault(x => Occupied(x.Instance).Contains(position));
     }
 
     public void OnSoftwareUpgradePieBeginDrag(PointerEventData eventData)
@@ -179,10 +196,10 @@ public class DORAIStore : MonoBehaviour
             return;
         }
 
-        instances.Remove(piece);
+        pieces.Remove(piece);
         Destroy(piece.Object);
 
-        OnSoftwareUpgradeRowBeginDrag(new SoftwareUpgradeRow.BeginDragData { eventData = eventData, softwareUpgrade = piece.SoftwareUpgrade });
+        OnSoftwareUpgradeRowBeginDrag(new SoftwareUpgradeRow.BeginDragData { eventData = eventData, softwareUpgrade = piece.Instance.SoftwareUpgrade });
     }
 
     public void OnSoftwareUpgradeBuy(SoftwareUpgrade softwareUpgrade)
@@ -190,7 +207,7 @@ public class DORAIStore : MonoBehaviour
         var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
 
         dialog.Prompt = $"Are you sure you want to buy {softwareUpgrade.Name} for {softwareUpgrade.Cost} <sprite=0>?";
-        dialog.OnYes += delegate { };
+        dialog.OnYes += delegate { save.DataFragments -= softwareUpgrade.Cost; save.UnlockedSoftwareUpgrades.Add(softwareUpgrade.name); Refresh(); };
     }
 
     public void Clear()
@@ -198,11 +215,18 @@ public class DORAIStore : MonoBehaviour
         var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
 
         dialog.Prompt = "Are you sure you want to clear the memory configuration?";
-        dialog.OnYes += delegate { instances.ForEach(x => Destroy(x.Object)); instances.Clear(); };
+        dialog.OnYes += delegate { pieces.ForEach(x => Destroy(x.Object)); pieces.Clear(); };
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
+
+        Save();
+    }
+
+    public void Save()
+    {
+        save.SelectedLoadout.SoftwareUpgrades = pieces.Select(x => x.Instance).ToList();
     }
 }

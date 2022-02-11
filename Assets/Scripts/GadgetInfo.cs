@@ -24,7 +24,7 @@ public class GadgetInfo : MonoBehaviour
     private Color insufficientColor;
     private Gadget currentGadget;
 
-    public void ShowGadget(Gadget gadget)
+    public void ShowGadget(Gadget gadget, SaveSO save)
     {
         currentGadget = gadget;
 
@@ -36,8 +36,6 @@ public class GadgetInfo : MonoBehaviour
 
             return;
         }
-
-        var save = new Save();//SaveManager.Instance.Save;
 
         var canBuy = save.Scrap >= gadget.Cost;
         buyButton.interactable = canBuy;

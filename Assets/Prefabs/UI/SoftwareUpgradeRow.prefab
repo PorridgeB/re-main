@@ -238,8 +238,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoftwareUpgrade: {fileID: 0}
+  Unlocked: 0
   name: {fileID: 985168345194072141}
   cost: {fileID: 4991304369884816685}
+  costObject: {fileID: 4123175235117073483}
 --- !u!1 &4123175235117073483
 GameObject:
   m_ObjectHideFlags: 0
