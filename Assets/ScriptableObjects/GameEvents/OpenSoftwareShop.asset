@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8845e06e136ba644e93e372cac91a8a7, type: 3}
-  m_Name: npcPool
+  m_Script: {fileID: 11500000, guid: 1306146482790ee47b763f269fc8e32c, type: 3}
+  m_Name: OpenSoftwareShop
   m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 8436770724360750086, guid: 498b7954e93021f40aeca299d0c87327, type: 3}

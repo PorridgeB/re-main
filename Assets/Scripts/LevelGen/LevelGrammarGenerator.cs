@@ -74,6 +74,11 @@ public class LevelGrammarGenerator : MonoBehaviour
         rewardCount = 0;
     }
 
+    private string AddShopTest(string levelTemplate)
+    {
+        return levelTemplate.Replace('r', 'n');
+    }
+
     public string GetGenerationTemplate()
     {
         ResetAll();
@@ -105,6 +110,9 @@ public class LevelGrammarGenerator : MonoBehaviour
         
         levelTemplate += 'f';
         levelTemplate = PlaceBranches(levelTemplate);
+
+        
+
         return levelTemplate;
     }
     private string PlaceBranches(string level)
@@ -202,6 +210,8 @@ public class LevelGrammarGenerator : MonoBehaviour
             }
 
         }
+
+        template = AddShopTest(template);
 
         return template;
     }

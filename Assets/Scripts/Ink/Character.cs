@@ -90,6 +90,6 @@ public class Character : MonoBehaviour, IInteract
             }
             
         }
-        dialogueController.SetStory(currentThread.GetCurrentStory());
+        dialogueController.SetThread(currentThread);
     }
 }

@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd1ecea2e08b22d408961afef13354f9, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   asset: {fileID: 4900000, guid: 7c44944f7a857e0439c3a579b649f0ed, type: 3}
   priority: 0
   locked: 0
+  gameEvents: []
 --- !u!114 &8436770724611993163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +233,7 @@ MonoBehaviour:
   asset: {fileID: 4900000, guid: 832d3fb8aa43c2448a08f01b454bda7b, type: 3}
   priority: 0
   locked: 0
+  gameEvents: []
 --- !u!114 &8436770724885187959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +314,7 @@ MonoBehaviour:
   asset: {fileID: 4900000, guid: 5b360a602a1a92548a46564c4335b237, type: 3}
   priority: 0
   locked: 0
+  gameEvents: []
 --- !u!1001 &8436770724877082974
 PrefabInstance:
   m_ObjectHideFlags: 0

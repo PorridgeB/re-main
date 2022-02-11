@@ -9,7 +9,7 @@ public class DialogueController : MonoBehaviour
 {
     [SerializeField]
     private TextAsset file;
-    private Story story;
+    private Thread thread;
 
     private PlayerInput inputs;
     private InputAction continueAction;
@@ -49,21 +49,23 @@ public class DialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (story != null)
+        if (thread != null)
         {
             dialogueUI.SetActive(inputs.currentActionMap.name == "DialogueControl");
             response.text = "";
-            dialogue.text = story.currentText;
-            if (story.canContinue)
+            dialogue.text = thread.story.currentText;
+            if (thread.story.canContinue)
             {
                 if (continueAction.triggered)
                 {
-                    story.Continue();
+                    
+                    thread.story.Continue();
+                    thread.CheckTags();
                 }
             }
             else
             {
-                if (story.currentChoices.Count <= 0)
+                if (thread.story.currentChoices.Count <= 0)
                 {
                     if (continueAction.triggered)
                     {
@@ -72,7 +74,7 @@ public class DialogueController : MonoBehaviour
                     }
                 }
                 int index = 0;
-                foreach (Choice choice in story.currentChoices)
+                foreach (Choice choice in thread.story.currentChoices)
                 {
                     index++;
                     response.text += index + ". " + choice.text + "\n";
@@ -80,40 +82,44 @@ public class DialogueController : MonoBehaviour
                 if (choiceA.triggered)
                 {
                     MakeChoice(0);
+                    thread.CheckTags();
                 }
                 else if (choiceB.triggered)
                 {
                     MakeChoice(1);
+                    thread.CheckTags();
                 }
                 else if (choiceC.triggered)
                 {
                     MakeChoice(2);
+                    thread.CheckTags();
                 }
                 else if (choiceD.triggered)
                 {
                     MakeChoice(3);
+                    thread.CheckTags();
                 }
             }
 
 
-            playerPortrait.SetActive(!story.canContinue);
-            characterPortrait.SetActive(story.canContinue);
+            playerPortrait.SetActive(!thread.story.canContinue);
+            characterPortrait.SetActive(thread.story.canContinue);
         }
         
     }
 
     public void MakeChoice(int index)
     {
-        story.ChooseChoiceIndex(index);
-        story.Continue();
+        thread.story.ChooseChoiceIndex(index);
+        thread.story.Continue();
     }
 
-    public void SetStory(Story s)
+    public void SetThread(Thread t)
     {
-        story = s;
-        if (story.canContinue)
+        thread = t;
+        if (thread.story.canContinue)
         {
-            story.Continue();
+            thread.story.Continue();
         }
         
     }
