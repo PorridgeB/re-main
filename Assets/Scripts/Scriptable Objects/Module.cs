@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct Bonus
+public class Bonus
 {
-    [HideInInspector]
     public Attribute attribute;
-    public Module module;
+    public string source;
     public float value;
     public float multiplier;
 }
@@ -19,6 +18,10 @@ public class Module : ScriptableObject
     public void Awake()
     {
         count = 0;
+        foreach (Bonus b in bonuses)
+        {
+            b.source = name;
+        }
     }
 
     public int count;

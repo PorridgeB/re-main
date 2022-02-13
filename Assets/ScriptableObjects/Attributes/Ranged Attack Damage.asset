@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Ranged Attack Damage
   m_EditorClassIdentifier: 
   baseValue: 25
+  baseMultiplier: 0
   minValue: 0
   maxValue: 10000
   type: 0
+  softwareBonuses: []
+  moduleBonuses: []
+  temporaryBonuses: []
+  finalValue: 25

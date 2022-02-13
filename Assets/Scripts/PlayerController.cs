@@ -78,6 +78,9 @@ public class PlayerController : MonoBehaviour
     private Weapon meleeWeapon;
     private Weapon rangedWeapon;
 
+    [SerializeField]
+    private SaveSO save;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -120,6 +123,7 @@ public class PlayerController : MonoBehaviour
         rangedWeapon = rangedWeapons[0];
 
         inputs.actions["RangedAttack"].canceled += OnRangedAttackCanceled;
+
     }
 
     private void OnRangedAttackCanceled(InputAction.CallbackContext obj)

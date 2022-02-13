@@ -33,6 +33,13 @@ public class RunController : MonoBehaviour
         {
             a.Reset();
         }
+        foreach (SoftwareUpgradeInstance s in currentSave.SelectedLoadout.SoftwareUpgrades)
+        {
+            foreach (Bonus b in s.SoftwareUpgrade.bonuses)
+            {
+                b.attribute.AddSoftwareBonus(b);
+            }
+        }
         playerHP.Reset();
         playerEnergy.Reset();
     }

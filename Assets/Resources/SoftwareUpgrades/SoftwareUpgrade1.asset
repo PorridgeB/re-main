@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff9c4884d22e4549b7735901a290a50, type: 3}
   m_Name: SoftwareUpgrade1
   m_EditorClassIdentifier: 
-  Name: A
-  Description: 
+  Name: Damage Up
+  Description: Increases Damage by 5
   Color: {r: 0, g: 1, b: 0.17791557, a: 1}
+  Cost: 100
   Lines: 2
   Rings: 1
+  bonuses:
+  - attribute: {fileID: 11400000, guid: 67762c6972e7c8547b34c8005318f841, type: 2}
+    source: 
+    value: 5
+    multiplier: 0
+  - attribute: {fileID: 11400000, guid: 5c57c358cb8c295489dee926263610a8, type: 2}
+    source: 
+    value: 5
+    multiplier: 0

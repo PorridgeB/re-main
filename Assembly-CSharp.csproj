@@ -137,7 +137,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Physics2D\Circlecast.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\Attribute.cs" />
     <Compile Include="Assets\Scripts\Sword.cs" />
-    <Compile Include="Assets\Scripts\StatSystem\FinalBonus.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\SetSpeed.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\Stop.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedVector3.cs" />
@@ -180,7 +179,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\GetBoolParameter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetRotation.cs" />
     <Compile Include="Assets\Scripts\Tasks\TimerExpired.cs" />
-    <Compile Include="Assets\Scripts\StatSystem\RawBonus.cs" />
     <Compile Include="Assets\Scripts\Vitals.cs" />
     <Compile Include="Assets\Prefabs\Characters\PenelopeCharacter.cs" />
     <Compile Include="Assets\Scripts\TargetSelector.cs" />
@@ -830,7 +828,6 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\Scripts\Scriptable Objects\Software.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -359,6 +359,7 @@ MonoBehaviour:
   interactions: []
   stats: {fileID: 6292936344987751588}
   damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
+  save: {fileID: 11400000, guid: 729bd232ee905d2408c246da6adb1980, type: 2}
 --- !u!114 &4505106388035379474
 MonoBehaviour:
   m_ObjectHideFlags: 0

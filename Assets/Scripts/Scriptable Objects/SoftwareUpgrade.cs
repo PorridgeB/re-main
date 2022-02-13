@@ -14,4 +14,14 @@ public class SoftwareUpgrade : ScriptableObject
     public int Lines = 1;
     [Min(1)]
     public int Rings = 1;
+
+    public List<Bonus> bonuses;
+
+    public void Awake()
+    {
+        foreach (Bonus b in bonuses)
+        {
+            b.source = Name;
+        }
+    }
 }
