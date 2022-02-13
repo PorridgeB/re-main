@@ -18,6 +18,8 @@ public class DiveState : StateMachineBehaviour
     private GameObject attackFieldInstance;
     private Vector3 direction;
     private float startTime;
+    private NavMeshAgent agent;
+    private Rigidbody rigidbody;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -42,6 +44,13 @@ public class DiveState : StateMachineBehaviour
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
         startTime = Time.time;
+
+        // Disable the NavMeshAgent's synchronisation with transform.position,
+        // so we can move the rigidbody using the MovePosition method
+        agent = animator.GetComponent<NavMeshAgent>();
+        agent.updatePosition = false;
+
+        rigidbody = animator.GetComponent<Rigidbody>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -52,14 +61,18 @@ public class DiveState : StateMachineBehaviour
             animator.SetTrigger("Land");
         }
 
-        var agent = animator.GetComponent<NavMeshAgent>();
         var time = (Time.time - startTime) / Duration;
-        agent.Move(direction * Speed * SpeedCurve.Evaluate(time) * Time.deltaTime);
+        var velocity = direction * Speed * SpeedCurve.Evaluate(time);
+        rigidbody.MovePosition(rigidbody.position + 5 * velocity * Time.deltaTime);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        var rigidbodyPosition = rigidbody.position;
+        agent.updatePosition = true;
+        agent.Warp(rigidbodyPosition);
+
         Destroy(attackFieldInstance);
     }
 }
