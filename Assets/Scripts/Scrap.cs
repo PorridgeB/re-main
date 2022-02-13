@@ -4,65 +4,64 @@ using UnityEngine;
 
 public class Scrap : MonoBehaviour
 {
+    public int Amount
+    {
+        get => amount;
+        set
+        {
+            amount = value;
+
+            UpdateSprite();
+        }
+    }
+
     [SerializeField]
     private Sprite small;
     [SerializeField]
     private Sprite medium;
     [SerializeField]
     private Sprite large;
-
     [SerializeField]
-    private int value;
-
-    public int Value => value;
-
+    private int smallThreshold = 5;
     [SerializeField]
-    private AnimationCurve speedCurve;
-    private float timeInRange;
+    private int mediumThreshold = 20;
     [SerializeField]
-    private SpriteRenderer render;
+    private int amount;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Start()
     {
-        render = GetComponent<SpriteRenderer>();
-        SetValue(value);
+        if (amount <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        UpdateSprite();
     }
 
-    public void SetValue(int v){
-        value = v;
-        if (value < 5){
-            render.sprite = small;
+    private void UpdateSprite()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (amount < smallThreshold)
+        {
+            spriteRenderer.sprite = small;
         }
-        else if (value >= 5 && value < 20){
-            render.sprite = medium;
+        else if (amount < mediumThreshold)
+        {
+            spriteRenderer.sprite = medium;
         }
-        else {
-            render.sprite = large;
+        else
+        {
+            spriteRenderer.sprite = large;
         }
     }
 
-    public void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (value == 0) Destroy(gameObject);
-    }
-    void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player")){
-            timeInRange += Time.deltaTime;
-            Vector3 dir = (other.transform.position - transform.position);
-            dir.y = 0;
-            dir = dir.normalized;
-            transform.position += dir*speedCurve.Evaluate(timeInRange);
-            if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(other.transform.position.x, other.transform.position.z)) < 0.5f){
-                Destroy(gameObject);
-            }
-        }
-    }  
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player")){
-            timeInRange = 0;
+        if (other.CompareTag("Player"))
+        {
+            other.SendMessage("OnScrapPickup", amount);
+            Destroy(gameObject);
         }
     }
 }
