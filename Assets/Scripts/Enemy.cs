@@ -168,6 +168,15 @@ public class Enemy : MonoBehaviour
 
     public void OnDamage(DamageSource source)
     {
+        // Stop it from hurting itself
+        if (source.source != null)
+        {
+            if (CompareTag(source.source.tag))
+            {
+                return;
+            }
+        }
+
         foreach (var effect in source.Effects)
         {
             effect.Resolve(gameObject);
