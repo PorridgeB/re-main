@@ -35,7 +35,7 @@ public class MechanicStore : MonoBehaviour
 
     public void OnGadgetEquip(Gadget gadget)
     {
-        save.SelectedLoadout.Gadget = gadget.name;
+        save.SelectedLoadout.Gadget = gadget;
 
         Refresh();
     }

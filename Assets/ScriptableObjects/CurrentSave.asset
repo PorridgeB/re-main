@@ -31,18 +31,7 @@ MonoBehaviour:
       Weapon2:
         Weapon: 
         Attachments: []
-      Gadget: 
+      Gadget: {fileID: 11400000, guid: 40d2bc9ae8b8f374aa8c2d7b01b1d667, type: 2}
     LoadoutIndex: 0
-    Runs:
-    - ended: 0
-      difficulty: 0
-      quadrant: 0
-      sector: 0
-      scrap: 0
-      dataFragments: 0
-      kills: 0
-      damage: 0
-      largestHit: 0
-      killedBy: 
-      time: 0
+    Runs: []
     Difficulty: 1

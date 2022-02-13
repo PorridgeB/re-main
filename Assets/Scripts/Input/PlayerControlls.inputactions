@@ -100,6 +100,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Gadget",
+                    "type": "Button",
+                    "id": "8f9d598d-3bc4-4764-8531-14e128cafc2d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -304,7 +312,7 @@
                 {
                     "name": "",
                     "id": "14abaeb0-9d91-4488-b80d-a6979f0022a5",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -326,7 +334,7 @@
                 {
                     "name": "",
                     "id": "1c82fe1e-2117-4c52-91c5-368978daa630",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -364,6 +372,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "NextRangedWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb566137-c1bb-4c4f-a896-fb40fc56a2b5",
+                    "path": "<Keyboard>/leftAlt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gadget",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5cbc547c-dc3f-48b9-9b31-3f8cff1ab060",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gadget",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

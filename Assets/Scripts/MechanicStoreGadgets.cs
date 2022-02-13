@@ -36,7 +36,7 @@ public class MechanicStoreGadgets : MonoBehaviour
         {
             var gadgetRow = Instantiate(gadgetRowPrefab, gadgetList.transform).GetComponent<GadgetRow>();
 
-            var isEquipped = gadget.name == Save.SelectedLoadout.Gadget;
+            var isEquipped = gadget.name == Save.SelectedLoadout.Gadget.name;
             gadgetRow.Equipped = isEquipped;
             gadgetRow.Gadget = gadget;
         }

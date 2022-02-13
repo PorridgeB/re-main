@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     private InputAction meleeAction;
     private InputAction interactAction;
     private InputAction overlayAction;
+    private InputAction gadgetAction;
 
     // Temporary way to switch weapons in-game for debug purposes
     private List<Weapon> meleeWeapons = new List<Weapon>() { new Sword(), new Hammer() };
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
         meleeAction = inputs.actions["MeleeAttack"];
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
+        gadgetAction = inputs.actions["Gadget"];
 
 
         for (int i = 0; i < stats.DashCharges.Value(); i++)
@@ -137,7 +139,6 @@ public class PlayerController : MonoBehaviour
         interactions.RemoveAll(delegate (Interaction i) { return i == null; });
 
         facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
-        
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
@@ -152,6 +153,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("Horizontal", facing.x);
             animator.SetFloat("Vertical", facing.y);
+        }
+
+        if (gadgetAction.triggered)
+        {
+            animator.SetTrigger("Gadget");
         }
         
         // As deadzones don't seem to work, I have added a manual deadzone so it will ignore input that is too small to be deliberate
