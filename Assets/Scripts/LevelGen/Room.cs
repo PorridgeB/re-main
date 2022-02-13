@@ -159,7 +159,7 @@ public class Room : MonoBehaviour
                     break;
                 case ResourceType.Scrap:
                     go = scrap;
-                    go.GetComponent<Scrap>().SetValue(value);
+                    go.GetComponent<Scrap>().Amount = value;
                     break;
             }
             Instantiate(go, t.position+Vector3.up, new Quaternion(), transform);

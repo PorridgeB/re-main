@@ -335,6 +335,11 @@ public class PlayerController : MonoBehaviour
         return value * stats.CritDamage.Value();
     }
 
+    private void OnScrapPickup(int amount)
+    {
+        currentSave.CurrentRun.scrap += amount;
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
 
@@ -346,10 +351,11 @@ public class PlayerController : MonoBehaviour
         {
             currentSave.CurrentRun.dataFragments += collision.GetComponent<DataFragments>().Value;
         }
-        if (collision.CompareTag("Scrap"))
-        {
-            currentSave.CurrentRun.scrap += collision.GetComponent<Scrap>().Value;
-        }
+        //if (collision.CompareTag("Scrap"))
+        //{
+        //    currentSave.CurrentRun.scrap += collision.GetComponent<Scrap>().Amount;
+        //    Destroy(collision.gameObject);
+        //}
     }
 
     private void OnTriggerExit(Collider collision)
