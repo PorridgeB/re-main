@@ -104,7 +104,7 @@ public class DORAIStore : MonoBehaviour
         {
             var softwareUpgradeRow = Instantiate(softwareUpgradeRowPrefab, softwareUpgradeList.transform).GetComponent<SoftwareUpgradeRow>();
             softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
-            softwareUpgradeRow.Unlocked = save.UnlockedSoftwareUpgrades.Contains(softwareUpgrade.name);
+            softwareUpgradeRow.Unlocked = save.SoftwareIsUnlocked(softwareUpgrade.name);
         }
     }
 
@@ -207,7 +207,7 @@ public class DORAIStore : MonoBehaviour
         var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
 
         dialog.Prompt = $"Are you sure you want to buy {softwareUpgrade.Name} for {softwareUpgrade.Cost} <sprite=0>?";
-        dialog.OnYes += delegate { save.DataFragments -= softwareUpgrade.Cost; save.UnlockedSoftwareUpgrades.Add(softwareUpgrade.name); Refresh(); };
+        dialog.OnYes += delegate { save.MakePurchaseWithData(softwareUpgrade.Cost); save.AddSoftware(softwareUpgrade.name); Refresh(); };
     }
 
     public void Clear()

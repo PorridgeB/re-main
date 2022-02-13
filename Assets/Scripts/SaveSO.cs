@@ -23,6 +23,8 @@ public class SaveSO : ScriptableObject
         }
     }
 
+    public int Scrap => save.Scrap;
+
     public void AddTime(float time)
     {
         save.TotalTime += time;
@@ -35,6 +37,56 @@ public class SaveSO : ScriptableObject
             return CurrentRun.difficulty;
         }
     }
+
+    public bool CanBuyWithScrap(int cost)
+    {
+        return save.Scrap >= cost;
+    }
+
+    public void MakePurchaseWithData(int cost)
+    {
+        save.DataFragments -= cost;
+    }
+
+    public void MakePurchaseWithScrap(int cost)
+    {
+        save.Scrap -= cost;
+    }
+
+    public void AddSoftware(string name)
+    {
+        save.UnlockedSoftwareUpgrades.Add(name);
+    }
+
+    public void AddGadget(string name)
+    {
+        save.UnlockedGadgets.Add(name);
+    }
+
+    public bool SoftwareIsUnlocked(string name)
+    {
+        return save.UnlockedSoftwareUpgrades.Contains(name);
+    }
+
+    public int GetSoftwareCount(string name)
+    {
+        int i = 0;
+        foreach (SoftwareUpgradeInstance s in SelectedLoadout.SoftwareUpgrades)
+        {
+            if (s.SoftwareUpgrade.name == name)
+            {
+                i++;
+            }
+        }
+        return i;
+    }
+
+    public bool GadgetIsUnlocked(string name)
+    {
+        return save.UnlockedGadgets.Contains(name);
+    }
+
+    public Loadout SelectedLoadout => save.Loadouts[save.LoadoutIndex];
 
     public RunInfo CurrentRun
     {

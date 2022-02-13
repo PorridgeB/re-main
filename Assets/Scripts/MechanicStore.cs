@@ -27,15 +27,14 @@ public class MechanicStore : MonoBehaviour
 
     public void OnGadgetBuy(Gadget gadget)
     {
-        save.Scrap -= gadget.Cost;
-        save.UnlockedGadgets.Add(gadget.name);
+        save.MakePurchaseWithScrap(gadget.Cost);
+        save.AddGadget(gadget.name);
 
         Refresh();
     }
 
     public void OnGadgetEquip(Gadget gadget)
     {
-        var save = new Save();
         save.SelectedLoadout.Gadget = gadget.name;
 
         Refresh();

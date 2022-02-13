@@ -48,6 +48,4 @@ public class Save
     public int Difficulty;
     // Percentage of story completion
     public int StoryCompletion => 0;
-
-    public Loadout SelectedLoadout => Loadouts[LoadoutIndex];
 }

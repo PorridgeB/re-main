@@ -14,13 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   save:
     TotalTime: 0
-    DataFragments: 0
+    DataFragments: 23
     Scrap: 0
     SoftwareUpgradeCapacity: 0
-    UnlockedSoftwareUpgrades: []
+    UnlockedSoftwareUpgrades:
+    - SoftwareUpgrade3
     UnlockedWeaponAttachments: []
     UnlockedGadgets: []
-    Loadouts: []
+    Loadouts:
+    - SoftwareUpgrades:
+      - SoftwareUpgrade: {fileID: 11400000, guid: 6949785e34304884cb92523deb6b5e61, type: 2}
+        Position: {x: 3, y: 0}
+      Weapon1:
+        Weapon: 
+        Attachments: []
+      Weapon2:
+        Weapon: 
+        Attachments: []
+      Gadget: 
     LoadoutIndex: 0
     Runs:
     - ended: 0
