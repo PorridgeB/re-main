@@ -612,7 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSoundRange: 0
   runSoundPeriod: 0
-  step: {fileID: 8300000, guid: e0d4b16a3f87b2847af195713c5d0f14, type: 3}
+  step: {fileID: 8300000, guid: 3a338b81b3869664c81f6f434ee556ab, type: 3}
   stepInterval: 0.5
 --- !u!1107 &-3725275409237692164
 AnimatorStateMachine:

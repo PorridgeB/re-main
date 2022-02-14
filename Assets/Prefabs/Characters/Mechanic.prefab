@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cf32f451f4d59438df5cfb6e9e6c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueController: {fileID: 0}
+  enterDialogue: {fileID: 11400000, guid: 93c5bafcb20f9c2499415562000b9d72, type: 2}
+  currentDialogue: {fileID: 11400000, guid: 6f23a1acae681694086ab229c3b08ffd, type: 2}
   threads: []
   available: []
   priority: []

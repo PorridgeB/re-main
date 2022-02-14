@@ -24,6 +24,7 @@ public class SaveSO : ScriptableObject
     }
 
     public int Scrap => save.Scrap;
+    public int DataFragments => save.DataFragments;
 
     public void AddTime(float time)
     {

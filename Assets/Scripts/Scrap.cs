@@ -21,6 +21,8 @@ public class Scrap : MonoBehaviour
     private float timeInRange;
     [SerializeField]
     private SpriteRenderer render;
+    [SerializeField]
+    private AudioClip pickUp;
 
     // Start is called before the first frame update
     void Awake()
@@ -55,6 +57,7 @@ public class Scrap : MonoBehaviour
             dir = dir.normalized;
             transform.position += dir*speedCurve.Evaluate(timeInRange);
             if (Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(other.transform.position.x, other.transform.position.z)) < 0.5f){
+                SoundManager.PlaySound(pickUp, 0.6f);
                 Destroy(gameObject);
             }
         }

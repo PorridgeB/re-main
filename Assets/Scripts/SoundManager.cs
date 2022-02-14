@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     public Song currentSong;
     public static Song nextSong;
 
+    public static ClimbingSFX dataSound;
+
     public Song gameMusic;
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class SoundManager : MonoBehaviour
             nextSong = currentSong;
             SceneManager.sceneLoaded += SceneUpdate;
             music = GetComponent<AudioSource>();
+            dataSound = GetComponent<ClimbingSFX>();
             if (currentSong != null)
             {
                 music.clip = currentSong.clip;
@@ -117,5 +120,10 @@ public class SoundManager : MonoBehaviour
         audioSource.volume = volume;
         audioSource.PlayOneShot(clip);
         return audioSource.gameObject;
+    }
+
+    public static void AddDataSound()
+    {
+        dataSound.Trigger();
     }
 }

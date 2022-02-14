@@ -82,6 +82,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SaveSO save;
 
+    [SerializeField]
+    private AudioClip interactionPromptSound;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -142,11 +145,6 @@ public class PlayerController : MonoBehaviour
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
-        }
-
-        if (overlayAction.triggered)
-        {
-            inputs.SwitchCurrentActionMap("OverlayControl");
         }
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
@@ -350,6 +348,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Interaction"))
         {
+            if (interactions.Count < 1)
+            {
+                SoundManager.PlaySound(interactionPromptSound, 0.2f);
+            }
             interactions.Add(collision.GetComponent<Interaction>());
         }
         if (collision.CompareTag("DataFragment"))

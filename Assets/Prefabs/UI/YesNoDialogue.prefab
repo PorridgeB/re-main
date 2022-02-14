@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7238142353429323145}
   - component: {fileID: 757382683542413166}
   m_Layer: 5
-  m_Name: YesNoDialog
+  m_Name: YesNoDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

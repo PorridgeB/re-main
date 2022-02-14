@@ -25,6 +25,8 @@ public class DORAIStore : MonoBehaviour
     [SerializeField]
     private GameObject yesNoDialogPrefab;
     [SerializeField]
+    private GameObject insufficientFundsPrompt;
+    [SerializeField]
     private Wedge phantom;
     [SerializeField]
     private AudioClip click;
@@ -35,6 +37,9 @@ public class DORAIStore : MonoBehaviour
     private Vector2Int previousPosition;
     private Drag currentDrag = null;
     private List<SoftwareUpgradePiece> pieces;
+
+    [SerializeField]
+    private List<int> ringPrices;
 
     public class SoftwareUpgradePiece
     {
@@ -52,6 +57,11 @@ public class DORAIStore : MonoBehaviour
         {
             Place(softwareUpgrade);
         }
+    }
+
+    private void OnEnable()
+    {
+        dataFragments.text = $"{save.DataFragments} <sprite=0 tint>";
     }
 
 
@@ -202,8 +212,32 @@ public class DORAIStore : MonoBehaviour
         OnSoftwareUpgradeRowBeginDrag(new SoftwareUpgradeRow.BeginDragData { eventData = eventData, softwareUpgrade = piece.Instance.SoftwareUpgrade });
     }
 
+    private bool CanAfford(int price)
+    {
+        Debug.Log(save.DataFragments + " : " + price);
+        if (save.DataFragments < price)
+        {
+            insufficientFundsPrompt.SetActive(true);
+            return false;
+        }
+        return true;
+    }
+
+    public void OnRingUpgradeBuy()
+    {
+        Debug.Log("starting purchase");
+        if (!CanAfford(ringPrices[pie.UnlockedRings])) return;
+        Debug.Log("continuing purchase");
+        var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
+
+        dialog.Prompt = $"Do you want to upgrade disk for {ringPrices[pie.UnlockedRings]} <sprite=0>?";
+        dialog.OnYes += delegate { save.MakePurchaseWithData(ringPrices[pie.UnlockedRings]); pie.UnlockedRings++; Refresh(); };
+    }
+
     public void OnSoftwareUpgradeBuy(SoftwareUpgrade softwareUpgrade)
     {
+        if (!CanAfford(softwareUpgrade.Cost)) return;
+
         var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
 
         dialog.Prompt = $"Are you sure you want to buy {softwareUpgrade.Name} for {softwareUpgrade.Cost} <sprite=0>?";
