@@ -79,27 +79,27 @@ public class Attribute : BaseAttribute
     {
         finalValue = BaseValue;
 
-        float linearValues = 0;
-        float exponentialValues = 0;
-
-        GetBonusValues(softwareBonuses, ref linearValues, ref exponentialValues);
-        GetBonusValues(moduleBonuses, ref linearValues, ref exponentialValues);
-        GetBonusValues(temporaryBonuses, ref linearValues, ref exponentialValues);
-
         
 
-        finalValue += linearValues;
-        finalValue *= 1 + exponentialValues;
+        AddBonusValues(softwareBonuses, ref finalValue);
+        AddBonusValues(moduleBonuses, ref finalValue);
+        AddBonusValues(temporaryBonuses, ref finalValue);
+
         return Mathf.Clamp(finalValue, minValue, maxValue);
     }
 
-    public void GetBonusValues(List<Bonus> bonuses, ref float linearValues, ref float exponentialValues)
+    public void AddBonusValues(List<Bonus> bonuses, ref float finalValue)
     {
+        float linearValues = 0;
+        float exponentialValues = 0;
+
         foreach (Bonus b in bonuses)
         {
             linearValues += b.value;
             exponentialValues += b.multiplier;
         }
+        finalValue += linearValues;
+        finalValue *= exponentialValues;
     }
 
     public string DisplayFinalValue()
