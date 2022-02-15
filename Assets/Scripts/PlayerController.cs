@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     private InputAction meleeAction;
     private InputAction interactAction;
     private InputAction overlayAction;
+    private InputAction gadgetAction;
 
     // Temporary way to switch weapons in-game for debug purposes
     private List<Weapon> meleeWeapons = new List<Weapon>() { new Sword(), new Hammer() };
@@ -77,6 +78,12 @@ public class PlayerController : MonoBehaviour
 
     private Weapon meleeWeapon;
     private Weapon rangedWeapon;
+
+    [SerializeField]
+    private SaveSO save;
+
+    [SerializeField]
+    private AudioClip interactionPromptSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -104,6 +111,7 @@ public class PlayerController : MonoBehaviour
         meleeAction = inputs.actions["MeleeAttack"];
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
+        gadgetAction = inputs.actions["Gadget"];
 
 
         for (int i = 0; i < stats.DashCharges.Value(); i++)
@@ -120,6 +128,7 @@ public class PlayerController : MonoBehaviour
         rangedWeapon = rangedWeapons[0];
 
         inputs.actions["RangedAttack"].canceled += OnRangedAttackCanceled;
+
     }
 
     private void OnRangedAttackCanceled(InputAction.CallbackContext obj)
@@ -133,21 +142,20 @@ public class PlayerController : MonoBehaviour
         interactions.RemoveAll(delegate (Interaction i) { return i == null; });
 
         facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
-        
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
-        }
-
-        if (overlayAction.triggered)
-        {
-            inputs.SwitchCurrentActionMap("OverlayControl");
         }
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {
             animator.SetFloat("Horizontal", facing.x);
             animator.SetFloat("Vertical", facing.y);
+        }
+
+        if (gadgetAction.triggered)
+        {
+            animator.SetTrigger("Gadget");
         }
         
         // As deadzones don't seem to work, I have added a manual deadzone so it will ignore input that is too small to be deliberate
@@ -185,8 +193,18 @@ public class PlayerController : MonoBehaviour
 
         if (health.Value <= 0 && !dead)
         {
-            dead = true;
-            playerDeath.Raise();
+            Debug.Log(save.CurrentRun.rebootCount + " : " + stats.Reboot.Value());
+            if (save.CurrentRun.rebootCount < stats.Reboot.Value())
+            {
+                save.CurrentRun.rebootCount++;
+                health.SetValue(stats.Health.Value() / 2);
+            }
+            else
+            {
+                dead = true;
+                playerDeath.Raise();
+            }
+            
         }
     }
 
@@ -266,12 +284,7 @@ public class PlayerController : MonoBehaviour
         }
         health.ChangeValue(-finalDamageValue);
         CreateDamageToken(finalDamageValue);
-        if (health.Value < 0)
-        {
-            playerDeath.Raise();
-
-            SceneManager.LoadScene("Hub");
-        }
+        
     }
 
     private void CreateDamageToken(float value)
@@ -345,6 +358,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Interaction"))
         {
+            if (interactions.Count < 1)
+            {
+                SoundManager.PlaySound(interactionPromptSound, 0.2f);
+            }
             interactions.Add(collision.GetComponent<Interaction>());
         }
         if (collision.CompareTag("DataFragment"))

@@ -24,7 +24,7 @@ public class GadgetInfo : MonoBehaviour
     private Color insufficientColor;
     private Gadget currentGadget;
 
-    public void ShowGadget(Gadget gadget)
+    public void ShowGadget(Gadget gadget, SaveSO save)
     {
         currentGadget = gadget;
 
@@ -37,17 +37,14 @@ public class GadgetInfo : MonoBehaviour
             return;
         }
 
-        var save = new Save();//SaveManager.Instance.Save;
-
-        var canBuy = save.Scrap >= gadget.Cost;
-        buyButton.interactable = canBuy;
+        buyButton.interactable = save.CanBuyWithScrap(gadget.Cost);
 
         name.text = gadget.Name;
         description.text = gadget.Description;
         cost.text = $"{gadget.Cost} <sprite=1 tint>";
-        cost.color = canBuy ? sufficientColor : insufficientColor;
+        cost.color = save.CanBuyWithScrap(gadget.Cost) ? sufficientColor : insufficientColor;
 
-        var hasGadget = save.UnlockedGadgets.Contains(gadget.name);
+        var hasGadget = save.GadgetIsUnlocked(gadget.name);
         buy.SetActive(!hasGadget);
         equip.SetActive(hasGadget);
     }

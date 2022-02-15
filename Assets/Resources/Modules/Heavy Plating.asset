@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
+  m_Name: Heavy Plating
+  m_EditorClassIdentifier: 
+  count: 0
+  description: Reduces damage by 5%
+  rarity: 0
+  sprite: {fileID: 6761164967045977113, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
+  bonuses:
+  - attribute: {fileID: 11400000, guid: 23639c9218fddc8488f5a183a19adca4, type: 2}
+    source: Heavy Plating
+    value: 0.05
+    multiplier: 0
+  - attribute: {fileID: 11400000, guid: 26c367aed8248b749ac343fe494f7608, type: 2}
+    source: Heavy Plating
+    value: 0.05
+    multiplier: 0
+  - attribute: {fileID: 11400000, guid: 765a4d21d93c4214f8cbce4ccd0a60d4, type: 2}
+    source: Heavy Plating
+    value: 0.05
+    multiplier: 0

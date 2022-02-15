@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum DisplayType
 {
@@ -18,6 +19,8 @@ public class Attribute : BaseAttribute
     [SerializeField]
     private DisplayType type;
     [SerializeField]
+    private List<Bonus> softwareBonuses = new List<Bonus>();
+    [SerializeField]
     private List<Bonus> moduleBonuses = new List<Bonus>();
     [SerializeField]
     private List<Bonus> temporaryBonuses = new List<Bonus>();
@@ -27,19 +30,24 @@ public class Attribute : BaseAttribute
 
     private void Awake()
     {
-        moduleBonuses.Clear();
         finalValue = baseValue;
-    }
-
-    public void ClearmoduleBonuses()
-    {
-        moduleBonuses.Clear();
     }
 
     public void Reset()
     {
+        softwareBonuses.Clear();
         moduleBonuses.Clear();
         temporaryBonuses.Clear();
+    }
+
+    public void AddSoftwareBonus(Bonus bonus)
+    {
+        softwareBonuses.Add(bonus);
+    }
+
+    public void RemoveSoftwareBonus(Bonus bonus)
+    {
+        softwareBonuses.Remove(bonus);
     }
 
     public void AddModuleBonus(Bonus bonus)
@@ -71,24 +79,27 @@ public class Attribute : BaseAttribute
     {
         finalValue = BaseValue;
 
-        float linerValues = 0;
-        float exponentialValues = 0;
+        
 
-        foreach (Bonus b in moduleBonuses)
-        {
-            linerValues += b.value;
-            exponentialValues += b.multiplier;
-        }
+        AddBonusValues(softwareBonuses, ref finalValue);
+        AddBonusValues(moduleBonuses, ref finalValue);
+        AddBonusValues(temporaryBonuses, ref finalValue);
 
-        foreach (Bonus b in temporaryBonuses)
-        {
-            linerValues += b.value;
-            exponentialValues += b.multiplier;
-        }
-
-        finalValue += linerValues;
-        finalValue *= 1 + exponentialValues;
         return Mathf.Clamp(finalValue, minValue, maxValue);
+    }
+
+    public void AddBonusValues(List<Bonus> bonuses, ref float finalValue)
+    {
+        float linearValues = 0;
+        float exponentialValues = 1;
+
+        foreach (Bonus b in bonuses)
+        {
+            linearValues += b.value;
+            exponentialValues += b.multiplier;
+        }
+        finalValue += linearValues;
+        finalValue *= exponentialValues;
     }
 
     public string DisplayFinalValue()

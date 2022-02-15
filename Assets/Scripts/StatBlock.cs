@@ -24,4 +24,7 @@ public class StatBlock : MonoBehaviour
     public Attribute ResistancePhysical;
     public Attribute ResistanceEnergy;
     public Attribute ResistanceElemental;
+
+    public Attribute Luck;
+    public Attribute Reboot;
 }

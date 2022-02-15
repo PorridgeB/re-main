@@ -10,6 +10,7 @@ public class DataFragments : MonoBehaviour
     private bool timerStarted = false;
     private float timer = 0;
 
+    public ClimbingSFX dataSound;
     public int Value => value;
 
     private ParticleSystem pSystem;
@@ -40,13 +41,8 @@ public class DataFragments : MonoBehaviour
         
     }
 
-    void OnTriggerStay(Collider other)
+    private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Player")){
-            Vector3 dir = (other.transform.position - transform.position);
-            dir.y = 0;
-            dir = dir.normalized;
-            transform.position += dir*timer*Time.deltaTime;
-        }
-    } 
+        SoundManager.AddDataSound();
+    }
 }

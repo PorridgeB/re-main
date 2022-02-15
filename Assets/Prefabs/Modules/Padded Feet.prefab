@@ -96,14 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207f1105c3b50024782707b4d711d36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  module:
-    name: Padded Feet
-    description: module
-    sprite: {fileID: 7911235102323647998, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
-    bonuses:
-    - attributeName: Walk Speed
-      value: 0.1
-      multiplier: 0
+  module: {fileID: 0}
+  modulePickup: {fileID: 0}
+  pickUp: {fileID: 8300000, guid: e5d7c5f1a0cd4e645b5e27a184146d6e, type: 3}
 --- !u!1001 &880492962508957250
 PrefabInstance:
   m_ObjectHideFlags: 0

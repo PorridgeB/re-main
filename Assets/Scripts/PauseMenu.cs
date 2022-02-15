@@ -17,4 +17,14 @@ public class PauseMenu : MonoBehaviour
         //var rectTrans = Panel.GetComponent<RectTransform>();
         //LeanTween.moveX(rectTrans, -rectTrans.rect.width, 0.5f).setEaseInOutExpo().setLoopPingPong();
     }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
 }

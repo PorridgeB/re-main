@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   module: {fileID: 11400000, guid: 68698ef88d440d14690e4a5c2ff82aae, type: 2}
   modulePickup: {fileID: 11400000, guid: 34442f816185a8149a21bd4fc893cb43, type: 2}
+  pickUp: {fileID: 8300000, guid: e5d7c5f1a0cd4e645b5e27a184146d6e, type: 3}
 --- !u!114 &-875428079670408186
 MonoBehaviour:
   m_ObjectHideFlags: 0

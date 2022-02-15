@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff9c4884d22e4549b7735901a290a50, type: 3}
+  m_Name: SoftwareUpgrade4
+  m_EditorClassIdentifier: 
+  Name: Move Speed Up
+  Description: Increases Move Speed by 1
+  Color: {r: 1, g: 0.98808944, b: 0.2584905, a: 1}
+  Cost: 100
+  Lines: 1
+  Rings: 1
+  bonuses:
+  - attribute: {fileID: 11400000, guid: ce4f011195d4b3a45aad24644d70e3da, type: 2}
+    source: Damage Up
+    value: 1
+    multiplier: 0
+  - attribute: {fileID: 11400000, guid: b76c544252b5edc4f99b615415ad8a72, type: 2}
+    source: Damage Up
+    value: 1
+    multiplier: 0

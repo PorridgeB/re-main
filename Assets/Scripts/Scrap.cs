@@ -27,6 +27,9 @@ public class Scrap : MonoBehaviour
     private int mediumThreshold = 20;
     [SerializeField]
     private int amount;
+    private SpriteRenderer render;
+    [SerializeField]
+    private AudioClip pickUp;
 
     private void Start()
     {
@@ -60,6 +63,7 @@ public class Scrap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            SoundManager.PlaySound(pickUp, 0.6f);
             other.SendMessage("OnScrapPickup", amount);
             Destroy(gameObject);
         }

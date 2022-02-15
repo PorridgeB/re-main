@@ -105,6 +105,8 @@ MonoBehaviour:
   - {fileID: 7670991684680205844, guid: f409ab0ae034a3b4e87c05d62e6bc23b, type: 3}
   - {fileID: 7670991684680205844, guid: a889b913a4e0f4e489b66e9b6cf52308, type: 3}
   - {fileID: 7670991684680205844, guid: c28f9e5c2bc77d6468538473abb8099e, type: 3}
+  impact: {fileID: 8300000, guid: d34da0bc899b2ba46892f56591e9f8d9, type: 3}
+  fanfare: {fileID: 8300000, guid: 3355750159e3182439a6d414e2d74c66, type: 3}
 --- !u!1001 &1479277556784015861
 PrefabInstance:
   m_ObjectHideFlags: 0

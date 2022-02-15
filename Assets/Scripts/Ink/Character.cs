@@ -13,7 +13,10 @@ public struct EventConnectors
 public class Character : MonoBehaviour, IInteract
 {
     [SerializeField]
-    private DialogueController dialogueController;
+    private GameEvent enterDialogue;
+    [SerializeField]
+    private DialogueHolder currentDialogue;
+
     [SerializeField]
     private List<Thread> threads = new List<Thread>();
     [SerializeField]
@@ -25,7 +28,6 @@ public class Character : MonoBehaviour, IInteract
 
     private void Start()
     {
-        dialogueController = GameObject.Find("Main Camera/GameUI").GetComponent<DialogueController>();
         foreach (Thread t in GetComponentsInChildren<Thread>())
         {
             threads.Add(t);
@@ -90,6 +92,8 @@ public class Character : MonoBehaviour, IInteract
             }
             
         }
-        dialogueController.SetStory(currentThread.GetCurrentStory());
+        
+        currentDialogue.thread = currentThread;
+        enterDialogue.Raise();
     }
 }

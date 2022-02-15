@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
+  m_Name: Improved Servos
+  m_EditorClassIdentifier: 
+  count: 0
+  description: 'Increases move speed by 10% '
+  rarity: 0
+  sprite: {fileID: 8132948862792318974, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
+  bonuses:
+  - attribute: {fileID: 11400000, guid: ce4f011195d4b3a45aad24644d70e3da, type: 2}
+    source: Improved Servos
+    value: 0.1
+    multiplier: 0
+  - attribute: {fileID: 11400000, guid: b76c544252b5edc4f99b615415ad8a72, type: 2}
+    source: Improved Servos
+    value: 0.1
+    multiplier: 0

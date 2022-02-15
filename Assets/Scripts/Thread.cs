@@ -16,7 +16,7 @@ public class Thread : MonoBehaviour, IListenGameEvent
 
     [SerializeField]
     private TextAsset asset;
-    private Story story;
+    public Story story;
     public ThreadPriority priority;
     private string currentKnot = "main";
 
@@ -25,7 +25,9 @@ public class Thread : MonoBehaviour, IListenGameEvent
     private int progress = 0;
 
     [SerializeField]
-    private List<GameEvent> gameEvents = new List<GameEvent>();
+    private List<GameEvent> listenTo = new List<GameEvent>();
+    [SerializeField]
+    private List<GameEvent> invoke = new List<GameEvent>();
 
     private void Awake()
     {
@@ -34,7 +36,7 @@ public class Thread : MonoBehaviour, IListenGameEvent
 
     public void OnEventRaised(GameEvent gameEvent)
     {
-        if (gameEvent == gameEvents[progress])
+        if (gameEvent == listenTo[progress])
         {
             Progress();
         }
@@ -69,7 +71,7 @@ public class Thread : MonoBehaviour, IListenGameEvent
 
     private void OnEnable()
     {
-        foreach (GameEvent g in gameEvents)
+        foreach (GameEvent g in listenTo)
         {
             g.RegisterListener(this);
         }
@@ -77,7 +79,7 @@ public class Thread : MonoBehaviour, IListenGameEvent
 
     private void OnDisable()
     {
-        foreach (GameEvent g in gameEvents)
+        foreach (GameEvent g in listenTo)
         {
             g.UnRegisterListener(this);
         }
@@ -86,6 +88,18 @@ public class Thread : MonoBehaviour, IListenGameEvent
     private void UpdatePriority(int newValue)
     {
         priority = (ThreadPriority)newValue;
+    }
+
+    private void Invoke(string name)
+    {
+        foreach (GameEvent g in invoke)
+        {
+            if (g.name == name)
+            {
+                Debug.Log("Invoking event " + name);
+                g.Raise();
+            }
+        }
     }
 
     private void LoadNewInk(TextAsset newFile)
@@ -102,9 +116,21 @@ public class Thread : MonoBehaviour, IListenGameEvent
         }
     }
 
+    public void CheckTags()
+    {
+        foreach (string t in story.currentTags)
+        {
+            Debug.Log(t);
+            if (t.Contains("EVENT"))
+            {
+                string s = t.Replace("EVENT:", "").Trim();
+                Invoke(s);
+            }
+        }
+    }
+
     public void Progress()
     {
-        
         if (!story.canContinue)
         {
             if (story.TagsForContentAtPath(currentKnot).Count > 0)

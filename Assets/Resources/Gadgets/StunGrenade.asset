@@ -16,4 +16,4 @@ MonoBehaviour:
   Description: Throw this to stun your enemies
   Icon: {fileID: 0}
   Cost: 50
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 2979905021372366792, guid: d5413fe3ccdf1cf4ea27caa062ac5f07, type: 3}

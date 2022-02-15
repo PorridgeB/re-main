@@ -113,6 +113,22 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Gadget"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f9d598d-3bc4-4764-8531-14e128cafc2d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""13c3f12e-65dc-4968-abf5-3a1fed590d93"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -317,7 +333,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""14abaeb0-9d91-4488-b80d-a6979f0022a5"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -339,7 +355,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1c82fe1e-2117-4c52-91c5-368978daa630"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -377,6 +393,50 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""NextRangedWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb566137-c1bb-4c4f-a896-fb40fc56a2b5"",
+                    ""path"": ""<Keyboard>/leftAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gadget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cbc547c-dc3f-48b9-9b31-3f8cff1ab060"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gadget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e9b11f1-5b02-4ee3-8ea6-02fab8197e06"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a428a4e-b35c-4406-b5e6-af9a68ca08cc"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -632,6 +692,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControl_NextMeleeWeapon = m_CharacterControl.FindAction("NextMeleeWeapon", throwIfNotFound: true);
         m_CharacterControl_NextRangedWeapon = m_CharacterControl.FindAction("NextRangedWeapon", throwIfNotFound: true);
+        m_CharacterControl_Gadget = m_CharacterControl.FindAction("Gadget", throwIfNotFound: true);
+        m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         // DialogueControl
         m_DialogueControl = asset.FindActionMap("DialogueControl", throwIfNotFound: true);
         m_DialogueControl_Continue = m_DialogueControl.FindAction("Continue", throwIfNotFound: true);
@@ -711,6 +773,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Interact;
     private readonly InputAction m_CharacterControl_NextMeleeWeapon;
     private readonly InputAction m_CharacterControl_NextRangedWeapon;
+    private readonly InputAction m_CharacterControl_Gadget;
+    private readonly InputAction m_CharacterControl_Pause;
     public struct CharacterControlActions
     {
         private @PlayerControlls m_Wrapper;
@@ -727,6 +791,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputAction @NextMeleeWeapon => m_Wrapper.m_CharacterControl_NextMeleeWeapon;
         public InputAction @NextRangedWeapon => m_Wrapper.m_CharacterControl_NextRangedWeapon;
+        public InputAction @Gadget => m_Wrapper.m_CharacterControl_Gadget;
+        public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -772,6 +838,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @NextRangedWeapon.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
                 @NextRangedWeapon.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
                 @NextRangedWeapon.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
+                @Gadget.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGadget;
+                @Gadget.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGadget;
+                @Gadget.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGadget;
+                @Pause.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -812,6 +884,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @NextRangedWeapon.started += instance.OnNextRangedWeapon;
                 @NextRangedWeapon.performed += instance.OnNextRangedWeapon;
                 @NextRangedWeapon.canceled += instance.OnNextRangedWeapon;
+                @Gadget.started += instance.OnGadget;
+                @Gadget.performed += instance.OnGadget;
+                @Gadget.canceled += instance.OnGadget;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1010,6 +1088,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnNextMeleeWeapon(InputAction.CallbackContext context);
         void OnNextRangedWeapon(InputAction.CallbackContext context);
+        void OnGadget(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IDialogueControlActions
     {

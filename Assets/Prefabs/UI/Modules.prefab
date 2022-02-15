@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 479839971590283821}
   - component: {fileID: 2058978347735581937}
   - component: {fileID: 5477930338504062104}
+  - component: {fileID: 5463654703580630606}
   m_Layer: 5
   m_Name: Modules
   m_TagString: Untagged
@@ -276,6 +277,19 @@ MonoBehaviour:
   emptyModuleSlotPrefab: {fileID: 568398697635862245, guid: efba428e5fcdc184c94acf311efebd3a, type: 3}
   moduleSlotPrefab: {fileID: 1956449076329998984, guid: c093340782b49da43a09b2c787d911a7, type: 3}
   moduleGrid: {fileID: 6831878133752626611}
+--- !u!114 &5463654703580630606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671572525352062499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc3024950842894094ebe83660bd210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputMapOnEnable: OverlayControl
 --- !u!1 &6831878133752626611
 GameObject:
   m_ObjectHideFlags: 0
