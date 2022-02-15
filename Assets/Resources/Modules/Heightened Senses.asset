@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
   m_Name: Heightened Senses
   m_EditorClassIdentifier: 
-  description: 
+  count: 0
+  description: Increases dodge chance by 5%
+  rarity: 0
   sprite: {fileID: -4538752222985096420, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses:
   - attribute: {fileID: 11400000, guid: a7467cc4d0272f646aa671af54e74cb2, type: 2}
-    module: {fileID: 11400000}
+    source: Heightened Senses
     value: 0.05
     multiplier: 0
-  eventHandlers: []

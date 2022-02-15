@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Thorns
   m_EditorClassIdentifier: 
   count: 0
-  description: 
+  description: Enemies take +10 damage when they hit you
+  rarity: 0
   sprite: {fileID: 4533227004153260592, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses: []

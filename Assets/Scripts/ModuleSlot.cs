@@ -15,8 +15,11 @@ public class ModuleSlot : MonoBehaviour
     private TextMeshProUGUI quantity;
     [SerializeField]
     private Image border;
+
+    public Module module;
     public void SetUp(Module m)
     {
+        module = m;
         icon.sprite = m.sprite;
         quantity.text = m.count.ToString();
         border.color = rarityColors[(int)m.rarity];

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
   m_Name: Crippling Blows
   m_EditorClassIdentifier: 
-  count: 10
-  description: 
+  count: 0
+  description: Dealing damage to an enemy reduces their move speed by 10% for 2 seconds
+  rarity: 0
   sprite: {fileID: 0}
   bonuses: []

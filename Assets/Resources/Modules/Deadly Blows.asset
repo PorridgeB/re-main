@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Deadly Blows
   m_EditorClassIdentifier: 
   count: 0
-  description: 
+  description: Increases crit chance by 10%
+  rarity: 0
   sprite: {fileID: 6099581493293703690, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses:
   - attribute: {fileID: 11400000, guid: 7103fb180d526e74dba49abe2aec03e0, type: 2}
