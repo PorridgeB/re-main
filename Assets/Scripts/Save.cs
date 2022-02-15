@@ -15,6 +15,7 @@ public class Save
         DataFragments = 0;
         Scrap = 0;
         SoftwareUpgradeCapacity = 0;
+        UnlockedSoftwareRings = 1;
         UnlockedSoftwareUpgrades = new List<string>() { "a", "b", "c" };
         UnlockedGadgets = new List<string>() { "a", "b", "c" };
         Loadouts = new List<Loadout>() { new Loadout() };
@@ -34,6 +35,8 @@ public class Save
     public int SoftwareUpgradeCapacity;
     // List of unlocked software upgrades
     public List<string> UnlockedSoftwareUpgrades;
+    // Number of software rings unlocked
+    public int UnlockedSoftwareRings;
     // List of bought weapon attachments
     public List<string> UnlockedWeaponAttachments;
     // List of bought gadgets

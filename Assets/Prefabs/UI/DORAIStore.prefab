@@ -554,6 +554,7 @@ MonoBehaviour:
   click: {fileID: 8300000, guid: aa41124a9e700a44fbe03ea557a33de1, type: 3}
   failure: {fileID: 8300000, guid: 739f7c297a4e4774bb0f5125da9eed7f, type: 3}
   soundEffects: {fileID: 8683219047386688647}
+  ringUpgradeButton: {fileID: 2428619137153726421}
   ringPrices: 00000000f4010000e8030000d0070000
 --- !u!114 &9131682114769521458
 MonoBehaviour:
@@ -1461,6 +1462,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5624238129390970012, guid: 823348430cdd34942b998e539be1eddb, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624238129390970012, guid: 823348430cdd34942b998e539be1eddb, type: 3}
+      propertyPath: m_ChildControlHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5734211298607800318, guid: 823348430cdd34942b998e539be1eddb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1643,14 +1652,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 823348430cdd34942b998e539be1eddb, type: 3}
---- !u!1 &4070976671544912218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7282722243531218533, guid: 823348430cdd34942b998e539be1eddb, type: 3}
-  m_PrefabInstance: {fileID: 6732440526942222143}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &296901320455825368 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6444827885013864679, guid: 823348430cdd34942b998e539be1eddb, type: 3}
+  m_PrefabInstance: {fileID: 6732440526942222143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4070976671544912218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7282722243531218533, guid: 823348430cdd34942b998e539be1eddb, type: 3}
   m_PrefabInstance: {fileID: 6732440526942222143}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7200336759562540371
@@ -1791,6 +1800,11 @@ PrefabInstance:
 --- !u!224 &2428619137153726378 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4780725067684963065, guid: 184f1e9dc37ca704bb666f316b4f88a3, type: 3}
+  m_PrefabInstance: {fileID: 7200336759562540371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2428619137153726421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4780725067684962950, guid: 184f1e9dc37ca704bb666f316b4f88a3, type: 3}
   m_PrefabInstance: {fileID: 7200336759562540371}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8473350125928710899

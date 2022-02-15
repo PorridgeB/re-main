@@ -10,18 +10,34 @@ public class Modules : MonoBehaviour
     private GameObject moduleSlotPrefab;
     [SerializeField]
     private GameObject moduleGrid;
+    private List<Module> modules;
 
-    private void Start()
+    private void GetModules()
     {
-        for (int i = 0; i < 3; i++)
+        foreach (Module m in Resources.LoadAll<Module>("Modules"))
         {
-            Instantiate(moduleSlotPrefab, moduleGrid.transform);
+            modules.Add(m);
         }
+    }
 
-        //for (int i = 0; i < 40; i++)
-        //{
-        //    Instantiate(emptyModuleSlotPrefab, moduleGrid.transform);
-        //}
+    private void OnEnable()
+    {
+        if (modules == null) modules = new List<Module>();
+        if (modules.Count == 0) GetModules();
+        Generate();
+    }
+
+    public void Generate()
+    {
+        for (int i = 0; i < modules.Count; i++)
+        {
+            if (modules[i].count != 0)
+            {
+                ModuleSlot moduleSlot = Instantiate(moduleSlotPrefab, moduleGrid.transform).GetComponent<ModuleSlot>();
+                moduleSlot.SetUp(modules[i]);
+            }
+            
+        }
     }
 
     public void Close()

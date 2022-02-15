@@ -18,6 +18,8 @@ public class RunInfo
     public int damage;
     public int largestHit;
 
+    public int rebootCount;
+
     public string killedBy;
 
     public float time;

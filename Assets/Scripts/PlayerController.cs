@@ -193,8 +193,18 @@ public class PlayerController : MonoBehaviour
 
         if (health.Value <= 0 && !dead)
         {
-            dead = true;
-            playerDeath.Raise();
+            Debug.Log(save.CurrentRun.rebootCount + " : " + stats.Reboot.Value());
+            if (save.CurrentRun.rebootCount < stats.Reboot.Value())
+            {
+                save.CurrentRun.rebootCount++;
+                health.SetValue(stats.Health.Value() / 2);
+            }
+            else
+            {
+                dead = true;
+                playerDeath.Raise();
+            }
+            
         }
     }
 
@@ -274,12 +284,7 @@ public class PlayerController : MonoBehaviour
         }
         health.ChangeValue(-finalDamageValue);
         CreateDamageToken(finalDamageValue);
-        if (health.Value < 0)
-        {
-            playerDeath.Raise();
-
-            SceneManager.LoadScene("Hub");
-        }
+        
     }
 
     private void CreateDamageToken(float value)

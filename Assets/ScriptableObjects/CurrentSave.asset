@@ -9,32 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e617716171e1a0b4fb2d704e8986a149, type: 3}
+  m_Script: {fileID: 11500000, guid: 543964994a33bc945ae8b9fffb0cade3, type: 3}
   m_Name: CurrentSave
   m_EditorClassIdentifier: 
   save:
     TotalTime: 0
-    DataFragments: 100000
-    Scrap: 0
+    DataFragments: 84340
+    Scrap: 47
     SoftwareUpgradeCapacity: 0
     UnlockedSoftwareUpgrades:
     - SoftwareUpgrade3
     - SoftwareUpgrade1
     - SoftwareUpgrade2
+    - SoftwareUpgrade10
+    - SoftwareUpgrade4
+    - SoftwareUpgrade5
+    - SoftwareUpgrade6
+    - SoftwareUpgrade7
+    - SoftwareUpgrade8
+    - SoftwareUpgrade9
+    UnlockedSoftwareRings: 1
     UnlockedWeaponAttachments: []
     UnlockedGadgets: []
     Loadouts:
-    - SoftwareUpgrades:
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
-        Position: {x: 2, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
-        Position: {x: 0, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
-        Position: {x: 4, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
-        Position: {x: 6, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
-        Position: {x: 8, y: 0}
+    - SoftwareUpgrades: []
       Weapon1:
         Weapon: 
         Attachments: []

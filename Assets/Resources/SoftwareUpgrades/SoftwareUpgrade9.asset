@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bff9c4884d22e4549b7735901a290a50, type: 3}
-  m_Name: SoftwareUpgrade5
+  m_Name: SoftwareUpgrade9
   m_EditorClassIdentifier: 
-  Name: Crit Chance Up
-  Description: Increases Crit Chance by 5%
-  Color: {r: 0.4711819, g: 0.9716981, b: 0.91594183, a: 1}
+  Name: Reboot Sequence
+  Description: +1 Reboot (If player were to die, restore health to half max)
+  Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   Cost: 100
-  Lines: 1
+  Lines: 4
   Rings: 2
   bonuses:
-  - attribute: {fileID: 11400000, guid: 28b198edeb7eae44ba56e285fcb4e018, type: 2}
-    source: Move Speed Up
-    value: 0.05
+  - attribute: {fileID: 11400000, guid: 0787fa2ef2f671d4aba00c55d7aaa339, type: 2}
+    source: Physical Resistance Up
+    value: 1
     multiplier: 0

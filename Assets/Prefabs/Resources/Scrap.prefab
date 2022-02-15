@@ -99,7 +99,7 @@ MonoBehaviour:
   small: {fileID: 2310953992495266966, guid: 167bac8211406f74385e51700429eb22, type: 3}
   medium: {fileID: 588994088739490009, guid: 167bac8211406f74385e51700429eb22, type: 3}
   large: {fileID: -6935062248524124518, guid: 167bac8211406f74385e51700429eb22, type: 3}
-  value: 16
+  value: 14
   speedCurve:
     serializedVersion: 2
     m_Curve:

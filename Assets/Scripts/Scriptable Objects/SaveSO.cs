@@ -15,30 +15,25 @@ public class SaveSO : ScriptableObject
         save = s;
     }
 
-    public int Count
-    {
-        get
-        {
-            return save.Runs.Count;
-        }
-    }
-
+    public RunInfo CurrentRun => save.Runs[save.Runs.Count - 1];
+    public int Count => save.Runs.Count;
     public int Scrap => save.Scrap;
     public int DataFragments => save.DataFragments;
+    public int Difficulty => CurrentRun.difficulty;
+    public int Rings => save.UnlockedSoftwareRings;
+
+    public float GenerationCoefficient => 1 - (1 / (float)CurrentRun.sector);
 
     public void AddTime(float time)
     {
         save.TotalTime += time;
     }
 
-    public int Difficulty
+    public void UnlockRing()
     {
-        get
-        {
-            return CurrentRun.difficulty;
-        }
+        save.UnlockedSoftwareRings++;
     }
-
+    
     public bool CanBuyWithScrap(int cost)
     {
         return save.Scrap >= cost;
@@ -89,21 +84,9 @@ public class SaveSO : ScriptableObject
 
     public Loadout SelectedLoadout => save.Loadouts[save.LoadoutIndex];
 
-    public RunInfo CurrentRun
-    {
-        get
-        {
-            return save.Runs[save.Runs.Count - 1];
-        }
-    }
+    
 
-    public float GenerationCoefficient
-    {
-        get
-        {
-            return 1 - (1 / (float)CurrentRun.sector);
-        }
-    }
+    
 
     public void Clear()
     {

@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Rarity
+{
+    Common,
+    Rare,
+    Epic,
+    Legendary
+}
+
 [System.Serializable]
 public class Bonus
 {
@@ -27,6 +35,7 @@ public class Module : ScriptableObject
     public int count;
     [Space]
     public string description;
+    public Rarity rarity;
     public Sprite sprite;
     public List<Bonus> bonuses;
 }

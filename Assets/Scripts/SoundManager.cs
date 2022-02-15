@@ -41,7 +41,6 @@ public class SoundManager : MonoBehaviour
     private void SceneUpdate(Scene current, LoadSceneMode mode)
     {
         //change music when scene changes
-        Debug.Log(current.name);
         switch (current.name)
         {
             case "Level":

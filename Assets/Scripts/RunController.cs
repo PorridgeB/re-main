@@ -5,8 +5,6 @@ using UnityEngine;
 public class RunController : MonoBehaviour
 {
     public SaveSO currentSave;
-    public List<Module> modules;
-    public List<Attribute> attributes;
     public Resource playerHP;
     public Resource playerEnergy;
 
@@ -25,11 +23,11 @@ public class RunController : MonoBehaviour
     public void StartNewRun()
     {
         currentSave.NewRun();
-        foreach (Module m in modules)
+        foreach (Module m in Resources.LoadAll<Module>("Modules"))
         {
             m.count = 0;
         }
-        foreach (Attribute a in attributes)
+        foreach (Attribute a in Resources.LoadAll<Attribute>("Attributes"))
         {
             a.Reset();
         }

@@ -39,6 +39,8 @@ public class DORAIStore : MonoBehaviour
     private List<SoftwareUpgradePiece> pieces;
 
     [SerializeField]
+    private GameObject ringUpgradeButton;
+    [SerializeField]
     private List<int> ringPrices;
 
     public class SoftwareUpgradePiece
@@ -62,6 +64,8 @@ public class DORAIStore : MonoBehaviour
     private void OnEnable()
     {
         dataFragments.text = $"{save.DataFragments} <sprite=0 tint>";
+        pie.UnlockedRings = save.Rings;
+        if (pie.UnlockedRings == pie.Rings-1) ringUpgradeButton.SetActive(false);
     }
 
 
@@ -216,7 +220,6 @@ public class DORAIStore : MonoBehaviour
 
     private bool CanAfford(int price)
     {
-        Debug.Log(save.DataFragments + " : " + price);
         if (save.DataFragments < price)
         {
             insufficientFundsPrompt.SetActive(true);
@@ -227,13 +230,13 @@ public class DORAIStore : MonoBehaviour
 
     public void OnRingUpgradeBuy()
     {
-        Debug.Log("starting purchase");
         if (!CanAfford(ringPrices[pie.UnlockedRings])) return;
-        Debug.Log("continuing purchase");
         var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
 
         dialog.Prompt = $"Do you want to upgrade disk for {ringPrices[pie.UnlockedRings]} <sprite=0>?";
-        dialog.OnYes += delegate { save.MakePurchaseWithData(ringPrices[pie.UnlockedRings]); pie.UnlockedRings++; Refresh(); };
+        dialog.OnYes += delegate { save.MakePurchaseWithData(ringPrices[pie.UnlockedRings]); save.UnlockRing(); pie.UnlockedRings = save.Rings; pie.SetAllDirty(); if (pie.UnlockedRings == pie.Rings-1) ringUpgradeButton.SetActive(false); };
+
+        
     }
 
     public void OnSoftwareUpgradeBuy(SoftwareUpgrade softwareUpgrade)
@@ -243,7 +246,7 @@ public class DORAIStore : MonoBehaviour
         var dialog = Instantiate(yesNoDialogPrefab, transform).GetComponent<YesNoDialog>();
 
         dialog.Prompt = $"Are you sure you want to buy {softwareUpgrade.Name} for {softwareUpgrade.Cost} <sprite=0>?";
-        dialog.OnYes += delegate { save.MakePurchaseWithData(softwareUpgrade.Cost); save.AddSoftware(softwareUpgrade.name); Refresh(); };
+        dialog.OnYes += delegate { save.MakePurchaseWithData(softwareUpgrade.Cost); save.AddSoftware(softwareUpgrade.name); Refresh();};
     }
 
     public void Clear()

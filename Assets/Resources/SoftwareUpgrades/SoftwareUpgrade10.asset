@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bff9c4884d22e4549b7735901a290a50, type: 3}
-  m_Name: SoftwareUpgrade5
+  m_Name: SoftwareUpgrade10
   m_EditorClassIdentifier: 
-  Name: Crit Chance Up
-  Description: Increases Crit Chance by 5%
-  Color: {r: 0.4711819, g: 0.9716981, b: 0.91594183, a: 1}
+  Name: Luck Up
+  Description: Increases Luck by 5
+  Color: {r: 0.06279809, g: 0.7924528, b: 0.23292266, a: 1}
   Cost: 100
-  Lines: 1
-  Rings: 2
+  Lines: 3
+  Rings: 1
   bonuses:
-  - attribute: {fileID: 11400000, guid: 28b198edeb7eae44ba56e285fcb4e018, type: 2}
-    source: Move Speed Up
-    value: 0.05
+  - attribute: {fileID: 11400000, guid: d24f2506d43508e4cb21bf1ed40c3d28, type: 2}
+    source: Reboot Sequence
+    value: 5
     multiplier: 0
