@@ -42,7 +42,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField]
     private GameObject buttonPrefab;
 
-
+    private bool FinishedRevealing => visibleCharacters >= CurrentText.Length;
     private void Start()
     {
         inputs = PlayerController.instance.GetComponent<PlayerInput>();
@@ -86,13 +86,20 @@ public class Dialogue : MonoBehaviour
             {
                 if (continueAction.triggered)
                 {
-
-                    Continue();
-                    //Thread.CheckTags();
-                    if (Thread.story.currentChoices.Count > 0)
+                    if (!FinishedRevealing)
                     {
-                        GenerateChoices();
+                        RevealAll();
                     }
+                    else
+                    {
+                        Continue();
+                        //Thread.CheckTags();
+                        if (Thread.story.currentChoices.Count > 0)
+                        {
+                            GenerateChoices();
+                        }
+                    }
+                    
                 }
             }
             else
@@ -101,10 +108,18 @@ public class Dialogue : MonoBehaviour
                 {
                     if (continueAction.triggered)
                     {
-                        //end dialogue.
-                        Thread.CheckTags();
-                        
-                        gameObject.SetActive(false);
+                        if (!FinishedRevealing)
+                        {
+                            RevealAll();
+                        }
+                        else
+                        {
+                            //end dialogue.
+                            Thread.CheckTags();
+
+                            gameObject.SetActive(false);
+
+                        }
                     }
                 }
                 
@@ -178,9 +193,15 @@ public class Dialogue : MonoBehaviour
 
     }
 
+    private void RevealAll()
+    {
+        visibleCharacters = CurrentText.Length;
+        dialogue.text = CurrentText;
+    }
+
     private void RevealCharacter()
     {
-        if (visibleCharacters >= CurrentText.Length)
+        if (FinishedRevealing)
         {
             return;
         }

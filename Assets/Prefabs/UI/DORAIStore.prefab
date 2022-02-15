@@ -554,7 +554,7 @@ MonoBehaviour:
   click: {fileID: 8300000, guid: aa41124a9e700a44fbe03ea557a33de1, type: 3}
   failure: {fileID: 8300000, guid: 739f7c297a4e4774bb0f5125da9eed7f, type: 3}
   soundEffects: {fileID: 8683219047386688647}
-  ringPrices: 0000000000000000e8030000d0070000
+  ringPrices: 00000000f4010000e8030000d0070000
 --- !u!114 &9131682114769521458
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -115,6 +115,8 @@ public class DORAIStore : MonoBehaviour
             var softwareUpgradeRow = Instantiate(softwareUpgradeRowPrefab, softwareUpgradeList.transform).GetComponent<SoftwareUpgradeRow>();
             softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
             softwareUpgradeRow.Unlocked = save.SoftwareIsUnlocked(softwareUpgrade.name);
+            
+            if (!softwareUpgradeRow.Unlocked) softwareUpgradeRow.transform.SetAsLastSibling();
         }
     }
 
