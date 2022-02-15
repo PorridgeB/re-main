@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
   m_Name: Power Reserves
   m_EditorClassIdentifier: 
-  count: 0
+  count: 1
   description: Not attacking for 5 seconds adds 20 damage to next attack
-  rarity: 0
+  rarity: 1
   sprite: {fileID: 6395214293025444372, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses: []

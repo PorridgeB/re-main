@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 0
   description: Dealing damage to an enemy reduces their move speed by 10% for 2 seconds
-  rarity: 0
+  rarity: 1
   sprite: {fileID: 0}
   bonuses: []

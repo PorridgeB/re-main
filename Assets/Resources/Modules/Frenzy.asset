@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 0
   description: Killing an enemy gives 50% attack speed for 5 seconds
-  rarity: 0
+  rarity: 1
   sprite: {fileID: -6338023803479276477, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
   bonuses: []
