@@ -14,39 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   save:
     TotalTime: 0
-    DataFragments: 300
+    DataFragments: 100000
     Scrap: 0
     SoftwareUpgradeCapacity: 0
     UnlockedSoftwareUpgrades:
     - SoftwareUpgrade3
+    - SoftwareUpgrade1
+    - SoftwareUpgrade2
     UnlockedWeaponAttachments: []
     UnlockedGadgets: []
     Loadouts:
     - SoftwareUpgrades:
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6949785e34304884cb92523deb6b5e61, type: 2}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
         Position: {x: 2, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
         Position: {x: 0, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
-        Position: {x: 8, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6949785e34304884cb92523deb6b5e61, type: 2}
-        Position: {x: 5, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
+        Position: {x: 4, y: 0}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
         Position: {x: 6, y: 0}
       - SoftwareUpgrade: {fileID: 11400000, guid: 6d454e5ba9917cf4bb91f6f3d25a3dcf, type: 2}
-        Position: {x: 3, y: 0}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6949785e34304884cb92523deb6b5e61, type: 2}
-        Position: {x: 5, y: 1}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6949785e34304884cb92523deb6b5e61, type: 2}
-        Position: {x: 2, y: 1}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6949785e34304884cb92523deb6b5e61, type: 2}
-        Position: {x: 1, y: 1}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
-        Position: {x: 9, y: 1}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
-        Position: {x: 7, y: 1}
-      - SoftwareUpgrade: {fileID: 11400000, guid: 6949785e34304884cb92523deb6b5e61, type: 2}
-        Position: {x: 6, y: 1}
+        Position: {x: 8, y: 0}
       Weapon1:
         Weapon: 
         Attachments: []

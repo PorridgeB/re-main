@@ -10,20 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bff9c4884d22e4549b7735901a290a50, type: 3}
-  m_Name: SoftwareUpgrade3
+  m_Name: SoftwareUpgrade5
   m_EditorClassIdentifier: 
-  Name: Attack Speed Up
-  Description: Increases Attack Speed By 5%
-  Color: {r: 0, g: 0.71989226, b: 1, a: 1}
+  Name: Crit Chance Up
+  Description: Increases Crit Chance by 5%
+  Color: {r: 1, g: 0.98808944, b: 0.2584905, a: 1}
   Cost: 100
   Lines: 1
-  Rings: 1
+  Rings: 2
   bonuses:
-  - attribute: {fileID: 11400000, guid: cb3612f5fbb5df74f862a2a698d06064, type: 2}
-    source: 
-    value: 0
-    multiplier: 0.05
-  - attribute: {fileID: 11400000, guid: ed78b968d0b6f9a448b9d39da5d6e450, type: 2}
-    source: 
-    value: 0
-    multiplier: 0.05
+  - attribute: {fileID: 11400000, guid: 28b198edeb7eae44ba56e285fcb4e018, type: 2}
+    source: Move Speed Up
+    value: 0.05
+    multiplier: 0

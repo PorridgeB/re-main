@@ -91,7 +91,7 @@ public class Attribute : BaseAttribute
     public void AddBonusValues(List<Bonus> bonuses, ref float finalValue)
     {
         float linearValues = 0;
-        float exponentialValues = 0;
+        float exponentialValues = 1;
 
         foreach (Bonus b in bonuses)
         {
