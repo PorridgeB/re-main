@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7629247150244853755}
   - component: {fileID: 4074604078438739060}
   - component: {fileID: 3476012204752531162}
-  - component: {fileID: 6752662619226460961}
+  - component: {fileID: 8998133813521467947}
   m_Layer: 0
   m_Name: Scrap
   m_TagString: Scrap
@@ -130,35 +130,12 @@ MonoBehaviour:
   small: {fileID: 2310953992495266966, guid: 167bac8211406f74385e51700429eb22, type: 3}
   medium: {fileID: 588994088739490009, guid: 167bac8211406f74385e51700429eb22, type: 3}
   large: {fileID: -6935062248524124518, guid: 167bac8211406f74385e51700429eb22, type: 3}
-  value: 14
-  speedCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0041656494
-      value: 0.13430786
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  render: {fileID: 4561892286078966978}
+  smallThreshold: 5
+  mediumThreshold: 20
+  amount: 12
   pickUp: {fileID: 8300000, guid: e1242e2c5bd98634891324bbf3450f4b, type: 3}
---- !u!135 &190142626141134022
-SphereCollider:
+--- !u!114 &8998133813521467947
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
