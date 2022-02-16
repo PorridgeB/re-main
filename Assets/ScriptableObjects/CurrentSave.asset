@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543964994a33bc945ae8b9fffb0cade3, type: 3}
+  m_Name: CurrentSave
+  m_EditorClassIdentifier: 
+  save:
+    TotalTime: 0
+    DataFragments: 84340
+    Scrap: 47
+    SoftwareUpgradeCapacity: 0
+    UnlockedSoftwareUpgrades:
+    - SoftwareUpgrade3
+    - SoftwareUpgrade1
+    - SoftwareUpgrade2
+    - SoftwareUpgrade10
+    - SoftwareUpgrade4
+    - SoftwareUpgrade5
+    - SoftwareUpgrade6
+    - SoftwareUpgrade7
+    - SoftwareUpgrade8
+    - SoftwareUpgrade9
+    UnlockedSoftwareRings: 1
+    UnlockedWeaponAttachments: []
+    UnlockedGadgets: []
+    Loadouts:
+    - SoftwareUpgrades: []
+      Weapon1:
+        Weapon: 
+        Attachments: []
+      Weapon2:
+        Weapon: 
+        Attachments: []
+      Gadget: {fileID: 11400000, guid: 40d2bc9ae8b8f374aa8c2d7b01b1d667, type: 2}
+    LoadoutIndex: 0
+    Runs: []
+    Difficulty: 1

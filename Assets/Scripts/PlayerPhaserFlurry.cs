@@ -12,6 +12,8 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
 
     [SerializeField]
     private GameObject projectilePrefab;
+    [SerializeField]
+    private FloatVariable energy;
     private Vector2 direction;
     private int previousShotCount = -1;
 
@@ -42,7 +44,7 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
         var angle = shotCount * (SpreadAngle / (ProjectileCount - 1)) - SpreadAngle / 2;
         var projectileDirection = Quaternion.Euler(0, 0, angle) * direction;
 
-        var projectile = Instantiate(projectilePrefab).GetComponent<Projectile>();
+        var projectile = Instantiate(projectilePrefab).GetComponent<PhaserProjectile>();
 
         var player = PlayerController.instance;
 
@@ -50,6 +52,7 @@ public class PlayerPhaserFlurry : StateMachineBehaviour
         projectile.Direction = new Vector3(projectileDirection.x, 0, projectileDirection.y);
         projectile.Speed = Speed;
         projectile.Color = Random.ColorHSV(0, 1, 1, 1, 1, 1);
+        projectile.Source = player.gameObject;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd33befa4d75bcc448e2be5febff7217, type: 3}
+  m_Name: Heightened Senses
+  m_EditorClassIdentifier: 
+  count: 0
+  description: Increases dodge chance by 5%
+  rarity: 0
+  sprite: {fileID: -4538752222985096420, guid: cbe8001450788b541b9d59c60cb894c6, type: 3}
+  bonuses:
+  - attribute: {fileID: 11400000, guid: a7467cc4d0272f646aa671af54e74cb2, type: 2}
+    source: Heightened Senses
+    value: 0.05
+    multiplier: 0

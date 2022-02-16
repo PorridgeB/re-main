@@ -27,9 +27,4 @@ public class TileNeighbours
     public Tile SouthWest => Tiles[(int)Direction.SouthWest];
     public Tile West => Tiles[(int)Direction.West];
     public Tile NorthWest => Tiles[(int)Direction.NorthWest];
-
-    public TileNeighbours(Tile[] tiles)
-    {
-        Tiles = tiles;
-    }
 }

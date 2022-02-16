@@ -11,7 +11,9 @@ public class SoundManager : MonoBehaviour
     public Song currentSong;
     public static Song nextSong;
 
-    public
+    public static ClimbingSFX dataSound;
+
+    public Song gameMusic;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,9 +23,14 @@ public class SoundManager : MonoBehaviour
             spawned = true;
             DontDestroyOnLoad(gameObject);
             nextSong = currentSong;
-
+            SceneManager.sceneLoaded += SceneUpdate;
             music = GetComponent<AudioSource>();
-            music.clip = currentSong.clip;
+            dataSound = GetComponent<ClimbingSFX>();
+            if (currentSong != null)
+            {
+                music.clip = currentSong.clip;
+            }
+            
         }
         else
         {
@@ -31,19 +38,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void SceneUpdate(Scene current)
+    private void SceneUpdate(Scene current, LoadSceneMode mode)
     {
-        Debug.Log(current.name);
+        //change music when scene changes
         switch (current.name)
         {
-            case "The Overgrowth":
-                Debug.Log("Staring music");
-                music.Play();
+            case "Level":
+                nextSong = gameMusic;
                 break;
-            case "0_start":
-                music.Stop();
-                break;
-
         }
 
     }
@@ -64,14 +66,21 @@ public class SoundManager : MonoBehaviour
         {
 
         }
-        if (currentSong.bar)
+        if (currentSong != null)
         {
-            if (currentSong != nextSong)
+            if (currentSong.bar)
             {
-                currentSong = nextSong;
-                music.clip = currentSong.clip;
-                music.Play();
+                if (currentSong != nextSong)
+                {
+                    currentSong = nextSong;
+                    music.clip = currentSong.clip;
+                    music.Play();
+                }
             }
+        }
+        else if (nextSong != null)
+        {
+            currentSong = nextSong;
         }
     }
 
@@ -99,15 +108,21 @@ public class SoundManager : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 
-    public static void PlaySound(AudioClip clip, float volume)
+    public static GameObject PlaySound(AudioClip clip, float volume)
     {
         if (Time.timeScale == 0)
         {
-            return;
+            return null;
         }
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.volume = volume;
         audioSource.PlayOneShot(clip);
+        return audioSource.gameObject;
+    }
+
+    public static void AddDataSound()
+    {
+        dataSound.Trigger();
     }
 }

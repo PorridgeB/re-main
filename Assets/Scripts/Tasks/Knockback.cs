@@ -6,35 +6,37 @@ using UnityEngine.AI;
 [TaskCategory("Enemies")]
 public class Knockback : Action
 {
-	public SharedFloat Duration = 0.8f;
-	public SharedFloat Speed = 8f;
-	public SharedAnimationCurve SpeedCurve;
+	public SharedFloat ImpulseTime = 40;
+	public SharedFloat FrictionCoefficient = 10;
 
+	private Enemy enemy;
 	private NavMeshAgent agent;
-	private Vector3 hitDirection;
+	private Vector3 direction;
+	private float force;
 	private float startTime;
 
 	public override void OnStart()
 	{
+		enemy = GetComponent<Enemy>();
 		agent = GetComponent<NavMeshAgent>();
-		hitDirection = GetComponent<Enemy>().hitDirection;
+		direction = enemy.HitDirection;
+		force = enemy.HitForce;
 		startTime = Time.time;
 	}
 
 	public override TaskStatus OnUpdate()
 	{
-		var timePercentage = (Time.time - startTime) / Duration.Value;
+		var initialVelocity = ImpulseTime.Value * force / enemy.Mass;
+		var acceleration = -FrictionCoefficient.Value;
+		var velocity = initialVelocity + acceleration * (Time.time - startTime);
 
-		// Use a quadratic speed factor curve if none is provided
-		var speedFactor = Mathf.Pow(1 - timePercentage, 2);
+		if (velocity < initialVelocity * 0.05f)
+		{
+			return TaskStatus.Success;
+		}
 
-		if (SpeedCurve != null)
-        {
-			speedFactor = SpeedCurve.Value.Evaluate(timePercentage);
-        }
+		agent.Move(direction * velocity * Time.deltaTime);
 
-		agent.Move(hitDirection * speedFactor * Speed.Value * Time.deltaTime);
-
-		return Time.time - startTime > Duration.Value ? TaskStatus.Success : TaskStatus.Running;
+		return TaskStatus.Running;
 	}
 }

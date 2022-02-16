@@ -10,8 +10,9 @@ public class RoomInspector : Editor
     [MenuItem("GameObject/Room Mesh", false, 10)]
     private static void CreateRoomMesh(MenuCommand menuCommand)
     {
-        var go = new GameObject("Room Mesh");
+        var go = new GameObject("RoomMesh");
         go.tag = "Room";
+        go.layer = LayerMask.NameToLayer("Level");
         go.AddComponent<RoomMesh>();
 
         // Ensure it gets reparented if this was a context click (otherwise does nothing)

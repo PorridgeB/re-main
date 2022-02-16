@@ -8,6 +8,8 @@ public class PlayerMeleeAttack : StateMachineBehaviour
     [SerializeField]
     private GameObject attackField;
     [SerializeField]
+    private AudioClip swordMelee;
+    [SerializeField]
     private float dashSpeed;
     [SerializeField]
     private float comboDashSpeed;
@@ -35,17 +37,19 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         }
 
         dashTimer = 0;
-        direction = PlayerController.instance.GetFacing();
+        direction = PlayerController.instance.Facing;
+
+        SoundManager.PlaySound(swordMelee, Random.Range(0.4f, 0.5f));
         
         attackFieldInstance = Instantiate(attackField, PlayerController.instance.transform);
 
         var damageSource = attackFieldInstance.GetComponent<DamageSource>();
-        damageSource.source = animator.gameObject;
+        damageSource.source = PlayerController.instance.gameObject;
 
         float distance = 0.5f;
         Vector3 forwardDirection = new Vector3(direction.x, 0, direction.y);
 
-        attackFieldInstance.transform.localPosition = forwardDirection * distance;
+        attackFieldInstance.transform.localPosition = Vector3.up + forwardDirection * distance;
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
     }
 

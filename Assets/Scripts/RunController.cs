@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class RunController : MonoBehaviour
 {
-    public RunInfoHistory runHistory;
-    public List<Module> modules;
-    public List<Attribute> attributes;
+    public SaveSO currentSave;
     public Resource playerHP;
+    public Resource playerEnergy;
 
-    private void Start()
+    private void Awake()
     {
-        //THIS IS ONLY BEING USED FOR TESTING
-        //this will delete all runs in the history to ensure it resets everything in editor
-        runHistory.Clear();
-
-        if (runHistory.Count < 1)
+        if (currentSave.Count < 1)
         {
             StartNewRun();
         }
-        else if (runHistory.Current.ended)
+        else if (currentSave.CurrentRun.ended)
         {
             StartNewRun();
         }
@@ -27,20 +22,43 @@ public class RunController : MonoBehaviour
 
     public void StartNewRun()
     {
-        runHistory.NewRun();
-        foreach (Module m in modules)
+        currentSave.NewRun();
+        foreach (Module m in Resources.LoadAll<Module>("Modules"))
         {
             m.count = 0;
         }
-        foreach (Attribute a in attributes)
+        foreach (Attribute a in Resources.LoadAll<Attribute>("Attributes"))
         {
             a.Reset();
         }
+        foreach (SoftwareUpgradeInstance s in currentSave.SelectedLoadout.SoftwareUpgrades)
+        {
+            foreach (Bonus b in s.SoftwareUpgrade.bonuses)
+            {
+                b.attribute.AddSoftwareBonus(b);
+            }
+        }
         playerHP.Reset();
+        playerEnergy.Reset();
     }
 
     public void RunEnded()
     {
-        runHistory.Current.ended = true;
+        currentSave.CompleteRun();
+    }
+
+    public void StageComplete()
+    {
+        currentSave.CurrentRun.sector++;
+    }
+
+    public void EnemyKilled()
+    {
+        currentSave.CurrentRun.kills++;
+    }
+
+    public void OnApplicationQuit()
+    {
+        currentSave.Clear();
     }
 }

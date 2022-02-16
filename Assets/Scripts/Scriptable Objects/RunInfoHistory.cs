@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,15 @@ public class RunInfoHistory : ScriptableObject
     {
         get
         {
-            return runHistory[0];
+            return runHistory.LastOrDefault();
+        }
+    }
+
+    public float GenerationCoefficient
+    {
+        get
+        {
+            return 1 - (1 /(float)Current.sector);
         }
     }
 
@@ -30,6 +39,10 @@ public class RunInfoHistory : ScriptableObject
 
     public void NewRun()
     {
-        runHistory.Add(new RunInfo());
+        RunInfo newRun = new RunInfo();
+        newRun.difficulty = 1;
+        newRun.quadrant = 1;
+        newRun.sector = 1;
+        runHistory.Add(newRun);
     }
 }

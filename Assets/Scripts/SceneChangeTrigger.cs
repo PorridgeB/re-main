@@ -5,24 +5,16 @@ using UnityEngine;
 public class SceneChangeTrigger : MonoBehaviour
 {
     [SerializeField]
-    private string sceneName;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameEvent startRun;
+    private bool entered;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        if (!entered)
         {
-            SceneController.instance.ChangeScene(sceneName);
+            Debug.Log("starting run");
+            entered = true;
+            startRun.Raise();
         }
         
     }

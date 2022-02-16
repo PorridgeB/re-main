@@ -3,20 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-<<<<<<< HEAD
-    
-    public Vector2 Facing => facing;
     [SerializeField]
-    public GameEvent playerHit;
-    [SerializeField]
-    public GameEvent playerDeath;
-    
-=======
+    private SaveSO currentSave;
     public Vector2 Facing => facing;
 
     public GameEvent playerHit;
@@ -25,7 +19,6 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
     private AttackEvent nextAttack;
->>>>>>> develop2
     private Animator animator;
 
     public readonly List<DamageInstance> damageTaken = new List<DamageInstance>();
@@ -34,9 +27,14 @@ public class PlayerController : MonoBehaviour
     private bool dashBlocked = true;
     private float viewDistance;
     private Vector2 facing;
-    // temporary (use SO)
-    private float health = 100f;
+    [SerializeField]
+    private Resource health;
+    [SerializeField]
+    private Resource energy;
     //private Crosshair crosshair;
+    private bool dead;
+
+    public float Health => health.Value;
 
     [SerializeField]
     private List<Dash> dashes;
@@ -72,24 +70,20 @@ public class PlayerController : MonoBehaviour
     private InputAction meleeAction;
     private InputAction interactAction;
     private InputAction overlayAction;
+    private InputAction gadgetAction;
 
-<<<<<<< HEAD
-    [SerializeField]
-    private Resource health;
-
-    public Vector2 GetFacing()
-    {
-        return facing;
-    }
-
-=======
->>>>>>> develop2
     // Temporary way to switch weapons in-game for debug purposes
     private List<Weapon> meleeWeapons = new List<Weapon>() { new Sword(), new Hammer() };
     private List<Weapon> rangedWeapons = new List<Weapon>() { new Phaser(), new Railgun() };
 
     private Weapon meleeWeapon;
     private Weapon rangedWeapon;
+
+    [SerializeField]
+    private SaveSO save;
+
+    [SerializeField]
+    private AudioClip interactionPromptSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -117,6 +111,8 @@ public class PlayerController : MonoBehaviour
         meleeAction = inputs.actions["MeleeAttack"];
         interactAction = inputs.actions["Interact"];
         overlayAction = inputs.actions["Overlay"];
+        gadgetAction = inputs.actions["Gadget"];
+
 
         for (int i = 0; i < stats.DashCharges.Value(); i++)
         {
@@ -132,6 +128,7 @@ public class PlayerController : MonoBehaviour
         rangedWeapon = rangedWeapons[0];
 
         inputs.actions["RangedAttack"].canceled += OnRangedAttackCanceled;
+
     }
 
     private void OnRangedAttackCanceled(InputAction.CallbackContext obj)
@@ -145,21 +142,20 @@ public class PlayerController : MonoBehaviour
         interactions.RemoveAll(delegate (Interaction i) { return i == null; });
 
         facing = (Mouse.current.position.ReadValue() - new Vector2(Screen.width, Screen.height) / 2).normalized;
-        
         if (interactAction.triggered)
         {
             selectedInteraction?.Interact();
-        }
-
-        if (overlayAction.triggered)
-        {
-            inputs.SwitchCurrentActionMap("OverlayControl");
         }
 
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Melee")) 
         {
             animator.SetFloat("Horizontal", facing.x);
             animator.SetFloat("Vertical", facing.y);
+        }
+
+        if (gadgetAction.triggered)
+        {
+            animator.SetTrigger("Gadget");
         }
         
         // As deadzones don't seem to work, I have added a manual deadzone so it will ignore input that is too small to be deliberate
@@ -195,11 +191,20 @@ public class PlayerController : MonoBehaviour
             selectedInteraction.ChangeVisibility(true);
         }
 
-        if (healthRegenTimer.Finished)
+        if (health.Value <= 0 && !dead)
         {
-            //health.ChangeValue(1);
-            health += 1;
-            healthRegenTimer.Reset(1/stats.HealthRegen.Value());
+            Debug.Log(save.CurrentRun.rebootCount + " : " + stats.Reboot.Value());
+            if (save.CurrentRun.rebootCount < stats.Reboot.Value())
+            {
+                save.CurrentRun.rebootCount++;
+                health.SetValue(stats.Health.Value() / 2);
+            }
+            else
+            {
+                dead = true;
+                playerDeath.Raise();
+            }
+            
         }
     }
 
@@ -277,14 +282,9 @@ public class PlayerController : MonoBehaviour
                 finalDamageValue = damage.value * 1 - stats.ResistancePhysical.Value();
                 break;
         }
-        //health.ChangeValue(-finalDamageValue);
-        health -= finalDamageValue;
+        health.ChangeValue(-finalDamageValue);
         CreateDamageToken(finalDamageValue);
-        //if (health.Value < 0)
-        if (health < 0)
-        {
-            playerDeath.Raise();
-        }
+        
     }
 
     private void CreateDamageToken(float value)
@@ -348,30 +348,31 @@ public class PlayerController : MonoBehaviour
         return value * stats.CritDamage.Value();
     }
 
+    private void OnScrapPickup(int amount)
+    {
+        currentSave.CurrentRun.scrap += amount;
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
 
         if (collision.CompareTag("Interaction"))
         {
+            if (interactions.Count < 1)
+            {
+                SoundManager.PlaySound(interactionPromptSound, 0.2f);
+            }
             interactions.Add(collision.GetComponent<Interaction>());
         }
-<<<<<<< HEAD
-        else if (collision.CompareTag("DamageSource"))
+        if (collision.CompareTag("DataFragment"))
         {
-            var damageSource = collision.gameObject.GetComponent<DamageSource>();
-
-            foreach (var damage in damageSource.Damages)
-            {
-                // Stop the player from hurting itself
-                if (damage.source != gameObject)
-                {
-                    ReceiveDamage(damage);
-                }
-            }
-            
+            currentSave.CurrentRun.dataFragments += collision.GetComponent<DataFragments>().Value;
         }
-=======
->>>>>>> develop2
+        //if (collision.CompareTag("Scrap"))
+        //{
+        //    currentSave.CurrentRun.scrap += collision.GetComponent<Scrap>().Amount;
+        //    Destroy(collision.gameObject);
+        //}
     }
 
     private void OnTriggerExit(Collider collision)
@@ -401,8 +402,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnRangedSpecialAttack()
     {
-        if (specialRangedCooldown.Finished)
+        if (specialRangedCooldown.Finished && energy.Value > 0)
         {
+            energy.ChangeValue(-1);
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             specialRangedCooldown.Reset(1 / stats.SpecialRangedAttackSpeed.Value());
             rangedWeapon?.SpecialFire();
@@ -421,8 +423,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnMeleeSpecialAttack()
     {
-        if (specialMeleeCooldown.Finished)
+        if (specialMeleeCooldown.Finished && energy.Value > 0)
         {
+            energy.ChangeValue(-1);
             // Attack Speed represents the amount of attacks per second. Cooldown is therefore 1/attacks per second
             specialMeleeCooldown.Reset(1 / stats.SpecialMeleeAttackSpeed.Value());
             meleeWeapon?.SpecialFire();
@@ -462,7 +465,6 @@ public class PlayerController : MonoBehaviour
             if (instance.source != gameObject)
             {
                 ReceiveDamage(instance);
-                Debug.Log(health);
             }
         }
     }

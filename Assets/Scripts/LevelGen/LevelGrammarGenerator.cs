@@ -31,11 +31,15 @@ public class LevelGrammarGenerator : MonoBehaviour
     /// 
     /// </summary>
 
+    [SerializeField]
+    private SaveSO currentSave;
 
+    [SerializeField]
+    private int maxRoomCount;
     [SerializeField]
     private int roomCount;
     private int maxBranchDepth;
-    private int branchCount;
+    private int maxBranchCount;
     private int levelDepth;
     [SerializeField]
     private List<char> deadEnds;
@@ -55,16 +59,24 @@ public class LevelGrammarGenerator : MonoBehaviour
     private char previousRoom;
     void Awake()
     {
+        roomCount = 3 + Mathf.RoundToInt(maxRoomCount * currentSave.GenerationCoefficient);
         levelDepth = 5;
         maxBranchDepth = 3;
-        branchCount = 10;
-        challengeRating = (int)Mathf.Floor(roomCount / 3);
-        rewardRating = (int)Mathf.Floor(roomCount / 4);
+        maxBranchCount = 10;
+        challengeRating = Mathf.RoundToInt((roomCount/3)*currentSave.GenerationCoefficient);
+        rewardRating = Mathf.RoundToInt((roomCount / 4)*currentSave.GenerationCoefficient);
     }
 
     private void ResetAll()
     {
         branches.Clear();
+        challengeCount = 0;
+        rewardCount = 0;
+    }
+
+    private string AddShopTest(string levelTemplate)
+    {
+        return levelTemplate.Replace('r', 'n');
     }
 
     public string GetGenerationTemplate()
@@ -76,10 +88,11 @@ public class LevelGrammarGenerator : MonoBehaviour
         string levelTemplate = "-";
         for (int i = 1; i < levelDepth - 1; i++)
         {
+            if (roomsRemaining == 0) break;
             roomsRemaining--;
             levelTemplate += buildingBlocks[Random.Range(0, 1)];
         }
-        for (int i = 0; i < branchCount; i++)
+        for (int i = 0; i < maxBranchCount; i++)
         {
             if (roomsRemaining <= 1)
             {
@@ -95,12 +108,13 @@ public class LevelGrammarGenerator : MonoBehaviour
             CombineBranches();
         }
         
-        PlaceFinish();
-        levelTemplate += deadEnds[Random.Range(0, deadEnds.Count)];
+        levelTemplate += 'f';
         levelTemplate = PlaceBranches(levelTemplate);
+
+        
+
         return levelTemplate;
     }
-
     private string PlaceBranches(string level)
     {
         foreach(string branch in branches)
@@ -110,12 +124,6 @@ public class LevelGrammarGenerator : MonoBehaviour
             level = level.Insert(pos, branch);
         }
         return level;
-    }
-
-    private void PlaceFinish()
-    {
-        string branch = branches[branches.Count-1];
-        branches[branches.Count - 1] = branch.Insert(branch.IndexOf(')') , "f");
     }
 
     private void CombineBranches()
@@ -202,6 +210,8 @@ public class LevelGrammarGenerator : MonoBehaviour
             }
 
         }
+
+        template = AddShopTest(template);
 
         return template;
     }

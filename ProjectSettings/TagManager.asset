@@ -10,13 +10,14 @@ TagManager:
   - Artifact
   - DamageSource
   - Enemy
-<<<<<<< HEAD
-=======
   - End
   - Room
->>>>>>> develop2
   - Level
   - Hitbox
+  - Projectile
+  - Cover
+  - DataFragment
+  - Scrap
   layers:
   - Default
   - TransparentFX
@@ -30,15 +31,10 @@ TagManager:
   - Flying Enemies
   - 
   - Level
-<<<<<<< HEAD
-=======
   - Dashable
-  - 
->>>>>>> develop2
+  - Pits
   - PostProcessing
   - Projectiles
-  - 
-  - 
   - 
   - 
   - 

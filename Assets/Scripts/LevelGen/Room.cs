@@ -3,32 +3,108 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum ResourceType {
+    Data,
+    Scrap
+}
+
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    private Vector2 cellSize;
+    private List<Passage> passages;
     [SerializeField]
-    private List<GameObject> walls;
+    private GameObject resourceSpawns;
     [SerializeField]
-    private List<Transform> enemySpawns;
-    public List<Transform> EnemySpawns
+    private GameObject pickupSpawns;
+    [SerializeField]
+    private GameObject crateWalls;
+    private ResourceType type;
+    [SerializeField]
+    private int resourceBudget;
+    private int pickupBudget;
+    private Vector2 size;
+    [SerializeField]
+    private GameObject dataFragment;
+    [SerializeField]    
+    private GameObject scrap;
+    [SerializeField]
+    private GameObject pickupPlaceholder;
+
+    void Awake()
     {
-        get
-        {
-            return enemySpawns;
+        RectInt rect = GetComponent<RoomMesh>().GetRect();
+        size = new Vector2(rect.xMax-rect.xMin+1, rect.yMax-rect.yMin+1);
+        type = (ResourceType)Random.Range(0,2);
+        resourceBudget = Random.Range(2, 30);
+
+        
+    }
+
+    public void ReservePassage(ConnectionSide side, Room room){
+        foreach (Passage p in passages){
+            if (p.side == side){
+                p.connection = room;
+                //Debug.Log("Reserving Passage: " + p.side);
+            }
         }
     }
 
+    public void DisconnectPassages(Room room){
+        foreach (Passage p in passages) {
+            if (p.connection == room || p.connection == null){
+                Debug.Log("disconnecting passage from " + name);
+                p.connection = null;
+            }
+        }
+    }
+    public Passage GetUnconnectedPassage() {
+        foreach (Passage p in passages){
+            if (!p.Connected){
+                return p;
+            }
+        }
+        return null;
+    }
 
     public Vector3 Offset(Vector3 dir)
     {
-        return new Vector3(dir.x * cellSize.x, dir.y, dir.z*cellSize.y)/2;
+        return new Vector3(dir.x * size.x, dir.y, dir.z*size.y)/2;
     }
 
-    public Vector3 GetBound(Vector3 dir)
+    public Vector3 PassageOffset(ConnectionSide side){
+        
+        Vector3 t = GetPassage(side).Offset - HalfExtent;
+        t.y = 0;
+        switch(side){
+            case ConnectionSide.Top:
+            case ConnectionSide.Bottom:
+                t.z = 0;
+                break;
+            case ConnectionSide.Left:
+            case ConnectionSide.Right:
+                t.x = 0;
+                break;
+        }
+        return t;
+    }
+
+    public Passage GetPassage(ConnectionSide side) {
+        foreach (Passage p in passages){
+            if (p.side == side){
+                return p;
+            }
+        }
+        Debug.LogError("Couldn't find passage");
+        return null;
+    }
+
+    public void CenterRoom(Room previousRoom)
     {
-        Vector3 offset = Offset(dir);
-        return offset;
+        transform.position += (previousRoom.Offset(new Vector3(1,0,1)) - Offset(new Vector3(1, 0, 1))) ;
+    }
+
+    public Vector3 GetCenter(){
+        return transform.position + Offset(new Vector3(1,0,1));
     }
 
     public Vector3 HalfExtent
@@ -39,48 +115,81 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void OpenPassage(Vector3 dir)
-    {
-        walls[GetRoomSide(dir)].SetActive(false);
+    public List<Passage> Passages{
+        get{
+            return passages;
+        }
     }
 
-    public void CenterRoom(Room previousRoom)
-    {
-        transform.position += (previousRoom.Offset(new Vector3(1,0,1)) - Offset(new Vector3(1, 0, 1))) ;
+    public bool HasSides(List<ConnectionSide> sides) {
+        foreach (ConnectionSide s in sides){
+            if (!HasSide(s)){
+                return false;
+            }
+        }
+        
+        return true;
     }
 
-    public Vector3 GetCenter()
-    {
-        return transform.position + Offset(new Vector3(1, 0, 1));
-    }
-
-    private int GetRoomSide(Vector3 dir)
-    {
-        if (dir.z == 1)
-        {
-            return 0;
+    private bool HasSide(ConnectionSide side){
+        foreach (Passage p in passages){
+            if (p.side == side) {
+                return true;
+            }
         }
-        else if (dir.x == 1)
-        {
-            return 1;
-        }
-        else if (dir.z == -1)
-        {
-            return 2;
-        }
-        else
-        {
-            return 3;
-        }
+        return false;
     }
 
     public void SetText(string text)
     {
-        //textfield.text = text;
         name = text;
+    }
+
+    private void SpawnResources() {
+        if (resourceSpawns == null){
+            Debug.Log(name);
+        }
+        foreach (Transform t in transform.Find("ResourceSpawns")){
+            int value = Mathf.Min(30, resourceBudget);
+            resourceBudget -= value;
+            GameObject go = null;
+            switch(type){
+                case ResourceType.Data:
+                    go = dataFragment;
+                    break;
+                case ResourceType.Scrap:
+                    go = scrap;
+                    go.GetComponent<Scrap>().Amount = value;
+                    break;
+            }
+            Instantiate(go, t.position+Vector3.up, new Quaternion(), transform);
+            if (resourceBudget == 0) return;
+        }
+    }
+
+    private void EnableCrates() {
+        foreach (Transform t in transform.Find("CrateWalls")){
+            if (Random.value < 0.5){
+                Debug.Log("enabling crate");
+                t.gameObject.SetActive(true);
+            }
+        }
+        
+    }
+
+    private void SpawnPickups() {
+        foreach (Transform t in transform.Find("PickupSpawns")){
+            //TODO: make this 0.5f/difficulty
+            if (Random.value < 0.5f){
+                Instantiate(pickupPlaceholder, t.transform.position+Vector3.up, new Quaternion(), transform);
+            }
+        }
     }
 
     public virtual void Generate()
     {
+        SpawnResources();
+        SpawnPickups();
+        //EnableCrates();
     }
 }

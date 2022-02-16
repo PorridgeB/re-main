@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef716698b88db14f90d0cb670611dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Options: {fileID: 11400000, guid: a20e8beeeed80934ab291b99ce0b935f, type: 2}
   Tiles:
   - Position: {x: 5, y: 5}
     Tile:
@@ -620,7 +621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef5688bde5d79c4baedb8ccecc4d7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textfield: {fileID: 0}
   cellSize: {x: 12, y: 12}
   walls:
   - {fileID: 1529506222559683339}
@@ -628,15 +628,6 @@ MonoBehaviour:
   - {fileID: 7269778868513056380}
   - {fileID: 4241243282603327555}
   enemySpawns: []
-  chest: {fileID: 0}
-  boss: {fileID: 0}
-  end: {fileID: 0}
-  npc: {fileID: 0}
-  dummy: {fileID: 0}
-  artifact: {fileID: 0}
-  ooze: {fileID: 0}
-  drone: {fileID: 0}
-  gnat: {fileID: 0}
 --- !u!1001 &627465144810747929
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -114,6 +114,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -820,6 +821,37 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      MysticChroma_Basics_10: 8730834043603382433
+      MysticChroma_Basics_29: 1636125768343118755
+      MysticChroma_Basics_1: 142880621767553447
+      MysticChroma_Basics_25: -8953334017867789315
+      MysticChroma_Basics_18: 3474580081745753768
+      MysticChroma_Basics_22: 2924969446460162103
+      MysticChroma_Basics_4: -8009863081588716327
+      MysticChroma_Basics_21: -4724419780778237103
+      MysticChroma_Basics_0: 476525532521564579
+      MysticChroma_Basics_16: 7309081884947483493
+      MysticChroma_Basics_5: 2028620045834997336
+      MysticChroma_Basics_11: -311892726919941660
+      MysticChroma_Basics_27: -2919843319691852618
+      MysticChroma_Basics_20: 8087013005102939039
+      MysticChroma_Basics_19: -973357973956824306
+      MysticChroma_Basics_6: -8058063738920102455
+      MysticChroma_Basics_9: 5759333276950408723
+      MysticChroma_Basics_13: -8636880247903234382
+      MysticChroma_Basics_24: 3426029702342679269
+      MysticChroma_Basics_15: 5015454950762244478
+      MysticChroma_Basics_26: 1413568200687636972
+      MysticChroma_Basics_3: -6722974486988737077
+      MysticChroma_Basics_12: -259601740891013888
+      MysticChroma_Basics_7: -4001217400953945351
+      MysticChroma_Basics_2: -5598862712417836460
+      MysticChroma_Basics_14: -5497156215597389702
+      MysticChroma_Basics_23: 915899226906217141
+      MysticChroma_Basics_17: -462140425364631433
+      MysticChroma_Basics_8: -6211955069581557506
+      MysticChroma_Basics_28: -4903889352811736665
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

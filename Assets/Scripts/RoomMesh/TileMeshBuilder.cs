@@ -8,17 +8,20 @@ public class TileMeshBuilder
     private List<Vector3> vertices = new List<Vector3>();
     private List<int> triangles = new List<int>();
     private List<Vector2> uv = new List<Vector2>();
+    private List<Color> colors = new List<Color>();
 
-    public void AddTile(Vector3 position, Vector2Int size, Vector3Int normal, Vector2[] textureUvs)
+    public void AddTile(Vector3 position, Vector2 size, Vector3 normal, Vector2[] textureUvs, Color[] vertexColors = null)
     {
         AddTile(position, size, normal);
 
         var uvs = textureUvs != null ? textureUvs : new Vector2[] { new Vector2(), new Vector2(), new Vector2(), new Vector2() };
 
         uv.AddRange(uvs);
+
+        colors.AddRange(vertexColors != null ? vertexColors : new Color[] { Color.white, Color.white, Color.white, Color.white });
     }
 
-    public void AddTile(Vector3 position, Vector2Int size, Vector3Int normal)
+    public void AddTile(Vector3 position, Vector2 size, Vector3 normal)
     {
         var rotation = Quaternion.FromToRotation(Vector3.up, normal);
 
@@ -36,6 +39,7 @@ public class TileMeshBuilder
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.uv = uv.ToArray();
+        mesh.colors = colors.ToArray();
 
         mesh.RecalculateNormals();
         mesh.RecalculateTangents();

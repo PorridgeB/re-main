@@ -7,7 +7,7 @@ using UnityEngine.U2D;
 
 [Serializable]
 [ExecuteAlways]
-public class RoomMesh : MonoBehaviour
+public class RoomMesh : MonoBehaviour, IEnumerable<TileContext>
 {
     public const string DefaultMaterialPath = "RoomMaterial";
     public const string DefaultTilesetPath = "Tileset";
@@ -19,6 +19,8 @@ public class RoomMesh : MonoBehaviour
         [SerializeReference]
         public Tile Tile;
     }
+
+    public RoomMeshOptions Options;
 
     [SerializeField]
     private List<TileInstance> Tiles = new List<TileInstance>();
@@ -108,8 +110,34 @@ public class RoomMesh : MonoBehaviour
         MoveToOrigin();
     }
 
+    public void FlipX()
+    {
+        var rect = GetRect();
+
+        foreach (var instance in Tiles)
+        {
+            instance.Position = new Vector2Int(rect.width - instance.Position.x, instance.Position.y);
+        }
+    }
+
+    public void FlipY()
+    {
+        var rect = GetRect();
+
+        foreach (var instance in Tiles)
+        {
+            instance.Position = new Vector2Int(instance.Position.x, rect.height - instance.Position.y);
+        }
+    }
+
     public void Rebuild()
     {
+        if (Options == null)
+        {
+            Debug.LogError("RoomMeshOptions not set!");
+            return;
+        }
+
         var tileset = Resources.LoadAll<Sprite>(DefaultTilesetPath);
         var sprites = new Dictionary<string, Sprite>();
        
@@ -124,6 +152,8 @@ public class RoomMesh : MonoBehaviour
             meshRenderer = gameObject.AddComponent<MeshRenderer>();
             meshRenderer.material = Resources.Load<Material>(DefaultMaterialPath);
         }
+
+        Tiles.RemoveAll(x => x.Tile == null);
 
         var mesh = CreateMesh(sprites);
         var meshFilter = GetComponent<MeshFilter>();
@@ -140,6 +170,8 @@ public class RoomMesh : MonoBehaviour
             meshCollider = gameObject.AddComponent<MeshCollider>();
         }
         meshCollider.sharedMesh = collisionMesh;
+
+        CreateLayerCollisionMeshes();
     }
 
     public RectInt GetRect()
@@ -183,7 +215,7 @@ public class RoomMesh : MonoBehaviour
             var position = instance.Position;
             var tile = instance.Tile;
             var neighbours = GetTileNeighbours(position);
-            tile.AddMesh(tileMeshBuilder, sprites, position, neighbours);
+            tile.AddMesh(tileMeshBuilder, Options, sprites, position, neighbours);
         }
 
         return tileMeshBuilder.ToMesh();
@@ -204,6 +236,48 @@ public class RoomMesh : MonoBehaviour
         return tileMeshBuilder.ToMesh();
     }
 
+    private void CreateLayerCollisionMeshes()
+    {
+        var meshBuilders = new Dictionary<string, TileMeshBuilder>();
+
+        // Generate the layer mesh colliders
+        foreach (var instance in Tiles)
+        {
+            var position = instance.Position;
+            var tile = instance.Tile;
+            var neighbours = GetTileNeighbours(position);
+            tile.AddLayerCollisionMeshes(meshBuilders, position, neighbours);
+        }
+
+        // Create a LayerColliders game object to store the individual layer mesh colliders if there isn't one already
+        var layerCollidersObject = transform.Find("LayerColliders")?.gameObject;
+        if (layerCollidersObject == null)
+        {
+            layerCollidersObject = new GameObject("LayerColliders");
+            layerCollidersObject.transform.parent = transform;
+        }
+
+        // Destroy the old layer collider game objects
+        foreach (Transform child in layerCollidersObject.transform)
+        {
+            DestroyImmediate(child.gameObject);
+        }
+
+        foreach (var pair in meshBuilders)
+        {
+            var layerName = pair.Key;
+            var meshBuilder = pair.Value;
+
+            var layerColliderObject = new GameObject(layerName);
+            layerColliderObject.transform.parent = layerCollidersObject.transform;
+            layerColliderObject.layer = LayerMask.NameToLayer(layerName);
+            layerColliderObject.transform.localPosition = Vector3.zero;
+
+            var layerMeshCollider = layerColliderObject.AddComponent<MeshCollider>();
+            layerMeshCollider.sharedMesh = meshBuilder.ToMesh();
+        }
+    }
+
     private TileNeighbours GetTileNeighbours(Vector2Int position)
     {
         var neighbourTiles = new Tile[8];
@@ -215,6 +289,19 @@ public class RoomMesh : MonoBehaviour
             neighbourTiles[i] = neighbourInstance?.Tile;
         }
 
-        return new TileNeighbours(neighbourTiles);
+        return new TileNeighbours { Tiles = neighbourTiles };
+    }
+
+    public IEnumerator<TileContext> GetEnumerator()
+    {
+        foreach (var instance in Tiles)
+        {
+            yield return new TileContext { Tile = instance.Tile, Position = instance.Position, Neighbours = GetTileNeighbours(instance.Position) };
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

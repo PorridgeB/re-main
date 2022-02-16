@@ -34,7 +34,7 @@ public class Grounded : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("not grounded");
+        //Debug.Log("not grounded");
         grounded = false;
     }
 }

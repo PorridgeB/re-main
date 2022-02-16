@@ -25,6 +25,8 @@ public class RoomEditorWindow : EditorWindow
     private const string FloorPrefix = "Floor_";
     private const string WallPrefix = "Wall_";
     private const string WallTrimPrefix = "WallTrim_";
+    private const string PitSidePrefix = "PitSide_";
+    private const string PitBottomPrefix = "PitBottom_";
 
     // Rect fill tool
     private Vector2Int rectFillFrom = new Vector2Int();
@@ -80,16 +82,30 @@ public class RoomEditorWindow : EditorWindow
             room.MoveToOrigin();
             room.Rebuild();
         }
+        if (GUILayout.Button("Fill Outline"))
+        {
+            Undo.RecordObject(room, "Filled Room Outline");
+            room.FillOutline(SelectedTile);
+            room.Rebuild();
+        }
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
         if (GUILayout.Button("Rotate"))
         {
             Undo.RecordObject(room, "Rotated Room");
             room.Rotate();
             room.Rebuild();
         }
-        if (GUILayout.Button("Fill Outline"))
+        if (GUILayout.Button("Flip X"))
         {
-            Undo.RecordObject(room, "Filled Room Outline");
-            room.FillOutline(SelectedTile);
+            Undo.RecordObject(room, "Flipped Room");
+            room.FlipX();
+            room.Rebuild();
+        }
+        if (GUILayout.Button("Flip Y"))
+        {
+            Undo.RecordObject(room, "Flipped Room");
+            room.FlipY();
             room.Rebuild();
         }
         GUILayout.EndHorizontal();
@@ -277,10 +293,13 @@ public class RoomEditorWindow : EditorWindow
 
         var floorSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(FloorPrefix)));
         var wallSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(WallPrefix)));
+        var pitSprites = new List<Sprite>(tileset.Where(x => x.name.StartsWith(PitSidePrefix)));
 
         var floorPalette = new Palette { Name = "Floors", Tiles = floorSprites.Select(x => (Tile)new FloorTile { Sprite = x.name }).ToList() };
         var wallPalette = new Palette { Name = "Walls", Tiles = wallSprites.Select(x => (Tile)new WallTile { Sprite = x.name, Trim = "WallTrim_0" }).ToList() };
-        var pitPalette = new Palette { Name = "Pits", Tiles = new List<Tile>() { new PitTile() } };
+        var pitPalette = new Palette { Name = "Pits", Tiles = pitSprites.Select(x => (Tile)new PitTile { Side = x.name, Bottom = "PitBottom_0" }).ToList() };
+
+        pitPalette.Tiles.Insert(0, new PitTile { Side = "FloorSide_0", Bottom = null });
 
         palettes = new List<Palette>() { floorPalette, wallPalette, pitPalette };
     }

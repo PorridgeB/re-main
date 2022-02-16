@@ -8,6 +8,8 @@ public class ModuleItem : MonoBehaviour, IInteract
     private Module module;
     [SerializeField]
     private GameEvent modulePickup;
+    [SerializeField]
+    private AudioClip pickUp;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class ModuleItem : MonoBehaviour, IInteract
             b.attribute.AddModuleBonus(b);
         }
         modulePickup.Raise();
+        SoundManager.PlaySound(pickUp, 0.5f);
         Destroy(gameObject);
         
     }

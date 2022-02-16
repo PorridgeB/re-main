@@ -97,6 +97,38 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextMeleeWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""763d7627-d5b0-4307-9456-0c2a5600bcba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextRangedWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ae53d9a-e0c3-4668-bf19-7eb4f65fc466"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Gadget"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f9d598d-3bc4-4764-8531-14e128cafc2d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""13c3f12e-65dc-4968-abf5-3a1fed590d93"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -301,7 +333,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""14abaeb0-9d91-4488-b80d-a6979f0022a5"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -323,7 +355,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1c82fe1e-2117-4c52-91c5-368978daa630"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -339,6 +371,72 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MeleeSpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1757913a-d848-40e2-80f0-4ac961edd497"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextMeleeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d5e84dc-86c2-47e3-a3c0-763839ccda78"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextRangedWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb566137-c1bb-4c4f-a896-fb40fc56a2b5"",
+                    ""path"": ""<Keyboard>/leftAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gadget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cbc547c-dc3f-48b9-9b31-3f8cff1ab060"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gadget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e9b11f1-5b02-4ee3-8ea6-02fab8197e06"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a428a4e-b35c-4406-b5e6-af9a68ca08cc"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -549,6 +647,33 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PauseControl"",
+            ""id"": ""04e4f79d-bf5f-484f-9119-4d79dd9e6fd8"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ce98c59-5f37-47bf-afb8-a68743a23304"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""166342e0-f8d1-409d-9a22-cf459ec53c64"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -565,6 +690,10 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_CharacterControl_MeleeAttack = m_CharacterControl.FindAction("MeleeAttack", throwIfNotFound: true);
         m_CharacterControl_MeleeSpecialAttack = m_CharacterControl.FindAction("MeleeSpecialAttack", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
+        m_CharacterControl_NextMeleeWeapon = m_CharacterControl.FindAction("NextMeleeWeapon", throwIfNotFound: true);
+        m_CharacterControl_NextRangedWeapon = m_CharacterControl.FindAction("NextRangedWeapon", throwIfNotFound: true);
+        m_CharacterControl_Gadget = m_CharacterControl.FindAction("Gadget", throwIfNotFound: true);
+        m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         // DialogueControl
         m_DialogueControl = asset.FindActionMap("DialogueControl", throwIfNotFound: true);
         m_DialogueControl_Continue = m_DialogueControl.FindAction("Continue", throwIfNotFound: true);
@@ -580,6 +709,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_ArtifactControl = asset.FindActionMap("ArtifactControl", throwIfNotFound: true);
         m_ArtifactControl_ArtContinue = m_ArtifactControl.FindAction("ArtContinue", throwIfNotFound: true);
         m_ArtifactControl_ArtBack = m_ArtifactControl.FindAction("ArtBack", throwIfNotFound: true);
+        // PauseControl
+        m_PauseControl = asset.FindActionMap("PauseControl", throwIfNotFound: true);
+        m_PauseControl_Pause = m_PauseControl.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -639,6 +771,10 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_MeleeAttack;
     private readonly InputAction m_CharacterControl_MeleeSpecialAttack;
     private readonly InputAction m_CharacterControl_Interact;
+    private readonly InputAction m_CharacterControl_NextMeleeWeapon;
+    private readonly InputAction m_CharacterControl_NextRangedWeapon;
+    private readonly InputAction m_CharacterControl_Gadget;
+    private readonly InputAction m_CharacterControl_Pause;
     public struct CharacterControlActions
     {
         private @PlayerControlls m_Wrapper;
@@ -653,6 +789,10 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @MeleeAttack => m_Wrapper.m_CharacterControl_MeleeAttack;
         public InputAction @MeleeSpecialAttack => m_Wrapper.m_CharacterControl_MeleeSpecialAttack;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
+        public InputAction @NextMeleeWeapon => m_Wrapper.m_CharacterControl_NextMeleeWeapon;
+        public InputAction @NextRangedWeapon => m_Wrapper.m_CharacterControl_NextRangedWeapon;
+        public InputAction @Gadget => m_Wrapper.m_CharacterControl_Gadget;
+        public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -692,6 +832,18 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @NextMeleeWeapon.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextMeleeWeapon;
+                @NextMeleeWeapon.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextMeleeWeapon;
+                @NextMeleeWeapon.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextMeleeWeapon;
+                @NextRangedWeapon.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
+                @NextRangedWeapon.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
+                @NextRangedWeapon.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnNextRangedWeapon;
+                @Gadget.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGadget;
+                @Gadget.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGadget;
+                @Gadget.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGadget;
+                @Pause.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -726,6 +878,18 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @NextMeleeWeapon.started += instance.OnNextMeleeWeapon;
+                @NextMeleeWeapon.performed += instance.OnNextMeleeWeapon;
+                @NextMeleeWeapon.canceled += instance.OnNextMeleeWeapon;
+                @NextRangedWeapon.started += instance.OnNextRangedWeapon;
+                @NextRangedWeapon.performed += instance.OnNextRangedWeapon;
+                @NextRangedWeapon.canceled += instance.OnNextRangedWeapon;
+                @Gadget.started += instance.OnGadget;
+                @Gadget.performed += instance.OnGadget;
+                @Gadget.canceled += instance.OnGadget;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -877,6 +1041,39 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         }
     }
     public ArtifactControlActions @ArtifactControl => new ArtifactControlActions(this);
+
+    // PauseControl
+    private readonly InputActionMap m_PauseControl;
+    private IPauseControlActions m_PauseControlActionsCallbackInterface;
+    private readonly InputAction m_PauseControl_Pause;
+    public struct PauseControlActions
+    {
+        private @PlayerControlls m_Wrapper;
+        public PauseControlActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_PauseControl_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_PauseControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseControlActions set) { return set.Get(); }
+        public void SetCallbacks(IPauseControlActions instance)
+        {
+            if (m_Wrapper.m_PauseControlActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_PauseControlActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PauseControlActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PauseControlActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_PauseControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public PauseControlActions @PauseControl => new PauseControlActions(this);
     public interface ICharacterControlActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -889,6 +1086,10 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnMeleeSpecialAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnNextMeleeWeapon(InputAction.CallbackContext context);
+        void OnNextRangedWeapon(InputAction.CallbackContext context);
+        void OnGadget(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IDialogueControlActions
     {
@@ -907,5 +1108,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     {
         void OnArtContinue(InputAction.CallbackContext context);
         void OnArtBack(InputAction.CallbackContext context);
+    }
+    public interface IPauseControlActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }
