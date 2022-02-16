@@ -13,7 +13,9 @@ public class SoundManager : MonoBehaviour
 
     public static ClimbingSFX dataSound;
 
+    public Song menuMusic;
     public Song gameMusic;
+    public Song summaryMusic;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,7 +32,7 @@ public class SoundManager : MonoBehaviour
             {
                 music.clip = currentSong.clip;
             }
-            
+            music.Play();
         }
         else
         {
@@ -44,7 +46,13 @@ public class SoundManager : MonoBehaviour
         switch (current.name)
         {
             case "Level":
-                nextSong = gameMusic;
+                ChangeMusic(gameMusic, true);
+                break;
+            case "Hub":
+                ChangeMusic(menuMusic, true);
+                break;
+            case "RunSummary":
+                ChangeMusic(summaryMusic, true);
                 break;
         }
 
@@ -68,19 +76,15 @@ public class SoundManager : MonoBehaviour
         }
         if (currentSong != null)
         {
-            if (currentSong.bar)
+            if (currentSong.clip != nextSong.clip)
             {
-                if (currentSong != nextSong)
+                if (currentSong.bar)
                 {
                     currentSong = nextSong;
                     music.clip = currentSong.clip;
                     music.Play();
                 }
             }
-        }
-        else if (nextSong != null)
-        {
-            currentSong = nextSong;
         }
     }
 

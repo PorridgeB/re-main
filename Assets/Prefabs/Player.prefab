@@ -362,6 +362,7 @@ MonoBehaviour:
   damageToken: {fileID: 7079180066206404431, guid: 20dca8a84c94b5547bd9acb5d839bd54, type: 3}
   save: {fileID: 11400000, guid: 729bd232ee905d2408c246da6adb1980, type: 2}
   interactionPromptSound: {fileID: 8300000, guid: e71d933ffe22b12409d2944958b2d8ae, type: 3}
+  critSound: {fileID: 8300000, guid: faa844a89e6ed2b499f2650eee3805b6, type: 3}
 --- !u!114 &4505106388035379474
 MonoBehaviour:
   m_ObjectHideFlags: 0

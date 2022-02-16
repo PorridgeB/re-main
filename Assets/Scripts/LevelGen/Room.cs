@@ -28,7 +28,9 @@ public class Room : MonoBehaviour
     [SerializeField]    
     private GameObject scrap;
     [SerializeField]
-    private GameObject pickupPlaceholder;
+    private ObjectPool pickupPool;
+    [SerializeField]
+    private SaveSO currentSave;
 
     void Awake()
     {
@@ -180,8 +182,8 @@ public class Room : MonoBehaviour
     private void SpawnPickups() {
         foreach (Transform t in transform.Find("PickupSpawns")){
             //TODO: make this 0.5f/difficulty
-            if (Random.value < 0.5f){
-                Instantiate(pickupPlaceholder, t.transform.position+Vector3.up, new Quaternion(), transform);
+            if (Random.value < 0.25f/currentSave.Difficulty){
+                Instantiate(pickupPool.GetRandom(), t.transform.position+Vector3.up, new Quaternion(), transform);
             }
         }
     }

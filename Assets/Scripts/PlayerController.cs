@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private AudioClip interactionPromptSound;
+    [SerializeField]
+    private AudioClip critSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -323,6 +325,7 @@ public class PlayerController : MonoBehaviour
         d.crit = CheckCrit();
         if (d.crit)
         {
+            
             d.value = GetCrit(d.value);
         }
         d.type = DamageType.Physical;
@@ -345,6 +348,7 @@ public class PlayerController : MonoBehaviour
 
     public float GetCrit(float value)
     {
+        SoundManager.PlaySound(critSound);
         return value * stats.CritDamage.Value();
     }
 

@@ -4,6 +4,8 @@ public class LevelEnd : MonoBehaviour, IInteract
 {
     [SerializeField]
     public GameEvent LevelEndReached;
+    [SerializeField]
+    private AudioClip onInteract;
 
     public void EndLevel()
     {
@@ -13,6 +15,7 @@ public class LevelEnd : MonoBehaviour, IInteract
 
     public void Interact()
     {
+        SoundManager.PlaySound(onInteract, 0.6f);
         EndLevel();
     }
 }

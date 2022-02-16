@@ -29,6 +29,10 @@ public class Modules : MonoBehaviour
 
     public void Generate()
     {
+        foreach (Transform t in moduleGrid.transform)
+        {
+            Destroy(t.gameObject);
+        }
         for (int i = 0; i < modules.Count; i++)
         {
             if (modules[i].count != 0)

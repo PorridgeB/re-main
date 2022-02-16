@@ -211,8 +211,6 @@ public class LevelGrammarGenerator : MonoBehaviour
 
         }
 
-        template = AddShopTest(template);
-
         return template;
     }
     private string ReplaceAt(string s, int index, char newChar)
