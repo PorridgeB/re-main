@@ -21,8 +21,8 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        AssetDatabase.Refresh();
-
+        jsonFile = Resources.Load<TextAsset>("saves");
+        Debug.Log(jsonFile);
         //saves.saves = new Save[] { new Save(), new Save(), new Save(), new Save()};
         ImportSaves();
 

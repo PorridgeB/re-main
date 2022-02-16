@@ -78,8 +78,8 @@ public class GroupManager : MonoBehaviour
             var positions = group.Select(x => x.transform.position).ToArray();
             var bounds = GeometryUtility.CalculateBounds(positions, Matrix4x4.identity);
 
-            Handles.color = Color.Lerp(Color.blue, Color.red, group.Size / (float)MaxGroupSize);
-            Handles.DrawWireDisc(bounds.center, Vector3.up, 0.5f + Mathf.Max(bounds.size.x, bounds.size.y));
+            //Handles.color = Color.Lerp(Color.blue, Color.red, group.Size / (float)MaxGroupSize);
+            //Handles.DrawWireDisc(bounds.center, Vector3.up, 0.5f + Mathf.Max(bounds.size.x, bounds.size.y));
         }
     }
 }

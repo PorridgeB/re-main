@@ -810,6 +810,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 151.39996
       objectReference: {fileID: 0}
+    - target: {fileID: 392456601689496094, guid: 34ec5bbcaa7b1584999f92b251a980ba, type: 3}
+      propertyPath: m_ScrollSensitivity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 842594009116192643, guid: 34ec5bbcaa7b1584999f92b251a980ba, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

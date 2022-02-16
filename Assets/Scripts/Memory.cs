@@ -27,17 +27,17 @@ public class Memory : MonoBehaviour
 
         foreach (var observation in observations)
         {
-            Handles.color = colors.TryGetValue(observation.Who.tag, out Color color) ? color : Color.grey;
+            //Handles.color = colors.TryGetValue(observation.Who.tag, out Color color) ? color : Color.grey;
 
             var discRadius = observation.TimeLeftPercentage * 0.5f;
 
             if (Vector3.Distance(observation.Where, observation.Who.transform.position) > 2)
             {
-                Handles.DrawWireDisc(observation.Where, Vector3.up, discRadius);
-                Handles.DrawDottedLine(observation.Where, observation.Who.transform.position, 4);
+                //Handles.DrawWireDisc(observation.Where, Vector3.up, discRadius);
+                //Handles.DrawDottedLine(observation.Where, observation.Who.transform.position, 4);
             }
 
-            Handles.DrawWireDisc(observation.Who.transform.position, Vector3.up, discRadius);
+            //Handles.DrawWireDisc(observation.Who.transform.position, Vector3.up, discRadius);
         }
     }
 
