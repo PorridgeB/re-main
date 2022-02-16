@@ -13,33 +13,81 @@ MonoBehaviour:
   m_Name: CurrentSave
   m_EditorClassIdentifier: 
   save:
-    TotalTime: 0
-    DataFragments: 84340
-    Scrap: 47
+    TotalTime: 2251.1873
+    DataFragments: 2147481307
+    Scrap: 491
     SoftwareUpgradeCapacity: 0
     UnlockedSoftwareUpgrades:
+    - a
+    - b
+    - c
+    - SoftwareUpgrade4
     - SoftwareUpgrade3
     - SoftwareUpgrade1
-    - SoftwareUpgrade2
     - SoftwareUpgrade10
-    - SoftwareUpgrade4
+    - SoftwareUpgrade2
     - SoftwareUpgrade5
     - SoftwareUpgrade6
     - SoftwareUpgrade7
     - SoftwareUpgrade8
     - SoftwareUpgrade9
-    UnlockedSoftwareRings: 1
+    UnlockedSoftwareRings: 3
     UnlockedWeaponAttachments: []
-    UnlockedGadgets: []
+    UnlockedGadgets:
+    - a
+    - b
+    - c
     Loadouts:
-    - SoftwareUpgrades: []
+    - SoftwareUpgrades:
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 3, y: 2}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 3, y: 1}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 3, y: 0}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 1, y: 2}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 1, y: 1}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 1, y: 0}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 9, y: 0}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 9, y: 1}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 9, y: 2}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 7, y: 0}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 7, y: 1}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 7, y: 2}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 5, y: 0}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 5, y: 1}
+      - SoftwareUpgrade: {fileID: 11400000, guid: 4cbff047e84c87f43bb58672a99a4f70, type: 2}
+        Position: {x: 5, y: 2}
       Weapon1:
         Weapon: 
         Attachments: []
       Weapon2:
         Weapon: 
         Attachments: []
-      Gadget: {fileID: 11400000, guid: 40d2bc9ae8b8f374aa8c2d7b01b1d667, type: 2}
+      Gadget: {fileID: 0}
     LoadoutIndex: 0
-    Runs: []
+    Runs:
+    - ended: 1
+      difficulty: 1
+      quadrant: 1
+      sector: 5
+      scrap: 67
+      dataFragments: 60
+      kills: 12
+      damage: 0
+      largestHit: 0
+      rebootCount: 0
+      killedBy: 
+      time: 0
     Difficulty: 1

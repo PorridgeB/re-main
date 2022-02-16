@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcad920490134e46958ced13e2a5b4a, type: 3}
   m_Name: Dash Charges
   m_EditorClassIdentifier: 
-  baseValue: 2
+  baseValue: 1
+  baseMultiplier: 0
   minValue: 1
   maxValue: 100
   type: 1
-  finalValue: 0
+  softwareBonuses: []
+  moduleBonuses: []
+  temporaryBonuses: []
+  finalValue: 1

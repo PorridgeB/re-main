@@ -132,7 +132,7 @@ MonoBehaviour:
   large: {fileID: -6935062248524124518, guid: 167bac8211406f74385e51700429eb22, type: 3}
   smallThreshold: 5
   mediumThreshold: 20
-  amount: 12
+  amount: 11
   pickUp: {fileID: 8300000, guid: e1242e2c5bd98634891324bbf3450f4b, type: 3}
 --- !u!114 &8998133813521467947
 MonoBehaviour:

@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviour
 
         var attackFieldInstance = Instantiate(AttackField, transform);
 
-        DamageInstance damageInstance = new DamageInstance();
+        var damageInstance = new DamageInstance();
         damageInstance.type = DamageType.Physical;
         damageInstance.source = gameObject;
         damageInstance.value = AttackDamage;
@@ -154,14 +154,16 @@ public class Enemy : MonoBehaviour
         damageSource.source = gameObject;
         damageSource.AddInstance(damageInstance);
 
-        Vector3 forwardDirection = new Vector3(direction.x, 0, direction.z).normalized;
+        var forwardDirection = new Vector3(direction.x, 0, direction.z).normalized;
 
         attackFieldInstance.transform.localPosition = new Vector3(0, 0.5f, 0) + forwardDirection * AttackFieldDistance;
         attackFieldInstance.transform.rotation = Quaternion.LookRotation(forwardDirection);
 
         // Wait for a few frames
-        yield return null;
-        yield return null;
+        //yield return null;
+        //yield return null;
+
+        yield return new WaitForSeconds(0.25f);
 
         Destroy(attackFieldInstance);
     }

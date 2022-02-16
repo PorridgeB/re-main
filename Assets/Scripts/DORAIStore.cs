@@ -114,13 +114,13 @@ public class DORAIStore : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (var softwareUpgrade in softwareUpgrades)
+        foreach (var softwareUpgrade in softwareUpgrades.OrderByDescending(x => save.SoftwareIsUnlocked(x.name)))
         {
             var softwareUpgradeRow = Instantiate(softwareUpgradeRowPrefab, softwareUpgradeList.transform).GetComponent<SoftwareUpgradeRow>();
             softwareUpgradeRow.SoftwareUpgrade = softwareUpgrade;
             softwareUpgradeRow.Unlocked = save.SoftwareIsUnlocked(softwareUpgrade.name);
             
-            if (!softwareUpgradeRow.Unlocked) softwareUpgradeRow.transform.SetAsLastSibling();
+            //if (!softwareUpgradeRow.Unlocked) softwareUpgradeRow.transform.SetAsLastSibling();
         }
     }
 
