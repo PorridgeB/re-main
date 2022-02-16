@@ -9,6 +9,7 @@ public class DiveState : StateMachineBehaviour
     public float Damage = 10f;
     public float Duration = 1.2f;
     public float Speed = 12f;
+    public float EarlyStopDistance = 0.75f;
     public AnimationCurve SpeedCurve;
     public GameObject AttackField;
     public Transform Target;
@@ -64,6 +65,11 @@ public class DiveState : StateMachineBehaviour
         var time = (Time.time - startTime) / Duration;
         var velocity = direction * Speed * SpeedCurve.Evaluate(time);
         rigidbody.MovePosition(rigidbody.position + 5 * velocity * Time.deltaTime);
+
+        if (Physics.Raycast(rigidbody.position + Vector3.up, direction, out _, EarlyStopDistance, LayerMask.GetMask("Level")))
+        {
+            animator.SetTrigger("Land");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
