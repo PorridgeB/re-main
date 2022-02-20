@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Total Time - 00:00:00\tStory - 0%\n0 <sprite=0>\t0 <sprite=1>\n"
+  m_text: "Total Time - 00:00:00\tStory - 0%\n0 <sprite=0 tint>\t0 <sprite=1 tint>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 279ecb7eb6d33b7489f4caab3cc4b3e9, type: 2}
   m_sharedMaterial: {fileID: 6048280854936309999, guid: 279ecb7eb6d33b7489f4caab3cc4b3e9, type: 2}
@@ -322,10 +322,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2090b3df4c0eb1b44971340a701088c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   Save:
-    id: 0
+    TotalTime: 0
+    DataFragments: 0
+    Scrap: 0
+    SoftwareUpgradeCapacity: 0
+    UnlockedSoftwareUpgrades:
+    - a
+    - b
+    - c
+    UnlockedSoftwareRings: 1
+    UnlockedWeaponAttachments: []
+    UnlockedGadgets:
+    - a
+    - b
+    - c
+    Loadouts:
+    - SoftwareUpgrades: []
+      Weapon1:
+        Weapon: 
+        Attachments: []
+      Weapon2:
+        Weapon: 
+        Attachments: []
+      Gadget: {fileID: 0}
+    LoadoutIndex: 0
+    Runs: []
+    Difficulty: 1
   contents: {fileID: 8263111369065343901}
-  references:
-    version: 1
-    00000000:
-      type: {class: , ns: , asm: }
