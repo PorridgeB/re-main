@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2746181009938959676}
   - component: {fileID: 4679543363108541063}
   - component: {fileID: 688846344234548055}
+  - component: {fileID: 3159695484059637946}
   m_Layer: 0
   m_Name: SteelDoor
   m_TagString: Untagged
@@ -64,6 +65,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3159695484059637946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765353422912669748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771c648b42f9c814089c9b5af9d88b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7498612742062545916}
+  audioSource: {fileID: 4888037748099958557}
+  open: {fileID: 8300000, guid: 329d29280094a2045af53bde6b7a6e6c, type: 3}
+  close: {fileID: 8300000, guid: 420456c26da09e9468e8b2a7c4d0a537, type: 3}
 --- !u!1 &3498425049076274983
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2273884198049976385
 Transform:
   m_ObjectHideFlags: 0

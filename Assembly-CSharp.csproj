@@ -840,6 +840,7 @@
     <Compile Include="Assets\StoryText.cs" />
     <Compile Include="Assets\Intro.cs" />
     <Compile Include="Assets\DoorTrigger.cs" />
+    <Compile Include="Assets\SteelDoor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\saves.txt" />
