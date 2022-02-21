@@ -701,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentDialogue: {fileID: 0}
   revealSpeed: 14
+  endDialogue: {fileID: 11400000, guid: 57c70486d3e74f14c91310aca61cb864, type: 2}
   dialogue: {fileID: 6465895679821401107}
   portrait: {fileID: 5262344165886644908}
   soundEffects: {fileID: 760369045741747248}
@@ -755,4 +756,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputMapOnEnable: DialogueControl
-  InputMapOnDisable: CharacterControl

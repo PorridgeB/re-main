@@ -16,6 +16,8 @@ public class Dialogue : MonoBehaviour
     private Thread Thread => currentDialogue.thread;
 
     [SerializeField]
+    private GameEvent endDialogue;
+    [SerializeField]
     private TextMeshProUGUI dialogue;
     [SerializeField]
     private Image portrait;
@@ -119,6 +121,7 @@ public class Dialogue : MonoBehaviour
 
                             gameObject.SetActive(false);
 
+                            endDialogue.Raise();
                         }
                     }
                 }
