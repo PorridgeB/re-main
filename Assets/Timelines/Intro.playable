@@ -250,75 +250,6 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.8642176870748304
-    m_ClipIn: 0
-    m_Asset: {fileID: -7117616405882133892}
-    m_Duration: 6.502448979591836
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -1601308280968561211}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Alarm1
-  - m_Version: 1
     m_Start: 7.366666666666667
     m_ClipIn: 0.21666666666666679
     m_Asset: {fileID: 8844137333257311602}
@@ -781,6 +712,75 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: LargeExplosion6
+  - m_Version: 1
+    m_Start: 0.8642176870748304
+    m_ClipIn: 0
+    m_Asset: {fileID: -7117616405882133892}
+    m_Duration: 6.552448979591837
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7114985637850671772}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Alarm1
   m_Markers:
     m_Objects: []
   m_TrackProperties:
@@ -1125,13 +1125,13 @@ MonoBehaviour:
     m_Start: 11.733333333333334
     m_ClipIn: 0.13333333333333286
     m_Asset: {fileID: -5195037754137931336}
-    m_Duration: 4.683333333333334
+    m_Duration: 4.75
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8090673024277744501}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 0.05000000000000071
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -1191,15 +1191,15 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: LargeExplosion4
   - m_Version: 1
-    m_Start: 16.416666666666668
-    m_ClipIn: 0.13027210884353835
+    m_Start: 16.433333333333334
+    m_ClipIn: 0.14693877551020407
     m_Asset: {fileID: 8159597758719689886}
-    m_Duration: 6.133333333333333
+    m_Duration: 6.116666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8090673024277744501}
     m_EaseInDuration: 0
     m_EaseOutDuration: 2.5954322814941406
-    m_BlendInDuration: -1
+    m_BlendInDuration: 0.05000000000000071
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2

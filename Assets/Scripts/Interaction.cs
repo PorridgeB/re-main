@@ -22,7 +22,7 @@ public class Interaction : MonoBehaviour
 
     public void Interact()
     {
-        //transform.parent.GetComponent<IInteract>().Interact();
+        transform.parent?.GetComponent<IInteract>()?.Interact();
 
         onInteract.Invoke();
     }
