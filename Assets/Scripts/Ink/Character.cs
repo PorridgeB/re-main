@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,22 +58,19 @@ public class Character : MonoBehaviour, IInteract
 
     public Thread GetThreadByName(string name)
     {
-        foreach (Thread t in threads)
-        {
-            if (t.name == name)
-            {
-                return t;
-            }
-        }
-        return null;
+        return threads.FirstOrDefault(x => x.name == name);
     }
 
     public void GetStory()
     {
-        available.Remove(currentThread);
-        if (!currentThread.Complete)
+        if (currentThread != null)
         {
-            available.Insert(available.Count, currentThread);
+            available.Remove(currentThread);
+
+            if (!currentThread.Complete)
+            {
+                available.Insert(available.Count, currentThread);
+            }
         }
         
         if (priority.Count > 0)

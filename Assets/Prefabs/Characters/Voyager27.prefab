@@ -182,7 +182,7 @@ MonoBehaviour:
   threads: []
   available: []
   priority: []
-  currentThread: {fileID: 7113104986307918114}
+  currentThread: {fileID: 0}
 --- !u!1001 &3506699537704596405
 PrefabInstance:
   m_ObjectHideFlags: 0
