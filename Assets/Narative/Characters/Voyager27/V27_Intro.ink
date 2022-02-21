@@ -1,9 +1,9 @@
 VAR priority = 3
 #V27
 
--> Main
+-> main
 
-==Main
+==main
 #COMMUNICATIONCORE:Main2
 He's dead. 
 
@@ -21,13 +21,13 @@ Did your D.O.R.A.I just create you? It must have. Listen - since you're not atta
 
 ... can you talk?
 
-No? Come here, let me see. You can use __WASD__ to move. #RESUME:Next
+No? Come here, let me see. You can use __WASD__ to move. #RESUME: Next
 -> DONE
 
 
 
 
-= Next
+=Next
 Your communication core is missing. I saw one a couple of rooms over. Get it, and then we can speak properly.
 
 Be careful of Ghouls, they will hear any noise you make. If you do see some, then __right click__ to use your sword and __left click__ to shoot.

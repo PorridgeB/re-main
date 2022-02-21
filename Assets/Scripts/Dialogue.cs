@@ -62,6 +62,9 @@ public class Dialogue : MonoBehaviour
     private void OnEnable()
     {
         visibleCharacters = 0;
+        
+        Thread.GetCurrentStory();
+
         if (Thread.story.canContinue)
         {
             Continue();
@@ -71,6 +74,7 @@ public class Dialogue : MonoBehaviour
         {
             GenerateChoices();
         }
+
     }
     private void Update()
     {

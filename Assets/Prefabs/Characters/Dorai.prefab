@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4603437578059959164}
   - component: {fileID: 1559115630854630669}
   m_Layer: 0
-  m_Name: Thread
+  m_Name: IntroThread
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
