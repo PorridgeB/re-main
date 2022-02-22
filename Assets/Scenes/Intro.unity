@@ -532,7 +532,8 @@ MonoBehaviour:
   PercentageRevealed: 0
   CaretBlinkPeriod: 1
   Caret: "\u2588"
-  Character: {fileID: 8300000, guid: bdf6f5b406a2fdc4b9efafa68e2f09eb, type: 3}
+  AddCharacter: {fileID: 8300000, guid: c827076de92b06144877d22c2533a533, type: 3}
+  RemoveCharacter: {fileID: 8300000, guid: f181ba4023305994997dfe6c456507ba, type: 3}
   audioSource: {fileID: 1376408828}
 --- !u!1001 &1366466318
 PrefabInstance:
@@ -951,6 +952,7 @@ GameObject:
   - component: {fileID: 1783471881}
   - component: {fileID: 1783471880}
   - component: {fileID: 1783471884}
+  - component: {fileID: 1783471885}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1008,7 +1010,7 @@ Camera:
   m_GameObject: {fileID: 1783471879}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1075,6 +1077,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!45 &1783471885
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783471879}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 81f714daf7144784b8a2f42f1cd30927, type: 2}
 --- !u!1 &1967489652
 GameObject:
   m_ObjectHideFlags: 0
