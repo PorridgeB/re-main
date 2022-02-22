@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class StoryText : MonoBehaviour
     public float PercentageRevealed = 0;
     [Range(0.1f, 2)]
     public float CaretBlinkPeriod = 1;
-    public string Caret = "█";
+    public char Caret = '_';
     public AudioClip AddCharacter;
     public AudioClip RemoveCharacter;
 
@@ -23,7 +24,7 @@ public class StoryText : MonoBehaviour
     private void Awake()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
-        text = textMesh.text;
+        text = textMesh.text + " ";
         caretTimer = Time.time;
         previousLength = 0;
     }
@@ -35,23 +36,24 @@ public class StoryText : MonoBehaviour
             caretTimer = Time.time;
         }
 
-        var revealedLength = Mathf.RoundToInt(text.Length * PercentageRevealed);
+        var revealedLength = Mathf.RoundToInt((text.Length - 1) * PercentageRevealed);
 
-        //var revealedText = text.Substring(0, revealedLength);
-        //textMesh.text = revealedText;
+        var newTextBuilder = new StringBuilder(text);
+        newTextBuilder[revealedLength] = Caret;
+        textMesh.text = newTextBuilder.ToString();
 
-        textMesh.maxVisibleCharacters = revealedLength;
+        var showCaret = (Time.time - caretTimer) / CaretBlinkPeriod > 0.5f;
+
+        textMesh.maxVisibleCharacters = revealedLength + (showCaret ? 1 : 0);
 
         if (previousLength != revealedLength)
         {
-            audioSource.PlayOneShot(previousLength < revealedLength ? AddCharacter : RemoveCharacter);
+            if (textMesh.text[revealedLength] != ' ')
+            {
+                audioSource.PlayOneShot(previousLength < revealedLength ? AddCharacter : RemoveCharacter);
+            }
         }
 
         previousLength = revealedLength;
-
-        //if ((Time.time - caretTimer) / CaretBlinkPeriod > 0.5f)
-        //{
-        //    textMesh.text += Caret;
-        //}
     }
 }
