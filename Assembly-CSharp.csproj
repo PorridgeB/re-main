@@ -587,6 +587,7 @@
     <Compile Include="Assets\Scripts\Modules\Frenzy.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Time\GetTimeScale.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Quaternion\LookRotation.cs" />
+    <Compile Include="Assets\StartDialogue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\LayerMask\GetLayer.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Quaternion\RotateTowards.cs" />
     <Compile Include="Assets\Scripts\Tasks\WithinRange.cs" />
@@ -841,7 +842,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
-    <Compile Include="Assets\StartDialogue.cs" />
+    <Compile Include="Assets\CameraShake.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\saves.txt" />

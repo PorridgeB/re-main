@@ -10,7 +10,8 @@ public class StoryText : MonoBehaviour
     [Range(0.1f, 2)]
     public float CaretBlinkPeriod = 1;
     public string Caret = "█";
-    public AudioClip Character;
+    public AudioClip AddCharacter;
+    public AudioClip RemoveCharacter;
 
     [SerializeField]
     private AudioSource audioSource;
@@ -41,9 +42,9 @@ public class StoryText : MonoBehaviour
 
         textMesh.maxVisibleCharacters = revealedLength;
 
-        if (previousLength < revealedLength)
+        if (previousLength != revealedLength)
         {
-            audioSource.PlayOneShot(Character);
+            audioSource.PlayOneShot(previousLength < revealedLength ? AddCharacter : RemoveCharacter);
         }
 
         previousLength = revealedLength;

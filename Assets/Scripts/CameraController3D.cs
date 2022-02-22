@@ -13,30 +13,29 @@ public class CameraController3D : MonoBehaviour
     public bool Smooth = false;
     public bool SnapToNearestPixel = true;
 
-    private float height;
+    private float initialHeight;
+    private new Camera camera;
 
-    void Start()
+    private void Awake()
+    {
+        initialHeight = transform.position.y;
+
+        camera = GetComponent<Camera>();
+        camera.orthographicSize = (camera.targetTexture.height / 2f) / PixelsPerUnit;
+    }
+
+    private void Start()
     {
         Target = GameObject.Find("Player").transform;
-        height = transform.position.y;
-        var camera = GetComponent<Camera>();
-        camera.orthographicSize = (camera.targetTexture.height / 2f) / PixelsPerUnit;
     }
 
     void Update()
     {
         Camera.main.ResetWorldToCameraMatrix();
         
-        var targetPosition = new Vector3(Target.position.x + Offset.x, height, Target.position.z + Offset.y - height);
+        var targetPosition = new Vector3(Target.position.x + Offset.x, initialHeight, Target.position.z + Offset.y - initialHeight);
 
-        if (Smooth)
-        {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Speed * Time.deltaTime);
-        }
-        else
-        {
-            transform.position = targetPosition;
-        }
+        transform.position = Smooth ? Vector3.Lerp(transform.position, targetPosition, Speed * Time.deltaTime) : targetPosition;
 
         if (SnapToNearestPixel)
         {
