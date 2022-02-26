@@ -845,12 +845,14 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\IsStopped.cs" />
     <Compile Include="Assets\Scripts\Memory.cs" />
+    <Compile Include="Assets\Shaders\VisibilityRenderFeature.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\saves.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Art\Kenney Game Assets (version 41)\UI Space Pack\Spritesheet\uipackSpace_sheet.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Shaders\VisibilityMask.hlsl" />
     <None Include="Assets\LeanTween\ReadMe.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
