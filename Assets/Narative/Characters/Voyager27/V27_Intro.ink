@@ -1,6 +1,4 @@
 VAR priority = 3
-#V27
-
 -> main
 
 ==main
@@ -50,29 +48,25 @@ You need to find a communication core first. There should be one in the next roo
 
 
 ==Main2
-@NEXT:Main3
 It seems that D.O.R.A.I printed a new Droid when the last one died. Do you remember what happened to the previous model? 
 
 *[yes] -> yes
-*[no (lie)] -> no
-*[meaning unclear] -> unclear
+*[no (lie)] -> objective
+*[meaning unclear] -> objective
 *[I am a security Droid, here to assist you] -> assist
 
-==yes
-That is convenient. I suppose that now you can try to get to the warp core again, this time with a little bit more knowledge of what lies ahead. Good luck. 
-->DONE
+=yes
+That is convenient.
+->objective
 
-==no
-Alright, I need you to get the warp core that's on the other side of the ship.  To do so, you'll likely need to fight Ghouls. Start with that door, and from there all other doors should lead in the right direction.
+=assist
+Perhaps not, then. That is unfortunate. 
+    ->objective
+    
+==objective
+#FINISHEDRUN:Main3
+Alright, I need you to get the warp core that's on the other side of the ship.  To do so, you'll likely need to fight some Ghouls. Start with that door, and from there all other doors should lead in the right direction. #EVENT:IntroOpenDoor
 ->DONE
-
-==unclear
-Alright, I need you to get the warp core that's on the other side of the ship.  To do so, you'll likely need to fight Ghouls. Start with that door, and from there all other doors should lead in the right direction.
-->DONE
-
-==assist
-Perhaps not, then. That is unfortunate. Alright, I need you to get the warp core that's on the other side of the ship.  To do so, you'll likely need to fight some Ghouls. Start with that door, and from there all other doors should lead in the right direction.
-    -> DONE
 
 
 

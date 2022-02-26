@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 public class Pickup2 : MonoBehaviour, IInteract
 {
-    public UnityEvent onPickup;
+    public GameEvent pickup;
     [SerializeField]
     private AudioClip pickupSound;
 
     public void Interact()
     {
-        onPickup.Invoke();
+        pickup.Raise();
         SoundManager.PlaySound(pickupSound, 0.5f);
         Destroy(gameObject);
     }

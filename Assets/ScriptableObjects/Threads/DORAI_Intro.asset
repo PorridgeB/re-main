@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6a523c55962474d9bc038c23ebb286, type: 3}
+  m_Name: DORAI_Intro
+  m_EditorClassIdentifier: 
+  asset: {fileID: 4900000, guid: a4769045785ca024a9a644e25dff9d74, type: 3}
+  priority: 3
+  locked: 0
+  lockUntilEndOfScene: 0
+  progress: 0
+  listenTo:
+  - {fileID: 11400000, guid: b4a0d08297a6cab4a9140c4448d76ba0, type: 2}
+  invoke: []

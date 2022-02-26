@@ -10,10 +10,10 @@ public enum ThreadPriority
     HIGH,
     ESSENTIAL 
 }
-[System.Serializable]
-public class Thread : MonoBehaviour, IListenGameEvent
-{
 
+[CreateAssetMenu]
+public class Thread : ScriptableObject,  IListenGameEvent
+{
     [SerializeField]
     private TextAsset asset;
     public Story story;
@@ -21,7 +21,9 @@ public class Thread : MonoBehaviour, IListenGameEvent
     private string currentKnot = "main";
 
     public bool locked;
+    public bool lockUntilEndOfScene;
 
+    [SerializeField]
     private int progress = 0;
 
     [SerializeField]
@@ -29,16 +31,37 @@ public class Thread : MonoBehaviour, IListenGameEvent
     [SerializeField]
     private List<GameEvent> invoke = new List<GameEvent>();
 
-    private void Awake()
+    public bool Initialize()
     {
-        InitializeStory();
+        if (story == null)
+        {
+            InitializeStory();
+            OnEnable();
+            return true;
+        }
+        return false;
+        
     }
-
     public void OnEventRaised(GameEvent gameEvent)
     {
+        Debug.Log(name + " : " + gameEvent.name);
+        if (listenTo.Count <= progress) return;
         if (gameEvent == listenTo[progress])
         {
-            Progress();
+            if (locked)
+            {
+                if (locked)
+                {
+                    Debug.Log("unlocking " + name);
+                    locked = false;
+                    return;
+                }
+            }
+            else
+            {
+                Progress();
+            }
+            
         }
     }
     public void OnEventRaised(GameEvent gameEvent, GameObject gameObject)
@@ -49,10 +72,17 @@ public class Thread : MonoBehaviour, IListenGameEvent
     {
         OnEventRaised(gameEvent);
     }
+    //used for debugging
+    private void EditorReset()
+    {
+        progress = 0;
+        currentKnot = "main";
+    }
 
     private void InitializeStory()
     {
         LoadNewInk(asset);
+        //EditorReset();
         if (story.globalTags != null)
         {
             foreach (string s in story.globalTags)
@@ -74,14 +104,6 @@ public class Thread : MonoBehaviour, IListenGameEvent
         foreach (GameEvent g in listenTo)
         {
             g.RegisterListener(this);
-        }
-    }
-
-    private void OnDisable()
-    {
-        foreach (GameEvent g in listenTo)
-        {
-            g.UnRegisterListener(this);
         }
     }
 
@@ -107,15 +129,6 @@ public class Thread : MonoBehaviour, IListenGameEvent
         story = new Story(newFile.text);
     }
 
-    public void UnlockThread()
-    {
-        if (!Complete)
-        {
-            locked = false;
-            GetComponentInParent<Character>().AddToPriority(this);
-        }
-    }
-
     public void CheckTags()
     {
         foreach (string t in story.currentTags)
@@ -126,18 +139,33 @@ public class Thread : MonoBehaviour, IListenGameEvent
                 string s = t.Replace("EVENT:", "").Trim();
                 Invoke(s);
             }
+            else if (t.Contains("NEXT"))
+            {
+                string s = t.Replace("NEXT:", "").Trim();
+                currentKnot = s;
+                Debug.Log(currentKnot);
+                story.ChoosePathString(currentKnot);
+                lockUntilEndOfScene = true;
+            }
         }
     }
 
     public void Progress()
     {
-        if (!story.canContinue)
+        Debug.Log(story);
+        List<string> tags = story.TagsForContentAtPath(currentKnot);
+        if (tags[0].Contains("LOCKED")) tags.RemoveAt(0);
+        if (tags[0].Contains("FIRST")) tags.RemoveAt(0);
+        Debug.Log(tags.Count);
+        if (tags.Count > 0)
         {
-            if (story.TagsForContentAtPath(currentKnot).Count > 0)
-            {
-                currentKnot = story.TagsForContentAtPath(currentKnot)[0].Split(':')[1].Trim();
-                progress++;
-            }
+            Debug.Log("progressing " + name);
+            currentKnot = story.TagsForContentAtPath(currentKnot)[0].Split(':')[1].Trim();
+
+            Debug.Log(currentKnot);
+            story.ChoosePathString(currentKnot);
+                
+            progress++;
         }
     }
 
@@ -145,10 +173,6 @@ public class Thread : MonoBehaviour, IListenGameEvent
     {
         get
         {
-            foreach (string s in story.currentTags)
-            {
-                Debug.Log(s);
-            }
             return !story.canContinue && story.currentTags.Count == 0;
         }
         
@@ -183,7 +207,7 @@ public class Thread : MonoBehaviour, IListenGameEvent
             {
                 if (s.Contains("RESUME"))
                 {
-
+                    
                     var name  = s.Replace("RESUME:", "").Trim();
                     Debug.Log(currentKnot + "." + name);
                     story.ChoosePathString(currentKnot + "." + name);

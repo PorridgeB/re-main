@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59086eea7e3d8f845950eaacc3571818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDialogue: {fileID: 0}
+  currentCharacter: {fileID: 11400000, guid: d3317b73b329e864ab2aa4ae6f13bf2f, type: 2}
   revealSpeed: 14
   endDialogue: {fileID: 11400000, guid: 57c70486d3e74f14c91310aca61cb864, type: 2}
   dialogue: {fileID: 6465895679821401107}
