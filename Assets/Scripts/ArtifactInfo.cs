@@ -15,6 +15,15 @@ public class ArtifactInfo : MonoBehaviour
 
     public void Close()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public void SetArtifact(GameObject artifact)
+    {
+        Artifact a = artifact.GetComponent<Artifact>();
+
+        title.text = a.Name;
+        description.text = a.Description;
+        picture.sprite = a.GetComponent<SpriteRenderer>().sprite;
     }
 }

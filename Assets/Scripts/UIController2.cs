@@ -19,6 +19,8 @@ public class UIController2 : MonoBehaviour
     private GameObject dialogueUI;
     [SerializeField]
     private GameObject moduleScreen;
+    [SerializeField]
+    private GameObject artifactScreen;
 
     private bool changeState;
 
@@ -60,6 +62,7 @@ public class UIController2 : MonoBehaviour
         if (mechanicStore.activeInHierarchy == true) return true;
         if (dialogueUI.activeInHierarchy == true) return true;
         if (moduleScreen.activeInHierarchy == true) return true;
+        if (artifactScreen.activeInHierarchy == true) return true;
         return false;
     }
 
@@ -76,5 +79,12 @@ public class UIController2 : MonoBehaviour
     public void ActivateDialogueUI()
     {
         dialogueUI.SetActive(true);
+    }
+
+    public void ActivateArtifactUI(GameObject g)
+    {
+        
+        artifactScreen.SetActive(true);
+        artifactScreen.GetComponent<ArtifactInfo>().SetArtifact(g);
     }
 }

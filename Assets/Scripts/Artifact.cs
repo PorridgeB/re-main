@@ -6,8 +6,24 @@ using Ink.Runtime;
 public class Artifact : MonoBehaviour, IInteract
 {
     [SerializeField]
+    public GameEvent openArtifact;
+
+    [SerializeField]
     private TextAsset asset;
     private Story story;
+
+    public string Name => asset.name;
+    public string Description
+    {
+        get
+        {
+            if (story.currentText == "")
+            {
+                story.Continue();
+            }
+            return story.currentText;
+        }
+    }
 
     private void Start()
     {
@@ -15,9 +31,6 @@ public class Artifact : MonoBehaviour, IInteract
     }
     public void Interact()
     {
-        //set story to this story
-        //event to open UI
-
-        PlayerController.instance.OpenArtifact();
+        openArtifact.Raise(gameObject);
     }
 }

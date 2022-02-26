@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bff0e14ed12be84d9ba766c1f1dc4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openArtifact: {fileID: 11400000, guid: 7ffcda4f0d938f54abd6c9535f943ad5, type: 2}
   asset: {fileID: 4900000, guid: 252ccebdf36de884987905e62191c7c1, type: 3}
 --- !u!1001 &1569300948585743554
 PrefabInstance:

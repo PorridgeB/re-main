@@ -46,7 +46,6 @@ public class Character : MonoBehaviour, IInteract
     public void Interact()
     {
         GetStory();
-        PlayerController.instance.StartDialogue();
     }
 
     public void AddToPriority(Thread t)

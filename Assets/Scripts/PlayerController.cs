@@ -248,11 +248,6 @@ public class PlayerController : MonoBehaviour
         return movement.GetVelocity();
     }
 
-    public void StartDialogue()
-    {
-        inputs.SwitchCurrentActionMap("DialogueControl");
-    }
-
     public void OpenArtifact()
     {
         inputs.SwitchCurrentActionMap("ArtifactControl");

@@ -90,6 +90,8 @@ GameObject:
   - component: {fileID: 5959073413593713481}
   - component: {fileID: 4499422725261264682}
   - component: {fileID: 3700913888538380517}
+  - component: {fileID: 7771065077851447113}
+  - component: {fileID: 4172180718069836450}
   m_Layer: 5
   m_Name: Artifact
   m_TagString: Untagged
@@ -170,6 +172,53 @@ MonoBehaviour:
   title: {fileID: 7101323267815735684}
   description: {fileID: 3324866874986255155}
   picture: {fileID: 4841220835318086999}
+--- !u!114 &7771065077851447113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610416510657193157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc3024950842894094ebe83660bd210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputMapOnEnable: ArtifactControl
+--- !u!114 &4172180718069836450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610416510657193157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3b6687e01e49a4c9de56305a9d7f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 7ffcda4f0d938f54abd6c9535f943ad5, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls: []
+  ResponseGO:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3700913888538380517}
+        m_TargetAssemblyTypeName: ArtifactInfo, Assembly-CSharp
+        m_MethodName: SetArtifact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ResponseDS:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &855592690881016000
 GameObject:
   m_ObjectHideFlags: 0
