@@ -29,8 +29,8 @@ public class VisibilityRenderFeature : ScriptableRendererFeature
 
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
-            //cmd.GetTemporaryRT(maskTexture.id, cameraTextureDescriptor);
-            cmd.GetTemporaryRT(maskTexture.id, cameraTextureDescriptor.width, cameraTextureDescriptor.height, 0);
+            cmd.GetTemporaryRT(maskTexture.id, cameraTextureDescriptor);
+            //cmd.GetTemporaryRT(maskTexture.id, cameraTextureDescriptor.width, cameraTextureDescriptor.height, 0);
 
             ConfigureTarget(maskTexture.id);
             ConfigureClear(ClearFlag.All, Color.black);
@@ -73,7 +73,8 @@ public class VisibilityRenderFeature : ScriptableRendererFeature
 
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
-            cmd.GetTemporaryRT(tempTexture.id, cameraTextureDescriptor);
+            //cmd.GetTemporaryRT(tempTexture.id, cameraTextureDescriptor);
+            cmd.GetTemporaryRT(tempTexture.id, cameraTextureDescriptor.width, cameraTextureDescriptor.height, 0);
         }
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
