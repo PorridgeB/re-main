@@ -12,23 +12,39 @@ public class Artifact : MonoBehaviour, IInteract
     private TextAsset asset;
     private Story story;
 
-    public string Name => asset.name;
-    public string Description
-    {
-        get
-        {
-            if (story.currentText == "")
-            {
-                story.Continue();
-            }
-            return story.currentText;
-        }
-    }
+    public string Name;
+    public string Description;
 
     private void Start()
     {
         story = new Story(asset.text);
+        SetNameAndDescription();
     }
+
+    private void SetNameAndDescription()
+    {
+        int progress = 0;
+        while (story.canContinue)
+        {
+            Debug.Log(story.currentText);
+            story.Continue();
+            if (story.currentText.Trim() == "Title:" || story.currentText.Trim() == "Content:")
+            {
+                Debug.Log("progressing");
+                progress++;
+                story.Continue();
+            }
+            if (progress == 1)
+            {
+                Name += story.currentText;
+            }
+            else if (progress == 2)
+            {
+                Description += story.currentText;
+            }
+        }
+    }
+
     public void Interact()
     {
         openArtifact.Raise(gameObject);

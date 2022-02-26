@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1569300947374128885}
   - component: {fileID: 7718320259253774954}
   m_Layer: 0
-  m_Name: Artifact
+  m_Name: Damage Report
   m_TagString: Artifact
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openArtifact: {fileID: 11400000, guid: 7ffcda4f0d938f54abd6c9535f943ad5, type: 2}
-  asset: {fileID: 4900000, guid: 252ccebdf36de884987905e62191c7c1, type: 3}
+  asset: {fileID: 4900000, guid: c7bb98496c640af4598d472bdb70e21d, type: 3}
+  Name: 
+  Description: 
 --- !u!1001 &1569300948585743554
 PrefabInstance:
   m_ObjectHideFlags: 0
