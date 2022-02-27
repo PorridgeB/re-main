@@ -8,13 +8,14 @@ public class StartDialogue : MonoBehaviour
     //[SerializeField]
     //private Thread thread;
     [SerializeField]
-    private DialogueHolder currentDialogue;
+    private CurrentCharacter currentCharacter;
     [SerializeField]
     private GameEvent enterDialogue;
 
-    public void StartThread(Thread thread)
+    public void StartThread(Character character)
     {
-        currentDialogue.thread = thread;
+        currentCharacter.character = character;
         enterDialogue.Raise();
+
     }
 }

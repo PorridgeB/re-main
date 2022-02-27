@@ -1,0 +1,1 @@
+﻿{"inkVersion":20,"root":[[{"#":"LOCKED: health pod"},{"#":"DORAI"},{"->":"Main"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"Main":["^This is a health pod. It will allow you to recover some vitality that you have lost. Employ them at your own will.","\n","end",{"#f":1}],"global decl":["ev",3,{"VAR=":"priority"},"/ev","end",null],"#f":1}],"listDefs":{}}

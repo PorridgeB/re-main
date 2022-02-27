@@ -9,11 +9,11 @@ using Ink.Runtime;
 public class Dialogue : MonoBehaviour
 {
     [SerializeField]
-    private DialogueHolder currentDialogue;
+    private CurrentCharacter currentCharacter;
     public float revealSpeed = 14; // characters per second
 
-    private string CurrentText => currentDialogue.thread.story.currentText;
-    private Thread Thread => currentDialogue.thread;
+    private string CurrentText => currentCharacter.character.CurrentThread.story.currentText;
+    private Thread Thread => currentCharacter.character.CurrentThread;
 
     [SerializeField]
     private GameEvent endDialogue;
@@ -61,8 +61,12 @@ public class Dialogue : MonoBehaviour
 
     private void OnEnable()
     {
-        visibleCharacters = 0;
+        if (currentCharacter == null) gameObject.SetActive(false);
         
+        visibleCharacters = 0;
+
+        Debug.Log(Thread);
+
         Thread.GetCurrentStory();
 
         if (Thread.story.canContinue)
@@ -102,6 +106,7 @@ public class Dialogue : MonoBehaviour
                         //Thread.CheckTags();
                         if (Thread.story.currentChoices.Count > 0)
                         {
+                            Debug.Log("Generating Choices");
                             GenerateChoices();
                         }
                     }
@@ -129,7 +134,6 @@ public class Dialogue : MonoBehaviour
                         }
                     }
                 }
-                
                 if (choiceA.triggered)
                 {
                     MakeChoice(0);
