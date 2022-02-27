@@ -92,7 +92,8 @@ MonoBehaviour:
   CurrentMode: 0
   delete: {fileID: 8832414312849713630}
   profiles: {fileID: 8832414311856720381}
-  yesNoDialog: {fileID: 7238142353429323147, guid: 8c34cf5087ec1cf4a8ad3e7621506875, type: 3}
+  yesNoDialog: {fileID: 7238142353429323147, guid: eec9e25cef1ba244e867ea11c0a788e7, type: 3}
+  saveManager: {fileID: 0}
 --- !u!1 &8832414311856720381
 GameObject:
   m_ObjectHideFlags: 0

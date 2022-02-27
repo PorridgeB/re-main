@@ -185,6 +185,7 @@ public class Thread : MonoBehaviour, IListenGameEvent
                 {
 
                     var name  = s.Replace("RESUME:", "").Trim();
+                    Debug.Log(currentKnot + "." + name);
                     story.ChoosePathString(currentKnot + "." + name);
                 }
             }
