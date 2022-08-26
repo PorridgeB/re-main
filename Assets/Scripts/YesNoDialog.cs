@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,10 +12,8 @@ public class YesNoDialog : MonoBehaviour
         set => prompt.text = value;
     }
 
-    public delegate void Callback();
-
-    public Callback OnYes;
-    public Callback OnNo;
+    public Action OnYes;
+    public Action OnNo;
 
     [SerializeField]
     private TextMeshProUGUI prompt;

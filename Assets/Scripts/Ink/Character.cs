@@ -1,21 +1,18 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 
-[System.Serializable]
-public struct EventConnectors
-{
-    public Thread thread;
-    public GameEvent gameEvent;
-}
-
-public class Character : MonoBehaviour, IInteract
+[CreateAssetMenu]
+public class Character : ScriptableObject
 {
     [SerializeField]
     private GameEvent enterDialogue;
     [SerializeField]
-    private DialogueHolder currentDialogue;
+    private CurrentCharacter currentCharacter;
+    [SerializeField]
+    private Thread shopDialogue;
 
     [SerializeField]
     private List<Thread> threads = new List<Thread>();
@@ -23,57 +20,41 @@ public class Character : MonoBehaviour, IInteract
     private List<Thread> available = new List<Thread>();
     [SerializeField]
     private List<Thread> priority = new List<Thread>();
-    [SerializeField]
     private Thread currentThread;
 
-    private void Start()
+    public Thread CurrentThread => currentThread;
+    public void Initialize()
     {
-        foreach (Thread t in GetComponentsInChildren<Thread>())
+        foreach (Thread thread in threads)
         {
-            threads.Add(t);
-            if (t.GetThreadTags()[0] == "FIRST")
+            if (thread.Initialize())
             {
-                priority.Add(t);
-                currentThread = t;
-            }
-            if (!t.locked)
-            {
-                available.Add(t);
+                if (thread.GetThreadTags()[0] == "FIRST")
+                {
+                    priority.Add(thread);
+                    currentThread = thread;
+                }
+                if (!thread.locked)
+                {
+                    available.Add(thread);
+                }
             }
         }
-    }
-
-    public void Interact()
-    {
-        GetStory();
-        PlayerController.instance.StartDialogue();
-    }
-
-    public void AddToPriority(Thread t)
-    {
-        if (priority.Contains(t)) return;
-        priority.Add(t);
-    }
-
-    public Thread GetThreadByName(string name)
-    {
-        foreach (Thread t in threads)
-        {
-            if (t.name == name)
-            {
-                return t;
-            }
-        }
-        return null;
     }
 
     public void GetStory()
     {
-        available.Remove(currentThread);
-        if (!currentThread.Complete)
+        if (currentThread != null)
         {
-            available.Insert(available.Count, currentThread);
+            available.Remove(currentThread);
+
+            if (!currentThread.Complete && !currentThread.lockUntilEndOfScene)
+            {
+                available.Insert(available.Count, currentThread);
+            }
         }
+
+        if (available.Count <= 0) return;
         
         if (priority.Count > 0)
         {
@@ -92,8 +73,8 @@ public class Character : MonoBehaviour, IInteract
             }
             
         }
-        
-        currentDialogue.thread = currentThread;
+        Debug.Log(currentThread);
+        currentCharacter.character = this;
         enterDialogue.Raise();
     }
 }

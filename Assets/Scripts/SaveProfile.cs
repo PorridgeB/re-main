@@ -47,7 +47,7 @@ public class SaveProfile : MonoBehaviour
         var dataFragments = Save.DataFragments;
         var scrap = Save.Scrap;
 
-        return $"Total Time - {totalTime}\tStory - {story}%\n{dataFragments} <sprite=0>\t{scrap} <sprite=1>";
+        return $"Total Time - {totalTime}\tStory - {story}%\n{dataFragments} <sprite=0 tint>\t{scrap} <sprite=1 tint>";
     }
 
     public void Refresh()

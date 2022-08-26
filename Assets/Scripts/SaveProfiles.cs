@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class SaveProfiles : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class SaveProfiles : MonoBehaviour
     private GameObject yesNoDialog;
     [SerializeField]
     private SaveManager saveManager;
+    [SerializeField]
+    private UnityEvent newSaveCreated;
 
     private void Start()
     {
@@ -67,14 +70,16 @@ public class SaveProfiles : MonoBehaviour
             if (saveProfile.IsEmpty)
             {
                 saveManager.CreateNewSave(saveProfile.index);
-                SceneManager.LoadScene("Hub");
+                newSaveCreated.Invoke();
+                //SceneManager.LoadScene("Hub");
             }
             else
             {
                 var dialog = Instantiate(yesNoDialog, transform).GetComponent<YesNoDialog>();
 
                 dialog.Prompt = "Are you sure you want to overwrite this save profile?";
-                dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); Refresh(); SceneManager.LoadScene("Hub"); };
+                dialog.OnYes += delegate { };
+                //dialog.OnYes += delegate { saveProfile.Delete(); saveProfile.Refresh(); Refresh(); SceneManager.LoadScene("Hub"); };
             }
             
             return;

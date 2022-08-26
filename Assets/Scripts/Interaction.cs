@@ -1,27 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interaction : MonoBehaviour
 {
-    private SpriteRenderer render;
     [SerializeField]
-    private GameEvent modulePickup;
+    private UnityEvent onInteract;
+    private SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
     void Start()
     {
-        render = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         ChangeVisibility(false);
     }
 
     public void ChangeVisibility(bool value)
     {
-        render.enabled = value;
+        spriteRenderer.enabled = value;
     }
 
     public void Interact()
     {
-        transform.parent.GetComponent<IInteract>().Interact();
+        transform.parent?.GetComponent<IInteract>()?.Interact();
+
+        onInteract.Invoke();
     }
 }

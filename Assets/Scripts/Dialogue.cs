@@ -9,12 +9,14 @@ using Ink.Runtime;
 public class Dialogue : MonoBehaviour
 {
     [SerializeField]
-    private DialogueHolder currentDialogue;
+    private CurrentCharacter currentCharacter;
     public float revealSpeed = 14; // characters per second
 
-    private string CurrentText => currentDialogue.thread.story.currentText;
-    private Thread Thread => currentDialogue.thread;
+    private string CurrentText => currentCharacter.character.CurrentThread.story.currentText;
+    private Thread Thread => currentCharacter.character.CurrentThread;
 
+    [SerializeField]
+    private GameEvent endDialogue;
     [SerializeField]
     private TextMeshProUGUI dialogue;
     [SerializeField]
@@ -59,7 +61,14 @@ public class Dialogue : MonoBehaviour
 
     private void OnEnable()
     {
+        if (currentCharacter == null) gameObject.SetActive(false);
+        
         visibleCharacters = 0;
+
+        Debug.Log(Thread);
+
+        Thread.GetCurrentStory();
+
         if (Thread.story.canContinue)
         {
             Continue();
@@ -69,6 +78,7 @@ public class Dialogue : MonoBehaviour
         {
             GenerateChoices();
         }
+
     }
     private void Update()
     {
@@ -96,6 +106,7 @@ public class Dialogue : MonoBehaviour
                         //Thread.CheckTags();
                         if (Thread.story.currentChoices.Count > 0)
                         {
+                            Debug.Log("Generating Choices");
                             GenerateChoices();
                         }
                     }
@@ -119,10 +130,10 @@ public class Dialogue : MonoBehaviour
 
                             gameObject.SetActive(false);
 
+                            endDialogue.Raise();
                         }
                     }
                 }
-                
                 if (choiceA.triggered)
                 {
                     MakeChoice(0);
